@@ -425,7 +425,7 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 - 🧠 LazyOwn Framework: [https://github.com/grisuno/LazyOwn](https://github.com/grisuno/LazyOwn)
 - 🌐 Web: [https://grisuno.github.io/LazyOwn/](https://grisuno.github.io/LazyOwn/)
 - 📰 Blog: [https://medium.com/@lazyown.redteam](https://medium.com/@lazyown.redteam)
-- 🎥 Demo: [https://www.youtube.com/shorts/V2tqH53LRIw](https://www.youtube.com/shorts/V2tqH53LRIw) 
+- 🎥 Videolog: [https://youtu.be/spgLpv3XkiA](https://youtu.be/spgLpv3XkiA)
 - 🧪 QuantumVault: [https://quantumvault.pro/landing](https://quantumvault.pro/landing)
 - 🧑‍💻 HTB: [https://app.hackthebox.com/users/1998024](https://app.hackthebox.com/users/1998024)
 - ☕ Ko-fi: [https://ko-fi.com/grisuno](https://ko-fi.com/grisuno) (Buy me a yerba mate for the next all-nighter)
