@@ -223,7 +223,7 @@ unsigned char AES_KEY[32];
 for (int i = 0; i < 32; i++) {
     sscanf(KEY_HEX + i * 2, "%2hhx", &AES_KEY[i]);
 }
-### IV Generation:
+### 🐚 IV Generation:
 
 Outbound Messages: Random 16-byte IV generated using OpenSSL's RAND_bytes(iv_out, 16) 
 beacon3.c
