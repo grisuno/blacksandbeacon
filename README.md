@@ -1,4 +1,4 @@
-# ⏳ Black Sand Beacon
+# 🌋 Black Sand Beacon
 
 Micro beacon for LazyOwn RedTeam Framework C2 inspired in Black Basalt Beacon
 
