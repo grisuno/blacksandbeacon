@@ -455,7 +455,7 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 <img width="478" height="856" alt="image" src="https://github.com/user-attachments/assets/325ffdc2-f3d3-41f9-b2bb-0f46d5ac5abe" />
 
 ## 🔗 Links (Because Sharing Is Power)
-
+- 📓 Wiki: [https://deepwiki.com/grisuno/blacksandbeacon](https://deepwiki.com/grisuno/blacksandbeacon)
 - 📰 Blog: [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
 - 🎤 Podcast: [https://www.podbean.com/eas/pb-qe42t-198ee9d](https://www.podbean.com/eas/pb-qe42t-198ee9d)
 - 🐙 GitHub: [https://github.com/grisuno/beacon](https://github.com/grisuno/beacon)
