@@ -1,4 +1,2 @@
 #!/bin/bash
-python3 -m venv env
-source env/bin/activate
-pip install -r requirements.txt
+gcc -o beacon beacon3.c aes.c cJSON.c -lcurl -lssl -lcrypto
