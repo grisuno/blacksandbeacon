@@ -1,5 +1,8 @@
 # 🌋 Black Sand Beacon
 
+<img width="720" height="720" alt="image" src="https://github.com/user-attachments/assets/fb294783-0f5a-46d3-8392-98993fa6c303" />
+
+
 Micro beacon for LazyOwn RedTeam Framework C2 inspired in Black Basalt Beacon
 
 - Command execution
@@ -15,11 +18,17 @@ Black Sand Beacon is a modular C2 agent with a layered architecture consisting o
 - Data Processing: JSON serialization using cJSON library
 - Network Layer: HTTPS communication via libcurl with malleable C2 profiles
 
+<img width="1212" height="496" alt="image" src="https://github.com/user-attachments/assets/cbef470a-71ba-40be-b53e-1c766162f4c8" />
+
+
 ## 🚨 Beacon Core Loop
 The main execution loop resides in main() at 
 beacon3.c
 637-808
  The beacon operates in a continuous 6-second polling cycle:
+
+<img width="1194" height="833" alt="image" src="https://github.com/user-attachments/assets/f09383f2-31ea-41e8-aae3-98118bb98607" />
+
 
 ## 🚀 Initialization 
 beacon3.c
@@ -33,6 +42,9 @@ Command Retrieval
 beacon3.c
 650-693
 :
+
+<img width="1288" height="747" alt="image" src="https://github.com/user-attachments/assets/dbd805cf-040f-496a-afd3-faa3a297dc92" />
+
 
 ### 📥 Issues HTTPS GET request to C2 server
 Base64 decodes response
@@ -288,6 +300,9 @@ beacon3.c
 ### 📊 Outbound Message Structure (Results)
 Results transmitted to the C2 server are JSON objects encrypted and encoded:
 
+<img width="850" height="819" alt="image" src="https://github.com/user-attachments/assets/ca77775f-9a08-4775-9268-5734112d0f5a" />
+
+
 JSON Structure:
 
 The beacon constructs a JSON object using the cJSON library 
@@ -308,6 +323,9 @@ beacon3.c
   "result_pwd": "<current working directory>"
 }
 ```
+
+<img width="496" height="871" alt="image" src="https://github.com/user-attachments/assets/9be4b106-f71b-487f-8044-8f19c314ebc1" />
+
 
 ### 📩 Encryption and Transmission:
 
@@ -345,6 +363,9 @@ beacon3.c
 beacon3.c
 283-309
 
+<img width="1006" height="871" alt="image" src="https://github.com/user-attachments/assets/ddcfc707-111b-42e0-a022-de0027545655" />
+
+
 ### 💬 Request/Response Flow
 Main Communication Loop
 The beacon operates in a continuous polling loop with a fixed interval:
@@ -352,11 +373,17 @@ The beacon operates in a continuous polling loop with a fixed interval:
 ## 🧙🏼‍♂️ BOF Concept
 A Beacon Object File (BOF) is a compiled ELF relocatable object file (.o) that contains custom functionality to be executed by the beacon. BOFs enable modular capability extension without modifying the core beacon executable.
 
+<img width="798" height="764" alt="image" src="https://github.com/user-attachments/assets/312be6a3-6e14-437e-b985-5ef285d2035c" />
+
+
 ### ⚙️ ELF Loading Mechanism
 The RunELF function at 
 beacon3.c
 361-532
  implements a complete in-memory ELF loader that parses relocatable object files and prepares them for execution.
+
+<img width="396" height="873" alt="image" src="https://github.com/user-attachments/assets/e5c363ba-203f-4c64-b531-5dd8a2447c36" />
+
 
 ### 🗂️ Symbol Resolution
 BOFs reference external functions (libc, beacon API) that must be resolved at load time. The beacon maintains a symbol resolver table that maps symbol names to function pointers.
@@ -382,6 +409,9 @@ Sources:
 beacon3.c
 461-470
 
+<img width="1711" height="840" alt="image" src="https://github.com/user-attachments/assets/26cb7242-247c-4d5c-9071-e2d3be94e613" />
+
+
 ### 🧩 The resolution process at 
 beacon3.c
 461-470
@@ -403,8 +433,14 @@ Once the ELF is loaded and relocated, the beacon locates the go function and exe
 ### e = ∑∞ⁿ⁼⁰ ¹ₙ Entry Point Discovery
 The loader searches the symbol table for a function named go:
 
+<img width="1724" height="663" alt="image" src="https://github.com/user-attachments/assets/8ba4d51f-84ba-46fc-a349-c230324c6b6e" />
+
+
 ### 🚩 Overview
 The ELF loader is implemented in the RunELF function, which performs the following operations:
+
+<img width="567" height="905" alt="image" src="https://github.com/user-attachments/assets/349779d2-0af7-427c-a6a1-ada6ff0705db" />
+
 
 - ELF validation - Verifies ELF magic bytes and architecture
 - Section parsing - Locates symbol tables, string tables, and loadable sections
@@ -413,6 +449,10 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 - Relocation processing - Applies ELF relocations to resolve references
 - Function lookup - Locates the entry point function by name
 - Execution - Invokes the BOF using a stack-aligned assembly wrapper
+
+<img width="566" height="851" alt="image" src="https://github.com/user-attachments/assets/fe45fc29-6ab5-47f6-94ea-1dedda815547" />
+
+<img width="478" height="856" alt="image" src="https://github.com/user-attachments/assets/325ffdc2-f3d3-41f9-b2bb-0f46d5ac5abe" />
 
 ## 🔗 Links (Because Sharing Is Power)
 
