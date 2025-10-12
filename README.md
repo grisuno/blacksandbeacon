@@ -414,8 +414,12 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 - Function lookup - Locates the entry point function by name
 - Execution - Invokes the BOF using a stack-aligned assembly wrapper
 
+## Links
 
-[https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
+- [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
+- [https://www.podbean.com/eas/pb-qe42t-198ee9d](https://www.podbean.com/eas/pb-qe42t-198ee9d)
+
+
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
