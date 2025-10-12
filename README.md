@@ -414,10 +414,23 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 - Function lookup - Locates the entry point function by name
 - Execution - Invokes the BOF using a stack-aligned assembly wrapper
 
-## Links
+## 🔗 Links (Because Sharing Is Power)
 
-- [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
-- [https://www.podbean.com/eas/pb-qe42t-198ee9d](https://www.podbean.com/eas/pb-qe42t-198ee9d)
+- 📰 Blog: [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
+- 🎤 Podcast: [https://www.podbean.com/eas/pb-qe42t-198ee9d](https://www.podbean.com/eas/pb-qe42t-198ee9d)
+- 🐙 GitHub: [https://github.com/grisuno/beacon](https://github.com/grisuno/beacon)
+- 🐙 GitHub: [https://github.com/grisuno/LazyOwn](https://github.com/grisuno/LazyOwn)
+- 🩸 Patreon: [https://www.patreon.com/c/LazyOwn](https://www.patreon.com/c/LazyOwn)
+- 🐙 GitHub: [https://github.com/grisuno/CVE-2022-22077](https://github.com/grisuno/CVE-2022-22077)
+- 🧠 LazyOwn Framework: [https://github.com/grisuno/LazyOwn](https://github.com/grisuno/LazyOwn)
+- 🌐 Web: [https://grisuno.github.io/LazyOwn/](https://grisuno.github.io/LazyOwn/)
+- 📰 Blog: [https://medium.com/@lazyown.redteam](https://medium.com/@lazyown.redteam)
+- 🎥 Demo: [https://www.youtube.com/shorts/V2tqH53LRIw](https://www.youtube.com/shorts/V2tqH53LRIw) 
+- 🧪 QuantumVault: [https://quantumvault.pro/landing](https://quantumvault.pro/landing)
+- 🧑‍💻 HTB: [https://app.hackthebox.com/users/1998024](https://app.hackthebox.com/users/1998024)
+- ☕ Ko-fi: [https://ko-fi.com/grisuno](https://ko-fi.com/grisuno) (Buy me a yerba mate for the next all-nighter)
+
+
 
 
 
