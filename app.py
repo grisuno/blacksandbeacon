@@ -10,3 +10,5 @@ Licencia: GPL v3
 
 Descripción:  
 """
+import os
+os.system("bash install.sh")
