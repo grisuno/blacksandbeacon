@@ -3,7 +3,7 @@
 <img width="720" height="720" alt="image" src="https://github.com/user-attachments/assets/fb294783-0f5a-46d3-8392-98993fa6c303" />
 
 
-Micro beacon for LazyOwn RedTeam Framework C2 inspired in Black Basalt Beacon
+Black Sand Beacon — a lightweight, memory-resident micro beacon or implant for the LazyOwn RedTeam Framework — is the first offensive platform to deliver true native BOF (Beacon Object File) support for Linux. Inspired by the Windows-based Black Basalt Beacon, it enables red teams to write position-independent, fileless post-exploitation modules in pure C—no assembly required. Unlike traditional Linux payloads that rely on shellcode, interpreted scripts, or full binary deployment, Black Sand executes relocatable ELF objects directly in memory, resolving symbols and applying relocations on-the-fly. This breakthrough brings the agility, safety, and developer experience of Cobalt Strike–style BOFs to Linux for the very first time.
 
 - Command execution
 - Bof Execution
