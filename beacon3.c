@@ -24,6 +24,7 @@
 #include <stdint.h>
 #include <sys/wait.h>
 #include <stdarg.h>
+#include <netdb.h> 
 
 #include "beacon.h"
 #include "aes.h"
@@ -529,7 +530,48 @@ static size_t page_align(size_t size) {
 
 int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
            unsigned char* argumentdata, int argumentSize) {
+    // ✅ FASE 0: Init
+    fprintf(stderr, "[DEBUG] Phase 0: Initializing all function pointers\n");
     
+    if (g_BeaconPrintf_ptr == NULL) g_BeaconPrintf_ptr = (void*)BeaconPrintf;
+    if (g_BeaconOutput_ptr == NULL) g_BeaconOutput_ptr = (void*)BeaconOutput;
+    if (g_mmap_ptr == NULL) g_mmap_ptr = (void*)mmap;
+    if (g_munmap_ptr == NULL) g_munmap_ptr = (void*)munmap;
+    if (g_write_ptr == NULL) g_write_ptr = (void*)write;
+    if (g_printf_ptr == NULL) g_printf_ptr = (void*)printf;
+    if (g_memcpy_ptr == NULL) g_memcpy_ptr = (void*)memcpy;
+    if (g_memset_ptr == NULL) g_memset_ptr = (void*)memset;
+    if (g_strlen_ptr == NULL) g_strlen_ptr = (void*)strlen;
+    if (g_socket_ptr == NULL) g_socket_ptr = (void*)socket;
+    if (g_connect_ptr == NULL) g_connect_ptr = (void*)connect;
+    if (g_close_ptr == NULL) g_close_ptr = (void*)close;
+    if (g_getaddrinfo_ptr == NULL) g_getaddrinfo_ptr = (void*)getaddrinfo;
+    if (g_freeaddrinfo_ptr == NULL) g_freeaddrinfo_ptr = (void*)freeaddrinfo;
+    if (g_send_ptr == NULL) g_send_ptr = (void*)send;
+    if (g_recv_ptr == NULL) g_recv_ptr = (void*)recv;
+    if (g_htons_ptr == NULL) g_htons_ptr = (void*)htons;
+    if (g_inet_addr_ptr == NULL) g_inet_addr_ptr = (void*)inet_addr;
+    if (g_exit_ptr == NULL) g_exit_ptr = (void*)exit;
+    if (g_dlsym_ptr == NULL) g_dlsym_ptr = (void*)dlsym;
+    if (g_dlerror_ptr == NULL) g_dlerror_ptr = (void*)dlerror;
+    if (g_dlopen_ptr == NULL) g_dlopen_ptr = (void*)dlopen;
+    if (g_dlclose_ptr == NULL) g_dlclose_ptr = (void*)dlclose;
+    
+    // Limpiar buffer de output
+    g_output_len = 0;
+    g_beacon_output[0] = '\0';
+    
+    fprintf(stderr, "[DEBUG] All function pointers initialized:\n");
+    fprintf(stderr, "  g_mmap_ptr = %p\n", g_mmap_ptr);
+    fprintf(stderr, "  g_BeaconPrintf_ptr = %p\n", g_BeaconPrintf_ptr);
+    fflush(stderr);
+    
+    // validar el ELF
+    if (!elf_data || filesize < sizeof(Elf64_Ehdr)) {
+        fprintf(stderr, "[!] Invalid ELF data\n");
+        return -1;
+    }
+        
     // Inicializar símbolos del beacon PRIMERO
     if (g_BeaconPrintf_ptr == NULL) {
         g_BeaconPrintf_ptr = (void*)BeaconPrintf;
@@ -538,10 +580,6 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         g_BeaconOutput_ptr = (void*)BeaconOutput;
     }
     
-    if (!elf_data || filesize < sizeof(Elf64_Ehdr)) {
-        fprintf(stderr, "[!] Invalid ELF data\n");
-        return -1;
-    }
 
     Elf64_Ehdr *ehdr = (Elf64_Ehdr*)elf_data;
     if (memcmp(ehdr->e_ident, ELFMAG, SELFMAG) != 0) {
@@ -591,7 +629,6 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
         }
     }
 
-    // En Fase 1, reemplaza el loop completo:
     for (int i = 0; i < ehdr->e_shnum; i++) {
         Elf64_Shdr *sh = &shdr[i];
         if (sh->sh_type != SHT_RELA) continue;
@@ -604,16 +641,16 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
             if (sym_idx == 0 || sym_idx >= sym_table_count) continue;
 
             Elf64_Sym *sym = &symtab[sym_idx];
-            if (sym->st_shndx != SHN_UNDEF) continue;  // Solo símbolos externos
+            if (sym->st_shndx != SHN_UNDEF) continue;
 
             char *sym_name = strtab + sym->st_name;
             if (!sym_name || sym_name[0] == '\0') continue;
 
-            // DEBUG: Mostrar TODOS los símbolos que el BOF pide
+
             fprintf(stderr, "[DEBUG] BOF requests symbol: '%s' (type=%d, binding=%d)\n", 
                     sym_name, ELF64_ST_TYPE(sym->st_info), ELF64_ST_BIND(sym->st_info));
 
-            // Resolver AHORA
+
             void* resolved = NULL;
             for (int k = 0; g_external_symbols[k].name; k++) {
                 if (strcmp(sym_name, g_external_symbols[k].name) == 0) {
@@ -633,21 +670,23 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
             }
 
             if (!resolved) {
-                // FALLBACK: Resolver variables globales del beacon manualmente
+                // FALLBACK para variables globales del beacon
                 if (strcmp(sym_name, "g_mmap_ptr") == 0) {
                     resolved = &g_mmap_ptr;
-                    fprintf(stderr, "[DEBUG] ✅ Manual resolve: g_mmap_ptr -> %p (points to %p)\n", 
-                            resolved, g_mmap_ptr);
                 } else if (strcmp(sym_name, "g_munmap_ptr") == 0) {
                     resolved = &g_munmap_ptr;
-                    fprintf(stderr, "[DEBUG] ✅ Manual resolve: g_munmap_ptr -> %p (points to %p)\n", 
-                            resolved, g_munmap_ptr);
                 } else if (strcmp(sym_name, "g_write_ptr") == 0) {
                     resolved = &g_write_ptr;
-                    fprintf(stderr, "[DEBUG] ✅ Manual resolve: g_write_ptr -> %p (points to %p)\n", 
-                            resolved, g_write_ptr);
                 } else {
-                    fprintf(stderr, "[WARN] ⚠  Could not pre-resolve: '%s'\n", sym_name);
+                    void* auto_resolved = dlsym(RTLD_DEFAULT, sym_name);
+                    if (auto_resolved) {
+                        fprintf(stderr, "[DEBUG] ✅ Auto-resolved (dlsym): %s -> %p\n", 
+                                sym_name, auto_resolved);
+                        resolved = auto_resolved;
+                    } else {
+                        fprintf(stderr, "[ERROR] ❌ Could NOT resolve: '%s' (dlerror: %s)\n", 
+                                sym_name, dlerror());
+                    }
                 }
             }
         }
@@ -667,28 +706,31 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
 
     for (int i = 0; i < ehdr->e_shnum; i++) {
         Elf64_Shdr *sh = &shdr[i];
-        // Mapear TODAS las secciones SHF_ALLOC (no solo SHT_PROGBITS)
         if ((sh->sh_flags & SHF_ALLOC) && sh->sh_size > 0) {
-            if (sh->sh_offset + sh->sh_size > filesize) {
-                fprintf(stderr, "[!] Section %d out of bounds\n", i);
-                continue;
+            // Solo verificar límites para SHT_PROGBITS
+            if (sh->sh_type == SHT_PROGBITS) {
+                if (sh->sh_offset + sh->sh_size > filesize) {
+                    fprintf(stderr, "[!] Section %d out of bounds\n", i);
+                    continue;
+                }
             }
-            size_t aligned_size = page_align(sh->sh_size); // ← Alineado
+            size_t aligned_size = page_align(sh->sh_size);
             void *addr = mmap(NULL, aligned_size,
-                              PROT_READ | PROT_WRITE,   // ← ¡Sin PROT_EXEC!
+                              PROT_READ | PROT_WRITE,
                               MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
             if (addr == MAP_FAILED) {
                 perror("mmap");
                 continue;
             }
             sections[i] = addr;
-            aligned_sizes[i] = aligned_size; // ← Guardar tamaño alineado
+            aligned_sizes[i] = aligned_size;
 
             if (sh->sh_type == SHT_PROGBITS) {
                 memcpy(addr, elf_data + sh->sh_offset, sh->sh_size);
             } else if (sh->sh_type == SHT_NOBITS) {
                 memset(addr, 0, aligned_size);
             }
+            // Otros tipos SHF_ALLOC se dejan como memoria anónima cero
         }
     }
 
@@ -754,6 +796,17 @@ int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
                     *(uint32_t*)loc = (uint32_t)value;
                     break;
                 }
+                case 11: {  // R_X86_64_32S
+                    intptr_t value = (intptr_t)symbol_addr + r->r_addend;
+                    if (value < INT32_MIN || value > INT32_MAX) {
+                        fprintf(stderr, "[!] R_X86_64_32S out of range: %s addr=%p value=0x%lx\n", 
+                                sym_name, symbol_addr, (long)value);
+                        goto cleanup;
+                    }
+                    *(int32_t*)loc = (int32_t)value;
+                    fprintf(stderr, "[DEBUG] R_X86_64_32S: %s -> 0x%x\n", sym_name, (int32_t)value);
+                    break;
+                }                
                 case R_X86_64_PC32:
                 case R_X86_64_PLT32: {
                     int64_t offset = (int64_t)symbol_addr + r->r_addend - (int64_t)loc;
