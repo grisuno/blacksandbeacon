@@ -484,6 +484,104 @@ The ELF loader is implemented in the RunELF function, which performs the followi
 
 <img width="478" height="856" alt="image" src="https://github.com/user-attachments/assets/325ffdc2-f3d3-41f9-b2bb-0f46d5ac5abe" />
 
+## 🔷 Gopher Protocol C2
+
+Black Sand Beacon now includes full support for the Gopher protocol as a command and control (C2) channel. The Gopher protocol (RFC 1436) is a lightweight, simple communication protocol designed in the early 1990s that offers unique advantages for modern offensive operations.​
+
+## Why Gopher?
+Evasion: Extremely rare protocol in modern networks, making detection by traditional IDS/IPS systems difficult​
+
+Simplicity: Minimalist protocol that generates less network noise than HTTP/HTTPS​
+
+Low profile: Most security tools do not inspect Gopher traffic​
+
+Flexible: Supports transmission of text, binaries, and encrypted commands​
+
+Legacy advantage: Many firewalls and monitoring solutions lack proper Gopher protocol inspection​
+
+## Features
+✅ AES-256-CFB encryption for all communications
+
+✅ Base64-encoded command and result transmission
+
+✅ Support for remote BOF (Beacon Object Files) downloads
+
+✅ Automatic logging in CSV format
+
+✅ Multi-client session management
+
+✅ Customizable port (default 7070, standard 70)
+
+✅ Simple selector-based routing
+
+## Installation
+Requirements
+```bash
+pip3 install cryptography
+```
+
+## Directory Structure
+```text
+c2_gopher/
+├── c2_gopher.py          # Main C2 server
+├── beacon_gopher         # Compiled beacon binary
+├── sessions/
+│   ├── logs/            # Client session logs (CSV)
+│   └── uploads/         # BOF files for download
+```
+## Quick Start
+1. Generate AES Key
+```bash
+python3 -c "import os; print(os.urandom(32).hex())"
+```
+Update the AES_KEY variable in both c2_gopher.py and recompile beacon_gopher with the new key.
+
+2. Start the C2 Server
+```bash
+python3 c2_gopher.py
+```
+The server will listen on gopher://0.0.0.0:7070/ by default.
+
+3. Deploy the Beacon
+```bash
+./beacon_gopher
+```
+The beacon will start checking for commands from the C2 server.
+
+4. Issue Commands
+In the C2 server terminal, you'll be prompted to enter commands:
+
+```text
+Client ID: linux
+Command: whoami
+[+] Command 'whoami' queued for linux
+```
+## Protocol Flow
+Command Retrieval (Beacon → C2)
+Beacon connects to C2 on port 7070
+
+Sends selector: /pleasesubscribe/v1/users/<client_id>
+
+C2 responds with AES-encrypted command (Base64)
+
+Beacon decrypts and executes command
+
+Result Submission (Beacon → C2)
+Beacon encrypts execution result with AES
+
+Encodes as Base64
+
+Sends selector: /report/<base64_payload>
+
+C2 decrypts, parses JSON, and logs to CSV
+
+BOF Download (Beacon → C2)
+Beacon requests: /bof/<filename>
+
+C2 responds with Base64-encoded BOF
+
+Beacon decodes and executes in memory
+
 ## 🔗 Links (Because Sharing Is Power)
 - 📓 Wiki: [https://deepwiki.com/grisuno/blacksandbeacon](https://deepwiki.com/grisuno/blacksandbeacon)
 - 📰 Blog: [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
