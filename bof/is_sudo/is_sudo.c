@@ -1,4 +1,5 @@
 // is_sudo.c — LazyOwn RedTeam BOF (Linux/x64)
+// gcc -c -nostdlib -fPIC -m64 -O2 is_sudo.c -o is_sudo.x64.o
 #define NULL ((void*)0)
 #define CALLBACK_OUTPUT 0
 
