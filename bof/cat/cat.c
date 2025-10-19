@@ -1,4 +1,5 @@
 // readfile.c — LazyOwn RedTeam BOF (Linux/x64)
+// gcc -c -nostdlib -fPIC -m64 -O2 cat.c -o cat.x64.o
 #define NULL ((void*)0)
 #define CALLBACK_OUTPUT 0
 
