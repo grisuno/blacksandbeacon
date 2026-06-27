@@ -3,4 +3,4 @@
 #
 # Pinned to known-good versions as of writing; update deliberately.
 
-cryptography>=42.0.0
+cryptography>=49.0.0
