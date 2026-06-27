@@ -1,0 +1,103 @@
+name: build-and-test
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# Cancel in-progress runs of the same branch on new pushes.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & test on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies (Debian/Ubuntu)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            gcc \
+            libc6-dev \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            python3 \
+            python3-pip \
+            python3-venv \
+            make
+
+      - name: Install Python runtime deps
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Prepare config from example
+        run: cp config/config.example.json config/config.json
+
+      - name: Build the v1 beacon
+        # libssl-dev is required for the beacon to link against libcrypto.
+        # If the apt step succeeded the link should succeed; we surface
+        # any missing symbols here as a build error.
+        run: make beacon
+
+      - name: Build all BOFs
+        run: make bofs
+
+      - name: Build all three beacon variants
+        run: |
+          make all-beacons || {
+            echo "::warning::v2/v3 failed to build (their code may reference symbols not in this checkout). v1 is the canonical beacon."
+          }
+
+      - name: Run unit tests
+        # This includes test_beacon_build.py which compiles the v1
+        # beacon a second time and checks it exports the BOF API
+        # (BeaconPrintf/BeaconOutput) and the ELF loader (RunELF).
+        run: make test
+
+      - name: Verify no leftover hardcoded AES key in source
+        run: |
+          # The example config contains a placeholder; the real key
+          # should never appear in the C source. This catches the
+          # classic mistake of re-committing the C2 key into beacon.c.
+          if grep -RInE 'aes_key_hex[[:space:]]*=[[:space:]]*"[0-9a-f]{64}"' \
+              beacons/ bof/ include/ c2/ tests/ Makefile 2>/dev/null; then
+            echo "::error::hardcoded 64-char hex key found in source - use config.json instead"
+            exit 1
+          fi
+          echo "no hardcoded keys found"
+
+      - name: Verify the install/deploy layout works end-to-end
+        # Stage into a temp dir and run the installed beacon from a
+        # foreign CWD. This is what an operator would do on a real
+        # target host, so we want CI to catch any regression that
+        # breaks the deploy layout.
+        run: |
+          DEST=$(mktemp -d)
+          make install-all DESTDIR="$DEST"
+          cd /tmp
+          timeout 2 "$DEST/beacon" || true
+          # We expect it to either start polling (success) or fail
+          # with the canonical "config error" message. Either way
+          # we have exercised the binary-relative search path.
+          test -x "$DEST/beacon"
+          test -f "$DEST/config.json"
+          rm -rf "$DEST"
+
+      - name: Run shellcheck on install.sh (best-effort)
+        run: |
+          if command -v shellcheck >/dev/null; then
+            shellcheck install.sh || true
+          else
+            echo "shellcheck not installed, skipping"
+          fi

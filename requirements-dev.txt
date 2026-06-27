@@ -1,0 +1,2 @@
+# Test-only requirements. Installed automatically by CI.
+# Runtime C2 deps are in requirements.txt.

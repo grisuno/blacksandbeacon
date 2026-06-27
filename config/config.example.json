@@ -1,0 +1,38 @@
+{
+  "c2": {
+    "url": "http://127.0.0.1:7070",
+    "uri": "/api/poll/",
+    "client_id": "linux",
+    "port": 7070,
+    "report_uri": "/report/",
+    "log_dir": "sessions/logs",
+    "upload_dir": "sessions/uploads"
+  },
+  "crypto": {
+    "aes_key_hex": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    "mode": "cfb"
+  },
+  "timing": {
+    "sleep_seconds": 6,
+    "jitter_percent": 20,
+    "curl_timeout_seconds": 10,
+    "curl_connect_timeout_seconds": 5
+  },
+  "network": {
+    "user_agents": [
+      "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/120.0",
+      "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ],
+    "verify_tls": false
+  },
+  "bof": {
+    "download_chunk_size": 4096,
+    "output_buffer_size": 65536
+  },
+  "backoff": {
+    "base_seconds": 6,
+    "max_seconds": 300
+  }
+}

@@ -1,1 +1,6 @@
+# Runtime requirements for the C2 server (c2/server.py).
+# Install with: pip install -r requirements.txt
+#
+# Pinned to known-good versions as of writing; update deliberately.
 
+cryptography>=42.0.0
