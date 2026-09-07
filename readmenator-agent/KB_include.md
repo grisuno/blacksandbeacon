@@ -1,0 +1,55 @@
+# Subsystem: include
+
+## bof/include/beacon_api.h
+- Layer: presentation
+- Language: h
+- Symbols:
+  - `BSB_BOF_BEACON_API_H` (macro, line 17)
+  - `CALLBACK_OUTPUT` (macro, line 24)
+  - `CALLBACK_ERROR` (macro, line 25)
+  - `CALLBACK_OUTPUT_OEM` (macro, line 26)
+- Imported by: `bof/cat/bof.c`, `bof/is_sudo/bof.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/whoami/bof.c`
+
+## bof/include/syscalls.h
+- Layer: utility
+- Language: h
+- Symbols:
+  - `syscall0` (function, line 48) `static inline long syscall0(long n)`
+  - `syscall1` (function, line 59) `static inline long syscall1(long n, long a1)`
+  - `syscall2` (function, line 70) `static inline long syscall2(long n, long a1, long a2)`
+  - `syscall3` (function, line 81) `static inline long syscall3(long n, long a1, long a2, long a3)`
+  - `syscall4` (function, line 92) `static inline long syscall4(long n, long a1, long a2, long a3, long a4)`
+  - `bsf_strlen` (function, line 106) `static inline size_t bsf_strlen(const char *s)`
+  - `bsf_strcmp` (function, line 113) `static inline int bsf_strcmp(const char *a, const char *b)`
+  - `bsf_memcmp` (function, line 119) `static inline int bsf_memcmp(const void *p1, const void *p2, size_t n)`
+  - `BSB_BOF_SYSCALLS_H` (macro, line 12)
+  - `SYS_read` (macro, line 17)
+  - `SYS_write` (macro, line 18)
+  - `SYS_open` (macro, line 19)
+  - `SYS_close` (macro, line 20)
+  - `SYS_stat` (macro, line 21)
+  - `SYS_fstat` (macro, line 22)
+  - `SYS_lseek` (macro, line 23)
+  - `SYS_mmap` (macro, line 24)
+  - `SYS_munmap` (macro, line 25)
+  - `SYS_brk` (macro, line 26)
+  - `SYS_ioctl` (macro, line 27)
+  - `SYS_access` (macro, line 28)
+  - `SYS_pipe` (macro, line 29)
+  - `SYS_dup2` (macro, line 30)
+  - `SYS_fork` (macro, line 31)
+  - `SYS_execve` (macro, line 32)
+  - `SYS_exit` (macro, line 33)
+  - `SYS_wait4` (macro, line 34)
+  - `SYS_getuid` (macro, line 35)
+  - `SYS_getgid` (macro, line 36)
+  - `SYS_geteuid` (macro, line 37)
+  - `SYS_getegid` (macro, line 38)
+  - `SYS_getpid` (macro, line 39)
+  - `SYS_getppid` (macro, line 40)
+  - `SYS_getpwnam_r` (macro, line 41)
+  - `SYS_getpwuid_r` (macro, line 42)
+  - `SYS_openat` (macro, line 43)
+  - `SYS_clone` (macro, line 44)
+  - `AT_FDCWD` (macro, line 47)
+- Imported by: `bof/cat/bof.c`, `bof/is_sudo/bof.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/whoami/bof.c`
