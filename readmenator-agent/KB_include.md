@@ -1,0 +1,66 @@
+# Subsystem: include
+
+## bof/include/beacon_api.h
+- Layer: presentation
+- Language: h
+- Symbols:
+  - `datap` (struct, line 30)
+  - `go` (function, line 7) `* * BOFs MUST export a function with this exact signature: * * void go(char *args, int alen);`
+  - `BeaconDataParse` (function, line 35) `void BeaconDataParse(datap *parser, char *buffer, int size);`
+  - `BeaconDataPtr` (function, line 37) `char *BeaconDataPtr(datap *parser, int size);`
+  - `BeaconDataInt` (function, line 38) `int BeaconDataInt(datap *parser);`
+  - `BeaconDataShort` (function, line 39) `short BeaconDataShort(datap *parser);`
+  - `BeaconDataLength` (function, line 40) `int BeaconDataLength(datap *parser);`
+  - `BeaconDataExtract` (function, line 41) `char *BeaconDataExtract(datap *parser, int *size);`
+  - `buffer` (function, line 44) `* takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffer must still be NUL-terminated). */ void BeaconPrintf(int type, const char *fmt, ...);`
+  - `BeaconOutput` (function, line 47) `void BeaconOutput(int type, const char *data, int len);`
+  - `BSB_BOF_BEACON_API_H` (macro, line 17) `#define BSB_BOF_BEACON_API_H`
+  - `CALLBACK_OUTPUT` (macro, line 24) `#define CALLBACK_OUTPUT`
+  - `CALLBACK_ERROR` (macro, line 25) `#define CALLBACK_ERROR`
+  - `CALLBACK_OUTPUT_OEM` (macro, line 26) `#define CALLBACK_OUTPUT_OEM`
+- Imported by: `bof/cat/bof.c`, `bof/is_sudo/bof.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/whoami/bof.c`
+
+## bof/include/syscalls.h
+- Layer: utility
+- Language: h
+- Symbols:
+  - `syscall0` (function, line 48) `static inline long syscall0(long n)`
+  - `syscall1` (function, line 59) `static inline long syscall1(long n, long a1)`
+  - `syscall2` (function, line 70) `static inline long syscall2(long n, long a1, long a2)`
+  - `syscall3` (function, line 81) `static inline long syscall3(long n, long a1, long a2, long a3)`
+  - `syscall4` (function, line 92) `static inline long syscall4(long n, long a1, long a2, long a3, long a4)`
+  - `bsf_strlen` (function, line 106) `static inline size_t bsf_strlen(const char *s)`
+  - `bsf_strcmp` (function, line 113) `static inline int bsf_strcmp(const char *a, const char *b)`
+  - `bsf_memcmp` (function, line 119) `static inline int bsf_memcmp(const void *p1, const void *p2, size_t n)`
+  - `volatile` (function, line 51) `__asm__ volatile ( "syscall" : "=a"(ret) : "a"(n) : "rcx", "r11", "memory" );`
+  - `BSB_BOF_SYSCALLS_H` (macro, line 12) `#define BSB_BOF_SYSCALLS_H`
+  - `SYS_read` (macro, line 17) `#define SYS_read`
+  - `SYS_write` (macro, line 18) `#define SYS_write`
+  - `SYS_open` (macro, line 19) `#define SYS_open`
+  - `SYS_close` (macro, line 20) `#define SYS_close`
+  - `SYS_stat` (macro, line 21) `#define SYS_stat`
+  - `SYS_fstat` (macro, line 22) `#define SYS_fstat`
+  - `SYS_lseek` (macro, line 23) `#define SYS_lseek`
+  - `SYS_mmap` (macro, line 24) `#define SYS_mmap`
+  - `SYS_munmap` (macro, line 25) `#define SYS_munmap`
+  - `SYS_brk` (macro, line 26) `#define SYS_brk`
+  - `SYS_ioctl` (macro, line 27) `#define SYS_ioctl`
+  - `SYS_access` (macro, line 28) `#define SYS_access`
+  - `SYS_pipe` (macro, line 29) `#define SYS_pipe`
+  - `SYS_dup2` (macro, line 30) `#define SYS_dup2`
+  - `SYS_fork` (macro, line 31) `#define SYS_fork`
+  - `SYS_execve` (macro, line 32) `#define SYS_execve`
+  - `SYS_exit` (macro, line 33) `#define SYS_exit`
+  - `SYS_wait4` (macro, line 34) `#define SYS_wait4`
+  - `SYS_getuid` (macro, line 35) `#define SYS_getuid`
+  - `SYS_getgid` (macro, line 36) `#define SYS_getgid`
+  - `SYS_geteuid` (macro, line 37) `#define SYS_geteuid`
+  - `SYS_getegid` (macro, line 38) `#define SYS_getegid`
+  - `SYS_getpid` (macro, line 39) `#define SYS_getpid`
+  - `SYS_getppid` (macro, line 40) `#define SYS_getppid`
+  - `SYS_getpwnam_r` (macro, line 41) `#define SYS_getpwnam_r`
+  - `SYS_getpwuid_r` (macro, line 42) `#define SYS_getpwuid_r`
+  - `SYS_openat` (macro, line 43) `#define SYS_openat`
+  - `SYS_clone` (macro, line 44) `#define SYS_clone`
+  - `AT_FDCWD` (macro, line 47) `#define AT_FDCWD`
+- Imported by: `bof/cat/bof.c`, `bof/is_sudo/bof.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/whoami/bof.c`
