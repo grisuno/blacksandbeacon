@@ -116,7 +116,7 @@ via the binary-relative search path), polls the C2, and prints
 what it sends and receives. With no commands queued it just
 sleeps between polls.
 
-To run a BOF, the C2 returns a JSON object with a `bof` field
+To run a BOF, the C2 returns a command such as `bof:<name>`
 pointing at `/bof/<name>.x64.o`. The beacon fetches the file and
 loads it into its own process via the in-memory ELF loader
 (`RunELF` in `beacons/v1/beacon.c`).
