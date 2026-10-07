@@ -94,6 +94,8 @@ copy somewhere.
 python3 c2/server.py
 ```
 
+or you can use [BlackObsidianC2](https://github.com/grisuno/BlackObsidianC2) or LazyC2 from [LazyOwn](https://github.com/grisuno/LazyOwn)
+
 The server binds `0.0.0.0:7070` by default and reads its AES key
 and C2 URI from `config/config.json`. Override the config path
 with `BSB_CONFIG=/path/to/config.json`.
