@@ -1,0 +1,90 @@
+# Architecture
+
+## Internal Dependencies
+
+- `aes.c` -> `aes.h`
+- `beacon3.c` -> `aes.h`
+- `beacon3.c` -> `beacon.h`
+- `beacon3.c` -> `cJSON.h`
+- `beacon5.c` -> `aes.h`
+- `beacon5.c` -> `beacon.h`
+- `beacon5.c` -> `cJSON.h`
+- `beacon6.c` -> `aes.h`
+- `beacon6.c` -> `beacon.h`
+- `beacon6.c` -> `cJSON.h`
+- `beacon_p2p.c` -> `aes.h`
+- `beacon_p2p.c` -> `beacon.h`
+- `beacon_p2p.c` -> `cJSON.h`
+- `beacons/v1/beacon.c` -> `include/beacon_common.h`
+- `beacons/v2/beacon.c` -> `include/beacon_common.h`
+- `beacons/v3/beacon.c` -> `include/beacon_common.h`
+- `bof.c` -> `beacon.h`
+- `bof/cat/bof.c` -> `bof/include/beacon_api.h`
+- `bof/cat/bof.c` -> `bof/include/syscalls.h`
+- `bof/is_sudo/bof.c` -> `bof/include/beacon_api.h`
+- `bof/is_sudo/bof.c` -> `bof/include/syscalls.h`
+- `bof/suid_enum/bof.c` -> `bof/include/beacon_api.h`
+- `bof/suid_enum/bof.c` -> `bof/include/syscalls.h`
+- `bof/userenum/bof.c` -> `bof/include/beacon_api.h`
+- `bof/userenum/bof.c` -> `bof/include/syscalls.h`
+- `bof/whoami/bof.c` -> `bof/include/beacon_api.h`
+- `bof/whoami/bof.c` -> `bof/include/syscalls.h`
+- `c2/server.py` -> `include/config_py.py`
+- `cJSON.c` -> `cJSON.h`
+- `gopher_beacon.c` -> `aes.h`
+- `gopher_beacon.c` -> `beacon.h`
+- `gopher_beacon.c` -> `cJSON.h`
+- `include/aes.c` -> `include/aes.h`
+- `include/aes_cfb.c` -> `include/aes.h`
+- `include/beacon_common.c` -> `include/aes.h`
+- `include/beacon_common.c` -> `include/beacon_common.h`
+- `include/beacon_common.c` -> `include/cJSON.h`
+- `include/beacon_common.h` -> `include/config.h`
+- `include/cJSON.c` -> `include/cJSON.h`
+- `include/config.c` -> `include/config.h`
+- `tests/config_harness.c` -> `include/config.h`
+- `tests/crypto_harness.c` -> `include/aes_cfb.h`
+- `tests/test_c2_server.py` -> `c2/server.py`
+
+## External Imports
+
+- `aes.c` -> string.h
+- `aes.h` -> stddef.h, stdint.h
+- `app.py` -> os
+- `beacon.h` -> stdarg.h, stdint.h
+- `beacon3.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `beacon5.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/select.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `beacon6.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, poll.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `beacon_p2p.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `beacons/v1/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
+- `beacons/v1/gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `beacons/v2/beacon.c` -> arpa/inet.h, netinet/in.h, openssl/rand.h, pthread.h, pwd.h, stdio.h, stdlib.h, string.h, sys/socket.h, time.h, unistd.h
+- `beacons/v3/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
+- `bof/include/beacon_api.h` -> stdarg.h, stddef.h, stdint.h
+- `bof/include/syscalls.h` -> stddef.h
+- `c2/server.py` -> base64, concurrent.futures, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, hashlib, hmac, json, logging, os, pathlib, socket, sys, threading, time, typing
+- `cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
+- `cJSON.h` -> stddef.h
+- `gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `gopher_c2.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, datetime, json, logging, os, socket, threading
+- `include/aes.c` -> string.h
+- `include/aes.h` -> stddef.h, stdint.h
+- `include/aes_cfb.c` -> stdlib.h, string.h
+- `include/aes_cfb.h` -> stddef.h
+- `include/beacon.h` -> stdarg.h, stdint.h
+- `include/beacon_common.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/hmac.h, openssl/rand.h, stdarg.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/wait.h, unistd.h
+- `include/beacon_common.h` -> stddef.h, stdint.h, sys/types.h
+- `include/cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
+- `include/cJSON.h` -> stddef.h
+- `include/config.c` -> ctype.h, limits.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
+- `include/config.h` -> stddef.h, stdint.h
+- `include/config_py.py` -> json, os, pathlib, re, sys
+- `tests/config_harness.c` -> stdio.h, stdlib.h, string.h
+- `tests/crypto_harness.c` -> stdio.h, stdlib.h, string.h
+- `tests/test_beacon_build.py` -> os, pathlib, shutil, subprocess, sys
+- `tests/test_bof_compile.py` -> os, pathlib, re, subprocess, sys
+- `tests/test_c2_http_e2e.py` -> base64, c2, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, json, os, pathlib, socket, sys, tempfile, threading, time
+- `tests/test_c2_server.py` -> base64, json, os, pathlib, shutil, sys, tempfile, time
+- `tests/test_config.py` -> json, os, pathlib, shutil, subprocess, sys, tempfile
+- `tests/test_crypto.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, os, pathlib, subprocess, sys
+- `tests/test_install_deploy.py` -> os, pathlib, shutil, stat, subprocess, sys, tempfile

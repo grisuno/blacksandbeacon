@@ -1,0 +1,162 @@
+[
+  {
+    "community_a": 0,
+    "community_b": 1,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: beacon3.c imports cJSON.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 4,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: include/beacon_common.c imports include/aes.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 5,
+    "connection_type": "depends_on",
+    "explanation": "Extracted import edge crosses communities: include/beacon_common.h imports include/config.h.",
+    "strength": 0.9,
+    "confidence": "EXTRACTED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 4,
+    "connection_type": "duplicates",
+    "explanation": "Inferred duplicated scope: communities 0 and 4 share 42 symbols (Jaccard 0.36), e.g. `AES256`, `AES_BLOCKLEN`, `AES_CBC_decrypt_buffer`, `AES_CBC_encrypt_buffer`, `AES_CTR_xcrypt_buffer`, `AES_ECB_decrypt`. Candidate for consolidation.",
+    "strength": 0.54,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 2,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 6 (include: aes_cfb).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 0,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 0 (root) and community 7 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 2,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 1 (include: cJSON) and community 2 (bof/include).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 1 (include: cJSON) and community 6 (include: aes_cfb).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 1,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 1 (include: cJSON) and community 7 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 4,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 2 (bof/include) and community 4 (include: aes).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 5,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: config).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 2 (bof/include) and community 6 (include: aes_cfb).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 2,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 7 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 3,
+    "community_b": 5,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 5 (include: config).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 3,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language py) with no import path between community 3 (include: server) and community 7 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 4,
+    "community_b": 5,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 4 (include: aes) and community 5 (include: config).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 4,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 4 (include: aes) and community 6 (include: aes_cfb).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 4,
+    "community_b": 7,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (layer utility) with no import path between community 4 (include: aes) and community 7 (orphans).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  },
+  {
+    "community_a": 5,
+    "community_b": 6,
+    "connection_type": "shares_context",
+    "explanation": "Inferred shared context (language c) with no import path between community 5 (include: config) and community 6 (include: aes_cfb).",
+    "strength": 0.5,
+    "confidence": "INFERRED"
+  }
+]
