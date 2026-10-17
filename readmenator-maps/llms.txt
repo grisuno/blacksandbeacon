@@ -42,7 +42,7 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [readmenator-agent/KB_userenum.md](md/readmenator-agent/KB_userenum.md): userinmemberlist (function, line 52) static int userinmemberlist(const char username, const char members)
 - [readmenator-agent/KB_v1.md](md/readmenator-agent/KB_v1.md): reportresult (function, line 24) static void reportresult(const bsbconfigt cfg,
 - [readmenator-agent/KB_whoami.md](md/readmenator-agent/KB_whoami.md): go (function, line 19) void go(char args, int alen)
-- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 52 files at commit 82d63f88b968. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 52 files at commit 515d3e0782d6. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
 - [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
 - [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
 - [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)

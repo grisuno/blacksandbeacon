@@ -12,7 +12,7 @@
 **Total Files Parsed:** 52 | **Total Symbols Extracted:** 1075 | **Total Imports:** 401
  | **Resolved Imports:** 43
 
-<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:82d63f8 | date:2026-07-18 -->
+<!-- ranking_model: v1.0 | weights: {ppr:0.45,auth:0.2,test:0.15,doc:0.1,fresh:0.1} | alpha:0.85 | commit:515d3e0 | date:2026-07-18 -->
 
 
 ## Table of Contents

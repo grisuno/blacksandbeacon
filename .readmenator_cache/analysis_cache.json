@@ -47,16 +47,16 @@
         "id": 0,
         "label": "root",
         "file_ids": [
-          "beacons/v1/gopher_beacon.c",
-          "beacon_p2p.c",
+          "beacon6.c",
+          "bof.c",
           "aes.h",
+          "beacons/v1/gopher_beacon.c",
           "aes.c",
+          "gopher_beacon.c",
           "beacon5.c",
           "beacon.h",
-          "bof.c",
-          "beacon3.c",
-          "beacon6.c",
-          "gopher_beacon.c"
+          "beacon_p2p.c",
+          "beacon3.c"
         ],
         "cohesion": 0.6086956521739131,
         "size": 10
@@ -65,15 +65,15 @@
         "id": 1,
         "label": "include: cJSON",
         "file_ids": [
+          "beacons/v1/beacon.c",
+          "include/beacon_common.h",
           "include/beacon_common.c",
-          "beacons/v3/beacon.c",
+          "beacons/v2/beacon.c",
+          "include/cJSON.c",
           "include/cJSON.h",
           "cJSON.c",
-          "include/cJSON.c",
-          "include/beacon_common.h",
-          "beacons/v2/beacon.c",
-          "cJSON.h",
-          "beacons/v1/beacon.c"
+          "beacons/v3/beacon.c",
+          "cJSON.h"
         ],
         "cohesion": 0.5714285714285714,
         "size": 9
@@ -82,13 +82,13 @@
         "id": 2,
         "label": "bof/include",
         "file_ids": [
+          "bof/suid_enum/bof.c",
           "bof/cat/bof.c",
-          "bof/userenum/bof.c",
-          "bof/is_sudo/bof.c",
-          "bof/include/beacon_api.h",
           "bof/include/syscalls.h",
-          "bof/whoami/bof.c",
-          "bof/suid_enum/bof.c"
+          "bof/include/beacon_api.h",
+          "bof/is_sudo/bof.c",
+          "bof/userenum/bof.c",
+          "bof/whoami/bof.c"
         ],
         "cohesion": 1.0,
         "size": 7
@@ -97,8 +97,8 @@
         "id": 3,
         "label": "include: server",
         "file_ids": [
-          "tests/test_c2_server.py",
           "include/config_py.py",
+          "tests/test_c2_server.py",
           "c2/server.py"
         ],
         "cohesion": 1.0,
@@ -108,9 +108,9 @@
         "id": 4,
         "label": "include: aes",
         "file_ids": [
+          "include/aes.h",
           "include/aes.c",
-          "include/aes_cfb.c",
-          "include/aes.h"
+          "include/aes_cfb.c"
         ],
         "cohesion": 0.4,
         "size": 3
@@ -119,9 +119,9 @@
         "id": 5,
         "label": "include: config",
         "file_ids": [
+          "include/config.c",
           "tests/config_harness.c",
-          "include/config.h",
-          "include/config.c"
+          "include/config.h"
         ],
         "cohesion": 0.6666666666666666,
         "size": 3

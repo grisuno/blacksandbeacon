@@ -1,10 +1,10 @@
 {
   "tool": "readmenator",
   "schema_version": 2,
-  "generated_at": "2026-10-17T00:25:12Z",
+  "generated_at": "2026-10-17T00:30:54Z",
   "project_root": ".",
   "project_name": "blacksandbeacon",
-  "git_commit": "82d63f88b96886d500831337f0e1b84e3a6ff320",
+  "git_commit": "515d3e0782d652d53dbe2fef009cbc2af5d956d3",
   "git_branch": "main",
   "source_fingerprint": "c9be1916069d712e1ee6cacf7faac88434139b3ef2adc958a52347cc4abc7302",
   "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
@@ -136,6 +136,11 @@
       "path": "KB_whoami.md",
       "lines": 28,
       "approx_tokens": 311
+    },
+    {
+      "path": "MEMORY.md",
+      "lines": 91,
+      "approx_tokens": 1307
     },
     {
       "path": "SECURITY.md",

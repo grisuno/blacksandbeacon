@@ -54,7 +54,7 @@ This community groups 3 file(s) rooted at `include` with dominant language py (c
 
 ## Connections
 
-- [INFERRED] shares_context community 3 <-> 6 (strength 0.5): Inferred shared context (layer testing) with no import path between community 3 (include: server) and community 6 (include: aes_cfb).
+- [INFERRED] shares_context community 3 <-> 5 (strength 0.5): Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 5 (include: config).
 - [INFERRED] shares_context community 3 <-> 7 (strength 0.5): Inferred shared context (language py) with no import path between community 3 (include: server) and community 7 (orphans).
 
 ## Risks

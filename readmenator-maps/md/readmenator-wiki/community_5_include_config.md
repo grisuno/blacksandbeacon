@@ -56,6 +56,7 @@ This community groups 3 file(s) rooted at `include` with dominant language c (co
 
 - [EXTRACTED] depends_on community 1 <-> 5 (strength 0.9): Extracted import edge crosses communities: include/beacon_common.h imports include/config.h.
 - [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: config).
+- [INFERRED] shares_context community 3 <-> 5 (strength 0.5): Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 5 (include: config).
 - [INFERRED] shares_context community 4 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 4 (include: aes) and community 5 (include: config).
 - [INFERRED] shares_context community 5 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 5 (include: config) and community 6 (include: aes_cfb).
 

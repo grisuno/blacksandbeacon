@@ -113,9 +113,9 @@
   },
   {
     "community_a": 3,
-    "community_b": 6,
+    "community_b": 5,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (layer testing) with no import path between community 3 (include: server) and community 6 (include: aes_cfb).",
+    "explanation": "Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 5 (include: config).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
