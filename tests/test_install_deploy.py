@@ -26,17 +26,31 @@ def make_all():
     subprocess.check_call(["make", "config", "beacon", "bofs"], cwd=str(ROOT))
 
 
-def run_beacon(binary: Path, cwd: Path) -> subprocess.CompletedProcess:
+def run_beacon(binary: Path, cwd: Path):
+    """Run the beacon from `cwd` and return (output, exit_code).
+
+    exit_code is None when the 3s cap tripped, which is the expected
+    path: the beacon polls the C2 forever, so it never exits on its
+    own. (The bare main() runner handled TimeoutExpired inline;
+    pytest surfaces it as a failure, so it is normalised here.)
+    """
     env = os.environ.copy()
     env.pop("BSB_CONFIG", None)  # let search order do its thing
-    return subprocess.run(
-        [str(binary)],
-        cwd=str(cwd),
-        env=env,
-        capture_output=True,
-        text=True,
-        timeout=3,
-    )
+    try:
+        r = subprocess.run(
+            [str(binary)],
+            cwd=str(cwd),
+            env=env,
+            capture_output=True,
+            text=True,
+            timeout=3,
+        )
+        return r.stdout + r.stderr, r.returncode
+    except subprocess.TimeoutExpired as e:
+        out = (e.stdout or b"") + (e.stderr or b"")
+        if isinstance(out, bytes):
+            out = out.decode("utf-8", "replace")
+        return out, None
 
 
 def test_build_beacon_lands_alongside_config():
@@ -63,12 +77,14 @@ def test_staged_beacon_runs_from_any_cwd():
     find build/config.json via the binary-relative search path."""
     build = ROOT / "build"
     with tempfile.TemporaryDirectory() as td:
-        r = run_beacon(build / "beacon", Path(td))
-    out = r.stdout + r.stderr
-    # We expect the beacon to start polling (the URL is the example
-    # localhost which has nothing listening, so curl will fail, but
-    # the URL line tells us the config was loaded and parsed).
-    assert "url=https://" in out, f"beacon did not read config: {out!r}"
+        out, code = run_beacon(build / "beacon", Path(td))
+    # The beacon is silent on stdout/stderr once it is running, so the
+    # config lookup is proven negatively: a missing config makes it
+    # exit 1 with "config error" on stderr (which is unbuffered, so it
+    # survives the kill). Config found -> no such message, and it is
+    # still polling when the cap trips.
+    assert "config error" not in out, f"beacon did not read config: {out!r}"
+    assert code is None, f"beacon exited early with {code}: {out!r}"
 
 
 def test_staged_bofs_are_present():

@@ -15,10 +15,28 @@ ROOT = Path(__file__).resolve().parent.parent
 HARNESS = ROOT / "build" / "crypto_harness"
 
 
+_HARNESS_SRCS = [
+    ROOT / "tests" / "crypto_harness.c",
+    ROOT / "include" / "aes_cfb.c",
+    ROOT / "include" / "aes.c",
+    ROOT / "include" / "aes.h",
+    ROOT / "include" / "aes_cfb.h",
+]
+
+
 def compile_harness():
+    """Build the harness if it is missing or older than its sources.
+
+    pytest imports this module and calls run() directly, so the build
+    cannot live in main() alone -- another test runs `make clean` and
+    wipes build/ mid-session. Rebuilding on staleness keeps both entry
+    points (pytest and `python3 tests/test_crypto.py`) working.
+    """
     HARNESS.parent.mkdir(exist_ok=True)
     if HARNESS.exists():
-        return
+        built = HARNESS.stat().st_mtime
+        if all(src.stat().st_mtime <= built for src in _HARNESS_SRCS):
+            return
     subprocess.check_call([
         "gcc", "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
         str(ROOT / "tests" / "crypto_harness.c"),
@@ -30,6 +48,7 @@ def compile_harness():
 
 
 def run(plaintext: str, key_hex: str) -> str:
+    compile_harness()
     out = subprocess.check_output(
         [str(HARNESS), "--key", key_hex, "--plain", plaintext],
         text=True,

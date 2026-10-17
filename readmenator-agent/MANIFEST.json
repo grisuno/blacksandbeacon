@@ -1,0 +1,187 @@
+{
+  "tool": "readmenator",
+  "schema_version": 2,
+  "generated_at": "2026-10-17T00:25:12Z",
+  "project_root": ".",
+  "project_name": "blacksandbeacon",
+  "git_commit": "82d63f88b96886d500831337f0e1b84e3a6ff320",
+  "git_branch": "main",
+  "source_fingerprint": "c9be1916069d712e1ee6cacf7faac88434139b3ef2adc958a52347cc4abc7302",
+  "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
+  "files": 52,
+  "symbols": 1075,
+  "imports": 401,
+  "calls": 926,
+  "inherits": 0,
+  "resolved_imports": 43,
+  "security_findings": 0,
+  "languages": {
+    "c": 29,
+    "h": 11,
+    "py": 11,
+    "sh": 1
+  },
+  "subsystems": {
+    "bof_include": 2,
+    "cat": 2,
+    "include": 12,
+    "is_sudo": 2,
+    "misc": 4,
+    "root": 15,
+    "tests": 9,
+    "userenum": 2,
+    "v1": 2,
+    "whoami": 2
+  },
+  "entrypoints": [
+    "app.py"
+  ],
+  "start_here": "INDEX.md",
+  "read_order": [
+    "readmenator-agent/MEMORY.md  # rules, workflow, done criteria, session log",
+    "readmenator-wiki/index.md  # big picture, communities, god nodes",
+    "readmenator-agent/INDEX.md  # file -> purpose -> used-by count",
+    "readmenator-agent/GOTCHAS.md  # blast radius before editing",
+    "readmenator-agent/KB_<subsystem>.md  # only the subsystem you touch"
+  ],
+  "workflow": [
+    "ls *.md readmenator-*/  # orient: docs first, ignore build noise",
+    "grep -n '<keyword>' INDEX*.md SYMBOLS*.md",
+    "readmenator . ask '<question>'  # GraphRAG context (--global for overviews)",
+    "cat KB_<subsystem>.md",
+    "grep -n '<file>' ARCHITECTURE*.md API*.md"
+  ],
+  "documents": [
+    {
+      "path": "API.md",
+      "lines": 477,
+      "approx_tokens": 12369
+    },
+    {
+      "path": "API_p2.md",
+      "lines": 272,
+      "approx_tokens": 8824
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "lines": 90,
+      "approx_tokens": 1580
+    },
+    {
+      "path": "CONCEPTS.md",
+      "lines": 120,
+      "approx_tokens": 3895
+    },
+    {
+      "path": "GOTCHAS.md",
+      "lines": 57,
+      "approx_tokens": 843
+    },
+    {
+      "path": "INDEX.md",
+      "lines": 56,
+      "approx_tokens": 1219
+    },
+    {
+      "path": "KB_bof_include.md",
+      "lines": 67,
+      "approx_tokens": 1034
+    },
+    {
+      "path": "KB_cat.md",
+      "lines": 26,
+      "approx_tokens": 286
+    },
+    {
+      "path": "KB_include.md",
+      "lines": 459,
+      "approx_tokens": 9056
+    },
+    {
+      "path": "KB_is_sudo.md",
+      "lines": 32,
+      "approx_tokens": 428
+    },
+    {
+      "path": "KB_misc.md",
+      "lines": 84,
+      "approx_tokens": 1099
+    },
+    {
+      "path": "KB_root.md",
+      "lines": 493,
+      "approx_tokens": 9326
+    },
+    {
+      "path": "KB_root_p2.md",
+      "lines": 81,
+      "approx_tokens": 1117
+    },
+    {
+      "path": "KB_tests.md",
+      "lines": 119,
+      "approx_tokens": 1517
+    },
+    {
+      "path": "KB_userenum.md",
+      "lines": 28,
+      "approx_tokens": 344
+    },
+    {
+      "path": "KB_v1.md",
+      "lines": 51,
+      "approx_tokens": 774
+    },
+    {
+      "path": "KB_whoami.md",
+      "lines": 28,
+      "approx_tokens": 311
+    },
+    {
+      "path": "SECURITY.md",
+      "lines": 3,
+      "approx_tokens": 10
+    },
+    {
+      "path": "SYMBOLS.md",
+      "lines": 500,
+      "approx_tokens": 12115
+    },
+    {
+      "path": "SYMBOLS_p2.md",
+      "lines": 500,
+      "approx_tokens": 13167
+    },
+    {
+      "path": "SYMBOLS_p3.md",
+      "lines": 95,
+      "approx_tokens": 2172
+    },
+    {
+      "path": "recipes/add-function.md",
+      "lines": 9,
+      "approx_tokens": 99
+    },
+    {
+      "path": "recipes/change-impact.md",
+      "lines": 9,
+      "approx_tokens": 107
+    },
+    {
+      "path": "recipes/fix-cycle.md",
+      "lines": 6,
+      "approx_tokens": 65
+    },
+    {
+      "path": "recipes/fix-security.md",
+      "lines": 6,
+      "approx_tokens": 69
+    },
+    {
+      "path": "recipes/reduce-complexity.md",
+      "lines": 9,
+      "approx_tokens": 72
+    }
+  ],
+  "regenerate": "readmenator . --rebuild"
+}

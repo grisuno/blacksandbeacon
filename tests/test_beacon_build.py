@@ -16,6 +16,15 @@ ROOT = Path(__file__).resolve().parent.parent
 BEACON = ROOT / "build" / "beacon-v1"
 SRC = ROOT / "beacons" / "v1" / "beacon.c"
 
+_BEACON_SRCS = [
+    SRC,
+    ROOT / "include" / "config.c",
+    ROOT / "include" / "aes.c",
+    ROOT / "include" / "aes_cfb.c",
+    ROOT / "include" / "beacon_common.c",
+    ROOT / "include" / "cJSON.c",
+]
+
 
 def have_headers():
     """Return True if openssl and curl headers are present."""
@@ -33,14 +42,20 @@ def have_headers():
 
 def compile_beacon():
     BEACON.parent.mkdir(exist_ok=True)
+    # Mirror the Makefile's COMMON_SRC: beacon.c alone does not provide
+    # aes256_cfb_*, bsb_*, https_request or base64_* -- those live in
+    # include/aes_cfb.c and include/beacon_common.c.
     cmd = [
         "gcc", "-Wall", "-Wextra", "-O2", "-g",
         "-I", str(ROOT / "include"),
         "-I", str(ROOT / "beacons" / "v1"),
+        "-rdynamic",
         "-o", str(BEACON),
         str(SRC),
         str(ROOT / "include" / "config.c"),
         str(ROOT / "include" / "aes.c"),
+        str(ROOT / "include" / "aes_cfb.c"),
+        str(ROOT / "include" / "beacon_common.c"),
         str(ROOT / "include" / "cJSON.c"),
         "-lcurl", "-lssl", "-lcrypto",
     ]
@@ -50,6 +65,20 @@ def compile_beacon():
 def inspect_binary():
     out = subprocess.check_output(["nm", "-D", str(BEACON)], text=True)
     return set(line.split()[-1] for line in out.splitlines() if line.strip())
+
+
+def ensure_beacon():
+    """Rebuild the beacon if it is missing or older than its sources.
+
+    test_install_deploy.py runs `make clean`, which deletes build/;
+    a bare `if not BEACON.exists()` check would then inspect a stale
+    binary from an earlier run.
+    """
+    if BEACON.exists():
+        built = BEACON.stat().st_mtime
+        if all(src.stat().st_mtime <= built for src in _BEACON_SRCS):
+            return
+    compile_beacon()
 
 
 def test_beacon_compiles_and_links():
@@ -65,8 +94,7 @@ def test_beacon_exposes_bof_api():
     if not have_headers():
         print("  (skipping) openssl or libcurl dev headers not present")
         return
-    if not BEACON.exists():
-        compile_beacon()
+    ensure_beacon()
     # The beacon's BOF loader does not use dlsym-style dynamic symbol
     # resolution. Instead it carries a global function-pointer table
     # (g_BeaconPrintf_ptr / g_BeaconOutput_ptr) that RunELF rewrites
@@ -86,8 +114,7 @@ def test_beacon_exposes_elf_loader():
     if not have_headers():
         print("  (skipping) openssl or libcurl dev headers not present")
         return
-    if not BEACON.exists():
-        compile_beacon()
+    ensure_beacon()
     out = subprocess.check_output(["nm", str(BEACON)], text=True)
     assert "T RunELF" in out, "RunELF entry point not present"
     print(f"  beacon exports RunELF (in-memory ELF loader)")

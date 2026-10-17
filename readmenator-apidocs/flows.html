@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blacksandbeacon: architecture and execution flows</title>
+<style>
+:root{--bg:#0b0f17;--panel:#111827;--panel2:#0f172a;--line:#1f2937;--text:#e5e7eb;--muted:#94a3b8;--accent:#22d3ee;--accent2:#38bdf8;--bad:#f87171;--good:#34d399;--chip:#1e293b;--fv-box:#111c2e;--fv-entry:#0b3a4a;--fv-ext:#1d1838;--fv-cycle:#2a1630;--fv-dec:#1e1b4b;--fv-stop:#3f1d1d;--fv-hub:#0b3b2e;--fv-purple:#a78bfa;--fv-pink:#f472b6}
+:root[data-theme="light"]{--bg:#f8fafc;--panel:#ffffff;--panel2:#f1f5f9;--line:#e2e8f0;--text:#0f172a;--muted:#475569;--accent:#0891b2;--accent2:#0284c7;--bad:#b91c1c;--good:#047857;--chip:#e2e8f0;--fv-box:#eef6ff;--fv-entry:#cffafe;--fv-ext:#f3e8ff;--fv-cycle:#fce7f3;--fv-dec:#ede9fe;--fv-stop:#fee2e2;--fv-hub:#d1fae5;--fv-purple:#7c3aed;--fv-pink:#db2777}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f8fafc;--panel:#ffffff;--panel2:#f1f5f9;--line:#e2e8f0;--text:#0f172a;--muted:#475569;--accent:#0891b2;--accent2:#0284c7;--bad:#b91c1c;--good:#047857;--chip:#e2e8f0;--fv-box:#eef6ff;--fv-entry:#cffafe;--fv-ext:#f3e8ff;--fv-cycle:#fce7f3;--fv-dec:#ede9fe;--fv-stop:#fee2e2;--fv-hub:#d1fae5;--fv-purple:#7c3aed;--fv-pink:#db2777}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+header{display:flex;gap:14px;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
+header h1{font-size:17px;margin:0}header .sp{margin-left:auto}header button{background:var(--chip);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+main{padding:12px 24px 60px;max-width:1500px;margin:0 auto}
+
+.fv-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:18px 0;overflow:hidden}
+.fv-head{padding:14px 16px 6px}
+.fv-head h3{margin:0 0 4px;font-size:17px}
+.fv-meta{color:var(--muted);font-size:13px;margin:2px 0}
+.fv-cap{color:var(--muted);font-size:13.5px;margin:6px 0 0;max-width:980px}
+.fv-bar{display:flex;flex-wrap:wrap;gap:6px;padding:8px 16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel2);align-items:center}
+.fv-bar button{background:var(--chip);color:var(--text);border:1px solid var(--line);border-radius:7px;padding:4px 10px;cursor:pointer;font-size:13px}
+.fv-bar button:hover{border-color:var(--accent)}
+.fv-bar .fv-hint{color:var(--muted);font-size:12px;margin-left:auto}
+.fv-stage{position:relative;overflow:hidden;cursor:grab;background:var(--bg);touch-action:none}
+.fv-stage.drag{cursor:grabbing}
+.fv-stage svg{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none}
+.fv-card.full{position:fixed;inset:0;z-index:50;margin:0;border-radius:0;display:flex;flex-direction:column}
+.fv-card.full .fv-stage{flex:1;height:auto!important}
+.fv-panel{position:absolute;right:10px;top:10px;width:min(380px,calc(100% - 20px));max-height:calc(100% - 20px);overflow:auto;background:var(--panel);border:1px solid var(--accent);border-radius:10px;padding:12px 14px;box-shadow:0 14px 40px rgba(0,0,0,.45);display:none;font-size:13.5px;cursor:auto}
+.fv-panel.open{display:block}
+.fv-panel h4{margin:0 0 6px;font-size:15px;word-break:break-word}
+.fv-panel pre{white-space:pre-wrap;margin:6px 0}
+.fv-panel table{width:100%;border-collapse:collapse;font-size:12.5px}
+.fv-panel td{border-top:1px solid var(--line);padding:4px 4px;vertical-align:top}
+.fv-panel .x{float:right;cursor:pointer;color:var(--muted);border:0;background:none;font-size:16px}
+.fv-svg-text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.fv-node{cursor:pointer}
+.fv-node:hover .fv-shape{stroke-width:2.6}
+.fv-dim .fv-edge,.fv-dim .fv-node{opacity:.18}
+.fv-dim .fv-on{opacity:1}
+.fv-toc{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.fv-toc a{background:var(--chip);border-radius:999px;padding:3px 11px;font-size:13px}
+
+#rm-cfg-scrim{position:fixed;inset:0;z-index:90;background:rgba(2,6,23,.6);opacity:0;pointer-events:none;transition:opacity .2s}
+#rm-cfg-scrim.open{opacity:1;pointer-events:auto}
+#rm-cfg-modal{position:fixed;z-index:91;top:50%;left:50%;transform:translate(-50%,-50%) scale(.98);width:min(560px,calc(100vw - 32px));max-height:min(82vh,760px);overflow:auto;background:var(--mask,var(--panel,#0b1224));color:var(--ink,var(--text,#f8fafc));border:1px solid var(--accent,#22d3ee);border-radius:14px;padding:18px 20px;box-shadow:0 24px 70px rgba(0,0,0,.5);display:none}
+#rm-cfg-modal.open{display:block;transform:translate(-50%,-50%) scale(1)}
+#rm-cfg-modal h2{margin:0 0 4px;font-size:16px}
+#rm-cfg-modal .rm-cfg-sub{color:var(--muted,#94a3b8);font-size:12px;margin:0 0 12px;line-height:1.6}
+#rm-cfg-modal .rm-cfg-row{display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--border,var(--line,#1e293b))}
+#rm-cfg-modal label{font-size:12px;font-weight:600}
+#rm-cfg-modal .rm-cfg-help{font-size:11px;color:var(--muted,#94a3b8);grid-column:1/-1;margin:-4px 0 0}
+#rm-cfg-modal input[type="number"],#rm-cfg-modal input[type="text"],#rm-cfg-modal select,#rm-cfg-modal textarea{width:100%;background:var(--canvas,var(--bg,#020617));border:1px solid var(--border,var(--line,#1e293b));border-radius:8px;color:var(--ink,var(--text,#f8fafc));padding:6px 8px;font:inherit;font-size:12px}
+#rm-cfg-modal textarea{resize:vertical;min-height:56px;line-height:1.5}
+#rm-cfg-modal .rm-cfg-sec{margin:14px 0 2px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted,#94a3b8)}
+.rm-home-icon{width:12px;height:12px;flex:none;vertical-align:-1px}
+a.home .rm-home-icon{margin-right:5px}
+#rm-cfg-modal input[type="checkbox"]{width:18px;height:18px;accent-color:var(--accent,#22d3ee)}
+#rm-cfg-modal .rm-cfg-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+#rm-cfg-modal .rm-cfg-actions button{font-size:12px;border-radius:9px;padding:7px 12px;cursor:pointer}
+#rm-cfg-status{font-size:11.5px;color:var(--muted,#94a3b8);margin-top:10px;min-height:18px}
+@media (prefers-reduced-motion:reduce){#rm-cfg-scrim,#rm-cfg-modal{transition:none}}
+:root{--accent:#22d3ee;--accent2:#f472b6}header a.home{border:1px solid var(--line);border-radius:8px;padding:5px 10px;font-size:13px}header a.home svg{width:12px;height:12px;vertical-align:-1px}</style>
+</head>
+<body>
+<header><h1>blacksandbeacon: architecture and execution flows</h1><a href="index.html">API reference</a><span class="sp"></span><button id="fv-theme" title="Toggle dark and light theme">Theme</button><button type="button" data-rm-config title="Viewer config (no reload)">Config</button></header>
+<main><p class="fv-cap">Every diagram is computed from the source with zero tokens and laid out offline: tiers come from a feedback-arc-set ordering of the component graph, flows from the resolved call graph and the Python syntax tree. Click any box for its signature, docs, and files.</p><div id="fv-host"></div></main>
+<script type="application/json" id="fv-data">{"graphs":[{"id":"architecture","title":"Tiered architecture","kind":"architecture","caption":"Each box is a component (a community of files). Arrows go from the dependent to the dependency, so the top tier orchestrates and the bottom tier is the foundation. Arrow labels count imports; thick arrows are the heaviest quarter. Red dashed arrows point upward: they are the smallest set of imports that creates every cycle and breaks the layering. Click a component to list its files.","w":1077.6,"h":630.0,"meta":{"lane_titles":{"0":"Tier 1  -  entry / orchestration","1":"Tier 2","2":"Tier 3  -  foundation"},"stats":{"components":10,"edges":3,"reduced":0,"cycles":[],"tiers":3,"entry_components":["(root)","include: server"]},"upward":[]},"lanes":[{"t":"Tier 1  -  entry / orchestration","y":18.0,"h":266.0},{"t":"Tier 2","y":320.0,"h":131.0},{"t":"Tier 3  -  foundation","y":487.0,"h":131.0}],"nodes":[{"id":"c0","t":"root","l":["10 files, 287 symbols","Core / utility","key: aes.h, beacon.h, beacon_p2p.c"],"s":"component","o":"default","d":{"kind":"component","summary":"10 files, 287 symbols; imports out 5, imported 0 times","layers":[["utility",10]],"files":[{"f":"aes.h","p":"#define the macros below to 1/0 to enable/disable the mode of operation.","i":6,"n":21},{"f":"beacon.h","p":"beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos)","i":6,"n":13},{"f":"beacon_p2p.c","p":"","i":0,"n":49},{"f":"beacon5.c","p":"","i":0,"n":44},{"f":"aes.c","p":"aes.c - tiny-AES-c (https://github.com/kokke/tiny-AES-c)","i":0,"n":43},{"f":"beacon6.c","p":"","i":0,"n":32},{"f":"beacon3.c","p":"","i":0,"n":28},{"f":"beacons/v1/gopher_beacon.c","p":"","i":0,"n":28},{"f":"gopher_beacon.c","p":"","i":0,"n":28},{"f":"bof.c","p":"bof.c","i":0,"n":1}]},"x":161.4,"y":96.5,"w":248.4,"h":81.0},{"id":"c1","t":"include: cJSON","l":["9 files, 430 symbols","Core / utility","key: cJSON.h, beacon_common.h, cJSON.h"],"s":"component","o":"default","d":{"kind":"component","summary":"9 files, 430 symbols; imports out 2, imported 5 times","layers":[["utility",9]],"files":[{"f":"cJSON.h","p":"","i":6,"n":37},{"f":"include/beacon_common.h","p":"","i":4,"n":57},{"f":"include/cJSON.h","p":"","i":2,"n":37},{"f":"cJSON.c","p":"","i":0,"n":125},{"f":"include/cJSON.c","p":"","i":0,"n":125},{"f":"include/beacon_common.c","p":"","i":0,"n":27},{"f":"beacons/v2/beacon.c","p":"","i":0,"n":11},{"f":"beacons/v3/beacon.c","p":"","i":0,"n":7},{"f":"beacons/v1/beacon.c","p":"","i":0,"n":4}]},"x":161.4,"y":398.5,"w":274.8,"h":81.0},{"id":"d:include","t":"include","l":["1 files, 13 symbols","Core / utility","key: beacon.h"],"s":"component","o":"default","d":{"kind":"component","summary":"1 files, 13 symbols; imports out 0, imported 0 times","layers":[["utility",1]],"files":[{"f":"include/beacon.h","p":"beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos)","i":0,"n":13}]},"x":394.3,"y":96.5,"w":149.4,"h":81.0},{"id":"d:bof","t":"bof","l":["4 files, 56 symbols","Core / utility","key: is_sudo.c, whoami.c, userenum.c"],"s":"component","o":"default","d":{"kind":"component","summary":"4 files, 56 symbols; imports out 0, imported 0 times","layers":[["utility",4]],"files":[{"f":"bof/is_sudo/is_sudo.c","p":"is_sudo.c — LazyOwn RedTeam BOF (Linux/x64) gcc -c -nostdlib -fPIC -m64 -O2 is_sudo.c -o is_sudo.x64.o Tipos","i":0,"n":17},{"f":"bof/whoami/whoami.c","p":"whoami.c — LazyOwn RedTeam BOF (Linux/x64) Tipos","i":0,"n":14},{"f":"bof/userenum/userenum.c","p":"is_sudo.c — LazyOwn RedTeam BOF (Linux/x64) gcc -c -nostdlib -fPIC -m64 -O2 userenum.c -o userenum.x64.o Tipos","i":0,"n":13},{"f":"bof/cat/cat.c","p":"readfile.c — LazyOwn RedTeam BOF (Linux/x64) gcc -c -nostdlib -fPIC -m64 -O2 cat.c -o cat.x64.o Tipos","i":0,"n":12}]},"x":633.8,"y":96.5,"w":261.6,"h":81.0},{"id":"d:(root)","t":"(root)","l":["4 files, 22 symbols","Core / utility","key: issudo.c, gopher_c2.py, app.py"],"s":"component","o":"entry","d":{"kind":"component","summary":"4 files, 22 symbols; imports out 0, imported 0 times","layers":[["utility",4]],"files":[{"f":"issudo.c","p":"is_sudo.c — LazyOwn RedTeam BOF (Linux/x64) Tipos","i":0,"n":17},{"f":"gopher_c2.py","p":"","i":0,"n":5},{"f":"app.py","p":"app.py Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación: xx/xx/xxxx Licencia: GPL v3 Descripción:","i":0,"n":0},{"f":"install.sh","p":"install.sh - Install build deps and build everything.","i":0,"n":0}]},"x":926.1,"y":96.5,"w":255.0,"h":81.0},{"id":"c6","t":"include: aes_cfb","l":["1 files, 3 symbols","Core / utility","key: aes_cfb.h"],"s":"component","o":"default","d":{"kind":"component","summary":"1 files, 3 symbols; imports out 0, imported 0 times","layers":[["utility",1]],"files":[{"f":"include/aes_cfb.h","p":"","i":1,"n":3}]},"x":276.2,"y":231.5,"w":145.6,"h":81.0},{"id":"c5","t":"include: config","l":["3 files, 42 symbols","Infrastructure","key: config.h, config.c,..."],"s":"component","o":"default","d":{"kind":"component","summary":"3 files, 42 symbols; imports out 0, imported 1 times","layers":[["infrastructure",3]],"files":[{"f":"include/config.h","p":"","i":3,"n":21},{"f":"include/config.c","p":"","i":0,"n":20},{"f":"tests/config_harness.c","p":"","i":0,"n":1}]},"x":161.4,"y":565.5,"w":202.2,"h":81.0},{"id":"c4","t":"include: aes","l":["3 files, 66 symbols","Core / utility","key: aes.h, aes.c, aes_cfb.c"],"s":"component","o":"default","d":{"kind":"component","summary":"3 files, 66 symbols; imports out 0, imported 1 times","layers":[["utility",3]],"files":[{"f":"include/aes.h","p":"#define the macros below to 1/0 to enable/disable the mode of operation.","i":3,"n":21},{"f":"include/aes.c","p":"aes.c - tiny-AES-c (https://github.com/kokke/tiny-AES-c)","i":0,"n":43},{"f":"include/aes_cfb.c","p":"","i":0,"n":2}]},"x":400.9,"y":565.5,"w":208.8,"h":81.0},{"id":"c3","t":"include: server","l":["2 files, 21 symbols","Infrastructure","key: server.py, config_py.py"],"s":"component","o":"entry","d":{"kind":"component","summary":"2 files, 21 symbols; imports out 0, imported 0 times","layers":[["utility",1],["infrastructure",1]],"files":[{"f":"c2/server.py","p":"Black Sand Beacon C2 Server Gopher-style command and control server for Black Sand Beacon agents.","i":1,"n":19},{"f":"include/config_py.py","p":"config_py.py - Python loader for BSB JSON config files.","i":1,"n":2}]},"x":487.4,"y":231.5,"w":208.8,"h":81.0},{"id":"c2","t":"bof/include","l":["7 files, 73 symbols","Core / utility","key: syscalls.h, beacon_api.h, bof.c"],"s":"component","o":"default","d":{"kind":"component","summary":"7 files, 73 symbols; imports out 0, imported 0 times","layers":[["utility",6],["presentation",1]],"files":[{"f":"bof/include/syscalls.h","p":"","i":5,"n":38},{"f":"bof/include/beacon_api.h","p":"","i":5,"n":14},{"f":"bof/suid_enum/bof.c","p":"","i":0,"n":15},{"f":"bof/is_sudo/bof.c","p":"","i":0,"n":2},{"f":"bof/userenum/bof.c","p":"","i":0,"n":2},{"f":"bof/cat/bof.c","p":"","i":0,"n":1},{"f":"bof/whoami/bof.c","p":"","i":0,"n":1}]},"x":756.6,"y":231.5,"w":261.6,"h":81.0}],"edges":[{"s":"c0","t":"c1","l":"5","y":"heavy","p":[[161.4,137.0],[161.4,247.5],[161.4,247.5],[161.4,358.0]]},{"s":"c1","t":"c4","l":"1","y":"solid","p":[[161.4,439.0],[161.4,482.0],[400.9,482.0],[400.9,525.0]]},{"s":"c1","t":"c5","l":"1","y":"solid","p":[[161.4,439.0],[161.4,482.0],[161.4,482.0],[161.4,525.0]]}],"participants":[],"messages":[]},{"id":"calltree:cJSON.c::CJSON_PUBLIC","title":"Call tree of cJSON.CJSON_PUBLIC","kind":"calltree","caption":"Read left to right: every arrow is a call, numbered in the order it happens inside the caller. Dashed arrows reach a function already expanded elsewhere; red arrows are recursion. Same-file functions are blue, other files purple. Click a box for its signature and docs.","w":208.8,"h":139.0,"meta":{"entry":"cJSON.CJSON_PUBLIC","file":"cJSON.c","line":1134,"score":13,"reasons":["call-graph source with 6 calls","call-graph source with 3 calls","call-graph source with 4 calls"]},"lanes":[],"nodes":[{"id":"cJSON.c::CJSON_PUBLIC","t":"cJSON.CJSON_PUBLIC","l":["cJSON.c:95"],"s":"box","o":"entry","d":{"kind":"function","file":"cJSON.c","line":95,"qual":"CJSON_PUBLIC","sig":"CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)","doc":""},"x":104.4,"y":49.5,"w":160.8,"h":51.0}],"edges":[{"s":"cJSON.c::CJSON_PUBLIC","t":"cJSON.c::CJSON_PUBLIC","l":"recursion","y":"back","p":[[104.4,75.0],[104.4,115.0],[104.4,115.0],[104.4,75.0]]}],"participants":[],"messages":[]},{"id":"calltree:include/cJSON.c::CJSON_PUBLIC","title":"Call tree of cJSON.CJSON_PUBLIC","kind":"calltree","caption":"Read left to right: every arrow is a call, numbered in the order it happens inside the caller. Dashed arrows reach a function already expanded elsewhere; red arrows are recursion. Same-file functions are blue, other files purple. Click a box for its signature and docs.","w":208.8,"h":139.0,"meta":{"entry":"cJSON.CJSON_PUBLIC","file":"include/cJSON.c","line":1134,"score":13,"reasons":["call-graph source with 6 calls","call-graph source with 3 calls","call-graph source with 4 calls"]},"lanes":[],"nodes":[{"id":"include/cJSON.c::CJSON_PUBLIC","t":"cJSON.CJSON_PUBLIC","l":["cJSON.c:95"],"s":"box","o":"entry","d":{"kind":"function","file":"include/cJSON.c","line":95,"qual":"CJSON_PUBLIC","sig":"CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)","doc":""},"x":104.4,"y":49.5,"w":160.8,"h":51.0}],"edges":[{"s":"include/cJSON.c::CJSON_PUBLIC","t":"include/cJSON.c::CJSON_PUBLIC","l":"recursion","y":"back","p":[[104.4,75.0],[104.4,115.0],[104.4,115.0],[104.4,75.0]]}],"participants":[],"messages":[]},{"id":"calltree:beacon3.c::main","title":"Call tree of beacon3.main","kind":"calltree","caption":"Read left to right: every arrow is a call, numbered in the order it happens inside the caller. Dashed arrows reach a function already expanded elsewhere; red arrows are recursion. Same-file functions are blue, other files purple. Click a box for its signature and docs.","w":1306.2,"h":935.5,"meta":{"entry":"beacon3.main","file":"beacon3.c","line":1007,"score":11,"reasons":["`main` in a compiled-language file","entry-style name `main`"]},"lanes":[],"nodes":[{"id":"beacon3.c::main","t":"beacon3.main","l":["=== MAIN ===","beacon3.c:1007"],"s":"box","o":"entry","d":{"kind":"function","file":"beacon3.c","line":1007,"qual":"main","sig":"int main()","doc":"=== MAIN ==="},"x":82.2,"y":57.0,"w":116.4,"h":66.0},{"id":"beacon3.c::https_request","t":"beacon3.https_request","l":["=== HTTPS REQUEST ===","beacon3.c:317"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":317,"qual":"https_request","sig":"char* https_request(const char* url, const char* method, const char* post_data)","doc":"=== HTTPS REQUEST ==="},"x":585.3,"y":103.2,"w":183.6,"h":66.0},{"id":"beacon3.c::base64_decode","t":"beacon3.base64_decode","l":["beacon3.c:423"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":423,"qual":"base64_decode","sig":"unsigned char* base64_decode(const char* input, int* len)","doc":""},"x":309.0,"y":57.0,"w":183.6,"h":51.0},{"id":"beacon3.c::aes256_cfb_decrypt","t":"beacon3.aes256_cfb_decrypt","l":["beacon3.c:474"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":474,"qual":"aes256_cfb_decrypt","sig":"unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, ...","doc":""},"x":309.0,"y":342.0,"w":221.6,"h":51.0},{"id":"aes.h::AES_init_ctx","t":"aes.AES_init_ctx","l":["aes.h:41"],"s":"box","o":"external","d":{"kind":"function","file":"aes.h","line":41,"qual":"AES_init_ctx","sig":"void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);","doc":""},"x":585.3,"y":388.2,"w":145.6,"h":51.0},{"id":"aes.h::AES_ECB_encrypt","t":"aes.AES_ECB_encrypt","l":["if defined(ECB) \u0026\u0026 (ECB == 1)","aes.h:48"],"s":"box","o":"external","d":{"kind":"function","file":"aes.h","line":48,"qual":"AES_ECB_encrypt","sig":"void AES_ECB_encrypt(const struct AES_ctx* ctx, uint8_t* buf);","doc":"if defined(ECB) \u0026\u0026 (ECB == 1)"},"x":585.3,"y":480.8,"w":215.4,"h":66.0},{"id":"beacon3.c::download_bof","t":"beacon3.download_bof","l":["=== DOWNLOAD BOF ===","beacon3.c:941"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":941,"qual":"download_bof","sig":"unsigned char* download_bof(const char* url, size_t* out_size)","doc":"=== DOWNLOAD BOF ==="},"x":309.0,"y":149.5,"w":176.0,"h":66.0},{"id":"beacon3.c::run_bof_and_capture","t":"beacon3.run_bof_and_capture","l":["=== RUN BOF AND CAPTURE ===","beacon3.c:963"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":963,"qual":"run_bof_and_capture","sig":"char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, c...","doc":"=== RUN BOF AND CAPTURE ==="},"x":309.0,"y":249.5,"w":229.2,"h":66.0},{"id":"beacon3.c::RunELF","t":"beacon3.RunELF","l":["beacon3.c:531"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":531,"qual":"RunELF","sig":"int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsi...","doc":""},"x":585.3,"y":249.5,"w":130.4,"h":51.0},{"id":"beacon3.c::page_align","t":"beacon3.page_align","l":["=== Función auxiliar: alinear al","tamaño de página ===","beacon3.c:525"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":525,"qual":"page_align","sig":"static size_t page_align(size_t size)","doc":"=== Función auxiliar: alinear al tamaño de página ==="},"x":880.6,"y":249.5,"w":235.2,"h":81.0},{"id":"beacon3.c::get_or_create_trampoline","t":"beacon3.get_or_create_trampoline","l":["beacon3.c:269"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":269,"qual":"get_or_create_trampoline","sig":"static void* get_or_create_trampoline(void* target)","doc":""},"x":880.6,"y":349.5,"w":267.2,"h":51.0},{"id":"beacon3.c::create_trampoline","t":"beacon3.create_trampoline","l":["=== CRATE TRAPOLINE ===","beacon3.c:217"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":217,"qual":"create_trampoline","sig":"static void* create_trampoline(void* target)","doc":"=== CRATE TRAPOLINE ==="},"x":1175.2,"y":349.5,"w":214.0,"h":66.0},{"id":"beacon3.c::cleanup_trampolines","t":"beacon3.cleanup_trampolines","l":["=== CLEAN TRAMPOLINE ===","beacon3.c:253"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":253,"qual":"cleanup_trampolines","sig":"static void cleanup_trampolines(void)","doc":"=== CLEAN TRAMPOLINE ==="},"x":880.6,"y":442.0,"w":229.2,"h":66.0},{"id":"beacon3.c::exec_cmd","t":"beacon3.exec_cmd","l":["=== EXEC CMD ===","beacon3.c:504"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":504,"qual":"exec_cmd","sig":"char* exec_cmd(const char* cmd, int* out_len)","doc":"=== EXEC CMD ==="},"x":309.0,"y":534.5,"w":145.6,"h":66.0},{"id":"beacon3.c::get_local_ips","t":"beacon3.get_local_ips","l":["=== GET LOCAL IPs ===","beacon3.c:912"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":912,"qual":"get_local_ips","sig":"char* get_local_ips()","doc":"=== GET LOCAL IPs ==="},"x":309.0,"y":634.5,"w":183.6,"h":66.0},{"id":"beacon3.c::aes256_cfb_encrypt","t":"beacon3.aes256_cfb_encrypt","l":["=== AES CFB ===","beacon3.c:446"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":446,"qual":"aes256_cfb_encrypt","sig":"unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, ...","doc":"=== AES CFB ==="},"x":309.0,"y":434.5,"w":221.6,"h":66.0},{"id":"beacon3.c::base64_encode","t":"beacon3.base64_encode","l":["=== BASE64 ===","beacon3.c:406"],"s":"box","o":"default","d":{"kind":"function","file":"beacon3.c","line":406,"qual":"base64_encode","sig":"char* base64_encode(const unsigned char* input, int len)","doc":"=== BASE64 ==="},"x":309.0,"y":734.5,"w":183.6,"h":66.0}],"edges":[{"s":"beacon3.c::main","t":"beacon3.c::main","l":"recursion","y":"back","p":[[82.2,90.0],[82.2,130.0],[82.2,130.0],[82.2,90.0]]},{"s":"beacon3.c::main","t":"beacon3.c::https_request","l":"1","y":"solid","p":[[140.4,57.0],[316.9,57.0],[316.9,103.2],[493.5,103.2]]},{"s":"beacon3.c::https_request","t":"beacon3.c::https_request","l":"recursion","y":"back","p":[[585.3,136.2],[585.3,176.2],[585.3,176.2],[585.3,136.2]]},{"s":"beacon3.c::main","t":"beacon3.c::base64_decode","l":"2","y":"solid","p":[[140.4,57.0],[178.8,57.0],[178.8,57.0],[217.2,57.0]]},{"s":"beacon3.c::base64_decode","t":"beacon3.c::base64_decode","l":"recursion","y":"back","p":[[309.0,82.5],[309.0,122.5],[309.0,122.5],[309.0,82.5]]},{"s":"beacon3.c::main","t":"beacon3.c::aes256_cfb_decrypt","l":"3","y":"solid","p":[[140.4,57.0],[169.3,57.0],[169.3,342.0],[198.2,342.0]]},{"s":"beacon3.c::aes256_cfb_decrypt","t":"beacon3.c::aes256_cfb_decrypt","l":"recursion","y":"back","p":[[309.0,367.5],[309.0,407.5],[309.0,407.5],[309.0,367.5]]},{"s":"beacon3.c::aes256_cfb_decrypt","t":"aes.h::AES_init_ctx","l":"1","y":"solid","p":[[419.8,342.0],[466.1,342.0],[466.1,388.2],[512.5,388.2]]},{"s":"aes.h::AES_init_ctx","t":"aes.h::AES_init_ctx","l":"recursion","y":"back","p":[[585.3,413.8],[585.3,453.8],[585.3,453.8],[585.3,413.8]]},{"s":"beacon3.c::aes256_cfb_decrypt","t":"aes.h::AES_ECB_encrypt","l":"2","y":"solid","p":[[419.8,342.0],[448.7,342.0],[448.7,480.8],[477.6,480.8]]},{"s":"aes.h::AES_ECB_encrypt","t":"aes.h::AES_ECB_encrypt","l":"recursion","y":"back","p":[[585.3,513.8],[585.3,553.8],[585.3,553.8],[585.3,513.8]]},{"s":"beacon3.c::main","t":"beacon3.c::download_bof","l":"4","y":"solid","p":[[140.4,57.0],[180.7,57.0],[180.7,149.5],[221.0,149.5]]},{"s":"beacon3.c::download_bof","t":"beacon3.c::download_bof","l":"recursion","y":"back","p":[[309.0,182.5],[309.0,222.5],[309.0,222.5],[309.0,182.5]]},{"s":"beacon3.c::download_bof","t":"beacon3.c::https_request","l":"","y":"dashed","p":[[397.0,149.5],[445.2,149.5],[445.2,103.2],[493.5,103.2]]},{"s":"beacon3.c::main","t":"beacon3.c::run_bof_and_capture","l":"5","y":"solid","p":[[140.4,57.0],[167.4,57.0],[167.4,249.5],[194.4,249.5]]},{"s":"beacon3.c::run_bof_and_capture","t":"beacon3.c::run_bof_and_capture","l":"recursion","y":"back","p":[[309.0,282.5],[309.0,322.5],[309.0,322.5],[309.0,282.5]]},{"s":"beacon3.c::run_bof_and_capture","t":"beacon3.c::RunELF","l":"1","y":"solid","p":[[423.6,249.5],[471.8,249.5],[471.8,249.5],[520.1,249.5]]},{"s":"beacon3.c::RunELF","t":"beacon3.c::RunELF","l":"recursion","y":"back","p":[[585.3,275.0],[585.3,315.0],[585.3,315.0],[585.3,275.0]]},{"s":"beacon3.c::RunELF","t":"beacon3.c::page_align","l":"1","y":"solid","p":[[650.5,249.5],[706.8,249.5],[706.8,249.5],[763.0,249.5]]},{"s":"beacon3.c::RunELF","t":"beacon3.c::get_or_create_trampoline","l":"2","y":"solid","p":[[650.5,249.5],[698.8,249.5],[698.8,349.5],[747.0,349.5]]},{"s":"beacon3.c::get_or_create_trampoline","t":"beacon3.c::create_trampoline","l":"1","y":"solid","p":[[1014.2,349.5],[1041.2,349.5],[1041.2,349.5],[1068.2,349.5]]},{"s":"beacon3.c::RunELF","t":"beacon3.c::cleanup_trampolines","l":"3","y":"solid","p":[[650.5,249.5],[708.2,249.5],[708.2,442.0],[766.0,442.0]]},{"s":"beacon3.c::main","t":"beacon3.c::exec_cmd","l":"6","y":"solid","p":[[140.4,57.0],[188.3,57.0],[188.3,534.5],[236.2,534.5]]},{"s":"beacon3.c::exec_cmd","t":"beacon3.c::exec_cmd","l":"recursion","y":"back","p":[[309.0,567.5],[309.0,607.5],[309.0,607.5],[309.0,567.5]]},{"s":"beacon3.c::main","t":"beacon3.c::get_local_ips","l":"7","y":"solid","p":[[140.4,57.0],[178.8,57.0],[178.8,634.5],[217.2,634.5]]},{"s":"beacon3.c::get_local_ips","t":"beacon3.c::get_local_ips","l":"recursion","y":"back","p":[[309.0,667.5],[309.0,707.5],[309.0,707.5],[309.0,667.5]]},{"s":"beacon3.c::main","t":"beacon3.c::aes256_cfb_encrypt","l":"8","y":"solid","p":[[140.4,57.0],[169.3,57.0],[169.3,434.5],[198.2,434.5]]},{"s":"beacon3.c::aes256_cfb_encrypt","t":"beacon3.c::aes256_cfb_encrypt","l":"recursion","y":"back","p":[[309.0,467.5],[309.0,507.5],[309.0,507.5],[309.0,467.5]]},{"s":"beacon3.c::aes256_cfb_encrypt","t":"aes.h::AES_init_ctx","l":"","y":"dashed","p":[[419.8,434.5],[466.1,434.5],[466.1,388.2],[512.5,388.2]]},{"s":"beacon3.c::aes256_cfb_encrypt","t":"aes.h::AES_ECB_encrypt","l":"","y":"dashed","p":[[419.8,434.5],[448.7,434.5],[448.7,480.8],[477.6,480.8]]},{"s":"beacon3.c::main","t":"beacon3.c::base64_encode","l":"9","y":"solid","p":[[140.4,57.0],[178.8,57.0],[178.8,734.5],[217.2,734.5]]},{"s":"beacon3.c::base64_encode","t":"beacon3.c::base64_encode","l":"recursion","y":"back","p":[[309.0,767.5],[309.0,807.5],[309.0,807.5],[309.0,767.5]]}],"participants":[],"messages":[]},{"id":"sequence:beacon3.c::main","title":"Cross-file sequence of beacon3.main","kind":"sequence","caption":"Columns are files, arrows are calls that cross a file boundary, numbered in execution order.","w":348.0,"h":172.0,"meta":{"entry":"beacon3.main","file":"beacon3.c","line":1007,"score":11,"reasons":["`main` in a compiled-language file","entry-style name `main`"]},"lanes":[],"nodes":[],"edges":[],"participants":[{"id":"beacon3.c","t":"beacon3.c","f":"beacon3.c","w":116.0,"x":82.0},{"id":"aes.h","t":"aes.h","f":"aes.h","w":116.0,"x":266.0}],"messages":[{"s":"beacon3.c","t":"aes.h","l":"AES_init_ctx()","d":{"kind":"function","file":"aes.h","line":41,"qual":"AES_init_ctx","sig":"void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);","doc":""},"n":1,"y":76.0,"x1":82.0,"x2":266.0},{"s":"beacon3.c","t":"aes.h","l":"AES_ECB_encrypt()","d":{"kind":"function","file":"aes.h","line":48,"qual":"AES_ECB_encrypt","sig":"void AES_ECB_encrypt(const struct AES_ctx* ctx, uint8_t* buf);","doc":"if defined(ECB) \u0026\u0026 (ECB == 1)"},"n":2,"y":112.0,"x1":82.0,"x2":266.0}]}],"api":"index.html"}</script>
+<div id="rm-cfg-scrim"></div><div id="rm-cfg-modal" role="dialog" aria-modal="true" aria-labelledby="rm-cfg-title" aria-hidden="true"><h2 id="rm-cfg-title">Viewer config</h2><p class="rm-cfg-sub">Project view options from readmenator.toml ([viewer], [branding], [maps], [messages]). Apply re-renders only the affected segment, no full reload. Copy TOML persists the choice for the next rebuild.</p><div id="rm-cfg-form"></div><div class="rm-cfg-actions"><button type="button" id="rm-cfg-apply" title="Apply without reloading">Apply</button><button type="button" id="rm-cfg-copy" title="Copy TOML sections to clipboard">Copy TOML</button><button type="button" id="rm-cfg-reset" title="Clear local overrides">Reset</button><button type="button" id="rm-cfg-close" title="Close ( Esc )">Close</button></div><div id="rm-cfg-status" role="status" aria-live="polite"></div></div>
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+var TONE={default:["--fv-box","--accent2"],entry:["--fv-entry","--accent"],external:["--fv-ext","--fv-purple"],cycle:["--fv-cycle","--fv-pink"],decision:["--fv-dec","--fv-purple"],stop:["--fv-stop","--bad"],muted:["--panel2","--line"],hub:["--fv-hub","--good"]};
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+function h(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+function cssv(name){return getComputedStyle(document.documentElement).getPropertyValue(name).trim()||"#888";}
+function shapePath(n){var x=n.x-n.w/2,y=n.y-n.h/2,w=n.w,hh=n.h,r;
+  if(n.s==="decision")return "M"+n.x+" "+y+" L"+(x+w)+" "+n.y+" L"+n.x+" "+(y+hh)+" L"+x+" "+n.y+" Z";
+  if(n.s==="loop"){var c=16;return "M"+(x+c)+" "+y+" L"+(x+w-c)+" "+y+" L"+(x+w)+" "+n.y+" L"+(x+w-c)+" "+(y+hh)+" L"+(x+c)+" "+(y+hh)+" L"+x+" "+n.y+" Z";}
+  if(n.s==="io"){var k=12;return "M"+(x+k)+" "+y+" L"+(x+w)+" "+y+" L"+(x+w-k)+" "+(y+hh)+" L"+x+" "+(y+hh)+" Z";}
+  r=(n.s==="terminal"||n.s==="stop")?hh/2:(n.s==="component"?10:7);
+  return "M"+(x+r)+" "+y+" H"+(x+w-r)+" A"+r+" "+r+" 0 0 1 "+(x+w)+" "+(y+r)+" V"+(y+hh-r)+" A"+r+" "+r+" 0 0 1 "+(x+w-r)+" "+(y+hh)+" H"+(x+r)+" A"+r+" "+r+" 0 0 1 "+x+" "+(y+hh-r)+" V"+(y+r)+" A"+r+" "+r+" 0 0 1 "+(x+r)+" "+y+" Z";}
+function bez(p,t){var u=1-t;return [u*u*u*p[0][0]+3*u*u*t*p[1][0]+3*u*t*t*p[2][0]+t*t*t*p[3][0],u*u*u*p[0][1]+3*u*u*t*p[1][1]+3*u*t*t*p[2][1]+t*t*t*p[3][1]];}
+function drawGraph(G,svg,onPick){
+  var defs=el("defs",{},svg);
+  ["n","r","m"].forEach(function(k){var mk=el("marker",{id:"fv-arrow-"+k+"-"+G.uid,viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"7",markerHeight:"7",orient:"auto-start-reverse"},defs);
+    el("path",{d:"M0 0 L10 5 L0 10 z",fill:k==="r"?cssv("--bad"):(k==="m"?cssv("--muted"):cssv("--accent2"))},mk);});
+  el("rect",{x:0,y:0,width:G.w,height:G.h,fill:cssv("--bg")},svg);
+  (G.lanes||[]).forEach(function(l,i){el("rect",{x:6,y:l.y,width:G.w-12,height:l.h,rx:12,fill:cssv(i%2?"--panel2":"--panel"),stroke:cssv("--line")},svg);
+    var t=el("text",{x:18,y:l.y+18,"class":"fv-svg-text","font-size":"12","font-weight":"700",fill:cssv("--muted")},svg);t.textContent=l.t.toUpperCase();});
+  var byId={},edgesOf={},gEdges=el("g",{},svg),gNodes=el("g",{},svg);
+  G.nodes.forEach(function(n){byId[n.id]=n;edgesOf[n.id]=[];});
+  G.edges.forEach(function(e,i){if(!e.p||e.p.length<4)return;var p=e.p;
+    var red=e.y==="back"||e.y==="upward",kind=red?"r":(e.y==="dashed"?"m":"n");
+    var g=el("g",{"class":"fv-edge"},gEdges);
+    var d="M"+p[0][0]+" "+p[0][1]+" C"+p[1][0]+" "+p[1][1]+" "+p[2][0]+" "+p[2][1]+" "+p[3][0]+" "+p[3][1];
+    var path=el("path",{d:d,fill:"none",stroke:red?cssv("--bad"):(e.y==="dashed"?cssv("--muted"):cssv("--accent2")),"stroke-width":e.y==="heavy"?3.4:1.6,"stroke-opacity":e.y==="dashed"?0.7:0.9},g);
+    if(e.y==="dashed"||red)path.setAttribute("stroke-dasharray","6 5");
+    if(e.y==="upward")path.setAttribute("marker-start","url(#fv-arrow-"+kind+"-"+G.uid+")");else path.setAttribute("marker-end","url(#fv-arrow-"+kind+"-"+G.uid+")");
+    if(e.l){var m=bez(p,0.5),tw=e.l.length*6.6+10;el("rect",{x:m[0]-tw/2,y:m[1]-9,width:tw,height:18,rx:5,fill:cssv("--panel"),stroke:red?cssv("--bad"):cssv("--line")},g);
+      var tx=el("text",{x:m[0],y:m[1]+4,"text-anchor":"middle","class":"fv-svg-text","font-size":"11",fill:red?cssv("--bad"):cssv("--text")},g);tx.textContent=e.l;}
+    edgesOf[e.s]&&edgesOf[e.s].push(g);edgesOf[e.t]&&edgesOf[e.t].push(g);g.__ends=[e.s,e.t];});
+  G.nodes.forEach(function(n){var tone=TONE[n.o]||TONE.default;
+    var g=el("g",{"class":"fv-node",tabindex:"0"},gNodes);
+    el("path",{d:shapePath(n),fill:cssv(tone[0]),stroke:cssv(tone[1]),"stroke-width":n.s==="component"?2:1.5,"class":"fv-shape"},g);
+    if(n.s==="note")g.lastChild.setAttribute("stroke-dasharray","5 4");
+    if(n.s==="component")el("rect",{x:n.x-n.w/2+1,y:n.y-n.h/2+1,width:n.w-2,height:5,rx:3,fill:cssv(tone[1])},g);
+    var lines=[n.t].concat(n.l||[]),total=18+(lines.length-1)*15,y0=n.y-total/2+13;
+    lines.forEach(function(line,i){var t=el("text",{x:n.x,y:y0+(i===0?0:3+i*15),"text-anchor":"middle","class":"fv-svg-text","font-size":i===0?"13":"11.5","font-weight":i===0?"700":"400",fill:i===0?cssv("--text"):cssv("--muted")},g);t.textContent=line;});
+    var tip=el("title",{},g);tip.textContent=n.t+(n.d&&n.d.doc?"\n"+n.d.doc:"");
+    g.addEventListener("mouseenter",function(){svg.classList.add("fv-dim");g.classList.add("fv-on");(edgesOf[n.id]||[]).forEach(function(x){x.classList.add("fv-on");});});
+    g.addEventListener("mouseleave",function(){svg.classList.remove("fv-dim");g.classList.remove("fv-on");(edgesOf[n.id]||[]).forEach(function(x){x.classList.remove("fv-on");});});
+    g.addEventListener("click",function(ev){ev.stopPropagation();onPick(n);});});
+}
+function drawSequence(G,svg,onPick){
+  var defs=el("defs",{},svg),mk=el("marker",{id:"fv-arrow-s-"+G.uid,viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"7",markerHeight:"7",orient:"auto"},defs);
+  el("path",{d:"M0 0 L10 5 L0 10 z",fill:cssv("--accent2")},mk);
+  el("rect",{x:0,y:0,width:G.w,height:G.h,fill:cssv("--bg")},svg);
+  (G.participants||[]).forEach(function(p,i){el("line",{x1:p.x,y1:58,x2:p.x,y2:G.h-12,stroke:cssv("--line"),"stroke-dasharray":"4 5"},svg);
+    el("rect",{x:p.x-p.w/2,y:14,width:p.w,height:40,rx:9,fill:cssv(i?"--fv-ext":"--fv-entry"),stroke:cssv(i?"--fv-purple":"--accent")},svg);
+    var t=el("text",{x:p.x,y:39,"text-anchor":"middle","class":"fv-svg-text","font-size":"13","font-weight":"700",fill:cssv("--text")},svg);t.textContent=p.t;});
+  (G.messages||[]).forEach(function(m){var g=el("g",{"class":"fv-node"},svg),dir=m.x2>m.x1?1:-1;
+    el("line",{x1:m.x1,y1:m.y,x2:m.x2-dir*4,y2:m.y,stroke:cssv("--accent2"),"stroke-width":1.6,"marker-end":"url(#fv-arrow-s-"+G.uid+")"},g);
+    var t=el("text",{x:(m.x1+m.x2)/2,y:m.y-6,"text-anchor":"middle","class":"fv-svg-text","font-size":"11.5",fill:cssv("--text")},g);t.textContent=m.n+". "+m.l;
+    var tip=el("title",{},g);tip.textContent=m.l+(m.d&&m.d.doc?"\n"+m.d.doc:"");
+    g.addEventListener("click",function(ev){ev.stopPropagation();onPick({t:m.l,d:m.d||{}});});});
+}
+function panelHtml(n,apiHref){var d=n.d||{},out=[];
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  out.push("<button class='x' title='Close'>&times;</button><h4>"+esc(n.t)+"</h4>");
+  if(d.kind)out.push("<div class='fv-meta'>"+esc(d.kind)+(d.file?" &middot; <code>"+esc(d.file)+(d.line?":"+esc(d.line):"")+"</code>":"")+"</div>");
+  if(d.summary)out.push("<p>"+esc(d.summary)+"</p>");
+  if(d.sig)out.push("<pre><code>"+esc(d.sig)+"</code></pre>");
+  if(d.doc)out.push("<p>"+esc(d.doc)+"</p>");
+  if(d.stmt&&d.stmt!==n.t)out.push("<pre><code>"+esc(d.stmt)+"</code></pre>");
+  if(d.calls&&d.calls.length)out.push("<p><b>Calls</b></p><table>"+d.calls.map(function(c){return "<tr><td><code>"+esc(c.n)+"()</code></td><td>"+esc(c.d||"")+"</td></tr>";}).join("")+"</table>");
+  if(d.layers&&d.layers.length)out.push("<p class='fv-meta'>Layers: "+d.layers.map(function(l){return esc(l[0])+" "+l[1];}).join(", ")+"</p>");
+  if(d.files&&d.files.length)out.push("<p><b>Files</b> (most imported first)</p><table>"+d.files.map(function(f){return "<tr><td><code>"+esc(f.f)+"</code><br><span class='fv-meta'>"+f.i+" importers, "+f.n+" symbols</span></td><td>"+esc(f.p||"")+"</td></tr>";}).join("")+"</table>");
+  if(apiHref&&d.file&&d.qual)out.push("<p><a href='"+esc(apiHref+"#/m/"+encodeURIComponent(d.file)+"/"+encodeURIComponent(d.qual))+"'>Open in the API reference</a></p>");
+  else if(apiHref&&d.file)out.push("<p><a href='"+esc(apiHref+"#/m/"+encodeURIComponent(d.file))+"'>Open the module in the API reference</a></p>");
+  return out.join("");}
+function mount(host,graphs,opts){
+  opts=opts||{};host.innerHTML="";
+  if(!graphs||!graphs.length){host.appendChild(h("p","fv-meta","No architecture or execution-flow diagrams for this project."));return;}
+  var toc=h("div","fv-toc");host.appendChild(toc);
+  graphs.forEach(function(G,gi){G.uid="g"+gi;
+    var card=h("section","fv-card");card.id="fv-"+gi;host.appendChild(card);
+    var a=h("a",null,G.title);a.href="javascript:void(0)";a.addEventListener("click",function(){card.scrollIntoView({behavior:"smooth"});});toc.appendChild(a);
+    var head=h("div","fv-head");card.appendChild(head);head.appendChild(h("h3",null,G.title));
+    var m=G.meta||{};
+    if(m.entry)head.appendChild(h("div","fv-meta","Entry point "+m.entry+" at "+m.file+":"+m.line+" (score "+m.score+": "+(m.reasons||[]).join("; ")+")"));
+    if(m.stats)head.appendChild(h("div","fv-meta",m.stats.components+" components, "+m.stats.tiers+" tiers, "+m.stats.edges+" dependencies shown, "+m.stats.reduced+" implied edges removed"));
+    if(m.upward&&m.upward.length)head.appendChild(h("div","fv-meta","Fix first (upward): "+m.upward.map(function(u){return u[0]+" -> "+u[1]+" ("+u[2]+")";}).join("; ")));
+    head.appendChild(h("p","fv-cap",G.caption||""));
+    var bar=h("div","fv-bar");card.appendChild(bar);
+    var stage=h("div","fv-stage");card.appendChild(stage);
+    var panel=h("div","fv-panel");stage.appendChild(panel);
+    var svg=el("svg",{width:G.w,height:G.h,viewBox:"0 0 "+G.w+" "+G.h,role:"img","aria-label":G.title});stage.insertBefore(svg,panel);
+    function pick(n){panel.innerHTML=panelHtml(n,opts.apiHref||"");panel.classList.add("open");var x=panel.querySelector(".x");if(x)x.addEventListener("click",function(){panel.classList.remove("open");});}
+    if(G.kind==="sequence")drawSequence(G,svg,pick);else drawGraph(G,svg,pick);
+    var S={k:1,x:0,y:0};
+    function apply(){svg.style.transform="translate("+S.x+"px,"+S.y+"px) scale("+S.k+")";}
+    function clampPan(){var W=stage.clientWidth,H=stage.clientHeight,cw=G.w*S.k,ch=G.h*S.k;
+      S.x=cw<=W?(W-cw)/2:Math.min(0,Math.max(W-cw,S.x));S.y=ch<=H?Math.max(0,Math.min((H-ch)/2,12)):Math.min(0,Math.max(H-ch,S.y));}
+    function fit(){var W=Math.max(320,stage.clientWidth||host.clientWidth||900);S.k=Math.max(opts.minScale||0.8,Math.min(1.15,(W-16)/G.w));
+      var want=G.h*S.k+24,max=card.classList.contains("full")?99999:Math.round(window.innerHeight*0.8);
+      if(!card.classList.contains("full"))stage.style.height=Math.max(260,Math.min(want,max))+"px";S.x=0;S.y=0;clampPan();apply();}
+    function zoom(f,cx,cy){var nk=Math.max(0.25,Math.min(3,S.k*f));cx=cx==null?stage.clientWidth/2:cx;cy=cy==null?stage.clientHeight/2:cy;
+      S.x=cx-(cx-S.x)*nk/S.k;S.y=cy-(cy-S.y)*nk/S.k;S.k=nk;clampPan();apply();}
+    function btn(label,title,fn){var b=h("button",null,label);b.title=title;b.addEventListener("click",fn);bar.appendChild(b);}
+    btn("Fit width","Scale the diagram to the card width",fit);
+    btn("100%","Actual size",function(){S.k=1;clampPan();apply();});
+    btn("+","Zoom in",function(){zoom(1.25);});btn("-","Zoom out",function(){zoom(0.8);});
+    btn("Fullscreen","Toggle fullscreen (Esc leaves)",function(){card.classList.toggle("full");setTimeout(fit,30);});
+    btn("SVG","Download this diagram as SVG",function(){var c=svg.cloneNode(true);c.removeAttribute("style");c.setAttribute("xmlns",NS);
+      var blob=new Blob([new XMLSerializer().serializeToString(c)],{type:"image/svg+xml"}),u=URL.createObjectURL(blob),a2=document.createElement("a");a2.href=u;a2.download=(G.id||"diagram").replace(/[^a-z0-9]+/gi,"_")+".svg";a2.click();setTimeout(function(){URL.revokeObjectURL(u);},500);});
+    bar.appendChild(h("span","fv-hint",G.nodes.length?G.nodes.length+" nodes, "+G.edges.length+" arrows | drag to pan, Ctrl+wheel to zoom, click a node":((G.messages||[]).length+" calls | drag to pan, click a call")));
+    var drag=null;
+    stage.addEventListener("pointerdown",function(ev){if(ev.target.closest&&ev.target.closest(".fv-panel"))return;drag={x:ev.clientX,y:ev.clientY,sx:S.x,sy:S.y,moved:false};stage.classList.add("drag");});
+    window.addEventListener("pointermove",function(ev){if(!drag)return;var dx=ev.clientX-drag.x,dy=ev.clientY-drag.y;if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;S.x=drag.sx+dx;S.y=drag.sy+dy;clampPan();apply();});
+    window.addEventListener("pointerup",function(){drag=null;stage.classList.remove("drag");});
+    stage.addEventListener("click",function(ev){if(!ev.target.closest(".fv-panel")&&!ev.target.closest(".fv-node"))panel.classList.remove("open");});
+    stage.addEventListener("wheel",function(ev){var r=stage.getBoundingClientRect();
+      if(ev.ctrlKey||ev.metaKey){ev.preventDefault();zoom(ev.deltaY<0?1.12:0.89,ev.clientX-r.left,ev.clientY-r.top);return;}
+      var ch=G.h*S.k,H=stage.clientHeight;if(ch<=H)return;var before=S.y;S.y-=ev.deltaY;clampPan();if(S.y!==before){ev.preventDefault();apply();}},{passive:false});
+    document.addEventListener("keydown",function(ev){if(ev.key==="Escape"&&card.classList.contains("full")){card.classList.remove("full");setTimeout(fit,30);}});
+    window.addEventListener("resize",fit);
+    requestAnimationFrame(fit);
+  });
+}
+window.ReadmenatorFlows={mount:mount};
+})();
+</script>
+<script>function readmenatorPayload(id,fallback){
+  var el=document.getElementById(id),text=el?el.textContent:"";
+  if(!text||!text.trim())return Promise.resolve(fallback===undefined?null:fallback);
+  if(el.getAttribute("data-encoding")!=="gzip+base64")return Promise.resolve(JSON.parse(text));
+  if(typeof DecompressionStream==="undefined")return Promise.reject(new Error("This browser cannot decompress the embedded data (DecompressionStream missing). Open the page in a current Chrome, Edge, Firefox or Safari."));
+  var bin=atob(text.replace(/\s+/g,"")),bytes=new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+  return new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text().then(JSON.parse);
+}
+function readmenatorPayloads(specs){
+  return Promise.all(specs.map(function(spec){return readmenatorPayload(spec[0],spec[1]);}));
+}
+function readmenatorPayloadError(err){
+  var box=document.createElement("pre");box.setAttribute("role","alert");
+  box.style.cssText="position:relative;z-index:9999;margin:24px;padding:16px;border:1px solid #f87171;border-radius:8px;background:#1f1115;color:#fecaca;white-space:pre-wrap";
+  box.textContent="Could not load the embedded data: "+(err&&err.message?err.message:String(err));
+  document.body.insertBefore(box,document.body.firstChild);
+}</script>
+<script>
+(function(){var root=document.documentElement;try{var t=localStorage.getItem("readmenator-theme");if(t)root.setAttribute("data-theme",t);}catch(e){}
+window.ReadmenatorViewerApply=function(patch){patch=patch||{};var handled=[];["theme","html_style","accent","accent2"].forEach(function(k){if(k in patch&&handled.indexOf(k)<0)handled.push(k);});if(!handled.length)return handled;try{if(typeof window.__rmFlowsDraw__==="function")window.__rmFlowsDraw__();}catch(e){}return handled;};
+readmenatorPayload("fv-data",{graphs:[],api:""}).then(function(data){
+function draw(){window.ReadmenatorFlows.mount(document.getElementById("fv-host"),data.graphs,{apiHref:data.api});}
+window.__rmFlowsDraw__=draw;
+document.getElementById("fv-theme").addEventListener("click",function(){var cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");var n=cur==="light"?"dark":"light";root.setAttribute("data-theme",n);try{localStorage.setItem("readmenator-theme",n);}catch(e){}draw();});
+draw();},readmenatorPayloadError);})();
+</script>
+<script>window.__RM_VIEWER__={"accent": "#22d3ee", "accent2": "#f472b6", "agent_extra": "", "agent_heading": "", "agent_intro": "", "author": "", "bundle_beta": 0.85, "charge": -300, "description": "", "folder_notice": "", "github_url": "", "home_url": "", "html_style": "dark", "hulls_enabled": true, "label_top_n": 30, "label_zoom": 1.6, "link_distance": 120, "link_strength": 0.3, "logo_url": "", "mode": "2d", "motion_enabled": true, "name": "", "pages_url": "", "particles": 4, "preset": "classic", "readme_agents_line": "", "readme_developers_line": "", "readme_heading": "", "readme_intro": "", "readme_regen_command": "", "sourceview_max_files": 2500, "sourceview_max_total_chars": 20000000, "theme": "dark"};
+
+(function(){
+"use strict";
+var LS_KEY="readmenator.viewer.v1";
+var SCHEMA=[{"key": "theme", "label": "Theme", "type": "select", "section": "viewer", "options": ["dark", "light"], "help": "Page color scheme. Applies instantly."}, {"key": "preset", "label": "Map preset", "type": "select", "section": "viewer", "options": ["classic", "flow", "blueprint", "editorial"], "help": "Gallery map style. Needs rebuild for system maps."}, {"key": "motion_enabled", "label": "Motion", "type": "bool", "section": "viewer", "help": "Finite animations. Honors prefers-reduced-motion."}, {"key": "mode", "label": "Default view", "type": "select", "section": "viewer", "options": ["2d", "3d"], "help": "Explorer view used on first load."}, {"key": "label_top_n", "label": "Labels (top N)", "type": "int", "section": "viewer", "min": 0, "max": 200, "help": "How many top-ranked files always show names."}, {"key": "label_zoom", "label": "Label zoom", "type": "number", "section": "viewer", "min": 0.5, "max": 4.0, "step": 0.1, "help": "Zoom level from which all labels appear."}, {"key": "charge", "label": "Repulsion", "type": "int", "section": "viewer", "min": -1000, "max": 0, "help": "Force-graph node repulsion. Reheats physics live."}, {"key": "link_distance", "label": "Link distance", "type": "int", "section": "viewer", "min": 20, "max": 400, "help": "Target edge length. Reheats physics live."}, {"key": "link_strength", "label": "Link strength", "type": "number", "section": "viewer", "min": 0.0, "max": 1.0, "step": 0.05, "help": "Edge stiffness. Reheats physics live."}, {"key": "hulls_enabled", "label": "Group halos", "type": "bool", "section": "viewer", "help": "Community halo overlays around file groups."}, {"key": "particles", "label": "Flow particles", "type": "int", "section": "viewer", "min": 0, "max": 12, "help": "Particles on highlighted edges."}, {"key": "bundle_beta", "label": "Bundle strength", "type": "number", "section": "viewer", "min": 0.0, "max": 1.0, "step": 0.05, "help": "Edge bundling pull toward the hierarchy (bundles page)."}, {"key": "html_style", "label": "HTML style", "type": "select", "section": "viewer", "options": ["dark", "light"], "help": "Default style for freshly generated pages."}, {"key": "name", "label": "Project name", "type": "text", "section": "branding", "help": "Page titles and hero. Needs rebuild."}, {"key": "author", "label": "Author", "type": "text", "section": "branding", "help": "Credited in the hero and footer. Needs rebuild."}, {"key": "description", "label": "Description", "type": "text", "section": "branding", "help": "One-line project summary in the hero. Needs rebuild."}, {"key": "github_url", "label": "GitHub URL", "type": "text", "section": "branding", "help": "Absolute http(s) link. Footer icon. Needs rebuild."}, {"key": "pages_url", "label": "Pages URL", "type": "text", "section": "branding", "help": "Absolute http(s) link to the published site. Footer icon. Needs rebuild."}, {"key": "home_url", "label": "Home URL", "type": "text", "section": "branding", "help": "Where the maps home icon points. Footer icon. Needs rebuild."}, {"key": "logo_url", "label": "Logo URL", "type": "text", "section": "branding", "help": "Absolute http(s) brand image shown in the hero. Needs rebuild."}, {"key": "accent", "label": "Accent color", "type": "color", "section": "branding", "help": "Primary highlight color (#rrggbb). Applies instantly."}, {"key": "accent2", "label": "Accent 2", "type": "color", "section": "branding", "help": "Secondary highlight color (#rrggbb). Applies instantly."}, {"key": "sourceview_max_files", "label": "View sources (files)", "type": "int", "section": "maps", "min": 0, "max": 100000, "help": "Files embedding source for the View button. Needs rebuild."}, {"key": "sourceview_max_total_chars", "label": "View sources (chars)", "type": "int", "section": "maps", "min": 0, "max": 1000000000, "help": "Total char budget across embedded sources. Needs rebuild."}, {"key": "readme_heading", "label": "README heading", "type": "text", "section": "messages", "help": "README injection heading. Empty = built-in. Needs rebuild."}, {"key": "readme_intro", "label": "README intro", "type": "textarea", "section": "messages", "help": "Opening paragraph of the README section. Needs rebuild."}, {"key": "readme_agents_line", "label": "README agents line", "type": "text", "section": "messages", "help": "Closing 'AI agents' guidance line. Needs rebuild."}, {"key": "readme_developers_line", "label": "README developers line", "type": "text", "section": "messages", "help": "Closing 'Developers' guidance line. Needs rebuild."}, {"key": "readme_regen_command", "label": "Regen command", "type": "text", "section": "messages", "help": "Rebuild command shown in injections. Needs rebuild."}, {"key": "agent_heading", "label": "Agent heading", "type": "text", "section": "messages", "help": "Agent files injection heading. Needs rebuild."}, {"key": "agent_intro", "label": "Agent intro", "type": "textarea", "section": "messages", "help": "Opening paragraph of agent injections. Needs rebuild."}, {"key": "agent_extra", "label": "Agent extra", "type": "textarea", "section": "messages", "help": "Extra project instructions appended to agent files. Needs rebuild."}, {"key": "folder_notice", "label": "Folder notice", "type": "textarea", "section": "messages", "help": "Notice paragraph in generated folder READMEs. Needs rebuild."}];
+function defaults(){var d={};try{d=window.__RM_VIEWER__||{};}catch(e){}return d;}
+function stored(){try{var raw=localStorage.getItem(LS_KEY);if(raw)return JSON.parse(raw);}catch(e){}return {};}
+function save(patch){try{var cur=stored();for(var k in patch)cur[k]=patch[k];localStorage.setItem(LS_KEY,JSON.stringify(cur));}catch(e){}}
+function clear(){try{localStorage.removeItem(LS_KEY);}catch(e){}}
+function current(){var d=defaults(),s=stored(),out={};for(var i=0;i<SCHEMA.length;i++){var k=SCHEMA[i].key;out[k]=(k in s)?s[k]:d[k];}return out;}
+function setTheme(t){try{document.documentElement.setAttribute("data-theme",t);localStorage.setItem("readmenator-theme",t);}catch(e){try{document.documentElement.setAttribute("data-theme",t);}catch(_){}}}
+function setAccent(which,val){
+  if(!/^#[0-9a-fA-F]{3}([0-9a-fA-F]{3}([0-9a-fA-F]{2})?)?$/.test(String(val||"")))return false;
+  try{document.documentElement.style.setProperty(which,val);}catch(e){return false;}
+  return true;
+}
+function num(v,f){var n=parseFloat(v);return isFinite(n)?n:f;}
+function applyLive(patch){
+  patch=patch||{};var live=[];
+  if("theme" in patch||"html_style" in patch){setTheme(patch.theme||patch.html_style||"dark");live.push("theme");}
+  if("accent" in patch&&setAccent("--accent",patch.accent))live.push("accent");
+  if("accent2" in patch&&setAccent("--accent2",patch.accent2))live.push("accent2");
+  try{
+    if(typeof window.ReadmenatorViewerApply==="function"){
+      var r=window.ReadmenatorViewerApply(patch);
+      if(r===true){if(live.indexOf("view")<0)live.push("view");}
+      else if(r&&r.length)for(var i=0;i<r.length;i++)if(live.indexOf(r[i])<0)live.push(r[i]);
+    }
+  }catch(e){if(window.console)console.warn("viewer apply failed",e);}
+  return live;
+}
+function fieldRow(spec,val){
+  var row=document.createElement("div");row.className="rm-cfg-row";
+  var lab=document.createElement("label");lab.textContent=spec.label;lab.setAttribute("for","rm-cfg-"+spec.key);row.appendChild(lab);
+  var input;
+  if(spec.type==="bool"){input=document.createElement("input");input.type="checkbox";input.checked=!!val;}
+  else if(spec.type==="select"){input=document.createElement("select");(spec.options||[]).forEach(function(o){var op=document.createElement("option");op.value=o;op.textContent=o;if(String(o)===String(val))op.selected=true;input.appendChild(op);});}
+  else if(spec.type==="color"){input=document.createElement("input");input.type="color";try{input.value=/^#[0-9a-fA-F]{6}$/.test(String(val||""))?val:"#22d3ee";}catch(e){input.value="#22d3ee";}}
+  else if(spec.type==="text"){input=document.createElement("input");input.type="text";input.value=(val==null?"":String(val));if(spec.key.indexOf("_url")>=0)input.placeholder="https:"+"//your-site.example/…";}
+  else if(spec.type==="textarea"){input=document.createElement("textarea");input.rows=3;input.value=(val==null?"":String(val));}
+  else{input=document.createElement("input");input.type="number";input.value=val;if(spec.min!=null)input.min=spec.min;if(spec.max!=null)input.max=spec.max;if(spec.step)input.step=spec.step;}
+  input.id="rm-cfg-"+spec.key;input.dataset.key=spec.key;row.appendChild(input);
+  if(spec.help){var h=document.createElement("p");h.className="rm-cfg-help";h.textContent=spec.help;row.appendChild(h);}
+  return row;
+}
+function renderForm(){
+  var form=document.getElementById("rm-cfg-form");
+  if(!form)return {};
+  while(form.firstChild)form.removeChild(form.firstChild);
+  var cur=current(),lastSec="";
+  SCHEMA.forEach(function(spec){
+    var sec=spec.section||"viewer";
+    if(sec!==lastSec){lastSec=sec;var hd=document.createElement("h3");hd.className="rm-cfg-sec";hd.textContent=sec.charAt(0).toUpperCase()+sec.slice(1);form.appendChild(hd);}
+    form.appendChild(fieldRow(spec,cur[spec.key]));
+  });
+  window.__rmCfgBase__=cur;
+  return cur;
+}
+function openModal(){
+  var scrim=document.getElementById("rm-cfg-scrim"),modal=document.getElementById("rm-cfg-modal");
+  if(!scrim||!modal)return;
+  renderForm();
+  scrim.classList.add("open");modal.classList.add("open");modal.setAttribute("aria-hidden","false");
+  var first=document.getElementById("rm-cfg-form").querySelector("select,input,textarea");if(first)first.focus();
+}
+function closeModal(){var scrim=document.getElementById("rm-cfg-scrim"),modal=document.getElementById("rm-cfg-modal");if(scrim)scrim.classList.remove("open");if(modal){modal.classList.remove("open");modal.setAttribute("aria-hidden","true");}}
+function readForm(){
+  var patch={},form=document.getElementById("rm-cfg-form");
+  var els=form.querySelectorAll("[data-key]");
+  for(var i=0;i<els.length;i++){var el=els[i],k=el.dataset.key,spec=null;
+    for(var j=0;j<SCHEMA.length;j++)if(SCHEMA[j].key===k)spec=SCHEMA[j];
+    if(!spec)continue;
+    if(spec.type==="bool")patch[k]=!!el.checked;
+    else if(spec.type==="int")patch[k]=Math.round(num(el.value,0));
+    else if(spec.type==="number")patch[k]=num(el.value,0);
+    else patch[k]=el.value;
+  }
+  return patch;
+}
+function toToml(patch){
+  var sections={},order=[];
+  SCHEMA.forEach(function(spec){
+    if(!(spec.key in patch))return;
+    var sec=spec.section||"viewer";
+    if(!(sec in sections)){sections[sec]=[];order.push(sec);}
+    var v=patch[spec.key],lit;
+    if(typeof v==="boolean")lit=v?"true":"false";
+    else if(typeof v==="number")lit=String(v);
+    else lit='"'+String(v).replace(/\\/g,"\\\\").replace(/"/g,'\\"').replace(/\n/g,"\\n").replace(/\r/g,"\\r").replace(/\t/g,"\\t")+'"';
+    sections[sec].push(spec.key+" = "+lit);
+  });
+  var lines=[];
+  order.forEach(function(sec){lines.push("["+sec+"]");lines.push(sections[sec].join("\n"));lines.push("");});
+  return lines.join("\n").replace(/\n$/,"");
+}
+function status(msg){var s=document.getElementById("rm-cfg-status");if(s)s.textContent=msg;}
+function boot(){
+  document.querySelectorAll("[data-rm-config]").forEach(function(btn){
+    if(btn.__rmBound)return;btn.__rmBound=true;
+    btn.addEventListener("click",openModal);
+  });
+  var scrim=document.getElementById("rm-cfg-scrim");
+  if(scrim)scrim.addEventListener("click",closeModal);
+  var close=document.getElementById("rm-cfg-close");
+  if(close)close.addEventListener("click",closeModal);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
+  var apply=document.getElementById("rm-cfg-apply");
+  if(apply)apply.addEventListener("click",function(){
+    var patch=readForm(),base=window.__rmCfgBase__||{},dirty={};
+    for(var k in patch)if(patch[k]!==base[k])dirty[k]=patch[k];
+    save(patch);
+    var live=applyLive(dirty);
+    var pending=Object.keys(dirty).filter(function(k){return live.indexOf(k)<0;});
+    var msg="";
+    if(live.length)msg+="Live: "+live.join(", ")+". ";
+    if(pending.length)msg+="Needs rebuild: "+pending.join(", ")+".";
+    status(msg||"No changes.");
+    window.__rmCfgBase__=patch;
+  });
+  var reset=document.getElementById("rm-cfg-reset");
+  if(reset)reset.addEventListener("click",function(){
+    if(!window.confirm("Clear local Config overrides and restore last-rebuild defaults?"))return;
+    clear();
+    renderForm();
+    applyLive(current());
+    status("Local overrides cleared. Last-rebuild defaults restored.");
+  });
+  var copy=document.getElementById("rm-cfg-copy");
+  if(copy)copy.addEventListener("click",function(){
+    var toml=toToml(readForm());
+    function done(){status("Copied TOML sections. Paste them into readmenator.toml and rebuild to persist.");}
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(toml).then(done,function(){status(toml);});
+      else status(toml);
+    }catch(e){status(toml);}
+  });
+  var init=stored();
+  if(init&&Object.keys(init).length)applyLive(init);
+}
+if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+})();
+</script>
+</body>
+</html>

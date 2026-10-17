@@ -1,0 +1,237 @@
+{
+  "analysis_v2": {
+    "god_nodes": [
+      [
+        "cJSON.h",
+        27.7
+      ],
+      [
+        "aes.h",
+        22.1
+      ],
+      [
+        "include/cJSON.c",
+        16.5
+      ],
+      [
+        "include/beacon_common.h",
+        15.7
+      ],
+      [
+        "beacon.h",
+        15.3
+      ],
+      [
+        "cJSON.c",
+        14.5
+      ],
+      [
+        "bof/include/syscalls.h",
+        13.8
+      ],
+      [
+        "include/beacon_common.c",
+        12.7
+      ],
+      [
+        "bof/include/beacon_api.h",
+        11.4
+      ],
+      [
+        "beacon_p2p.c",
+        10.9
+      ]
+    ],
+    "communities": [
+      {
+        "id": 0,
+        "label": "root",
+        "file_ids": [
+          "beacons/v1/gopher_beacon.c",
+          "beacon_p2p.c",
+          "aes.h",
+          "aes.c",
+          "beacon5.c",
+          "beacon.h",
+          "bof.c",
+          "beacon3.c",
+          "beacon6.c",
+          "gopher_beacon.c"
+        ],
+        "cohesion": 0.6086956521739131,
+        "size": 10
+      },
+      {
+        "id": 1,
+        "label": "include: cJSON",
+        "file_ids": [
+          "include/beacon_common.c",
+          "beacons/v3/beacon.c",
+          "include/cJSON.h",
+          "cJSON.c",
+          "include/cJSON.c",
+          "include/beacon_common.h",
+          "beacons/v2/beacon.c",
+          "cJSON.h",
+          "beacons/v1/beacon.c"
+        ],
+        "cohesion": 0.5714285714285714,
+        "size": 9
+      },
+      {
+        "id": 2,
+        "label": "bof/include",
+        "file_ids": [
+          "bof/cat/bof.c",
+          "bof/userenum/bof.c",
+          "bof/is_sudo/bof.c",
+          "bof/include/beacon_api.h",
+          "bof/include/syscalls.h",
+          "bof/whoami/bof.c",
+          "bof/suid_enum/bof.c"
+        ],
+        "cohesion": 1.0,
+        "size": 7
+      },
+      {
+        "id": 3,
+        "label": "include: server",
+        "file_ids": [
+          "tests/test_c2_server.py",
+          "include/config_py.py",
+          "c2/server.py"
+        ],
+        "cohesion": 1.0,
+        "size": 3
+      },
+      {
+        "id": 4,
+        "label": "include: aes",
+        "file_ids": [
+          "include/aes.c",
+          "include/aes_cfb.c",
+          "include/aes.h"
+        ],
+        "cohesion": 0.4,
+        "size": 3
+      },
+      {
+        "id": 5,
+        "label": "include: config",
+        "file_ids": [
+          "tests/config_harness.c",
+          "include/config.h",
+          "include/config.c"
+        ],
+        "cohesion": 0.6666666666666666,
+        "size": 3
+      },
+      {
+        "id": 6,
+        "label": "include: aes_cfb",
+        "file_ids": [
+          "tests/crypto_harness.c",
+          "include/aes_cfb.h"
+        ],
+        "cohesion": 1.0,
+        "size": 2
+      }
+    ],
+    "surprising_connections": [
+      [
+        "bof.c",
+        "include/config.c",
+        7,
+        "{0, 1, 5}"
+      ],
+      [
+        "bof.c",
+        "tests/config_harness.c",
+        7,
+        "{0, 1, 5}"
+      ],
+      [
+        "beacon.h",
+        "include/config.c",
+        6,
+        "{0, 1, 5}"
+      ],
+      [
+        "beacon.h",
+        "tests/config_harness.c",
+        6,
+        "{0, 1, 5}"
+      ],
+      [
+        "bof.c",
+        "include/config.h",
+        6,
+        "{0, 1, 5}"
+      ]
+    ],
+    "suggested_questions": [
+      "What does cJSON.h depend on, and what depends on it? (12 connections)",
+      "What does aes.h depend on, and what depends on it? (10 connections)",
+      "What does cJSON.c depend on, and what depends on it? (2 connections)",
+      "How are the 10 files in 'root' related to each other?",
+      "Why are bof.c and config.c connected through 7 hops across 3 communities?"
+    ]
+  },
+  "layers": {
+    "aes.c": "utility",
+    "aes.h": "utility",
+    "app.py": "utility",
+    "beacon.h": "utility",
+    "beacon3.c": "utility",
+    "beacon5.c": "utility",
+    "beacon6.c": "utility",
+    "beacon_p2p.c": "utility",
+    "beacons/v1/beacon.c": "utility",
+    "beacons/v1/gopher_beacon.c": "utility",
+    "beacons/v2/beacon.c": "utility",
+    "beacons/v3/beacon.c": "utility",
+    "bof/cat/bof.c": "utility",
+    "bof/cat/cat.c": "utility",
+    "bof/include/beacon_api.h": "presentation",
+    "bof/include/syscalls.h": "utility",
+    "bof/is_sudo/bof.c": "utility",
+    "bof/is_sudo/is_sudo.c": "utility",
+    "bof/suid_enum/bof.c": "utility",
+    "bof/userenum/bof.c": "utility",
+    "bof/userenum/userenum.c": "utility",
+    "bof/whoami/bof.c": "utility",
+    "bof/whoami/whoami.c": "utility",
+    "bof.c": "utility",
+    "c2/server.py": "utility",
+    "cJSON.c": "utility",
+    "cJSON.h": "utility",
+    "gopher_beacon.c": "utility",
+    "gopher_c2.py": "utility",
+    "include/aes.c": "utility",
+    "include/aes.h": "utility",
+    "include/aes_cfb.c": "utility",
+    "include/aes_cfb.h": "utility",
+    "include/beacon.h": "utility",
+    "include/beacon_common.c": "utility",
+    "include/beacon_common.h": "utility",
+    "include/cJSON.c": "utility",
+    "include/cJSON.h": "utility",
+    "include/config.c": "infrastructure",
+    "include/config.h": "infrastructure",
+    "include/config_py.py": "infrastructure",
+    "install.sh": "utility",
+    "issudo.c": "utility",
+    "tests/config_harness.c": "infrastructure",
+    "tests/crypto_harness.c": "testing",
+    "tests/test_beacon_build.py": "testing",
+    "tests/test_bof_compile.py": "testing",
+    "tests/test_c2_http_e2e.py": "testing",
+    "tests/test_c2_server.py": "testing",
+    "tests/test_config.py": "testing",
+    "tests/test_crypto.py": "testing",
+    "tests/test_install_deploy.py": "testing"
+  },
+  "security": {
+    "findings": []
+  }
+}

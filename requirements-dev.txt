@@ -1,2 +1,6 @@
 # Test-only requirements. Installed automatically by CI.
 # Runtime C2 deps are in requirements.txt.
+
+# The suite runs under pytest (`python -m pytest tests/ -q`) as well as
+# via `make test`, which invokes each file directly.
+pytest>=7.0

