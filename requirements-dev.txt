@@ -3,4 +3,4 @@
 
 # The suite runs under pytest (`python -m pytest tests/ -q`) as well as
 # via `make test`, which invokes each file directly.
-pytest>=7.0
+pytest>=9.1.1
