@@ -227,7 +227,15 @@ GPL v3. See `LICENSE`.
 
 ## KitPloit 
 
+Thank you again KitPloit for making our tools available to more cybersecurity professionals.
 [https://kitploit.com/en/tools/github/grisuno/blacksandbeacon](https://kitploit.com/en/tools/github/grisuno/blacksandbeacon)
+
+## Hacktricks
+
+Honestly, the team is speechless, and I think I speak for everyone when I say that when I started, I was reading everything on Hacktricks, and now being on one of their pages fills us with love. Thank you so much, Hacktricks, for your amazing work!
+[https://hacktricks.wiki/en/linux-hardening/post-exploitation/linux-fileless-execution.html](https://hacktricks.wiki/en/linux-hardening/post-exploitation/linux-fileless-execution.html)
+
+
 
 <!-- readmenator-kb-link -->
 ## Knowledge Base
