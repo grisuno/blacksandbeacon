@@ -223,6 +223,12 @@ requirements.txt      C2 server runtime deps
 
 GPL v3. See `LICENSE`.
 
+## Thanks 
+
+## KitPloit 
+
+[https://kitploit.com/en/tools/github/grisuno/blacksandbeacon](https://kitploit.com/en/tools/github/grisuno/blacksandbeacon)
+
 <!-- readmenator-kb-link -->
 ## Knowledge Base
 
