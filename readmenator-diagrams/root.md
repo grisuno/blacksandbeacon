@@ -9,11 +9,11 @@ graph LR
     beacons -- "depends on" --> root
 ```
 
-## beacons (1.1)
+## beacons (2.1)
 
 beacons groups 1 files (c) around _GNU_SOURCE, C2, CLIENT_ID, MALEABLE, USER_AGENTS_COUNT. MemoryStruct: === ESTRUCTURAS ===
 
-## root (1.2)
+## root (2.2)
 
 root groups 9 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
 

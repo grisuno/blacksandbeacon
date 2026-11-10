@@ -1,15 +1,15 @@
 # Second Brain
 
-*Last synthesized: 2026-10-16 | 52 files | 8 concept pages | offline, zero tokens*
+*Last synthesized: 2026-11-09 | 52 files | 7 concept pages | offline, zero tokens*
 
 > Raw sources -> readmenator wiki -> links (Karpathy LLM Wiki Pattern, deterministic).
 > Start here, then open one community page. Prefer grep over full reads.
 
 ## Vault Overview
 
-The codebase centres on `cJSON.h`, `aes.h`, `cJSON.c`. Architecturally it is 4 layers, dominant utility (39 files) across 8 import-based communities. Recorded risk surface: 0 security findings and 0 dependency cycles.
+The codebase centres on `cJSON.h`, `aes.h`, `cJSON.c`. Architecturally it is 4 layers, dominant utility (39 files) across 7 import-based communities. Recorded risk surface: 0 security findings and 0 dependency cycles.
 
-Surprising tissue lives between root, include: cJSON, bof/include: 3 extracted cross-community imports and 17 inferred bridges. Follow `connections.json` sorted by strength before refactoring.
+Surprising tissue lives between include: cJSON, root, bof/include: 2 extracted cross-community imports and 17 inferred bridges. Follow `connections.json` sorted by strength before refactoring.
 
 Open work clusters around documentation (44% file coverage), 0 security findings, 5 taint paths, and 5 suggested exploration questions in `queries.md`.
 
@@ -18,13 +18,13 @@ Open work clusters around documentation (44% file coverage), 0 security findings
 | Metric | Value |
 |--------|-------|
 | Files | 52 |
-| Symbols | 1075 |
-| Resolved imports | 43 |
+| Symbols | 1077 |
+| Resolved imports | 42 |
 | Languages | c, h, py, sh |
-| Communities | 8 |
+| Communities | 7 |
 | Doc coverage | 44% (23/52 files) |
 | Security findings | 0 |
-| Estimated read cost | ~16954 tokens (chars/4, offline so $0) |
+| Estimated read cost | ~16971 tokens (chars/4, offline so $0) |
 
 ## Reading Order
 
@@ -39,37 +39,36 @@ readmenator query "<question>" --target blacksandbeacon
 
 ## Concept Wiki
 
-- [root (10 files, cohesion 0.61)](./community_0_root.md)
-- [include: cJSON (9 files, cohesion 0.57)](./community_1_include_cjson.md)
+- [include: cJSON (11 files, cohesion 0.61)](./community_0_include_cjson.md)
+- [root (10 files, cohesion 0.64)](./community_1_root.md)
 - [bof/include (7 files, cohesion 1.00)](./community_2_bof_include.md)
 - [include: server (3 files, cohesion 1.00)](./community_3_include_server.md)
-- [include: aes (3 files, cohesion 0.40)](./community_4_include_aes.md)
-- [include: config (3 files, cohesion 0.67)](./community_5_include_config.md)
-- [include: aes_cfb (2 files, cohesion 1.00)](./community_6_include_aes_cfb.md)
-- [orphans (15 files, cohesion 0.00)](./community_7_orphans.md)
+- [include: config (3 files, cohesion 0.67)](./community_4_include_config.md)
+- [include: aes_cfb (2 files, cohesion 1.00)](./community_5_include_aes_cfb.md)
+- [orphans (16 files, cohesion 0.00)](./community_6_orphans.md)
 
 ## God Nodes
 
 | File | Score |
 |------|-------|
 | `cJSON.h` | 27.7 |
-| `aes.h` | 22.1 |
+| `aes.h` | 20.1 |
 | `include/cJSON.c` | 16.5 |
 | `include/beacon_common.h` | 15.7 |
 | `beacon.h` | 15.3 |
 
 ## Strongest Connections
 
-- 0 -> 1: depends_on (strength 0.9, EXTRACTED)
-- 1 -> 4: depends_on (strength 0.9, EXTRACTED)
-- 1 -> 5: depends_on (strength 0.9, EXTRACTED)
-- 0 -> 4: duplicates (strength 0.54, INFERRED)
+- 1 -> 0: depends_on (strength 0.9, EXTRACTED)
+- 0 -> 4: depends_on (strength 0.9, EXTRACTED)
 - 0 -> 2: shares_context (strength 0.5, INFERRED)
+- 0 -> 5: shares_context (strength 0.5, INFERRED)
 - 0 -> 6: shares_context (strength 0.5, INFERRED)
-- 0 -> 7: shares_context (strength 0.5, INFERRED)
 - 1 -> 2: shares_context (strength 0.5, INFERRED)
+- 1 -> 5: shares_context (strength 0.5, INFERRED)
 - 1 -> 6: shares_context (strength 0.5, INFERRED)
-- 1 -> 7: shares_context (strength 0.5, INFERRED)
+- 2 -> 4: shares_context (strength 0.5, INFERRED)
+- 2 -> 5: shares_context (strength 0.5, INFERRED)
 
 ## Navigation Tips
 

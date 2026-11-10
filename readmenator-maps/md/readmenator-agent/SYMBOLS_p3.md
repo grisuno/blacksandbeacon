@@ -3,6 +3,8 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `bsb_bof_t` | struct | `include/config.h:55` | `` |
+| `bsb_c2_t` | struct | `include/config.h:30` | `` |
 | `bsb_config_load` | function | `include/config.h:77` | `int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen);` |
 | `bsb_config_load_default` | function | `include/config.h:80` | `int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen);` |
 | `bsb_config_sleep_seconds` | function | `include/config.h:83` | `int bsb_config_sleep_seconds(const bsb_config_t *cfg);` |

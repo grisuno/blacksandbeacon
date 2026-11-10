@@ -65,30 +65,64 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 <button type="button" id="cb-theme" title="Toggle light and dark theme">Theme</button></div>
 <main>
 <h1>Component Diagrams</h1>
-<div class="chips"><span>7 components</span><span>5 relations</span><span>52 files</span></div>
+<div class="chips"><span>6 components</span><span>3 relations</span><span>52 files</span></div>
 <div class="legend"><span class="legend-title">Layer</span><span><i style="background:#fbbf24"></i>infrastructure</span><span><i style="background:#fb923c"></i>testing</span><span><i style="background:#94a3b8"></i>utility</span></div>
 <div class="diagram-controls"><button type="button" id="cb-reset" title="Reset pan and zoom">Reset Layout</button><button type="button" id="cb-fit" title="Fit the diagram to the view">Fit to View</button><button type="button" id="cb-png" title="Export the diagram as PNG">Export PNG</button></div>
-<div class="cb-wrap"><svg id="cb-diagram" class="cb-diagram" viewBox="0 0 11870 610" role="img" aria-label="Component diagram"><defs><marker id="cb-diagram-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M11830.0 305.0 C11880.0 305.0 10550.0 305.0 10600.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="11215.0" y="297.0" class="cb-edge-label">depends on</text><text x="11215.0" y="311.0" class="cb-edge-sub">0 calls · 11 imports</text><path d="M10870.0 305.0 C11215.0 305.0 11215.0 305.0 11560.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:3.5"/><text x="11215.0" y="297.0" class="cb-edge-label">calls into</text><text x="11215.0" y="311.0" class="cb-edge-sub">2 calls · 1 imports</text><path d="M10870.0 305.0 C10975.0 305.0 10975.0 206.0 11080.0 206.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:2.5"/><text x="10975.0" y="247.5" class="cb-edge-label">depends on</text><text x="10975.0" y="261.5" class="cb-edge-sub">0 calls · 1 imports</text><path d="M10870.0 305.0 C10975.0 305.0 10975.0 404.0 11080.0 404.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:2.5"/><text x="10975.0" y="346.5" class="cb-edge-label">depends on</text><text x="10975.0" y="360.5" class="cb-edge-sub">0 calls · 1 imports</text><path d="M11350.0 206.0 C11455.0 206.0 11455.0 305.0 11560.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:4.5"/><text x="11455.0" y="247.5" class="cb-edge-label">calls into</text><text x="11455.0" y="261.5" class="cb-edge-sub">5 calls · 2 imports</text><g class="cb-node linked" data-desc="root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-1"><rect x="11560.0" y="238.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="3"/><text x="11574.0" y="262.0" class="cb-node-label">root</text><text x="11574.0" y="278.0" class="cb-node-sub">10 files · 287 symbols</text><circle cx="11580.0" cy="290.0" r="4" fill="#94a3b8"/><text x="11590.0" y="294.0" class="cb-node-layer">utility</text><text x="11574.0" y="310.0" class="cb-node-sym">_AES_H_</text><text x="11574.0" y="324.0" class="cb-node-sym">CBC</text><text x="11574.0" y="338.0" class="cb-node-sym">ECB</text><text x="11574.0" y="352.0" class="cb-node-sub">+115 more</text></a></g><g class="cb-node linked hub" data-desc="include: cJSON groups 9 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t."><a href="#comp-2"><rect x="10600.0" y="238.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="3"/><text x="10614.0" y="262.0" class="cb-node-label">include: cJSON</text><text x="10614.0" y="278.0" class="cb-node-sub">9 files · 430 symbols</text><circle cx="10620.0" cy="290.0" r="4" fill="#94a3b8"/><text x="10630.0" y="294.0" class="cb-node-layer">utility</text><text x="10614.0" y="310.0" class="cb-node-sym">BEACON_COMMON_H</text><text x="10614.0" y="324.0" class="cb-node-sym">_GNU_SOURCE</text><text x="10614.0" y="338.0" class="cb-node-sym">BSB_OUTPUT_BUFFER_DEFAU…</text><text x="10614.0" y="352.0" class="cb-node-sub">+159 more</text><text x="10856.0" y="258.0" class="cb-node-hub">HUB</text></a></g><g class="cb-node" data-desc="bof/include groups 7 files (c, h) around go, BSB_BOF_BEACON_API_H, CALLBACK_OUTPUT, CALLBACK_ERROR, CALLBACK_OUTPUT_OEM. datap: Argument parser."><a href="#comp-3"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">bof/include</text><text x="54.0" y="80.0" class="cb-node-sub">7 files · 73 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">go</text><text x="54.0" y="126.0" class="cb-node-sym">BSB_BOF_BEACON_API_H</text><text x="54.0" y="140.0" class="cb-node-sym">CALLBACK_OUTPUT</text><text x="54.0" y="154.0" class="cb-node-sub">+65 more</text></a></g><g class="cb-node" data-desc="include: server groups 3 files (py) around _deep_merge, load_config, load_runtime_config, compute_hmac, verify_hmac. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand..."><a href="#comp-4"><rect x="40.0" y="238.0" width="270" height="134" rx="10" stroke="#fbbf24" stroke-width="2.5"/><text x="54.0" y="262.0" class="cb-node-label">include: server</text><text x="54.0" y="278.0" class="cb-node-sub">3 files · 32 symbols</text><circle cx="60.0" cy="290.0" r="4" fill="#fbbf24"/><text x="70.0" y="294.0" class="cb-node-layer">infrastructure</text><text x="54.0" y="310.0" class="cb-node-sym">_deep_merge</text><text x="54.0" y="324.0" class="cb-node-sym">load_config</text><text x="54.0" y="338.0" class="cb-node-sym">load_runtime_config</text><text x="54.0" y="352.0" class="cb-node-sub">+28 more</text></a></g><g class="cb-node" data-desc="include: aes groups 3 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-5"><rect x="11080.0" y="139.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="11094.0" y="163.0" class="cb-node-label">include: aes</text><text x="11094.0" y="179.0" class="cb-node-sub">3 files · 66 symbols</text><circle cx="11100.0" cy="191.0" r="4" fill="#94a3b8"/><text x="11110.0" y="195.0" class="cb-node-layer">utility</text><text x="11094.0" y="211.0" class="cb-node-sym">_AES_H_</text><text x="11094.0" y="225.0" class="cb-node-sym">CBC</text><text x="11094.0" y="239.0" class="cb-node-sym">ECB</text><text x="11094.0" y="253.0" class="cb-node-sub">+39 more</text></a></g><g class="cb-node" data-desc="include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAULT, BSB_CONFIG_PATH_ENV, BSB_MAX_URL, BSB_MAX_URI. slurp: declared in the schema."><a href="#comp-6"><rect x="11080.0" y="337.0" width="270" height="134" rx="10" stroke="#fbbf24" stroke-width="2.5"/><text x="11094.0" y="361.0" class="cb-node-label">include: config</text><text x="11094.0" y="377.0" class="cb-node-sub">3 files · 42 symbols</text><circle cx="11100.0" cy="389.0" r="4" fill="#fbbf24"/><text x="11110.0" y="393.0" class="cb-node-layer">infrastructure</text><text x="11094.0" y="409.0" class="cb-node-sym">BSB_CONFIG_H</text><text x="11094.0" y="423.0" class="cb-node-sym">BSB_CONFIG_PATH_DEFAULT</text><text x="11094.0" y="437.0" class="cb-node-sym">BSB_CONFIG_PATH_ENV</text><text x="11094.0" y="451.0" class="cb-node-sub">+36 more</text></a></g><g class="cb-node" data-desc="include: aes_cfb groups 2 files (c, h) around BSB_AES_CFB_H, aes256_cfb_encrypt, aes256_cfb_decrypt, hex_to_bytes, main."><a href="#comp-7"><rect x="40.0" y="436.0" width="270" height="134" rx="10" stroke="#fb923c" stroke-width="2.5"/><text x="54.0" y="460.0" class="cb-node-label">include: aes_cfb</text><text x="54.0" y="476.0" class="cb-node-sub">2 files · 5 symbols</text><circle cx="60.0" cy="488.0" r="4" fill="#fb923c"/><text x="70.0" y="492.0" class="cb-node-layer">testing</text><text x="54.0" y="508.0" class="cb-node-sym">BSB_AES_CFB_H</text><text x="54.0" y="522.0" class="cb-node-sym">aes256_cfb_encrypt</text><text x="54.0" y="536.0" class="cb-node-sym">aes256_cfb_decrypt</text><text x="54.0" y="550.0" class="cb-node-sub">+2 more</text></a></g></svg></div>
+<div class="cb-wrap"><svg id="cb-diagram" class="cb-diagram" viewBox="0 0 7070 610" role="img" aria-label="Component diagram"><defs><marker id="cb-diagram-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M7030.0 305.0 C7080.0 305.0 6230.0 206.0 6280.0 206.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:4.8"/><text x="6655.0" y="247.5" class="cb-edge-label">calls into</text><text x="6655.0" y="261.5" class="cb-edge-sub">7 calls · 2 imports</text><path d="M7030.0 305.0 C7080.0 305.0 6230.0 404.0 6280.0 404.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:2.5"/><text x="6655.0" y="346.5" class="cb-edge-label">depends on</text><text x="6655.0" y="360.5" class="cb-edge-sub">0 calls · 1 imports</text><path d="M6550.0 206.0 C6655.0 206.0 6655.0 305.0 6760.0 305.0" class="cb-edge" marker-end="url(#cb-diagram-arrow)" style="stroke-width:5.0"/><text x="6655.0" y="247.5" class="cb-edge-label">depends on</text><text x="6655.0" y="261.5" class="cb-edge-sub">0 calls · 11 imports</text><g class="cb-node linked hub" data-desc="include: cJSON groups 11 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t."><a href="#comp-1"><rect x="6760.0" y="238.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="3"/><text x="6774.0" y="262.0" class="cb-node-label">include: cJSON</text><text x="6774.0" y="278.0" class="cb-node-sub">11 files · 494 symbols</text><circle cx="6780.0" cy="290.0" r="4" fill="#94a3b8"/><text x="6790.0" y="294.0" class="cb-node-layer">utility</text><text x="6774.0" y="310.0" class="cb-node-sym">BEACON_COMMON_H</text><text x="6774.0" y="324.0" class="cb-node-sym">_GNU_SOURCE</text><text x="6774.0" y="338.0" class="cb-node-sym">BSB_OUTPUT_BUFFER_DEFAU…</text><text x="6774.0" y="352.0" class="cb-node-sub">+198 more</text><text x="7016.0" y="258.0" class="cb-node-hub">HUB</text></a></g><g class="cb-node linked" data-desc="root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-2"><rect x="6280.0" y="139.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="3"/><text x="6294.0" y="163.0" class="cb-node-label">root</text><text x="6294.0" y="179.0" class="cb-node-sub">10 files · 287 symbols</text><circle cx="6300.0" cy="191.0" r="4" fill="#94a3b8"/><text x="6310.0" y="195.0" class="cb-node-layer">utility</text><text x="6294.0" y="211.0" class="cb-node-sym">_AES_H_</text><text x="6294.0" y="225.0" class="cb-node-sym">CBC</text><text x="6294.0" y="239.0" class="cb-node-sym">ECB</text><text x="6294.0" y="253.0" class="cb-node-sub">+115 more</text></a></g><g class="cb-node" data-desc="bof/include groups 7 files (c, h) around go, BSB_BOF_BEACON_API_H, CALLBACK_OUTPUT, CALLBACK_ERROR, CALLBACK_OUTPUT_OEM. datap: Argument parser."><a href="#comp-3"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">bof/include</text><text x="54.0" y="80.0" class="cb-node-sub">7 files · 73 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">go</text><text x="54.0" y="126.0" class="cb-node-sym">BSB_BOF_BEACON_API_H</text><text x="54.0" y="140.0" class="cb-node-sym">CALLBACK_OUTPUT</text><text x="54.0" y="154.0" class="cb-node-sub">+65 more</text></a></g><g class="cb-node" data-desc="include: server groups 3 files (py) around _deep_merge, load_config, load_runtime_config, compute_hmac, verify_hmac. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand..."><a href="#comp-4"><rect x="40.0" y="238.0" width="270" height="134" rx="10" stroke="#fbbf24" stroke-width="2.5"/><text x="54.0" y="262.0" class="cb-node-label">include: server</text><text x="54.0" y="278.0" class="cb-node-sub">3 files · 32 symbols</text><circle cx="60.0" cy="290.0" r="4" fill="#fbbf24"/><text x="70.0" y="294.0" class="cb-node-layer">infrastructure</text><text x="54.0" y="310.0" class="cb-node-sym">_deep_merge</text><text x="54.0" y="324.0" class="cb-node-sym">load_config</text><text x="54.0" y="338.0" class="cb-node-sym">load_runtime_config</text><text x="54.0" y="352.0" class="cb-node-sub">+28 more</text></a></g><g class="cb-node" data-desc="include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAULT, BSB_CONFIG_PATH_ENV, BSB_MAX_URL, BSB_MAX_URI. slurp: declared in the schema."><a href="#comp-5"><rect x="6280.0" y="337.0" width="270" height="134" rx="10" stroke="#fbbf24" stroke-width="2.5"/><text x="6294.0" y="361.0" class="cb-node-label">include: config</text><text x="6294.0" y="377.0" class="cb-node-sub">3 files · 42 symbols</text><circle cx="6300.0" cy="389.0" r="4" fill="#fbbf24"/><text x="6310.0" y="393.0" class="cb-node-layer">infrastructure</text><text x="6294.0" y="409.0" class="cb-node-sym">BSB_CONFIG_H</text><text x="6294.0" y="423.0" class="cb-node-sym">BSB_CONFIG_PATH_DEFAULT</text><text x="6294.0" y="437.0" class="cb-node-sym">BSB_CONFIG_PATH_ENV</text><text x="6294.0" y="451.0" class="cb-node-sub">+36 more</text></a></g><g class="cb-node" data-desc="include: aes_cfb groups 2 files (c, h) around BSB_AES_CFB_H, aes256_cfb_encrypt, aes256_cfb_decrypt, hex_to_bytes, main."><a href="#comp-6"><rect x="40.0" y="436.0" width="270" height="134" rx="10" stroke="#fb923c" stroke-width="2.5"/><text x="54.0" y="460.0" class="cb-node-label">include: aes_cfb</text><text x="54.0" y="476.0" class="cb-node-sub">2 files · 5 symbols</text><circle cx="60.0" cy="488.0" r="4" fill="#fb923c"/><text x="70.0" y="492.0" class="cb-node-layer">testing</text><text x="54.0" y="508.0" class="cb-node-sym">BSB_AES_CFB_H</text><text x="54.0" y="522.0" class="cb-node-sym">aes256_cfb_encrypt</text><text x="54.0" y="536.0" class="cb-node-sym">aes256_cfb_decrypt</text><text x="54.0" y="550.0" class="cb-node-sub">+2 more</text></a></g></svg></div>
 <h2>Details</h2>
-<p>Static architecture map of 52 files (c, h, py, sh) in 7 components: root, include: cJSON, bof/include, include: server, include: aes, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.</p>
+<p>Static architecture map of 52 files (c, h, py, sh) in 6 components: include: cJSON, root, bof/include, include: server, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.</p>
 <h2>Relations</h2>
 <ul class="rellist">
-<li><b>root</b> depends on <b>include: cJSON</b> — 11 imports, 0 calls across the boundary
-</li>
-<li><b>include: cJSON</b> calls into <b>root</b> — 1 imports, 2 calls across the boundary
-<br><code>beacons/v3/beacon.c::_GNU_SOURCE@26 → beacon6.c::is_prime</code> · <code>beacons/v3/beacon.c::compute_primes@40 → beacon6.c::is_prime</code>
-</li>
-<li><b>include: cJSON</b> depends on <b>include: aes</b> — 1 imports, 0 calls across the boundary
+<li><b>include: cJSON</b> calls into <b>root</b> — 2 imports, 7 calls across the boundary
+<br><code>beacons/v3/beacon.c::_GNU_SOURCE@26 → beacon6.c::is_prime</code> · <code>beacons/v3/beacon.c::compute_primes@40 → beacon6.c::is_prime</code> · <code>include/aes.c::__attribute__@57 → aes.c::Td0</code>
 </li>
 <li><b>include: cJSON</b> depends on <b>include: config</b> — 1 imports, 0 calls across the boundary
 </li>
-<li><b>include: aes</b> calls into <b>root</b> — 2 imports, 5 calls across the boundary
-<br><code>include/aes.c::__attribute__@57 → aes.c::Td0</code> · <code>include/aes.c::__attribute__@58 → aes.c::Td1</code> · <code>include/aes.c::__attribute__@59 → aes.c::Td2</code>
+<li><b>root</b> depends on <b>include: cJSON</b> — 11 imports, 0 calls across the boundary
 </li>
 </ul>
 <section class="component" id="comp-1">
-<h3>root (1)
+<h3>include: cJSON (1)
  <a href="#comp-1-children">[Expand]</a>
+</h3>
+<p>include: cJSON groups 11 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.</p>
+<h4>Related Classes/Methods:</h4>
+<ul class="references">
+<li><code>include/beacon_common.h::BEACON_COMMON_H#L13-L14</code></li>
+<li><code>include/beacon_common.h::_GNU_SOURCE#L15-L25</code></li>
+<li><code>include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT</code></li>
+<li><code>include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER#L27-L31</code></li>
+<li><code>include/beacon_common.h::http_response_t#L32-L38</code></li>
+<li><code>include/beacon_common.h::Trampoline#L39-L47</code></li>
+<li><code>include/beacon_common.h::SymbolResolver#L48-L53</code></li>
+<li><code>include/beacon_common.h::TrampolineCache#L54-L59</code></li>
+</ul>
+<h4 id="comp-1-children">Sub-components</h4>
+<div class="cb-wrap"><svg id="cb-sub-comp-1" class="cb-diagram" viewBox="0 0 1310 214" role="img" aria-label="Component diagram"><defs><marker id="cb-sub-comp-1-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M310.0 107.0 C415.0 107.0 415.0 107.0 520.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-1-arrow)" style="stroke-width:5.0"/><text x="415.0" y="99.0" class="cb-edge-label">calls into</text><text x="415.0" y="113.0" class="cb-edge-sub">50 calls · 3 imports</text><path d="M310.0 107.0 C655.0 107.0 655.0 107.0 1000.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-1-arrow)" style="stroke-width:3.5"/><text x="655.0" y="99.0" class="cb-edge-label">depends on</text><text x="655.0" y="113.0" class="cb-edge-sub">0 calls · 3 imports</text><path d="M790.0 107.0 C895.0 107.0 895.0 107.0 1000.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-1-arrow)" style="stroke-width:3.1"/><text x="895.0" y="99.0" class="cb-edge-label">depends on</text><text x="895.0" y="113.0" class="cb-edge-sub">0 calls · 2 imports</text><g class="cb-node" data-desc="beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE."><a href="#comp-1-1"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">beacons</text><text x="54.0" y="80.0" class="cb-node-sub">3 files · 22 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">_GNU_SOURCE</text><text x="54.0" y="126.0" class="cb-node-sym">report_result</text><text x="54.0" y="140.0" class="cb-node-sym">execute_command</text><text x="54.0" y="154.0" class="cb-node-sub">+11 more</text></a></g><g class="cb-node" data-desc="include groups 6 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-1-2"><rect x="520.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="534.0" y="64.0" class="cb-node-label">include</text><text x="534.0" y="80.0" class="cb-node-sub">6 files · 310 symbols</text><circle cx="540.0" cy="92.0" r="4" fill="#94a3b8"/><text x="550.0" y="96.0" class="cb-node-layer">utility</text><text x="534.0" y="112.0" class="cb-node-sym">BEACON_COMMON_H</text><text x="534.0" y="126.0" class="cb-node-sym">_GNU_SOURCE</text><text x="534.0" y="140.0" class="cb-node-sym">BSB_OUTPUT_BUFFER_DEFAU…</text><text x="534.0" y="154.0" class="cb-node-sub">+185 more</text></a></g><g class="cb-node" data-desc="root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using..."><a href="#comp-1-3"><rect x="1000.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="1014.0" y="64.0" class="cb-node-label">root</text><text x="1014.0" y="80.0" class="cb-node-sub">2 files · 162 symbols</text><circle cx="1020.0" cy="92.0" r="4" fill="#94a3b8"/><text x="1030.0" y="96.0" class="cb-node-layer">utility</text><text x="1014.0" y="112.0" class="cb-node-sym">cJSON__h</text><text x="1014.0" y="126.0" class="cb-node-sym">next</text><text x="1014.0" y="140.0" class="cb-node-sym">__WINDOWS__</text><text x="1014.0" y="154.0" class="cb-node-sub">+82 more</text></a></g></svg></div>
+<h5 id="comp-1-1">beacons (1.1)</h5>
+<p>beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE.</p>
+<h5 id="comp-1-2">include (1.2)</h5>
+<p>include groups 6 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)</p>
+<h5 id="comp-1-3">root (1.3)</h5>
+<p>root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using...</p>
+<h4>Files</h4>
+<ul class="references">
+<li><code>beacons/v1/beacon.c</code></li>
+<li><code>beacons/v2/beacon.c</code></li>
+<li><code>beacons/v3/beacon.c</code></li>
+<li><code>cJSON.c</code></li>
+<li><code>cJSON.h</code></li>
+<li><code>include/aes.c</code></li>
+<li><code>include/aes.h</code></li>
+<li><code>include/beacon_common.c</code></li>
+<li><code>include/beacon_common.h</code></li>
+<li><code>include/cJSON.c</code></li>
+<li><code>include/cJSON.h</code></li>
+</ul>
+</section>
+<section class="component" id="comp-2">
+<h3>root (2)
+ <a href="#comp-2-children">[Expand]</a>
 </h3>
 <p>root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)</p>
 <h4>Related Classes/Methods:</h4>
@@ -102,11 +136,11 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 <li><code>aes.h::AES_KEYLEN</code></li>
 <li><code>aes.h::AES_keyExpSize#L24-L25</code></li>
 </ul>
-<h4 id="comp-1-children">Sub-components</h4>
-<div class="cb-wrap"><svg id="cb-sub-comp-1" class="cb-diagram" viewBox="0 0 830 214" role="img" aria-label="Component diagram"><defs><marker id="cb-sub-comp-1-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M310.0 107.0 C415.0 107.0 415.0 107.0 520.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-1-arrow)" style="stroke-width:3.1"/><text x="415.0" y="99.0" class="cb-edge-label">depends on</text><text x="415.0" y="113.0" class="cb-edge-sub">0 calls · 2 imports</text><g class="cb-node" data-desc="beacons groups 1 files (c) around _GNU_SOURCE, C2, CLIENT_ID, MALEABLE, USER_AGENTS_COUNT. MemoryStruct: === ESTRUCTURAS ==="><a href="#comp-1-1"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">beacons</text><text x="54.0" y="80.0" class="cb-node-sub">1 files · 28 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">_GNU_SOURCE</text><text x="54.0" y="126.0" class="cb-node-sym">C2</text><text x="54.0" y="140.0" class="cb-node-sym">CLIENT_ID</text><text x="54.0" y="154.0" class="cb-node-sub">+25 more</text></a></g><g class="cb-node" data-desc="root groups 9 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-1-2"><rect x="520.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="534.0" y="64.0" class="cb-node-label">root</text><text x="534.0" y="80.0" class="cb-node-sub">9 files · 259 symbols</text><circle cx="540.0" cy="92.0" r="4" fill="#94a3b8"/><text x="550.0" y="96.0" class="cb-node-layer">utility</text><text x="534.0" y="112.0" class="cb-node-sym">_AES_H_</text><text x="534.0" y="126.0" class="cb-node-sym">CBC</text><text x="534.0" y="140.0" class="cb-node-sym">ECB</text><text x="534.0" y="154.0" class="cb-node-sub">+115 more</text></a></g></svg></div>
-<h5 id="comp-1-1">beacons (1.1)</h5>
+<h4 id="comp-2-children">Sub-components</h4>
+<div class="cb-wrap"><svg id="cb-sub-comp-2" class="cb-diagram" viewBox="0 0 830 214" role="img" aria-label="Component diagram"><defs><marker id="cb-sub-comp-2-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M310.0 107.0 C415.0 107.0 415.0 107.0 520.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-2-arrow)" style="stroke-width:3.1"/><text x="415.0" y="99.0" class="cb-edge-label">depends on</text><text x="415.0" y="113.0" class="cb-edge-sub">0 calls · 2 imports</text><g class="cb-node" data-desc="beacons groups 1 files (c) around _GNU_SOURCE, C2, CLIENT_ID, MALEABLE, USER_AGENTS_COUNT. MemoryStruct: === ESTRUCTURAS ==="><a href="#comp-2-1"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">beacons</text><text x="54.0" y="80.0" class="cb-node-sub">1 files · 28 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">_GNU_SOURCE</text><text x="54.0" y="126.0" class="cb-node-sym">C2</text><text x="54.0" y="140.0" class="cb-node-sym">CLIENT_ID</text><text x="54.0" y="154.0" class="cb-node-sub">+25 more</text></a></g><g class="cb-node" data-desc="root groups 9 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)"><a href="#comp-2-2"><rect x="520.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="534.0" y="64.0" class="cb-node-label">root</text><text x="534.0" y="80.0" class="cb-node-sub">9 files · 259 symbols</text><circle cx="540.0" cy="92.0" r="4" fill="#94a3b8"/><text x="550.0" y="96.0" class="cb-node-layer">utility</text><text x="534.0" y="112.0" class="cb-node-sym">_AES_H_</text><text x="534.0" y="126.0" class="cb-node-sym">CBC</text><text x="534.0" y="140.0" class="cb-node-sym">ECB</text><text x="534.0" y="154.0" class="cb-node-sub">+115 more</text></a></g></svg></div>
+<h5 id="comp-2-1">beacons (2.1)</h5>
 <p>beacons groups 1 files (c) around _GNU_SOURCE, C2, CLIENT_ID, MALEABLE, USER_AGENTS_COUNT. MemoryStruct: === ESTRUCTURAS ===</p>
-<h5 id="comp-1-2">root (1.2)</h5>
+<h5 id="comp-2-2">root (2.2)</h5>
 <p>root groups 9 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)</p>
 <h4>Files</h4>
 <ul class="references">
@@ -120,43 +154,6 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 <li><code>beacons/v1/gopher_beacon.c</code></li>
 <li><code>bof.c</code></li>
 <li><code>gopher_beacon.c</code></li>
-</ul>
-</section>
-<section class="component" id="comp-2">
-<h3>include: cJSON (2)
- <a href="#comp-2-children">[Expand]</a>
-</h3>
-<p>include: cJSON groups 9 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.</p>
-<h4>Related Classes/Methods:</h4>
-<ul class="references">
-<li><code>include/beacon_common.h::BEACON_COMMON_H#L13-L14</code></li>
-<li><code>include/beacon_common.h::_GNU_SOURCE#L15-L25</code></li>
-<li><code>include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT</code></li>
-<li><code>include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER#L27-L31</code></li>
-<li><code>include/beacon_common.h::http_response_t#L32-L38</code></li>
-<li><code>include/beacon_common.h::Trampoline#L39-L47</code></li>
-<li><code>include/beacon_common.h::SymbolResolver#L48-L53</code></li>
-<li><code>include/beacon_common.h::TrampolineCache#L54-L59</code></li>
-</ul>
-<h4 id="comp-2-children">Sub-components</h4>
-<div class="cb-wrap"><svg id="cb-sub-comp-2" class="cb-diagram" viewBox="0 0 1310 214" role="img" aria-label="Component diagram"><defs><marker id="cb-sub-comp-2-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" class="cb-arrow"/></marker></defs><path d="M310.0 107.0 C415.0 107.0 415.0 107.0 520.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-2-arrow)" style="stroke-width:5.0"/><text x="415.0" y="99.0" class="cb-edge-label">calls into</text><text x="415.0" y="113.0" class="cb-edge-sub">51 calls · 3 imports</text><path d="M310.0 107.0 C655.0 107.0 655.0 107.0 1000.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-2-arrow)" style="stroke-width:3.5"/><text x="655.0" y="99.0" class="cb-edge-label">depends on</text><text x="655.0" y="113.0" class="cb-edge-sub">0 calls · 3 imports</text><path d="M790.0 107.0 C895.0 107.0 895.0 107.0 1000.0 107.0" class="cb-edge" marker-end="url(#cb-sub-comp-2-arrow)" style="stroke-width:3.1"/><text x="895.0" y="99.0" class="cb-edge-label">depends on</text><text x="895.0" y="113.0" class="cb-edge-sub">0 calls · 2 imports</text><g class="cb-node" data-desc="beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE."><a href="#comp-2-1"><rect x="40.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="54.0" y="64.0" class="cb-node-label">beacons</text><text x="54.0" y="80.0" class="cb-node-sub">3 files · 22 symbols</text><circle cx="60.0" cy="92.0" r="4" fill="#94a3b8"/><text x="70.0" y="96.0" class="cb-node-layer">utility</text><text x="54.0" y="112.0" class="cb-node-sym">_GNU_SOURCE</text><text x="54.0" y="126.0" class="cb-node-sym">report_result</text><text x="54.0" y="140.0" class="cb-node-sym">execute_command</text><text x="54.0" y="154.0" class="cb-node-sub">+11 more</text></a></g><g class="cb-node" data-desc="include groups 4 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. MemoryStruct: if (g_cache_count &gt;= g_cache_capacity) { size_t new_cap =..."><a href="#comp-2-2"><rect x="520.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="534.0" y="64.0" class="cb-node-label">include</text><text x="534.0" y="80.0" class="cb-node-sub">4 files · 246 symbols</text><circle cx="540.0" cy="92.0" r="4" fill="#94a3b8"/><text x="550.0" y="96.0" class="cb-node-layer">utility</text><text x="534.0" y="112.0" class="cb-node-sym">BEACON_COMMON_H</text><text x="534.0" y="126.0" class="cb-node-sym">_GNU_SOURCE</text><text x="534.0" y="140.0" class="cb-node-sym">BSB_OUTPUT_BUFFER_DEFAU…</text><text x="534.0" y="154.0" class="cb-node-sub">+146 more</text></a></g><g class="cb-node" data-desc="root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using..."><a href="#comp-2-3"><rect x="1000.0" y="40.0" width="270" height="134" rx="10" stroke="#94a3b8" stroke-width="2.5"/><text x="1014.0" y="64.0" class="cb-node-label">root</text><text x="1014.0" y="80.0" class="cb-node-sub">2 files · 162 symbols</text><circle cx="1020.0" cy="92.0" r="4" fill="#94a3b8"/><text x="1030.0" y="96.0" class="cb-node-layer">utility</text><text x="1014.0" y="112.0" class="cb-node-sym">cJSON__h</text><text x="1014.0" y="126.0" class="cb-node-sym">next</text><text x="1014.0" y="140.0" class="cb-node-sym">__WINDOWS__</text><text x="1014.0" y="154.0" class="cb-node-sub">+82 more</text></a></g></svg></div>
-<h5 id="comp-2-1">beacons (2.1)</h5>
-<p>beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE.</p>
-<h5 id="comp-2-2">include (2.2)</h5>
-<p>include groups 4 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. MemoryStruct: if (g_cache_count &gt;= g_cache_capacity) { size_t new_cap =...</p>
-<h5 id="comp-2-3">root (2.3)</h5>
-<p>root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using...</p>
-<h4>Files</h4>
-<ul class="references">
-<li><code>beacons/v1/beacon.c</code></li>
-<li><code>beacons/v2/beacon.c</code></li>
-<li><code>beacons/v3/beacon.c</code></li>
-<li><code>cJSON.c</code></li>
-<li><code>cJSON.h</code></li>
-<li><code>include/beacon_common.c</code></li>
-<li><code>include/beacon_common.h</code></li>
-<li><code>include/cJSON.c</code></li>
-<li><code>include/cJSON.h</code></li>
 </ul>
 </section>
 <section class="component" id="comp-3">
@@ -208,29 +205,7 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 </ul>
 </section>
 <section class="component" id="comp-5">
-<h3>include: aes (5)
-</h3>
-<p>include: aes groups 3 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)</p>
-<h4>Related Classes/Methods:</h4>
-<ul class="references">
-<li><code>include/aes.h::_AES_H_#L2-L8</code></li>
-<li><code>include/aes.h::CBC#L9-L11</code></li>
-<li><code>include/aes.h::ECB#L12-L14</code></li>
-<li><code>include/aes.h::CTR#L15-L17</code></li>
-<li><code>include/aes.h::AES256#L18-L19</code></li>
-<li><code>include/aes.h::AES_BLOCKLEN#L20-L22</code></li>
-<li><code>include/aes.h::AES_KEYLEN</code></li>
-<li><code>include/aes.h::AES_keyExpSize#L24-L25</code></li>
-</ul>
-<h4>Files</h4>
-<ul class="references">
-<li><code>include/aes.c</code></li>
-<li><code>include/aes.h</code></li>
-<li><code>include/aes_cfb.c</code></li>
-</ul>
-</section>
-<section class="component" id="comp-6">
-<h3>include: config (6)
+<h3>include: config (5)
 </h3>
 <p>include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAULT, BSB_CONFIG_PATH_ENV, BSB_MAX_URL, BSB_MAX_URI. slurp: declared in the schema.</p>
 <h4>Related Classes/Methods:</h4>
@@ -251,8 +226,8 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 <li><code>tests/config_harness.c</code></li>
 </ul>
 </section>
-<section class="component" id="comp-7">
-<h3>include: aes_cfb (7)
+<section class="component" id="comp-6">
+<h3>include: aes_cfb (6)
 </h3>
 <p>include: aes_cfb groups 2 files (c, h) around BSB_AES_CFB_H, aes256_cfb_encrypt, aes256_cfb_decrypt, hex_to_bytes, main.</p>
 <h4>Related Classes/Methods:</h4>
@@ -269,7 +244,7 @@ footer{color:var(--cb-muted);font-size:12px;margin:24px 0}
 <li><code>tests/crypto_harness.c</code></li>
 </ul>
 </section>
-<footer>Generated offline from static analysis &middot; c9be1916069d</footer>
+<footer>Generated offline from static analysis &middot; 6f8427c88dfd</footer>
 </main>
 <div id="cb-tip" role="tooltip"></div>
 <script>

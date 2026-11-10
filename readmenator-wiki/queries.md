@@ -8,7 +8,7 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: What does aes.h depend on, and what depends on it? (10 connections)
+### Q: What does aes.h depend on, and what depends on it? (9 connections)
 
 - Status: unanswered
 
@@ -16,7 +16,7 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: How are the 10 files in 'root' related to each other?
+### Q: How are the 11 files in 'include: cJSON' related to each other?
 
 - Status: unanswered
 

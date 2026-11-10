@@ -58,12 +58,11 @@ This community groups 7 file(s) rooted at `bof/include` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).
-- [INFERRED] shares_context community 1 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 1 (include: cJSON) and community 2 (bof/include).
-- [INFERRED] shares_context community 2 <-> 4 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 2 (bof/include) and community 4 (include: aes).
-- [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: config).
-- [INFERRED] shares_context community 2 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 2 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 7 (orphans).
+- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (include: cJSON) and community 2 (bof/include).
+- [INFERRED] shares_context community 1 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 1 (root) and community 2 (bof/include).
+- [INFERRED] shares_context community 2 <-> 4 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 4 (include: config).
+- [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: aes_cfb).
+- [INFERRED] shares_context community 2 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 6 (orphans).
 
 ## Risks
 

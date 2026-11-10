@@ -32,8 +32,8 @@
 | `gopher_beacon.c` | MemoryStruct: === ESTRUCTURAS === | root | 28 | 0 |
 | `gopher_c2.py` | - | root | 5 | 0 |
 | `include/aes.c` | tiny-AES-c (https://github.com/kokke/tiny-AES-c) | include | 43 | 0 |
-| `include/aes.h` | #define the macros below to 1/0 to enable/disable the mode of operation. | include | 21 | 3 |
-| `include/aes_cfb.c` | - | include | 2 | 0 |
+| `include/aes.h` | #define the macros below to 1/0 to enable/disable the mode of operation. | include | 21 | 2 |
+| `include/aes_cfb.c` | _bsb_evp_crypt: Shared AES-256-CFB primitive (OpenSSL EVP) — mirrors the CFB128 implementation... | include | 4 | 0 |
 | `include/aes_cfb.h` | - | include | 3 | 1 |
 | `include/beacon.h` | Tipos de callback  Estructura para parsing de datos (opcional, para comandos complejos) | include | 13 | 0 |
 | `include/beacon_common.c` | MemoryStruct: if (g_cache_count >= g_cache_capacity) { size_t new_cap = g_cache_capacity ?... | include | 27 | 0 |

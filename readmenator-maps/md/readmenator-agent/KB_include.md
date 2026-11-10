@@ -76,17 +76,20 @@
   - `AES_keyExpSize` (macro, line 27) `#define AES_keyExpSize`
   - `AES_KEYLEN` (macro, line 29) `#define AES_KEYLEN`
   - `AES_keyExpSize` (macro, line 30) `#define AES_keyExpSize`
-- Imported by: `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`
+- Imported by: `include/aes.c`, `include/beacon_common.c`
 
 ## include/aes_cfb.c
+- Doc: _bsb_evp_crypt: Shared AES-256-CFB primitive (OpenSSL EVP) — mirrors the CFB128 implementation...
 - Layer: utility
 - Language: c
 - Symbols:
-  - `aes256_cfb_encrypt` (function, line 20) `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,
+  - `_bsb_evp_crypt` (function, line 17) `static unsigned char* _bsb_evp_crypt(const unsigned char* key, const unsigned char* iv,
+         ...`
+  - `aes256_cfb_encrypt` (function, line 38) `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,
             ...`
-  - `aes256_cfb_decrypt` (function, line 48) `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,
+  - `aes256_cfb_decrypt` (function, line 43) `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,
             ...`
-- Depends on: `include/aes.h`
+  - `EVP_EncryptUpdate` (function, line 27) `&& EVP_EncryptUpdate(ctx, buffer, &outl, data, (int)len) == 1 && EVP_EncryptFinal_ex(ctx, buffer + outl, &outl2) ==...`
 
 ## include/aes_cfb.h
 - Layer: utility

@@ -119,7 +119,7 @@
         "tests/test_c2_http_e2e.py",
         "tests/test_crypto.py"
       ],
-      "mentions": 91,
+      "mentions": 92,
       "confidence": "EXTRACTED"
     },
     {
@@ -144,7 +144,7 @@
         "tests/test_c2_server.py",
         "tests/test_crypto.py"
       ],
-      "mentions": 29,
+      "mentions": 30,
       "confidence": "EXTRACTED"
     },
     {
@@ -241,7 +241,7 @@
         "tests/test_c2_http_e2e.py",
         "tests/test_c2_server.py"
       ],
-      "mentions": 23,
+      "mentions": 24,
       "confidence": "EXTRACTED"
     },
     {
@@ -426,7 +426,7 @@
         "include/beacon_common.h",
         "tests/test_crypto.py"
       ],
-      "mentions": 35,
+      "mentions": 36,
       "confidence": "EXTRACTED"
     },
     {
@@ -502,6 +502,24 @@
         "tests/test_install_deploy.py"
       ],
       "mentions": 119,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "bsb",
+      "files": [
+        "bof/include/beacon_api.h",
+        "bof/include/syscalls.h",
+        "c2/server.py",
+        "include/aes_cfb.c",
+        "include/aes_cfb.h",
+        "include/beacon_common.c",
+        "include/beacon_common.h",
+        "include/config.c",
+        "include/config.h",
+        "include/config_py.py",
+        "tests/test_config.py"
+      ],
+      "mentions": 78,
       "confidence": "EXTRACTED"
     },
     {
@@ -609,23 +627,6 @@
         "include/config.c"
       ],
       "mentions": 207,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "bsb",
-      "files": [
-        "bof/include/beacon_api.h",
-        "bof/include/syscalls.h",
-        "c2/server.py",
-        "include/aes_cfb.h",
-        "include/beacon_common.c",
-        "include/beacon_common.h",
-        "include/config.c",
-        "include/config.h",
-        "include/config_py.py",
-        "tests/test_config.py"
-      ],
-      "mentions": 77,
       "confidence": "EXTRACTED"
     },
     {
@@ -2319,25 +2320,6 @@
       ]
     },
     {
-      "source": "aes",
-      "target": "size",
-      "verb": "depends_on",
-      "strength": 0.44,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
       "source": "aes256",
       "target": "int",
       "verb": "depends_on",
@@ -2681,26 +2663,7 @@
     },
     {
       "source": "aes",
-      "target": "aes256",
-      "verb": "consumes",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/gopher_beacon.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->aes.h",
-        "include/aes_cfb.c->aes.h",
-        "include/beacon_common.c->aes.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "aes256",
+      "target": "size",
       "verb": "depends_on",
       "strength": 0.4,
       "confidence": "INFERRED",
@@ -2712,166 +2675,204 @@
         "beacon_p2p.c->aes.h",
         "gopher_beacon.c->aes.h",
         "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
         "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "buffer",
-      "verb": "consumes",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/gopher_beacon.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->aes.h",
-        "include/aes_cfb.c->aes.h",
-        "include/beacon_common.c->aes.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "buffer",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "decrypt",
-      "verb": "consumes",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/gopher_beacon.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->aes.h",
-        "include/aes_cfb.c->aes.h",
-        "include/beacon_common.c->aes.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "decrypt",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "encrypt",
-      "verb": "consumes",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/gopher_beacon.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->aes.h",
-        "include/aes_cfb.c->aes.h",
-        "include/beacon_common.c->aes.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "encrypt",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "key",
-      "verb": "consumes",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/gopher_beacon.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->aes.h",
-        "include/aes_cfb.c->aes.h",
-        "include/beacon_common.c->aes.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "key",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
         "include/beacon_common.h->include/config.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "aes256",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->aes.h",
+        "beacon5.c->aes.h",
+        "beacon6.c->aes.h",
+        "beacon_p2p.c->aes.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "gopher_beacon.c->aes.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "api",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->beacon.h",
+        "beacon5.c->beacon.h",
+        "beacon6.c->beacon.h",
+        "beacon_p2p.c->beacon.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "gopher_beacon.c->beacon.h",
+        "include/beacon_common.c->include/beacon_common.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "const",
+      "verb": "consumes",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->cJSON.h",
+        "beacon5.c->cJSON.h",
+        "beacon6.c->cJSON.h",
+        "beacon_p2p.c->cJSON.h",
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v1/gopher_beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "gopher_beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "data",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->beacon.h",
+        "beacon5.c->beacon.h",
+        "beacon6.c->beacon.h",
+        "beacon_p2p.c->beacon.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "gopher_beacon.c->beacon.h",
+        "include/beacon_common.c->include/beacon_common.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "decrypt",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->aes.h",
+        "beacon5.c->aes.h",
+        "beacon6.c->aes.h",
+        "beacon_p2p.c->aes.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "gopher_beacon.c->aes.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "encrypt",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->aes.h",
+        "beacon5.c->aes.h",
+        "beacon6.c->aes.h",
+        "beacon_p2p.c->aes.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "gopher_beacon.c->aes.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "include",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "json",
+      "verb": "consumes",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->cJSON.h",
+        "beacon5.c->cJSON.h",
+        "beacon6.c->cJSON.h",
+        "beacon_p2p.c->cJSON.h",
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v1/gopher_beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "gopher_beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "next",
+      "verb": "consumes",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->cJSON.h",
+        "beacon5.c->cJSON.h",
+        "beacon6.c->cJSON.h",
+        "beacon_p2p.c->cJSON.h",
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v1/gopher_beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "gopher_beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "next",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacon3.c->cJSON.h",
+        "beacon5.c->cJSON.h",
+        "beacon6.c->cJSON.h",
+        "beacon_p2p.c->cJSON.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "gopher_beacon.c->cJSON.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h"
       ]
     }
   ],
   "dialectic": [
-    "Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `consumes` explicit?",
+    "Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `api` pulls 14 files with 8 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `attribute` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `base64` pulls 10 files with 10 shared (Jaccard 0.56); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
@@ -2879,7 +2880,7 @@
     "Thesis: `aes` centralizes 18 files; Antithesis: `client` pulls 12 files with 11 shared (Jaccard 0.58); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `create` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `decode` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `consumes` explicit?",
+    "Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `aes` centralizes 18 files; Antithesis: `elf` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
   ]
 }

@@ -234,8 +234,8 @@ Pages: [SYMBOLS.md](SYMBOLS.md), [SYMBOLS_p2.md](SYMBOLS_p2.md), [SYMBOLS_p3.md]
 | `send_to_c2_or_peer` | function | `beacon_p2p.c:968` | `char* send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)` |
 | `send_to_peer` | function | `beacon_p2p.c:935` | `char* send_to_peer(peer_t *peer, const char *data, int *out_len)` |
 | `_GNU_SOURCE` | macro | `beacons/v1/beacon.c:13` | `#define _GNU_SOURCE` |
-| `execute_command` | function | `beacons/v1/beacon.c:97` | `static char *execute_command(const bsb_config_t *cfg, const char *command)` |
-| `main` | function | `beacons/v1/beacon.c:146` | `int main(void)` |
+| `execute_command` | function | `beacons/v1/beacon.c:91` | `static char *execute_command(const bsb_config_t *cfg, const char *command)` |
+| `main` | function | `beacons/v1/beacon.c:140` | `int main(void)` |
 | `report_result` | function | `beacons/v1/beacon.c:24` | `static void report_result(const bsb_config_t *cfg,                            const char *command...` |
 | `BeaconOutput` | function | `beacons/v1/gopher_beacon.c:203` | `void BeaconOutput(int type, const char *data, int len)` |
 | `BeaconPrintf` | function | `beacons/v1/gopher_beacon.c:190` | `void BeaconPrintf(int type, const char *fmt, ...)` |

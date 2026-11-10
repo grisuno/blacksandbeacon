@@ -1,10 +1,10 @@
 # root
 
-*Community 0 | 10 files | cohesion 0.61*
+*Community 1 | 10 files | cohesion 0.64*
 
 ## Definition
 
-This community groups 10 file(s) rooted at `root` with dominant language c (cohesion 0.61). Central symbols: `AES256`, `AES_BLOCKLEN`, `AES_CBC_decrypt_buffer`, `AES_CBC_encrypt_buffer`, `AES_CTR_xcrypt_buffer`, `AES_ECB_decrypt`, `AES_ECB_encrypt`, `AES_KEYLEN`. Core file: `beacon_p2p.c` (49 symbols). Documented purpose: tiny-AES-c (https://github.com/kokke/tiny-AES-c).
+This community groups 10 file(s) rooted at `root` with dominant language c (cohesion 0.64). Central symbols: `AES256`, `AES_BLOCKLEN`, `AES_CBC_decrypt_buffer`, `AES_CBC_encrypt_buffer`, `AES_CTR_xcrypt_buffer`, `AES_ECB_decrypt`, `AES_ECB_encrypt`, `AES_KEYLEN`. Core file: `beacon_p2p.c` (49 symbols). Documented purpose: tiny-AES-c (https://github.com/kokke/tiny-AES-c).
 
 ## Files
 
@@ -61,11 +61,15 @@ This community groups 10 file(s) rooted at `root` with dominant language c (cohe
 
 ## Connections
 
-- [EXTRACTED] depends_on community 0 <-> 1 (strength 0.9): Extracted import edge crosses communities: beacon3.c imports cJSON.h.
-- [INFERRED] duplicates community 0 <-> 4 (strength 0.54): Inferred duplicated scope: communities 0 and 4 share 42 symbols (Jaccard 0.36), e.g. `AES256`, `AES_BLOCKLEN`, `AES_CBC_decrypt_buffer`, `AES_CBC_encrypt_buffer`, `AES_CTR_xcrypt_buffer`, `AES_ECB_decrypt`. Candidate for consolidation.
-- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).
-- [INFERRED] shares_context community 0 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (root) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 0 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 0 (root) and community 7 (orphans).
+- [EXTRACTED] depends_on community 1 <-> 0 (strength 0.9): Extracted import edge crosses communities: beacon3.c imports cJSON.h.
+- [INFERRED] shares_context community 1 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 1 (root) and community 2 (bof/include).
+- [INFERRED] shares_context community 1 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 1 (root) and community 5 (include: aes_cfb).
+- [INFERRED] shares_context community 1 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 1 (root) and community 6 (orphans).
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches include/config.c in 7 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches tests/config_harness.c in 7 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: beacon.h reaches include/config.c in 6 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: beacon.h reaches tests/config_harness.c in 6 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches include/config.h in 6 hops.
 
 ## Risks
 
@@ -89,7 +93,7 @@ This community groups 10 file(s) rooted at `root` with dominant language c (cohe
 
 - Why do 6 file(s) lack file-level docs (e.g. `beacon3.c`)? What purpose do they serve?
 - What would break if the most connected file in root changed?
-- Should root be split, given cohesion 0.61?
+- Should root be split, given cohesion 0.64?
 
 ## Sources
 

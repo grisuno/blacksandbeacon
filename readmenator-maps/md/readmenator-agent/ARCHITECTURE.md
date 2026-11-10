@@ -35,7 +35,6 @@
 - `gopher_beacon.c` -> `beacon.h`
 - `gopher_beacon.c` -> `cJSON.h`
 - `include/aes.c` -> `include/aes.h`
-- `include/aes_cfb.c` -> `include/aes.h`
 - `include/beacon_common.c` -> `include/aes.h`
 - `include/beacon_common.c` -> `include/beacon_common.h`
 - `include/beacon_common.c` -> `include/cJSON.h`
@@ -69,7 +68,7 @@
 - `gopher_c2.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, datetime, json, logging, os, socket, threading
 - `include/aes.c` -> string.h
 - `include/aes.h` -> stddef.h, stdint.h
-- `include/aes_cfb.c` -> stdlib.h, string.h
+- `include/aes_cfb.c` -> openssl/evp.h, stdlib.h
 - `include/aes_cfb.h` -> stddef.h
 - `include/beacon.h` -> stdarg.h, stdint.h
 - `include/beacon_common.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/hmac.h, openssl/rand.h, stdarg.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/wait.h, unistd.h

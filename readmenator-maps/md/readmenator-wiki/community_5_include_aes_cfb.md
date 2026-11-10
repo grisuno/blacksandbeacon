@@ -1,6 +1,6 @@
 # include: aes_cfb
 
-*Community 6 | 2 files | cohesion 1.00*
+*Community 5 | 2 files | cohesion 1.00*
 
 ## Definition
 
@@ -28,11 +28,10 @@ This community groups 2 file(s) rooted at `include` with dominant language h (co
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (root) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 1 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 1 (include: cJSON) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 2 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 4 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 4 (include: aes) and community 6 (include: aes_cfb).
-- [INFERRED] shares_context community 5 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 5 (include: config) and community 6 (include: aes_cfb).
+- [INFERRED] shares_context community 0 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (include: cJSON) and community 5 (include: aes_cfb).
+- [INFERRED] shares_context community 1 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 1 (root) and community 5 (include: aes_cfb).
+- [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: aes_cfb).
+- [INFERRED] shares_context community 4 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 4 (include: config) and community 5 (include: aes_cfb).
 
 ## Risks
 

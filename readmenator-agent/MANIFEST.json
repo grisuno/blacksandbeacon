@@ -1,19 +1,19 @@
 {
   "tool": "readmenator",
   "schema_version": 2,
-  "generated_at": "2026-10-17T00:30:54Z",
+  "generated_at": "2026-11-10T02:50:48Z",
   "project_root": ".",
   "project_name": "blacksandbeacon",
-  "git_commit": "515d3e0782d652d53dbe2fef009cbc2af5d956d3",
+  "git_commit": "2e53f8059ea9925bca12dcec0428e082fa88034d",
   "git_branch": "main",
-  "source_fingerprint": "c9be1916069d712e1ee6cacf7faac88434139b3ef2adc958a52347cc4abc7302",
+  "source_fingerprint": "6f8427c88dfd78b9eb68108c8a6aa4f69a14ac4b1a6d370b8f1744db2f1db35f",
   "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
   "files": 52,
-  "symbols": 1075,
-  "imports": 401,
+  "symbols": 1077,
+  "imports": 400,
   "calls": 926,
   "inherits": 0,
-  "resolved_imports": 43,
+  "resolved_imports": 42,
   "security_findings": 0,
   "languages": {
     "c": 29,
@@ -60,17 +60,17 @@
     {
       "path": "API_p2.md",
       "lines": 272,
-      "approx_tokens": 8824
+      "approx_tokens": 8856
     },
     {
       "path": "ARCHITECTURE.md",
-      "lines": 90,
-      "approx_tokens": 1580
+      "lines": 89,
+      "approx_tokens": 1571
     },
     {
       "path": "CONCEPTS.md",
       "lines": 120,
-      "approx_tokens": 3895
+      "approx_tokens": 3894
     },
     {
       "path": "GOTCHAS.md",
@@ -80,7 +80,7 @@
     {
       "path": "INDEX.md",
       "lines": 56,
-      "approx_tokens": 1219
+      "approx_tokens": 1243
     },
     {
       "path": "KB_bof_include.md",
@@ -94,8 +94,8 @@
     },
     {
       "path": "KB_include.md",
-      "lines": 459,
-      "approx_tokens": 9056
+      "lines": 462,
+      "approx_tokens": 9146
     },
     {
       "path": "KB_is_sudo.md",
@@ -155,12 +155,12 @@
     {
       "path": "SYMBOLS_p2.md",
       "lines": 500,
-      "approx_tokens": 13167
+      "approx_tokens": 13227
     },
     {
       "path": "SYMBOLS_p3.md",
-      "lines": 95,
-      "approx_tokens": 2172
+      "lines": 97,
+      "approx_tokens": 2198
     },
     {
       "path": "recipes/add-function.md",

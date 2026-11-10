@@ -3,7 +3,7 @@
  "format": "jsonl",
  "meta": {
   "modules": 43,
-  "entities": 844,
+  "entities": 845,
   "languages": {
    "c": 27,
    "h": 11,
@@ -14,7 +14,7 @@
    "class": 1,
    "constant": 9,
    "constructor": 1,
-   "function": 398,
+   "function": 399,
    "macro": 290,
    "module": 43,
    "struct": 62,
@@ -28,7 +28,7 @@
  "coverage": {
   "overall": {
    "documented": 278,
-   "total": 807,
+   "total": 808,
    "percent": 34.4
   },
   "by_kind": {
@@ -44,8 +44,8 @@
    },
    "function": {
     "documented": 161,
-    "total": 398,
-    "percent": 40.5
+    "total": 399,
+    "percent": 40.4
    },
    "macro": {
     "documented": 68,
@@ -226,8 +226,8 @@
    },
    "include/aes_cfb.c": {
     "documented": 1,
-    "total": 3,
-    "percent": 33.3
+    "total": 4,
+    "percent": 25.0
    },
    "include/aes_cfb.h": {
     "documented": 1,
@@ -445,7 +445,7 @@
   {
    "uid": "include/aes_cfb.c",
    "path": "modules/include.aes_cfb.c.jsonl",
-   "entities": 3
+   "entities": 4
   },
   {
    "uid": "include/aes_cfb.h",
@@ -505,7 +505,7 @@
  ],
  "warnings": {
   "path": "warnings.jsonl",
-  "total": 528
+  "total": 529
  },
  "usage": [
   "grep -h '\"name\":\"<Name>\"' readmenator-apidocs/api/modules/*.jsonl",

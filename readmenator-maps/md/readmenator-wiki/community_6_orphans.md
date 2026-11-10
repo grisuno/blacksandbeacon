@@ -1,10 +1,10 @@
 # orphans
 
-*Community 7 | 15 files | cohesion 0.00*
+*Community 6 | 16 files | cohesion 0.00*
 
 ## Definition
 
-This community groups 15 file(s) rooted at `tests` with dominant language py (cohesion 0.00). Central symbols: `AT_FDCWD`, `BEACON_API_H`, `BeaconDataExtract`, `BeaconDataInt`, `BeaconDataLength`, `BeaconDataParse`, `BeaconDataPtr`, `BeaconDataShort`. Core file: `bof/is_sudo/is_sudo.c` (17 symbols). Documented purpose: Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación: xx/xx/xxxx Licencia: GPL v3  Descripción:.
+This community groups 16 file(s) rooted at `tests` with dominant language py (cohesion 0.00). Central symbols: `AT_FDCWD`, `BEACON_API_H`, `BeaconDataExtract`, `BeaconDataInt`, `BeaconDataLength`, `BeaconDataParse`, `BeaconDataPtr`, `BeaconDataShort`. Core file: `bof/is_sudo/is_sudo.c` (17 symbols). Documented purpose: Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación: xx/xx/xxxx Licencia: GPL v3  Descripción:.
 
 ## Files
 
@@ -16,6 +16,7 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 | `bof/userenum/userenum.c` | c | utility | 13 | yes |
 | `bof/whoami/whoami.c` | c | utility | 14 | yes |
 | `gopher_c2.py` | py | utility | 5 | no |
+| `include/aes_cfb.c` | c | utility | 4 | no |
 | `include/beacon.h` | h | utility | 13 | yes |
 | `install.sh` | sh | utility | 0 | yes |
 | `issudo.c` | c | utility | 17 | yes |
@@ -66,11 +67,10 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 0 (root) and community 7 (orphans).
-- [INFERRED] shares_context community 1 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 1 (include: cJSON) and community 7 (orphans).
-- [INFERRED] shares_context community 2 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 7 (orphans).
-- [INFERRED] shares_context community 3 <-> 7 (strength 0.5): Inferred shared context (language py) with no import path between community 3 (include: server) and community 7 (orphans).
-- [INFERRED] shares_context community 4 <-> 7 (strength 0.5): Inferred shared context (layer utility) with no import path between community 4 (include: aes) and community 7 (orphans).
+- [INFERRED] shares_context community 0 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 0 (include: cJSON) and community 6 (orphans).
+- [INFERRED] shares_context community 1 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 1 (root) and community 6 (orphans).
+- [INFERRED] shares_context community 2 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 6 (orphans).
+- [INFERRED] shares_context community 3 <-> 6 (strength 0.5): Inferred shared context (language py) with no import path between community 3 (include: server) and community 6 (orphans).
 
 ## Risks
 
@@ -80,10 +80,11 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 - [taint high] `tests/test_crypto.py` -> `tests/test_crypto.py` via `subprocess` (0 hops)
 - [taint high] `tests/test_install_deploy.py` -> `tests/test_install_deploy.py` via `subprocess` (0 hops)
 - [dataflow UNCHECKED_ALLOC] `gopher_c2.py:129` `main` `sock`: Result of allocator stored in `sock` is never checked against NULL.
+- [dataflow DEAD_STORE] `include/aes_cfb.c:24` `_bsb_evp_crypt` `outl`: `outl` assigned at line 24 but never read afterwards.
 
 ## Open Questions
 
-- Why do 1 file(s) lack file-level docs (e.g. `gopher_c2.py`)? What purpose do they serve?
+- Why do 2 file(s) lack file-level docs (e.g. `gopher_c2.py`)? What purpose do they serve?
 - Is the dangerous import `subprocess` in `tests/test_beacon_build.py` still required, or can it be isolated?
 - What would break if the most connected file in orphans changed?
 - Should orphans be split, given cohesion 0.00?
@@ -96,6 +97,7 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 - `bof/userenum/userenum.c`
 - `bof/whoami/whoami.c`
 - `gopher_c2.py`
+- `include/aes_cfb.c`
 - `include/beacon.h`
 - `install.sh`
 - `issudo.c`

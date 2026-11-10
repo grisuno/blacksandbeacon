@@ -4,7 +4,7 @@
 
 ## Architecture Overview
 
-10 components stacked in 3 dependency tiers (weighted Eades-Lin-Smyth ordering: arrows point from dependent to dependency, top to bottom). Labels are import counts, thick arrows the top quartile; 0 transitively implied edges are omitted. Dashed red arrows are upward dependencies: the smallest set of imports that closes every cycle and breaks the layering. Cyan components hold entry points. Interactive version: `readmenator-apidocs/index.html#/flows`.
+9 components stacked in 3 dependency tiers (weighted Eades-Lin-Smyth ordering: arrows point from dependent to dependency, top to bottom). Labels are import counts, thick arrows the top quartile; 0 transitively implied edges are omitted. Dashed red arrows are upward dependencies: the smallest set of imports that closes every cycle and breaks the layering. Cyan components hold entry points. Interactive version: `readmenator-apidocs/index.html#/flows`.
 
 ```mermaid
 flowchart TB
@@ -12,28 +12,26 @@ flowchart TB
     classDef entry fill:#0e7490,stroke:#22d3ee,color:#ecfeff,stroke-width:2px;
     subgraph lane_0["Tier 1 - entry / orchestration"]
         direction LR
-        n_c0["root<br/>10 files, 287 symbols<br/>Core / utility"]:::default
-        n_d_include["include<br/>1 files, 13 symbols<br/>Core / utility"]:::default
+        n_c1["root<br/>10 files, 287 symbols<br/>Core / utility"]:::default
+        n_d_include["include<br/>2 files, 17 symbols<br/>Core / utility"]:::default
         n_d_bof["bof<br/>4 files, 56 symbols<br/>Core / utility"]:::default
         n_d__root_["(root)<br/>4 files, 22 symbols<br/>Core / utility"]:::entry
-        n_c6["include: aes_cfb<br/>1 files, 3 symbols<br/>Core / utility"]:::default
+        n_c5["include: aes_cfb<br/>1 files, 3 symbols<br/>Core / utility"]:::default
         n_c3["include: server<br/>2 files, 21 symbols<br/>Infrastructure"]:::entry
         n_c2["bof/include<br/>7 files, 73 symbols<br/>Core / utility"]:::default
     end
     subgraph lane_1["Tier 2"]
         direction LR
-        n_c1["include: cJSON<br/>9 files, 430 symbols<br/>Core / utility"]:::default
+        n_c0["include: cJSON<br/>11 files, 494 symbols<br/>Core / utility"]:::default
     end
     subgraph lane_2["Tier 3 - foundation"]
         direction LR
-        n_c5["include: config<br/>3 files, 42 symbols<br/>Infrastructure"]:::default
-        n_c4["include: aes<br/>3 files, 66 symbols<br/>Core / utility"]:::default
+        n_c4["include: config<br/>3 files, 42 symbols<br/>Infrastructure"]:::default
     end
-    n_c0 ==>|"5"| n_c1
-    n_c1 -->|"1"| n_c4
-    n_c1 -->|"1"| n_c5
-    n_c0 ~~~ n_c1
-    n_c1 ~~~ n_c5
+    n_c0 -->|"1"| n_c4
+    n_c1 ==>|"5"| n_c0
+    n_c1 ~~~ n_c0
+    n_c0 ~~~ n_c4
 ```
 
 ---

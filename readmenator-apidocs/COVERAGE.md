@@ -1,6 +1,6 @@
 # Documentation Coverage
 
-Overall: **34.4%** (278 of 807 public modules, types, and callables). Data members are excluded from the ratio.
+Overall: **34.4%** (278 of 808 public modules, types, and callables). Data members are excluded from the ratio.
 
 [Back to index](index.md)
 
@@ -10,7 +10,7 @@ Overall: **34.4%** (278 of 807 public modules, types, and callables). Data membe
 |---|---|---|---|
 | class | 1 | 1 | 100.0% |
 | constructor | 0 | 1 | 0.0% |
-| function | 161 | 398 | 40.5% |
+| function | 161 | 399 | 40.4% |
 | macro | 68 | 290 | 23.4% |
 | module | 11 | 43 | 25.6% |
 | struct | 32 | 62 | 51.6% |
@@ -35,11 +35,11 @@ Overall: **34.4%** (278 of 807 public modules, types, and callables). Data membe
 | [`aes.h`](modules/aes.h.md) | 5 | 21 | 23.8% |
 | [`include/aes.h`](modules/include.aes.h.md) | 5 | 21 | 23.8% |
 | [`beacons/v3/beacon.c`](modules/beacons.v3.beacon.c.md) | 1 | 4 | 25.0% |
+| [`include/aes_cfb.c`](modules/include.aes_cfb.c.md) | 1 | 4 | 25.0% |
 | [`bof/include/beacon_api.h`](modules/bof.include.beacon_api.h.md) | 4 | 14 | 28.6% |
 | [`aes.c`](modules/aes.c.md) | 8 | 24 | 33.3% |
 | [`beacons/v1/beacon.c`](modules/beacons.v1.beacon.c.md) | 1 | 3 | 33.3% |
 | [`include/aes.c`](modules/include.aes.c.md) | 8 | 24 | 33.3% |
-| [`include/aes_cfb.c`](modules/include.aes_cfb.c.md) | 1 | 3 | 33.3% |
 | [`include/aes_cfb.h`](modules/include.aes_cfb.h.md) | 1 | 3 | 33.3% |
 | [`beacon5.c`](modules/beacon5.c.md) | 15 | 39 | 38.5% |
 | [`beacon_p2p.c`](modules/beacon_p2p.c.md) | 18 | 44 | 40.9% |
@@ -68,7 +68,7 @@ Overall: **34.4%** (278 of 807 public modules, types, and callables). Data membe
 
 DOC001 undocumented public item, DOC002 parameter not documented, DOC003 documented parameter missing from the signature (stale doc), DOC004 return value not documented, DOC005 raised exception not documented.
 
-DOC001: 528
+DOC001: 529
 
 - DOC001 `aes.c:5` macro Nb is not documented
 - DOC001 `aes.c:9` macro KEYLEN_256 is not documented
@@ -178,7 +178,7 @@ DOC001: 528
 - DOC001 `beacon_p2p.c:935` function send_to_peer is not documented
 - DOC001 `beacon_p2p.c:968` function send_to_c2_or_peer is not documented
 - DOC001 `beacons/v1/beacon.c:1` module beacons/v1/beacon.c is not documented
-- DOC001 `beacons/v1/beacon.c:146` function main is not documented
+- DOC001 `beacons/v1/beacon.c:140` function main is not documented
 - DOC001 `beacons/v1/gopher_beacon.c:1` macro _GNU_SOURCE is not documented
 - DOC001 `beacons/v1/gopher_beacon.c:1` module beacons/v1/gopher_beacon.c is not documented
 - DOC001 `beacons/v1/gopher_beacon.c:30` macro C2 is not documented
@@ -435,7 +435,8 @@ DOC001: 528
 - DOC001 `include/aes.h:49` function AES_ECB_decrypt is not documented
 - DOC001 `include/aes.h:54` function AES_CBC_decrypt_buffer is not documented
 - DOC001 `include/aes_cfb.c:1` module include/aes_cfb.c is not documented
-- DOC001 `include/aes_cfb.c:48` function aes256_cfb_decrypt is not documented
+- DOC001 `include/aes_cfb.c:27` function EVP_EncryptUpdate is not documented
+- DOC001 `include/aes_cfb.c:43` function aes256_cfb_decrypt is not documented
 - DOC001 `include/aes_cfb.h:1` module include/aes_cfb.h is not documented
 - DOC001 `include/aes_cfb.h:11` function aes256_cfb_decrypt is not documented
 - DOC001 `include/beacon.h:10` macro CALLBACK_ERROR is not documented
@@ -569,5 +570,4 @@ DOC001: 528
 - DOC001 `include/cJSON.h:88` macro cJSON_IsReference is not documented
 - DOC001 `include/cJSON.h:89` macro cJSON_StringIsConst is not documented
 - DOC001 `include/cJSON.h:114` struct cJSON_Hooks is not documented
-- DOC001 `include/cJSON.h:120` type_alias cJSON_bool is not documented
-- ... 28 more in `api/warnings.jsonl`
+- ... 29 more in `api/warnings.jsonl`

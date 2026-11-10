@@ -1,9 +1,4 @@
-{"confidence": "INFERRED", "description": "aes consumes aes256", "relation": "depends_on", "source": "concept:aes", "target": "concept:aes256", "weight": 0.6}
-{"confidence": "INFERRED", "description": "aes consumes buffer", "relation": "depends_on", "source": "concept:aes", "target": "concept:buffer", "weight": 0.6}
-{"confidence": "INFERRED", "description": "aes consumes decrypt", "relation": "depends_on", "source": "concept:aes", "target": "concept:decrypt", "weight": 0.6}
-{"confidence": "INFERRED", "description": "aes consumes encrypt", "relation": "depends_on", "source": "concept:aes", "target": "concept:encrypt", "weight": 0.6}
 {"confidence": "INFERRED", "description": "aes consumes int", "relation": "depends_on", "source": "concept:aes", "target": "concept:int", "weight": 0.6}
-{"confidence": "INFERRED", "description": "aes consumes key", "relation": "depends_on", "source": "concept:aes", "target": "concept:key", "weight": 0.6}
 {"confidence": "INFERRED", "description": "aes depends_on size", "relation": "depends_on", "source": "concept:aes", "target": "concept:size", "weight": 0.6}
 {"confidence": "INFERRED", "description": "concept aes appears in aes.c", "relation": "documents", "source": "concept:aes", "target": "file:aes.c", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept aes appears in aes.h", "relation": "documents", "source": "concept:aes", "target": "file:aes.h", "weight": 0.45}
@@ -72,10 +67,18 @@
 {"confidence": "INFERRED", "description": "concept base64 appears in beacon_common.h", "relation": "documents", "source": "concept:base64", "target": "file:include/beacon_common.h", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept base64 appears in test_c2_http_e2e.py", "relation": "documents", "source": "concept:base64", "target": "file:tests/test_c2_http_e2e.py", "weight": 0.45}
 {"confidence": "INFERRED", "description": "beacon depends_on aes", "relation": "depends_on", "source": "concept:beacon", "target": "concept:aes", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on aes256", "relation": "depends_on", "source": "concept:beacon", "target": "concept:aes256", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on api", "relation": "depends_on", "source": "concept:beacon", "target": "concept:api", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on buffer", "relation": "depends_on", "source": "concept:beacon", "target": "concept:buffer", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on const", "relation": "depends_on", "source": "concept:beacon", "target": "concept:const", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on data", "relation": "depends_on", "source": "concept:beacon", "target": "concept:data", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on decrypt", "relation": "depends_on", "source": "concept:beacon", "target": "concept:decrypt", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on encrypt", "relation": "depends_on", "source": "concept:beacon", "target": "concept:encrypt", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on error", "relation": "depends_on", "source": "concept:beacon", "target": "concept:error", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon depends_on include", "relation": "depends_on", "source": "concept:beacon", "target": "concept:include", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on int", "relation": "depends_on", "source": "concept:beacon", "target": "concept:int", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon consumes json", "relation": "depends_on", "source": "concept:beacon", "target": "concept:json", "weight": 0.6}
+{"confidence": "INFERRED", "description": "beacon consumes next", "relation": "depends_on", "source": "concept:beacon", "target": "concept:next", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on null", "relation": "depends_on", "source": "concept:beacon", "target": "concept:null", "weight": 0.6}
 {"confidence": "INFERRED", "description": "beacon depends_on size", "relation": "depends_on", "source": "concept:beacon", "target": "concept:size", "weight": 0.6}
 {"confidence": "INFERRED", "description": "concept beacon appears in beacon.h", "relation": "documents", "source": "concept:beacon", "target": "file:beacon.h", "weight": 0.45}
@@ -150,6 +153,7 @@
 {"confidence": "INFERRED", "description": "concept bsb appears in beacon_api.h", "relation": "documents", "source": "concept:bsb", "target": "file:bof/include/beacon_api.h", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept bsb appears in syscalls.h", "relation": "documents", "source": "concept:bsb", "target": "file:bof/include/syscalls.h", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept bsb appears in server.py", "relation": "documents", "source": "concept:bsb", "target": "file:c2/server.py", "weight": 0.45}
+{"confidence": "INFERRED", "description": "concept bsb appears in aes_cfb.c", "relation": "documents", "source": "concept:bsb", "target": "file:include/aes_cfb.c", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept bsb appears in aes_cfb.h", "relation": "documents", "source": "concept:bsb", "target": "file:include/aes_cfb.h", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept bsb appears in beacon_common.c", "relation": "documents", "source": "concept:bsb", "target": "file:include/beacon_common.c", "weight": 0.45}
 {"confidence": "INFERRED", "description": "concept bsb appears in beacon_common.h", "relation": "documents", "source": "concept:bsb", "target": "file:include/beacon_common.h", "weight": 0.45}
@@ -1048,8 +1052,8 @@
 {"confidence": "EXTRACTED", "description": "beacon.c imports external unistd.h", "relation": "imports", "source": "file:beacons/v1/beacon.c", "target": "ext:unistd.h", "weight": 0.85}
 {"confidence": "EXTRACTED", "description": "beacon.c imports beacon_common.h", "relation": "resolved_imports", "source": "file:beacons/v1/beacon.c", "target": "file:include/beacon_common.h", "weight": 0.85}
 {"confidence": "EXTRACTED", "description": "beacon.c defines macro _GNU_SOURCE", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::_GNU_SOURCE@13", "weight": 0.7}
-{"confidence": "EXTRACTED", "description": "beacon.c defines function execute_command", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::execute_command@97", "weight": 0.7}
-{"confidence": "EXTRACTED", "description": "beacon.c defines function main", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::main@146", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "beacon.c defines function execute_command", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::execute_command@91", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "beacon.c defines function main", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::main@140", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "beacon.c defines function report_result", "relation": "defines", "source": "file:beacons/v1/beacon.c", "target": "sym:beacons/v1/beacon.c::report_result@24", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "gopher_beacon.c imports external arpa/inet.h", "relation": "imports", "source": "file:beacons/v1/gopher_beacon.c", "target": "ext:arpa/inet.h", "weight": 0.85}
 {"confidence": "EXTRACTED", "description": "gopher_beacon.c imports external dlfcn.h", "relation": "imports", "source": "file:beacons/v1/gopher_beacon.c", "target": "ext:dlfcn.h", "weight": 0.85}
@@ -1631,11 +1635,12 @@
 {"confidence": "EXTRACTED", "description": "aes.h defines macro CTR", "relation": "defines", "source": "file:include/aes.h", "target": "sym:include/aes.h::CTR@15", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "aes.h defines macro ECB", "relation": "defines", "source": "file:include/aes.h", "target": "sym:include/aes.h::ECB@12", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "aes.h defines macro _AES_H_", "relation": "defines", "source": "file:include/aes.h", "target": "sym:include/aes.h::_AES_H_@2", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "aes_cfb.c imports external openssl/evp.h", "relation": "imports", "source": "file:include/aes_cfb.c", "target": "ext:openssl/evp.h", "weight": 0.85}
 {"confidence": "EXTRACTED", "description": "aes_cfb.c imports external stdlib.h", "relation": "imports", "source": "file:include/aes_cfb.c", "target": "ext:stdlib.h", "weight": 0.85}
-{"confidence": "EXTRACTED", "description": "aes_cfb.c imports external string.h", "relation": "imports", "source": "file:include/aes_cfb.c", "target": "ext:string.h", "weight": 0.85}
-{"confidence": "EXTRACTED", "description": "aes_cfb.c imports aes.h", "relation": "resolved_imports", "source": "file:include/aes_cfb.c", "target": "file:include/aes.h", "weight": 0.85}
-{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function aes256_cfb_decrypt", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::aes256_cfb_decrypt@48", "weight": 0.7}
-{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function aes256_cfb_encrypt", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::aes256_cfb_encrypt@20", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function EVP_EncryptUpdate", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::EVP_EncryptUpdate@27", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function _bsb_evp_crypt", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::_bsb_evp_crypt@17", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function aes256_cfb_decrypt", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::aes256_cfb_decrypt@43", "weight": 0.7}
+{"confidence": "EXTRACTED", "description": "aes_cfb.c defines function aes256_cfb_encrypt", "relation": "defines", "source": "file:include/aes_cfb.c", "target": "sym:include/aes_cfb.c::aes256_cfb_encrypt@38", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "aes_cfb.h imports external stddef.h", "relation": "imports", "source": "file:include/aes_cfb.h", "target": "ext:stddef.h", "weight": 0.85}
 {"confidence": "EXTRACTED", "description": "aes_cfb.h defines macro BSB_AES_CFB_H", "relation": "defines", "source": "file:include/aes_cfb.h", "target": "sym:include/aes_cfb.h::BSB_AES_CFB_H@5", "weight": 0.7}
 {"confidence": "EXTRACTED", "description": "aes_cfb.h defines function aes256_cfb_decrypt", "relation": "defines", "source": "file:include/aes_cfb.h", "target": "sym:include/aes_cfb.h::aes256_cfb_decrypt@11", "weight": 0.7}

@@ -1,6 +1,6 @@
 # blacksandbeacon API Reference
 
-> Generated offline by readmenator: 43 modules, 844 documented entities, documentation coverage 34.4% (278/807 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
+> Generated offline by readmenator: 43 modules, 845 documented entities, documentation coverage 34.4% (278/808 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
 
 Navigate: [Interactive architecture and flows](flows.html) | [Architecture and flows (Mermaid)](architecture.md) | [Class hierarchy](classes.md) | [General index](genindex.md) | [Coverage and warnings](COVERAGE.md) | [`api/index.json`](api/index.json) | [HTML browser](index.html)
 
@@ -100,7 +100,7 @@ Languages: c (27), h (11), py (4), sh (1)
 |---|---|---|---|---|
 | [`include/aes.c`](modules/include.aes.c.md) | aes.c - tiny-AES-c (https://github.com/kokke/tiny-AES-c) | 0 | 23 | 33.3% |
 | [`include/aes.h`](modules/include.aes.h.md) | #define the macros below to 1/0 to enable/disable the mode of operation. | 1 | 19 | 23.8% |
-| [`include/aes_cfb.c`](modules/include.aes_cfb.c.md) |  | 0 | 2 | 33.3% |
+| [`include/aes_cfb.c`](modules/include.aes_cfb.c.md) |  | 0 | 3 | 25.0% |
 | [`include/aes_cfb.h`](modules/include.aes_cfb.h.md) |  | 0 | 2 | 33.3% |
 | [`include/beacon.h`](modules/include.beacon.h.md) | beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos) | 1 | 11 | 46.2% |
 | [`include/beacon_common.c`](modules/include.beacon_common.c.md) |  | 1 | 21 | 73.9% |

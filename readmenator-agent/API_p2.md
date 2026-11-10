@@ -26,7 +26,7 @@ Depends on: `include/aes.h`
 - `AES_CTR_xcrypt_buffer` (function) `include/aes.c:558` `void AES_CTR_xcrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length)` -- XorWithIv(buf, ctx->Iv); memcpy(ctx->Iv, storeNextIv, AES_BLOCKLEN); buf += AES_BLOCKLEN; } } #endif // #if...
 
 ## include/aes.h
-Imported by: `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`
+Imported by: `include/aes.c`, `include/beacon_common.c`
 - `AES_init_ctx` (function) `include/aes.h:41` `void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);`
 - `AES_init_ctx_iv` (function) `include/aes.h:43` `void AES_init_ctx_iv(struct AES_ctx* ctx, const uint8_t* key, const uint8_t* iv);` -- if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
 - `AES_ctx_set_iv` (function) `include/aes.h:44` `void AES_ctx_set_iv(struct AES_ctx* ctx, const uint8_t* iv);`
@@ -37,10 +37,10 @@ Imported by: `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`
 - `AES_CTR_xcrypt_buffer` (function) `include/aes.h:58` `void AES_CTR_xcrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length);` -- if defined(CTR) && (CTR == 1)
 
 ## include/aes_cfb.c
-Depends on: `include/aes.h`
-- `aes256_cfb_encrypt` (function) `include/aes_cfb.c:20` `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,
+- `EVP_EncryptUpdate` (function) `include/aes_cfb.c:27` `&& EVP_EncryptUpdate(ctx, buffer, &outl, data, (int)len) == 1 && EVP_EncryptFinal_ex(ctx, buffer + outl, &outl2) ==...`
+- `aes256_cfb_encrypt` (function) `include/aes_cfb.c:38` `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,
             ...`
-- `aes256_cfb_decrypt` (function) `include/aes_cfb.c:48` `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,
+- `aes256_cfb_decrypt` (function) `include/aes_cfb.c:43` `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,
             ...`
 
 ## include/aes_cfb.h

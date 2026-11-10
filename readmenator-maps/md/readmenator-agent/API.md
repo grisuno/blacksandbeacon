@@ -184,8 +184,8 @@ Depends on: `aes.h`, `beacon.h`, `cJSON.h`
 Depends on: `include/beacon_common.h`
 - `report_result` (function) `beacons/v1/beacon.c:24` `static void report_result(const bsb_config_t *cfg,
                            const char *command...`
-- `execute_command` (function) `beacons/v1/beacon.c:97` `static char *execute_command(const bsb_config_t *cfg, const char *command)`
-- `main` (function) `beacons/v1/beacon.c:146` `int main(void)`
+- `execute_command` (function) `beacons/v1/beacon.c:91` `static char *execute_command(const bsb_config_t *cfg, const char *command)`
+- `main` (function) `beacons/v1/beacon.c:140` `int main(void)`
 
 ## beacons/v1/gopher_beacon.c
 - `BeaconPrintf` (function) `beacons/v1/gopher_beacon.c:190` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===

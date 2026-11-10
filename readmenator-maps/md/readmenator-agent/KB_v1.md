@@ -6,8 +6,8 @@
 - Symbols:
   - `report_result` (function, line 24) `static void report_result(const bsb_config_t *cfg,
                            const char *command...`
-  - `execute_command` (function, line 97) `static char *execute_command(const bsb_config_t *cfg, const char *command)`
-  - `main` (function, line 146) `int main(void)`
+  - `execute_command` (function, line 91) `static char *execute_command(const bsb_config_t *cfg, const char *command)`
+  - `main` (function, line 140) `int main(void)`
   - `_GNU_SOURCE` (macro, line 13) `#define _GNU_SOURCE`
 - Depends on: `include/beacon_common.h`
 

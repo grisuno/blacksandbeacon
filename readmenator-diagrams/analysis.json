@@ -1,7 +1,7 @@
 {
  "metadata": {
-  "generated_at": "2026-10-17T00:31:32.206130+00:00",
-  "source_tree_hash": "c9be1916069d712e1ee6cacf7faac88434139b3ef2adc958a52347cc4abc7302",
+  "generated_at": "2026-11-10T02:52:27.138199+00:00",
+  "source_tree_hash": "6f8427c88dfd78b9eb68108c8a6aa4f69a14ac4b1a6d370b8f1744db2f1db35f",
   "repo_name": "blacksandbeacon",
   "depth_level": 2,
   "depth_cap": 3,
@@ -13,7 +13,7 @@
   },
   "tree_spec": {}
  },
- "description": "Static architecture map of 52 files (c, h, py, sh) in 7 components: root, include: cJSON, bof/include, include: server, include: aes, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
+ "description": "Static architecture map of 52 files (c, h, py, sh) in 6 components: include: cJSON, root, bof/include, include: server, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
  "files": {
   "aes.c": {
    "language": "c",
@@ -141,7 +141,7 @@
   },
   "include/aes_cfb.c": {
    "language": "c",
-   "symbols": 2
+   "symbols": 4
   },
   "include/aes_cfb.h": {
    "language": "h",
@@ -1981,25 +1981,25 @@
    "file_path": "beacons/v1/beacon.c",
    "qualified_name": "beacons/v1/beacon.c::report_result",
    "start_line": 24,
-   "end_line": 96,
+   "end_line": 90,
    "type": "FUNCTION",
    "content_hash": "2067b70859e72942"
   },
   "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command": {
    "file_path": "beacons/v1/beacon.c",
    "qualified_name": "beacons/v1/beacon.c::execute_command",
-   "start_line": 97,
-   "end_line": 145,
+   "start_line": 91,
+   "end_line": 139,
    "type": "FUNCTION",
-   "content_hash": "09fd2f1da73a35c2"
+   "content_hash": "e9dada788e4d6bb5"
   },
   "beacons/v1/beacon.c|beacons/v1/beacon.c::main": {
    "file_path": "beacons/v1/beacon.c",
    "qualified_name": "beacons/v1/beacon.c::main",
-   "start_line": 146,
-   "end_line": 214,
+   "start_line": 140,
+   "end_line": 208,
    "type": "FUNCTION",
-   "content_hash": "5b100e5f640efe2b"
+   "content_hash": "1c9fb696909fae83"
   },
   "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::_GNU_SOURCE": {
    "file_path": "beacons/v1/gopher_beacon.c",
@@ -4905,21 +4905,37 @@
    "type": "FUNCTION",
    "content_hash": "09d55d8b8fdeacf0"
   },
+  "include/aes_cfb.c|include/aes_cfb.c::_bsb_evp_crypt": {
+   "file_path": "include/aes_cfb.c",
+   "qualified_name": "include/aes_cfb.c::_bsb_evp_crypt",
+   "start_line": 17,
+   "end_line": 26,
+   "type": "FUNCTION",
+   "content_hash": "7f123ebf29de4c64"
+  },
+  "include/aes_cfb.c|include/aes_cfb.c::EVP_EncryptUpdate": {
+   "file_path": "include/aes_cfb.c",
+   "qualified_name": "include/aes_cfb.c::EVP_EncryptUpdate",
+   "start_line": 27,
+   "end_line": 37,
+   "type": "FUNCTION",
+   "content_hash": "85b6004ac7eafe36"
+  },
   "include/aes_cfb.c|include/aes_cfb.c::aes256_cfb_encrypt": {
    "file_path": "include/aes_cfb.c",
    "qualified_name": "include/aes_cfb.c::aes256_cfb_encrypt",
-   "start_line": 20,
-   "end_line": 47,
+   "start_line": 38,
+   "end_line": 42,
    "type": "FUNCTION",
-   "content_hash": "8fab9a7656d91f35"
+   "content_hash": "09fccf91125bd2b7"
   },
   "include/aes_cfb.c|include/aes_cfb.c::aes256_cfb_decrypt": {
    "file_path": "include/aes_cfb.c",
    "qualified_name": "include/aes_cfb.c::aes256_cfb_decrypt",
-   "start_line": 48,
-   "end_line": 75,
+   "start_line": 43,
+   "end_line": 48,
    "type": "FUNCTION",
-   "content_hash": "fc6f2d9c6b6f0204"
+   "content_hash": "3abec70c982ea80b"
   },
   "include/aes_cfb.h|include/aes_cfb.h::BSB_AES_CFB_H": {
    "file_path": "include/aes_cfb.h",
@@ -7404,6 +7420,2098 @@
  },
  "components": [
   {
+   "name": "include: cJSON",
+   "description": "include: cJSON groups 11 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.",
+   "key_entities": [
+    {
+     "qualified_name": "include/beacon_common.h::BEACON_COMMON_H",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 13,
+     "reference_end_line": 14
+    },
+    {
+     "qualified_name": "include/beacon_common.h::_GNU_SOURCE",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 15,
+     "reference_end_line": 25
+    },
+    {
+     "qualified_name": "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 26,
+     "reference_end_line": 26
+    },
+    {
+     "qualified_name": "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 27,
+     "reference_end_line": 31
+    },
+    {
+     "qualified_name": "include/beacon_common.h::http_response_t",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 32,
+     "reference_end_line": 38
+    },
+    {
+     "qualified_name": "include/beacon_common.h::Trampoline",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 39,
+     "reference_end_line": 47
+    },
+    {
+     "qualified_name": "include/beacon_common.h::SymbolResolver",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 48,
+     "reference_end_line": 53
+    },
+    {
+     "qualified_name": "include/beacon_common.h::TrampolineCache",
+     "reference_file": "include/beacon_common.h",
+     "reference_start_line": 54,
+     "reference_end_line": 59
+    }
+   ],
+   "source_cluster_ids": [],
+   "file_methods": [
+    {
+     "file_path": "beacons/v1/beacon.c",
+     "methods": [
+      "beacons/v1/beacon.c::_GNU_SOURCE",
+      "beacons/v1/beacon.c::report_result",
+      "beacons/v1/beacon.c::execute_command",
+      "beacons/v1/beacon.c::main"
+     ]
+    },
+    {
+     "file_path": "beacons/v2/beacon.c",
+     "methods": [
+      "beacons/v2/beacon.c::_GNU_SOURCE",
+      "beacons/v2/beacon.c::MAX_PEERS",
+      "beacons/v2/beacon.c::DISCOVERY_PORT",
+      "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
+      "beacons/v2/beacon.c::MAX_TTL",
+      "beacons/v2/beacon.c::MESH_MSG_SIZE",
+      "beacons/v2/beacon.c::peer_t",
+      "beacons/v2/beacon.c::mesh_msg_t",
+      "beacons/v2/beacon.c::report_result",
+      "beacons/v2/beacon.c::execute_command",
+      "beacons/v2/beacon.c::main"
+     ]
+    },
+    {
+     "file_path": "beacons/v3/beacon.c",
+     "methods": [
+      "beacons/v3/beacon.c::infrastructure",
+      "beacons/v3/beacon.c::_GNU_SOURCE",
+      "beacons/v3/beacon.c::compute_primes",
+      "beacons/v3/beacon.c::evasive_sleep",
+      "beacons/v3/beacon.c::report_result",
+      "beacons/v3/beacon.c::execute_command",
+      "beacons/v3/beacon.c::main"
+     ]
+    },
+    {
+     "file_path": "cJSON.c",
+     "methods": [
+      "cJSON.c::_CRT_SECURE_NO_DEPRECATE",
+      "cJSON.c::true",
+      "cJSON.c::false",
+      "cJSON.c::isinf",
+      "cJSON.c::isnan",
+      "cJSON.c::NAN",
+      "cJSON.c::NAN",
+      "cJSON.c::error",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::case_insensitive_strcmp",
+      "cJSON.c::internal_hooks",
+      "cJSON.c::internal_malloc",
+      "cJSON.c::internal_free",
+      "cJSON.c::internal_realloc",
+      "cJSON.c::internal_malloc",
+      "cJSON.c::internal_free",
+      "cJSON.c::internal_realloc",
+      "cJSON.c::static_strlen",
+      "cJSON.c::cJSON_strdup",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::cJSON_New_Item",
+      "cJSON.c::get_decimal_point",
+      "cJSON.c::parse_buffer",
+      "cJSON.c::can_read",
+      "cJSON.c::can_access_at_index",
+      "cJSON.c::cannot_access_at_index",
+      "cJSON.c::buffer_at_offset",
+      "cJSON.c::parse_number",
+      "cJSON.c::printbuffer",
+      "cJSON.c::ensure",
+      "cJSON.c::update_offset",
+      "cJSON.c::compare_double",
+      "cJSON.c::print_number",
+      "cJSON.c::parse_hex4",
+      "cJSON.c::utf16_literal_to_utf8",
+      "cJSON.c::parse_string",
+      "cJSON.c::print_string_ptr",
+      "cJSON.c::print_string",
+      "cJSON.c::buffer_skip_whitespace",
+      "cJSON.c::skip_utf8_bom",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::cjson_min",
+      "cJSON.c::print",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::parse_value",
+      "cJSON.c::print_value",
+      "cJSON.c::parse_array",
+      "cJSON.c::print_array",
+      "cJSON.c::parse_object",
+      "cJSON.c::print_object",
+      "cJSON.c::get_array_item",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::get_object_item",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::suffix_object",
+      "cJSON.c::create_reference",
+      "cJSON.c::add_item_to_array",
+      "cJSON.c::cast_away_const",
+      "cJSON.c::add_item_to_object",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::replace_item_in_object",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::cJSON_Duplicate_rec",
+      "cJSON.c::skip_oneline_comment",
+      "cJSON.c::skip_multiline_comment",
+      "cJSON.c::minify_string",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::cJSON_ArrayForEach",
+      "cJSON.c::cJSON_ArrayForEach",
+      "cJSON.c::CJSON_PUBLIC",
+      "cJSON.c::CJSON_PUBLIC"
+     ]
+    },
+    {
+     "file_path": "cJSON.h",
+     "methods": [
+      "cJSON.h::cJSON__h",
+      "cJSON.h::next",
+      "cJSON.h::__WINDOWS__",
+      "cJSON.h::CJSON_CDECL",
+      "cJSON.h::CJSON_STDCALL",
+      "cJSON.h::CJSON_EXPORT_SYMBOLS",
+      "cJSON.h::CJSON_PUBLIC",
+      "cJSON.h::CJSON_PUBLIC",
+      "cJSON.h::CJSON_PUBLIC",
+      "cJSON.h::CJSON_CDECL",
+      "cJSON.h::CJSON_STDCALL",
+      "cJSON.h::CJSON_PUBLIC",
+      "cJSON.h::CJSON_PUBLIC",
+      "cJSON.h::CJSON_VERSION_MAJOR",
+      "cJSON.h::CJSON_VERSION_MINOR",
+      "cJSON.h::CJSON_VERSION_PATCH",
+      "cJSON.h::cJSON_Invalid",
+      "cJSON.h::cJSON_False",
+      "cJSON.h::cJSON_True",
+      "cJSON.h::cJSON_NULL",
+      "cJSON.h::cJSON_Number",
+      "cJSON.h::cJSON_String",
+      "cJSON.h::cJSON_Array",
+      "cJSON.h::cJSON_Object",
+      "cJSON.h::cJSON_Raw",
+      "cJSON.h::cJSON_IsReference",
+      "cJSON.h::cJSON_StringIsConst",
+      "cJSON.h::cJSON",
+      "cJSON.h::cJSON_Hooks",
+      "cJSON.h::cJSON_bool",
+      "cJSON.h::CJSON_NESTING_LIMIT",
+      "cJSON.h::CJSON_CIRCULAR_LIMIT",
+      "cJSON.h::sensitive",
+      "cJSON.h::cJSON_SetIntValue",
+      "cJSON.h::cJSON_SetNumberValue",
+      "cJSON.h::cJSON_SetBoolValue",
+      "cJSON.h::cJSON_ArrayForEach"
+     ]
+    },
+    {
+     "file_path": "include/aes.c",
+     "methods": [
+      "include/aes.c::Nb",
+      "include/aes.c::KEYLEN_256",
+      "include/aes.c::RKLENGTH",
+      "include/aes.c::BLOCKLEN",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::__attribute__",
+      "include/aes.c::Nb",
+      "include/aes.c::Nk",
+      "include/aes.c::Nr",
+      "include/aes.c::Nk",
+      "include/aes.c::Nr",
+      "include/aes.c::Nk",
+      "include/aes.c::Nr",
+      "include/aes.c::MULTIPLY_AS_A_FUNCTION",
+      "include/aes.c::getSBoxValue",
+      "include/aes.c::KeyExpansion",
+      "include/aes.c::AES_init_ctx",
+      "include/aes.c::AES_init_ctx_iv",
+      "include/aes.c::AES_ctx_set_iv",
+      "include/aes.c::AddRoundKey",
+      "include/aes.c::SubBytes",
+      "include/aes.c::ShiftRows",
+      "include/aes.c::xtime",
+      "include/aes.c::MixColumns",
+      "include/aes.c::Multiply",
+      "include/aes.c::Multiply",
+      "include/aes.c::getSBoxInvert",
+      "include/aes.c::InvMixColumns",
+      "include/aes.c::InvSubBytes",
+      "include/aes.c::InvShiftRows",
+      "include/aes.c::Cipher",
+      "include/aes.c::InvCipher",
+      "include/aes.c::AES_ECB_encrypt",
+      "include/aes.c::AES_ECB_decrypt",
+      "include/aes.c::XorWithIv",
+      "include/aes.c::AES_CBC_encrypt_buffer",
+      "include/aes.c::AES_CBC_decrypt_buffer",
+      "include/aes.c::AES_CTR_xcrypt_buffer"
+     ]
+    },
+    {
+     "file_path": "include/aes.h",
+     "methods": [
+      "include/aes.h::_AES_H_",
+      "include/aes.h::CBC",
+      "include/aes.h::ECB",
+      "include/aes.h::CTR",
+      "include/aes.h::AES256",
+      "include/aes.h::AES_BLOCKLEN",
+      "include/aes.h::AES_KEYLEN",
+      "include/aes.h::AES_keyExpSize",
+      "include/aes.h::AES_KEYLEN",
+      "include/aes.h::AES_keyExpSize",
+      "include/aes.h::AES_KEYLEN",
+      "include/aes.h::AES_keyExpSize",
+      "include/aes.h::AES_ctx",
+      "include/aes.h::AES_init_ctx",
+      "include/aes.h::AES_init_ctx_iv",
+      "include/aes.h::AES_ctx_set_iv",
+      "include/aes.h::AES_ECB_encrypt",
+      "include/aes.h::AES_ECB_decrypt",
+      "include/aes.h::AES_CBC_encrypt_buffer",
+      "include/aes.h::AES_CBC_decrypt_buffer",
+      "include/aes.h::AES_CTR_xcrypt_buffer"
+     ]
+    },
+    {
+     "file_path": "include/beacon_common.c",
+     "methods": [
+      "include/beacon_common.c::_GNU_SOURCE",
+      "include/beacon_common.c::bsb_output_init",
+      "include/beacon_common.c::bsb_output_cleanup",
+      "include/beacon_common.c::bsb_output_reset",
+      "include/beacon_common.c::BeaconPrintf",
+      "include/beacon_common.c::BeaconOutput",
+      "include/beacon_common.c::create_trampoline",
+      "include/beacon_common.c::cleanup_trampolines",
+      "include/beacon_common.c::get_or_create_trampoline",
+      "include/beacon_common.c::MemoryStruct",
+      "include/beacon_common.c::WriteMemoryCallback",
+      "include/beacon_common.c::https_request",
+      "include/beacon_common.c::base64_encode",
+      "include/beacon_common.c::base64_decode",
+      "include/beacon_common.c::_is_unreserved",
+      "include/beacon_common.c::url_encode",
+      "include/beacon_common.c::exec_cmd",
+      "include/beacon_common.c::bsb_backoff_init",
+      "include/beacon_common.c::bsb_backoff_next",
+      "include/beacon_common.c::bsb_backoff_reset",
+      "include/beacon_common.c::get_local_ips",
+      "include/beacon_common.c::download_bof",
+      "include/beacon_common.c::init_function_pointers",
+      "include/beacon_common.c::page_align",
+      "include/beacon_common.c::__attribute__",
+      "include/beacon_common.c::RunELF",
+      "include/beacon_common.c::run_bof_and_capture"
+     ]
+    },
+    {
+     "file_path": "include/beacon_common.h",
+     "methods": [
+      "include/beacon_common.h::BEACON_COMMON_H",
+      "include/beacon_common.h::_GNU_SOURCE",
+      "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
+      "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
+      "include/beacon_common.h::http_response_t",
+      "include/beacon_common.h::Trampoline",
+      "include/beacon_common.h::SymbolResolver",
+      "include/beacon_common.h::TrampolineCache",
+      "include/beacon_common.h::g_beacon_output",
+      "include/beacon_common.h::g_output_len",
+      "include/beacon_common.h::g_output_capacity",
+      "include/beacon_common.h::g_printf_ptr",
+      "include/beacon_common.h::g_strlen_ptr",
+      "include/beacon_common.h::g_memcpy_ptr",
+      "include/beacon_common.h::g_memset_ptr",
+      "include/beacon_common.h::g_exit_ptr",
+      "include/beacon_common.h::g_dlsym_ptr",
+      "include/beacon_common.h::g_dlerror_ptr",
+      "include/beacon_common.h::g_dlopen_ptr",
+      "include/beacon_common.h::g_dlclose_ptr",
+      "include/beacon_common.h::g_write_ptr",
+      "include/beacon_common.h::g_mmap_ptr",
+      "include/beacon_common.h::g_munmap_ptr",
+      "include/beacon_common.h::g_BeaconPrintf_ptr",
+      "include/beacon_common.h::g_BeaconOutput_ptr",
+      "include/beacon_common.h::g_socket_ptr",
+      "include/beacon_common.h::g_connect_ptr",
+      "include/beacon_common.h::g_inet_addr_ptr",
+      "include/beacon_common.h::g_htons_ptr",
+      "include/beacon_common.h::g_send_ptr",
+      "include/beacon_common.h::g_recv_ptr",
+      "include/beacon_common.h::g_close_ptr",
+      "include/beacon_common.h::g_getaddrinfo_ptr",
+      "include/beacon_common.h::g_freeaddrinfo_ptr",
+      "include/beacon_common.h::bsb_output_init",
+      "include/beacon_common.h::bsb_output_cleanup",
+      "include/beacon_common.h::bsb_output_reset",
+      "include/beacon_common.h::BeaconPrintf",
+      "include/beacon_common.h::BeaconOutput",
+      "include/beacon_common.h::create_trampoline",
+      "include/beacon_common.h::cleanup_trampolines",
+      "include/beacon_common.h::get_or_create_trampoline",
+      "include/beacon_common.h::https_request",
+      "include/beacon_common.h::base64_encode",
+      "include/beacon_common.h::base64_decode",
+      "include/beacon_common.h::url_encode",
+      "include/beacon_common.h::aes256_cfb_encrypt",
+      "include/beacon_common.h::aes256_cfb_decrypt",
+      "include/beacon_common.h::buffer",
+      "include/beacon_common.h::RunELF",
+      "include/beacon_common.h::download_bof",
+      "include/beacon_common.h::run_bof_and_capture",
+      "include/beacon_common.h::get_local_ips",
+      "include/beacon_common.h::bsb_backoff_t",
+      "include/beacon_common.h::bsb_backoff_init",
+      "include/beacon_common.h::bsb_backoff_next",
+      "include/beacon_common.h::bsb_backoff_reset"
+     ]
+    },
+    {
+     "file_path": "include/cJSON.c",
+     "methods": [
+      "include/cJSON.c::_CRT_SECURE_NO_DEPRECATE",
+      "include/cJSON.c::true",
+      "include/cJSON.c::false",
+      "include/cJSON.c::isinf",
+      "include/cJSON.c::isnan",
+      "include/cJSON.c::NAN",
+      "include/cJSON.c::NAN",
+      "include/cJSON.c::error",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::case_insensitive_strcmp",
+      "include/cJSON.c::internal_hooks",
+      "include/cJSON.c::internal_malloc",
+      "include/cJSON.c::internal_free",
+      "include/cJSON.c::internal_realloc",
+      "include/cJSON.c::internal_malloc",
+      "include/cJSON.c::internal_free",
+      "include/cJSON.c::internal_realloc",
+      "include/cJSON.c::static_strlen",
+      "include/cJSON.c::cJSON_strdup",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::cJSON_New_Item",
+      "include/cJSON.c::get_decimal_point",
+      "include/cJSON.c::parse_buffer",
+      "include/cJSON.c::can_read",
+      "include/cJSON.c::can_access_at_index",
+      "include/cJSON.c::cannot_access_at_index",
+      "include/cJSON.c::buffer_at_offset",
+      "include/cJSON.c::parse_number",
+      "include/cJSON.c::printbuffer",
+      "include/cJSON.c::ensure",
+      "include/cJSON.c::update_offset",
+      "include/cJSON.c::compare_double",
+      "include/cJSON.c::print_number",
+      "include/cJSON.c::parse_hex4",
+      "include/cJSON.c::utf16_literal_to_utf8",
+      "include/cJSON.c::parse_string",
+      "include/cJSON.c::print_string_ptr",
+      "include/cJSON.c::print_string",
+      "include/cJSON.c::buffer_skip_whitespace",
+      "include/cJSON.c::skip_utf8_bom",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::cjson_min",
+      "include/cJSON.c::print",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::parse_value",
+      "include/cJSON.c::print_value",
+      "include/cJSON.c::parse_array",
+      "include/cJSON.c::print_array",
+      "include/cJSON.c::parse_object",
+      "include/cJSON.c::print_object",
+      "include/cJSON.c::get_array_item",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::get_object_item",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::suffix_object",
+      "include/cJSON.c::create_reference",
+      "include/cJSON.c::add_item_to_array",
+      "include/cJSON.c::cast_away_const",
+      "include/cJSON.c::add_item_to_object",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::replace_item_in_object",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::cJSON_Duplicate_rec",
+      "include/cJSON.c::skip_oneline_comment",
+      "include/cJSON.c::skip_multiline_comment",
+      "include/cJSON.c::minify_string",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::cJSON_ArrayForEach",
+      "include/cJSON.c::cJSON_ArrayForEach",
+      "include/cJSON.c::CJSON_PUBLIC",
+      "include/cJSON.c::CJSON_PUBLIC"
+     ]
+    },
+    {
+     "file_path": "include/cJSON.h",
+     "methods": [
+      "include/cJSON.h::cJSON__h",
+      "include/cJSON.h::next",
+      "include/cJSON.h::__WINDOWS__",
+      "include/cJSON.h::CJSON_CDECL",
+      "include/cJSON.h::CJSON_STDCALL",
+      "include/cJSON.h::CJSON_EXPORT_SYMBOLS",
+      "include/cJSON.h::CJSON_PUBLIC",
+      "include/cJSON.h::CJSON_PUBLIC",
+      "include/cJSON.h::CJSON_PUBLIC",
+      "include/cJSON.h::CJSON_CDECL",
+      "include/cJSON.h::CJSON_STDCALL",
+      "include/cJSON.h::CJSON_PUBLIC",
+      "include/cJSON.h::CJSON_PUBLIC",
+      "include/cJSON.h::CJSON_VERSION_MAJOR",
+      "include/cJSON.h::CJSON_VERSION_MINOR",
+      "include/cJSON.h::CJSON_VERSION_PATCH",
+      "include/cJSON.h::cJSON_Invalid",
+      "include/cJSON.h::cJSON_False",
+      "include/cJSON.h::cJSON_True",
+      "include/cJSON.h::cJSON_NULL",
+      "include/cJSON.h::cJSON_Number",
+      "include/cJSON.h::cJSON_String",
+      "include/cJSON.h::cJSON_Array",
+      "include/cJSON.h::cJSON_Object",
+      "include/cJSON.h::cJSON_Raw",
+      "include/cJSON.h::cJSON_IsReference",
+      "include/cJSON.h::cJSON_StringIsConst",
+      "include/cJSON.h::cJSON",
+      "include/cJSON.h::cJSON_Hooks",
+      "include/cJSON.h::cJSON_bool",
+      "include/cJSON.h::CJSON_NESTING_LIMIT",
+      "include/cJSON.h::CJSON_CIRCULAR_LIMIT",
+      "include/cJSON.h::sensitive",
+      "include/cJSON.h::cJSON_SetIntValue",
+      "include/cJSON.h::cJSON_SetNumberValue",
+      "include/cJSON.h::cJSON_SetBoolValue",
+      "include/cJSON.h::cJSON_ArrayForEach"
+     ]
+    }
+   ],
+   "component_id": "1",
+   "can_expand": true,
+   "components": [
+    {
+     "name": "beacons",
+     "description": "beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE.",
+     "key_entities": [
+      {
+       "qualified_name": "beacons/v1/beacon.c::_GNU_SOURCE",
+       "reference_file": "beacons/v1/beacon.c",
+       "reference_start_line": 13,
+       "reference_end_line": 23
+      },
+      {
+       "qualified_name": "beacons/v1/beacon.c::report_result",
+       "reference_file": "beacons/v1/beacon.c",
+       "reference_start_line": 24,
+       "reference_end_line": 90
+      },
+      {
+       "qualified_name": "beacons/v1/beacon.c::execute_command",
+       "reference_file": "beacons/v1/beacon.c",
+       "reference_start_line": 91,
+       "reference_end_line": 139
+      },
+      {
+       "qualified_name": "beacons/v1/beacon.c::main",
+       "reference_file": "beacons/v1/beacon.c",
+       "reference_start_line": 140,
+       "reference_end_line": 208
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::_GNU_SOURCE",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 12,
+       "reference_end_line": 26
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::MAX_PEERS",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 27,
+       "reference_end_line": 27
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_PORT",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 28,
+       "reference_end_line": 28
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 29,
+       "reference_end_line": 29
+      }
+     ],
+     "source_cluster_ids": [],
+     "file_methods": [
+      {
+       "file_path": "beacons/v1/beacon.c",
+       "methods": [
+        "beacons/v1/beacon.c::_GNU_SOURCE",
+        "beacons/v1/beacon.c::report_result",
+        "beacons/v1/beacon.c::execute_command",
+        "beacons/v1/beacon.c::main"
+       ]
+      },
+      {
+       "file_path": "beacons/v2/beacon.c",
+       "methods": [
+        "beacons/v2/beacon.c::_GNU_SOURCE",
+        "beacons/v2/beacon.c::MAX_PEERS",
+        "beacons/v2/beacon.c::DISCOVERY_PORT",
+        "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
+        "beacons/v2/beacon.c::MAX_TTL",
+        "beacons/v2/beacon.c::MESH_MSG_SIZE",
+        "beacons/v2/beacon.c::peer_t",
+        "beacons/v2/beacon.c::mesh_msg_t",
+        "beacons/v2/beacon.c::report_result",
+        "beacons/v2/beacon.c::execute_command",
+        "beacons/v2/beacon.c::main"
+       ]
+      },
+      {
+       "file_path": "beacons/v3/beacon.c",
+       "methods": [
+        "beacons/v3/beacon.c::infrastructure",
+        "beacons/v3/beacon.c::_GNU_SOURCE",
+        "beacons/v3/beacon.c::compute_primes",
+        "beacons/v3/beacon.c::evasive_sleep",
+        "beacons/v3/beacon.c::report_result",
+        "beacons/v3/beacon.c::execute_command",
+        "beacons/v3/beacon.c::main"
+       ]
+      }
+     ],
+     "component_id": "1.1",
+     "can_expand": false,
+     "components": [],
+     "components_relations": [],
+     "layer": "utility",
+     "symbol_count": 22,
+     "top_symbols": [
+      {
+       "n": "_GNU_SOURCE",
+       "k": "macro"
+      },
+      {
+       "n": "report_result",
+       "k": "function"
+      },
+      {
+       "n": "execute_command",
+       "k": "function"
+      }
+     ],
+     "top_symbols_more": 11
+    },
+    {
+     "name": "include",
+     "description": "include groups 6 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
+     "key_entities": [
+      {
+       "qualified_name": "include/beacon_common.h::BEACON_COMMON_H",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 13,
+       "reference_end_line": 14
+      },
+      {
+       "qualified_name": "include/beacon_common.h::_GNU_SOURCE",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 15,
+       "reference_end_line": 25
+      },
+      {
+       "qualified_name": "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 26,
+       "reference_end_line": 26
+      },
+      {
+       "qualified_name": "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 27,
+       "reference_end_line": 31
+      },
+      {
+       "qualified_name": "include/beacon_common.h::http_response_t",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 32,
+       "reference_end_line": 38
+      },
+      {
+       "qualified_name": "include/beacon_common.h::Trampoline",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 39,
+       "reference_end_line": 47
+      },
+      {
+       "qualified_name": "include/beacon_common.h::SymbolResolver",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 48,
+       "reference_end_line": 53
+      },
+      {
+       "qualified_name": "include/beacon_common.h::TrampolineCache",
+       "reference_file": "include/beacon_common.h",
+       "reference_start_line": 54,
+       "reference_end_line": 59
+      }
+     ],
+     "source_cluster_ids": [],
+     "file_methods": [
+      {
+       "file_path": "include/aes.c",
+       "methods": [
+        "include/aes.c::Nb",
+        "include/aes.c::KEYLEN_256",
+        "include/aes.c::RKLENGTH",
+        "include/aes.c::BLOCKLEN",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::__attribute__",
+        "include/aes.c::Nb",
+        "include/aes.c::Nk",
+        "include/aes.c::Nr",
+        "include/aes.c::Nk",
+        "include/aes.c::Nr",
+        "include/aes.c::Nk",
+        "include/aes.c::Nr",
+        "include/aes.c::MULTIPLY_AS_A_FUNCTION",
+        "include/aes.c::getSBoxValue",
+        "include/aes.c::KeyExpansion",
+        "include/aes.c::AES_init_ctx",
+        "include/aes.c::AES_init_ctx_iv",
+        "include/aes.c::AES_ctx_set_iv",
+        "include/aes.c::AddRoundKey",
+        "include/aes.c::SubBytes",
+        "include/aes.c::ShiftRows",
+        "include/aes.c::xtime",
+        "include/aes.c::MixColumns",
+        "include/aes.c::Multiply",
+        "include/aes.c::Multiply",
+        "include/aes.c::getSBoxInvert",
+        "include/aes.c::InvMixColumns",
+        "include/aes.c::InvSubBytes",
+        "include/aes.c::InvShiftRows",
+        "include/aes.c::Cipher",
+        "include/aes.c::InvCipher",
+        "include/aes.c::AES_ECB_encrypt",
+        "include/aes.c::AES_ECB_decrypt",
+        "include/aes.c::XorWithIv",
+        "include/aes.c::AES_CBC_encrypt_buffer",
+        "include/aes.c::AES_CBC_decrypt_buffer",
+        "include/aes.c::AES_CTR_xcrypt_buffer"
+       ]
+      },
+      {
+       "file_path": "include/aes.h",
+       "methods": [
+        "include/aes.h::_AES_H_",
+        "include/aes.h::CBC",
+        "include/aes.h::ECB",
+        "include/aes.h::CTR",
+        "include/aes.h::AES256",
+        "include/aes.h::AES_BLOCKLEN",
+        "include/aes.h::AES_KEYLEN",
+        "include/aes.h::AES_keyExpSize",
+        "include/aes.h::AES_KEYLEN",
+        "include/aes.h::AES_keyExpSize",
+        "include/aes.h::AES_KEYLEN",
+        "include/aes.h::AES_keyExpSize",
+        "include/aes.h::AES_ctx",
+        "include/aes.h::AES_init_ctx",
+        "include/aes.h::AES_init_ctx_iv",
+        "include/aes.h::AES_ctx_set_iv",
+        "include/aes.h::AES_ECB_encrypt",
+        "include/aes.h::AES_ECB_decrypt",
+        "include/aes.h::AES_CBC_encrypt_buffer",
+        "include/aes.h::AES_CBC_decrypt_buffer",
+        "include/aes.h::AES_CTR_xcrypt_buffer"
+       ]
+      },
+      {
+       "file_path": "include/beacon_common.c",
+       "methods": [
+        "include/beacon_common.c::_GNU_SOURCE",
+        "include/beacon_common.c::bsb_output_init",
+        "include/beacon_common.c::bsb_output_cleanup",
+        "include/beacon_common.c::bsb_output_reset",
+        "include/beacon_common.c::BeaconPrintf",
+        "include/beacon_common.c::BeaconOutput",
+        "include/beacon_common.c::create_trampoline",
+        "include/beacon_common.c::cleanup_trampolines",
+        "include/beacon_common.c::get_or_create_trampoline",
+        "include/beacon_common.c::MemoryStruct",
+        "include/beacon_common.c::WriteMemoryCallback",
+        "include/beacon_common.c::https_request",
+        "include/beacon_common.c::base64_encode",
+        "include/beacon_common.c::base64_decode",
+        "include/beacon_common.c::_is_unreserved",
+        "include/beacon_common.c::url_encode",
+        "include/beacon_common.c::exec_cmd",
+        "include/beacon_common.c::bsb_backoff_init",
+        "include/beacon_common.c::bsb_backoff_next",
+        "include/beacon_common.c::bsb_backoff_reset",
+        "include/beacon_common.c::get_local_ips",
+        "include/beacon_common.c::download_bof",
+        "include/beacon_common.c::init_function_pointers",
+        "include/beacon_common.c::page_align",
+        "include/beacon_common.c::__attribute__",
+        "include/beacon_common.c::RunELF",
+        "include/beacon_common.c::run_bof_and_capture"
+       ]
+      },
+      {
+       "file_path": "include/beacon_common.h",
+       "methods": [
+        "include/beacon_common.h::BEACON_COMMON_H",
+        "include/beacon_common.h::_GNU_SOURCE",
+        "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
+        "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
+        "include/beacon_common.h::http_response_t",
+        "include/beacon_common.h::Trampoline",
+        "include/beacon_common.h::SymbolResolver",
+        "include/beacon_common.h::TrampolineCache",
+        "include/beacon_common.h::g_beacon_output",
+        "include/beacon_common.h::g_output_len",
+        "include/beacon_common.h::g_output_capacity",
+        "include/beacon_common.h::g_printf_ptr",
+        "include/beacon_common.h::g_strlen_ptr",
+        "include/beacon_common.h::g_memcpy_ptr",
+        "include/beacon_common.h::g_memset_ptr",
+        "include/beacon_common.h::g_exit_ptr",
+        "include/beacon_common.h::g_dlsym_ptr",
+        "include/beacon_common.h::g_dlerror_ptr",
+        "include/beacon_common.h::g_dlopen_ptr",
+        "include/beacon_common.h::g_dlclose_ptr",
+        "include/beacon_common.h::g_write_ptr",
+        "include/beacon_common.h::g_mmap_ptr",
+        "include/beacon_common.h::g_munmap_ptr",
+        "include/beacon_common.h::g_BeaconPrintf_ptr",
+        "include/beacon_common.h::g_BeaconOutput_ptr",
+        "include/beacon_common.h::g_socket_ptr",
+        "include/beacon_common.h::g_connect_ptr",
+        "include/beacon_common.h::g_inet_addr_ptr",
+        "include/beacon_common.h::g_htons_ptr",
+        "include/beacon_common.h::g_send_ptr",
+        "include/beacon_common.h::g_recv_ptr",
+        "include/beacon_common.h::g_close_ptr",
+        "include/beacon_common.h::g_getaddrinfo_ptr",
+        "include/beacon_common.h::g_freeaddrinfo_ptr",
+        "include/beacon_common.h::bsb_output_init",
+        "include/beacon_common.h::bsb_output_cleanup",
+        "include/beacon_common.h::bsb_output_reset",
+        "include/beacon_common.h::BeaconPrintf",
+        "include/beacon_common.h::BeaconOutput",
+        "include/beacon_common.h::create_trampoline",
+        "include/beacon_common.h::cleanup_trampolines",
+        "include/beacon_common.h::get_or_create_trampoline",
+        "include/beacon_common.h::https_request",
+        "include/beacon_common.h::base64_encode",
+        "include/beacon_common.h::base64_decode",
+        "include/beacon_common.h::url_encode",
+        "include/beacon_common.h::aes256_cfb_encrypt",
+        "include/beacon_common.h::aes256_cfb_decrypt",
+        "include/beacon_common.h::buffer",
+        "include/beacon_common.h::RunELF",
+        "include/beacon_common.h::download_bof",
+        "include/beacon_common.h::run_bof_and_capture",
+        "include/beacon_common.h::get_local_ips",
+        "include/beacon_common.h::bsb_backoff_t",
+        "include/beacon_common.h::bsb_backoff_init",
+        "include/beacon_common.h::bsb_backoff_next",
+        "include/beacon_common.h::bsb_backoff_reset"
+       ]
+      },
+      {
+       "file_path": "include/cJSON.c",
+       "methods": [
+        "include/cJSON.c::_CRT_SECURE_NO_DEPRECATE",
+        "include/cJSON.c::true",
+        "include/cJSON.c::false",
+        "include/cJSON.c::isinf",
+        "include/cJSON.c::isnan",
+        "include/cJSON.c::NAN",
+        "include/cJSON.c::NAN",
+        "include/cJSON.c::error",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::case_insensitive_strcmp",
+        "include/cJSON.c::internal_hooks",
+        "include/cJSON.c::internal_malloc",
+        "include/cJSON.c::internal_free",
+        "include/cJSON.c::internal_realloc",
+        "include/cJSON.c::internal_malloc",
+        "include/cJSON.c::internal_free",
+        "include/cJSON.c::internal_realloc",
+        "include/cJSON.c::static_strlen",
+        "include/cJSON.c::cJSON_strdup",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::cJSON_New_Item",
+        "include/cJSON.c::get_decimal_point",
+        "include/cJSON.c::parse_buffer",
+        "include/cJSON.c::can_read",
+        "include/cJSON.c::can_access_at_index",
+        "include/cJSON.c::cannot_access_at_index",
+        "include/cJSON.c::buffer_at_offset",
+        "include/cJSON.c::parse_number",
+        "include/cJSON.c::printbuffer",
+        "include/cJSON.c::ensure",
+        "include/cJSON.c::update_offset",
+        "include/cJSON.c::compare_double",
+        "include/cJSON.c::print_number",
+        "include/cJSON.c::parse_hex4",
+        "include/cJSON.c::utf16_literal_to_utf8",
+        "include/cJSON.c::parse_string",
+        "include/cJSON.c::print_string_ptr",
+        "include/cJSON.c::print_string",
+        "include/cJSON.c::buffer_skip_whitespace",
+        "include/cJSON.c::skip_utf8_bom",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::cjson_min",
+        "include/cJSON.c::print",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::parse_value",
+        "include/cJSON.c::print_value",
+        "include/cJSON.c::parse_array",
+        "include/cJSON.c::print_array",
+        "include/cJSON.c::parse_object",
+        "include/cJSON.c::print_object",
+        "include/cJSON.c::get_array_item",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::get_object_item",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::suffix_object",
+        "include/cJSON.c::create_reference",
+        "include/cJSON.c::add_item_to_array",
+        "include/cJSON.c::cast_away_const",
+        "include/cJSON.c::add_item_to_object",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::replace_item_in_object",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::cJSON_Duplicate_rec",
+        "include/cJSON.c::skip_oneline_comment",
+        "include/cJSON.c::skip_multiline_comment",
+        "include/cJSON.c::minify_string",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::cJSON_ArrayForEach",
+        "include/cJSON.c::cJSON_ArrayForEach",
+        "include/cJSON.c::CJSON_PUBLIC",
+        "include/cJSON.c::CJSON_PUBLIC"
+       ]
+      },
+      {
+       "file_path": "include/cJSON.h",
+       "methods": [
+        "include/cJSON.h::cJSON__h",
+        "include/cJSON.h::next",
+        "include/cJSON.h::__WINDOWS__",
+        "include/cJSON.h::CJSON_CDECL",
+        "include/cJSON.h::CJSON_STDCALL",
+        "include/cJSON.h::CJSON_EXPORT_SYMBOLS",
+        "include/cJSON.h::CJSON_PUBLIC",
+        "include/cJSON.h::CJSON_PUBLIC",
+        "include/cJSON.h::CJSON_PUBLIC",
+        "include/cJSON.h::CJSON_CDECL",
+        "include/cJSON.h::CJSON_STDCALL",
+        "include/cJSON.h::CJSON_PUBLIC",
+        "include/cJSON.h::CJSON_PUBLIC",
+        "include/cJSON.h::CJSON_VERSION_MAJOR",
+        "include/cJSON.h::CJSON_VERSION_MINOR",
+        "include/cJSON.h::CJSON_VERSION_PATCH",
+        "include/cJSON.h::cJSON_Invalid",
+        "include/cJSON.h::cJSON_False",
+        "include/cJSON.h::cJSON_True",
+        "include/cJSON.h::cJSON_NULL",
+        "include/cJSON.h::cJSON_Number",
+        "include/cJSON.h::cJSON_String",
+        "include/cJSON.h::cJSON_Array",
+        "include/cJSON.h::cJSON_Object",
+        "include/cJSON.h::cJSON_Raw",
+        "include/cJSON.h::cJSON_IsReference",
+        "include/cJSON.h::cJSON_StringIsConst",
+        "include/cJSON.h::cJSON",
+        "include/cJSON.h::cJSON_Hooks",
+        "include/cJSON.h::cJSON_bool",
+        "include/cJSON.h::CJSON_NESTING_LIMIT",
+        "include/cJSON.h::CJSON_CIRCULAR_LIMIT",
+        "include/cJSON.h::sensitive",
+        "include/cJSON.h::cJSON_SetIntValue",
+        "include/cJSON.h::cJSON_SetNumberValue",
+        "include/cJSON.h::cJSON_SetBoolValue",
+        "include/cJSON.h::cJSON_ArrayForEach"
+       ]
+      }
+     ],
+     "component_id": "1.2",
+     "can_expand": false,
+     "components": [],
+     "components_relations": [],
+     "layer": "utility",
+     "symbol_count": 310,
+     "top_symbols": [
+      {
+       "n": "BEACON_COMMON_H",
+       "k": "macro"
+      },
+      {
+       "n": "_GNU_SOURCE",
+       "k": "macro"
+      },
+      {
+       "n": "BSB_OUTPUT_BUFFER_DEFAULT",
+       "k": "macro"
+      }
+     ],
+     "top_symbols_more": 185
+    },
+    {
+     "name": "root",
+     "description": "root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using...",
+     "key_entities": [
+      {
+       "qualified_name": "cJSON.h::cJSON__h",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 24,
+       "reference_end_line": 26
+      },
+      {
+       "qualified_name": "cJSON.h::next",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 27,
+       "reference_end_line": 31
+      },
+      {
+       "qualified_name": "cJSON.h::__WINDOWS__",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 32,
+       "reference_end_line": 43
+      },
+      {
+       "qualified_name": "cJSON.h::CJSON_CDECL",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 44,
+       "reference_end_line": 44
+      },
+      {
+       "qualified_name": "cJSON.h::CJSON_STDCALL",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 45,
+       "reference_end_line": 48
+      },
+      {
+       "qualified_name": "cJSON.h::CJSON_EXPORT_SYMBOLS",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 49,
+       "reference_end_line": 52
+      },
+      {
+       "qualified_name": "cJSON.h::CJSON_PUBLIC",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 53,
+       "reference_end_line": 54
+      },
+      {
+       "qualified_name": "cJSON.h::CJSON_PUBLIC",
+       "reference_file": "cJSON.h",
+       "reference_start_line": 55,
+       "reference_end_line": 56
+      }
+     ],
+     "source_cluster_ids": [],
+     "file_methods": [
+      {
+       "file_path": "cJSON.c",
+       "methods": [
+        "cJSON.c::_CRT_SECURE_NO_DEPRECATE",
+        "cJSON.c::true",
+        "cJSON.c::false",
+        "cJSON.c::isinf",
+        "cJSON.c::isnan",
+        "cJSON.c::NAN",
+        "cJSON.c::NAN",
+        "cJSON.c::error",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::case_insensitive_strcmp",
+        "cJSON.c::internal_hooks",
+        "cJSON.c::internal_malloc",
+        "cJSON.c::internal_free",
+        "cJSON.c::internal_realloc",
+        "cJSON.c::internal_malloc",
+        "cJSON.c::internal_free",
+        "cJSON.c::internal_realloc",
+        "cJSON.c::static_strlen",
+        "cJSON.c::cJSON_strdup",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::cJSON_New_Item",
+        "cJSON.c::get_decimal_point",
+        "cJSON.c::parse_buffer",
+        "cJSON.c::can_read",
+        "cJSON.c::can_access_at_index",
+        "cJSON.c::cannot_access_at_index",
+        "cJSON.c::buffer_at_offset",
+        "cJSON.c::parse_number",
+        "cJSON.c::printbuffer",
+        "cJSON.c::ensure",
+        "cJSON.c::update_offset",
+        "cJSON.c::compare_double",
+        "cJSON.c::print_number",
+        "cJSON.c::parse_hex4",
+        "cJSON.c::utf16_literal_to_utf8",
+        "cJSON.c::parse_string",
+        "cJSON.c::print_string_ptr",
+        "cJSON.c::print_string",
+        "cJSON.c::buffer_skip_whitespace",
+        "cJSON.c::skip_utf8_bom",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::cjson_min",
+        "cJSON.c::print",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::parse_value",
+        "cJSON.c::print_value",
+        "cJSON.c::parse_array",
+        "cJSON.c::print_array",
+        "cJSON.c::parse_object",
+        "cJSON.c::print_object",
+        "cJSON.c::get_array_item",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::get_object_item",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::suffix_object",
+        "cJSON.c::create_reference",
+        "cJSON.c::add_item_to_array",
+        "cJSON.c::cast_away_const",
+        "cJSON.c::add_item_to_object",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::replace_item_in_object",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::cJSON_Duplicate_rec",
+        "cJSON.c::skip_oneline_comment",
+        "cJSON.c::skip_multiline_comment",
+        "cJSON.c::minify_string",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::cJSON_ArrayForEach",
+        "cJSON.c::cJSON_ArrayForEach",
+        "cJSON.c::CJSON_PUBLIC",
+        "cJSON.c::CJSON_PUBLIC"
+       ]
+      },
+      {
+       "file_path": "cJSON.h",
+       "methods": [
+        "cJSON.h::cJSON__h",
+        "cJSON.h::next",
+        "cJSON.h::__WINDOWS__",
+        "cJSON.h::CJSON_CDECL",
+        "cJSON.h::CJSON_STDCALL",
+        "cJSON.h::CJSON_EXPORT_SYMBOLS",
+        "cJSON.h::CJSON_PUBLIC",
+        "cJSON.h::CJSON_PUBLIC",
+        "cJSON.h::CJSON_PUBLIC",
+        "cJSON.h::CJSON_CDECL",
+        "cJSON.h::CJSON_STDCALL",
+        "cJSON.h::CJSON_PUBLIC",
+        "cJSON.h::CJSON_PUBLIC",
+        "cJSON.h::CJSON_VERSION_MAJOR",
+        "cJSON.h::CJSON_VERSION_MINOR",
+        "cJSON.h::CJSON_VERSION_PATCH",
+        "cJSON.h::cJSON_Invalid",
+        "cJSON.h::cJSON_False",
+        "cJSON.h::cJSON_True",
+        "cJSON.h::cJSON_NULL",
+        "cJSON.h::cJSON_Number",
+        "cJSON.h::cJSON_String",
+        "cJSON.h::cJSON_Array",
+        "cJSON.h::cJSON_Object",
+        "cJSON.h::cJSON_Raw",
+        "cJSON.h::cJSON_IsReference",
+        "cJSON.h::cJSON_StringIsConst",
+        "cJSON.h::cJSON",
+        "cJSON.h::cJSON_Hooks",
+        "cJSON.h::cJSON_bool",
+        "cJSON.h::CJSON_NESTING_LIMIT",
+        "cJSON.h::CJSON_CIRCULAR_LIMIT",
+        "cJSON.h::sensitive",
+        "cJSON.h::cJSON_SetIntValue",
+        "cJSON.h::cJSON_SetNumberValue",
+        "cJSON.h::cJSON_SetBoolValue",
+        "cJSON.h::cJSON_ArrayForEach"
+       ]
+      }
+     ],
+     "component_id": "1.3",
+     "can_expand": false,
+     "components": [],
+     "components_relations": [],
+     "layer": "utility",
+     "symbol_count": 162,
+     "top_symbols": [
+      {
+       "n": "cJSON__h",
+       "k": "macro"
+      },
+      {
+       "n": "next",
+       "k": "variable"
+      },
+      {
+       "n": "__WINDOWS__",
+       "k": "macro"
+      }
+     ],
+     "top_symbols_more": 82
+    }
+   ],
+   "components_relations": [
+    {
+     "relation": "calls into",
+     "src_name": "beacons",
+     "dst_name": "include",
+     "evidence": "3 imports, 50 calls across the boundary",
+     "import_count": 3,
+     "call_count": 50,
+     "key_edges": [
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
+       "call_sites": [
+        {
+         "line": 31,
+         "column": 16
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
+       "call_sites": [
+        {
+         "line": 59,
+         "column": 36
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
+       "call_sites": [
+        {
+         "line": 69,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 78,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
+       "call_sites": [
+        {
+         "line": 120,
+         "column": 34
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
+       "call_sites": [
+        {
+         "line": 124,
+         "column": 21
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
+       "call_sites": [
+        {
+         "line": 151,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
+       "call_sites": [
+        {
+         "line": 157,
+         "column": 4
+        }
+       ],
+       "description": ""
+      }
+     ],
+     "src_id": "1.1",
+     "dst_id": "1.2",
+     "is_static": true,
+     "all_edges": [
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
+       "call_sites": [
+        {
+         "line": 31,
+         "column": 16
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
+       "call_sites": [
+        {
+         "line": 59,
+         "column": 36
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
+       "call_sites": [
+        {
+         "line": 69,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 78,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
+       "call_sites": [
+        {
+         "line": 120,
+         "column": 34
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
+       "call_sites": [
+        {
+         "line": 124,
+         "column": 21
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
+       "call_sites": [
+        {
+         "line": 151,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
+       "call_sites": [
+        {
+         "line": 157,
+         "column": 4
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 164,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 167,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
+       "call_sites": [
+        {
+         "line": 172,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 177,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
+       "call_sites": [
+        {
+         "line": 184,
+         "column": 33
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 191,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
+       "call_sites": [
+        {
+         "line": 195,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_cleanup",
+       "call_sites": [
+        {
+         "line": 206,
+         "column": 4
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
+       "call_sites": [
+        {
+         "line": 73,
+         "column": 16
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
+       "call_sites": [
+        {
+         "line": 101,
+         "column": 36
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
+       "call_sites": [
+        {
+         "line": 111,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
+       "call_sites": [
+        {
+         "line": 120,
+         "column": 32
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 124,
+         "column": 39
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
+       "call_sites": [
+        {
+         "line": 168,
+         "column": 34
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
+       "call_sites": [
+        {
+         "line": 172,
+         "column": 21
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
+       "call_sites": [
+        {
+         "line": 199,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
+       "call_sites": [
+        {
+         "line": 209,
+         "column": 4
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 216,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 219,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
+       "call_sites": [
+        {
+         "line": 224,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 229,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
+       "call_sites": [
+        {
+         "line": 236,
+         "column": 33
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 243,
+         "column": 18
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
+       "call_sites": [
+        {
+         "line": 247,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_cleanup",
+       "call_sites": [
+        {
+         "line": 258,
+         "column": 4
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
+       "call_sites": [
+        {
+         "line": 59,
+         "column": 16
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
+       "call_sites": [
+        {
+         "line": 87,
+         "column": 36
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
+       "call_sites": [
+        {
+         "line": 97,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
+       "call_sites": [
+        {
+         "line": 106,
+         "column": 32
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 110,
+         "column": 39
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
+       "call_sites": [
+        {
+         "line": 154,
+         "column": 34
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::execute_command",
+       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
+       "call_sites": [
+        {
+         "line": 158,
+         "column": 21
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
+       "call_sites": [
+        {
+         "line": 185,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
+       "call_sites": [
+        {
+         "line": 191,
+         "column": 4
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
+       "call_sites": [
+        {
+         "line": 200,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 203,
+         "column": 26
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
+       "call_sites": [
+        {
+         "line": 208,
+         "column": 35
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 213,
+         "column": 26
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
+       "call_sites": [
+        {
+         "line": 220,
+         "column": 33
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
+       "call_sites": [
+        {
+         "line": 227,
+         "column": 26
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
+       "call_sites": [
+        {
+         "line": 231,
+         "column": 8
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
+       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_cleanup",
+       "call_sites": [
+        {
+         "line": 242,
+         "column": 4
+        }
+       ],
+       "description": ""
+      }
+     ]
+    },
+    {
+     "relation": "depends on",
+     "src_name": "beacons",
+     "dst_name": "root",
+     "evidence": "3 imports, 0 calls across the boundary",
+     "import_count": 3,
+     "call_count": 0,
+     "key_edges": [],
+     "src_id": "1.1",
+     "dst_id": "1.3",
+     "is_static": true,
+     "all_edges": []
+    },
+    {
+     "relation": "depends on",
+     "src_name": "include",
+     "dst_name": "root",
+     "evidence": "2 imports, 0 calls across the boundary",
+     "import_count": 2,
+     "call_count": 0,
+     "key_edges": [],
+     "src_id": "1.2",
+     "dst_id": "1.3",
+     "is_static": true,
+     "all_edges": []
+    }
+   ],
+   "layer": "utility",
+   "symbol_count": 494,
+   "top_symbols": [
+    {
+     "n": "BEACON_COMMON_H",
+     "k": "macro"
+    },
+    {
+     "n": "_GNU_SOURCE",
+     "k": "macro"
+    },
+    {
+     "n": "BSB_OUTPUT_BUFFER_DEFAULT",
+     "k": "macro"
+    }
+   ],
+   "top_symbols_more": 198,
+   "hub": true
+  },
+  {
    "name": "root",
    "description": "root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
    "key_entities": [
@@ -7796,7 +9904,7 @@
      ]
     }
    ],
-   "component_id": "1",
+   "component_id": "2",
    "can_expand": true,
    "components": [
     {
@@ -7888,7 +9996,7 @@
        ]
       }
      ],
-     "component_id": "1.1",
+     "component_id": "2.1",
      "can_expand": false,
      "components": [],
      "components_relations": [],
@@ -8270,7 +10378,7 @@
        ]
       }
      ],
-     "component_id": "1.2",
+     "component_id": "2.2",
      "can_expand": false,
      "components": [],
      "components_relations": [],
@@ -8302,8 +10410,8 @@
      "import_count": 2,
      "call_count": 0,
      "key_edges": [],
-     "src_id": "1.1",
-     "dst_id": "1.2",
+     "src_id": "2.1",
+     "dst_id": "2.2",
      "is_static": true,
      "all_edges": []
     }
@@ -8326,1950 +10434,6 @@
    ],
    "top_symbols_more": 115,
    "hub": false
-  },
-  {
-   "name": "include: cJSON",
-   "description": "include: cJSON groups 9 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.",
-   "key_entities": [
-    {
-     "qualified_name": "include/beacon_common.h::BEACON_COMMON_H",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 13,
-     "reference_end_line": 14
-    },
-    {
-     "qualified_name": "include/beacon_common.h::_GNU_SOURCE",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 15,
-     "reference_end_line": 25
-    },
-    {
-     "qualified_name": "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 26,
-     "reference_end_line": 26
-    },
-    {
-     "qualified_name": "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 27,
-     "reference_end_line": 31
-    },
-    {
-     "qualified_name": "include/beacon_common.h::http_response_t",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 32,
-     "reference_end_line": 38
-    },
-    {
-     "qualified_name": "include/beacon_common.h::Trampoline",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 39,
-     "reference_end_line": 47
-    },
-    {
-     "qualified_name": "include/beacon_common.h::SymbolResolver",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 48,
-     "reference_end_line": 53
-    },
-    {
-     "qualified_name": "include/beacon_common.h::TrampolineCache",
-     "reference_file": "include/beacon_common.h",
-     "reference_start_line": 54,
-     "reference_end_line": 59
-    }
-   ],
-   "source_cluster_ids": [],
-   "file_methods": [
-    {
-     "file_path": "beacons/v1/beacon.c",
-     "methods": [
-      "beacons/v1/beacon.c::_GNU_SOURCE",
-      "beacons/v1/beacon.c::report_result",
-      "beacons/v1/beacon.c::execute_command",
-      "beacons/v1/beacon.c::main"
-     ]
-    },
-    {
-     "file_path": "beacons/v2/beacon.c",
-     "methods": [
-      "beacons/v2/beacon.c::_GNU_SOURCE",
-      "beacons/v2/beacon.c::MAX_PEERS",
-      "beacons/v2/beacon.c::DISCOVERY_PORT",
-      "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
-      "beacons/v2/beacon.c::MAX_TTL",
-      "beacons/v2/beacon.c::MESH_MSG_SIZE",
-      "beacons/v2/beacon.c::peer_t",
-      "beacons/v2/beacon.c::mesh_msg_t",
-      "beacons/v2/beacon.c::report_result",
-      "beacons/v2/beacon.c::execute_command",
-      "beacons/v2/beacon.c::main"
-     ]
-    },
-    {
-     "file_path": "beacons/v3/beacon.c",
-     "methods": [
-      "beacons/v3/beacon.c::infrastructure",
-      "beacons/v3/beacon.c::_GNU_SOURCE",
-      "beacons/v3/beacon.c::compute_primes",
-      "beacons/v3/beacon.c::evasive_sleep",
-      "beacons/v3/beacon.c::report_result",
-      "beacons/v3/beacon.c::execute_command",
-      "beacons/v3/beacon.c::main"
-     ]
-    },
-    {
-     "file_path": "cJSON.c",
-     "methods": [
-      "cJSON.c::_CRT_SECURE_NO_DEPRECATE",
-      "cJSON.c::true",
-      "cJSON.c::false",
-      "cJSON.c::isinf",
-      "cJSON.c::isnan",
-      "cJSON.c::NAN",
-      "cJSON.c::NAN",
-      "cJSON.c::error",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::case_insensitive_strcmp",
-      "cJSON.c::internal_hooks",
-      "cJSON.c::internal_malloc",
-      "cJSON.c::internal_free",
-      "cJSON.c::internal_realloc",
-      "cJSON.c::internal_malloc",
-      "cJSON.c::internal_free",
-      "cJSON.c::internal_realloc",
-      "cJSON.c::static_strlen",
-      "cJSON.c::cJSON_strdup",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::cJSON_New_Item",
-      "cJSON.c::get_decimal_point",
-      "cJSON.c::parse_buffer",
-      "cJSON.c::can_read",
-      "cJSON.c::can_access_at_index",
-      "cJSON.c::cannot_access_at_index",
-      "cJSON.c::buffer_at_offset",
-      "cJSON.c::parse_number",
-      "cJSON.c::printbuffer",
-      "cJSON.c::ensure",
-      "cJSON.c::update_offset",
-      "cJSON.c::compare_double",
-      "cJSON.c::print_number",
-      "cJSON.c::parse_hex4",
-      "cJSON.c::utf16_literal_to_utf8",
-      "cJSON.c::parse_string",
-      "cJSON.c::print_string_ptr",
-      "cJSON.c::print_string",
-      "cJSON.c::buffer_skip_whitespace",
-      "cJSON.c::skip_utf8_bom",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::cjson_min",
-      "cJSON.c::print",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::parse_value",
-      "cJSON.c::print_value",
-      "cJSON.c::parse_array",
-      "cJSON.c::print_array",
-      "cJSON.c::parse_object",
-      "cJSON.c::print_object",
-      "cJSON.c::get_array_item",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::get_object_item",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::suffix_object",
-      "cJSON.c::create_reference",
-      "cJSON.c::add_item_to_array",
-      "cJSON.c::cast_away_const",
-      "cJSON.c::add_item_to_object",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::replace_item_in_object",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::cJSON_Duplicate_rec",
-      "cJSON.c::skip_oneline_comment",
-      "cJSON.c::skip_multiline_comment",
-      "cJSON.c::minify_string",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::cJSON_ArrayForEach",
-      "cJSON.c::cJSON_ArrayForEach",
-      "cJSON.c::CJSON_PUBLIC",
-      "cJSON.c::CJSON_PUBLIC"
-     ]
-    },
-    {
-     "file_path": "cJSON.h",
-     "methods": [
-      "cJSON.h::cJSON__h",
-      "cJSON.h::next",
-      "cJSON.h::__WINDOWS__",
-      "cJSON.h::CJSON_CDECL",
-      "cJSON.h::CJSON_STDCALL",
-      "cJSON.h::CJSON_EXPORT_SYMBOLS",
-      "cJSON.h::CJSON_PUBLIC",
-      "cJSON.h::CJSON_PUBLIC",
-      "cJSON.h::CJSON_PUBLIC",
-      "cJSON.h::CJSON_CDECL",
-      "cJSON.h::CJSON_STDCALL",
-      "cJSON.h::CJSON_PUBLIC",
-      "cJSON.h::CJSON_PUBLIC",
-      "cJSON.h::CJSON_VERSION_MAJOR",
-      "cJSON.h::CJSON_VERSION_MINOR",
-      "cJSON.h::CJSON_VERSION_PATCH",
-      "cJSON.h::cJSON_Invalid",
-      "cJSON.h::cJSON_False",
-      "cJSON.h::cJSON_True",
-      "cJSON.h::cJSON_NULL",
-      "cJSON.h::cJSON_Number",
-      "cJSON.h::cJSON_String",
-      "cJSON.h::cJSON_Array",
-      "cJSON.h::cJSON_Object",
-      "cJSON.h::cJSON_Raw",
-      "cJSON.h::cJSON_IsReference",
-      "cJSON.h::cJSON_StringIsConst",
-      "cJSON.h::cJSON",
-      "cJSON.h::cJSON_Hooks",
-      "cJSON.h::cJSON_bool",
-      "cJSON.h::CJSON_NESTING_LIMIT",
-      "cJSON.h::CJSON_CIRCULAR_LIMIT",
-      "cJSON.h::sensitive",
-      "cJSON.h::cJSON_SetIntValue",
-      "cJSON.h::cJSON_SetNumberValue",
-      "cJSON.h::cJSON_SetBoolValue",
-      "cJSON.h::cJSON_ArrayForEach"
-     ]
-    },
-    {
-     "file_path": "include/beacon_common.c",
-     "methods": [
-      "include/beacon_common.c::_GNU_SOURCE",
-      "include/beacon_common.c::bsb_output_init",
-      "include/beacon_common.c::bsb_output_cleanup",
-      "include/beacon_common.c::bsb_output_reset",
-      "include/beacon_common.c::BeaconPrintf",
-      "include/beacon_common.c::BeaconOutput",
-      "include/beacon_common.c::create_trampoline",
-      "include/beacon_common.c::cleanup_trampolines",
-      "include/beacon_common.c::get_or_create_trampoline",
-      "include/beacon_common.c::MemoryStruct",
-      "include/beacon_common.c::WriteMemoryCallback",
-      "include/beacon_common.c::https_request",
-      "include/beacon_common.c::base64_encode",
-      "include/beacon_common.c::base64_decode",
-      "include/beacon_common.c::_is_unreserved",
-      "include/beacon_common.c::url_encode",
-      "include/beacon_common.c::exec_cmd",
-      "include/beacon_common.c::bsb_backoff_init",
-      "include/beacon_common.c::bsb_backoff_next",
-      "include/beacon_common.c::bsb_backoff_reset",
-      "include/beacon_common.c::get_local_ips",
-      "include/beacon_common.c::download_bof",
-      "include/beacon_common.c::init_function_pointers",
-      "include/beacon_common.c::page_align",
-      "include/beacon_common.c::__attribute__",
-      "include/beacon_common.c::RunELF",
-      "include/beacon_common.c::run_bof_and_capture"
-     ]
-    },
-    {
-     "file_path": "include/beacon_common.h",
-     "methods": [
-      "include/beacon_common.h::BEACON_COMMON_H",
-      "include/beacon_common.h::_GNU_SOURCE",
-      "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
-      "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
-      "include/beacon_common.h::http_response_t",
-      "include/beacon_common.h::Trampoline",
-      "include/beacon_common.h::SymbolResolver",
-      "include/beacon_common.h::TrampolineCache",
-      "include/beacon_common.h::g_beacon_output",
-      "include/beacon_common.h::g_output_len",
-      "include/beacon_common.h::g_output_capacity",
-      "include/beacon_common.h::g_printf_ptr",
-      "include/beacon_common.h::g_strlen_ptr",
-      "include/beacon_common.h::g_memcpy_ptr",
-      "include/beacon_common.h::g_memset_ptr",
-      "include/beacon_common.h::g_exit_ptr",
-      "include/beacon_common.h::g_dlsym_ptr",
-      "include/beacon_common.h::g_dlerror_ptr",
-      "include/beacon_common.h::g_dlopen_ptr",
-      "include/beacon_common.h::g_dlclose_ptr",
-      "include/beacon_common.h::g_write_ptr",
-      "include/beacon_common.h::g_mmap_ptr",
-      "include/beacon_common.h::g_munmap_ptr",
-      "include/beacon_common.h::g_BeaconPrintf_ptr",
-      "include/beacon_common.h::g_BeaconOutput_ptr",
-      "include/beacon_common.h::g_socket_ptr",
-      "include/beacon_common.h::g_connect_ptr",
-      "include/beacon_common.h::g_inet_addr_ptr",
-      "include/beacon_common.h::g_htons_ptr",
-      "include/beacon_common.h::g_send_ptr",
-      "include/beacon_common.h::g_recv_ptr",
-      "include/beacon_common.h::g_close_ptr",
-      "include/beacon_common.h::g_getaddrinfo_ptr",
-      "include/beacon_common.h::g_freeaddrinfo_ptr",
-      "include/beacon_common.h::bsb_output_init",
-      "include/beacon_common.h::bsb_output_cleanup",
-      "include/beacon_common.h::bsb_output_reset",
-      "include/beacon_common.h::BeaconPrintf",
-      "include/beacon_common.h::BeaconOutput",
-      "include/beacon_common.h::create_trampoline",
-      "include/beacon_common.h::cleanup_trampolines",
-      "include/beacon_common.h::get_or_create_trampoline",
-      "include/beacon_common.h::https_request",
-      "include/beacon_common.h::base64_encode",
-      "include/beacon_common.h::base64_decode",
-      "include/beacon_common.h::url_encode",
-      "include/beacon_common.h::aes256_cfb_encrypt",
-      "include/beacon_common.h::aes256_cfb_decrypt",
-      "include/beacon_common.h::buffer",
-      "include/beacon_common.h::RunELF",
-      "include/beacon_common.h::download_bof",
-      "include/beacon_common.h::run_bof_and_capture",
-      "include/beacon_common.h::get_local_ips",
-      "include/beacon_common.h::bsb_backoff_t",
-      "include/beacon_common.h::bsb_backoff_init",
-      "include/beacon_common.h::bsb_backoff_next",
-      "include/beacon_common.h::bsb_backoff_reset"
-     ]
-    },
-    {
-     "file_path": "include/cJSON.c",
-     "methods": [
-      "include/cJSON.c::_CRT_SECURE_NO_DEPRECATE",
-      "include/cJSON.c::true",
-      "include/cJSON.c::false",
-      "include/cJSON.c::isinf",
-      "include/cJSON.c::isnan",
-      "include/cJSON.c::NAN",
-      "include/cJSON.c::NAN",
-      "include/cJSON.c::error",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::case_insensitive_strcmp",
-      "include/cJSON.c::internal_hooks",
-      "include/cJSON.c::internal_malloc",
-      "include/cJSON.c::internal_free",
-      "include/cJSON.c::internal_realloc",
-      "include/cJSON.c::internal_malloc",
-      "include/cJSON.c::internal_free",
-      "include/cJSON.c::internal_realloc",
-      "include/cJSON.c::static_strlen",
-      "include/cJSON.c::cJSON_strdup",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::cJSON_New_Item",
-      "include/cJSON.c::get_decimal_point",
-      "include/cJSON.c::parse_buffer",
-      "include/cJSON.c::can_read",
-      "include/cJSON.c::can_access_at_index",
-      "include/cJSON.c::cannot_access_at_index",
-      "include/cJSON.c::buffer_at_offset",
-      "include/cJSON.c::parse_number",
-      "include/cJSON.c::printbuffer",
-      "include/cJSON.c::ensure",
-      "include/cJSON.c::update_offset",
-      "include/cJSON.c::compare_double",
-      "include/cJSON.c::print_number",
-      "include/cJSON.c::parse_hex4",
-      "include/cJSON.c::utf16_literal_to_utf8",
-      "include/cJSON.c::parse_string",
-      "include/cJSON.c::print_string_ptr",
-      "include/cJSON.c::print_string",
-      "include/cJSON.c::buffer_skip_whitespace",
-      "include/cJSON.c::skip_utf8_bom",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::cjson_min",
-      "include/cJSON.c::print",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::parse_value",
-      "include/cJSON.c::print_value",
-      "include/cJSON.c::parse_array",
-      "include/cJSON.c::print_array",
-      "include/cJSON.c::parse_object",
-      "include/cJSON.c::print_object",
-      "include/cJSON.c::get_array_item",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::get_object_item",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::suffix_object",
-      "include/cJSON.c::create_reference",
-      "include/cJSON.c::add_item_to_array",
-      "include/cJSON.c::cast_away_const",
-      "include/cJSON.c::add_item_to_object",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::replace_item_in_object",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::cJSON_Duplicate_rec",
-      "include/cJSON.c::skip_oneline_comment",
-      "include/cJSON.c::skip_multiline_comment",
-      "include/cJSON.c::minify_string",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::cJSON_ArrayForEach",
-      "include/cJSON.c::cJSON_ArrayForEach",
-      "include/cJSON.c::CJSON_PUBLIC",
-      "include/cJSON.c::CJSON_PUBLIC"
-     ]
-    },
-    {
-     "file_path": "include/cJSON.h",
-     "methods": [
-      "include/cJSON.h::cJSON__h",
-      "include/cJSON.h::next",
-      "include/cJSON.h::__WINDOWS__",
-      "include/cJSON.h::CJSON_CDECL",
-      "include/cJSON.h::CJSON_STDCALL",
-      "include/cJSON.h::CJSON_EXPORT_SYMBOLS",
-      "include/cJSON.h::CJSON_PUBLIC",
-      "include/cJSON.h::CJSON_PUBLIC",
-      "include/cJSON.h::CJSON_PUBLIC",
-      "include/cJSON.h::CJSON_CDECL",
-      "include/cJSON.h::CJSON_STDCALL",
-      "include/cJSON.h::CJSON_PUBLIC",
-      "include/cJSON.h::CJSON_PUBLIC",
-      "include/cJSON.h::CJSON_VERSION_MAJOR",
-      "include/cJSON.h::CJSON_VERSION_MINOR",
-      "include/cJSON.h::CJSON_VERSION_PATCH",
-      "include/cJSON.h::cJSON_Invalid",
-      "include/cJSON.h::cJSON_False",
-      "include/cJSON.h::cJSON_True",
-      "include/cJSON.h::cJSON_NULL",
-      "include/cJSON.h::cJSON_Number",
-      "include/cJSON.h::cJSON_String",
-      "include/cJSON.h::cJSON_Array",
-      "include/cJSON.h::cJSON_Object",
-      "include/cJSON.h::cJSON_Raw",
-      "include/cJSON.h::cJSON_IsReference",
-      "include/cJSON.h::cJSON_StringIsConst",
-      "include/cJSON.h::cJSON",
-      "include/cJSON.h::cJSON_Hooks",
-      "include/cJSON.h::cJSON_bool",
-      "include/cJSON.h::CJSON_NESTING_LIMIT",
-      "include/cJSON.h::CJSON_CIRCULAR_LIMIT",
-      "include/cJSON.h::sensitive",
-      "include/cJSON.h::cJSON_SetIntValue",
-      "include/cJSON.h::cJSON_SetNumberValue",
-      "include/cJSON.h::cJSON_SetBoolValue",
-      "include/cJSON.h::cJSON_ArrayForEach"
-     ]
-    }
-   ],
-   "component_id": "2",
-   "can_expand": true,
-   "components": [
-    {
-     "name": "beacons",
-     "description": "beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE.",
-     "key_entities": [
-      {
-       "qualified_name": "beacons/v1/beacon.c::_GNU_SOURCE",
-       "reference_file": "beacons/v1/beacon.c",
-       "reference_start_line": 13,
-       "reference_end_line": 23
-      },
-      {
-       "qualified_name": "beacons/v1/beacon.c::report_result",
-       "reference_file": "beacons/v1/beacon.c",
-       "reference_start_line": 24,
-       "reference_end_line": 96
-      },
-      {
-       "qualified_name": "beacons/v1/beacon.c::execute_command",
-       "reference_file": "beacons/v1/beacon.c",
-       "reference_start_line": 97,
-       "reference_end_line": 145
-      },
-      {
-       "qualified_name": "beacons/v1/beacon.c::main",
-       "reference_file": "beacons/v1/beacon.c",
-       "reference_start_line": 146,
-       "reference_end_line": 214
-      },
-      {
-       "qualified_name": "beacons/v2/beacon.c::_GNU_SOURCE",
-       "reference_file": "beacons/v2/beacon.c",
-       "reference_start_line": 12,
-       "reference_end_line": 26
-      },
-      {
-       "qualified_name": "beacons/v2/beacon.c::MAX_PEERS",
-       "reference_file": "beacons/v2/beacon.c",
-       "reference_start_line": 27,
-       "reference_end_line": 27
-      },
-      {
-       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_PORT",
-       "reference_file": "beacons/v2/beacon.c",
-       "reference_start_line": 28,
-       "reference_end_line": 28
-      },
-      {
-       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
-       "reference_file": "beacons/v2/beacon.c",
-       "reference_start_line": 29,
-       "reference_end_line": 29
-      }
-     ],
-     "source_cluster_ids": [],
-     "file_methods": [
-      {
-       "file_path": "beacons/v1/beacon.c",
-       "methods": [
-        "beacons/v1/beacon.c::_GNU_SOURCE",
-        "beacons/v1/beacon.c::report_result",
-        "beacons/v1/beacon.c::execute_command",
-        "beacons/v1/beacon.c::main"
-       ]
-      },
-      {
-       "file_path": "beacons/v2/beacon.c",
-       "methods": [
-        "beacons/v2/beacon.c::_GNU_SOURCE",
-        "beacons/v2/beacon.c::MAX_PEERS",
-        "beacons/v2/beacon.c::DISCOVERY_PORT",
-        "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
-        "beacons/v2/beacon.c::MAX_TTL",
-        "beacons/v2/beacon.c::MESH_MSG_SIZE",
-        "beacons/v2/beacon.c::peer_t",
-        "beacons/v2/beacon.c::mesh_msg_t",
-        "beacons/v2/beacon.c::report_result",
-        "beacons/v2/beacon.c::execute_command",
-        "beacons/v2/beacon.c::main"
-       ]
-      },
-      {
-       "file_path": "beacons/v3/beacon.c",
-       "methods": [
-        "beacons/v3/beacon.c::infrastructure",
-        "beacons/v3/beacon.c::_GNU_SOURCE",
-        "beacons/v3/beacon.c::compute_primes",
-        "beacons/v3/beacon.c::evasive_sleep",
-        "beacons/v3/beacon.c::report_result",
-        "beacons/v3/beacon.c::execute_command",
-        "beacons/v3/beacon.c::main"
-       ]
-      }
-     ],
-     "component_id": "2.1",
-     "can_expand": false,
-     "components": [],
-     "components_relations": [],
-     "layer": "utility",
-     "symbol_count": 22,
-     "top_symbols": [
-      {
-       "n": "_GNU_SOURCE",
-       "k": "macro"
-      },
-      {
-       "n": "report_result",
-       "k": "function"
-      },
-      {
-       "n": "execute_command",
-       "k": "function"
-      }
-     ],
-     "top_symbols_more": 11
-    },
-    {
-     "name": "include",
-     "description": "include groups 4 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. MemoryStruct: if (g_cache_count >= g_cache_capacity) { size_t new_cap =...",
-     "key_entities": [
-      {
-       "qualified_name": "include/beacon_common.h::BEACON_COMMON_H",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 13,
-       "reference_end_line": 14
-      },
-      {
-       "qualified_name": "include/beacon_common.h::_GNU_SOURCE",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 15,
-       "reference_end_line": 25
-      },
-      {
-       "qualified_name": "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 26,
-       "reference_end_line": 26
-      },
-      {
-       "qualified_name": "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 27,
-       "reference_end_line": 31
-      },
-      {
-       "qualified_name": "include/beacon_common.h::http_response_t",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 32,
-       "reference_end_line": 38
-      },
-      {
-       "qualified_name": "include/beacon_common.h::Trampoline",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 39,
-       "reference_end_line": 47
-      },
-      {
-       "qualified_name": "include/beacon_common.h::SymbolResolver",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 48,
-       "reference_end_line": 53
-      },
-      {
-       "qualified_name": "include/beacon_common.h::TrampolineCache",
-       "reference_file": "include/beacon_common.h",
-       "reference_start_line": 54,
-       "reference_end_line": 59
-      }
-     ],
-     "source_cluster_ids": [],
-     "file_methods": [
-      {
-       "file_path": "include/beacon_common.c",
-       "methods": [
-        "include/beacon_common.c::_GNU_SOURCE",
-        "include/beacon_common.c::bsb_output_init",
-        "include/beacon_common.c::bsb_output_cleanup",
-        "include/beacon_common.c::bsb_output_reset",
-        "include/beacon_common.c::BeaconPrintf",
-        "include/beacon_common.c::BeaconOutput",
-        "include/beacon_common.c::create_trampoline",
-        "include/beacon_common.c::cleanup_trampolines",
-        "include/beacon_common.c::get_or_create_trampoline",
-        "include/beacon_common.c::MemoryStruct",
-        "include/beacon_common.c::WriteMemoryCallback",
-        "include/beacon_common.c::https_request",
-        "include/beacon_common.c::base64_encode",
-        "include/beacon_common.c::base64_decode",
-        "include/beacon_common.c::_is_unreserved",
-        "include/beacon_common.c::url_encode",
-        "include/beacon_common.c::exec_cmd",
-        "include/beacon_common.c::bsb_backoff_init",
-        "include/beacon_common.c::bsb_backoff_next",
-        "include/beacon_common.c::bsb_backoff_reset",
-        "include/beacon_common.c::get_local_ips",
-        "include/beacon_common.c::download_bof",
-        "include/beacon_common.c::init_function_pointers",
-        "include/beacon_common.c::page_align",
-        "include/beacon_common.c::__attribute__",
-        "include/beacon_common.c::RunELF",
-        "include/beacon_common.c::run_bof_and_capture"
-       ]
-      },
-      {
-       "file_path": "include/beacon_common.h",
-       "methods": [
-        "include/beacon_common.h::BEACON_COMMON_H",
-        "include/beacon_common.h::_GNU_SOURCE",
-        "include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT",
-        "include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER",
-        "include/beacon_common.h::http_response_t",
-        "include/beacon_common.h::Trampoline",
-        "include/beacon_common.h::SymbolResolver",
-        "include/beacon_common.h::TrampolineCache",
-        "include/beacon_common.h::g_beacon_output",
-        "include/beacon_common.h::g_output_len",
-        "include/beacon_common.h::g_output_capacity",
-        "include/beacon_common.h::g_printf_ptr",
-        "include/beacon_common.h::g_strlen_ptr",
-        "include/beacon_common.h::g_memcpy_ptr",
-        "include/beacon_common.h::g_memset_ptr",
-        "include/beacon_common.h::g_exit_ptr",
-        "include/beacon_common.h::g_dlsym_ptr",
-        "include/beacon_common.h::g_dlerror_ptr",
-        "include/beacon_common.h::g_dlopen_ptr",
-        "include/beacon_common.h::g_dlclose_ptr",
-        "include/beacon_common.h::g_write_ptr",
-        "include/beacon_common.h::g_mmap_ptr",
-        "include/beacon_common.h::g_munmap_ptr",
-        "include/beacon_common.h::g_BeaconPrintf_ptr",
-        "include/beacon_common.h::g_BeaconOutput_ptr",
-        "include/beacon_common.h::g_socket_ptr",
-        "include/beacon_common.h::g_connect_ptr",
-        "include/beacon_common.h::g_inet_addr_ptr",
-        "include/beacon_common.h::g_htons_ptr",
-        "include/beacon_common.h::g_send_ptr",
-        "include/beacon_common.h::g_recv_ptr",
-        "include/beacon_common.h::g_close_ptr",
-        "include/beacon_common.h::g_getaddrinfo_ptr",
-        "include/beacon_common.h::g_freeaddrinfo_ptr",
-        "include/beacon_common.h::bsb_output_init",
-        "include/beacon_common.h::bsb_output_cleanup",
-        "include/beacon_common.h::bsb_output_reset",
-        "include/beacon_common.h::BeaconPrintf",
-        "include/beacon_common.h::BeaconOutput",
-        "include/beacon_common.h::create_trampoline",
-        "include/beacon_common.h::cleanup_trampolines",
-        "include/beacon_common.h::get_or_create_trampoline",
-        "include/beacon_common.h::https_request",
-        "include/beacon_common.h::base64_encode",
-        "include/beacon_common.h::base64_decode",
-        "include/beacon_common.h::url_encode",
-        "include/beacon_common.h::aes256_cfb_encrypt",
-        "include/beacon_common.h::aes256_cfb_decrypt",
-        "include/beacon_common.h::buffer",
-        "include/beacon_common.h::RunELF",
-        "include/beacon_common.h::download_bof",
-        "include/beacon_common.h::run_bof_and_capture",
-        "include/beacon_common.h::get_local_ips",
-        "include/beacon_common.h::bsb_backoff_t",
-        "include/beacon_common.h::bsb_backoff_init",
-        "include/beacon_common.h::bsb_backoff_next",
-        "include/beacon_common.h::bsb_backoff_reset"
-       ]
-      },
-      {
-       "file_path": "include/cJSON.c",
-       "methods": [
-        "include/cJSON.c::_CRT_SECURE_NO_DEPRECATE",
-        "include/cJSON.c::true",
-        "include/cJSON.c::false",
-        "include/cJSON.c::isinf",
-        "include/cJSON.c::isnan",
-        "include/cJSON.c::NAN",
-        "include/cJSON.c::NAN",
-        "include/cJSON.c::error",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::case_insensitive_strcmp",
-        "include/cJSON.c::internal_hooks",
-        "include/cJSON.c::internal_malloc",
-        "include/cJSON.c::internal_free",
-        "include/cJSON.c::internal_realloc",
-        "include/cJSON.c::internal_malloc",
-        "include/cJSON.c::internal_free",
-        "include/cJSON.c::internal_realloc",
-        "include/cJSON.c::static_strlen",
-        "include/cJSON.c::cJSON_strdup",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::cJSON_New_Item",
-        "include/cJSON.c::get_decimal_point",
-        "include/cJSON.c::parse_buffer",
-        "include/cJSON.c::can_read",
-        "include/cJSON.c::can_access_at_index",
-        "include/cJSON.c::cannot_access_at_index",
-        "include/cJSON.c::buffer_at_offset",
-        "include/cJSON.c::parse_number",
-        "include/cJSON.c::printbuffer",
-        "include/cJSON.c::ensure",
-        "include/cJSON.c::update_offset",
-        "include/cJSON.c::compare_double",
-        "include/cJSON.c::print_number",
-        "include/cJSON.c::parse_hex4",
-        "include/cJSON.c::utf16_literal_to_utf8",
-        "include/cJSON.c::parse_string",
-        "include/cJSON.c::print_string_ptr",
-        "include/cJSON.c::print_string",
-        "include/cJSON.c::buffer_skip_whitespace",
-        "include/cJSON.c::skip_utf8_bom",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::cjson_min",
-        "include/cJSON.c::print",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::parse_value",
-        "include/cJSON.c::print_value",
-        "include/cJSON.c::parse_array",
-        "include/cJSON.c::print_array",
-        "include/cJSON.c::parse_object",
-        "include/cJSON.c::print_object",
-        "include/cJSON.c::get_array_item",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::get_object_item",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::suffix_object",
-        "include/cJSON.c::create_reference",
-        "include/cJSON.c::add_item_to_array",
-        "include/cJSON.c::cast_away_const",
-        "include/cJSON.c::add_item_to_object",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::replace_item_in_object",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::cJSON_Duplicate_rec",
-        "include/cJSON.c::skip_oneline_comment",
-        "include/cJSON.c::skip_multiline_comment",
-        "include/cJSON.c::minify_string",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::cJSON_ArrayForEach",
-        "include/cJSON.c::cJSON_ArrayForEach",
-        "include/cJSON.c::CJSON_PUBLIC",
-        "include/cJSON.c::CJSON_PUBLIC"
-       ]
-      },
-      {
-       "file_path": "include/cJSON.h",
-       "methods": [
-        "include/cJSON.h::cJSON__h",
-        "include/cJSON.h::next",
-        "include/cJSON.h::__WINDOWS__",
-        "include/cJSON.h::CJSON_CDECL",
-        "include/cJSON.h::CJSON_STDCALL",
-        "include/cJSON.h::CJSON_EXPORT_SYMBOLS",
-        "include/cJSON.h::CJSON_PUBLIC",
-        "include/cJSON.h::CJSON_PUBLIC",
-        "include/cJSON.h::CJSON_PUBLIC",
-        "include/cJSON.h::CJSON_CDECL",
-        "include/cJSON.h::CJSON_STDCALL",
-        "include/cJSON.h::CJSON_PUBLIC",
-        "include/cJSON.h::CJSON_PUBLIC",
-        "include/cJSON.h::CJSON_VERSION_MAJOR",
-        "include/cJSON.h::CJSON_VERSION_MINOR",
-        "include/cJSON.h::CJSON_VERSION_PATCH",
-        "include/cJSON.h::cJSON_Invalid",
-        "include/cJSON.h::cJSON_False",
-        "include/cJSON.h::cJSON_True",
-        "include/cJSON.h::cJSON_NULL",
-        "include/cJSON.h::cJSON_Number",
-        "include/cJSON.h::cJSON_String",
-        "include/cJSON.h::cJSON_Array",
-        "include/cJSON.h::cJSON_Object",
-        "include/cJSON.h::cJSON_Raw",
-        "include/cJSON.h::cJSON_IsReference",
-        "include/cJSON.h::cJSON_StringIsConst",
-        "include/cJSON.h::cJSON",
-        "include/cJSON.h::cJSON_Hooks",
-        "include/cJSON.h::cJSON_bool",
-        "include/cJSON.h::CJSON_NESTING_LIMIT",
-        "include/cJSON.h::CJSON_CIRCULAR_LIMIT",
-        "include/cJSON.h::sensitive",
-        "include/cJSON.h::cJSON_SetIntValue",
-        "include/cJSON.h::cJSON_SetNumberValue",
-        "include/cJSON.h::cJSON_SetBoolValue",
-        "include/cJSON.h::cJSON_ArrayForEach"
-       ]
-      }
-     ],
-     "component_id": "2.2",
-     "can_expand": false,
-     "components": [],
-     "components_relations": [],
-     "layer": "utility",
-     "symbol_count": 246,
-     "top_symbols": [
-      {
-       "n": "BEACON_COMMON_H",
-       "k": "macro"
-      },
-      {
-       "n": "_GNU_SOURCE",
-       "k": "macro"
-      },
-      {
-       "n": "BSB_OUTPUT_BUFFER_DEFAULT",
-       "k": "macro"
-      }
-     ],
-     "top_symbols_more": 146
-    },
-    {
-     "name": "root",
-     "description": "root groups 2 files (c, h) around cJSON__h, next, __WINDOWS__, CJSON_CDECL, CJSON_STDCALL. case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using...",
-     "key_entities": [
-      {
-       "qualified_name": "cJSON.h::cJSON__h",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 24,
-       "reference_end_line": 26
-      },
-      {
-       "qualified_name": "cJSON.h::next",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 27,
-       "reference_end_line": 31
-      },
-      {
-       "qualified_name": "cJSON.h::__WINDOWS__",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 32,
-       "reference_end_line": 43
-      },
-      {
-       "qualified_name": "cJSON.h::CJSON_CDECL",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 44,
-       "reference_end_line": 44
-      },
-      {
-       "qualified_name": "cJSON.h::CJSON_STDCALL",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 45,
-       "reference_end_line": 48
-      },
-      {
-       "qualified_name": "cJSON.h::CJSON_EXPORT_SYMBOLS",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 49,
-       "reference_end_line": 52
-      },
-      {
-       "qualified_name": "cJSON.h::CJSON_PUBLIC",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 53,
-       "reference_end_line": 54
-      },
-      {
-       "qualified_name": "cJSON.h::CJSON_PUBLIC",
-       "reference_file": "cJSON.h",
-       "reference_start_line": 55,
-       "reference_end_line": 56
-      }
-     ],
-     "source_cluster_ids": [],
-     "file_methods": [
-      {
-       "file_path": "cJSON.c",
-       "methods": [
-        "cJSON.c::_CRT_SECURE_NO_DEPRECATE",
-        "cJSON.c::true",
-        "cJSON.c::false",
-        "cJSON.c::isinf",
-        "cJSON.c::isnan",
-        "cJSON.c::NAN",
-        "cJSON.c::NAN",
-        "cJSON.c::error",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::case_insensitive_strcmp",
-        "cJSON.c::internal_hooks",
-        "cJSON.c::internal_malloc",
-        "cJSON.c::internal_free",
-        "cJSON.c::internal_realloc",
-        "cJSON.c::internal_malloc",
-        "cJSON.c::internal_free",
-        "cJSON.c::internal_realloc",
-        "cJSON.c::static_strlen",
-        "cJSON.c::cJSON_strdup",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::cJSON_New_Item",
-        "cJSON.c::get_decimal_point",
-        "cJSON.c::parse_buffer",
-        "cJSON.c::can_read",
-        "cJSON.c::can_access_at_index",
-        "cJSON.c::cannot_access_at_index",
-        "cJSON.c::buffer_at_offset",
-        "cJSON.c::parse_number",
-        "cJSON.c::printbuffer",
-        "cJSON.c::ensure",
-        "cJSON.c::update_offset",
-        "cJSON.c::compare_double",
-        "cJSON.c::print_number",
-        "cJSON.c::parse_hex4",
-        "cJSON.c::utf16_literal_to_utf8",
-        "cJSON.c::parse_string",
-        "cJSON.c::print_string_ptr",
-        "cJSON.c::print_string",
-        "cJSON.c::buffer_skip_whitespace",
-        "cJSON.c::skip_utf8_bom",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::cjson_min",
-        "cJSON.c::print",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::parse_value",
-        "cJSON.c::print_value",
-        "cJSON.c::parse_array",
-        "cJSON.c::print_array",
-        "cJSON.c::parse_object",
-        "cJSON.c::print_object",
-        "cJSON.c::get_array_item",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::get_object_item",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::suffix_object",
-        "cJSON.c::create_reference",
-        "cJSON.c::add_item_to_array",
-        "cJSON.c::cast_away_const",
-        "cJSON.c::add_item_to_object",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::replace_item_in_object",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::cJSON_Duplicate_rec",
-        "cJSON.c::skip_oneline_comment",
-        "cJSON.c::skip_multiline_comment",
-        "cJSON.c::minify_string",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::cJSON_ArrayForEach",
-        "cJSON.c::cJSON_ArrayForEach",
-        "cJSON.c::CJSON_PUBLIC",
-        "cJSON.c::CJSON_PUBLIC"
-       ]
-      },
-      {
-       "file_path": "cJSON.h",
-       "methods": [
-        "cJSON.h::cJSON__h",
-        "cJSON.h::next",
-        "cJSON.h::__WINDOWS__",
-        "cJSON.h::CJSON_CDECL",
-        "cJSON.h::CJSON_STDCALL",
-        "cJSON.h::CJSON_EXPORT_SYMBOLS",
-        "cJSON.h::CJSON_PUBLIC",
-        "cJSON.h::CJSON_PUBLIC",
-        "cJSON.h::CJSON_PUBLIC",
-        "cJSON.h::CJSON_CDECL",
-        "cJSON.h::CJSON_STDCALL",
-        "cJSON.h::CJSON_PUBLIC",
-        "cJSON.h::CJSON_PUBLIC",
-        "cJSON.h::CJSON_VERSION_MAJOR",
-        "cJSON.h::CJSON_VERSION_MINOR",
-        "cJSON.h::CJSON_VERSION_PATCH",
-        "cJSON.h::cJSON_Invalid",
-        "cJSON.h::cJSON_False",
-        "cJSON.h::cJSON_True",
-        "cJSON.h::cJSON_NULL",
-        "cJSON.h::cJSON_Number",
-        "cJSON.h::cJSON_String",
-        "cJSON.h::cJSON_Array",
-        "cJSON.h::cJSON_Object",
-        "cJSON.h::cJSON_Raw",
-        "cJSON.h::cJSON_IsReference",
-        "cJSON.h::cJSON_StringIsConst",
-        "cJSON.h::cJSON",
-        "cJSON.h::cJSON_Hooks",
-        "cJSON.h::cJSON_bool",
-        "cJSON.h::CJSON_NESTING_LIMIT",
-        "cJSON.h::CJSON_CIRCULAR_LIMIT",
-        "cJSON.h::sensitive",
-        "cJSON.h::cJSON_SetIntValue",
-        "cJSON.h::cJSON_SetNumberValue",
-        "cJSON.h::cJSON_SetBoolValue",
-        "cJSON.h::cJSON_ArrayForEach"
-       ]
-      }
-     ],
-     "component_id": "2.3",
-     "can_expand": false,
-     "components": [],
-     "components_relations": [],
-     "layer": "utility",
-     "symbol_count": 162,
-     "top_symbols": [
-      {
-       "n": "cJSON__h",
-       "k": "macro"
-      },
-      {
-       "n": "next",
-       "k": "variable"
-      },
-      {
-       "n": "__WINDOWS__",
-       "k": "macro"
-      }
-     ],
-     "top_symbols_more": 82
-    }
-   ],
-   "components_relations": [
-    {
-     "relation": "calls into",
-     "src_name": "beacons",
-     "dst_name": "include",
-     "evidence": "3 imports, 51 calls across the boundary",
-     "import_count": 3,
-     "call_count": 51,
-     "key_edges": [
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
-       "call_sites": [
-        {
-         "line": 31,
-         "column": 16
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
-       "call_sites": [
-        {
-         "line": 59,
-         "column": 36
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
-       "call_sites": [
-        {
-         "line": 69,
-         "column": 25
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
-       "call_sites": [
-        {
-         "line": 78,
-         "column": 32
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 82,
-         "column": 39
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
-       "call_sites": [
-        {
-         "line": 126,
-         "column": 34
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
-       "call_sites": [
-        {
-         "line": 130,
-         "column": 21
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
-       "call_sites": [
-        {
-         "line": 157,
-         "column": 8
-        }
-       ],
-       "description": ""
-      }
-     ],
-     "src_id": "2.1",
-     "dst_id": "2.2",
-     "is_static": true,
-     "all_edges": [
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
-       "call_sites": [
-        {
-         "line": 31,
-         "column": 16
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
-       "call_sites": [
-        {
-         "line": 59,
-         "column": 36
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
-       "call_sites": [
-        {
-         "line": 69,
-         "column": 25
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
-       "call_sites": [
-        {
-         "line": 78,
-         "column": 32
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 82,
-         "column": 39
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
-       "call_sites": [
-        {
-         "line": 126,
-         "column": 34
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
-       "call_sites": [
-        {
-         "line": 130,
-         "column": 21
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
-       "call_sites": [
-        {
-         "line": 157,
-         "column": 8
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
-       "call_sites": [
-        {
-         "line": 163,
-         "column": 4
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 170,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 173,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
-       "call_sites": [
-        {
-         "line": 178,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 183,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
-       "call_sites": [
-        {
-         "line": 190,
-         "column": 33
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 197,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
-       "call_sites": [
-        {
-         "line": 201,
-         "column": 8
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_cleanup",
-       "call_sites": [
-        {
-         "line": 212,
-         "column": 4
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
-       "call_sites": [
-        {
-         "line": 73,
-         "column": 16
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
-       "call_sites": [
-        {
-         "line": 101,
-         "column": 36
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
-       "call_sites": [
-        {
-         "line": 111,
-         "column": 25
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
-       "call_sites": [
-        {
-         "line": 120,
-         "column": 32
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 124,
-         "column": 39
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
-       "call_sites": [
-        {
-         "line": 168,
-         "column": 34
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
-       "call_sites": [
-        {
-         "line": 172,
-         "column": 21
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
-       "call_sites": [
-        {
-         "line": 199,
-         "column": 8
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
-       "call_sites": [
-        {
-         "line": 209,
-         "column": 4
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 216,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 219,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
-       "call_sites": [
-        {
-         "line": 224,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 229,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
-       "call_sites": [
-        {
-         "line": 236,
-         "column": 33
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 243,
-         "column": 18
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
-       "call_sites": [
-        {
-         "line": 247,
-         "column": 8
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v2/beacon.c|beacons/v2/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_cleanup",
-       "call_sites": [
-        {
-         "line": 258,
-         "column": 4
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
-       "call_sites": [
-        {
-         "line": 59,
-         "column": 16
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_encrypt",
-       "call_sites": [
-        {
-         "line": 87,
-         "column": 36
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_encode",
-       "call_sites": [
-        {
-         "line": 97,
-         "column": 25
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::url_encode",
-       "call_sites": [
-        {
-         "line": 106,
-         "column": 32
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 110,
-         "column": 39
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::download_bof",
-       "call_sites": [
-        {
-         "line": 154,
-         "column": 34
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::execute_command",
-       "target": "include/beacon_common.h|include/beacon_common.h::run_bof_and_capture",
-       "call_sites": [
-        {
-         "line": 158,
-         "column": 21
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_output_init",
-       "call_sites": [
-        {
-         "line": 185,
-         "column": 8
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_init",
-       "call_sites": [
-        {
-         "line": 191,
-         "column": 4
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::https_request",
-       "call_sites": [
-        {
-         "line": 200,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 203,
-         "column": 26
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::base64_decode",
-       "call_sites": [
-        {
-         "line": 208,
-         "column": 35
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 213,
-         "column": 26
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::aes256_cfb_decrypt",
-       "call_sites": [
-        {
-         "line": 220,
-         "column": 33
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_next",
-       "call_sites": [
-        {
-         "line": 227,
-         "column": 26
-        }
-       ],
-       "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
-       "call_sites": [
-        {
-         "line": 231,
-         "column": 8
-        }
-       ],
-       "description": ""
-      }
-     ]
-    },
-    {
-     "relation": "depends on",
-     "src_name": "beacons",
-     "dst_name": "root",
-     "evidence": "3 imports, 0 calls across the boundary",
-     "import_count": 3,
-     "call_count": 0,
-     "key_edges": [],
-     "src_id": "2.1",
-     "dst_id": "2.3",
-     "is_static": true,
-     "all_edges": []
-    },
-    {
-     "relation": "depends on",
-     "src_name": "include",
-     "dst_name": "root",
-     "evidence": "2 imports, 0 calls across the boundary",
-     "import_count": 2,
-     "call_count": 0,
-     "key_edges": [],
-     "src_id": "2.2",
-     "dst_id": "2.3",
-     "is_static": true,
-     "all_edges": []
-    }
-   ],
-   "layer": "utility",
-   "symbol_count": 430,
-   "top_symbols": [
-    {
-     "n": "BEACON_COMMON_H",
-     "k": "macro"
-    },
-    {
-     "n": "_GNU_SOURCE",
-     "k": "macro"
-    },
-    {
-     "n": "BSB_OUTPUT_BUFFER_DEFAULT",
-     "k": "macro"
-    }
-   ],
-   "top_symbols_more": 159,
-   "hub": true
   },
   {
    "name": "bof/include",
@@ -10585,166 +10749,6 @@
    "hub": false
   },
   {
-   "name": "include: aes",
-   "description": "include: aes groups 3 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
-   "key_entities": [
-    {
-     "qualified_name": "include/aes.h::_AES_H_",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 2,
-     "reference_end_line": 8
-    },
-    {
-     "qualified_name": "include/aes.h::CBC",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 9,
-     "reference_end_line": 11
-    },
-    {
-     "qualified_name": "include/aes.h::ECB",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 12,
-     "reference_end_line": 14
-    },
-    {
-     "qualified_name": "include/aes.h::CTR",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 15,
-     "reference_end_line": 17
-    },
-    {
-     "qualified_name": "include/aes.h::AES256",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 18,
-     "reference_end_line": 19
-    },
-    {
-     "qualified_name": "include/aes.h::AES_BLOCKLEN",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 20,
-     "reference_end_line": 22
-    },
-    {
-     "qualified_name": "include/aes.h::AES_KEYLEN",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 23,
-     "reference_end_line": 23
-    },
-    {
-     "qualified_name": "include/aes.h::AES_keyExpSize",
-     "reference_file": "include/aes.h",
-     "reference_start_line": 24,
-     "reference_end_line": 25
-    }
-   ],
-   "source_cluster_ids": [],
-   "file_methods": [
-    {
-     "file_path": "include/aes.c",
-     "methods": [
-      "include/aes.c::Nb",
-      "include/aes.c::KEYLEN_256",
-      "include/aes.c::RKLENGTH",
-      "include/aes.c::BLOCKLEN",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::__attribute__",
-      "include/aes.c::Nb",
-      "include/aes.c::Nk",
-      "include/aes.c::Nr",
-      "include/aes.c::Nk",
-      "include/aes.c::Nr",
-      "include/aes.c::Nk",
-      "include/aes.c::Nr",
-      "include/aes.c::MULTIPLY_AS_A_FUNCTION",
-      "include/aes.c::getSBoxValue",
-      "include/aes.c::KeyExpansion",
-      "include/aes.c::AES_init_ctx",
-      "include/aes.c::AES_init_ctx_iv",
-      "include/aes.c::AES_ctx_set_iv",
-      "include/aes.c::AddRoundKey",
-      "include/aes.c::SubBytes",
-      "include/aes.c::ShiftRows",
-      "include/aes.c::xtime",
-      "include/aes.c::MixColumns",
-      "include/aes.c::Multiply",
-      "include/aes.c::Multiply",
-      "include/aes.c::getSBoxInvert",
-      "include/aes.c::InvMixColumns",
-      "include/aes.c::InvSubBytes",
-      "include/aes.c::InvShiftRows",
-      "include/aes.c::Cipher",
-      "include/aes.c::InvCipher",
-      "include/aes.c::AES_ECB_encrypt",
-      "include/aes.c::AES_ECB_decrypt",
-      "include/aes.c::XorWithIv",
-      "include/aes.c::AES_CBC_encrypt_buffer",
-      "include/aes.c::AES_CBC_decrypt_buffer",
-      "include/aes.c::AES_CTR_xcrypt_buffer"
-     ]
-    },
-    {
-     "file_path": "include/aes.h",
-     "methods": [
-      "include/aes.h::_AES_H_",
-      "include/aes.h::CBC",
-      "include/aes.h::ECB",
-      "include/aes.h::CTR",
-      "include/aes.h::AES256",
-      "include/aes.h::AES_BLOCKLEN",
-      "include/aes.h::AES_KEYLEN",
-      "include/aes.h::AES_keyExpSize",
-      "include/aes.h::AES_KEYLEN",
-      "include/aes.h::AES_keyExpSize",
-      "include/aes.h::AES_KEYLEN",
-      "include/aes.h::AES_keyExpSize",
-      "include/aes.h::AES_ctx",
-      "include/aes.h::AES_init_ctx",
-      "include/aes.h::AES_init_ctx_iv",
-      "include/aes.h::AES_ctx_set_iv",
-      "include/aes.h::AES_ECB_encrypt",
-      "include/aes.h::AES_ECB_decrypt",
-      "include/aes.h::AES_CBC_encrypt_buffer",
-      "include/aes.h::AES_CBC_decrypt_buffer",
-      "include/aes.h::AES_CTR_xcrypt_buffer"
-     ]
-    },
-    {
-     "file_path": "include/aes_cfb.c",
-     "methods": [
-      "include/aes_cfb.c::aes256_cfb_encrypt",
-      "include/aes_cfb.c::aes256_cfb_decrypt"
-     ]
-    }
-   ],
-   "component_id": "5",
-   "can_expand": false,
-   "components": [],
-   "components_relations": [],
-   "layer": "utility",
-   "symbol_count": 66,
-   "top_symbols": [
-    {
-     "n": "_AES_H_",
-     "k": "macro"
-    },
-    {
-     "n": "CBC",
-     "k": "macro"
-    },
-    {
-     "n": "ECB",
-     "k": "macro"
-    }
-   ],
-   "top_symbols_more": 39,
-   "hub": false
-  },
-  {
    "name": "include: config",
    "description": "include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAULT, BSB_CONFIG_PATH_ENV, BSB_MAX_URL, BSB_MAX_URI. slurp: declared in the schema.",
    "key_entities": [
@@ -10857,7 +10861,7 @@
      ]
     }
    ],
-   "component_id": "6",
+   "component_id": "5",
    "can_expand": false,
    "components": [],
    "components_relations": [],
@@ -10933,7 +10937,7 @@
      ]
     }
    ],
-   "component_id": "7",
+   "component_id": "6",
    "can_expand": false,
    "components": [],
    "components_relations": [],
@@ -10959,25 +10963,12 @@
  ],
  "components_relations": [
   {
-   "relation": "depends on",
-   "src_name": "root",
-   "dst_name": "include: cJSON",
-   "evidence": "11 imports, 0 calls across the boundary",
-   "import_count": 11,
-   "call_count": 0,
-   "key_edges": [],
-   "src_id": "1",
-   "dst_id": "2",
-   "is_static": true,
-   "all_edges": []
-  },
-  {
    "relation": "calls into",
    "src_name": "include: cJSON",
    "dst_name": "root",
-   "evidence": "1 imports, 2 calls across the boundary",
-   "import_count": 1,
-   "call_count": 2,
+   "evidence": "2 imports, 7 calls across the boundary",
+   "import_count": 2,
+   "call_count": 7,
    "key_edges": [
     {
      "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::_GNU_SOURCE",
@@ -11000,10 +10991,65 @@
       }
      ],
      "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td0",
+     "call_sites": [
+      {
+       "line": 57,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td1",
+     "call_sites": [
+      {
+       "line": 58,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td2",
+     "call_sites": [
+      {
+       "line": 59,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td3",
+     "call_sites": [
+      {
+       "line": 60,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td4",
+     "call_sites": [
+      {
+       "line": 61,
+       "column": 39
+      }
+     ],
+     "description": ""
     }
    ],
-   "src_id": "2",
-   "dst_id": "1",
+   "src_id": "1",
+   "dst_id": "2",
    "is_static": true,
    "all_edges": [
     {
@@ -11027,21 +11073,63 @@
       }
      ],
      "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td0",
+     "call_sites": [
+      {
+       "line": 57,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td1",
+     "call_sites": [
+      {
+       "line": 58,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td2",
+     "call_sites": [
+      {
+       "line": 59,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td3",
+     "call_sites": [
+      {
+       "line": 60,
+       "column": 39
+      }
+     ],
+     "description": ""
+    },
+    {
+     "source": "include/aes.c|include/aes.c::__attribute__",
+     "target": "aes.c|aes.c::Td4",
+     "call_sites": [
+      {
+       "line": 61,
+       "column": 39
+      }
+     ],
+     "description": ""
     }
    ]
-  },
-  {
-   "relation": "depends on",
-   "src_name": "include: cJSON",
-   "dst_name": "include: aes",
-   "evidence": "1 imports, 0 calls across the boundary",
-   "import_count": 1,
-   "call_count": 0,
-   "key_edges": [],
-   "src_id": "2",
-   "dst_id": "5",
-   "is_static": true,
-   "all_edges": []
   },
   {
    "relation": "depends on",
@@ -11051,135 +11139,23 @@
    "import_count": 1,
    "call_count": 0,
    "key_edges": [],
-   "src_id": "2",
-   "dst_id": "6",
+   "src_id": "1",
+   "dst_id": "5",
    "is_static": true,
    "all_edges": []
   },
   {
-   "relation": "calls into",
-   "src_name": "include: aes",
-   "dst_name": "root",
-   "evidence": "2 imports, 5 calls across the boundary",
-   "import_count": 2,
-   "call_count": 5,
-   "key_edges": [
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td0",
-     "call_sites": [
-      {
-       "line": 57,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td1",
-     "call_sites": [
-      {
-       "line": 58,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td2",
-     "call_sites": [
-      {
-       "line": 59,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td3",
-     "call_sites": [
-      {
-       "line": 60,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td4",
-     "call_sites": [
-      {
-       "line": 61,
-       "column": 39
-      }
-     ],
-     "description": ""
-    }
-   ],
-   "src_id": "5",
+   "relation": "depends on",
+   "src_name": "root",
+   "dst_name": "include: cJSON",
+   "evidence": "11 imports, 0 calls across the boundary",
+   "import_count": 11,
+   "call_count": 0,
+   "key_edges": [],
+   "src_id": "2",
    "dst_id": "1",
    "is_static": true,
-   "all_edges": [
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td0",
-     "call_sites": [
-      {
-       "line": 57,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td1",
-     "call_sites": [
-      {
-       "line": 58,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td2",
-     "call_sites": [
-      {
-       "line": 59,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td3",
-     "call_sites": [
-      {
-       "line": 60,
-       "column": 39
-      }
-     ],
-     "description": ""
-    },
-    {
-     "source": "include/aes.c|include/aes.c::__attribute__",
-     "target": "aes.c|aes.c::Td4",
-     "call_sites": [
-      {
-       "line": 61,
-       "column": 39
-      }
-     ],
-     "description": ""
-    }
-   ]
+   "all_edges": []
   }
  ]
 }

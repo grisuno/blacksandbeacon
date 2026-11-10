@@ -106,7 +106,7 @@
 {"code":"DOC001","uid":"beacon_p2p.c::send_to_peer","file":"beacon_p2p.c","line":935,"message":"function send_to_peer is not documented"}
 {"code":"DOC001","uid":"beacon_p2p.c::send_to_c2_or_peer","file":"beacon_p2p.c","line":968,"message":"function send_to_c2_or_peer is not documented"}
 {"code":"DOC001","uid":"beacons/v1/beacon.c","file":"beacons/v1/beacon.c","line":1,"message":"module beacons/v1/beacon.c is not documented"}
-{"code":"DOC001","uid":"beacons/v1/beacon.c::main","file":"beacons/v1/beacon.c","line":146,"message":"function main is not documented"}
+{"code":"DOC001","uid":"beacons/v1/beacon.c::main","file":"beacons/v1/beacon.c","line":140,"message":"function main is not documented"}
 {"code":"DOC001","uid":"beacons/v1/gopher_beacon.c::_GNU_SOURCE","file":"beacons/v1/gopher_beacon.c","line":1,"message":"macro _GNU_SOURCE is not documented"}
 {"code":"DOC001","uid":"beacons/v1/gopher_beacon.c","file":"beacons/v1/gopher_beacon.c","line":1,"message":"module beacons/v1/gopher_beacon.c is not documented"}
 {"code":"DOC001","uid":"beacons/v1/gopher_beacon.c::C2","file":"beacons/v1/gopher_beacon.c","line":30,"message":"macro C2 is not documented"}
@@ -363,7 +363,8 @@
 {"code":"DOC001","uid":"include/aes.h::AES_ECB_decrypt","file":"include/aes.h","line":49,"message":"function AES_ECB_decrypt is not documented"}
 {"code":"DOC001","uid":"include/aes.h::AES_CBC_decrypt_buffer","file":"include/aes.h","line":54,"message":"function AES_CBC_decrypt_buffer is not documented"}
 {"code":"DOC001","uid":"include/aes_cfb.c","file":"include/aes_cfb.c","line":1,"message":"module include/aes_cfb.c is not documented"}
-{"code":"DOC001","uid":"include/aes_cfb.c::aes256_cfb_decrypt","file":"include/aes_cfb.c","line":48,"message":"function aes256_cfb_decrypt is not documented"}
+{"code":"DOC001","uid":"include/aes_cfb.c::EVP_EncryptUpdate","file":"include/aes_cfb.c","line":27,"message":"function EVP_EncryptUpdate is not documented"}
+{"code":"DOC001","uid":"include/aes_cfb.c::aes256_cfb_decrypt","file":"include/aes_cfb.c","line":43,"message":"function aes256_cfb_decrypt is not documented"}
 {"code":"DOC001","uid":"include/aes_cfb.h","file":"include/aes_cfb.h","line":1,"message":"module include/aes_cfb.h is not documented"}
 {"code":"DOC001","uid":"include/aes_cfb.h::aes256_cfb_decrypt","file":"include/aes_cfb.h","line":11,"message":"function aes256_cfb_decrypt is not documented"}
 {"code":"DOC001","uid":"include/beacon.h::CALLBACK_ERROR","file":"include/beacon.h","line":10,"message":"macro CALLBACK_ERROR is not documented"}

@@ -7,12 +7,12 @@ Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verb
 | `bof` | 28 | 93 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `beacon` | 26 | 169 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
 | `output` | 22 | 154 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
-| `aes` | 18 | 91 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
-| `decrypt` | 18 | 29 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
+| `aes` | 18 | 92 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
+| `decrypt` | 18 | 30 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
 | `include` | 18 | 29 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/suid_enum/bof.c`, `include/aes.c`, `include/aes.h` |
 | `size` | 17 | 81 | `aes.h`, `beacon5.c`, `beacons/v2/beacon.c`, `bof/cat/cat.c`, `bof/include/syscalls.h` |
 | `get` | 17 | 64 | `aes.c`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
-| `encrypt` | 17 | 23 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
+| `encrypt` | 17 | 24 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c` |
 | `printf` | 16 | 23 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
 | `callback` | 15 | 28 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
 | `run` | 14 | 31 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
@@ -21,18 +21,18 @@ Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verb
 | `read` | 13 | 26 | `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c` |
 | `source` | 13 | 14 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c` |
 | `int` | 12 | 43 | `beacon.h`, `beacon6.c`, `beacon_p2p.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h` |
-| `cfb` | 12 | 35 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
+| `cfb` | 12 | 36 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `not` | 12 | 22 | `aes.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/aes.c` |
 | `client` | 12 | 17 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `write` | 12 | 17 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `return` | 11 | 119 | `beacon6.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/beacon_common.c` |
+| `bsb` | 11 | 78 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.c`, `include/aes_cfb.h` |
 | `request` | 11 | 41 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `struct` | 11 | 25 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `aes256` | 11 | 20 | `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c` |
 | `next` | 11 | 16 | `aes.c`, `cJSON.c`, `cJSON.h`, `include/aes.c`, `include/beacon_common.c` |
 | `gnu` | 11 | 11 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c` |
 | `buffer` | 10 | 207 | `aes.c`, `aes.h`, `bof/include/beacon_api.h`, `cJSON.c`, `include/aes.c` |
-| `bsb` | 10 | 77 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.h`, `include/beacon_common.c` |
 | `config` | 10 | 67 | `c2/server.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h` |
 | `base64` | 10 | 34 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c` |
 | `value` | 10 | 29 | `aes.c`, `bof/suid_enum/bof.c`, `cJSON.c`, `cJSON.h`, `include/aes.c` |
@@ -112,7 +112,7 @@ Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verb
 
 ## Dialectic Prompts
 
-- Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `consumes` explicit?
+- Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `api` pulls 14 files with 8 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `attribute` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `base64` pulls 10 files with 10 shared (Jaccard 0.56); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
@@ -120,5 +120,5 @@ Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verb
 - Thesis: `aes` centralizes 18 files; Antithesis: `client` pulls 12 files with 11 shared (Jaccard 0.58); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `create` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `decode` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `consumes` explicit?
+- Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `elf` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?

@@ -5,7 +5,7 @@
 These files have the most connections. Changes here have high blast radius.
 
 - `cJSON.h` (score: 27.70, imported by 6 files)
-- `aes.h` (score: 22.10, imported by 6 files)
+- `aes.h` (score: 20.10, imported by 6 files)
 - `include/cJSON.c` (score: 16.50)
 - `include/beacon_common.h` (score: 15.70, imported by 4 files)
 - `beacon.h` (score: 15.30, imported by 6 files)
@@ -26,7 +26,7 @@ Editing these files can break the listed number of dependents. Run their tests a
 - `bof/include/beacon_api.h` -- 5 direct, 5 total dependents
 - `bof/include/syscalls.h` -- 5 direct, 5 total dependents
 - `include/beacon_common.h` -- 4 direct, 4 total dependents
-- `include/aes.h` -- 3 direct, 3 total dependents
+- `include/aes.h` -- 2 direct, 2 total dependents
 - `include/cJSON.h` -- 2 direct, 2 total dependents
 - `include/config_py.py` -- 1 direct, 2 total dependents
 

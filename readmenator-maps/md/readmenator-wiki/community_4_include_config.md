@@ -1,6 +1,6 @@
 # include: config
 
-*Community 5 | 3 files | cohesion 0.67*
+*Community 4 | 3 files | cohesion 0.67*
 
 ## Definition
 
@@ -54,11 +54,15 @@ This community groups 3 file(s) rooted at `include` with dominant language c (co
 
 ## Connections
 
-- [EXTRACTED] depends_on community 1 <-> 5 (strength 0.9): Extracted import edge crosses communities: include/beacon_common.h imports include/config.h.
-- [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: config).
-- [INFERRED] shares_context community 3 <-> 5 (strength 0.5): Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 5 (include: config).
-- [INFERRED] shares_context community 4 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 4 (include: aes) and community 5 (include: config).
-- [INFERRED] shares_context community 5 <-> 6 (strength 0.5): Inferred shared context (language c) with no import path between community 5 (include: config) and community 6 (include: aes_cfb).
+- [EXTRACTED] depends_on community 0 <-> 4 (strength 0.9): Extracted import edge crosses communities: include/beacon_common.h imports include/config.h.
+- [INFERRED] shares_context community 2 <-> 4 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 4 (include: config).
+- [INFERRED] shares_context community 3 <-> 4 (strength 0.5): Inferred shared context (layer infrastructure) with no import path between community 3 (include: server) and community 4 (include: config).
+- [INFERRED] shares_context community 4 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 4 (include: config) and community 5 (include: aes_cfb).
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches include/config.c in 7 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches tests/config_harness.c in 7 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: beacon.h reaches include/config.c in 6 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: beacon.h reaches tests/config_harness.c in 6 hops.
+- [INFERRED] bridges community 1 <-> 4 (strength 0.4): Inferred cross-community bridge: bof.c reaches include/config.h in 6 hops.
 
 ## Risks
 

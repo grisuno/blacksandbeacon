@@ -43,8 +43,6 @@ void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);
 | `ctx` | `struct AES_ctx*` |  |  |
 | `key` | `uint8_t*` |  |  |
 
-*Called by:* [`aes256_cfb_decrypt`](include.aes_cfb.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](include.aes_cfb.c.md#aes256_cfb_encrypt)
-
 ---
 
 <a id="aes_init_ctx_iv"></a>
@@ -106,8 +104,6 @@ if defined(ECB) && (ECB == 1)
 |---|---|---|---|
 | `ctx` | `struct AES_ctx*` |  |  |
 | `buf` | `uint8_t*` |  |  |
-
-*Called by:* [`aes256_cfb_decrypt`](include.aes_cfb.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](include.aes_cfb.c.md#aes256_cfb_encrypt)
 
 ---
 

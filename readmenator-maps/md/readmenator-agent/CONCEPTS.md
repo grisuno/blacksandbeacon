@@ -5,12 +5,12 @@ Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges 
 - `bof` | files=28 | mentions=93 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof.c`, `bof/cat/bof.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`
 - `beacon` | files=26 | mentions=169 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v1/gopher_beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `bof/cat/cat.c`
 - `output` | files=22 | mentions=154 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`
-- `aes` | files=18 | mentions=91 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/aes.c`
-- `decrypt` | files=18 | mentions=29 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
+- `aes` | files=18 | mentions=92 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/aes.c`
+- `decrypt` | files=18 | mentions=30 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
 - `include` | files=18 | mentions=29 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/suid_enum/bof.c`, `include/aes.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`
 - `size` | files=17 | mentions=81 | `aes.h`, `beacon5.c`, `beacons/v2/beacon.c`, `bof/cat/cat.c`, `bof/include/syscalls.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`
 - `get` | files=17 | mentions=64 | `aes.c`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/is_sudo/is_sudo.c`, `c2/server.py`, `cJSON.c`, `gopher_beacon.c`
-- `encrypt` | files=17 | mentions=23 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
+- `encrypt` | files=17 | mentions=24 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
 - `printf` | files=16 | mentions=23 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/cat/cat.c`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`
 - `callback` | files=15 | mentions=28 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`
 - `run` | files=14 | mentions=31 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `install.sh`, `tests/test_beacon_build.py`
@@ -19,18 +19,18 @@ Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges 
 - `read` | files=13 | mentions=26 | `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `c2/server.py`, `cJSON.c`, `include/beacon_common.c`, `include/cJSON.c`
 - `source` | files=13 | mentions=14 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v1/gopher_beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `gopher_beacon.c`, `include/beacon_common.c`
 - `int` | files=12 | mentions=43 | `beacon.h`, `beacon6.c`, `beacon_p2p.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `cJSON.h`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.h`
-- `cfb` | files=12 | mentions=35 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.c`
+- `cfb` | files=12 | mentions=36 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.c`
 - `not` | files=12 | mentions=22 | `aes.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/aes.c`, `include/cJSON.c`, `tests/test_beacon_build.py`, `tests/test_bof_compile.py`, `tests/test_c2_http_e2e.py`, `tests/test_c2_server.py`
 - `client` | files=12 | mentions=17 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`, `include/beacon_common.c`, `include/beacon_common.h`
 - `write` | files=12 | mentions=17 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/include/syscalls.h`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`
 - `return` | files=11 | mentions=119 | `beacon6.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/beacon_common.c`, `include/cJSON.c`, `include/config.c`, `tests/test_beacon_build.py`, `tests/test_c2_http_e2e.py`, `tests/test_config.py`
+- `bsb` | files=11 | mentions=78 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_py.py`
 - `request` | files=11 | mentions=41 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `tests/test_c2_http_e2e.py`
 - `struct` | files=11 | mentions=25 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/suid_enum/bof.c`, `cJSON.c`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`
 - `aes256` | files=11 | mentions=20 | `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `gopher_beacon.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`
 - `next` | files=11 | mentions=16 | `aes.c`, `cJSON.c`, `cJSON.h`, `include/aes.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/cJSON.h`, `include/config.c`, `tests/test_config.py`
 - `gnu` | files=11 | mentions=11 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v1/gopher_beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `gopher_beacon.c`, `include/beacon_common.c`
 - `buffer` | files=10 | mentions=207 | `aes.c`, `aes.h`, `bof/include/beacon_api.h`, `cJSON.c`, `include/aes.c`, `include/aes.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/config.c`
-- `bsb` | files=10 | mentions=77 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_py.py`, `tests/test_config.py`
 - `config` | files=10 | mentions=67 | `c2/server.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_py.py`, `tests/config_harness.c`, `tests/test_beacon_build.py`, `tests/test_config.py`, `tests/test_install_deploy.py`
 - `base64` | files=10 | mentions=34 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `tests/test_c2_http_e2e.py`
 - `value` | files=10 | mentions=29 | `aes.c`, `bof/suid_enum/bof.c`, `cJSON.c`, `cJSON.h`, `include/aes.c`, `include/cJSON.c`, `include/cJSON.h`, `include/config.c`, `include/config_py.py`, `tests/test_config.py`
@@ -108,7 +108,7 @@ Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges 
 
 ## Dialectic
 
-- Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `consumes` explicit?
+- Thesis: `aes` centralizes 18 files; Antithesis: `aes256` pulls 11 files with 11 shared (Jaccard 0.61); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `api` pulls 14 files with 8 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `attribute` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `base64` pulls 10 files with 10 shared (Jaccard 0.56); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
@@ -116,5 +116,5 @@ Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges 
 - Thesis: `aes` centralizes 18 files; Antithesis: `client` pulls 12 files with 11 shared (Jaccard 0.58); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `create` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `decode` pulls 9 files with 8 shared (Jaccard 0.42); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `consumes` explicit?
+- Thesis: `aes` centralizes 18 files; Antithesis: `decrypt` pulls 18 files with 16 shared (Jaccard 0.80); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
 - Thesis: `aes` centralizes 18 files; Antithesis: `elf` pulls 10 files with 8 shared (Jaccard 0.40); Synthesis: should they merge, split by layer, or keep `bridges` explicit?

@@ -198,8 +198,10 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 | `CTR` | macro | `include/aes.h:15` | `#define CTR` |
 | `ECB` | macro | `include/aes.h:12` | `#define ECB` |
 | `_AES_H_` | macro | `include/aes.h:2` | `#define _AES_H_` |
-| `aes256_cfb_decrypt` | function | `include/aes_cfb.c:48` | `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,             ...` |
-| `aes256_cfb_encrypt` | function | `include/aes_cfb.c:20` | `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,             ...` |
+| `EVP_EncryptUpdate` | function | `include/aes_cfb.c:27` | `&& EVP_EncryptUpdate(ctx, buffer, &outl, data, (int)len) == 1 && EVP_EncryptFinal_ex(ctx, buffer + outl, &outl2) ==...` |
+| `_bsb_evp_crypt` | function | `include/aes_cfb.c:17` | `static unsigned char* _bsb_evp_crypt(const unsigned char* key, const unsigned char* iv,          ...` |
+| `aes256_cfb_decrypt` | function | `include/aes_cfb.c:43` | `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,             ...` |
+| `aes256_cfb_encrypt` | function | `include/aes_cfb.c:38` | `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,             ...` |
 | `BSB_AES_CFB_H` | macro | `include/aes_cfb.h:5` | `#define BSB_AES_CFB_H` |
 | `aes256_cfb_decrypt` | function | `include/aes_cfb.h:11` | `unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, const unsigned char*...` |
 | `aes256_cfb_encrypt` | function | `include/aes_cfb.h:9` | `unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* plaintext...` |
@@ -494,7 +496,5 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 | `BSB_REPORT_URI_DEFAULT` | macro | `include/config.h:28` | `#define BSB_REPORT_URI_DEFAULT` |
 | `BSB_USER_AGENT_LEN` | macro | `include/config.h:27` | `#define BSB_USER_AGENT_LEN` |
 | `bsb_backoff_config_t` | struct | `include/config.h:60` | `` |
-| `bsb_bof_t` | struct | `include/config.h:55` | `` |
-| `bsb_c2_t` | struct | `include/config.h:30` | `` |
 
 Next: [SYMBOLS_p3.md](SYMBOLS_p3.md)

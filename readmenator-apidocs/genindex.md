@@ -504,6 +504,7 @@
 - [`encrypt_data`](modules/gopher_c2.py.md#encrypt_data) function in `gopher_c2`
 - [`error`](modules/cJSON.c.md#error) struct in `cJSON.c`
 - [`error`](modules/include.cJSON.c.md#error) struct in `include/cJSON.c`
+- [`EVP_EncryptUpdate`](modules/include.aes_cfb.c.md#evp_encryptupdate) function in `include/aes_cfb.c`
 - [`exec_cmd`](modules/beacon3.c.md#exec_cmd) function in `beacon3.c`
 - [`exec_cmd`](modules/beacon5.c.md#exec_cmd) function in `beacon5.c`
 - [`exec_cmd`](modules/beacon6.c.md#exec_cmd) function in `beacon6.c`

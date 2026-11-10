@@ -38,7 +38,7 @@ flowchart LR
 
 ### `main`
 
-`function` | [beacons/v1/beacon.c:146](../../beacons/v1/beacon.c#L146)
+`function` | [beacons/v1/beacon.c:140](../../beacons/v1/beacon.c#L140)
 
 ```c
 int main(void)

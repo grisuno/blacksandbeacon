@@ -1,26 +1,38 @@
 ```mermaid
 graph LR
-    root["root"]
     include_cJSON["include: cJSON"]
+    root["root"]
     bof_include["bof/include"]
     include_server["include: server"]
-    include_aes["include: aes"]
     include_config["include: config"]
     include_aes_cfb["include: aes_cfb"]
-    root -- "depends on" --> include_cJSON
     include_cJSON -- "calls into" --> root
-    include_cJSON -- "depends on" --> include_aes
     include_cJSON -- "depends on" --> include_config
-    include_aes -- "calls into" --> root
-    click root href "./root.md" "Details"
+    root -- "depends on" --> include_cJSON
     click include_cJSON href "./include_cJSON.md" "Details"
+    click root href "./root.md" "Details"
 ```
 
 ## Details
 
-Static architecture map of 52 files (c, h, py, sh) in 7 components: root, include: cJSON, bof/include, include: server, include: aes, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.
+Static architecture map of 52 files (c, h, py, sh) in 6 components: include: cJSON, root, bof/include, include: server, include: config, include: aes_cfb. Structure is extracted statically without LLM calls; component prose may be enriched locally.
 
-### root (1)
+### include: cJSON (1)
+
+include: cJSON groups 11 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.
+
+**Related Classes/Methods**:
+
+- <a href="../include/beacon_common.h#L13-L14">include/beacon_common.h::BEACON_COMMON_H</a>
+- <a href="../include/beacon_common.h#L15-L25">include/beacon_common.h::_GNU_SOURCE</a>
+- <a href="../include/beacon_common.h">include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT</a>
+- <a href="../include/beacon_common.h#L27-L31">include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER</a>
+- <a href="../include/beacon_common.h#L32-L38">include/beacon_common.h::http_response_t</a>
+- <a href="../include/beacon_common.h#L39-L47">include/beacon_common.h::Trampoline</a>
+- <a href="../include/beacon_common.h#L48-L53">include/beacon_common.h::SymbolResolver</a>
+- <a href="../include/beacon_common.h#L54-L59">include/beacon_common.h::TrampolineCache</a>
+
+### root (2)
 
 root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
 
@@ -34,21 +46,6 @@ root groups 10 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (h
 - <a href="../aes.h#L20-L22">aes.h::AES_BLOCKLEN</a>
 - <a href="../aes.h">aes.h::AES_KEYLEN</a>
 - <a href="../aes.h#L24-L25">aes.h::AES_keyExpSize</a>
-
-### include: cJSON (2)
-
-include: cJSON groups 9 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t.
-
-**Related Classes/Methods**:
-
-- <a href="../include/beacon_common.h#L13-L14">include/beacon_common.h::BEACON_COMMON_H</a>
-- <a href="../include/beacon_common.h#L15-L25">include/beacon_common.h::_GNU_SOURCE</a>
-- <a href="../include/beacon_common.h">include/beacon_common.h::BSB_OUTPUT_BUFFER_DEFAULT</a>
-- <a href="../include/beacon_common.h#L27-L31">include/beacon_common.h::BSB_OUTPUT_TRUNCATION_MARKER</a>
-- <a href="../include/beacon_common.h#L32-L38">include/beacon_common.h::http_response_t</a>
-- <a href="../include/beacon_common.h#L39-L47">include/beacon_common.h::Trampoline</a>
-- <a href="../include/beacon_common.h#L48-L53">include/beacon_common.h::SymbolResolver</a>
-- <a href="../include/beacon_common.h#L54-L59">include/beacon_common.h::TrampolineCache</a>
 
 ### bof/include (3)
 
@@ -80,22 +77,7 @@ include: server groups 3 files (py) around _deep_merge, load_config, load_runtim
 - <a href="../c2/server.py#L118-L136">c2/server.py::decrypt_data</a>
 - <a href="../c2/server.py#L137-L139">c2/server.py::C2State</a>
 
-### include: aes (5)
-
-include: aes groups 3 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
-
-**Related Classes/Methods**:
-
-- <a href="../include/aes.h#L2-L8">include/aes.h::_AES_H_</a>
-- <a href="../include/aes.h#L9-L11">include/aes.h::CBC</a>
-- <a href="../include/aes.h#L12-L14">include/aes.h::ECB</a>
-- <a href="../include/aes.h#L15-L17">include/aes.h::CTR</a>
-- <a href="../include/aes.h#L18-L19">include/aes.h::AES256</a>
-- <a href="../include/aes.h#L20-L22">include/aes.h::AES_BLOCKLEN</a>
-- <a href="../include/aes.h">include/aes.h::AES_KEYLEN</a>
-- <a href="../include/aes.h#L24-L25">include/aes.h::AES_keyExpSize</a>
-
-### include: config (6)
+### include: config (5)
 
 include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAULT, BSB_CONFIG_PATH_ENV, BSB_MAX_URL, BSB_MAX_URI. slurp: declared in the schema.
 
@@ -110,7 +92,7 @@ include: config groups 3 files (c, h) around BSB_CONFIG_H, BSB_CONFIG_PATH_DEFAU
 - <a href="../include/config.h">include/config.h::BSB_AES_KEY_HEX_LEN</a>
 - <a href="../include/config.h">include/config.h::BSB_AES_KEY_BYTES</a>
 
-### include: aes_cfb (7)
+### include: aes_cfb (6)
 
 include: aes_cfb groups 2 files (c, h) around BSB_AES_CFB_H, aes256_cfb_encrypt, aes256_cfb_decrypt, hex_to_bytes, main.
 
