@@ -256,7 +256,7 @@ int main(void)
         unsigned char *ciphertext = encrypted + 16;
         int plain_len = 0;
         char *plaintext =
-            (char *)aes256_cfb_decrypt(cfg.crypto.key, iv, ciphertext, enc_len - 16, &plain_len);
+            (char *)aes256_cfb_decrypt(cfg.crypto.encryption_key, iv, ciphertext, enc_len - 16, &plain_len);
         free(encrypted);
 
         if (!plaintext || strlen(plaintext) == 0)
