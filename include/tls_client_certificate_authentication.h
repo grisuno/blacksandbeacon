@@ -1,0 +1,6 @@
+#ifndef TLS_CLIENT_CERTIFICATE_AUTHENTICATION_H
+#define TLS_CLIENT_CERTIFICATE_AUTHENTICATION_H
+
+bool tls_client_certificate_authentication_process(void);
+
+#endif /* TLS_CLIENT_CERTIFICATE_AUTHENTICATION_H */

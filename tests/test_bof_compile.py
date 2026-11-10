@@ -8,7 +8,7 @@ loads at runtime. It must:
   - export `go` with the right signature
   - leave BeaconPrintf/BeaconOutput as undefined external refs
 """
-import os
+
 import re
 import subprocess
 import sys
@@ -22,11 +22,20 @@ def compile_bof(name: str) -> Path:
     out = ROOT / "build" / "bof" / f"{name}.x64.o"
     out.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
-        "gcc", "-c", "-fPIC", "-nostdlib", "-m64", "-O2",
-        "-Wall", "-Wextra",
-        "-I", str(ROOT / "bof" / "include"),
+        "gcc",
+        "-c",
+        "-fPIC",
+        "-nostdlib",
+        "-m64",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-fno-builtin",
+        "-I",
+        str(ROOT / "bof" / "include"),
         str(ROOT / "bof" / name / "bof.c"),
-        "-o", str(out),
+        "-o",
+        str(out),
     ]
     subprocess.check_call(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
     return out
@@ -54,7 +63,9 @@ def test_compile_all():
     for name in BOFS:
         obj = compile_bof(name)
         assert obj.exists() and obj.stat().st_size > 0, f"{name}.x64.o is empty"
-        print(f"  compiled {name} -> {obj.relative_to(ROOT)} ({obj.stat().st_size} bytes)")
+        print(
+            f"  compiled {name} -> {obj.relative_to(ROOT)} ({obj.stat().st_size} bytes)"
+        )
 
 
 def test_export_go():
@@ -70,16 +81,32 @@ def test_unresolved_beacon_api():
         obj = compile_bof(name)
         syms = inspect_symbols(obj)
         # The BOF must NOT define BeaconPrintf/BeaconOutput itself.
-        assert "BeaconPrintf" not in syms["defined"], f"{name} defines BeaconPrintf (must be undefined)"
-        assert "BeaconOutput" not in syms["defined"], f"{name} defines BeaconOutput (must be undefined)"
+        assert (
+            "BeaconPrintf" not in syms["defined"]
+        ), f"{name} defines BeaconPrintf (must be undefined)"
+        assert (
+            "BeaconOutput" not in syms["defined"]
+        ), f"{name} defines BeaconOutput (must be undefined)"
         # And it must reference them so the loader resolves them.
-        assert "BeaconPrintf" in syms["undefined"], f"{name} does not reference BeaconPrintf"
+        assert (
+            "BeaconPrintf" in syms["undefined"]
+        ), f"{name} does not reference BeaconPrintf"
         print(f"  {name}: BeaconPrintf/Output are unresolved refs ✓")
 
 
 def test_no_libc_leak():
     """Make sure we did not pull in glibc symbols by accident."""
-    forbidden = {"printf", "puts", "fprintf", "exit", "malloc", "free", "strlen", "strcmp", "memcpy"}
+    forbidden = {
+        "printf",
+        "puts",
+        "fprintf",
+        "exit",
+        "malloc",
+        "free",
+        "strlen",
+        "strcmp",
+        "memcpy",
+    }
     for name in BOFS:
         obj = compile_bof(name)
         syms = inspect_symbols(obj)

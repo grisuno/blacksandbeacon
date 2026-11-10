@@ -130,7 +130,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
   - `exec_cmd` (function, line 504) `char* exec_cmd(const char* cmd, int* out_len)`
   - `page_align` (function, line 525) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 531) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+  - `RunELF` (function, line 531) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
   - `get_local_ips` (function, line 912) `char* get_local_ips()`
   - `download_bof` (function, line 941) `unsigned char* download_bof(const char* url, size_t* out_size)`
@@ -172,7 +172,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
   - `exec_cmd` (function, line 546) `char* exec_cmd(const char* cmd, int* out_len)`
   - `page_align` (function, line 567) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 573) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+  - `RunELF` (function, line 573) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
   - `get_local_ips` (function, line 954) `char* get_local_ips()`
   - `download_bof` (function, line 983) `unsigned char* download_bof(const char* url, size_t* out_size)`
@@ -230,7 +230,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
   - `exec_cmd` (function, line 566) `char* exec_cmd(const char* cmd, int* out_len)`
   - `page_align` (function, line 587) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 593) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+  - `RunELF` (function, line 593) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
   - `get_local_ips` (function, line 974) `char* get_local_ips()`
   - `download_bof` (function, line 1003) `unsigned char* download_bof(const char* url, size_t* out_size)`

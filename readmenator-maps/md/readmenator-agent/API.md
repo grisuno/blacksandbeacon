@@ -71,7 +71,7 @@ Depends on: `aes.h`, `beacon.h`, `cJSON.h`
             ...`
 - `exec_cmd` (function) `beacon3.c:504` `char* exec_cmd(const char* cmd, int* out_len)` -- === EXEC CMD ===
 - `page_align` (function) `beacon3.c:525` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `beacon3.c:531` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (function) `beacon3.c:531` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (function) `beacon3.c:912` `char* get_local_ips()` -- === GET LOCAL IPs ===
 - `download_bof` (function) `beacon3.c:941` `unsigned char* download_bof(const char* url, size_t* out_size)` -- === DOWNLOAD BOF ===
@@ -96,7 +96,7 @@ Depends on: `aes.h`, `beacon.h`, `cJSON.h`
             ...`
 - `exec_cmd` (function) `beacon5.c:546` `char* exec_cmd(const char* cmd, int* out_len)` -- === EXEC CMD ===
 - `page_align` (function) `beacon5.c:567` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `beacon5.c:573` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (function) `beacon5.c:573` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (function) `beacon5.c:954` `char* get_local_ips()` -- === GET LOCAL IPs ===
 - `download_bof` (function) `beacon5.c:983` `unsigned char* download_bof(const char* url, size_t* out_size)` -- === DOWNLOAD BOF ===
@@ -134,7 +134,7 @@ Depends on: `aes.h`, `beacon.h`, `cJSON.h`
             ...`
 - `exec_cmd` (function) `beacon6.c:566` `char* exec_cmd(const char* cmd, int* out_len)` -- === EXEC CMD ===
 - `page_align` (function) `beacon6.c:587` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `beacon6.c:593` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (function) `beacon6.c:593` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (function) `beacon6.c:974` `char* get_local_ips()` -- === GET LOCAL IPs ===
 - `download_bof` (function) `beacon6.c:1003` `unsigned char* download_bof(const char* url, size_t* out_size)` -- === DOWNLOAD BOF ===
@@ -203,7 +203,7 @@ Depends on: `include/beacon_common.h`
             ...`
 - `exec_cmd` (function) `beacons/v1/gopher_beacon.c:475` `char* exec_cmd(const char* cmd, int* out_len)` -- === EXEC CMD ===
 - `page_align` (function) `beacons/v1/gopher_beacon.c:506` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `beacons/v1/gopher_beacon.c:512` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (function) `beacons/v1/gopher_beacon.c:512` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (function) `beacons/v1/gopher_beacon.c:893` `char* get_local_ips()` -- === GET LOCAL IPs ===
 - `download_bof` (function) `beacons/v1/gopher_beacon.c:922` `unsigned char* download_bof(const char* bof_selector, size_t* out_size)` -- === DOWNLOAD BOF ===
@@ -458,7 +458,7 @@ Depends on: `aes.h`, `beacon.h`, `cJSON.h`
             ...`
 - `exec_cmd` (function) `gopher_beacon.c:475` `char* exec_cmd(const char* cmd, int* out_len)` -- === EXEC CMD ===
 - `page_align` (function) `gopher_beacon.c:506` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `gopher_beacon.c:512` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (function) `gopher_beacon.c:512` `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (function) `gopher_beacon.c:893` `char* get_local_ips()` -- === GET LOCAL IPs ===
 - `download_bof` (function) `gopher_beacon.c:922` `unsigned char* download_bof(const char* bof_selector, size_t* out_size)` -- === DOWNLOAD BOF ===

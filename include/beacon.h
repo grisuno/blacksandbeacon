@@ -7,14 +7,15 @@
 
 // Tipos de callback
 #define CALLBACK_OUTPUT 0x00
-#define CALLBACK_ERROR  0x0D
+#define CALLBACK_ERROR 0x0D
 #define CALLBACK_OUTPUT_OEM 0x0E
 
 // Estructura para parsing de datos (opcional, para comandos complejos)
-typedef struct {
+typedef struct
+{
     char *original;
     char *buffer;
-    int   length;
+    int length;
 } datap;
 
 // === API para BOFs ===

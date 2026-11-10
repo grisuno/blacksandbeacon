@@ -94,4 +94,3 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `test_staged_beacon_runs_from_any_cwd` | function | `tests/test_install_deploy.py:75` | `def test_staged_beacon_runs_from_any_cwd()` |
 | `test_staged_bofs_are_present` | function | `tests/test_install_deploy.py:90` | `def test_staged_bofs_are_present()` |
 | `test_staged_files_have_correct_modes` | function | `tests/test_install_deploy.py:67` | `def test_staged_files_have_correct_modes()` |
-

@@ -25,7 +25,7 @@
 
 CC          ?= gcc
 CFLAGS      ?= -Wall -Wextra -O2 -g
-BOF_CFLAGS  ?= -fPIC -nostdlib -m64 -O2 -Wall -Wextra
+BOF_CFLAGS  ?= -fPIC -nostdlib -m64 -O2 -Wall -Wextra -fno-builtin
 LDFLAGS     ?= -rdynamic -lcurl -lssl -lcrypto
 
 BUILD_DIR   = build
@@ -181,8 +181,40 @@ test: $(BUILD_DIR)/config_harness
 	@python3 tests/test_c2_http_e2e.py
 	@python3 tests/test_install_deploy.py
 
+# C unit tests (CMocka)
+C_TESTS = $(wildcard tests/test_*_c.c)
+C_TEST_BINS = $(C_TESTS:tests/test_%.c=$(BUILD_DIR)/test_%)
+
+test-c: $(C_TEST_BINS)
+	@for t in $(C_TEST_BINS); do \
+		echo "[RUN] $$t"; \
+		$$t || exit 1; \
+	done
+
+$(BUILD_DIR)/test_%: tests/test_%.c include/beacon_common.c include/config.c include/aes.c include/aes_cfb.c include/cJSON.c | $(BUILD_DIR)
+	$(CC) -std=gnu11 -Wall -Wextra -O0 -g $(COMMON_HDR) -I include -o $@ $< include/beacon_common.c include/config.c include/aes.c include/aes_cfb.c include/cJSON.c -lcmocka -lcrypto -lcurl
+
+# AddressSanitizer build
+ASAN_CFLAGS = -fsanitize=address -fno-omit-frame-pointer -O1 -g
+ASAN_LDFLAGS = -fsanitize=address
+
+asan: CFLAGS += $(ASAN_CFLAGS)
+asan: LDFLAGS += $(ASAN_LDFLAGS)
+asan: clean all-beacons bofs
+	@echo "ASan build complete. Run tests with: make test"
+
+# Mutation testing target
+mutation-test:
+	@echo "=== Python mutation testing (mutmut) ==="
+	@pip3 show mutmut >/dev/null 2>&1 || pip3 install mutmut
+	@mutmut run --paths-to-mutate c2/ tests/ --runner "python -m pytest" || true
+	@mutmut results
+
+	@echo "=== C mutation testing (custom) ==="
+	@python3 scripts/mutation_test_c.py
+
 $(BUILD_DIR)/config_harness: tests/config_harness.c include/config.c include/config.h | $(BUILD_DIR)
-	$(CC) -std=c11 -Wall -Wextra -O0 -g $(COMMON_HDR) -o $@ tests/config_harness.c include/config.c
+	$(CC) -std=c11 -Wall -Wextra -O0 -g $(COMMON_HDR) -o $@ tests/config_harness.c include/config.c -lcrypto
 
 # --- housekeeping ---
 $(BUILD_DIR) $(BOF_OUT):

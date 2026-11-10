@@ -1809,7 +1809,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
 - `exec_cmd` (line 504) `char* exec_cmd(const char* cmd, int* out_len)` - *=== EXEC CMD ===*
 - `page_align` (line 525) `static size_t page_align(size_t size)` - *=== Función auxiliar: alinear al tamaño de página ===*
-- `RunELF` (line 531) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (line 531) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (line 912) `char* get_local_ips()` - *=== GET LOCAL IPs ===*
 - `download_bof` (line 941) `unsigned char* download_bof(const char* url, size_t* out_size)` - *=== DOWNLOAD BOF ===*
@@ -1851,7 +1851,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
 - `exec_cmd` (line 546) `char* exec_cmd(const char* cmd, int* out_len)` - *=== EXEC CMD ===*
 - `page_align` (line 567) `static size_t page_align(size_t size)` - *=== Función auxiliar: alinear al tamaño de página ===*
-- `RunELF` (line 573) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (line 573) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (line 954) `char* get_local_ips()` - *=== GET LOCAL IPs ===*
 - `download_bof` (line 983) `unsigned char* download_bof(const char* url, size_t* out_size)` - *=== DOWNLOAD BOF ===*
@@ -1913,7 +1913,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
 - `exec_cmd` (line 566) `char* exec_cmd(const char* cmd, int* out_len)` - *=== EXEC CMD ===*
 - `page_align` (line 587) `static size_t page_align(size_t size)` - *=== Función auxiliar: alinear al tamaño de página ===*
-- `RunELF` (line 593) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (line 593) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (line 974) `char* get_local_ips()` - *=== GET LOCAL IPs ===*
 - `download_bof` (line 1003) `unsigned char* download_bof(const char* url, size_t* out_size)` - *=== DOWNLOAD BOF ===*
@@ -2030,7 +2030,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
 - `exec_cmd` (line 475) `char* exec_cmd(const char* cmd, int* out_len)` - *=== EXEC CMD ===*
 - `page_align` (line 506) `static size_t page_align(size_t size)` - *=== Función auxiliar: alinear al tamaño de página ===*
-- `RunELF` (line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (line 893) `char* get_local_ips()` - *=== GET LOCAL IPs ===*
 - `download_bof` (line 922) `unsigned char* download_bof(const char* bof_selector, size_t* out_size)` - *=== DOWNLOAD BOF ===*
@@ -2399,7 +2399,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
 - `exec_cmd` (line 475) `char* exec_cmd(const char* cmd, int* out_len)` - *=== EXEC CMD ===*
 - `page_align` (line 506) `static size_t page_align(size_t size)` - *=== Función auxiliar: alinear al tamaño de página ===*
-- `RunELF` (line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+- `RunELF` (line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
 - `get_local_ips` (line 893) `char* get_local_ips()` - *=== GET LOCAL IPs ===*
 - `download_bof` (line 922) `unsigned char* download_bof(const char* bof_selector, size_t* out_size)` - *=== DOWNLOAD BOF ===*

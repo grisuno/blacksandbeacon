@@ -11,7 +11,9 @@ We use a free port, run the server in a daemon thread,
 and drive it with raw sockets — no libcurl, no real
 network loopback surprises.
 """
+
 import base64
+import csv
 import json
 import os
 import socket
@@ -26,7 +28,7 @@ sys.path.insert(0, str(ROOT / "include"))
 sys.path.insert(0, str(ROOT))
 
 from c2 import server  # noqa: E402
-
+from c2.server import encrypt_data_replay  # noqa: E402
 
 KEY = bytes.fromhex("0123456789abcdef" * 4)
 CFG = {
@@ -93,7 +95,9 @@ def test_http_get_poll_returns_encrypted_command():
     try:
         s = socket.socket()
         s.connect(("127.0.0.1", port))
-        s.sendall(b"GET /api/poll/linux HTTP/1.1\r\nHost: x\r\nUser-Agent: bsb-beacon\r\nAccept: */*\r\n\r\n")
+        s.sendall(
+            b"GET /api/poll/linux HTTP/1.1\r\nHost: x\r\nUser-Agent: bsb-beacon\r\nAccept: */*\r\n\r\n"
+        )
         resp = _recv_response(s)
         s.close()
     finally:
@@ -107,7 +111,10 @@ def test_http_get_poll_returns_encrypted_command():
     iv, ct = raw[:16], raw[16:]
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     from cryptography.hazmat.backends import default_backend
-    pt = Cipher(algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()).decryptor()
+
+    pt = Cipher(
+        algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()
+    ).decryptor()
     decoded = pt.update(ct) + pt.finalize()
     assert decoded == b"id", f"decrypted {decoded!r} != b'id'"
 
@@ -119,6 +126,7 @@ def test_http_post_report_writes_log():
     so the server logged an UNKNOWN_SELECTOR error and the
     CSV never had a row for this client."""
     import tempfile
+
     port = _free_port()
     cfg = dict(CFG)
     cfg["port"] = port
@@ -143,17 +151,18 @@ def test_http_post_report_writes_log():
         probe.close()
 
     report = {
-        "client": "linux", "os": "linux", "pid": 4242, "hostname": "e2e",
-        "ips": "127.0.0.1", "user": "root",
-        "command": "id", "output": "uid=0(root) gid=0(root)",
+        "client": "linux",
+        "os": "linux",
+        "pid": 4242,
+        "hostname": "e2e",
+        "ips": "127.0.0.1",
+        "user": "root",
+        "command": "id",
+        "output": "uid=0(root) gid=0(root)",
     }
-    payload = json.dumps(report).encode()
-    iv = os.urandom(16)
-    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-    from cryptography.hazmat.backends import default_backend
-    enc = Cipher(algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()).encryptor()
-    ct = enc.update(payload) + enc.finalize()
-    b64 = base64.b64encode(iv + ct).decode()
+    counter = 1
+    timestamp = int(time.time())
+    b64 = encrypt_data_replay(json.dumps(report).encode(), KEY, counter, timestamp)
 
     try:
         s = socket.socket()
@@ -186,6 +195,7 @@ def test_gopher_legacy_still_works():
     anything that depended on it is not broken by the new
     HTTP/1.1 entry point."""
     import tempfile
+
     port = _free_port()
     cfg = dict(CFG)
     cfg["port"] = port
@@ -225,7 +235,10 @@ def test_gopher_legacy_still_works():
     iv, ct = raw[:16], raw[16:]
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     from cryptography.hazmat.backends import default_backend
-    dec = Cipher(algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()).decryptor()
+
+    dec = Cipher(
+        algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()
+    ).decryptor()
     decoded = dec.update(ct) + dec.finalize()
     assert decoded == b"whoami", f"decoded {decoded!r} != b'whoami'"
 
@@ -240,6 +253,7 @@ def test_http_post_with_url_encoded_b64_payload():
     beacon does, send it, and assert the report is decrypted
     and logged."""
     import tempfile
+
     port = _free_port()
     cfg = dict(CFG)
     cfg["port"] = port
@@ -275,26 +289,33 @@ def test_http_post_with_url_encoded_b64_payload():
         out = []
         for ch in s.encode("ascii"):
             c = bytes([ch])
-            if (b"A" <= c <= b"Z") or (b"a" <= c <= b"z") or (b"0" <= c <= b"9") \
-                    or c in b"-_.~":
+            if (
+                (b"A" <= c <= b"Z")
+                or (b"a" <= c <= b"z")
+                or (b"0" <= c <= b"9")
+                or c in b"-_.~"
+            ):
                 out.append(chr(ch))
             else:
                 out.append(f"%{ch:02X}")
         return "".join(out)
+
     b64_enc = encode(b64)
 
-    # Encrypt the report with the standard key
-    report = {"client": "urlenc", "os": "linux", "pid": 31337, "hostname": "enc",
-              "ips": "127.0.0.1", "user": "x", "command": "id",
-              "output": "URL-encoded payload roundtrip OK"}
-    payload = json.dumps(report).encode()
-    iv = os.urandom(16)
-    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-    from cryptography.hazmat.backends import default_backend
-    enc = Cipher(algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()).encryptor()
-    ct = enc.update(payload) + enc.finalize()
-    # Re-encrypt the IV+ct into a base64 (b64 may contain unsafe chars)
-    b64_payload = base64.b64encode(iv + ct).decode()
+    # Encrypt the report with the standard key using replay protection
+    report = {
+        "client": "urlenc",
+        "os": "linux",
+        "pid": 31337,
+        "hostname": "enc",
+        "ips": "127.0.0.1",
+        "user": "x",
+        "command": "id",
+        "output": "URL-encoded payload roundtrip OK",
+    }
+    counter = 1
+    timestamp = int(time.time())
+    b64_payload = encrypt_data_replay(json.dumps(report).encode(), KEY, counter, timestamp)
     # The b64_payload is the string that goes in the URL. Encode it.
     b64_payload_enc = encode(b64_payload)
 
@@ -334,6 +355,7 @@ def test_fragmented_post_is_dispatched_as_http():
     server still parses the full request, decrypts, and writes
     the log line."""
     import tempfile
+
     port = _free_port()
     cfg = dict(CFG)
     cfg["port"] = port
@@ -358,17 +380,18 @@ def test_fragmented_post_is_dispatched_as_http():
         probe.close()
 
     report = {
-        "client": "frag", "os": "linux", "pid": 7, "hostname": "frag",
-        "ips": "127.0.0.1", "user": "x",
-        "command": "ls", "output": "fragmented OK",
+        "client": "frag",
+        "os": "linux",
+        "pid": 7,
+        "hostname": "frag",
+        "ips": "127.0.0.1",
+        "user": "x",
+        "command": "ls",
+        "output": "fragmented OK",
     }
-    payload = json.dumps(report).encode()
-    iv = os.urandom(16)
-    from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
-    from cryptography.hazmat.backends import default_backend
-    enc = Cipher(algorithms.AES(KEY), modes.CFB(iv), backend=default_backend()).encryptor()
-    ct = enc.update(payload) + enc.finalize()
-    b64 = base64.b64encode(iv + ct).decode()
+    counter = 1
+    timestamp = int(time.time())
+    b64 = encrypt_data_replay(json.dumps(report).encode(), KEY, counter, timestamp)
 
     req = (
         f"POST /report/{b64} HTTP/1.1\r\n"

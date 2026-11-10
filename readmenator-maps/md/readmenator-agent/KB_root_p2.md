@@ -27,7 +27,7 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
             ...`
   - `exec_cmd` (function, line 475) `char* exec_cmd(const char* cmd, int* out_len)`
   - `page_align` (function, line 506) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, 
+  - `RunELF` (function, line 512) `int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize,
            unsi...`
   - `get_local_ips` (function, line 893) `char* get_local_ips()`
   - `download_bof` (function, line 922) `unsigned char* download_bof(const char* bof_selector, size_t* out_size)`
@@ -78,4 +78,3 @@ call_bof_isolated(bof_func_t func, char* args, uintptr_t ar...`
   - `SYS_getuid` (macro, line 17) `#define SYS_getuid`
   - `SYS_getpwuid_r` (macro, line 18) `#define SYS_getpwuid_r`
   - `AT_FDCWD` (macro, line 19) `#define AT_FDCWD`
-

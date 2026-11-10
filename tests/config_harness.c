@@ -10,19 +10,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-static void hex_encode(const uint8_t *in, size_t n, char *out) {
+static void hex_encode(const uint8_t *in, size_t n, char *out)
+{
     static const char *h = "0123456789abcdef";
-    for (size_t i = 0; i < n; i++) {
-        out[2*i]   = h[in[i] >> 4];
-        out[2*i+1] = h[in[i] & 0xf];
+    for (size_t i = 0; i < n; i++)
+    {
+        out[2 * i] = h[in[i] >> 4];
+        out[2 * i + 1] = h[in[i] & 0xf];
     }
-    out[2*n] = '\0';
+    out[2 * n] = '\0';
 }
 
-int main(void) {
+int main(void)
+{
     bsb_config_t cfg;
     char err[256] = {0};
-    if (bsb_config_load_default(&cfg, err, sizeof(err)) != 0) {
+    if (bsb_config_load_default(&cfg, err, sizeof(err)) != 0)
+    {
         fprintf(stderr, "config error: %s\n", err);
         return 1;
     }

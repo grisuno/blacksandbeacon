@@ -6,7 +6,7 @@ consistent. Cross-implementation tests (C <-> Python) live in
 test_c2_server.py because the Python side runs inside the C2
 server, not the test harness.
 """
-import os
+
 import subprocess
 import sys
 from pathlib import Path
@@ -37,14 +37,23 @@ def compile_harness():
         built = HARNESS.stat().st_mtime
         if all(src.stat().st_mtime <= built for src in _HARNESS_SRCS):
             return
-    subprocess.check_call([
-        "gcc", "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
-        str(ROOT / "tests" / "crypto_harness.c"),
-        str(ROOT / "include" / "aes_cfb.c"),
-        str(ROOT / "include" / "aes.c"),
-        "-I", str(ROOT / "include"),
-        "-o", str(HARNESS),
-    ])
+    subprocess.check_call(
+        [
+            "gcc",
+            "-std=c11",
+            "-Wall",
+            "-Wextra",
+            "-O0",
+            "-g",
+            str(ROOT / "tests" / "crypto_harness.c"),
+            str(ROOT / "include" / "aes_cfb.c"),
+            str(ROOT / "include" / "aes.c"),
+            "-I",
+            str(ROOT / "include"),
+            "-o",
+            str(HARNESS),
+        ]
+    )
 
 
 def run(plaintext: str, key_hex: str) -> str:
@@ -83,7 +92,9 @@ def test_known_ciphertext():
     # is plain ^ E(IV). E(IV) is itself deterministic given
     # the key, so the first 16 bytes of ciphertext are fully
     # determined by plain and key.
-    expected_first_block = bytes(a ^ b for a, b in zip(b"\x00" * 16, plain.encode())).hex()
+    expected_first_block = bytes(
+        a ^ b for a, b in zip(b"\x00" * 16, plain.encode())
+    ).hex()
     # we just check roundtrip; the IV used here is i*17+3 not zero,
     # so the pinned value is whatever the function actually emits.
     # We only assert it is non-empty and 32 hex chars (16 bytes).
@@ -96,9 +107,8 @@ def test_python_can_decrypt_c_ciphertext():
     extract the ciphertext, then decrypt with Python and check we
     recover the original plain.
     """
-    import base64
     import sys
-    from pathlib import Path
+
     sys.path.insert(0, str(ROOT / "include"))
     from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
     from cryptography.hazmat.backends import default_backend
@@ -114,7 +124,7 @@ def test_python_can_decrypt_c_ciphertext():
     # for a round-trip, which is the only property the C2 needs.
     #
     # The C harness uses iv[i] = i*17+3. We replicate that:
-    iv = bytes((i * 17 + 3) & 0xff for i in range(16))
+    iv = bytes((i * 17 + 3) & 0xFF for i in range(16))
     cipher = Cipher(algorithms.AES(key), modes.CFB(iv), backend=default_backend())
     enc = cipher.encryptor()
     py_cipher = enc.update(plain) + enc.finalize()

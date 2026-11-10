@@ -269,4 +269,3 @@ Imported by: `c2/server.py`
 ## tests/config_harness.c
 Depends on: `include/config.h`
 - `main` (function) `tests/config_harness.c:22` `int main(void)`
-

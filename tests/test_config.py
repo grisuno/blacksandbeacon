@@ -8,6 +8,7 @@ and checks the printed fields.
 The harness prints lines in the form "key=value" so we can parse
 the output deterministically.
 """
+
 import json
 import os
 import shutil
@@ -26,11 +27,18 @@ def compile_harness():
     if HARNESS_BIN.exists():
         return
     cmd = [
-        "gcc", "-std=c11", "-Wall", "-Wextra", "-O0", "-g",
+        "gcc",
+        "-std=c11",
+        "-Wall",
+        "-Wextra",
+        "-O0",
+        "-g",
         str(HARNESS_C),
         str(ROOT / "include" / "config.c"),
-        "-I", str(ROOT / "include"),
-        "-o", str(HARNESS_BIN),
+        "-I",
+        str(ROOT / "include"),
+        "-o",
+        str(HARNESS_BIN),
     ]
     subprocess.check_call(cmd)
 
@@ -71,14 +79,20 @@ def test_default_load():
 
 
 def test_overrides():
-    cfg = json.dumps({
-        "c2": {"url": "https://evil.example:8443", "uri": "/x/", "client_id": "z"},
-        "crypto": {"aes_key_hex": "ab" * 32, "mode": "cfb"},
-        "timing": {"sleep_seconds": 30, "jitter_percent": 0,
-                   "curl_timeout_seconds": 60, "curl_connect_timeout_seconds": 10},
-        "network": {"user_agents": ["a/1", "b/2"], "verify_tls": True},
-        "bof": {"download_chunk_size": 8192},
-    })
+    cfg = json.dumps(
+        {
+            "c2": {"url": "https://evil.example:8443", "uri": "/x/", "client_id": "z"},
+            "crypto": {"aes_key_hex": "ab" * 32, "mode": "cfb"},
+            "timing": {
+                "sleep_seconds": 30,
+                "jitter_percent": 0,
+                "curl_timeout_seconds": 60,
+                "curl_connect_timeout_seconds": 10,
+            },
+            "network": {"user_agents": ["a/1", "b/2"], "verify_tls": True},
+            "bof": {"download_chunk_size": 8192},
+        }
+    )
     out = run_harness(cfg)
     assert out["c2.url"] == "https://evil.example:8443", out
     assert out["timing.sleep_seconds"] == "30", out
@@ -101,10 +115,18 @@ def test_search_order_env_wins():
         env_dir = Path(td) / "env"
         env_dir.mkdir()
         cfg_path = env_dir / "override.json"
-        cfg_path.write_text(json.dumps({
-            "c2": {"url": "https://env.example:1", "uri": "/x/", "client_id": "env"},
-            "crypto": {"aes_key_hex": "11" * 32, "mode": "cfb"},
-        }))
+        cfg_path.write_text(
+            json.dumps(
+                {
+                    "c2": {
+                        "url": "https://env.example:1",
+                        "uri": "/x/",
+                        "client_id": "env",
+                    },
+                    "crypto": {"aes_key_hex": "11" * 32, "mode": "cfb"},
+                }
+            )
+        )
         env = os.environ.copy()
         env["BSB_CONFIG"] = str(cfg_path)
         out = subprocess.check_output([str(HARNESS_BIN)], env=env, text=True)
@@ -118,10 +140,18 @@ def test_search_order_falls_back_to_cwd_default():
     the harness lives in tests/, not next to a config.json)."""
     with tempfile.TemporaryDirectory() as td:
         cfg_path = Path(td) / "config.json"
-        cfg_path.write_text(json.dumps({
-            "c2": {"url": "https://cwd.example", "uri": "/y/", "client_id": "cwd"},
-            "crypto": {"aes_key_hex": "22" * 32, "mode": "cfb"},
-        }))
+        cfg_path.write_text(
+            json.dumps(
+                {
+                    "c2": {
+                        "url": "https://cwd.example",
+                        "uri": "/y/",
+                        "client_id": "cwd",
+                    },
+                    "crypto": {"aes_key_hex": "22" * 32, "mode": "cfb"},
+                }
+            )
+        )
         env = os.environ.copy()
         env.pop("BSB_CONFIG", None)
         # We have to point the harness at this directory by symlinking
@@ -130,9 +160,10 @@ def test_search_order_falls_back_to_cwd_default():
         cwd = Path(td)
         cfg_dir = cwd / "config"
         cfg_dir.mkdir()
-        import shutil
         shutil.copy(cfg_path, cfg_dir / "config.json")
-        r = subprocess.run([str(HARNESS_BIN)], env=env, cwd=str(cwd), capture_output=True, text=True)
+        r = subprocess.run(
+            [str(HARNESS_BIN)], env=env, cwd=str(cwd), capture_output=True, text=True
+        )
         assert r.returncode == 0, r.stderr
         assert "cwd.example" in r.stdout, r.stdout
         assert "c2.client_id=cwd" in r.stdout, r.stdout

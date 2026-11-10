@@ -16,7 +16,8 @@
 /* BeaconPrintf/BeaconOutput are declared in beacon_api.h, which the
  * beacon's loader resolves by symbol name. */
 
-void go(char *args, int alen) {
+void go(char *args, int alen)
+{
     (void)args;
     (void)alen;
 
@@ -26,13 +27,15 @@ void go(char *args, int alen) {
     *p = '\0';
 
     long n = uid;
-    if (n == 0) {
+    if (n == 0)
+    {
         BeaconPrintf(CALLBACK_OUTPUT, "[whoami] uid=0 (root)\n");
         BeaconOutput(CALLBACK_OUTPUT, "root", 0);
         return;
     }
 
-    do {
+    do
+    {
         *--p = '0' + (n % 10);
         n /= 10;
     } while (n && p > buf);

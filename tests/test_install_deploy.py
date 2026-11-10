@@ -9,8 +9,8 @@ After `make clean && make beacon bofs`, the operator expects:
 Running the binary from any CWD should pick up
 build/config.json (the binary-relative search path).
 """
+
 import os
-import shutil
 import stat
 import subprocess
 import sys
@@ -89,8 +89,13 @@ def test_staged_beacon_runs_from_any_cwd():
 
 def test_staged_bofs_are_present():
     build = ROOT / "build" / "bof"
-    expected = {"cat.x64.o", "is_sudo.x64.o", "suid_enum.x64.o",
-                "userenum.x64.o", "whoami.x64.o"}
+    expected = {
+        "cat.x64.o",
+        "is_sudo.x64.o",
+        "suid_enum.x64.o",
+        "userenum.x64.o",
+        "whoami.x64.o",
+    }
     actual = {p.name for p in build.iterdir() if p.is_file()}
     assert actual == expected, f"BOF set mismatch: {actual} != {expected}"
 
@@ -110,11 +115,15 @@ def test_clean_removes_everything():
     assert (ROOT / "config" / "config.json").exists()
     subprocess.check_call(["make", "clean"], cwd=str(ROOT))
     assert not (ROOT / "build").exists(), "make clean did not remove build/"
-    assert (ROOT / "config" / "config.json").exists(), "make clean wiped config/config.json"
+    assert (
+        ROOT / "config" / "config.json"
+    ).exists(), "make clean wiped config/config.json"
     # Rebuild so the operator ends `make test` with a runnable tree.
     subprocess.check_call(["make", "config", "beacon", "bofs"], cwd=str(ROOT))
     assert (ROOT / "build" / "beacon").exists(), "post-clean rebuild failed"
-    assert (ROOT / "build" / "config.json").exists(), "post-clean rebuild did not stage config"
+    assert (
+        ROOT / "build" / "config.json"
+    ).exists(), "post-clean rebuild did not stage config"
 
 
 def main():
@@ -131,7 +140,7 @@ def main():
             except subprocess.TimeoutExpired:
                 # Expected: beacon polls forever, our 3-second cap
                 # kills it. The test already inspected the output.
-                print(f"  (timed out at 3s, expected: beacon polls forever)")
+                print("  (timed out at 3s, expected: beacon polls forever)")
                 print(f"PASS {name}")
             except Exception as e:
                 fails.append((name, repr(e)))

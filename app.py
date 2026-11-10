@@ -8,7 +8,9 @@ Correo electrónico: grisiscomeback[at]gmail[dot]com
 Fecha de creación: xx/xx/xxxx
 Licencia: GPL v3
 
-Descripción:  
+Descripción:
 """
+
 import os
+
 os.system("bash install.sh")

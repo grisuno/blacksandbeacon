@@ -10,7 +10,9 @@
   },
   "crypto": {
     "aes_key_hex": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
-    "mode": "cfb"
+    "master_key_hex": "",
+    "mode": "cfb",
+    "replay_window_seconds": 300
   },
   "timing": {
     "sleep_seconds": 6,
@@ -25,7 +27,8 @@
       "Mozilla/5.0 (Linux; Android 10; SM-G973F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36",
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     ],
-    "verify_tls": false
+    "verify_tls": false,
+    "cert_fingerprint_sha256": ""
   },
   "bof": {
     "download_chunk_size": 4096,

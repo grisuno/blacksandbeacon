@@ -5,13 +5,11 @@ We import the dispatcher from c2/server.py and exercise
 handle_request() with synthetic selectors. No socket, no
 threading, no real network - just the pure function.
 """
+
 import base64
 import json
-import os
-import shutil
 import sys
 import tempfile
-import time
 from pathlib import Path
 
 # Make c2/ importable.
@@ -20,7 +18,11 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "include"))
 
 from c2.server import (  # noqa: E402
-    C2State, handle_request, encrypt_data, decrypt_data,
+    C2State,
+    handle_request,
+    encrypt_data,
+    encrypt_data_replay,
+    decrypt_data,
 )
 
 
@@ -69,10 +71,19 @@ def test_get_command_queued():
 def test_report_writes_log():
     with tempfile.TemporaryDirectory() as td:
         state = make_state(Path(td))
-        report = {"client": "host1", "pid": 1234, "hostname": "lab",
-                  "ips": "10.0.0.5", "user": "root", "command": "id",
-                  "output": "uid=0(root)"}
-        payload = encrypt_data(json.dumps(report).encode(), KEY)
+        report = {
+            "client": "host1",
+            "pid": 1234,
+            "hostname": "lab",
+            "ips": "10.0.0.5",
+            "user": "root",
+            "command": "id",
+            "output": "uid=0(root)",
+        }
+        import time
+        counter = 1
+        timestamp = int(time.time())
+        payload = encrypt_data_replay(json.dumps(report).encode(), KEY, counter, timestamp)
         resp = handle_request(state, "/report/" + payload)
         assert resp == b"OK\r\n", resp
         log = Path(state.cfg["log_dir"]) / "host1.log"

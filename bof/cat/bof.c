@@ -12,8 +12,10 @@
 #include "beacon_api.h"
 #include "syscalls.h"
 
-void go(char *args, int alen) {
-    if (alen <= 0 || !args || args[0] == '\0') {
+void go(char *args, int alen)
+{
+    if (alen <= 0 || !args || args[0] == '\0')
+    {
         BeaconPrintf(CALLBACK_OUTPUT, "[cat] missing path argument\n");
         return;
     }
@@ -22,7 +24,8 @@ void go(char *args, int alen) {
     char *filepath = args;
 
     long fd = syscall3(SYS_openat, AT_FDCWD, (long)filepath, 0);
-    if (fd < 0) {
+    if (fd < 0)
+    {
         BeaconPrintf(CALLBACK_OUTPUT, "[cat] cannot open %s\n", filepath);
         return;
     }
@@ -30,7 +33,8 @@ void go(char *args, int alen) {
     char buffer[4096];
     long total = 0;
     long n;
-    while ((n = syscall3(SYS_read, fd, (long)buffer, (long)sizeof(buffer))) > 0) {
+    while ((n = syscall3(SYS_read, fd, (long)buffer, (long)sizeof(buffer))) > 0)
+    {
         BeaconOutput(CALLBACK_OUTPUT, buffer, (int)n);
         total += n;
     }

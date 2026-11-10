@@ -6,4 +6,3 @@
 4. Check dependencies: `grep -n '<filename>' readmenator-agent/ARCHITECTURE*.md`
 5. Edit the file
 6. Regenerate: `readmenator .`
-

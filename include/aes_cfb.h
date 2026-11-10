@@ -6,9 +6,9 @@
 
 #include <stddef.h>
 
-unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv,
-                                  const unsigned char* plaintext, size_t len, int* out_len);
-unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv,
-                                  const unsigned char* ciphertext, size_t len, int* out_len);
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+                                  const unsigned char *plaintext, size_t len, int *out_len);
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+                                  const unsigned char *ciphertext, size_t len, int *out_len);
 
 #endif

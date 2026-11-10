@@ -6,8 +6,8 @@ This test is skipped (not failed) if the OpenSSL or libcurl dev
 headers are missing, so it works on a clean CI runner and on a
 dev box without those installed. CI installs them explicitly.
 """
+
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -46,18 +46,27 @@ def compile_beacon():
     # aes256_cfb_*, bsb_*, https_request or base64_* -- those live in
     # include/aes_cfb.c and include/beacon_common.c.
     cmd = [
-        "gcc", "-Wall", "-Wextra", "-O2", "-g",
-        "-I", str(ROOT / "include"),
-        "-I", str(ROOT / "beacons" / "v1"),
+        "gcc",
+        "-Wall",
+        "-Wextra",
+        "-O2",
+        "-g",
+        "-I",
+        str(ROOT / "include"),
+        "-I",
+        str(ROOT / "beacons" / "v1"),
         "-rdynamic",
-        "-o", str(BEACON),
+        "-o",
+        str(BEACON),
         str(SRC),
         str(ROOT / "include" / "config.c"),
         str(ROOT / "include" / "aes.c"),
         str(ROOT / "include" / "aes_cfb.c"),
         str(ROOT / "include" / "beacon_common.c"),
         str(ROOT / "include" / "cJSON.c"),
-        "-lcurl", "-lssl", "-lcrypto",
+        "-lcurl",
+        "-lssl",
+        "-lcrypto",
     ]
     subprocess.check_call(cmd)
 
@@ -107,7 +116,7 @@ def test_beacon_exposes_bof_api():
     # pointer table is pointing at NULL.
     assert "T BeaconPrintf" in out, "BeaconPrintf text symbol missing"
     assert "T BeaconOutput" in out, "BeaconOutput text symbol missing"
-    print(f"  beacon has BOF API slots (g_BeaconPrintf_ptr, g_BeaconOutput_ptr)")
+    print("  beacon has BOF API slots (g_BeaconPrintf_ptr, g_BeaconOutput_ptr)")
 
 
 def test_beacon_exposes_elf_loader():
@@ -117,7 +126,7 @@ def test_beacon_exposes_elf_loader():
     ensure_beacon()
     out = subprocess.check_output(["nm", str(BEACON)], text=True)
     assert "T RunELF" in out, "RunELF entry point not present"
-    print(f"  beacon exports RunELF (in-memory ELF loader)")
+    print("  beacon exports RunELF (in-memory ELF loader)")
 
 
 def main():
