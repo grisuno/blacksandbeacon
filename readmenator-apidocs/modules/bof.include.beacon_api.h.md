@@ -53,7 +53,7 @@ BOFs that want to read structured args fill one of these in via BeaconDataParse 
 
 ### `BeaconDataParse`
 
-`function` | [bof/include/beacon_api.h:36](../../bof/include/beacon_api.h#L36)
+`function` | [bof/include/beacon_api.h:37](../../bof/include/beacon_api.h#L37)
 
 ```c
 void BeaconDataParse(datap *parser, char *buffer, int size);
@@ -69,7 +69,7 @@ void BeaconDataParse(datap *parser, char *buffer, int size);
 | `buffer` | `char *` |  |  |
 | `size` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconDataParse`](#beacondataparse) (beacon.h:21).
+> **Inherited:** Documentation from [`BeaconDataParse`](#beacondataparse) (beacon.h:22).
 
 ---
 
@@ -77,7 +77,7 @@ void BeaconDataParse(datap *parser, char *buffer, int size);
 
 ### `BeaconDataPtr`
 
-`function` | [bof/include/beacon_api.h:37](../../bof/include/beacon_api.h#L37)
+`function` | [bof/include/beacon_api.h:38](../../bof/include/beacon_api.h#L38)
 
 ```c
 char *BeaconDataPtr(datap *parser, int size);
@@ -98,7 +98,7 @@ char *BeaconDataPtr(datap *parser, int size);
 
 ### `BeaconDataInt`
 
-`function` | [bof/include/beacon_api.h:38](../../bof/include/beacon_api.h#L38)
+`function` | [bof/include/beacon_api.h:39](../../bof/include/beacon_api.h#L39)
 
 ```c
 int BeaconDataInt(datap *parser);
@@ -118,7 +118,7 @@ int BeaconDataInt(datap *parser);
 
 ### `BeaconDataShort`
 
-`function` | [bof/include/beacon_api.h:39](../../bof/include/beacon_api.h#L39)
+`function` | [bof/include/beacon_api.h:40](../../bof/include/beacon_api.h#L40)
 
 ```c
 short BeaconDataShort(datap *parser);
@@ -138,7 +138,7 @@ short BeaconDataShort(datap *parser);
 
 ### `BeaconDataLength`
 
-`function` | [bof/include/beacon_api.h:40](../../bof/include/beacon_api.h#L40)
+`function` | [bof/include/beacon_api.h:41](../../bof/include/beacon_api.h#L41)
 
 ```c
 int BeaconDataLength(datap *parser);
@@ -158,7 +158,7 @@ int BeaconDataLength(datap *parser);
 
 ### `BeaconDataExtract`
 
-`function` | [bof/include/beacon_api.h:41](../../bof/include/beacon_api.h#L41)
+`function` | [bof/include/beacon_api.h:42](../../bof/include/beacon_api.h#L42)
 
 ```c
 char *BeaconDataExtract(datap *parser, int *size);
@@ -179,7 +179,7 @@ char *BeaconDataExtract(datap *parser, int *size);
 
 ### `buffer`
 
-`function` | [bof/include/beacon_api.h:44](../../bof/include/beacon_api.h#L44)
+`function` | [bof/include/beacon_api.h:45](../../bof/include/beacon_api.h#L45)
 
 ```c
 * takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffer must still be NUL-terminated). */ void BeaconPrintf(int type, const char *fmt, ...);
@@ -199,7 +199,7 @@ char *BeaconDataExtract(datap *parser, int *size);
 
 ### `BeaconOutput`
 
-`function` | [bof/include/beacon_api.h:47](../../bof/include/beacon_api.h#L47)
+`function` | [bof/include/beacon_api.h:48](../../bof/include/beacon_api.h#L48)
 
 ```c
 void BeaconOutput(int type, const char *data, int len);
@@ -215,7 +215,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 *Called by:* [`go`](bof.cat.bof.c.md#go), [`go`](bof.is_sudo.bof.c.md#go), [`go`](bof.whoami.bof.c.md#go)
 

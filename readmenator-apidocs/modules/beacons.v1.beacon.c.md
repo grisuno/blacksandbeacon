@@ -13,6 +13,12 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
+    n_beacons_v1_beacon_c___GNU_SOURCE(["_GNU_SOURCE"])
+    n_include_beacon_common_h__aes256_cfb_encrypt_replay["beacon_common.aes256_cfb_encrypt_replay"]
+    n_include_beacon_common_h__base64_encode["beacon_common.base64_encode"]
+    n_include_beacon_common_h__bsb_generate_secure_iv["beacon_common.bsb_generate_secure_iv"]
+    n_include_beacon_common_h__get_local_ips["beacon_common.get_local_ips"]
+    n_include_beacon_common_h__https_request["beacon_common.https_request"]
     n_beacons_v1_beacon_c__main(["main"])
     n_include_beacon_common_h__aes256_cfb_decrypt["beacon_common.aes256_cfb_decrypt"]
     n_include_beacon_common_h__base64_decode["beacon_common.base64_decode"]
@@ -21,7 +27,11 @@ flowchart LR
     n_include_beacon_common_h__bsb_backoff_reset["beacon_common.bsb_backoff_reset"]
     n_include_beacon_common_h__bsb_output_cleanup["beacon_common.bsb_output_cleanup"]
     n_include_beacon_common_h__bsb_output_init["beacon_common.bsb_output_init"]
-    n_include_beacon_common_h__https_request["beacon_common.https_request"]
+    n_beacons_v1_beacon_c___GNU_SOURCE -.-> n_include_beacon_common_h__aes256_cfb_encrypt_replay
+    n_beacons_v1_beacon_c___GNU_SOURCE -.-> n_include_beacon_common_h__base64_encode
+    n_beacons_v1_beacon_c___GNU_SOURCE -.-> n_include_beacon_common_h__bsb_generate_secure_iv
+    n_beacons_v1_beacon_c___GNU_SOURCE -.-> n_include_beacon_common_h__get_local_ips
+    n_beacons_v1_beacon_c___GNU_SOURCE -.-> n_include_beacon_common_h__https_request
     n_beacons_v1_beacon_c__main -.-> n_include_beacon_common_h__aes256_cfb_decrypt
     n_beacons_v1_beacon_c__main -.-> n_include_beacon_common_h__base64_decode
     n_beacons_v1_beacon_c__main -.-> n_include_beacon_common_h__bsb_backoff_init
@@ -38,7 +48,7 @@ flowchart LR
 
 ### `main`
 
-`function` | [beacons/v1/beacon.c:140](../../beacons/v1/beacon.c#L140)
+`function` | [beacons/v1/beacon.c:167](../../beacons/v1/beacon.c#L167)
 
 ```c
 int main(void)
@@ -72,5 +82,7 @@ crypto, BOF loader, output capture) lives in beacon_common.c.
 This beacon uses exponential backoff on failures to reduce noise
 when the C2 is unreachable. The backoff resets on the first
 successful command exchange.
+
+*Calls:* [`aes256_cfb_encrypt_replay`](include.beacon_common.h.md#aes256_cfb_encrypt_replay), [`base64_encode`](include.beacon_common.h.md#base64_encode), [`bsb_generate_secure_iv`](include.beacon_common.h.md#bsb_generate_secure_iv), [`get_local_ips`](include.beacon_common.h.md#get_local_ips), [`https_request`](include.beacon_common.h.md#https_request)
 
 ---

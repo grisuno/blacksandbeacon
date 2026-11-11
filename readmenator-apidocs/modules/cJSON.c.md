@@ -29,56 +29,56 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
-    n_cJSON_c__CJSON_PUBLIC_100(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_101(["CJSON_PUBLIC"])
     n_cJSON_c__CJSON_PUBLIC(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_110(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_125(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_210(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_111(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_126(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_211(["CJSON_PUBLIC"])
     n_cJSON_c__buffer_at_offset(["buffer_at_offset"])
     n_cJSON_c__can_access_at_index(["can_access_at_index"])
-    n_cJSON_c__CJSON_PUBLIC_1134(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1236(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1316(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1321(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1352(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1935(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1977(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1982(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_1987(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2112(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2123(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2133(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1143(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1251(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1333(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1338(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1369(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_1956(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2003(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2008(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2014(["CJSON_PUBLIC"])
     n_cJSON_c__CJSON_PUBLIC_2143(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2155(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2167(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2179(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2191(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2203(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_2215(["CJSON_PUBLIC"])
-    n_cJSON_c__CJSON_PUBLIC_100 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_110 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_125 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_210 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2154(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2164(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2176(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2188(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2200(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2212(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2225(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2238(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_2251(["CJSON_PUBLIC"])
+    n_cJSON_c__CJSON_PUBLIC_101 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_111 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_126 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_211 --> n_cJSON_c__CJSON_PUBLIC
     n_cJSON_c__buffer_at_offset --> n_cJSON_c__can_access_at_index
-    n_cJSON_c__CJSON_PUBLIC_1134 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1236 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1316 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1321 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1352 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1935 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1977 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1982 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_1987 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2112 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2123 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2133 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1143 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1251 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1333 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1338 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1369 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_1956 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2003 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2008 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2014 --> n_cJSON_c__CJSON_PUBLIC
     n_cJSON_c__CJSON_PUBLIC_2143 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2155 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2167 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2179 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2191 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2203 --> n_cJSON_c__CJSON_PUBLIC
-    n_cJSON_c__CJSON_PUBLIC_2215 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2154 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2164 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2176 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2188 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2200 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2212 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2225 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2238 --> n_cJSON_c__CJSON_PUBLIC
+    n_cJSON_c__CJSON_PUBLIC_2251 --> n_cJSON_c__CJSON_PUBLIC
 ```
 
 ## Structs
@@ -87,7 +87,7 @@ flowchart LR
 
 ### `error`
 
-`struct` | [cJSON.c:88](../../cJSON.c#L88)
+`struct` | [cJSON.c:89](../../cJSON.c#L89)
 
 ```c
 typedef struct
@@ -99,7 +99,7 @@ typedef struct
 
 ### `internal_hooks`
 
-`struct` | [cJSON.c:157](../../cJSON.c#L157)
+`struct` | [cJSON.c:158](../../cJSON.c#L158)
 
 ```c
 typedef struct internal_hooks
@@ -111,7 +111,7 @@ typedef struct internal_hooks
 
 ### `parse_buffer`
 
-`struct` | [cJSON.c:291](../../cJSON.c#L291)
+`struct` | [cJSON.c:292](../../cJSON.c#L292)
 
 ```c
 typedef struct
@@ -123,7 +123,7 @@ typedef struct
 
 ### `printbuffer`
 
-`struct` | [cJSON.c:482](../../cJSON.c#L482)
+`struct` | [cJSON.c:485](../../cJSON.c#L485)
 
 ```c
 typedef struct
@@ -137,7 +137,7 @@ typedef struct
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:95](../../cJSON.c#L95)
+`function` | [cJSON.c:96](../../cJSON.c#L96)
 
 ```c
 CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)
@@ -149,6 +149,8 @@ CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)
 |---|---|---|---|
 | `char` |  |  |  |
 
+*Calls:* [`cJSON_GetErrorPtr`](cJSON.h.md#cjson_geterrorptr)
+
 *Called by:* [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public) and 52 more
 
 ---
@@ -157,10 +159,10 @@ CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:100](../../cJSON.c#L100)
+`function` | [cJSON.c:101](../../cJSON.c#L101)
 
 ```c
-CJSON_PUBLIC(char *) cJSON_GetStringValue(const cJSON * const item)
+CJSON_PUBLIC(char *) cJSON_GetStringValue(const cJSON *const item)
 ```
 
 **Parameters**
@@ -177,10 +179,10 @@ CJSON_PUBLIC(char *) cJSON_GetStringValue(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:110](../../cJSON.c#L110)
+`function` | [cJSON.c:111](../../cJSON.c#L111)
 
 ```c
-CJSON_PUBLIC(double) cJSON_GetNumberValue(const cJSON * const item)
+CJSON_PUBLIC(double) cJSON_GetNumberValue(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -191,10 +193,10 @@ CJSON_PUBLIC(double) cJSON_GetNumberValue(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:125](../../cJSON.c#L125)
+`function` | [cJSON.c:126](../../cJSON.c#L126)
 
 ```c
-CJSON_PUBLIC(const char*) cJSON_Version(void)
+CJSON_PUBLIC(const char *) cJSON_Version(void)
 ```
 
 **Parameters**
@@ -211,10 +213,10 @@ CJSON_PUBLIC(const char*) cJSON_Version(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:210](../../cJSON.c#L210)
+`function` | [cJSON.c:211](../../cJSON.c#L211)
 
 ```c
-CJSON_PUBLIC(void) cJSON_InitHooks(cJSON_Hooks* hooks)
+CJSON_PUBLIC(void) cJSON_InitHooks(cJSON_Hooks *hooks)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -225,10 +227,10 @@ CJSON_PUBLIC(void) cJSON_InitHooks(cJSON_Hooks* hooks)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1134](../../cJSON.c#L1134)
+`function` | [cJSON.c:1143](../../cJSON.c#L1143)
 
 ```c
-CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char *value, const char **return_parse_end, cJSON...
+CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char *value, const char **return_parse_end, ...
 ```
 
 **Parameters**
@@ -245,7 +247,7 @@ CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char *value, const char **return
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1236](../../cJSON.c#L1236)
+`function` | [cJSON.c:1251](../../cJSON.c#L1251)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_ParseWithLength(const char *value, size_t buffer_length)
@@ -265,7 +267,7 @@ CJSON_PUBLIC(cJSON *) cJSON_ParseWithLength(const char *value, size_t buffer_len
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1316](../../cJSON.c#L1316)
+`function` | [cJSON.c:1333](../../cJSON.c#L1333)
 
 ```c
 CJSON_PUBLIC(char *) cJSON_PrintUnformatted(const cJSON *item)
@@ -285,7 +287,7 @@ CJSON_PUBLIC(char *) cJSON_PrintUnformatted(const cJSON *item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1321](../../cJSON.c#L1321)
+`function` | [cJSON.c:1338](../../cJSON.c#L1338)
 
 ```c
 CJSON_PUBLIC(char *) cJSON_PrintBuffered(const cJSON *item, int prebuffer, cJSON_bool fmt)
@@ -305,7 +307,7 @@ CJSON_PUBLIC(char *) cJSON_PrintBuffered(const cJSON *item, int prebuffer, cJSON
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1352](../../cJSON.c#L1352)
+`function` | [cJSON.c:1369](../../cJSON.c#L1369)
 
 ```c
 CJSON_PUBLIC(cJSON_bool) cJSON_PrintPreallocated(cJSON *item, char *buffer, const int length, con...
@@ -319,7 +321,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_PrintPreallocated(cJSON *item, char *buffer, cons
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1935](../../cJSON.c#L1935)
+`function` | [cJSON.c:1956](../../cJSON.c#L1956)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_GetArrayItem(const cJSON *array, int index)
@@ -339,10 +341,10 @@ CJSON_PUBLIC(cJSON *) cJSON_GetArrayItem(const cJSON *array, int index)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1977](../../cJSON.c#L1977)
+`function` | [cJSON.c:2003](../../cJSON.c#L2003)
 
 ```c
-CJSON_PUBLIC(cJSON *) cJSON_GetObjectItem(const cJSON * const object, const char * const string)
+CJSON_PUBLIC(cJSON *) cJSON_GetObjectItem(const cJSON *const object, const char *const string)
 ```
 
 **Parameters**
@@ -359,10 +361,10 @@ CJSON_PUBLIC(cJSON *) cJSON_GetObjectItem(const cJSON * const object, const char
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1982](../../cJSON.c#L1982)
+`function` | [cJSON.c:2008](../../cJSON.c#L2008)
 
 ```c
-CJSON_PUBLIC(cJSON *) cJSON_GetObjectItemCaseSensitive(const cJSON * const object, const char * c...
+CJSON_PUBLIC(cJSON *) cJSON_GetObjectItemCaseSensitive(const cJSON *const object, const char *con...
 ```
 
 **Parameters**
@@ -379,7 +381,7 @@ CJSON_PUBLIC(cJSON *) cJSON_GetObjectItemCaseSensitive(const cJSON * const objec
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:1987](../../cJSON.c#L1987)
+`function` | [cJSON.c:2014](../../cJSON.c#L2014)
 
 ```c
 CJSON_PUBLIC(cJSON_bool) cJSON_HasObjectItem(const cJSON *object, const char *string)
@@ -393,7 +395,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_HasObjectItem(const cJSON *object, const char *st
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2112](../../cJSON.c#L2112)
+`function` | [cJSON.c:2143](../../cJSON.c#L2143)
 
 ```c
 CJSON_PUBLIC(cJSON_bool) cJSON_AddItemToObject(cJSON *object, const char *string, cJSON *item)
@@ -407,7 +409,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemToObject(cJSON *object, const char *string
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2123](../../cJSON.c#L2123)
+`function` | [cJSON.c:2154](../../cJSON.c#L2154)
 
 ```c
 CJSON_PUBLIC(cJSON_bool) cJSON_AddItemReferenceToArray(cJSON *array, cJSON *item)
@@ -421,7 +423,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemReferenceToArray(cJSON *array, cJSON *item
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2133](../../cJSON.c#L2133)
+`function` | [cJSON.c:2164](../../cJSON.c#L2164)
 
 ```c
 CJSON_PUBLIC(cJSON_bool) cJSON_AddItemReferenceToObject(cJSON *object, const char *string, cJSON ...
@@ -435,10 +437,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemReferenceToObject(cJSON *object, const cha
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2143](../../cJSON.c#L2143)
+`function` | [cJSON.c:2176](../../cJSON.c#L2176)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddNullToObject(cJSON * const object, const char * const name)
+CJSON_PUBLIC(cJSON *) cJSON_AddNullToObject(cJSON *const object, const char *const name)
 ```
 
 **Parameters**
@@ -455,10 +457,10 @@ CJSON_PUBLIC(cJSON*) cJSON_AddNullToObject(cJSON * const object, const char * co
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2155](../../cJSON.c#L2155)
+`function` | [cJSON.c:2188](../../cJSON.c#L2188)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddTrueToObject(cJSON * const object, const char * const name)
+CJSON_PUBLIC(cJSON *) cJSON_AddTrueToObject(cJSON *const object, const char *const name)
 ```
 
 **Parameters**
@@ -475,10 +477,10 @@ CJSON_PUBLIC(cJSON*) cJSON_AddTrueToObject(cJSON * const object, const char * co
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2167](../../cJSON.c#L2167)
+`function` | [cJSON.c:2200](../../cJSON.c#L2200)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddFalseToObject(cJSON * const object, const char * const name)
+CJSON_PUBLIC(cJSON *) cJSON_AddFalseToObject(cJSON *const object, const char *const name)
 ```
 
 **Parameters**
@@ -495,10 +497,10 @@ CJSON_PUBLIC(cJSON*) cJSON_AddFalseToObject(cJSON * const object, const char * c
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2179](../../cJSON.c#L2179)
+`function` | [cJSON.c:2212](../../cJSON.c#L2212)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddBoolToObject(cJSON * const object, const char * const name, const c...
+CJSON_PUBLIC(cJSON *) cJSON_AddBoolToObject(cJSON *const object, const char *const name, const cJ...
 ```
 
 **Parameters**
@@ -515,10 +517,10 @@ CJSON_PUBLIC(cJSON*) cJSON_AddBoolToObject(cJSON * const object, const char * co
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2191](../../cJSON.c#L2191)
+`function` | [cJSON.c:2225](../../cJSON.c#L2225)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddNumberToObject(cJSON * const object, const char * const name, const...
+CJSON_PUBLIC(cJSON *) cJSON_AddNumberToObject(cJSON *const object, const char *const name, const ...
 ```
 
 **Parameters**
@@ -535,70 +537,10 @@ CJSON_PUBLIC(cJSON*) cJSON_AddNumberToObject(cJSON * const object, const char * 
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2203](../../cJSON.c#L2203)
+`function` | [cJSON.c:2238](../../cJSON.c#L2238)
 
 ```c
-CJSON_PUBLIC(cJSON*) cJSON_AddStringToObject(cJSON * const object, const char * const name, const...
-```
-
-**Parameters**
-
-| Name | Type | Default | Description |
-|---|---|---|---|
-| `cJSON` |  |  |  |
-
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
-
----
-
-<a id="cjson_public"></a>
-
-### `CJSON_PUBLIC`
-
-`function` | [cJSON.c:2215](../../cJSON.c#L2215)
-
-```c
-CJSON_PUBLIC(cJSON*) cJSON_AddRawToObject(cJSON * const object, const char * const name, const ch...
-```
-
-**Parameters**
-
-| Name | Type | Default | Description |
-|---|---|---|---|
-| `cJSON` |  |  |  |
-
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
-
----
-
-<a id="cjson_public"></a>
-
-### `CJSON_PUBLIC`
-
-`function` | [cJSON.c:2227](../../cJSON.c#L2227)
-
-```c
-CJSON_PUBLIC(cJSON*) cJSON_AddObjectToObject(cJSON * const object, const char * const name)
-```
-
-**Parameters**
-
-| Name | Type | Default | Description |
-|---|---|---|---|
-| `cJSON` |  |  |  |
-
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
-
----
-
-<a id="cjson_public"></a>
-
-### `CJSON_PUBLIC`
-
-`function` | [cJSON.c:2239](../../cJSON.c#L2239)
-
-```c
-CJSON_PUBLIC(cJSON*) cJSON_AddArrayToObject(cJSON * const object, const char * const name)
+CJSON_PUBLIC(cJSON *) cJSON_AddStringToObject(cJSON *const object, const char *const name, const ...
 ```
 
 **Parameters**
@@ -618,7 +560,7 @@ CJSON_PUBLIC(cJSON*) cJSON_AddArrayToObject(cJSON * const object, const char * c
 `function` | [cJSON.c:2251](../../cJSON.c#L2251)
 
 ```c
-CJSON_PUBLIC(cJSON *) cJSON_DetachItemViaPointer(cJSON *parent, cJSON * const item)
+CJSON_PUBLIC(cJSON *) cJSON_AddRawToObject(cJSON *const object, const char *const name, const cha...
 ```
 
 **Parameters**
@@ -635,7 +577,67 @@ CJSON_PUBLIC(cJSON *) cJSON_DetachItemViaPointer(cJSON *parent, cJSON * const it
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2287](../../cJSON.c#L2287)
+`function` | [cJSON.c:2264](../../cJSON.c#L2264)
+
+```c
+CJSON_PUBLIC(cJSON *) cJSON_AddObjectToObject(cJSON *const object, const char *const name)
+```
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `cJSON` |  |  |  |
+
+*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+
+---
+
+<a id="cjson_public"></a>
+
+### `CJSON_PUBLIC`
+
+`function` | [cJSON.c:2276](../../cJSON.c#L2276)
+
+```c
+CJSON_PUBLIC(cJSON *) cJSON_AddArrayToObject(cJSON *const object, const char *const name)
+```
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `cJSON` |  |  |  |
+
+*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+
+---
+
+<a id="cjson_public"></a>
+
+### `CJSON_PUBLIC`
+
+`function` | [cJSON.c:2288](../../cJSON.c#L2288)
+
+```c
+CJSON_PUBLIC(cJSON *) cJSON_DetachItemViaPointer(cJSON *parent, cJSON *const item)
+```
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `cJSON` |  |  |  |
+
+*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+
+---
+
+<a id="cjson_public"></a>
+
+### `CJSON_PUBLIC`
+
+`function` | [cJSON.c:2324](../../cJSON.c#L2324)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromArray(cJSON *array, int which)
@@ -655,7 +657,7 @@ CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromArray(cJSON *array, int which)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2297](../../cJSON.c#L2297)
+`function` | [cJSON.c:2334](../../cJSON.c#L2334)
 
 ```c
 CJSON_PUBLIC(void) cJSON_DeleteItemFromArray(cJSON *array, int which)
@@ -669,7 +671,7 @@ CJSON_PUBLIC(void) cJSON_DeleteItemFromArray(cJSON *array, int which)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2302](../../cJSON.c#L2302)
+`function` | [cJSON.c:2339](../../cJSON.c#L2339)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromObject(cJSON *object, const char *string)
@@ -689,7 +691,7 @@ CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromObject(cJSON *object, const char *stri
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2309](../../cJSON.c#L2309)
+`function` | [cJSON.c:2346](../../cJSON.c#L2346)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromObjectCaseSensitive(cJSON *object, const char *string)
@@ -709,7 +711,7 @@ CJSON_PUBLIC(cJSON *) cJSON_DetachItemFromObjectCaseSensitive(cJSON *object, con
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2316](../../cJSON.c#L2316)
+`function` | [cJSON.c:2353](../../cJSON.c#L2353)
 
 ```c
 CJSON_PUBLIC(void) cJSON_DeleteItemFromObject(cJSON *object, const char *string)
@@ -723,7 +725,7 @@ CJSON_PUBLIC(void) cJSON_DeleteItemFromObject(cJSON *object, const char *string)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2321](../../cJSON.c#L2321)
+`function` | [cJSON.c:2358](../../cJSON.c#L2358)
 
 ```c
 CJSON_PUBLIC(void) cJSON_DeleteItemFromObjectCaseSensitive(cJSON *object, const char *string)
@@ -737,38 +739,10 @@ CJSON_PUBLIC(void) cJSON_DeleteItemFromObjectCaseSensitive(cJSON *object, const 
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2363](../../cJSON.c#L2363)
+`function` | [cJSON.c:2400](../../cJSON.c#L2400)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemViaPointer(cJSON * const parent, cJSON * const item, cJ...
-```
-
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
-
----
-
-<a id="cjson_public"></a>
-
-### `CJSON_PUBLIC`
-
-`function` | [cJSON.c:2413](../../cJSON.c#L2413)
-
-```c
-CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInArray(cJSON *array, int which, cJSON *newitem)
-```
-
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
-
----
-
-<a id="cjson_public"></a>
-
-### `CJSON_PUBLIC`
-
-`function` | [cJSON.c:2446](../../cJSON.c#L2446)
-
-```c
-CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInObject(cJSON *object, const char *string, cJSON *newi...
+CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemViaPointer(cJSON *const parent, cJSON *const item, cJSO...
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -782,6 +756,34 @@ CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInObject(cJSON *object, const char *st
 `function` | [cJSON.c:2451](../../cJSON.c#L2451)
 
 ```c
+CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInArray(cJSON *array, int which, cJSON *newitem)
+```
+
+*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+
+---
+
+<a id="cjson_public"></a>
+
+### `CJSON_PUBLIC`
+
+`function` | [cJSON.c:2486](../../cJSON.c#L2486)
+
+```c
+CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInObject(cJSON *object, const char *string, cJSON *newi...
+```
+
+*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+
+---
+
+<a id="cjson_public"></a>
+
+### `CJSON_PUBLIC`
+
+`function` | [cJSON.c:2492](../../cJSON.c#L2492)
+
+```c
 CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInObjectCaseSensitive(cJSON *object, const char *string...
 ```
 
@@ -793,7 +795,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_ReplaceItemInObjectCaseSensitive(cJSON *object, c
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2468](../../cJSON.c#L2468)
+`function` | [cJSON.c:2510](../../cJSON.c#L2510)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateTrue(void)
@@ -813,7 +815,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateTrue(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2479](../../cJSON.c#L2479)
+`function` | [cJSON.c:2521](../../cJSON.c#L2521)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateFalse(void)
@@ -833,7 +835,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateFalse(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2490](../../cJSON.c#L2490)
+`function` | [cJSON.c:2532](../../cJSON.c#L2532)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateBool(cJSON_bool boolean)
@@ -853,7 +855,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateBool(cJSON_bool boolean)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2501](../../cJSON.c#L2501)
+`function` | [cJSON.c:2543](../../cJSON.c#L2543)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateNumber(double num)
@@ -873,7 +875,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateNumber(double num)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2526](../../cJSON.c#L2526)
+`function` | [cJSON.c:2568](../../cJSON.c#L2568)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateString(const char *string)
@@ -893,7 +895,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateString(const char *string)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2543](../../cJSON.c#L2543)
+`function` | [cJSON.c:2585](../../cJSON.c#L2585)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateStringReference(const char *string)
@@ -913,7 +915,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateStringReference(const char *string)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2555](../../cJSON.c#L2555)
+`function` | [cJSON.c:2597](../../cJSON.c#L2597)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateObjectReference(const cJSON *child)
@@ -933,7 +935,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateObjectReference(const cJSON *child)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2567](../../cJSON.c#L2567)
+`function` | [cJSON.c:2609](../../cJSON.c#L2609)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateArrayReference(const cJSON *child)
@@ -953,7 +955,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateArrayReference(const cJSON *child)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2579](../../cJSON.c#L2579)
+`function` | [cJSON.c:2621](../../cJSON.c#L2621)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateRaw(const char *raw)
@@ -973,7 +975,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateRaw(const char *raw)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2596](../../cJSON.c#L2596)
+`function` | [cJSON.c:2638](../../cJSON.c#L2638)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateArray(void)
@@ -993,7 +995,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateArray(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2607](../../cJSON.c#L2607)
+`function` | [cJSON.c:2649](../../cJSON.c#L2649)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateObject(void)
@@ -1013,7 +1015,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateObject(void)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2659](../../cJSON.c#L2659)
+`function` | [cJSON.c:2702](../../cJSON.c#L2702)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateFloatArray(const float *numbers, int count)
@@ -1033,7 +1035,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateFloatArray(const float *numbers, int count)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2699](../../cJSON.c#L2699)
+`function` | [cJSON.c:2743](../../cJSON.c#L2743)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateDoubleArray(const double *numbers, int count)
@@ -1053,7 +1055,7 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateDoubleArray(const double *numbers, int count)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2739](../../cJSON.c#L2739)
+`function` | [cJSON.c:2784](../../cJSON.c#L2784)
 
 ```c
 CJSON_PUBLIC(cJSON *) cJSON_CreateStringArray(const char *const *strings, int count)
@@ -1073,10 +1075,10 @@ CJSON_PUBLIC(cJSON *) cJSON_CreateStringArray(const char *const *strings, int co
 
 ### `cJSON_Duplicate_rec`
 
-`function` | [cJSON.c:2786](../../cJSON.c#L2786)
+`function` | [cJSON.c:2832](../../cJSON.c#L2832)
 
 ```c
-cJSON * cJSON_Duplicate_rec(const cJSON *item, size_t depth, cJSON_bool recurse)
+cJSON *cJSON_Duplicate_rec(const cJSON *item, size_t depth, cJSON_bool recurse)
 ```
 
 **Parameters**
@@ -1095,7 +1097,7 @@ cJSON * cJSON_Duplicate_rec(const cJSON *item, size_t depth, cJSON_bool recurse)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2922](../../cJSON.c#L2922)
+`function` | [cJSON.c:2977](../../cJSON.c#L2977)
 
 ```c
 CJSON_PUBLIC(void) cJSON_Minify(char *json)
@@ -1109,10 +1111,10 @@ CJSON_PUBLIC(void) cJSON_Minify(char *json)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2972](../../cJSON.c#L2972)
+`function` | [cJSON.c:3027](../../cJSON.c#L3027)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsInvalid(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsInvalid(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1123,10 +1125,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsInvalid(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2982](../../cJSON.c#L2982)
+`function` | [cJSON.c:3037](../../cJSON.c#L3037)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsFalse(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsFalse(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1137,10 +1139,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsFalse(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:2992](../../cJSON.c#L2992)
+`function` | [cJSON.c:3047](../../cJSON.c#L3047)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsTrue(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsTrue(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1151,10 +1153,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsTrue(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3002](../../cJSON.c#L3002)
+`function` | [cJSON.c:3057](../../cJSON.c#L3057)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsBool(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsBool(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1165,10 +1167,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsBool(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3012](../../cJSON.c#L3012)
+`function` | [cJSON.c:3067](../../cJSON.c#L3067)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsNull(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsNull(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1179,10 +1181,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsNull(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3022](../../cJSON.c#L3022)
+`function` | [cJSON.c:3077](../../cJSON.c#L3077)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsNumber(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsNumber(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1193,10 +1195,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsNumber(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3032](../../cJSON.c#L3032)
+`function` | [cJSON.c:3087](../../cJSON.c#L3087)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsString(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsString(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1207,10 +1209,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsString(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3042](../../cJSON.c#L3042)
+`function` | [cJSON.c:3097](../../cJSON.c#L3097)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsArray(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsArray(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1221,10 +1223,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsArray(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3052](../../cJSON.c#L3052)
+`function` | [cJSON.c:3107](../../cJSON.c#L3107)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsObject(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsObject(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1235,10 +1237,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsObject(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3062](../../cJSON.c#L3062)
+`function` | [cJSON.c:3117](../../cJSON.c#L3117)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_IsRaw(const cJSON * const item)
+CJSON_PUBLIC(cJSON_bool) cJSON_IsRaw(const cJSON *const item)
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1249,10 +1251,10 @@ CJSON_PUBLIC(cJSON_bool) cJSON_IsRaw(const cJSON * const item)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3072](../../cJSON.c#L3072)
+`function` | [cJSON.c:3127](../../cJSON.c#L3127)
 
 ```c
-CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON * const a, const cJSON * const b, const cJSON_...
+CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bo...
 ```
 
 *Calls:* [`CJSON_PUBLIC`](#cjson_public)
@@ -1263,7 +1265,7 @@ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON * const a, const cJSON * cons
 
 ### `cJSON_ArrayForEach`
 
-`function` | [cJSON.c:3157](../../cJSON.c#L3157)
+`function` | [cJSON.c:3214](../../cJSON.c#L3214)
 
 ```c
 cJSON_ArrayForEach(a_element, a)
@@ -1271,7 +1273,7 @@ cJSON_ArrayForEach(a_element, a)
 
 Macro for iterating over an array or object
 
-> **Inherited:** Documentation from [`cJSON_ArrayForEach`](#cjson_arrayforeach) (cJSON.h:285).
+> **Inherited:** Documentation from [`cJSON_ArrayForEach`](#cjson_arrayforeach) (cJSON.h:331).
 
 *Called by:* [`cJSON_ArrayForEach`](#cjson_arrayforeach)
 
@@ -1281,7 +1283,7 @@ Macro for iterating over an array or object
 
 ### `cJSON_ArrayForEach`
 
-`function` | [cJSON.c:3173](../../cJSON.c#L3173)
+`function` | [cJSON.c:3230](../../cJSON.c#L3230)
 
 ```c
 cJSON_ArrayForEach(b_element, b)
@@ -1297,7 +1299,7 @@ doing this twice, once on a and b to prevent true comparison if a subset of b TO
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3194](../../cJSON.c#L3194)
+`function` | [cJSON.c:3251](../../cJSON.c#L3251)
 
 ```c
 CJSON_PUBLIC(void *) cJSON_malloc(size_t size)
@@ -1317,7 +1319,7 @@ CJSON_PUBLIC(void *) cJSON_malloc(size_t size)
 
 ### `CJSON_PUBLIC`
 
-`function` | [cJSON.c:3199](../../cJSON.c#L3199)
+`function` | [cJSON.c:3256](../../cJSON.c#L3256)
 
 ```c
 CJSON_PUBLIC(void) cJSON_free(void *object)
@@ -1369,7 +1371,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `isinf`
 
-`macro` | [cJSON.c:74](../../cJSON.c#L74)
+`macro` | [cJSON.c:75](../../cJSON.c#L75)
 
 ```c
 #define isinf(d)
@@ -1381,7 +1383,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `isnan`
 
-`macro` | [cJSON.c:77](../../cJSON.c#L77)
+`macro` | [cJSON.c:78](../../cJSON.c#L78)
 
 ```c
 #define isnan(d)
@@ -1393,7 +1395,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `NAN`
 
-`macro` | [cJSON.c:82](../../cJSON.c#L82)
+`macro` | [cJSON.c:83](../../cJSON.c#L83)
 
 ```c
 #define NAN
@@ -1405,7 +1407,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `NAN`
 
-`macro` | [cJSON.c:84](../../cJSON.c#L84)
+`macro` | [cJSON.c:85](../../cJSON.c#L85)
 
 ```c
 #define NAN
@@ -1417,7 +1419,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `internal_malloc`
 
-`macro` | [cJSON.c:179](../../cJSON.c#L179)
+`macro` | [cJSON.c:180](../../cJSON.c#L180)
 
 ```c
 #define internal_malloc
@@ -1429,7 +1431,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `internal_free`
 
-`macro` | [cJSON.c:180](../../cJSON.c#L180)
+`macro` | [cJSON.c:181](../../cJSON.c#L181)
 
 ```c
 #define internal_free
@@ -1441,7 +1443,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `internal_realloc`
 
-`macro` | [cJSON.c:181](../../cJSON.c#L181)
+`macro` | [cJSON.c:182](../../cJSON.c#L182)
 
 ```c
 #define internal_realloc
@@ -1453,7 +1455,7 @@ CJSON_PUBLIC(void) cJSON_free(void *object)
 
 ### `static_strlen`
 
-`macro` | [cJSON.c:185](../../cJSON.c#L185)
+`macro` | [cJSON.c:186](../../cJSON.c#L186)
 
 ```c
 #define static_strlen(string_literal)
@@ -1467,7 +1469,7 @@ strlen of character literals resolved at compile time
 
 ### `can_read`
 
-`macro` | [cJSON.c:301](../../cJSON.c#L301)
+`macro` | [cJSON.c:302](../../cJSON.c#L302)
 
 ```c
 #define can_read(buffer, size)
@@ -1481,7 +1483,7 @@ check if the given size is left to read in a given parse buffer (starting with 1
 
 ### `can_access_at_index`
 
-`macro` | [cJSON.c:303](../../cJSON.c#L303)
+`macro` | [cJSON.c:304](../../cJSON.c#L304)
 
 ```c
 #define can_access_at_index(buffer, index)
@@ -1497,7 +1499,7 @@ check if the buffer can be accessed at the given index (starting with 0)
 
 ### `cannot_access_at_index`
 
-`macro` | [cJSON.c:304](../../cJSON.c#L304)
+`macro` | [cJSON.c:306](../../cJSON.c#L306)
 
 ```c
 #define cannot_access_at_index(buffer, index)
@@ -1509,7 +1511,7 @@ check if the buffer can be accessed at the given index (starting with 0)
 
 ### `buffer_at_offset`
 
-`macro` | [cJSON.c:306](../../cJSON.c#L306)
+`macro` | [cJSON.c:308](../../cJSON.c#L308)
 
 ```c
 #define buffer_at_offset(buffer)
@@ -1525,7 +1527,7 @@ get a pointer to the buffer at the position
 
 ### `cjson_min`
 
-`macro` | [cJSON.c:1241](../../cJSON.c#L1241)
+`macro` | [cJSON.c:1256](../../cJSON.c#L1256)
 
 ```c
 #define cjson_min(a, b)

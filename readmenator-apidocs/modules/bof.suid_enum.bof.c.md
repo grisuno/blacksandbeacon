@@ -39,7 +39,7 @@ Linux stat struct (matches the kernel ABI for x86_64).
 
 ### `linux_dirent64`
 
-`struct` | [bof/suid_enum/bof.c:58](../../bof/suid_enum/bof.c#L58)
+`struct` | [bof/suid_enum/bof.c:59](../../bof/suid_enum/bof.c#L59)
 
 ```c
 struct linux_dirent64
@@ -57,7 +57,7 @@ The d_reclen field tells us the actual record size since names are variable leng
 
 ### `go`
 
-`function` | [bof/suid_enum/bof.c:247](../../bof/suid_enum/bof.c#L247)
+`function` | [bof/suid_enum/bof.c:298](../../bof/suid_enum/bof.c#L298)
 
 ```c
 void go(char *args, int alen)

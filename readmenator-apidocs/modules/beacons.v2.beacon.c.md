@@ -62,7 +62,7 @@ typedef struct
 
 ### `mesh_msg_t`
 
-`struct` | [beacons/v2/beacon.c:40](../../beacons/v2/beacon.c#L40)
+`struct` | [beacons/v2/beacon.c:41](../../beacons/v2/beacon.c#L41)
 
 ```c
 typedef struct
@@ -76,7 +76,7 @@ typedef struct
 
 ### `main`
 
-`function` | [beacons/v2/beacon.c:188](../../beacons/v2/beacon.c#L188)
+`function` | [beacons/v2/beacon.c:212](../../beacons/v2/beacon.c#L212)
 
 ```c
 int main(void)

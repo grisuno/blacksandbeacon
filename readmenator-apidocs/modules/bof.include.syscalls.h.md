@@ -33,7 +33,7 @@ static inline long syscall0(long n)
 
 ### `syscall1`
 
-`function` `inline` `static` | [bof/include/syscalls.h:60](../../bof/include/syscalls.h#L60)
+`function` `inline` `static` | [bof/include/syscalls.h:56](../../bof/include/syscalls.h#L56)
 
 ```c
 static inline long syscall1(long n, long a1)
@@ -56,7 +56,7 @@ static inline long syscall1(long n, long a1)
 
 ### `syscall2`
 
-`function` `inline` `static` | [bof/include/syscalls.h:71](../../bof/include/syscalls.h#L71)
+`function` `inline` `static` | [bof/include/syscalls.h:63](../../bof/include/syscalls.h#L63)
 
 ```c
 static inline long syscall2(long n, long a1, long a2)
@@ -78,7 +78,7 @@ static inline long syscall2(long n, long a1, long a2)
 
 ### `syscall3`
 
-`function` `inline` `static` | [bof/include/syscalls.h:82](../../bof/include/syscalls.h#L82)
+`function` `inline` `static` | [bof/include/syscalls.h:70](../../bof/include/syscalls.h#L70)
 
 ```c
 static inline long syscall3(long n, long a1, long a2, long a3)
@@ -103,7 +103,7 @@ static inline long syscall3(long n, long a1, long a2, long a3)
 
 ### `syscall4`
 
-`function` `inline` `static` | [bof/include/syscalls.h:93](../../bof/include/syscalls.h#L93)
+`function` `inline` `static` | [bof/include/syscalls.h:80](../../bof/include/syscalls.h#L80)
 
 ```c
 static inline long syscall4(long n, long a1, long a2, long a3, long a4)
@@ -127,7 +127,7 @@ static inline long syscall4(long n, long a1, long a2, long a3, long a4)
 
 ### `bsf_strlen`
 
-`function` `inline` `static` | [bof/include/syscalls.h:106](../../bof/include/syscalls.h#L106)
+`function` `inline` `static` | [bof/include/syscalls.h:92](../../bof/include/syscalls.h#L92)
 
 ```c
 static inline size_t bsf_strlen(const char *s)
@@ -149,7 +149,7 @@ strlen - libc is not linked.
 
 ### `bsf_strcmp`
 
-`function` `inline` `static` | [bof/include/syscalls.h:113](../../bof/include/syscalls.h#L113)
+`function` `inline` `static` | [bof/include/syscalls.h:101](../../bof/include/syscalls.h#L101)
 
 ```c
 static inline int bsf_strcmp(const char *a, const char *b)
@@ -174,7 +174,7 @@ Returns 0 on match.
 
 ### `bsf_memcmp`
 
-`function` `inline` `static` | [bof/include/syscalls.h:119](../../bof/include/syscalls.h#L119)
+`function` `inline` `static` | [bof/include/syscalls.h:112](../../bof/include/syscalls.h#L112)
 
 ```c
 static inline int bsf_memcmp(const void *p1, const void *p2, size_t n)

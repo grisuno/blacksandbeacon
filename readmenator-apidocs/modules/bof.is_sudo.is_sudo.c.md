@@ -75,7 +75,7 @@ typedef long ssize_t;
 `function` `extern` | [bof/is_sudo/is_sudo.c:11](../../bof/is_sudo/is_sudo.c#L11)
 
 ```c
-extern void BeaconPrintf(int, const char*, ...);
+extern void BeaconPrintf(int, const char *, ...);
 ```
 
 Símbolos del beacon
@@ -98,7 +98,7 @@ Símbolos del beacon
 `function` `extern` | [bof/is_sudo/is_sudo.c:12](../../bof/is_sudo/is_sudo.c#L12)
 
 ```c
-extern void BeaconOutput(int, const char*, int);
+extern void BeaconOutput(int, const char *, int);
 ```
 
 Beacon API: raw output capture (called by BOFs).
@@ -109,7 +109,7 @@ Beacon API: raw output capture (called by BOFs).
 |---|---|---|---|
 | `char` |  |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 *Called by:* [`go`](#go)
 
@@ -119,7 +119,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `go`
 
-`function` | [bof/is_sudo/is_sudo.c:109](../../bof/is_sudo/is_sudo.c#L109)
+`function` | [bof/is_sudo/is_sudo.c:122](../../bof/is_sudo/is_sudo.c#L122)
 
 ```c
 void go(char *args, int alen)

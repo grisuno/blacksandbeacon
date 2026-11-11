@@ -8,19 +8,19 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: What does aes.h depend on, and what depends on it? (9 connections)
+### Q: What does aes.h depend on, and what depends on it? (10 connections)
 
 - Status: unanswered
 
-### Q: What does cJSON.c depend on, and what depends on it? (2 connections)
+### Q: What does server.py depend on, and what depends on it? (9 connections)
 
 - Status: unanswered
 
-### Q: How are the 11 files in 'include: cJSON' related to each other?
+### Q: How are the 20 files in 'root' related to each other?
 
 - Status: unanswered
 
-### Q: Why are bof.c and config.c connected through 7 hops across 3 communities?
+### Q: Why are bof.c and config.c connected through 7 hops across 2 communities?
 
 - Status: unanswered
 

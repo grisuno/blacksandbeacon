@@ -68,7 +68,7 @@ flowchart LR
 
 ### `MemoryStruct`
 
-`struct` | [gopher_beacon.c:47](../../gopher_beacon.c#L47)
+`struct` | [gopher_beacon.c:49](../../gopher_beacon.c#L49)
 
 ```c
 struct MemoryStruct
@@ -82,7 +82,7 @@ struct MemoryStruct
 
 ### `Trampoline`
 
-`struct` | [gopher_beacon.c:54](../../gopher_beacon.c#L54)
+`struct` | [gopher_beacon.c:57](../../gopher_beacon.c#L57)
 
 ```c
 typedef struct
@@ -96,7 +96,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [gopher_beacon.c:62](../../gopher_beacon.c#L62)
+`struct` | [gopher_beacon.c:66](../../gopher_beacon.c#L66)
 
 ```c
 typedef struct
@@ -108,7 +108,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [gopher_beacon.c:68](../../gopher_beacon.c#L68)
+`struct` | [gopher_beacon.c:73](../../gopher_beacon.c#L73)
 
 ```c
 typedef struct
@@ -124,7 +124,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [gopher_beacon.c:190](../../gopher_beacon.c#L190)
+`function` | [gopher_beacon.c:193](../../gopher_beacon.c#L193)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -146,7 +146,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [gopher_beacon.c:203](../../gopher_beacon.c#L203)
+`function` | [gopher_beacon.c:210](../../gopher_beacon.c#L210)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -162,7 +162,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 ---
 
@@ -170,10 +170,10 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `gopher_request`
 
-`function` | [gopher_beacon.c:314](../../gopher_beacon.c#L314)
+`function` | [gopher_beacon.c:339](../../gopher_beacon.c#L339)
 
 ```c
-char* gopher_request(const char* host, int port, const char* selector, const char* method, const char* post_data)
+char *gopher_request(const char *host, int port, const char *selector, const char *method, const char *post_data)
 ```
 
 === GOPHER REQUEST () ===
@@ -182,13 +182,13 @@ char* gopher_request(const char* host, int port, const char* selector, const cha
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `host` | `char*` |  |  |
+| `host` | `char *` |  |  |
 | `port` | `int` |  |  |
-| `selector` | `char*` |  |  |
-| `method` | `char*` |  |  |
-| `post_data` | `char*` |  |  |
+| `selector` | `char *` |  |  |
+| `method` | `char *` |  |  |
+| `post_data` | `char *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`download_bof`](#download_bof), [`main`](#main)
 
@@ -198,10 +198,10 @@ char* gopher_request(const char* host, int port, const char* selector, const cha
 
 ### `base64_encode`
 
-`function` | [gopher_beacon.c:377](../../gopher_beacon.c#L377)
+`function` | [gopher_beacon.c:422](../../gopher_beacon.c#L422)
 
 ```c
-char* base64_encode(const unsigned char* input, int len)
+char *base64_encode(const unsigned char *input, int len)
 ```
 
 === BASE64 ===
@@ -210,10 +210,10 @@ char* base64_encode(const unsigned char* input, int len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `unsigned char*` |  |  |
+| `input` | `unsigned char *` |  |  |
 | `len` | `int` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -223,20 +223,20 @@ char* base64_encode(const unsigned char* input, int len)
 
 ### `base64_decode`
 
-`function` | [gopher_beacon.c:394](../../gopher_beacon.c#L394)
+`function` | [gopher_beacon.c:440](../../gopher_beacon.c#L440)
 
 ```c
-unsigned char* base64_decode(const char* input, int* len)
+unsigned char *base64_decode(const char *input, int *len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `char*` |  |  |
-| `len` | `int*` |  |  |
+| `input` | `char *` |  |  |
+| `len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Called by:* [`download_bof`](#download_bof), [`main`](#main)
 
@@ -246,10 +246,10 @@ unsigned char* base64_decode(const char* input, int* len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [gopher_beacon.c:417](../../gopher_beacon.c#L417)
+`function` | [gopher_beacon.c:466](../../gopher_beacon.c#L466)
 
 ```c
-unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* plaintext, size_t len, int* out_len)
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
 ```
 
 === AES CFB ===
@@ -258,13 +258,13 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `plaintext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `plaintext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -276,23 +276,23 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 ### `aes256_cfb_decrypt`
 
-`function` | [gopher_beacon.c:445](../../gopher_beacon.c#L445)
+`function` | [gopher_beacon.c:500](../../gopher_beacon.c#L500)
 
 ```c
-unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* ciphertext, size_t len, int* out_len)
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `ciphertext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `ciphertext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -304,10 +304,10 @@ unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char*
 
 ### `exec_cmd`
 
-`function` | [gopher_beacon.c:475](../../gopher_beacon.c#L475)
+`function` | [gopher_beacon.c:536](../../gopher_beacon.c#L536)
 
 ```c
-char* exec_cmd(const char* cmd, int* out_len)
+char *exec_cmd(const char *cmd, int *out_len)
 ```
 
 === EXEC CMD ===
@@ -316,10 +316,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `cmd` | `char*` |  |  |
-| `out_len` | `int*` |  |  |
+| `cmd` | `char *` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -329,10 +329,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 ### `RunELF`
 
-`function` | [gopher_beacon.c:512](../../gopher_beacon.c#L512)
+`function` | [gopher_beacon.c:581](../../gopher_beacon.c#L581)
 
 ```c
-int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize)
+int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
 ```
 
 ELF BOF loader.
@@ -343,15 +343,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `functionname` | `char*` |  |  |
-| `elf_data` | `unsigned char*` |  |  |
+| `functionname` | `char *` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `argumentdata` | `unsigned char*` |  |  |
+| `argumentdata` | `unsigned char *` |  |  |
 | `argumentSize` | `int` |  |  |
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:147).
+> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:164).
 
 *Called by:* [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -361,15 +361,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [gopher_beacon.c:893](../../gopher_beacon.c#L893)
+`function` | [gopher_beacon.c:1080](../../gopher_beacon.c#L1080)
 
 ```c
-char* get_local_ips()
+char *get_local_ips()
 ```
 
 === GET LOCAL IPs ===
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -379,10 +379,10 @@ char* get_local_ips()
 
 ### `download_bof`
 
-`function` | [gopher_beacon.c:922](../../gopher_beacon.c#L922)
+`function` | [gopher_beacon.c:1115](../../gopher_beacon.c#L1115)
 
 ```c
-unsigned char* download_bof(const char* bof_selector, size_t* out_size)
+unsigned char *download_bof(const char *bof_selector, size_t *out_size)
 ```
 
 === DOWNLOAD BOF ===
@@ -391,10 +391,10 @@ unsigned char* download_bof(const char* bof_selector, size_t* out_size)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `bof_selector` | `char*` |  |  |
-| `out_size` | `size_t*` |  |  |
+| `bof_selector` | `char *` |  |  |
+| `out_size` | `size_t *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`base64_decode`](#base64_decode), [`gopher_request`](#gopher_request)
 
@@ -406,10 +406,10 @@ unsigned char* download_bof(const char* bof_selector, size_t* out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [gopher_beacon.c:950](../../gopher_beacon.c#L950)
+`function` | [gopher_beacon.c:1147](../../gopher_beacon.c#L1147)
 
 ```c
-char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args, int arglen, int* out_len)
+char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
 ```
 
 === RUN BOF AND CAPTURE ===
@@ -418,13 +418,13 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `elf_data` | `unsigned char*` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `args` | `char*` |  |  |
+| `args` | `char *` |  |  |
 | `arglen` | `int` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`RunELF`](#runelf)
 
@@ -436,7 +436,7 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 ### `main`
 
-`function` | [gopher_beacon.c:994](../../gopher_beacon.c#L994)
+`function` | [gopher_beacon.c:1193](../../gopher_beacon.c#L1193)
 
 ```c
 int main()

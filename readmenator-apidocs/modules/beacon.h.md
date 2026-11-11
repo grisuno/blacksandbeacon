@@ -32,7 +32,7 @@ Estructura para parsing de datos (opcional, para comandos complejos)
 
 ### `BeaconDataParse`
 
-`function` | [beacon.h:21](../../beacon.h#L21)
+`function` | [beacon.h:22](../../beacon.h#L22)
 
 ```c
 void BeaconDataParse(datap *parser, char *buffer, int size);
@@ -54,7 +54,7 @@ void BeaconDataParse(datap *parser, char *buffer, int size);
 
 ### `BeaconDataPtr`
 
-`function` | [beacon.h:22](../../beacon.h#L22)
+`function` | [beacon.h:23](../../beacon.h#L23)
 
 ```c
 char *BeaconDataPtr(datap *parser, int size);
@@ -75,7 +75,7 @@ char *BeaconDataPtr(datap *parser, int size);
 
 ### `BeaconDataInt`
 
-`function` | [beacon.h:23](../../beacon.h#L23)
+`function` | [beacon.h:24](../../beacon.h#L24)
 
 ```c
 int BeaconDataInt(datap *parser);
@@ -95,7 +95,7 @@ int BeaconDataInt(datap *parser);
 
 ### `BeaconDataShort`
 
-`function` | [beacon.h:24](../../beacon.h#L24)
+`function` | [beacon.h:25](../../beacon.h#L25)
 
 ```c
 short BeaconDataShort(datap *parser);
@@ -115,7 +115,7 @@ short BeaconDataShort(datap *parser);
 
 ### `BeaconDataLength`
 
-`function` | [beacon.h:25](../../beacon.h#L25)
+`function` | [beacon.h:26](../../beacon.h#L26)
 
 ```c
 int BeaconDataLength(datap *parser);
@@ -135,7 +135,7 @@ int BeaconDataLength(datap *parser);
 
 ### `BeaconDataExtract`
 
-`function` | [beacon.h:26](../../beacon.h#L26)
+`function` | [beacon.h:27](../../beacon.h#L27)
 
 ```c
 char *BeaconDataExtract(datap *parser, int *size);
@@ -156,7 +156,7 @@ char *BeaconDataExtract(datap *parser, int *size);
 
 ### `BeaconPrintf`
 
-`function` | [beacon.h:27](../../beacon.h#L27)
+`function` | [beacon.h:28](../../beacon.h#L28)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...);
@@ -172,7 +172,7 @@ Beacon API: printf-style output capture (called by BOFs).
 | `fmt` | `char *` |  |  |
 | `...` |  |  |  |
 
-> **Inherited:** Documentation from [`BeaconPrintf`](#beaconprintf) (include/beacon_common.h:102).
+> **Inherited:** Documentation from [`BeaconPrintf`](#beaconprintf) (include/beacon_common.h:105).
 
 *Called by:* [`__attribute__`](bof.c.md#__attribute__)
 
@@ -182,7 +182,7 @@ Beacon API: printf-style output capture (called by BOFs).
 
 ### `BeaconOutput`
 
-`function` | [beacon.h:28](../../beacon.h#L28)
+`function` | [beacon.h:29](../../beacon.h#L29)
 
 ```c
 void BeaconOutput(int type, const char *data, int len);
@@ -198,7 +198,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 ---
 

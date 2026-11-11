@@ -59,7 +59,7 @@ flowchart LR
 
 ### `main`
 
-`function` | [beacons/v3/beacon.c:174](../../beacons/v3/beacon.c#L174)
+`function` | [beacons/v3/beacon.c:205](../../beacons/v3/beacon.c#L205)
 
 ```c
 int main(void)

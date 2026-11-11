@@ -27,7 +27,7 @@ flowchart LR
 
 ### `go`
 
-`function` | [bof/is_sudo/bof.c:57](../../bof/is_sudo/bof.c#L57)
+`function` | [bof/is_sudo/bof.c:74](../../bof/is_sudo/bof.c#L74)
 
 ```c
 void go(char *args, int alen)

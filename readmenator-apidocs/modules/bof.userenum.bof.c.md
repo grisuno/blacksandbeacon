@@ -25,7 +25,7 @@ flowchart LR
 
 ### `go`
 
-`function` | [bof/userenum/bof.c:68](../../bof/userenum/bof.c#L68)
+`function` | [bof/userenum/bof.c:89](../../bof/userenum/bof.c#L89)
 
 ```c
 void go(char *args, int alen)

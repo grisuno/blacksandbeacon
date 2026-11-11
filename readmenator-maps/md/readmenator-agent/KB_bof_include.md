@@ -7,14 +7,14 @@
 - Symbols:
   - `datap` (struct, line 30)
   - `go` (function, line 10) `* * BOFs MUST export a function with this exact signature: * * void go(char *args, int alen);`
-  - `BeaconDataParse` (function, line 36) `void BeaconDataParse(datap *parser, char *buffer, int size);`
-  - `BeaconDataPtr` (function, line 37) `char *BeaconDataPtr(datap *parser, int size);`
-  - `BeaconDataInt` (function, line 38) `int BeaconDataInt(datap *parser);`
-  - `BeaconDataShort` (function, line 39) `short BeaconDataShort(datap *parser);`
-  - `BeaconDataLength` (function, line 40) `int BeaconDataLength(datap *parser);`
-  - `BeaconDataExtract` (function, line 41) `char *BeaconDataExtract(datap *parser, int *size);`
-  - `buffer` (function, line 44) `* takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffer must still be NUL-terminated). */...`
-  - `BeaconOutput` (function, line 47) `void BeaconOutput(int type, const char *data, int len);`
+  - `BeaconDataParse` (function, line 37) `void BeaconDataParse(datap *parser, char *buffer, int size);`
+  - `BeaconDataPtr` (function, line 38) `char *BeaconDataPtr(datap *parser, int size);`
+  - `BeaconDataInt` (function, line 39) `int BeaconDataInt(datap *parser);`
+  - `BeaconDataShort` (function, line 40) `short BeaconDataShort(datap *parser);`
+  - `BeaconDataLength` (function, line 41) `int BeaconDataLength(datap *parser);`
+  - `BeaconDataExtract` (function, line 42) `char *BeaconDataExtract(datap *parser, int *size);`
+  - `buffer` (function, line 45) `* takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffer must still be NUL-terminated). */...`
+  - `BeaconOutput` (function, line 48) `void BeaconOutput(int type, const char *data, int len);`
   - `BSB_BOF_BEACON_API_H` (macro, line 17) `#define BSB_BOF_BEACON_API_H`
   - `CALLBACK_OUTPUT` (macro, line 24) `#define CALLBACK_OUTPUT`
   - `CALLBACK_ERROR` (macro, line 25) `#define CALLBACK_ERROR`
@@ -22,18 +22,18 @@
 - Imported by: `bof/cat/bof.c`, `bof/is_sudo/bof.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/whoami/bof.c`
 
 ## bof/include/syscalls.h
-- Doc: bsf_strlen: static inline long syscall4(long n, long a1, long a2, long a3, long a4) { long ret...
+- Doc: bsf_strlen: } static inline long syscall4(long n, long a1, long a2, long a3, long a4) { long...
 - Layer: utility
 - Language: h
 - Symbols:
   - `syscall0` (function, line 49) `static inline long syscall0(long n)`
-  - `syscall1` (function, line 60) `static inline long syscall1(long n, long a1)`
-  - `syscall2` (function, line 71) `static inline long syscall2(long n, long a1, long a2)`
-  - `syscall3` (function, line 82) `static inline long syscall3(long n, long a1, long a2, long a3)`
-  - `syscall4` (function, line 93) `static inline long syscall4(long n, long a1, long a2, long a3, long a4)`
-  - `bsf_strlen` (function, line 106) `static inline size_t bsf_strlen(const char *s)`
-  - `bsf_strcmp` (function, line 113) `static inline int bsf_strcmp(const char *a, const char *b)`
-  - `bsf_memcmp` (function, line 119) `static inline int bsf_memcmp(const void *p1, const void *p2, size_t n)`
+  - `syscall1` (function, line 56) `static inline long syscall1(long n, long a1)`
+  - `syscall2` (function, line 63) `static inline long syscall2(long n, long a1, long a2)`
+  - `syscall3` (function, line 70) `static inline long syscall3(long n, long a1, long a2, long a3)`
+  - `syscall4` (function, line 80) `static inline long syscall4(long n, long a1, long a2, long a3, long a4)`
+  - `bsf_strlen` (function, line 92) `static inline size_t bsf_strlen(const char *s)`
+  - `bsf_strcmp` (function, line 101) `static inline int bsf_strcmp(const char *a, const char *b)`
+  - `bsf_memcmp` (function, line 112) `static inline int bsf_memcmp(const void *p1, const void *p2, size_t n)`
   - `BSB_BOF_SYSCALLS_H` (macro, line 12) `#define BSB_BOF_SYSCALLS_H`
   - `SYS_read` (macro, line 17) `#define SYS_read`
   - `SYS_write` (macro, line 18) `#define SYS_write`

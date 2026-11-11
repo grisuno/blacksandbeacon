@@ -1,53 +1,66 @@
 # blacksandbeacon
 
-> Static analysis knowledge base for blacksandbeacon: 6 communities, 52 files, 400 imports, 4 languages, 1077 symbols.
+> Static analysis knowledge base for blacksandbeacon: 25 communities, 175 files, 913 imports, 4 languages, 1521 symbols.
 
 Generated offline by readmenator (zero LLM tokens). Start with the wiki index for the big picture, then the agent INDEX for file lookup.
 
 ## Wiki
 
-- [readmenator-wiki/index.md](md/readmenator-wiki/index.md): The codebase centres on cJSON.h, aes.h, cJSON.c. Architecturally it is 4 layers, dominant utility (39 files) across 7 import-based communities. Recorded risk...
-- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: blacksandbeacon | 2026-11-09 | offline, deterministic
-- [readmenator-wiki/community_0_include_cjson.md](md/readmenator-wiki/community_0_include_cjson.md): Community 0 | 11 files | cohesion 0.61
-- [readmenator-wiki/community_1_root.md](md/readmenator-wiki/community_1_root.md): Community 1 | 10 files | cohesion 0.64
-- [readmenator-wiki/community_2_bof_include.md](md/readmenator-wiki/community_2_bof_include.md): Community 2 | 7 files | cohesion 1.00
-- [readmenator-wiki/community_3_include_server.md](md/readmenator-wiki/community_3_include_server.md): Community 3 | 3 files | cohesion 1.00
-- [readmenator-wiki/community_4_include_config.md](md/readmenator-wiki/community_4_include_config.md): Community 4 | 3 files | cohesion 0.67
-- [readmenator-wiki/community_5_include_aes_cfb.md](md/readmenator-wiki/community_5_include_aes_cfb.md): Community 5 | 2 files | cohesion 1.00
-- [readmenator-wiki/community_6_orphans.md](md/readmenator-wiki/community_6_orphans.md): Community 6 | 16 files | cohesion 0.00
-- [readmenator-wiki/concepts.md](md/readmenator-wiki/concepts.md): Second-brain semantic layer: nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
-- [readmenator-wiki/queries.md](md/readmenator-wiki/queries.md): Log each answered question here so the wiki compounds. Format: question, answer, cited files.
+- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: blacksandbeacon | 2026-11-10 | offline, deterministic
+- [readmenator-wiki/community_0_root.md](md/readmenator-wiki/community_0_root.md): Community 0 | 20 files | cohesion 0.89
+- [readmenator-wiki/community_10_mutants_src_bof_streaming_large_outputs.md](md/readmenator-wiki/community_10_mutants_src_bof_streaming_large_outputs.md): Community 10 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_11_mutants_src_c2_rest_api.md](md/readmenator-wiki/community_11_mutants_src_c2_rest_api.md): Community 11 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_12_mutants_src_certificate_pinning_tofu.md](md/readmenator-wiki/community_12_mutants_src_certificate_pinning_tofu.md): Community 12 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_13_mutants_src_command_execution_via_execve.md](md/readmenator-wiki/community_13_mutants_src_command_execution_via_execve.md): Community 13 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_14_mutants_src_containerized_build_sbom.md](md/readmenator-wiki/community_14_mutants_src_containerized_build_sbom.md): Community 14 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_15_mutants_src_hkdf_key_derivation.md](md/readmenator-wiki/community_15_mutants_src_hkdf_key_derivation.md): Community 15 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_16_mutants_src_iv_generation_with_entropy_verification.md](md/readmenator-wiki/community_16_mutants_src_iv_generation_with_entropy_verification.md): Community 16 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_17_mutants_src_mutation_testing_integration.md](md/readmenator-wiki/community_17_mutants_src_mutation_testing_integration.md): Community 17 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_18_mutants_src_pre_commit_ci_hardening.md](md/readmenator-wiki/community_18_mutants_src_pre_commit_ci_hardening.md): Community 18 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_19_mutants_src_replay_protection.md](md/readmenator-wiki/community_19_mutants_src_replay_protection.md): Community 19 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_1_c2.md](md/readmenator-wiki/community_1_c2.md): Community 1 | 15 files | cohesion 1.00
+- [readmenator-wiki/community_20_mutants_src_socks5_http_proxy_support.md](md/readmenator-wiki/community_20_mutants_src_socks5_http_proxy_support.md): Community 20 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_21_mutants_src_structured_jsonl_logging.md](md/readmenator-wiki/community_21_mutants_src_structured_jsonl_logging.md): Community 21 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_22_mutants_src_tls_client_certificate_authentication.md](md/readmenator-wiki/community_22_mutants_src_tls_client_certificate_authentication.md): Community 22 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_23_mutants_src_unified_config_schema.md](md/readmenator-wiki/community_23_mutants_src_unified_config_schema.md): Community 23 | 3 files | cohesion 1.00
+- [readmenator-wiki/community_24_include_config_autogen.md](md/readmenator-wiki/community_24_include_config_autogen.md): Community 24 | 2 files | cohesion 1.00
+- [readmenator-wiki/community_25_orphans.md](md/readmenator-wiki/community_25_orphans.md): Community 25 | 62 files | cohesion 0.00
 
 ## GraphRAG
 
-- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1239 | Relationships: 2236 | Communities: 7 | Themes: 5 | Text units: 1100
+- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1816 | Relationships: 4040 | Communities: 26 | Themes: 24 | Text units: 1620
 
 ## Agent Docs
 
 - [readmenator-agent/INDEX.md](md/readmenator-agent/INDEX.md)
 - [readmenator-agent/GOTCHAS.md](md/readmenator-agent/GOTCHAS.md): These files have the most connections. Changes here have high blast radius.
-- [readmenator-agent/API.md](md/readmenator-agent/API.md): getSBoxValue (function) aes.c:13 static uint8t getSBoxValue(uint8t num)
-- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Depends on: include/aes.h
+- [readmenator-agent/API.md](md/readmenator-agent/API.md): getSBoxValue (function) aes.c:11 static uint8t getSBoxValue(uint8t num)
+- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Depends on: aes.h, beacon.h, cJSON.h
+- [readmenator-agent/API_p3.md](md/readmenator-agent/API_p3.md): Depends on: include/beaconheartbeathealthendpoint.h
 - [readmenator-agent/ARCHITECTURE.md](md/readmenator-agent/ARCHITECTURE.md): beacons/v1/beacon.c -> include/beaconcommon.h
 - [readmenator-agent/CONCEPTS.md](md/readmenator-agent/CONCEPTS.md): Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
 - [readmenator-agent/KB_bof_include.md](md/readmenator-agent/KB_bof_include.md): Doc: datap: Argument parser.
+- [readmenator-agent/KB_c2.md](md/readmenator-agent/KB_c2.md): Imported by: mutants/tests/testc2httpe2e.py, tests/testc2httpe2e.py
 - [readmenator-agent/KB_cat.md](md/readmenator-agent/KB_cat.md): go (function, line 15) void go(char args, int alen)
 - [readmenator-agent/KB_include.md](md/readmenator-agent/KB_include.md): Doc: tiny-AES-c (https://github.com/kokke/tiny-AES-c)
+- [readmenator-agent/KB_include_p2.md](md/readmenator-agent/KB_include_p2.md): commandexecutionviaexecveprocess (function, line 4) bool commandexecutionviaexecveprocess(void);
 - [readmenator-agent/KB_is_sudo.md](md/readmenator-agent/KB_is_sudo.md): useringroup (function, line 15) static int useringroup(const char group, const char username, char filebuf, long filesize)
-- [readmenator-agent/KB_misc.md](md/readmenator-agent/KB_misc.md): meshmsgt (struct, line 40)
+- [readmenator-agent/KB_misc.md](md/readmenator-agent/KB_misc.md): meshmsgt (struct, line 41)
 - [readmenator-agent/KB_root.md](md/readmenator-agent/KB_root.md): Doc: tiny-AES-c (https://github.com/kokke/tiny-AES-c)
-- [readmenator-agent/KB_root_p2.md](md/readmenator-agent/KB_root_p2.md): Doc: MemoryStruct: === ESTRUCTURAS ===
-- [readmenator-agent/KB_tests.md](md/readmenator-agent/KB_tests.md): main (function, line 22) int main(void)
-- [readmenator-agent/KB_userenum.md](md/readmenator-agent/KB_userenum.md): userinmemberlist (function, line 52) static int userinmemberlist(const char username, const char members)
-- [readmenator-agent/KB_v1.md](md/readmenator-agent/KB_v1.md): reportresult (function, line 24) static void reportresult(const bsbconfigt cfg,
+- [readmenator-agent/KB_root_p2.md](md/readmenator-agent/KB_root_p2.md): Doc: cJSON: #define cJSONInvalid (0) #define cJSONFalse (1 << 0) #define cJSONTrue (1 << 1)...
+- [readmenator-agent/KB_src.md](md/readmenator-agent/KB_src.md): Doc: Auto-generated implementation for contract: Async I/O for Beacon
+- [readmenator-agent/KB_tests.md](md/readmenator-agent/KB_tests.md): main (function, line 24) int main(void)
+- [readmenator-agent/KB_userenum.md](md/readmenator-agent/KB_userenum.md): userinmemberlist (function, line 67) static int userinmemberlist(const char username, const char members)
+- [readmenator-agent/KB_v1.md](md/readmenator-agent/KB_v1.md): reportresult (function, line 24) static void reportresult(const bsbconfigt cfg, const char command, const char output)
 - [readmenator-agent/KB_whoami.md](md/readmenator-agent/KB_whoami.md): go (function, line 19) void go(char args, int alen)
-- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 52 files at commit 2e53f8059ea9. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 175 files at commit 069cd0c48de9. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
 - [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
 - [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
 - [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)
 - [readmenator-agent/SYMBOLS_p3.md](md/readmenator-agent/SYMBOLS_p3.md)
+- [readmenator-agent/SYMBOLS_p4.md](md/readmenator-agent/SYMBOLS_p4.md)
 - [readmenator-agent/recipes/add-function.md](md/readmenator-agent/recipes/add-function.md): Find the target file by purpose: grep -in '<topic>' readmenator-agent/INDEX.md
-- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: include/config.h (7 dependents)
+- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: include/configpy.py (12 dependents)
 - [readmenator-agent/recipes/fix-cycle.md](md/readmenator-agent/recipes/fix-cycle.md): Read cycles: grep -A5 'Dependency Cycles' readmenator-agent/GOTCHAS.md
 - [readmenator-agent/recipes/fix-security.md](md/readmenator-agent/recipes/fix-security.md): Read findings: grep -n '<file>' readmenator-agent/SECURITY.md
 - [readmenator-agent/recipes/reduce-complexity.md](md/readmenator-agent/recipes/reduce-complexity.md): Target hotspot: beacon5.c
@@ -57,9 +70,11 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [KNOWLEDGE_BASE.md](md/KNOWLEDGE_BASE.md): Start here: Statistics Dashboard for scope, God Nodes for blast radius, Architecture Reference for per-file API. Agents: prefer readmenator-agent/INDEX.md +...
 - [README.md](md/README.md): A Linux C2 beacon with a native in-memory ELF BOF loader, written in
 - [SECURITY.md](md/SECURITY.md): Black Sand Beacon is actively developed. Only the latest release receives security updates.
-- [readmenator-diagrams/include_cJSON.md](md/readmenator-diagrams/include_cJSON.md): include: cJSON groups 11 files (c, h) around BEACONCOMMONH, GNUSOURCE, BSBOUTPUTBUFFERDEFAULT, BSBOUTPUTTRUNCATIONMARKER, httpresponset.
-- [readmenator-diagrams/overview.md](md/readmenator-diagrams/overview.md): Static architecture map of 52 files (c, h, py, sh) in 6 components: include: cJSON, root, bof/include, include: server, include: config, include: aescfb....
-- [readmenator-diagrams/root.md](md/readmenator-diagrams/root.md): root groups 10 files (c, h) around AESH, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
+- [readmenator-diagrams/c2.md](md/readmenator-diagrams/c2.md): c2 groups 15 files (py) around derivekeys, deepmerge, loadconfig, loadruntimeconfig, computehmac. Black Sand Beacon C2 Server Gopher-style command and control...
+- [readmenator-diagrams/include_aes.md](md/readmenator-diagrams/include_aes.md): include: aes groups 6 files (c, h) around BSBAESCFBH, aes256cfbencrypt, aes256cfbdecrypt, AESH, CBC. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
+- [readmenator-diagrams/include_config.md](md/readmenator-diagrams/include_config.md): include: config groups 6 files (c, h) around BSBCONFIGH, BSBCONFIGPATHDEFAULT, BSBCONFIGPATHENV, BSBMAXURL, BSBMAXURI. slurp: declared in the schema.
+- [readmenator-diagrams/overview.md](md/readmenator-diagrams/overview.md): Static architecture map of 175 files (c, h, py, sh) in 25 components: root, c2, bof/include, include: aes, include: config, mutants/src: asyncioforbeacon...
+- [readmenator-diagrams/root.md](md/readmenator-diagrams/root.md): root groups 20 files (c, h) around BEACONCOMMONH, GNUSOURCE, BSBOUTPUTBUFFERDEFAULT, BSBOUTPUTTRUNCATIONMARKER, httpresponset. tiny-AES-c...
 
 ## Optional
 

@@ -27,14 +27,14 @@ This community groups 7 file(s) rooted at `bof/include` with dominant language c
 - `CALLBACK_ERROR` (macro, `bof/include/beacon_api.h:25`) `#define CALLBACK_ERROR`
 - `CALLBACK_OUTPUT_OEM` (macro, `bof/include/beacon_api.h:26`) `#define CALLBACK_OUTPUT_OEM`
 - `datap` (struct, `bof/include/beacon_api.h:30`) - Argument parser. BOFs that want to read structured args fill * one of these in via BeaconDataParse t
-- `BeaconDataParse` (function, `bof/include/beacon_api.h:36`) `void BeaconDataParse(datap *parser, char *buffer, int size);`
-- `BeaconDataPtr` (function, `bof/include/beacon_api.h:37`) `char *BeaconDataPtr(datap *parser, int size);`
-- `BeaconDataInt` (function, `bof/include/beacon_api.h:38`) `int BeaconDataInt(datap *parser);`
-- `BeaconDataShort` (function, `bof/include/beacon_api.h:39`) `short BeaconDataShort(datap *parser);`
-- `BeaconDataLength` (function, `bof/include/beacon_api.h:40`) `int BeaconDataLength(datap *parser);`
-- `BeaconDataExtract` (function, `bof/include/beacon_api.h:41`) `char *BeaconDataExtract(datap *parser, int *size);`
-- `buffer` (function, `bof/include/beacon_api.h:44`) `* takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffe`
-- `BeaconOutput` (function, `bof/include/beacon_api.h:47`) `void BeaconOutput(int type, const char *data, int len);`
+- `BeaconDataParse` (function, `bof/include/beacon_api.h:37`) `void BeaconDataParse(datap *parser, char *buffer, int size);`
+- `BeaconDataPtr` (function, `bof/include/beacon_api.h:38`) `char *BeaconDataPtr(datap *parser, int size);`
+- `BeaconDataInt` (function, `bof/include/beacon_api.h:39`) `int BeaconDataInt(datap *parser);`
+- `BeaconDataShort` (function, `bof/include/beacon_api.h:40`) `short BeaconDataShort(datap *parser);`
+- `BeaconDataLength` (function, `bof/include/beacon_api.h:41`) `int BeaconDataLength(datap *parser);`
+- `BeaconDataExtract` (function, `bof/include/beacon_api.h:42`) `char *BeaconDataExtract(datap *parser, int *size);`
+- `buffer` (function, `bof/include/beacon_api.h:45`) `* takes a raw byte buffer (len may be 0 for strlen-style strings * but the buffe`
+- `BeaconOutput` (function, `bof/include/beacon_api.h:48`) `void BeaconOutput(int type, const char *data, int len);`
 - `BSB_BOF_SYSCALLS_H` (macro, `bof/include/syscalls.h:12`) `#define BSB_BOF_SYSCALLS_H`
 - `SYS_read` (macro, `bof/include/syscalls.h:17`) `#define SYS_read`
 - `SYS_write` (macro, `bof/include/syscalls.h:18`) `#define SYS_write`
@@ -58,11 +58,7 @@ This community groups 7 file(s) rooted at `bof/include` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (include: cJSON) and community 2 (bof/include).
-- [INFERRED] shares_context community 1 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 1 (root) and community 2 (bof/include).
-- [INFERRED] shares_context community 2 <-> 4 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 4 (include: config).
-- [INFERRED] shares_context community 2 <-> 5 (strength 0.5): Inferred shared context (language c) with no import path between community 2 (bof/include) and community 5 (include: aes_cfb).
-- [INFERRED] shares_context community 2 <-> 6 (strength 0.5): Inferred shared context (layer utility) with no import path between community 2 (bof/include) and community 6 (orphans).
+- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).
 
 ## Risks
 

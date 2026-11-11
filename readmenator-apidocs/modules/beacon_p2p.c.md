@@ -100,7 +100,7 @@ ESTRUCTURAS P2P
 
 ### `p2p_header_t`
 
-`struct` | [beacon_p2p.c:72](../../beacon_p2p.c#L72)
+`struct` | [beacon_p2p.c:73](../../beacon_p2p.c#L73)
 
 ```c
 typedef struct
@@ -112,7 +112,7 @@ typedef struct
 
 ### `Trampoline`
 
-`struct` | [beacon_p2p.c:155](../../beacon_p2p.c#L155)
+`struct` | [beacon_p2p.c:175](../../beacon_p2p.c#L175)
 
 ```c
 typedef struct
@@ -126,7 +126,7 @@ TRAMPOLINES Y RELOCACIÓN (RunELF) - SIN CAMBIOS
 
 ### `SymbolResolver`
 
-`struct` | [beacon_p2p.c:161](../../beacon_p2p.c#L161)
+`struct` | [beacon_p2p.c:182](../../beacon_p2p.c#L182)
 
 ```c
 typedef struct
@@ -138,7 +138,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon_p2p.c:170](../../beacon_p2p.c#L170)
+`struct` | [beacon_p2p.c:192](../../beacon_p2p.c#L192)
 
 ```c
 typedef struct
@@ -150,7 +150,7 @@ typedef struct
 
 ### `MemoryStruct`
 
-`struct` | [beacon_p2p.c:549](../../beacon_p2p.c#L549)
+`struct` | [beacon_p2p.c:676](../../beacon_p2p.c#L676)
 
 ```c
 struct MemoryStruct
@@ -166,7 +166,7 @@ FUNCIONES DE COMUNICACIÓN (HTTPS + BASE64 + AES)
 
 ### `BeaconDataParse`
 
-`function` | [beacon_p2p.c:91](../../beacon_p2p.c#L91)
+`function` | [beacon_p2p.c:93](../../beacon_p2p.c#L93)
 
 ```c
 void BeaconDataParse(datap *parser, char *buffer, int size)
@@ -188,7 +188,7 @@ FUNCIONES DE LA API DE BEACON (para BOFs)
 
 ### `BeaconDataPtr`
 
-`function` | [beacon_p2p.c:97](../../beacon_p2p.c#L97)
+`function` | [beacon_p2p.c:100](../../beacon_p2p.c#L100)
 
 ```c
 char *BeaconDataPtr(datap *parser, int size)
@@ -211,7 +211,7 @@ char *BeaconDataPtr(datap *parser, int size)
 
 ### `BeaconDataInt`
 
-`function` | [beacon_p2p.c:105](../../beacon_p2p.c#L105)
+`function` | [beacon_p2p.c:110](../../beacon_p2p.c#L110)
 
 ```c
 int BeaconDataInt(datap *parser)
@@ -235,7 +235,7 @@ int BeaconDataInt(datap *parser)
 
 ### `BeaconDataShort`
 
-`function` | [beacon_p2p.c:111](../../beacon_p2p.c#L111)
+`function` | [beacon_p2p.c:118](../../beacon_p2p.c#L118)
 
 ```c
 short BeaconDataShort(datap *parser)
@@ -257,7 +257,7 @@ short BeaconDataShort(datap *parser)
 
 ### `BeaconDataLength`
 
-`function` | [beacon_p2p.c:117](../../beacon_p2p.c#L117)
+`function` | [beacon_p2p.c:126](../../beacon_p2p.c#L126)
 
 ```c
 int BeaconDataLength(datap *parser)
@@ -277,7 +277,7 @@ int BeaconDataLength(datap *parser)
 
 ### `BeaconDataExtract`
 
-`function` | [beacon_p2p.c:121](../../beacon_p2p.c#L121)
+`function` | [beacon_p2p.c:131](../../beacon_p2p.c#L131)
 
 ```c
 char *BeaconDataExtract(datap *parser, int *size)
@@ -300,7 +300,7 @@ char *BeaconDataExtract(datap *parser, int *size)
 
 ### `BeaconPrintf`
 
-`function` | [beacon_p2p.c:129](../../beacon_p2p.c#L129)
+`function` | [beacon_p2p.c:142](../../beacon_p2p.c#L142)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -316,7 +316,7 @@ Beacon API: printf-style output capture (called by BOFs).
 | `fmt` | `char *` |  |  |
 | `...` |  |  |  |
 
-> **Inherited:** Documentation from [`BeaconPrintf`](#beaconprintf) (include/beacon_common.h:102).
+> **Inherited:** Documentation from [`BeaconPrintf`](#beaconprintf) (include/beacon_common.h:105).
 
 ---
 
@@ -324,7 +324,7 @@ Beacon API: printf-style output capture (called by BOFs).
 
 ### `BeaconOutput`
 
-`function` | [beacon_p2p.c:142](../../beacon_p2p.c#L142)
+`function` | [beacon_p2p.c:159](../../beacon_p2p.c#L159)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -340,7 +340,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 ---
 
@@ -348,10 +348,10 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `RunELF`
 
-`function` | [beacon_p2p.c:324](../../beacon_p2p.c#L324)
+`function` | [beacon_p2p.c:358](../../beacon_p2p.c#L358)
 
 ```c
-int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize)
+int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
 ```
 
 ELF BOF loader.
@@ -362,15 +362,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `functionname` | `char*` |  |  |
-| `elf_data` | `unsigned char*` |  |  |
+| `functionname` | `char *` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `argumentdata` | `unsigned char*` |  |  |
+| `argumentdata` | `unsigned char *` |  |  |
 | `argumentSize` | `int` |  |  |
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:147).
+> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:164).
 
 *Called by:* [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -380,10 +380,10 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `https_request`
 
-`function` | [beacon_p2p.c:575](../../beacon_p2p.c#L575)
+`function` | [beacon_p2p.c:707](../../beacon_p2p.c#L707)
 
 ```c
-char* https_request(const char* url, const char* method, const char* post_data)
+char *https_request(const char *url, const char *method, const char *post_data)
 ```
 
 HTTP client: performs GET or POST request.
@@ -394,13 +394,13 @@ Returns a struct with the response body, length, and status code. On error, data
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `method` | `char*` |  |  |
-| `post_data` | `char*` |  |  |
+| `url` | `char *` |  |  |
+| `method` | `char *` |  |  |
+| `post_data` | `char *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
-> **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:116).
+> **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:119).
 
 *Called by:* [`download_bof`](#download_bof), [`handle_peer_connection`](#handle_peer_connection), [`send_to_c2_or_peer`](#send_to_c2_or_peer)
 
@@ -410,10 +410,10 @@ Returns a struct with the response body, length, and status code. On error, data
 
 ### `base64_encode`
 
-`function` | [beacon_p2p.c:625](../../beacon_p2p.c#L625)
+`function` | [beacon_p2p.c:763](../../beacon_p2p.c#L763)
 
 ```c
-char* base64_encode(const unsigned char* input, int len)
+char *base64_encode(const unsigned char *input, int len)
 ```
 
 Base64 encode/decode (OpenSSL BIO-based)
@@ -422,12 +422,12 @@ Base64 encode/decode (OpenSSL BIO-based)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `unsigned char*` |  |  |
+| `input` | `unsigned char *` |  |  |
 | `len` | `int` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
-> **Inherited:** Documentation from [`base64_encode`](#base64_encode) (include/beacon_common.h:122).
+> **Inherited:** Documentation from [`base64_encode`](#base64_encode) (include/beacon_common.h:123).
 
 *Called by:* [`main`](#main)
 
@@ -437,20 +437,20 @@ Base64 encode/decode (OpenSSL BIO-based)
 
 ### `base64_decode`
 
-`function` | [beacon_p2p.c:641](../../beacon_p2p.c#L641)
+`function` | [beacon_p2p.c:780](../../beacon_p2p.c#L780)
 
 ```c
-unsigned char* base64_decode(const char* input, int* len)
+unsigned char *base64_decode(const char *input, int *len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `char*` |  |  |
-| `len` | `int*` |  |  |
+| `input` | `char *` |  |  |
+| `len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Called by:* [`main`](#main)
 
@@ -460,10 +460,10 @@ unsigned char* base64_decode(const char* input, int* len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon_p2p.c:654](../../beacon_p2p.c#L654)
+`function` | [beacon_p2p.c:802](../../beacon_p2p.c#L802)
 
 ```c
-unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* plaintext, size_t len, int* out_len)
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
 ```
 
 AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency)
@@ -472,15 +472,15 @@ AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `plaintext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `plaintext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
-> **Inherited:** Documentation from [`aes256_cfb_encrypt`](#aes256_cfb_encrypt) (include/beacon_common.h:129).
+> **Inherited:** Documentation from [`aes256_cfb_encrypt`](#aes256_cfb_encrypt) (include/beacon_common.h:134).
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -492,23 +492,23 @@ AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency)
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon_p2p.c:681](../../beacon_p2p.c#L681)
+`function` | [beacon_p2p.c:832](../../beacon_p2p.c#L832)
 
 ```c
-unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* ciphertext, size_t len, int* out_len)
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `ciphertext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `ciphertext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -520,10 +520,10 @@ unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char*
 
 ### `exec_cmd`
 
-`function` | [beacon_p2p.c:712](../../beacon_p2p.c#L712)
+`function` | [beacon_p2p.c:866](../../beacon_p2p.c#L866)
 
 ```c
-char* exec_cmd(const char* cmd, int* out_len)
+char *exec_cmd(const char *cmd, int *out_len)
 ```
 
 UTILIDADES: ejecutar comandos shell, obtener IPs, etc.
@@ -532,10 +532,10 @@ UTILIDADES: ejecutar comandos shell, obtener IPs, etc.
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `cmd` | `char*` |  |  |
-| `out_len` | `int*` |  |  |
+| `cmd` | `char *` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`execute_generic_command`](#execute_generic_command)
 
@@ -545,19 +545,19 @@ UTILIDADES: ejecutar comandos shell, obtener IPs, etc.
 
 ### `get_local_ips`
 
-`function` | [beacon_p2p.c:729](../../beacon_p2p.c#L729)
+`function` | [beacon_p2p.c:891](../../beacon_p2p.c#L891)
 
 ```c
-char* get_local_ips()
+char *get_local_ips()
 ```
 
 Get local IP addresses as a comma-separated string.
 
 Returns malloc'd buffer (caller frees). Falls back to "127.0.0.1".
 
-**Returns:** `char*`
+**Returns:** `char *`
 
-> **Inherited:** Documentation from [`get_local_ips`](#get_local_ips) (include/beacon_common.h:169).
+> **Inherited:** Documentation from [`get_local_ips`](#get_local_ips) (include/beacon_common.h:178).
 
 *Called by:* [`main`](#main)
 
@@ -567,10 +567,10 @@ Returns malloc'd buffer (caller frees). Falls back to "127.0.0.1".
 
 ### `download_bof`
 
-`function` | [beacon_p2p.c:757](../../beacon_p2p.c#L757)
+`function` | [beacon_p2p.c:925](../../beacon_p2p.c#L925)
 
 ```c
-unsigned char* download_bof(const char* url, size_t* out_size)
+unsigned char *download_bof(const char *url, size_t *out_size)
 ```
 
 Download a BOF from the C2 server.
@@ -581,12 +581,12 @@ Returns malloc'd buffer (caller frees). On error, sets *out_size to 0 and return
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `out_size` | `size_t*` |  |  |
+| `url` | `char *` |  |  |
+| `out_size` | `size_t *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
-> **Inherited:** Documentation from [`download_bof`](#download_bof) (include/beacon_common.h:155).
+> **Inherited:** Documentation from [`download_bof`](#download_bof) (include/beacon_common.h:169).
 
 *Calls:* [`https_request`](#https_request)
 
@@ -598,10 +598,10 @@ Returns malloc'd buffer (caller frees). On error, sets *out_size to 0 and return
 
 ### `run_bof_and_capture`
 
-`function` | [beacon_p2p.c:766](../../beacon_p2p.c#L766)
+`function` | [beacon_p2p.c:939](../../beacon_p2p.c#L939)
 
 ```c
-char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args, int arglen, int* out_len)
+char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
 ```
 
 Execute a BOF and capture its output.
@@ -612,15 +612,15 @@ Returns malloc'd string (caller frees). On error or empty output, returns strdup
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `elf_data` | `unsigned char*` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `args` | `char*` |  |  |
+| `args` | `char *` |  |  |
 | `arglen` | `int` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
-> **Inherited:** Documentation from [`run_bof_and_capture`](#run_bof_and_capture) (include/beacon_common.h:161).
+> **Inherited:** Documentation from [`run_bof_and_capture`](#run_bof_and_capture) (include/beacon_common.h:173).
 
 *Calls:* [`RunELF`](#runelf)
 
@@ -632,7 +632,7 @@ Returns malloc'd string (caller frees). On error or empty output, returns strdup
 
 ### `add_peer`
 
-`function` | [beacon_p2p.c:783](../../beacon_p2p.c#L783)
+`function` | [beacon_p2p.c:965](../../beacon_p2p.c#L965)
 
 ```c
 void add_peer(struct in_addr ip, int port, const char *id)
@@ -656,7 +656,7 @@ FUNCIONES P2P
 
 ### `peer_discovery_thread`
 
-`function` | [beacon_p2p.c:807](../../beacon_p2p.c#L807)
+`function` | [beacon_p2p.c:992](../../beacon_p2p.c#L992)
 
 ```c
 void *peer_discovery_thread(void *arg)
@@ -678,7 +678,7 @@ void *peer_discovery_thread(void *arg)
 
 ### `handle_peer_connection`
 
-`function` | [beacon_p2p.c:846](../../beacon_p2p.c#L846)
+`function` | [beacon_p2p.c:1032](../../beacon_p2p.c#L1032)
 
 ```c
 void *handle_peer_connection(void *arg)
@@ -700,7 +700,7 @@ void *handle_peer_connection(void *arg)
 
 ### `peer_server_thread`
 
-`function` | [beacon_p2p.c:916](../../beacon_p2p.c#L916)
+`function` | [beacon_p2p.c:1130](../../beacon_p2p.c#L1130)
 
 ```c
 void *peer_server_thread(void *arg)
@@ -720,10 +720,10 @@ void *peer_server_thread(void *arg)
 
 ### `send_to_peer`
 
-`function` | [beacon_p2p.c:935](../../beacon_p2p.c#L935)
+`function` | [beacon_p2p.c:1153](../../beacon_p2p.c#L1153)
 
 ```c
-char* send_to_peer(peer_t *peer, const char *data, int *out_len)
+char *send_to_peer(peer_t *peer, const char *data, int *out_len)
 ```
 
 **Parameters**
@@ -734,7 +734,7 @@ char* send_to_peer(peer_t *peer, const char *data, int *out_len)
 | `data` | `char *` |  |  |
 | `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`aes256_cfb_decrypt`](#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](#aes256_cfb_encrypt)
 
@@ -746,10 +746,10 @@ char* send_to_peer(peer_t *peer, const char *data, int *out_len)
 
 ### `send_to_c2_or_peer`
 
-`function` | [beacon_p2p.c:968](../../beacon_p2p.c#L968)
+`function` | [beacon_p2p.c:1197](../../beacon_p2p.c#L1197)
 
 ```c
-char* send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)
+char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)
 ```
 
 **Parameters**
@@ -761,7 +761,7 @@ char* send_to_c2_or_peer(const char *url, const char *method, const char *data, 
 | `data` | `char *` |  |  |
 | `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`https_request`](#https_request), [`send_to_peer`](#send_to_peer)
 
@@ -773,10 +773,10 @@ char* send_to_c2_or_peer(const char *url, const char *method, const char *data, 
 
 ### `execute_generic_command`
 
-`function` | [beacon_p2p.c:996](../../beacon_p2p.c#L996)
+`function` | [beacon_p2p.c:1231](../../beacon_p2p.c#L1231)
 
 ```c
-char* execute_generic_command(const char *cmd, int *out_len)
+char *execute_generic_command(const char *cmd, int *out_len)
 ```
 
 EJECUTOR DE COMANDOS (unificado para shell y BOF)
@@ -788,7 +788,7 @@ EJECUTOR DE COMANDOS (unificado para shell y BOF)
 | `cmd` | `char *` |  |  |
 | `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`download_bof`](#download_bof), [`exec_cmd`](#exec_cmd), [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -800,7 +800,7 @@ EJECUTOR DE COMANDOS (unificado para shell y BOF)
 
 ### `main`
 
-`function` | [beacon_p2p.c:1031](../../beacon_p2p.c#L1031)
+`function` | [beacon_p2p.c:1276](../../beacon_p2p.c#L1276)
 
 ```c
 int main()

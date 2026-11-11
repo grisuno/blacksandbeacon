@@ -1,12 +1,12 @@
 # `include/cJSON.h`
 
-> Source: [include/cJSON.h:1](../../include/cJSON.h#L1) | language `h` | coverage 21.6% | [API index](../index.md)
+> Source: [include/cJSON.h:1](../../include/cJSON.h#L1) | language `h` | coverage 20.0% | [API index](../index.md)
 
 ## Contents
 
 - **Structs:** [`cJSON`](#cjson), [`cJSON_Hooks`](#cjson_hooks)
 - **Type Aliases:** [`cJSON_bool`](#cjson_bool)
-- **Functions:** [`sensitive`](#sensitive)
+- **Functions:** [`cJSON_Parse`](#cjson_parse), [`cJSON_GetErrorPtr`](#cjson_geterrorptr), [`that`](#that), [`sensitive`](#sensitive)
 - **Macros:** [`cJSON__h`](#cjson__h), [`__WINDOWS__`](#__windows__), [`CJSON_CDECL`](#cjson_cdecl), [`CJSON_STDCALL`](#cjson_stdcall), [`CJSON_EXPORT_SYMBOLS`](#cjson_export_symbols), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_CDECL`](#cjson_cdecl), [`CJSON_STDCALL`](#cjson_stdcall), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_PUBLIC`](#cjson_public), [`CJSON_VERSION_MAJOR`](#cjson_version_major), [`CJSON_VERSION_MINOR`](#cjson_version_minor), [`CJSON_VERSION_PATCH`](#cjson_version_patch), [`cJSON_Invalid`](#cjson_invalid), [`cJSON_False`](#cjson_false), [`cJSON_True`](#cjson_true), [`cJSON_NULL`](#cjson_null), [`cJSON_Number`](#cjson_number), [`cJSON_String`](#cjson_string), [`cJSON_Array`](#cjson_array), [`cJSON_Object`](#cjson_object), [`cJSON_Raw`](#cjson_raw), [`cJSON_IsReference`](#cjson_isreference), [`cJSON_StringIsConst`](#cjson_stringisconst), [`CJSON_NESTING_LIMIT`](#cjson_nesting_limit), [`CJSON_CIRCULAR_LIMIT`](#cjson_circular_limit), [`cJSON_SetIntValue`](#cjson_setintvalue), [`cJSON_SetNumberValue`](#cjson_setnumbervalue), [`cJSON_SetBoolValue`](#cjson_setboolvalue), [`cJSON_ArrayForEach`](#cjson_arrayforeach)
 - **Variables:** [`next`](#next)
 
@@ -31,7 +31,11 @@ Solid arrows stay in this module, dashed arrows leave it.
 flowchart LR
     n_include_cJSON_h__cJSON__h(["cJSON__h"])
     n_include_cJSON_h__CJSON_PUBLIC(["CJSON_PUBLIC"])
+    n_include_cJSON_h__cJSON_GetErrorPtr(["cJSON_GetErrorPtr"])
+    n_include_cJSON_h__cJSON_Parse(["cJSON_Parse"])
     n_include_cJSON_h__cJSON__h --> n_include_cJSON_h__CJSON_PUBLIC
+    n_include_cJSON_h__cJSON__h --> n_include_cJSON_h__cJSON_GetErrorPtr
+    n_include_cJSON_h__cJSON__h --> n_include_cJSON_h__cJSON_Parse
 ```
 
 ## Structs
@@ -40,7 +44,7 @@ flowchart LR
 
 ### `cJSON`
 
-`struct` | [include/cJSON.h:92](../../include/cJSON.h#L92)
+`struct` | [include/cJSON.h:98](../../include/cJSON.h#L98)
 
 ```c
 typedef struct cJSON
@@ -54,7 +58,7 @@ The cJSON structure:
 
 ### `cJSON_Hooks`
 
-`struct` | [include/cJSON.h:114](../../include/cJSON.h#L114)
+`struct` | [include/cJSON.h:123](../../include/cJSON.h#L123)
 
 ```c
 typedef struct cJSON_Hooks
@@ -68,7 +72,7 @@ typedef struct cJSON_Hooks
 
 ### `cJSON_bool`
 
-`type_alias` | [include/cJSON.h:120](../../include/cJSON.h#L120)
+`type_alias` | [include/cJSON.h:130](../../include/cJSON.h#L130)
 
 ```c
 typedef int cJSON_bool;
@@ -78,14 +82,72 @@ typedef int cJSON_bool;
 
 ## Functions
 
+<a id="cjson_parse"></a>
+
+### `cJSON_Parse`
+
+`function` | [include/cJSON.h:152](../../include/cJSON.h#L152)
+
+```c
+* cJSON_Parse (with cJSON_Delete) and cJSON_Print (with stdlib free, cJSON_Hooks.free_fn, or * cJSON_free as appropriate). The exception is cJSON_PrintPreallocated, where the caller has * full respons
+```
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `cJSON_Delete` | `with` |  |  |
+
+**Returns:** `*`
+
+*Called by:* [`cJSON__h`](#cjson__h)
+
+---
+
+<a id="cjson_geterrorptr"></a>
+
+### `cJSON_GetErrorPtr`
+
+`function` | [include/cJSON.h:161](../../include/cJSON.h#L161)
+
+```c
+* a pointer to the error so will match cJSON_GetErrorPtr(). */ CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char *value, const char **return_parse_end, cJSON_bool require_null_terminated);
+```
+
+**Returns:** `* a pointer to the error so will match`
+
+*Called by:* [`CJSON_PUBLIC`](include.cJSON.c.md#cjson_public), [`cJSON__h`](#cjson__h)
+
+---
+
+<a id="that"></a>
+
+### `that`
+
+`function` | [include/cJSON.h:247](../../include/cJSON.h#L247)
+
+```c
+* that (item->type & cJSON_StringIsConst) is zero before writing to `item->string` */ CJSON_PUBLIC(cJSON_bool) cJSON_AddItemToObjectCS(cJSON *object, const char *string, cJSON *item);
+```
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `cJSON_StringIsConst` | `item->type &` |  |  |
+
+**Returns:** `*`
+
+---
+
 <a id="sensitive"></a>
 
 ### `sensitive`
 
-`function` | [include/cJSON.h:249](../../include/cJSON.h#L249)
+`function` | [include/cJSON.h:286](../../include/cJSON.h#L286)
 
 ```c
-* case_sensitive determines if object keys are treated case sensitive (1) or case insensitive (0) */ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON * const a, const cJSON * const b, const cJSON_bo
+* sensitive (1) or case insensitive (0) */ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bool case_sensitive);
 ```
 
 **Parameters**
@@ -94,7 +156,7 @@ typedef int cJSON_bool;
 |---|---|---|---|
 | `1` |  |  |  |
 
-**Returns:** `* case_`
+**Returns:** `*`
 
 ---
 
@@ -110,7 +172,7 @@ typedef int cJSON_bool;
 #define cJSON__h
 ```
 
-*Calls:* [`CJSON_PUBLIC`](#cjson_public)
+*Calls:* [`CJSON_PUBLIC`](#cjson_public), [`cJSON_GetErrorPtr`](#cjson_geterrorptr), [`cJSON_Parse`](#cjson_parse)
 
 ---
 
@@ -118,7 +180,7 @@ typedef int cJSON_bool;
 
 ### `__WINDOWS__`
 
-`macro` | [include/cJSON.h:32](../../include/cJSON.h#L32)
+`macro` | [include/cJSON.h:33](../../include/cJSON.h#L33)
 
 ```c
 #define __WINDOWS__
@@ -130,7 +192,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_CDECL`
 
-`macro` | [include/cJSON.h:44](../../include/cJSON.h#L44)
+`macro` | [include/cJSON.h:49](../../include/cJSON.h#L49)
 
 ```c
 #define CJSON_CDECL
@@ -138,7 +200,7 @@ typedef int cJSON_bool;
 
 !__WINDOWS__
 
-> **Inherited:** Documentation from [`CJSON_CDECL`](#cjson_cdecl) (cJSON.h:60).
+> **Inherited:** Documentation from [`CJSON_CDECL`](#cjson_cdecl) (cJSON.h:65).
 
 ---
 
@@ -146,7 +208,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_STDCALL`
 
-`macro` | [include/cJSON.h:45](../../include/cJSON.h#L45)
+`macro` | [include/cJSON.h:50](../../include/cJSON.h#L50)
 
 ```c
 #define CJSON_STDCALL
@@ -158,7 +220,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_EXPORT_SYMBOLS`
 
-`macro` | [include/cJSON.h:49](../../include/cJSON.h#L49)
+`macro` | [include/cJSON.h:54](../../include/cJSON.h#L54)
 
 ```c
 #define CJSON_EXPORT_SYMBOLS
@@ -170,7 +232,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_PUBLIC`
 
-`macro` | [include/cJSON.h:53](../../include/cJSON.h#L53)
+`macro` | [include/cJSON.h:58](../../include/cJSON.h#L58)
 
 ```c
 #define CJSON_PUBLIC(type)
@@ -184,7 +246,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_PUBLIC`
 
-`macro` | [include/cJSON.h:55](../../include/cJSON.h#L55)
+`macro` | [include/cJSON.h:60](../../include/cJSON.h#L60)
 
 ```c
 #define CJSON_PUBLIC(type)
@@ -196,7 +258,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_PUBLIC`
 
-`macro` | [include/cJSON.h:57](../../include/cJSON.h#L57)
+`macro` | [include/cJSON.h:62](../../include/cJSON.h#L62)
 
 ```c
 #define CJSON_PUBLIC(type)
@@ -208,7 +270,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_CDECL`
 
-`macro` | [include/cJSON.h:60](../../include/cJSON.h#L60)
+`macro` | [include/cJSON.h:65](../../include/cJSON.h#L65)
 
 ```c
 #define CJSON_CDECL
@@ -222,7 +284,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_STDCALL`
 
-`macro` | [include/cJSON.h:61](../../include/cJSON.h#L61)
+`macro` | [include/cJSON.h:66](../../include/cJSON.h#L66)
 
 ```c
 #define CJSON_STDCALL
@@ -234,7 +296,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_PUBLIC`
 
-`macro` | [include/cJSON.h:64](../../include/cJSON.h#L64)
+`macro` | [include/cJSON.h:70](../../include/cJSON.h#L70)
 
 ```c
 #define CJSON_PUBLIC(type)
@@ -246,7 +308,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_PUBLIC`
 
-`macro` | [include/cJSON.h:66](../../include/cJSON.h#L66)
+`macro` | [include/cJSON.h:72](../../include/cJSON.h#L72)
 
 ```c
 #define CJSON_PUBLIC(type)
@@ -258,7 +320,7 @@ typedef int cJSON_bool;
 
 ### `CJSON_VERSION_MAJOR`
 
-`macro` | [include/cJSON.h:71](../../include/cJSON.h#L71)
+`macro` | [include/cJSON.h:77](../../include/cJSON.h#L77)
 
 ```c
 #define CJSON_VERSION_MAJOR
@@ -272,7 +334,7 @@ project version
 
 ### `CJSON_VERSION_MINOR`
 
-`macro` | [include/cJSON.h:72](../../include/cJSON.h#L72)
+`macro` | [include/cJSON.h:78](../../include/cJSON.h#L78)
 
 ```c
 #define CJSON_VERSION_MINOR
@@ -284,7 +346,7 @@ project version
 
 ### `CJSON_VERSION_PATCH`
 
-`macro` | [include/cJSON.h:73](../../include/cJSON.h#L73)
+`macro` | [include/cJSON.h:79](../../include/cJSON.h#L79)
 
 ```c
 #define CJSON_VERSION_PATCH
@@ -296,7 +358,7 @@ project version
 
 ### `cJSON_Invalid`
 
-`macro` | [include/cJSON.h:78](../../include/cJSON.h#L78)
+`macro` | [include/cJSON.h:84](../../include/cJSON.h#L84)
 
 ```c
 #define cJSON_Invalid
@@ -310,7 +372,7 @@ cJSON Types:
 
 ### `cJSON_False`
 
-`macro` | [include/cJSON.h:79](../../include/cJSON.h#L79)
+`macro` | [include/cJSON.h:85](../../include/cJSON.h#L85)
 
 ```c
 #define cJSON_False
@@ -322,7 +384,7 @@ cJSON Types:
 
 ### `cJSON_True`
 
-`macro` | [include/cJSON.h:80](../../include/cJSON.h#L80)
+`macro` | [include/cJSON.h:86](../../include/cJSON.h#L86)
 
 ```c
 #define cJSON_True
@@ -334,7 +396,7 @@ cJSON Types:
 
 ### `cJSON_NULL`
 
-`macro` | [include/cJSON.h:81](../../include/cJSON.h#L81)
+`macro` | [include/cJSON.h:87](../../include/cJSON.h#L87)
 
 ```c
 #define cJSON_NULL
@@ -346,7 +408,7 @@ cJSON Types:
 
 ### `cJSON_Number`
 
-`macro` | [include/cJSON.h:82](../../include/cJSON.h#L82)
+`macro` | [include/cJSON.h:88](../../include/cJSON.h#L88)
 
 ```c
 #define cJSON_Number
@@ -358,7 +420,7 @@ cJSON Types:
 
 ### `cJSON_String`
 
-`macro` | [include/cJSON.h:83](../../include/cJSON.h#L83)
+`macro` | [include/cJSON.h:89](../../include/cJSON.h#L89)
 
 ```c
 #define cJSON_String
@@ -370,7 +432,7 @@ cJSON Types:
 
 ### `cJSON_Array`
 
-`macro` | [include/cJSON.h:84](../../include/cJSON.h#L84)
+`macro` | [include/cJSON.h:90](../../include/cJSON.h#L90)
 
 ```c
 #define cJSON_Array
@@ -382,7 +444,7 @@ cJSON Types:
 
 ### `cJSON_Object`
 
-`macro` | [include/cJSON.h:85](../../include/cJSON.h#L85)
+`macro` | [include/cJSON.h:91](../../include/cJSON.h#L91)
 
 ```c
 #define cJSON_Object
@@ -394,7 +456,7 @@ cJSON Types:
 
 ### `cJSON_Raw`
 
-`macro` | [include/cJSON.h:86](../../include/cJSON.h#L86)
+`macro` | [include/cJSON.h:92](../../include/cJSON.h#L92)
 
 ```c
 #define cJSON_Raw
@@ -406,7 +468,7 @@ cJSON Types:
 
 ### `cJSON_IsReference`
 
-`macro` | [include/cJSON.h:88](../../include/cJSON.h#L88)
+`macro` | [include/cJSON.h:94](../../include/cJSON.h#L94)
 
 ```c
 #define cJSON_IsReference
@@ -418,7 +480,7 @@ cJSON Types:
 
 ### `cJSON_StringIsConst`
 
-`macro` | [include/cJSON.h:89](../../include/cJSON.h#L89)
+`macro` | [include/cJSON.h:95](../../include/cJSON.h#L95)
 
 ```c
 #define cJSON_StringIsConst
@@ -430,7 +492,7 @@ cJSON Types:
 
 ### `CJSON_NESTING_LIMIT`
 
-`macro` | [include/cJSON.h:126](../../include/cJSON.h#L126)
+`macro` | [include/cJSON.h:136](../../include/cJSON.h#L136)
 
 ```c
 #define CJSON_NESTING_LIMIT
@@ -442,7 +504,7 @@ cJSON Types:
 
 ### `CJSON_CIRCULAR_LIMIT`
 
-`macro` | [include/cJSON.h:132](../../include/cJSON.h#L132)
+`macro` | [include/cJSON.h:142](../../include/cJSON.h#L142)
 
 ```c
 #define CJSON_CIRCULAR_LIMIT
@@ -454,7 +516,7 @@ cJSON Types:
 
 ### `cJSON_SetIntValue`
 
-`macro` | [include/cJSON.h:270](../../include/cJSON.h#L270)
+`macro` | [include/cJSON.h:312](../../include/cJSON.h#L312)
 
 ```c
 #define cJSON_SetIntValue(object, number)
@@ -468,7 +530,7 @@ When assigning an integer value, it needs to be propagated to valuedouble too.
 
 ### `cJSON_SetNumberValue`
 
-`macro` | [include/cJSON.h:273](../../include/cJSON.h#L273)
+`macro` | [include/cJSON.h:316](../../include/cJSON.h#L316)
 
 ```c
 #define cJSON_SetNumberValue(object, number)
@@ -480,7 +542,7 @@ When assigning an integer value, it needs to be propagated to valuedouble too.
 
 ### `cJSON_SetBoolValue`
 
-`macro` | [include/cJSON.h:278](../../include/cJSON.h#L278)
+`macro` | [include/cJSON.h:324](../../include/cJSON.h#L324)
 
 ```c
 #define cJSON_SetBoolValue(object, boolValue)
@@ -494,7 +556,7 @@ If the object is not a boolean type this does nothing and returns cJSON_Invalid 
 
 ### `cJSON_ArrayForEach`
 
-`macro` | [include/cJSON.h:285](../../include/cJSON.h#L285)
+`macro` | [include/cJSON.h:331](../../include/cJSON.h#L331)
 
 ```c
 #define cJSON_ArrayForEach(element, array)
@@ -513,7 +575,7 @@ Macro for iterating over an array or object
 `variable` `extern` | [include/cJSON.h:27](../../include/cJSON.h#L27)
 
 ```c
-extern "C" { #endif #if !defined(__WINDOWS__) && (defined(WIN32) || defined(WIN64) || defined(_MSC_VER) || defined(_WIN32)) #define __WINDOWS__ #endif #ifdef __WINDOWS__ /* When compiling for windows,
+extern "C" { #endif #if !defined(__WINDOWS__) && \ (defined(WIN32) || defined(WIN64) || defined(_MSC_VER) || defined(_WIN32)) #define __WINDOWS__ #endif #ifdef __WINDOWS__ /* When compiling for window
 ```
 
 ifdef __cplusplus

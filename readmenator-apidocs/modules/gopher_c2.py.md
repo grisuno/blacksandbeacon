@@ -26,7 +26,7 @@ flowchart LR
 
 ### `encrypt_data`
 
-`function` | [gopher_c2.py:28](../../gopher_c2.py#L28)
+`function` | [gopher_c2.py:30](../../gopher_c2.py#L30)
 
 ```python
 def encrypt_data(data: bytes) -> str
@@ -48,7 +48,7 @@ def encrypt_data(data: bytes) -> str
 
 ### `decrypt_data`
 
-`function` | [gopher_c2.py:37](../../gopher_c2.py#L37)
+`function` | [gopher_c2.py:40](../../gopher_c2.py#L40)
 
 ```python
 def decrypt_data(b64_data: str) -> bytes
@@ -70,7 +70,7 @@ def decrypt_data(b64_data: str) -> bytes
 
 ### `handle_client`
 
-`function` | [gopher_c2.py:45](../../gopher_c2.py#L45)
+`function` | [gopher_c2.py:49](../../gopher_c2.py#L49)
 
 ```python
 def handle_client(conn, addr)
@@ -91,7 +91,7 @@ def handle_client(conn, addr)
 
 ### `main`
 
-`function` | [gopher_c2.py:127](../../gopher_c2.py#L127)
+`function` | [gopher_c2.py:143](../../gopher_c2.py#L143)
 
 ```python
 def main()
@@ -105,7 +105,7 @@ def main()
 
 ### `HOST`
 
-`constant` | [gopher_c2.py:14](../../gopher_c2.py#L14)
+`constant` | [gopher_c2.py:13](../../gopher_c2.py#L13)
 
 ```python
 HOST = '0.0.0.0'
@@ -117,7 +117,7 @@ HOST = '0.0.0.0'
 
 ### `PORT`
 
-`constant` | [gopher_c2.py:15](../../gopher_c2.py#L15)
+`constant` | [gopher_c2.py:14](../../gopher_c2.py#L14)
 
 ```python
 PORT = 7070
@@ -129,7 +129,7 @@ PORT = 7070
 
 ### `AES_KEY`
 
-`constant` | [gopher_c2.py:16](../../gopher_c2.py#L16)
+`constant` | [gopher_c2.py:15](../../gopher_c2.py#L15)
 
 ```python
 AES_KEY
@@ -141,7 +141,7 @@ AES_KEY
 
 ### `ALLOWED_DIR`
 
-`constant` | [gopher_c2.py:17](../../gopher_c2.py#L17)
+`constant` | [gopher_c2.py:18](../../gopher_c2.py#L18)
 
 ```python
 ALLOWED_DIR = 'sessions/logs'
@@ -153,7 +153,7 @@ ALLOWED_DIR = 'sessions/logs'
 
 ### `UPLOAD_DIR`
 
-`constant` | [gopher_c2.py:18](../../gopher_c2.py#L18)
+`constant` | [gopher_c2.py:19](../../gopher_c2.py#L19)
 
 ```python
 UPLOAD_DIR = 'sessions/uploads'

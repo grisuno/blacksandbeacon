@@ -1,12 +1,23 @@
 # `include/beacon_common.c`
 
-> Source: [include/beacon_common.c:1](../../include/beacon_common.c#L1) | language `c` | coverage 73.9% | [API index](../index.md)
+> Source: [include/beacon_common.c:1](../../include/beacon_common.c#L1) | language `c` | coverage 76.0% | [API index](../index.md)
 
 ## Contents
 
-- **Structs:** [`MemoryStruct`](#memorystruct)
-- **Functions:** [`bsb_output_init`](#bsb_output_init), [`bsb_output_cleanup`](#bsb_output_cleanup), [`bsb_output_reset`](#bsb_output_reset), [`BeaconPrintf`](#beaconprintf), [`BeaconOutput`](#beaconoutput), [`create_trampoline`](#create_trampoline), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline), [`https_request`](#https_request), [`base64_encode`](#base64_encode), [`base64_decode`](#base64_decode), [`url_encode`](#url_encode), [`exec_cmd`](#exec_cmd), [`bsb_backoff_init`](#bsb_backoff_init), [`bsb_backoff_next`](#bsb_backoff_next), [`bsb_backoff_reset`](#bsb_backoff_reset), [`get_local_ips`](#get_local_ips), [`download_bof`](#download_bof), [`RunELF`](#runelf), [`run_bof_and_capture`](#run_bof_and_capture)
+- **Structs:** [`bsb_output_meta_t`](#bsb_output_meta_t), [`MemoryStruct`](#memorystruct)
+- **Functions:** [`bsb_output_init`](#bsb_output_init), [`bsb_output_cleanup`](#bsb_output_cleanup), [`bsb_output_reset`](#bsb_output_reset), [`BeaconPrintf`](#beaconprintf), [`BeaconOutput`](#beaconoutput), [`create_trampoline`](#create_trampoline), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline), [`https_request`](#https_request), [`base64_encode`](#base64_encode), [`base64_decode`](#base64_decode), [`bsb_generate_secure_iv`](#bsb_generate_secure_iv), [`url_encode`](#url_encode), [`exec_cmd`](#exec_cmd), [`bsb_backoff_init`](#bsb_backoff_init), [`bsb_backoff_next`](#bsb_backoff_next), [`bsb_backoff_reset`](#bsb_backoff_reset), [`get_local_ips`](#get_local_ips), [`download_bof`](#download_bof), [`RunELF`](#runelf), [`run_bof_and_capture`](#run_bof_and_capture)
 - **Macros:** [`_GNU_SOURCE`](#_gnu_source)
+
+## Type Diagram
+
+```mermaid
+classDiagram
+    direction LR
+    class bsb_output_meta_t
+    <<struct>> bsb_output_meta_t
+    class MemoryStruct
+    <<struct>> MemoryStruct
+```
 
 ## Call Graph
 
@@ -19,11 +30,13 @@ flowchart LR
     n_include_beacon_common_c__download_bof(["download_bof"])
     n_include_beacon_common_c__https_request(["https_request"])
     n_include_beacon_common_c__RunELF(["RunELF"])
+    n_include_beacon_common_c__BeaconOutput(["BeaconOutput"])
     n_include_beacon_common_c__bsb_output_reset(["bsb_output_reset"])
     n_include_beacon_common_c__cleanup_trampolines(["cleanup_trampolines"])
     n_include_beacon_common_c__run_bof_and_capture(["run_bof_and_capture"])
     n_include_beacon_common_c__get_or_create_trampoline --> n_include_beacon_common_c__create_trampoline
     n_include_beacon_common_c__download_bof --> n_include_beacon_common_c__https_request
+    n_include_beacon_common_c__RunELF --> n_include_beacon_common_c__BeaconOutput
     n_include_beacon_common_c__RunELF --> n_include_beacon_common_c__bsb_output_reset
     n_include_beacon_common_c__RunELF --> n_include_beacon_common_c__cleanup_trampolines
     n_include_beacon_common_c__RunELF --> n_include_beacon_common_c__get_or_create_trampoline
@@ -33,11 +46,25 @@ flowchart LR
 
 ## Structs
 
+<a id="bsb_output_meta_t"></a>
+
+### `bsb_output_meta_t`
+
+`struct` | [include/beacon_common.c:43](../../include/beacon_common.c#L43)
+
+```c
+typedef struct
+```
+
+BOFs run forked: buffer and length live in MAP_SHARED memory so the parent can read whatever the child's BeaconOutput calls produced.
+
+---
+
 <a id="memorystruct"></a>
 
 ### `MemoryStruct`
 
-`struct` | [include/beacon_common.c:220](../../include/beacon_common.c#L220)
+`struct` | [include/beacon_common.c:291](../../include/beacon_common.c#L291)
 
 ```c
 struct MemoryStruct
@@ -53,7 +80,7 @@ struct MemoryStruct
 
 ### `bsb_output_init`
 
-`function` | [include/beacon_common.c:100](../../include/beacon_common.c#L100)
+`function` | [include/beacon_common.c:109](../../include/beacon_common.c#L109)
 
 ```c
 int bsb_output_init(size_t capacity)
@@ -75,7 +102,7 @@ int bsb_output_init(size_t capacity)
 
 ### `bsb_output_cleanup`
 
-`function` | [include/beacon_common.c:110](../../include/beacon_common.c#L110)
+`function` | [include/beacon_common.c:135](../../include/beacon_common.c#L135)
 
 ```c
 void bsb_output_cleanup(void)
@@ -85,7 +112,7 @@ Free the output buffer.
 
 Call at beacon shutdown.
 
-> **Inherited:** Documentation from [`bsb_output_cleanup`](#bsb_output_cleanup) (include/beacon_common.h:96).
+> **Inherited:** Documentation from [`bsb_output_cleanup`](#bsb_output_cleanup) (include/beacon_common.h:99).
 
 ---
 
@@ -93,7 +120,7 @@ Call at beacon shutdown.
 
 ### `bsb_output_reset`
 
-`function` | [include/beacon_common.c:117](../../include/beacon_common.c#L117)
+`function` | [include/beacon_common.c:149](../../include/beacon_common.c#L149)
 
 ```c
 void bsb_output_reset(void)
@@ -101,7 +128,7 @@ void bsb_output_reset(void)
 
 Reset the output buffer for a new BOF execution.
 
-> **Inherited:** Documentation from [`bsb_output_reset`](#bsb_output_reset) (include/beacon_common.h:99).
+> **Inherited:** Documentation from [`bsb_output_reset`](#bsb_output_reset) (include/beacon_common.h:102).
 
 *Called by:* [`RunELF`](#runelf), [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -111,7 +138,7 @@ Reset the output buffer for a new BOF execution.
 
 ### `BeaconPrintf`
 
-`function` | [include/beacon_common.c:125](../../include/beacon_common.c#L125)
+`function` | [include/beacon_common.c:159](../../include/beacon_common.c#L159)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -133,7 +160,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [include/beacon_common.c:138](../../include/beacon_common.c#L138)
+`function` | [include/beacon_common.c:175](../../include/beacon_common.c#L175)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -149,7 +176,9 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
+
+*Called by:* [`RunELF`](#runelf)
 
 ---
 
@@ -157,21 +186,24 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `create_trampoline`
 
-`function` | [include/beacon_common.c:151](../../include/beacon_common.c#L151)
+`function` | [include/beacon_common.c:211](../../include/beacon_common.c#L211)
 
 ```c
-void *create_trampoline(void *target)
+void *create_trampoline(void *target, void *near_hint)
 ```
 
---- Trampoline management ---
+Trampoline management
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
 | `target` | `void *` |  |  |
+| `near_hint` | `void *` |  |  |
 
 **Returns:** `void *`
+
+> **Inherited:** Documentation from [`create_trampoline`](#create_trampoline) (include/beacon_common.h:111).
 
 *Called by:* [`get_or_create_trampoline`](#get_or_create_trampoline)
 
@@ -181,7 +213,7 @@ void *create_trampoline(void *target)
 
 ### `cleanup_trampolines`
 
-`function` | [include/beacon_common.c:181](../../include/beacon_common.c#L181)
+`function` | [include/beacon_common.c:243](../../include/beacon_common.c#L243)
 
 ```c
 void cleanup_trampolines(void)
@@ -195,10 +227,10 @@ void cleanup_trampolines(void)
 
 ### `get_or_create_trampoline`
 
-`function` | [include/beacon_common.c:196](../../include/beacon_common.c#L196)
+`function` | [include/beacon_common.c:260](../../include/beacon_common.c#L260)
 
 ```c
-void *get_or_create_trampoline(void *target)
+void *get_or_create_trampoline(void *target, void *near_hint)
 ```
 
 **Parameters**
@@ -206,6 +238,7 @@ void *get_or_create_trampoline(void *target)
 | Name | Type | Default | Description |
 |---|---|---|---|
 | `target` | `void *` |  |  |
+| `near_hint` | `void *` |  |  |
 
 **Returns:** `void *`
 
@@ -219,7 +252,7 @@ void *get_or_create_trampoline(void *target)
 
 ### `https_request`
 
-`function` | [include/beacon_common.c:237](../../include/beacon_common.c#L237)
+`function` | [include/beacon_common.c:311](../../include/beacon_common.c#L311)
 
 ```c
 http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method, const char *post_data)
@@ -240,7 +273,7 @@ Returns a struct with the response body, length, and status code. On error, data
 
 **Returns:** `http_response_t`
 
-> **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:116).
+> **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:119).
 
 *Called by:* [`download_bof`](#download_bof)
 
@@ -250,7 +283,7 @@ Returns a struct with the response body, length, and status code. On error, data
 
 ### `base64_encode`
 
-`function` | [include/beacon_common.c:291](../../include/beacon_common.c#L291)
+`function` | [include/beacon_common.c:381](../../include/beacon_common.c#L381)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -273,7 +306,7 @@ char *base64_encode(const unsigned char *input, int len)
 
 ### `base64_decode`
 
-`function` | [include/beacon_common.c:307](../../include/beacon_common.c#L307)
+`function` | [include/beacon_common.c:398](../../include/beacon_common.c#L398)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -290,11 +323,35 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ---
 
+<a id="bsb_generate_secure_iv"></a>
+
+### `bsb_generate_secure_iv`
+
+`function` | [include/beacon_common.c:428](../../include/beacon_common.c#L428)
+
+```c
+int bsb_generate_secure_iv(unsigned char *iv_out)
+```
+
+Generates a cryptographically secure 16-byte IV.
+
+Tries OpenSSL RAND_bytes first, falls back to getrandom(2). Returns 1 on success, 0 on failure (fail-closed).
+
+**Parameters**
+
+| Name | Type | Default | Description |
+|---|---|---|---|
+| `iv_out` | `unsigned char *` |  |  |
+
+**Returns:** `int`
+
+---
+
 <a id="url_encode"></a>
 
 ### `url_encode`
 
-`function` | [include/beacon_common.c:335](../../include/beacon_common.c#L335)
+`function` | [include/beacon_common.c:459](../../include/beacon_common.c#L459)
 
 ```c
 char *url_encode(const char *in, size_t in_len, size_t *out_len)
@@ -312,7 +369,7 @@ URL percent-encoding (RFC 3986 unreserved set)
 
 **Returns:** `char *`
 
-> **Inherited:** Documentation from [`url_encode`](#url_encode) (include/beacon_common.h:126).
+> **Inherited:** Documentation from [`url_encode`](#url_encode) (include/beacon_common.h:127).
 
 ---
 
@@ -320,13 +377,15 @@ URL percent-encoding (RFC 3986 unreserved set)
 
 ### `exec_cmd`
 
-`function` | [include/beacon_common.c:358](../../include/beacon_common.c#L358)
+`function` | [include/beacon_common.c:578](../../include/beacon_common.c#L578)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
 ```
 
---- Command execution ---
+Execute command via execve (no shell) and capture stdout+stderr.
+
+Returns malloc'd buffer with combined output (caller frees). On error, returns NULL.
 
 **Parameters**
 
@@ -343,7 +402,7 @@ char *exec_cmd(const char *cmd, int *out_len)
 
 ### `bsb_backoff_init`
 
-`function` | [include/beacon_common.c:385](../../include/beacon_common.c#L385)
+`function` | [include/beacon_common.c:719](../../include/beacon_common.c#L719)
 
 ```c
 void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)
@@ -365,7 +424,7 @@ void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)
 
 ### `bsb_backoff_next`
 
-`function` | [include/beacon_common.c:391](../../include/beacon_common.c#L391)
+`function` | [include/beacon_common.c:726](../../include/beacon_common.c#L726)
 
 ```c
 int bsb_backoff_next(bsb_backoff_t *bo)
@@ -385,7 +444,7 @@ int bsb_backoff_next(bsb_backoff_t *bo)
 
 ### `bsb_backoff_reset`
 
-`function` | [include/beacon_common.c:400](../../include/beacon_common.c#L400)
+`function` | [include/beacon_common.c:737](../../include/beacon_common.c#L737)
 
 ```c
 void bsb_backoff_reset(bsb_backoff_t *bo)
@@ -403,7 +462,7 @@ void bsb_backoff_reset(bsb_backoff_t *bo)
 
 ### `get_local_ips`
 
-`function` | [include/beacon_common.c:405](../../include/beacon_common.c#L405)
+`function` | [include/beacon_common.c:743](../../include/beacon_common.c#L743)
 
 ```c
 char *get_local_ips(void)
@@ -419,7 +478,7 @@ char *get_local_ips(void)
 
 ### `download_bof`
 
-`function` | [include/beacon_common.c:434](../../include/beacon_common.c#L434)
+`function` | [include/beacon_common.c:778](../../include/beacon_common.c#L778)
 
 ```c
 unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)
@@ -445,7 +504,7 @@ unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *ou
 
 ### `RunELF`
 
-`function` | [include/beacon_common.c:507](../../include/beacon_common.c#L507)
+`function` | [include/beacon_common.c:872](../../include/beacon_common.c#L872)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -467,9 +526,9 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:147).
+> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:164).
 
-*Calls:* [`bsb_output_reset`](#bsb_output_reset), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline)
+*Calls:* [`BeaconOutput`](#beaconoutput), [`bsb_output_reset`](#bsb_output_reset), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline)
 
 *Called by:* [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -479,7 +538,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `run_bof_and_capture`
 
-`function` | [include/beacon_common.c:711](../../include/beacon_common.c#L711)
+`function` | [include/beacon_common.c:1174](../../include/beacon_common.c#L1174)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
@@ -501,7 +560,7 @@ Returns malloc'd string (caller frees). On error or empty output, returns strdup
 
 **Returns:** `char *`
 
-> **Inherited:** Documentation from [`run_bof_and_capture`](#run_bof_and_capture) (include/beacon_common.h:161).
+> **Inherited:** Documentation from [`run_bof_and_capture`](#run_bof_and_capture) (include/beacon_common.h:173).
 
 *Calls:* [`RunELF`](#runelf), [`bsb_output_reset`](#bsb_output_reset)
 

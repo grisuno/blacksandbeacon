@@ -73,7 +73,7 @@ typedef long ssize_t;
 `function` `extern` | [bof/cat/cat.c:11](../../bof/cat/cat.c#L11)
 
 ```c
-extern void BeaconPrintf(int, const char*, ...);
+extern void BeaconPrintf(int, const char *, ...);
 ```
 
 Símbolos del beacon
@@ -96,7 +96,7 @@ Símbolos del beacon
 `function` `extern` | [bof/cat/cat.c:12](../../bof/cat/cat.c#L12)
 
 ```c
-extern void BeaconOutput(int, const char*, int);
+extern void BeaconOutput(int, const char *, int);
 ```
 
 Beacon API: raw output capture (called by BOFs).
@@ -107,7 +107,7 @@ Beacon API: raw output capture (called by BOFs).
 |---|---|---|---|
 | `char` |  |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 *Called by:* [`go`](#go)
 

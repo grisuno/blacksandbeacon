@@ -35,15 +35,76 @@
 - `gopher_beacon.c` -> `beacon.h`
 - `gopher_beacon.c` -> `cJSON.h`
 - `include/aes.c` -> `include/aes.h`
+- `include/aes_cfb.c` -> `include/aes.h`
+- `include/aes_cfb.c` -> `include/aes_cfb.h`
 - `include/beacon_common.c` -> `include/aes.h`
 - `include/beacon_common.c` -> `include/beacon_common.h`
 - `include/beacon_common.c` -> `include/cJSON.h`
 - `include/beacon_common.h` -> `include/config.h`
 - `include/cJSON.c` -> `include/cJSON.h`
 - `include/config.c` -> `include/config.h`
+- `include/config_autogen.c` -> `include/config_autogen.h`
+- `mutants/src/async_i_o_for_beacon.c` -> `include/async_i_o_for_beacon.h`
+- `mutants/src/beacon_common.c_extraction.c` -> `include/beacon_common.c_extraction.h`
+- `mutants/src/beacon_heartbeat___health_endpoint.c` -> `include/beacon_heartbeat___health_endpoint.h`
+- `mutants/src/bof_api_versioning.c` -> `include/bof_api_versioning.h`
+- `mutants/src/bof_path_traversal_hardening.c` -> `include/bof_path_traversal_hardening.h`
+- `mutants/src/bof_streaming_(large_outputs).c` -> `include/bof_streaming_(large_outputs).h`
+- `mutants/src/c2_rest_api.c` -> `include/c2_rest_api.h`
+- `mutants/src/certificate_pinning___tofu.c` -> `include/certificate_pinning___tofu.h`
+- `mutants/src/command_execution_via_execve.c` -> `include/command_execution_via_execve.h`
+- `mutants/src/containerized_build_+_sbom.c` -> `include/containerized_build_+_sbom.h`
+- `mutants/src/hkdf_key_derivation.c` -> `include/hkdf_key_derivation.h`
+- `mutants/src/iv_generation_with_entropy_verification.c` -> `include/iv_generation_with_entropy_verification.h`
+- `mutants/src/mutation_testing_integration.c` -> `include/mutation_testing_integration.h`
+- `mutants/src/pre-commit_+_ci_hardening.c` -> `include/pre-commit_+_ci_hardening.h`
+- `mutants/src/replay_protection.c` -> `include/replay_protection.h`
+- `mutants/src/socks5___http_proxy_support.c` -> `include/socks5___http_proxy_support.h`
+- `mutants/src/structured_jsonl_logging.c` -> `include/structured_jsonl_logging.h`
+- `mutants/src/tls_client_certificate_authentication.c` -> `include/tls_client_certificate_authentication.h`
+- `mutants/src/unified_config_schema.c` -> `include/unified_config_schema.h`
+- `mutants/tests/config_harness.c` -> `include/config.h`
+- `mutants/tests/crypto_harness.c` -> `include/aes_cfb.h`
+- `mutants/tests/test_c2_http_e2e.py` -> `c2/__init__.py`
+- `mutants/tests/test_c2_server.py` -> `c2/server.py`
+- `mutants/tests/test_certificate_pinning.py` -> `include/config_py.py`
+- `src/async_i_o_for_beacon.c` -> `include/async_i_o_for_beacon.h`
+- `src/beacon_common.c_extraction.c` -> `include/beacon_common.c_extraction.h`
+- `src/beacon_heartbeat___health_endpoint.c` -> `include/beacon_heartbeat___health_endpoint.h`
+- `src/bof_api_versioning.c` -> `include/bof_api_versioning.h`
+- `src/bof_path_traversal_hardening.c` -> `include/bof_path_traversal_hardening.h`
+- `src/bof_streaming_(large_outputs).c` -> `include/bof_streaming_(large_outputs).h`
+- `src/c2_rest_api.c` -> `include/c2_rest_api.h`
+- `src/certificate_pinning___tofu.c` -> `include/certificate_pinning___tofu.h`
+- `src/command_execution_via_execve.c` -> `include/command_execution_via_execve.h`
+- `src/containerized_build_+_sbom.c` -> `include/containerized_build_+_sbom.h`
+- `src/hkdf_key_derivation.c` -> `include/hkdf_key_derivation.h`
+- `src/iv_generation_with_entropy_verification.c` -> `include/iv_generation_with_entropy_verification.h`
+- `src/mutation_testing_integration.c` -> `include/mutation_testing_integration.h`
+- `src/pre-commit_+_ci_hardening.c` -> `include/pre-commit_+_ci_hardening.h`
+- `src/replay_protection.c` -> `include/replay_protection.h`
+- `src/socks5___http_proxy_support.c` -> `include/socks5___http_proxy_support.h`
+- `src/structured_jsonl_logging.c` -> `include/structured_jsonl_logging.h`
+- `src/tls_client_certificate_authentication.c` -> `include/tls_client_certificate_authentication.h`
+- `src/unified_config_schema.c` -> `include/unified_config_schema.h`
 - `tests/config_harness.c` -> `include/config.h`
 - `tests/crypto_harness.c` -> `include/aes_cfb.h`
+- `tests/test_bof_path_traversal.py` -> `c2/server.py`
+- `tests/test_c2_beacon_bof_integration.py` -> `c2/server.py`
+- `tests/test_c2_beacon_bof_integration.py` -> `include/config_py.py`
+- `tests/test_c2_http_e2e.py` -> `c2/__init__.py`
+- `tests/test_c2_http_e2e.py` -> `c2/server.py`
 - `tests/test_c2_server.py` -> `c2/server.py`
+- `tests/test_certificate_pinning.py` -> `include/config_py.py`
+- `tests/test_certificate_pinning_c.c` -> `include/config.h`
+- `tests/test_crypto.py` -> `c2/server.py`
+- `tests/test_hkdf_key_derivation.py` -> `include/config_py.py`
+- `tests/test_hkdf_key_derivation_c.c` -> `include/config.h`
+- `tests/test_iv_generation.py` -> `c2/server.py`
+- `tests/test_iv_generation.py` -> `include/config_py.py`
+- `tests/test_iv_generation_c.c` -> `include/beacon_common.h`
+- `tests/test_replay_protection.py` -> `c2/server.py`
+- `tests/test_replay_protection.py` -> `include/config_py.py`
 
 ## External Imports
 
@@ -64,26 +125,125 @@
 - `c2/server.py` -> base64, concurrent.futures, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, hashlib, hmac, json, logging, os, pathlib, socket, sys, threading, time, typing, urllib.parse
 - `cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
 - `cJSON.h` -> stddef.h
+- `config/generate_parsers.py` -> json, pathlib, sys, typing
+- `contract_agent.py` -> os, pathlib, re, subprocess, sys, typing
 - `gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
-- `gopher_c2.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, datetime, json, logging, os, socket, threading
+- `gopher_c2.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, json, logging, os, socket, threading
 - `include/aes.c` -> string.h
 - `include/aes.h` -> stddef.h, stdint.h
-- `include/aes_cfb.c` -> openssl/evp.h, stdlib.h
+- `include/aes_cfb.c` -> stdint.h, stdlib.h, string.h
 - `include/aes_cfb.h` -> stddef.h
 - `include/beacon.h` -> stdarg.h, stdint.h
-- `include/beacon_common.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/hmac.h, openssl/rand.h, stdarg.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/wait.h, unistd.h
+- `include/beacon_common.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/hmac.h, openssl/rand.h, openssl/sha.h, signal.h, stdarg.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/wait.h, unistd.h
 - `include/beacon_common.h` -> stddef.h, stdint.h, sys/types.h
 - `include/cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
 - `include/cJSON.h` -> stddef.h
-- `include/config.c` -> ctype.h, limits.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
+- `include/config.c` -> ctype.h, limits.h, openssl/hmac.h, openssl/sha.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
 - `include/config.h` -> stddef.h, stdint.h
-- `include/config_py.py` -> json, os, pathlib, re, sys
+- `include/config_autogen.c` -> ctype.h, limits.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
+- `include/config_autogen.h` -> stddef.h, stdint.h
+- `include/config_py.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, re
+- `include/config_py_autogen.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, pathlib, re, typing
+- `mutants/src/async_i_o_for_beacon.c` -> stdbool.h
+- `mutants/src/beacon_common.c_extraction.c` -> stdbool.h
+- `mutants/src/beacon_heartbeat___health_endpoint.c` -> stdbool.h
+- `mutants/src/bof_api_versioning.c` -> stdbool.h
+- `mutants/src/bof_path_traversal_hardening.c` -> stdbool.h
+- `mutants/src/bof_streaming_(large_outputs).c` -> stdbool.h
+- `mutants/src/c2_rest_api.c` -> stdbool.h
+- `mutants/src/certificate_pinning___tofu.c` -> stdbool.h
+- `mutants/src/command_execution_via_execve.c` -> stdbool.h
+- `mutants/src/containerized_build_+_sbom.c` -> stdbool.h
+- `mutants/src/hkdf_key_derivation.c` -> stdbool.h
+- `mutants/src/iv_generation_with_entropy_verification.c` -> stdbool.h
+- `mutants/src/mutation_testing_integration.c` -> stdbool.h
+- `mutants/src/pre-commit_+_ci_hardening.c` -> stdbool.h
+- `mutants/src/replay_protection.c` -> stdbool.h
+- `mutants/src/socks5___http_proxy_support.c` -> stdbool.h
+- `mutants/src/structured_jsonl_logging.c` -> stdbool.h
+- `mutants/src/tls_client_certificate_authentication.c` -> stdbool.h
+- `mutants/src/unified_config_schema.c` -> stdbool.h
+- `mutants/tests/config_harness.c` -> stdio.h, stdlib.h, string.h
+- `mutants/tests/crypto_harness.c` -> stdio.h, stdlib.h, string.h
+- `mutants/tests/test_async_i_o_for_beacon.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_async_i_o_for_beacon_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_beacon_build.py` -> os, pathlib, shutil, subprocess, sys
+- `mutants/tests/test_beacon_common.c_extraction_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_beacon_heartbeat___health_endpoint.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_beacon_heartbeat___health_endpoint_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_bof_api_versioning.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_bof_api_versioning_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_bof_compile.py` -> os, pathlib, re, subprocess, sys
+- `mutants/tests/test_bof_path_traversal_hardening.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_bof_path_traversal_hardening_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_bof_streaming_(large_outputs).py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_bof_streaming_(large_outputs)_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_c2_http_e2e.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, json, os, pathlib, socket, sys, tempfile, threading, time
+- `mutants/tests/test_c2_rest_api.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_c2_rest_api_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_c2_server.py` -> base64, json, os, pathlib, shutil, sys, tempfile, time
+- `mutants/tests/test_certificate_pinning.py` -> json, os, pathlib, pytest, re, sys, tempfile
+- `mutants/tests/test_certificate_pinning___tofu.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_certificate_pinning___tofu_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_command_execution_via_execve.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_command_execution_via_execve_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_config.py` -> json, os, pathlib, shutil, subprocess, sys, tempfile
+- `mutants/tests/test_containerized_build_+_sbom_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_crypto.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, os, pathlib, subprocess, sys
+- `mutants/tests/test_hkdf_key_derivation.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_hkdf_key_derivation_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_install_deploy.py` -> os, pathlib, shutil, stat, subprocess, sys, tempfile
+- `mutants/tests/test_iv_generation_with_entropy_verification.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_iv_generation_with_entropy_verification_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_mutation_testing_integration.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_mutation_testing_integration_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_pre-commit_+_ci_hardening_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_replay_protection.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_replay_protection_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_socks5___http_proxy_support.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_socks5___http_proxy_support_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_structured_jsonl_logging.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_structured_jsonl_logging_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_tls_client_certificate_authentication.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_tls_client_certificate_authentication_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `mutants/tests/test_unified_config_schema.py` -> json, os, pathlib, pytest, sys, tempfile
+- `mutants/tests/test_unified_config_schema_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h
+- `scripts/mutation_test_c.py` -> os, pathlib, re, shutil, subprocess, sys, tempfile, typing
+- `src/async_i_o_for_beacon.c` -> stdbool.h
+- `src/beacon_common.c_extraction.c` -> stdbool.h
+- `src/beacon_heartbeat___health_endpoint.c` -> stdbool.h
+- `src/bof_api_versioning.c` -> stdbool.h
+- `src/bof_path_traversal_hardening.c` -> stdbool.h
+- `src/bof_streaming_(large_outputs).c` -> stdbool.h
+- `src/c2_rest_api.c` -> stdbool.h
+- `src/certificate_pinning___tofu.c` -> stdbool.h
+- `src/command_execution_via_execve.c` -> stdbool.h
+- `src/containerized_build_+_sbom.c` -> stdbool.h
+- `src/hkdf_key_derivation.c` -> stdbool.h
+- `src/iv_generation_with_entropy_verification.c` -> stdbool.h
+- `src/mutation_testing_integration.c` -> stdbool.h
+- `src/pre-commit_+_ci_hardening.c` -> stdbool.h
+- `src/replay_protection.c` -> stdbool.h
+- `src/socks5___http_proxy_support.c` -> stdbool.h
+- `src/structured_jsonl_logging.c` -> stdbool.h
+- `src/tls_client_certificate_authentication.c` -> stdbool.h
+- `src/unified_config_schema.c` -> stdbool.h
 - `tests/config_harness.c` -> stdio.h, stdlib.h, string.h
 - `tests/crypto_harness.c` -> stdio.h, stdlib.h, string.h
-- `tests/test_beacon_build.py` -> os, pathlib, shutil, subprocess, sys
-- `tests/test_bof_compile.py` -> os, pathlib, re, subprocess, sys
-- `tests/test_c2_http_e2e.py` -> base64, c2, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, json, os, pathlib, socket, sys, tempfile, threading, time
-- `tests/test_c2_server.py` -> base64, json, os, pathlib, shutil, sys, tempfile, time
+- `tests/test_beacon_build.py` -> os, pathlib, subprocess, sys
+- `tests/test_bof_compile.py` -> pathlib, re, subprocess, sys
+- `tests/test_bof_path_traversal.py` -> base64, json, os, pathlib, pytest, sys, tempfile, unicodedata
+- `tests/test_c2_beacon_bof_integration.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, os, pathlib, pytest, select, shutil, socket, subprocess, sys, tempfile, threading, time
+- `tests/test_c2_http_e2e.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, json, os, pathlib, socket, sys, tempfile, threading, time
+- `tests/test_c2_server.py` -> base64, json, pathlib, sys, tempfile, time
+- `tests/test_certificate_pinning.py` -> json, os, pathlib, pytest, re, sys, tempfile
+- `tests/test_certificate_pinning_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h, stdio.h, stdlib.h, string.h, unistd.h
 - `tests/test_config.py` -> json, os, pathlib, shutil, subprocess, sys, tempfile
-- `tests/test_crypto.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, os, pathlib, subprocess, sys
-- `tests/test_install_deploy.py` -> os, pathlib, shutil, stat, subprocess, sys, tempfile
+- `tests/test_crypto.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, pathlib, subprocess, sys, time
+- `tests/test_execve_command.py` -> os, pathlib, pytest, subprocess, sys, tempfile
+- `tests/test_hkdf_key_derivation.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, os, pathlib, pytest, sys, tempfile
+- `tests/test_hkdf_key_derivation_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h, stdio.h, stdlib.h, string.h, unistd.h
+- `tests/test_install_deploy.py` -> os, pathlib, stat, subprocess, sys, tempfile
+- `tests/test_iv_generation.py` -> base64, json, os, pathlib, pytest, sys, tempfile, unittest.mock
+- `tests/test_iv_generation_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h, stdio.h, stdlib.h, string.h, unistd.h
+- `tests/test_replay_protection.py` -> json, os, pathlib, pytest, struct, sys, tempfile, time, unittest.mock

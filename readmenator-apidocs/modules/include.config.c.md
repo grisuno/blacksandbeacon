@@ -1,11 +1,11 @@
 # `include/config.c`
 
-> Source: [include/config.c:1](../../include/config.c#L1) | language `c` | coverage 80.0% | [API index](../index.md)
+> Source: [include/config.c:1](../../include/config.c#L1) | language `c` | coverage 50.0% | [API index](../index.md)
 
 ## Contents
 
 - **Functions:** [`bsb_config_load`](#bsb_config_load), [`bsb_config_load_default`](#bsb_config_load_default), [`bsb_config_sleep_seconds`](#bsb_config_sleep_seconds)
-- **Macros:** [`_POSIX_C_SOURCE`](#_posix_c_source)
+- **Macros:** [`_POSIX_C_SOURCE`](#_posix_c_source), [`HKDF_SALT`](#hkdf_salt), [`HKDF_INFO_ENC`](#hkdf_info_enc), [`HKDF_INFO_HMAC`](#hkdf_info_hmac)
 
 ## Call Graph
 
@@ -24,7 +24,7 @@ flowchart LR
 
 ### `bsb_config_load`
 
-`function` | [include/config.c:328](../../include/config.c#L328)
+`function` | [include/config.c:655](../../include/config.c#L655)
 
 ```c
 int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen)
@@ -51,7 +51,7 @@ int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errle
 
 ### `bsb_config_load_default`
 
-`function` | [include/config.c:438](../../include/config.c#L438)
+`function` | [include/config.c:820](../../include/config.c#L820)
 
 ```c
 int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen)
@@ -69,7 +69,7 @@ Load from BSB_CONFIG env or default path.
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`bsb_config_load_default`](#bsb_config_load_default) (include/config.h:80).
+> **Inherited:** Documentation from [`bsb_config_load_default`](#bsb_config_load_default) (include/config.h:92).
 
 *Calls:* [`bsb_config_load`](#bsb_config_load)
 
@@ -79,7 +79,7 @@ Load from BSB_CONFIG env or default path.
 
 ### `bsb_config_sleep_seconds`
 
-`function` | [include/config.c:466](../../include/config.c#L466)
+`function` | [include/config.c:853](../../include/config.c#L853)
 
 ```c
 int bsb_config_sleep_seconds(const bsb_config_t *cfg)
@@ -97,7 +97,7 @@ Returns seconds.
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`bsb_config_sleep_seconds`](#bsb_config_sleep_seconds) (include/config.h:83).
+> **Inherited:** Documentation from [`bsb_config_sleep_seconds`](#bsb_config_sleep_seconds) (include/config.h:95).
 
 ---
 
@@ -123,5 +123,41 @@ for top-level keys ("c2", "crypto", "timing", "network", "bof")
 and reads the string / integer / boolean / array values
 declared in the schema. Unknown keys are skipped. Missing
 sections fall back to safe defaults.
+
+---
+
+<a id="hkdf_salt"></a>
+
+### `HKDF_SALT`
+
+`macro` | [include/config.c:288](../../include/config.c#L288)
+
+```c
+#define HKDF_SALT
+```
+
+---
+
+<a id="hkdf_info_enc"></a>
+
+### `HKDF_INFO_ENC`
+
+`macro` | [include/config.c:289](../../include/config.c#L289)
+
+```c
+#define HKDF_INFO_ENC
+```
+
+---
+
+<a id="hkdf_info_hmac"></a>
+
+### `HKDF_INFO_HMAC`
+
+`macro` | [include/config.c:290](../../include/config.c#L290)
+
+```c
+#define HKDF_INFO_HMAC
+```
 
 ---

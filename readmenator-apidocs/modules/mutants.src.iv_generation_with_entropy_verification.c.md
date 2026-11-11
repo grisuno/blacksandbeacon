@@ -1,0 +1,25 @@
+# `mutants/src/iv_generation_with_entropy_verification.c`
+
+> Source: [mutants/src/iv_generation_with_entropy_verification.c:1](../../mutants/src/iv_generation_with_entropy_verification.c#L1) | language `c` | coverage 50.0% | [API index](../index.md)
+
+Auto-generated implementation for contract: IV Generation with Entropy Verification
+
+## Contents
+
+- **Functions:** [`iv_generation_with_entropy_verification_process`](#iv_generation_with_entropy_verification_process)
+
+## Functions
+
+<a id="iv_generation_with_entropy_verification_process"></a>
+
+### `iv_generation_with_entropy_verification_process`
+
+`function` | [mutants/src/iv_generation_with_entropy_verification.c:6](../../mutants/src/iv_generation_with_entropy_verification.c#L6)
+
+```c
+bool iv_generation_with_entropy_verification_process(void)
+```
+
+**Returns:** `bool`
+
+---

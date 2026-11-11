@@ -75,7 +75,7 @@ typedef long ssize_t;
 `function` `extern` | [bof/whoami/whoami.c:10](../../bof/whoami/whoami.c#L10)
 
 ```c
-extern void BeaconPrintf(int, const char*, ...);
+extern void BeaconPrintf(int, const char *, ...);
 ```
 
 Símbolos del beacon
@@ -98,7 +98,7 @@ Símbolos del beacon
 `function` `extern` | [bof/whoami/whoami.c:11](../../bof/whoami/whoami.c#L11)
 
 ```c
-extern void BeaconOutput(int, const char*, int);
+extern void BeaconOutput(int, const char *, int);
 ```
 
 Beacon API: raw output capture (called by BOFs).
@@ -109,7 +109,7 @@ Beacon API: raw output capture (called by BOFs).
 |---|---|---|---|
 | `char` |  |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 *Called by:* [`go`](#go)
 
@@ -119,7 +119,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `go`
 
-`function` | [bof/whoami/whoami.c:41](../../bof/whoami/whoami.c#L41)
+`function` | [bof/whoami/whoami.c:38](../../bof/whoami/whoami.c#L38)
 
 ```c
 void go(char *args, int alen)

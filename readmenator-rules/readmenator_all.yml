@@ -7,3 +7,12 @@ rules:
     message: "Use logging module instead of print()"
     severity: INFO
     languages: [python]
+
+
+rules:
+  - id: rm-todo-comment
+    pattern-regex: "#\\s*(TODO|FIXME|HACK|XXX)"
+    message: "Resolve remaining code markers"
+    severity: INFO
+    languages: [python, javascript, typescript, java, go, rust]
+

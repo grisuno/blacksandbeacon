@@ -33,15 +33,15 @@ struct AES_ctx
 `function` | [aes.h:41](../../aes.h#L41)
 
 ```c
-void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);
+void AES_init_ctx(struct AES_ctx *ctx, const uint8_t *key);
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `key` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `key` | `uint8_t *` |  |  |
 
 *Called by:* [`aes256_cfb_decrypt`](beacon3.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon3.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon5.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon5.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon6.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon6.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon_p2p.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon_p2p.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](gopher_beacon.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](gopher_beacon.c.md#aes256_cfb_encrypt)
 
@@ -54,7 +54,7 @@ void AES_init_ctx(struct AES_ctx* ctx, const uint8_t* key);
 `function` | [aes.h:43](../../aes.h#L43)
 
 ```c
-void AES_init_ctx_iv(struct AES_ctx* ctx, const uint8_t* key, const uint8_t* iv);
+void AES_init_ctx_iv(struct AES_ctx *ctx, const uint8_t *key, const uint8_t *iv);
 ```
 
 if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
@@ -63,9 +63,9 @@ if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `key` | `uint8_t*` |  |  |
-| `iv` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `key` | `uint8_t *` |  |  |
+| `iv` | `uint8_t *` |  |  |
 
 ---
 
@@ -76,15 +76,15 @@ if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
 `function` | [aes.h:44](../../aes.h#L44)
 
 ```c
-void AES_ctx_set_iv(struct AES_ctx* ctx, const uint8_t* iv);
+void AES_ctx_set_iv(struct AES_ctx *ctx, const uint8_t *iv);
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `iv` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `iv` | `uint8_t *` |  |  |
 
 ---
 
@@ -95,7 +95,7 @@ void AES_ctx_set_iv(struct AES_ctx* ctx, const uint8_t* iv);
 `function` | [aes.h:48](../../aes.h#L48)
 
 ```c
-void AES_ECB_encrypt(const struct AES_ctx* ctx, uint8_t* buf);
+void AES_ECB_encrypt(const struct AES_ctx *ctx, uint8_t *buf);
 ```
 
 if defined(ECB) && (ECB == 1)
@@ -104,8 +104,8 @@ if defined(ECB) && (ECB == 1)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `buf` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `buf` | `uint8_t *` |  |  |
 
 *Called by:* [`aes256_cfb_decrypt`](beacon3.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon3.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon5.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon5.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon6.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon6.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](beacon_p2p.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](beacon_p2p.c.md#aes256_cfb_encrypt), [`aes256_cfb_decrypt`](gopher_beacon.c.md#aes256_cfb_decrypt), [`aes256_cfb_encrypt`](gopher_beacon.c.md#aes256_cfb_encrypt)
 
@@ -118,15 +118,15 @@ if defined(ECB) && (ECB == 1)
 `function` | [aes.h:49](../../aes.h#L49)
 
 ```c
-void AES_ECB_decrypt(const struct AES_ctx* ctx, uint8_t* buf);
+void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf);
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `buf` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `buf` | `uint8_t *` |  |  |
 
 ---
 
@@ -137,7 +137,7 @@ void AES_ECB_decrypt(const struct AES_ctx* ctx, uint8_t* buf);
 `function` | [aes.h:53](../../aes.h#L53)
 
 ```c
-void AES_CBC_encrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length);
+void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);
 ```
 
 if defined(CBC) && (CBC == 1)
@@ -146,8 +146,8 @@ if defined(CBC) && (CBC == 1)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `buf` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `buf` | `uint8_t *` |  |  |
 | `length` | `size_t` |  |  |
 
 ---
@@ -159,15 +159,15 @@ if defined(CBC) && (CBC == 1)
 `function` | [aes.h:54](../../aes.h#L54)
 
 ```c
-void AES_CBC_decrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length);
+void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `buf` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `buf` | `uint8_t *` |  |  |
 | `length` | `size_t` |  |  |
 
 ---
@@ -179,7 +179,7 @@ void AES_CBC_decrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length);
 `function` | [aes.h:58](../../aes.h#L58)
 
 ```c
-void AES_CTR_xcrypt_buffer(struct AES_ctx* ctx, uint8_t* buf, size_t length);
+void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);
 ```
 
 if defined(CTR) && (CTR == 1)
@@ -188,8 +188,8 @@ if defined(CTR) && (CTR == 1)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `ctx` | `struct AES_ctx*` |  |  |
-| `buf` | `uint8_t*` |  |  |
+| `ctx` | `struct AES_ctx *` |  |  |
+| `buf` | `uint8_t *` |  |  |
 | `length` | `size_t` |  |  |
 
 ---

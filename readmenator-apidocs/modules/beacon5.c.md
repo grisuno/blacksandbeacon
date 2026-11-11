@@ -98,7 +98,7 @@ struct MemoryStruct
 
 ### `peer_t`
 
-`struct` | [beacon5.c:68](../../beacon5.c#L68)
+`struct` | [beacon5.c:69](../../beacon5.c#L69)
 
 ```c
 typedef struct
@@ -112,7 +112,7 @@ typedef struct
 
 ### `mesh_msg_t`
 
-`struct` | [beacon5.c:75](../../beacon5.c#L75)
+`struct` | [beacon5.c:77](../../beacon5.c#L77)
 
 ```c
 typedef struct
@@ -124,7 +124,7 @@ typedef struct
 
 ### `Trampoline`
 
-`struct` | [beacon5.c:98](../../beacon5.c#L98)
+`struct` | [beacon5.c:102](../../beacon5.c#L102)
 
 ```c
 typedef struct
@@ -138,7 +138,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [beacon5.c:106](../../beacon5.c#L106)
+`struct` | [beacon5.c:111](../../beacon5.c#L111)
 
 ```c
 typedef struct
@@ -150,7 +150,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon5.c:112](../../beacon5.c#L112)
+`struct` | [beacon5.c:118](../../beacon5.c#L118)
 
 ```c
 typedef struct
@@ -166,7 +166,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [beacon5.c:235](../../beacon5.c#L235)
+`function` | [beacon5.c:239](../../beacon5.c#L239)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -188,7 +188,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [beacon5.c:248](../../beacon5.c#L248)
+`function` | [beacon5.c:256](../../beacon5.c#L256)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -204,7 +204,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 ---
 
@@ -212,10 +212,10 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `https_request`
 
-`function` | [beacon5.c:359](../../beacon5.c#L359)
+`function` | [beacon5.c:385](../../beacon5.c#L385)
 
 ```c
-char* https_request(const char* url, const char* method, const char* post_data)
+char *https_request(const char *url, const char *method, const char *post_data)
 ```
 
 === HTTPS REQUEST ===
@@ -224,11 +224,11 @@ char* https_request(const char* url, const char* method, const char* post_data)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `method` | `char*` |  |  |
-| `post_data` | `char*` |  |  |
+| `url` | `char *` |  |  |
+| `method` | `char *` |  |  |
+| `post_data` | `char *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`download_bof`](#download_bof), [`main`](#main), [`mesh_listener_thread`](#mesh_listener_thread)
 
@@ -238,10 +238,10 @@ char* https_request(const char* url, const char* method, const char* post_data)
 
 ### `base64_encode`
 
-`function` | [beacon5.c:448](../../beacon5.c#L448)
+`function` | [beacon5.c:479](../../beacon5.c#L479)
 
 ```c
-char* base64_encode(const unsigned char* input, int len)
+char *base64_encode(const unsigned char *input, int len)
 ```
 
 === BASE64 ===
@@ -250,10 +250,10 @@ char* base64_encode(const unsigned char* input, int len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `unsigned char*` |  |  |
+| `input` | `unsigned char *` |  |  |
 | `len` | `int` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -263,20 +263,20 @@ char* base64_encode(const unsigned char* input, int len)
 
 ### `base64_decode`
 
-`function` | [beacon5.c:465](../../beacon5.c#L465)
+`function` | [beacon5.c:497](../../beacon5.c#L497)
 
 ```c
-unsigned char* base64_decode(const char* input, int* len)
+unsigned char *base64_decode(const char *input, int *len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `char*` |  |  |
-| `len` | `int*` |  |  |
+| `input` | `char *` |  |  |
+| `len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Called by:* [`main`](#main), [`mesh_listener_thread`](#mesh_listener_thread)
 
@@ -286,10 +286,10 @@ unsigned char* base64_decode(const char* input, int* len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon5.c:488](../../beacon5.c#L488)
+`function` | [beacon5.c:523](../../beacon5.c#L523)
 
 ```c
-unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* plaintext, size_t len, int* out_len)
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
 ```
 
 === AES CFB ===
@@ -298,13 +298,13 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `plaintext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `plaintext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -316,23 +316,23 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon5.c:516](../../beacon5.c#L516)
+`function` | [beacon5.c:557](../../beacon5.c#L557)
 
 ```c
-unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* ciphertext, size_t len, int* out_len)
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `ciphertext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `ciphertext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -344,10 +344,10 @@ unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char*
 
 ### `exec_cmd`
 
-`function` | [beacon5.c:546](../../beacon5.c#L546)
+`function` | [beacon5.c:593](../../beacon5.c#L593)
 
 ```c
-char* exec_cmd(const char* cmd, int* out_len)
+char *exec_cmd(const char *cmd, int *out_len)
 ```
 
 === EXEC CMD ===
@@ -356,10 +356,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `cmd` | `char*` |  |  |
-| `out_len` | `int*` |  |  |
+| `cmd` | `char *` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main), [`mesh_listener_thread`](#mesh_listener_thread)
 
@@ -369,10 +369,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 ### `RunELF`
 
-`function` | [beacon5.c:573](../../beacon5.c#L573)
+`function` | [beacon5.c:627](../../beacon5.c#L627)
 
 ```c
-int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize)
+int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
 ```
 
 ELF BOF loader.
@@ -383,15 +383,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `functionname` | `char*` |  |  |
-| `elf_data` | `unsigned char*` |  |  |
+| `functionname` | `char *` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `argumentdata` | `unsigned char*` |  |  |
+| `argumentdata` | `unsigned char *` |  |  |
 | `argumentSize` | `int` |  |  |
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:147).
+> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:164).
 
 *Called by:* [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -401,15 +401,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [beacon5.c:954](../../beacon5.c#L954)
+`function` | [beacon5.c:1126](../../beacon5.c#L1126)
 
 ```c
-char* get_local_ips()
+char *get_local_ips()
 ```
 
 === GET LOCAL IPs ===
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -419,10 +419,10 @@ char* get_local_ips()
 
 ### `download_bof`
 
-`function` | [beacon5.c:983](../../beacon5.c#L983)
+`function` | [beacon5.c:1161](../../beacon5.c#L1161)
 
 ```c
-unsigned char* download_bof(const char* url, size_t* out_size)
+unsigned char *download_bof(const char *url, size_t *out_size)
 ```
 
 === DOWNLOAD BOF ===
@@ -431,10 +431,10 @@ unsigned char* download_bof(const char* url, size_t* out_size)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `out_size` | `size_t*` |  |  |
+| `url` | `char *` |  |  |
+| `out_size` | `size_t *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`https_request`](#https_request)
 
@@ -446,10 +446,10 @@ unsigned char* download_bof(const char* url, size_t* out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [beacon5.c:1005](../../beacon5.c#L1005)
+`function` | [beacon5.c:1184](../../beacon5.c#L1184)
 
 ```c
-char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args, int arglen, int* out_len)
+char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
 ```
 
 === RUN BOF AND CAPTURE ===
@@ -458,13 +458,13 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `elf_data` | `unsigned char*` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `args` | `char*` |  |  |
+| `args` | `char *` |  |  |
 | `arglen` | `int` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`RunELF`](#runelf)
 
@@ -476,7 +476,7 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 ### `mesh_mark_seen`
 
-`function` | [beacon5.c:1050](../../beacon5.c#L1050)
+`function` | [beacon5.c:1231](../../beacon5.c#L1231)
 
 ```c
 void mesh_mark_seen(const char *msg_id)
@@ -496,7 +496,7 @@ void mesh_mark_seen(const char *msg_id)
 
 ### `mesh_is_seen`
 
-`function` | [beacon5.c:1058](../../beacon5.c#L1058)
+`function` | [beacon5.c:1240](../../beacon5.c#L1240)
 
 ```c
 int mesh_is_seen(const char *msg_id)
@@ -518,7 +518,7 @@ int mesh_is_seen(const char *msg_id)
 
 ### `mesh_add_peer`
 
-`function` | [beacon5.c:1070](../../beacon5.c#L1070)
+`function` | [beacon5.c:1255](../../beacon5.c#L1255)
 
 ```c
 void mesh_add_peer(const char *ip, int port)
@@ -539,7 +539,7 @@ void mesh_add_peer(const char *ip, int port)
 
 ### `mesh_cleanup_peers`
 
-`function` | [beacon5.c:1095](../../beacon5.c#L1095)
+`function` | [beacon5.c:1283](../../beacon5.c#L1283)
 
 ```c
 void mesh_cleanup_peers()
@@ -553,7 +553,7 @@ void mesh_cleanup_peers()
 
 ### `mesh_send_to_peer`
 
-`function` | [beacon5.c:1109](../../beacon5.c#L1109)
+`function` | [beacon5.c:1300](../../beacon5.c#L1300)
 
 ```c
 int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)
@@ -577,7 +577,7 @@ int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)
 
 ### `mesh_propagate`
 
-`function` | [beacon5.c:1131](../../beacon5.c#L1131)
+`function` | [beacon5.c:1324](../../beacon5.c#L1324)
 
 ```c
 void mesh_propagate(const char *command)
@@ -599,7 +599,7 @@ void mesh_propagate(const char *command)
 
 ### `mesh_discovery_thread`
 
-`function` | [beacon5.c:1158](../../beacon5.c#L1158)
+`function` | [beacon5.c:1356](../../beacon5.c#L1356)
 
 ```c
 void *mesh_discovery_thread(void *arg)
@@ -621,7 +621,7 @@ void *mesh_discovery_thread(void *arg)
 
 ### `mesh_listener_thread`
 
-`function` | [beacon5.c:1241](../../beacon5.c#L1241)
+`function` | [beacon5.c:1447](../../beacon5.c#L1447)
 
 ```c
 void *mesh_listener_thread(void *arg)
@@ -643,10 +643,10 @@ void *mesh_listener_thread(void *arg)
 
 ### `mesh_send_message`
 
-`function` | [beacon5.c:1417](../../beacon5.c#L1417)
+`function` | [beacon5.c:1667](../../beacon5.c#L1667)
 
 ```c
-void mesh_send_message(int type, const char* target, const char* payload)
+void mesh_send_message(int type, const char *target, const char *payload)
 ```
 
 **Parameters**
@@ -654,8 +654,8 @@ void mesh_send_message(int type, const char* target, const char* payload)
 | Name | Type | Default | Description |
 |---|---|---|---|
 | `type` | `int` |  |  |
-| `target` | `char*` |  |  |
-| `payload` | `char*` |  |  |
+| `target` | `char *` |  |  |
+| `payload` | `char *` |  |  |
 
 *Calls:* [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_to_peer`](#mesh_send_to_peer)
 
@@ -667,7 +667,7 @@ void mesh_send_message(int type, const char* target, const char* payload)
 
 ### `main`
 
-`function` | [beacon5.c:1444](../../beacon5.c#L1444)
+`function` | [beacon5.c:1702](../../beacon5.c#L1702)
 
 ```c
 int main(int argc, char **argv)
@@ -706,7 +706,7 @@ int main(int argc, char **argv)
 
 ### `MAX_PEERS`
 
-`macro` | [beacon5.c:37](../../beacon5.c#L37)
+`macro` | [beacon5.c:36](../../beacon5.c#L36)
 
 ```c
 #define MAX_PEERS
@@ -718,7 +718,7 @@ int main(int argc, char **argv)
 
 ### `DISCOVERY_PORT`
 
-`macro` | [beacon5.c:38](../../beacon5.c#L38)
+`macro` | [beacon5.c:37](../../beacon5.c#L37)
 
 ```c
 #define DISCOVERY_PORT
@@ -730,7 +730,7 @@ int main(int argc, char **argv)
 
 ### `DISCOVERY_INTERVAL`
 
-`macro` | [beacon5.c:39](../../beacon5.c#L39)
+`macro` | [beacon5.c:38](../../beacon5.c#L38)
 
 ```c
 #define DISCOVERY_INTERVAL
@@ -742,7 +742,7 @@ int main(int argc, char **argv)
 
 ### `MAX_TTL`
 
-`macro` | [beacon5.c:40](../../beacon5.c#L40)
+`macro` | [beacon5.c:39](../../beacon5.c#L39)
 
 ```c
 #define MAX_TTL
@@ -754,7 +754,7 @@ int main(int argc, char **argv)
 
 ### `MESH_MSG_SIZE`
 
-`macro` | [beacon5.c:41](../../beacon5.c#L41)
+`macro` | [beacon5.c:40](../../beacon5.c#L40)
 
 ```c
 #define MESH_MSG_SIZE
@@ -766,7 +766,7 @@ int main(int argc, char **argv)
 
 ### `C2_URL`
 
-`macro` | [beacon5.c:44](../../beacon5.c#L44)
+`macro` | [beacon5.c:42](../../beacon5.c#L42)
 
 ```c
 #define C2_URL
@@ -778,7 +778,7 @@ int main(int argc, char **argv)
 
 ### `CLIENT_ID`
 
-`macro` | [beacon5.c:45](../../beacon5.c#L45)
+`macro` | [beacon5.c:43](../../beacon5.c#L43)
 
 ```c
 #define CLIENT_ID
@@ -790,7 +790,7 @@ int main(int argc, char **argv)
 
 ### `MALEABLE`
 
-`macro` | [beacon5.c:46](../../beacon5.c#L46)
+`macro` | [beacon5.c:44](../../beacon5.c#L44)
 
 ```c
 #define MALEABLE
@@ -802,7 +802,7 @@ int main(int argc, char **argv)
 
 ### `USER_AGENTS_COUNT`
 
-`macro` | [beacon5.c:47](../../beacon5.c#L47)
+`macro` | [beacon5.c:45](../../beacon5.c#L45)
 
 ```c
 #define USER_AGENTS_COUNT

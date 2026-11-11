@@ -47,7 +47,7 @@ typedef struct
 
 ### `bsb_crypto_t`
 
-`struct` | [include/config.h:37](../../include/config.h#L37)
+`struct` | [include/config.h:38](../../include/config.h#L38)
 
 ```c
 typedef struct
@@ -59,7 +59,7 @@ typedef struct
 
 ### `bsb_timing_t`
 
-`struct` | [include/config.h:42](../../include/config.h#L42)
+`struct` | [include/config.h:48](../../include/config.h#L48)
 
 ```c
 typedef struct
@@ -71,7 +71,7 @@ typedef struct
 
 ### `bsb_network_t`
 
-`struct` | [include/config.h:49](../../include/config.h#L49)
+`struct` | [include/config.h:56](../../include/config.h#L56)
 
 ```c
 typedef struct
@@ -83,7 +83,7 @@ typedef struct
 
 ### `bsb_bof_t`
 
-`struct` | [include/config.h:55](../../include/config.h#L55)
+`struct` | [include/config.h:64](../../include/config.h#L64)
 
 ```c
 typedef struct
@@ -95,7 +95,7 @@ typedef struct
 
 ### `bsb_backoff_config_t`
 
-`struct` | [include/config.h:60](../../include/config.h#L60)
+`struct` | [include/config.h:70](../../include/config.h#L70)
 
 ```c
 typedef struct
@@ -107,7 +107,7 @@ typedef struct
 
 ### `bsb_config_t`
 
-`struct` | [include/config.h:65](../../include/config.h#L65)
+`struct` | [include/config.h:76](../../include/config.h#L76)
 
 ```c
 typedef struct
@@ -121,7 +121,7 @@ typedef struct
 
 ### `bsb_config_load`
 
-`function` | [include/config.h:77](../../include/config.h#L77)
+`function` | [include/config.h:89](../../include/config.h#L89)
 
 ```c
 int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen);
@@ -148,7 +148,7 @@ Returns 0 on success, -1 on error. On error, leaves a human-readable message in 
 
 ### `bsb_config_load_default`
 
-`function` | [include/config.h:80](../../include/config.h#L80)
+`function` | [include/config.h:92](../../include/config.h#L92)
 
 ```c
 int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen);
@@ -172,7 +172,7 @@ Load from BSB_CONFIG env or default path.
 
 ### `bsb_config_sleep_seconds`
 
-`function` | [include/config.h:83](../../include/config.h#L83)
+`function` | [include/config.h:95](../../include/config.h#L95)
 
 ```c
 int bsb_config_sleep_seconds(const bsb_config_t *cfg);

@@ -65,7 +65,7 @@ flowchart LR
 
 ### `MemoryStruct`
 
-`struct` | [beacon3.c:50](../../beacon3.c#L50)
+`struct` | [beacon3.c:52](../../beacon3.c#L52)
 
 ```c
 struct MemoryStruct
@@ -79,7 +79,7 @@ struct MemoryStruct
 
 ### `Trampoline`
 
-`struct` | [beacon3.c:57](../../beacon3.c#L57)
+`struct` | [beacon3.c:60](../../beacon3.c#L60)
 
 ```c
 typedef struct
@@ -93,7 +93,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [beacon3.c:65](../../beacon3.c#L65)
+`struct` | [beacon3.c:69](../../beacon3.c#L69)
 
 ```c
 typedef struct
@@ -105,7 +105,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon3.c:71](../../beacon3.c#L71)
+`struct` | [beacon3.c:76](../../beacon3.c#L76)
 
 ```c
 typedef struct
@@ -121,7 +121,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [beacon3.c:193](../../beacon3.c#L193)
+`function` | [beacon3.c:196](../../beacon3.c#L196)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -143,7 +143,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [beacon3.c:206](../../beacon3.c#L206)
+`function` | [beacon3.c:213](../../beacon3.c#L213)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -159,7 +159,7 @@ Beacon API: raw output capture (called by BOFs).
 | `data` | `char *` |  |  |
 | `len` | `int` |  |  |
 
-> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:105).
+> **Inherited:** Documentation from [`BeaconOutput`](#beaconoutput) (include/beacon_common.h:108).
 
 ---
 
@@ -167,10 +167,10 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `https_request`
 
-`function` | [beacon3.c:317](../../beacon3.c#L317)
+`function` | [beacon3.c:342](../../beacon3.c#L342)
 
 ```c
-char* https_request(const char* url, const char* method, const char* post_data)
+char *https_request(const char *url, const char *method, const char *post_data)
 ```
 
 === HTTPS REQUEST ===
@@ -179,11 +179,11 @@ char* https_request(const char* url, const char* method, const char* post_data)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `method` | `char*` |  |  |
-| `post_data` | `char*` |  |  |
+| `url` | `char *` |  |  |
+| `method` | `char *` |  |  |
+| `post_data` | `char *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`download_bof`](#download_bof), [`main`](#main)
 
@@ -193,10 +193,10 @@ char* https_request(const char* url, const char* method, const char* post_data)
 
 ### `base64_encode`
 
-`function` | [beacon3.c:406](../../beacon3.c#L406)
+`function` | [beacon3.c:436](../../beacon3.c#L436)
 
 ```c
-char* base64_encode(const unsigned char* input, int len)
+char *base64_encode(const unsigned char *input, int len)
 ```
 
 === BASE64 ===
@@ -205,10 +205,10 @@ char* base64_encode(const unsigned char* input, int len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `unsigned char*` |  |  |
+| `input` | `unsigned char *` |  |  |
 | `len` | `int` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -218,20 +218,20 @@ char* base64_encode(const unsigned char* input, int len)
 
 ### `base64_decode`
 
-`function` | [beacon3.c:423](../../beacon3.c#L423)
+`function` | [beacon3.c:454](../../beacon3.c#L454)
 
 ```c
-unsigned char* base64_decode(const char* input, int* len)
+unsigned char *base64_decode(const char *input, int *len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `input` | `char*` |  |  |
-| `len` | `int*` |  |  |
+| `input` | `char *` |  |  |
+| `len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Called by:* [`main`](#main)
 
@@ -241,10 +241,10 @@ unsigned char* base64_decode(const char* input, int* len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon3.c:446](../../beacon3.c#L446)
+`function` | [beacon3.c:480](../../beacon3.c#L480)
 
 ```c
-unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* plaintext, size_t len, int* out_len)
+unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
 ```
 
 === AES CFB ===
@@ -253,13 +253,13 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `plaintext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `plaintext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -271,23 +271,23 @@ unsigned char* aes256_cfb_encrypt(const unsigned char* key, const unsigned char*
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon3.c:474](../../beacon3.c#L474)
+`function` | [beacon3.c:514](../../beacon3.c#L514)
 
 ```c
-unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char* iv, const unsigned char* ciphertext, size_t len, int* out_len)
+unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
 ```
 
 **Parameters**
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `key` | `unsigned char*` |  |  |
-| `iv` | `unsigned char*` |  |  |
-| `ciphertext` | `unsigned char*` |  |  |
+| `key` | `unsigned char *` |  |  |
+| `iv` | `unsigned char *` |  |  |
+| `ciphertext` | `unsigned char *` |  |  |
 | `len` | `size_t` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
 
@@ -299,10 +299,10 @@ unsigned char* aes256_cfb_decrypt(const unsigned char* key, const unsigned char*
 
 ### `exec_cmd`
 
-`function` | [beacon3.c:504](../../beacon3.c#L504)
+`function` | [beacon3.c:550](../../beacon3.c#L550)
 
 ```c
-char* exec_cmd(const char* cmd, int* out_len)
+char *exec_cmd(const char *cmd, int *out_len)
 ```
 
 === EXEC CMD ===
@@ -311,10 +311,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `cmd` | `char*` |  |  |
-| `out_len` | `int*` |  |  |
+| `cmd` | `char *` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -324,10 +324,10 @@ char* exec_cmd(const char* cmd, int* out_len)
 
 ### `RunELF`
 
-`function` | [beacon3.c:531](../../beacon3.c#L531)
+`function` | [beacon3.c:584](../../beacon3.c#L584)
 
 ```c
-int RunELF(const char* functionname, unsigned char* elf_data, uint32_t filesize, unsigned char* argumentdata, int argumentSize)
+int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
 ```
 
 ELF BOF loader.
@@ -338,15 +338,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `functionname` | `char*` |  |  |
-| `elf_data` | `unsigned char*` |  |  |
+| `functionname` | `char *` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `argumentdata` | `unsigned char*` |  |  |
+| `argumentdata` | `unsigned char *` |  |  |
 | `argumentSize` | `int` |  |  |
 
 **Returns:** `int`
 
-> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:147).
+> **Inherited:** Documentation from [`RunELF`](#runelf) (include/beacon_common.h:164).
 
 *Called by:* [`run_bof_and_capture`](#run_bof_and_capture)
 
@@ -356,15 +356,15 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [beacon3.c:912](../../beacon3.c#L912)
+`function` | [beacon3.c:1083](../../beacon3.c#L1083)
 
 ```c
-char* get_local_ips()
+char *get_local_ips()
 ```
 
 === GET LOCAL IPs ===
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Called by:* [`main`](#main)
 
@@ -374,10 +374,10 @@ char* get_local_ips()
 
 ### `download_bof`
 
-`function` | [beacon3.c:941](../../beacon3.c#L941)
+`function` | [beacon3.c:1118](../../beacon3.c#L1118)
 
 ```c
-unsigned char* download_bof(const char* url, size_t* out_size)
+unsigned char *download_bof(const char *url, size_t *out_size)
 ```
 
 === DOWNLOAD BOF ===
@@ -386,10 +386,10 @@ unsigned char* download_bof(const char* url, size_t* out_size)
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `url` | `char*` |  |  |
-| `out_size` | `size_t*` |  |  |
+| `url` | `char *` |  |  |
+| `out_size` | `size_t *` |  |  |
 
-**Returns:** `unsigned char*`
+**Returns:** `unsigned char *`
 
 *Calls:* [`https_request`](#https_request)
 
@@ -401,10 +401,10 @@ unsigned char* download_bof(const char* url, size_t* out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [beacon3.c:963](../../beacon3.c#L963)
+`function` | [beacon3.c:1141](../../beacon3.c#L1141)
 
 ```c
-char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args, int arglen, int* out_len)
+char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
 ```
 
 === RUN BOF AND CAPTURE ===
@@ -413,13 +413,13 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 | Name | Type | Default | Description |
 |---|---|---|---|
-| `elf_data` | `unsigned char*` |  |  |
+| `elf_data` | `unsigned char *` |  |  |
 | `filesize` | `uint32_t` |  |  |
-| `args` | `char*` |  |  |
+| `args` | `char *` |  |  |
 | `arglen` | `int` |  |  |
-| `out_len` | `int*` |  |  |
+| `out_len` | `int *` |  |  |
 
-**Returns:** `char*`
+**Returns:** `char *`
 
 *Calls:* [`RunELF`](#runelf)
 
@@ -431,7 +431,7 @@ char* run_bof_and_capture(unsigned char* elf_data, uint32_t filesize, char* args
 
 ### `main`
 
-`function` | [beacon3.c:1007](../../beacon3.c#L1007)
+`function` | [beacon3.c:1187](../../beacon3.c#L1187)
 
 ```c
 int main()
