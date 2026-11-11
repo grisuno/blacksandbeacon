@@ -95,30 +95,28 @@ class TestC2BeaconBOFIntegration:
 				time.sleep(0.1)
 		return False
 
-	def _wait_for_bof_result(self, state, client_id, timeout=15):
-		"""Poll for BOF result in logs."""
+	def _wait_for_bof_result(self, state, client_id, timeout=30):
+		"""Poll for BOF result in the CSV log; returns the output column."""
+		import csv
 		start = time.time()
 		log_file = Path(state.cfg["log_dir"]) / f"{client_id}.log"
-		print(f"Waiting for BOF result in {log_file}...")
-		
+
 		while time.time() - start < timeout:
 			if log_file.exists():
 				content = log_file.read_text()
-				print(f"Log content: {content[:200]}...")
-				if "whoami" in content or "uid=" in content:
-					lines = content.strip().split('\n')
-					if len(lines) > 1:
-						parts = lines[-1].split(',')
-						if len(parts) >= 12:
-							return parts[11]
+				rows = list(csv.reader(content.strip().splitlines()))
+				# Header: client_id,os,pid,hostname,ips,user,discovered_ips,
+				#         result_portscan,result_pwd,command,output
+				if len(rows) > 1 and len(rows[-1]) >= 11:
+					output = rows[-1][10]
+					if output.strip():
+						return output
 			time.sleep(0.5)
 		print("Timeout waiting for BOF result")
 		return None
 
 	def test_beacon_executes_whoami_bof(self):
 		"""Test: Beacon executes whoami BOF and returns output."""
-		import pytest
-		pytest.skip("Integration test has known replay protection encryption mismatch - debugging needed")
 		
 		# 1. Build beacon if needed
 		beacon_path = ROOT / "build" / "beacon"
@@ -126,9 +124,12 @@ class TestC2BeaconBOFIntegration:
 			result = subprocess.run(["make", "beacon"], cwd=ROOT, capture_output=True, text=True)
 			assert result.returncode == 0, f"Build failed: {result.stderr}"
 		
-		# 2. Copy whoami BOF to upload directory
+		# 2. Copy whoami BOF to upload directory (build it if missing)
 		whoami_bof = ROOT / "build" / "bof" / "whoami.x64.o"
-		assert whoami_bof.exists(), "whoami BOF not built"
+		if not whoami_bof.exists():
+			result = subprocess.run(["make", "bof-whoami"], cwd=ROOT,
+			                        capture_output=True, text=True)
+			assert result.returncode == 0, f"BOF build failed: {result.stderr}"
 		shutil.copy(whoami_bof, self.upload_dir / "whoami.x64.o")
 		
 		# 3. Write config.json for beacon
@@ -183,6 +184,10 @@ class TestC2BeaconBOFIntegration:
 		# Load runtime config for server
 		os.environ["BSB_CONFIG"] = str(config_path)
 		self.cfg = load_runtime_config()
+		# load_runtime_config only wires log_dir/upload_dir from the c2
+		# section (absent here); point them at the temp dirs explicitly.
+		self.cfg["log_dir"] = str(self.log_dir)
+		self.cfg["upload_dir"] = str(self.upload_dir)
 		print(f"Loaded config URL: {self.cfg.get('url', 'NOT SET')}")
 		print(f"Loaded config port: {self.cfg.get('port', 'NOT SET')}")
 		print(f"Loaded config encryption_key: {'SET' if self.cfg.get('encryption_key') else 'NOT SET'}")
@@ -239,7 +244,7 @@ class TestC2BeaconBOFIntegration:
 			# Wait for BOF result
 			print("Waiting for BOF result...")
 			result = self._wait_for_bof_result(state, "test_beacon", timeout=30)
-			
+
 			if result is None:
 				# Debug output
 				for stream in [beacon_proc.stdout, beacon_proc.stderr]:
@@ -249,7 +254,7 @@ class TestC2BeaconBOFIntegration:
 						if line:
 							prefix = 'stdout' if stream == beacon_proc.stdout else 'stderr'
 							print(f"Beacon {prefix}: {line.strip()}")
-				
+
 				print(f"Server commands: {state.commands}")
 				print(f"Server results: {list(state.results.keys())}")
 				print(f"Connected clients: {state.connected_clients}")
@@ -257,9 +262,12 @@ class TestC2BeaconBOFIntegration:
 				if log_file.exists():
 					content = log_file.read_text()
 					print(f"Log file content: {content[:500]}")
-			
+
 			assert result is not None, "No BOF result received"
-			assert "uid=" in result, f"Expected uid in output, got: {result}"
+			# The whoami BOF prints "[whoami] uid=<euid>"; the beacon runs as
+			# the same user as this test, so the uid must match os.geteuid().
+			expected = f"[whoami] uid={os.geteuid()}"
+			assert expected in result, f"Expected '{expected}' in output, got: {result!r}"
 			print(f"✓ BOF output verified: {result.strip()}")
 			
 			# Cleanup
@@ -291,8 +299,12 @@ class TestC2BeaconBOFIntegration:
 
 def test_c2_beacon_bof_integration():
 	"""Pytest entry point."""
-	import pytest
-	pytest.skip("Integration test has known replay protection encryption mismatch - debugging needed")
+	_test = TestC2BeaconBOFIntegration()
+	_test.setup_method()
+	try:
+		_test.test_beacon_executes_whoami_bof()
+	finally:
+		_test.teardown_method()
 
 
 if __name__ == "__main__":

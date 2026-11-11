@@ -1,6 +1,6 @@
-# `beacon5.c`
+# `legacy/beacon5.c`
 
-> Source: [beacon5.c:1](../../beacon5.c#L1) | language `c` | coverage 38.5% | [API index](../index.md)
+> Source: [legacy/beacon5.c:1](../../legacy/beacon5.c#L1) | language `c` | coverage 38.5% | [API index](../index.md)
 
 ## Contents
 
@@ -33,49 +33,49 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
-    n_beacon5_c__download_bof(["download_bof"])
-    n_beacon5_c__https_request(["https_request"])
-    n_beacon5_c__run_bof_and_capture(["run_bof_and_capture"])
-    n_beacon5_c__RunELF(["RunELF"])
-    n_beacon5_c__mesh_propagate(["mesh_propagate"])
-    n_beacon5_c__mesh_mark_seen(["mesh_mark_seen"])
-    n_beacon5_c__mesh_send_to_peer(["mesh_send_to_peer"])
-    n_beacon5_c__mesh_discovery_thread(["mesh_discovery_thread"])
-    n_beacon5_c__mesh_add_peer(["mesh_add_peer"])
-    n_beacon5_c__mesh_cleanup_peers(["mesh_cleanup_peers"])
-    n_beacon5_c__mesh_listener_thread(["mesh_listener_thread"])
-    n_beacon5_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
-    n_beacon5_c__base64_decode(["base64_decode"])
-    n_beacon5_c__exec_cmd(["exec_cmd"])
-    n_beacon5_c__mesh_is_seen(["mesh_is_seen"])
-    n_beacon5_c__mesh_send_message(["mesh_send_message"])
-    n_beacon5_c__main(["main"])
-    n_beacon5_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
-    n_beacon5_c__base64_encode(["base64_encode"])
-    n_beacon5_c__download_bof --> n_beacon5_c__https_request
-    n_beacon5_c__run_bof_and_capture --> n_beacon5_c__RunELF
-    n_beacon5_c__mesh_propagate --> n_beacon5_c__mesh_mark_seen
-    n_beacon5_c__mesh_propagate --> n_beacon5_c__mesh_send_to_peer
-    n_beacon5_c__mesh_discovery_thread --> n_beacon5_c__mesh_add_peer
-    n_beacon5_c__mesh_discovery_thread --> n_beacon5_c__mesh_cleanup_peers
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__aes256_cfb_decrypt
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__base64_decode
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__download_bof
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__exec_cmd
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__https_request
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__mesh_is_seen
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__mesh_mark_seen
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__mesh_send_message
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__mesh_send_to_peer
-    n_beacon5_c__mesh_listener_thread --> n_beacon5_c__run_bof_and_capture
-    n_beacon5_c__mesh_send_message --> n_beacon5_c__mesh_mark_seen
-    n_beacon5_c__mesh_send_message --> n_beacon5_c__mesh_send_to_peer
-    n_beacon5_c__main --> n_beacon5_c__aes256_cfb_decrypt
-    n_beacon5_c__main --> n_beacon5_c__aes256_cfb_encrypt
-    n_beacon5_c__main --> n_beacon5_c__base64_decode
-    n_beacon5_c__main --> n_beacon5_c__base64_encode
-    n_beacon5_c__main --> n_beacon5_c__download_bof
-    n_beacon5_c__main --> n_beacon5_c__exec_cmd
+    n_legacy_beacon5_c__download_bof(["download_bof"])
+    n_legacy_beacon5_c__https_request(["https_request"])
+    n_legacy_beacon5_c__run_bof_and_capture(["run_bof_and_capture"])
+    n_legacy_beacon5_c__RunELF(["RunELF"])
+    n_legacy_beacon5_c__mesh_propagate(["mesh_propagate"])
+    n_legacy_beacon5_c__mesh_mark_seen(["mesh_mark_seen"])
+    n_legacy_beacon5_c__mesh_send_to_peer(["mesh_send_to_peer"])
+    n_legacy_beacon5_c__mesh_discovery_thread(["mesh_discovery_thread"])
+    n_legacy_beacon5_c__mesh_add_peer(["mesh_add_peer"])
+    n_legacy_beacon5_c__mesh_cleanup_peers(["mesh_cleanup_peers"])
+    n_legacy_beacon5_c__mesh_listener_thread(["mesh_listener_thread"])
+    n_legacy_beacon5_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
+    n_legacy_beacon5_c__base64_decode(["base64_decode"])
+    n_legacy_beacon5_c__exec_cmd(["exec_cmd"])
+    n_legacy_beacon5_c__mesh_is_seen(["mesh_is_seen"])
+    n_legacy_beacon5_c__mesh_send_message(["mesh_send_message"])
+    n_legacy_beacon5_c__main(["main"])
+    n_legacy_beacon5_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
+    n_legacy_beacon5_c__base64_encode(["base64_encode"])
+    n_legacy_beacon5_c__download_bof --> n_legacy_beacon5_c__https_request
+    n_legacy_beacon5_c__run_bof_and_capture --> n_legacy_beacon5_c__RunELF
+    n_legacy_beacon5_c__mesh_propagate --> n_legacy_beacon5_c__mesh_mark_seen
+    n_legacy_beacon5_c__mesh_propagate --> n_legacy_beacon5_c__mesh_send_to_peer
+    n_legacy_beacon5_c__mesh_discovery_thread --> n_legacy_beacon5_c__mesh_add_peer
+    n_legacy_beacon5_c__mesh_discovery_thread --> n_legacy_beacon5_c__mesh_cleanup_peers
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__aes256_cfb_decrypt
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__base64_decode
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__download_bof
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__exec_cmd
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__https_request
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__mesh_is_seen
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__mesh_mark_seen
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__mesh_send_message
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__mesh_send_to_peer
+    n_legacy_beacon5_c__mesh_listener_thread --> n_legacy_beacon5_c__run_bof_and_capture
+    n_legacy_beacon5_c__mesh_send_message --> n_legacy_beacon5_c__mesh_mark_seen
+    n_legacy_beacon5_c__mesh_send_message --> n_legacy_beacon5_c__mesh_send_to_peer
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__aes256_cfb_decrypt
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__aes256_cfb_encrypt
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__base64_decode
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__base64_encode
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__download_bof
+    n_legacy_beacon5_c__main --> n_legacy_beacon5_c__exec_cmd
 ```
 
 ## Structs
@@ -84,7 +84,7 @@ flowchart LR
 
 ### `MemoryStruct`
 
-`struct` | [beacon5.c:61](../../beacon5.c#L61)
+`struct` | [legacy/beacon5.c:61](../../legacy/beacon5.c#L61)
 
 ```c
 struct MemoryStruct
@@ -98,7 +98,7 @@ struct MemoryStruct
 
 ### `peer_t`
 
-`struct` | [beacon5.c:69](../../beacon5.c#L69)
+`struct` | [legacy/beacon5.c:69](../../legacy/beacon5.c#L69)
 
 ```c
 typedef struct
@@ -112,7 +112,7 @@ typedef struct
 
 ### `mesh_msg_t`
 
-`struct` | [beacon5.c:77](../../beacon5.c#L77)
+`struct` | [legacy/beacon5.c:77](../../legacy/beacon5.c#L77)
 
 ```c
 typedef struct
@@ -124,7 +124,7 @@ typedef struct
 
 ### `Trampoline`
 
-`struct` | [beacon5.c:102](../../beacon5.c#L102)
+`struct` | [legacy/beacon5.c:102](../../legacy/beacon5.c#L102)
 
 ```c
 typedef struct
@@ -138,7 +138,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [beacon5.c:111](../../beacon5.c#L111)
+`struct` | [legacy/beacon5.c:111](../../legacy/beacon5.c#L111)
 
 ```c
 typedef struct
@@ -150,7 +150,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon5.c:118](../../beacon5.c#L118)
+`struct` | [legacy/beacon5.c:118](../../legacy/beacon5.c#L118)
 
 ```c
 typedef struct
@@ -166,7 +166,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [beacon5.c:239](../../beacon5.c#L239)
+`function` | [legacy/beacon5.c:239](../../legacy/beacon5.c#L239)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -188,7 +188,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [beacon5.c:256](../../beacon5.c#L256)
+`function` | [legacy/beacon5.c:256](../../legacy/beacon5.c#L256)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -212,7 +212,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `https_request`
 
-`function` | [beacon5.c:385](../../beacon5.c#L385)
+`function` | [legacy/beacon5.c:385](../../legacy/beacon5.c#L385)
 
 ```c
 char *https_request(const char *url, const char *method, const char *post_data)
@@ -238,7 +238,7 @@ char *https_request(const char *url, const char *method, const char *post_data)
 
 ### `base64_encode`
 
-`function` | [beacon5.c:479](../../beacon5.c#L479)
+`function` | [legacy/beacon5.c:479](../../legacy/beacon5.c#L479)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -263,7 +263,7 @@ char *base64_encode(const unsigned char *input, int len)
 
 ### `base64_decode`
 
-`function` | [beacon5.c:497](../../beacon5.c#L497)
+`function` | [legacy/beacon5.c:497](../../legacy/beacon5.c#L497)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -286,7 +286,7 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon5.c:523](../../beacon5.c#L523)
+`function` | [legacy/beacon5.c:523](../../legacy/beacon5.c#L523)
 
 ```c
 unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
@@ -306,8 +306,6 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main)
 
 ---
@@ -316,7 +314,7 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon5.c:557](../../beacon5.c#L557)
+`function` | [legacy/beacon5.c:557](../../legacy/beacon5.c#L557)
 
 ```c
 unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
@@ -334,8 +332,6 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main), [`mesh_listener_thread`](#mesh_listener_thread)
 
 ---
@@ -344,7 +340,7 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 ### `exec_cmd`
 
-`function` | [beacon5.c:593](../../beacon5.c#L593)
+`function` | [legacy/beacon5.c:593](../../legacy/beacon5.c#L593)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
@@ -369,7 +365,7 @@ char *exec_cmd(const char *cmd, int *out_len)
 
 ### `RunELF`
 
-`function` | [beacon5.c:627](../../beacon5.c#L627)
+`function` | [legacy/beacon5.c:627](../../legacy/beacon5.c#L627)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -401,7 +397,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [beacon5.c:1126](../../beacon5.c#L1126)
+`function` | [legacy/beacon5.c:1126](../../legacy/beacon5.c#L1126)
 
 ```c
 char *get_local_ips()
@@ -419,7 +415,7 @@ char *get_local_ips()
 
 ### `download_bof`
 
-`function` | [beacon5.c:1161](../../beacon5.c#L1161)
+`function` | [legacy/beacon5.c:1161](../../legacy/beacon5.c#L1161)
 
 ```c
 unsigned char *download_bof(const char *url, size_t *out_size)
@@ -446,7 +442,7 @@ unsigned char *download_bof(const char *url, size_t *out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [beacon5.c:1184](../../beacon5.c#L1184)
+`function` | [legacy/beacon5.c:1184](../../legacy/beacon5.c#L1184)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
@@ -476,7 +472,7 @@ char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args
 
 ### `mesh_mark_seen`
 
-`function` | [beacon5.c:1231](../../beacon5.c#L1231)
+`function` | [legacy/beacon5.c:1231](../../legacy/beacon5.c#L1231)
 
 ```c
 void mesh_mark_seen(const char *msg_id)
@@ -496,7 +492,7 @@ void mesh_mark_seen(const char *msg_id)
 
 ### `mesh_is_seen`
 
-`function` | [beacon5.c:1240](../../beacon5.c#L1240)
+`function` | [legacy/beacon5.c:1240](../../legacy/beacon5.c#L1240)
 
 ```c
 int mesh_is_seen(const char *msg_id)
@@ -518,7 +514,7 @@ int mesh_is_seen(const char *msg_id)
 
 ### `mesh_add_peer`
 
-`function` | [beacon5.c:1255](../../beacon5.c#L1255)
+`function` | [legacy/beacon5.c:1255](../../legacy/beacon5.c#L1255)
 
 ```c
 void mesh_add_peer(const char *ip, int port)
@@ -539,7 +535,7 @@ void mesh_add_peer(const char *ip, int port)
 
 ### `mesh_cleanup_peers`
 
-`function` | [beacon5.c:1283](../../beacon5.c#L1283)
+`function` | [legacy/beacon5.c:1283](../../legacy/beacon5.c#L1283)
 
 ```c
 void mesh_cleanup_peers()
@@ -553,7 +549,7 @@ void mesh_cleanup_peers()
 
 ### `mesh_send_to_peer`
 
-`function` | [beacon5.c:1300](../../beacon5.c#L1300)
+`function` | [legacy/beacon5.c:1300](../../legacy/beacon5.c#L1300)
 
 ```c
 int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)
@@ -577,7 +573,7 @@ int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)
 
 ### `mesh_propagate`
 
-`function` | [beacon5.c:1324](../../beacon5.c#L1324)
+`function` | [legacy/beacon5.c:1324](../../legacy/beacon5.c#L1324)
 
 ```c
 void mesh_propagate(const char *command)
@@ -599,7 +595,7 @@ void mesh_propagate(const char *command)
 
 ### `mesh_discovery_thread`
 
-`function` | [beacon5.c:1356](../../beacon5.c#L1356)
+`function` | [legacy/beacon5.c:1356](../../legacy/beacon5.c#L1356)
 
 ```c
 void *mesh_discovery_thread(void *arg)
@@ -621,7 +617,7 @@ void *mesh_discovery_thread(void *arg)
 
 ### `mesh_listener_thread`
 
-`function` | [beacon5.c:1447](../../beacon5.c#L1447)
+`function` | [legacy/beacon5.c:1447](../../legacy/beacon5.c#L1447)
 
 ```c
 void *mesh_listener_thread(void *arg)
@@ -643,7 +639,7 @@ void *mesh_listener_thread(void *arg)
 
 ### `mesh_send_message`
 
-`function` | [beacon5.c:1667](../../beacon5.c#L1667)
+`function` | [legacy/beacon5.c:1667](../../legacy/beacon5.c#L1667)
 
 ```c
 void mesh_send_message(int type, const char *target, const char *payload)
@@ -667,7 +663,7 @@ void mesh_send_message(int type, const char *target, const char *payload)
 
 ### `main`
 
-`function` | [beacon5.c:1702](../../beacon5.c#L1702)
+`function` | [legacy/beacon5.c:1702](../../legacy/beacon5.c#L1702)
 
 ```c
 int main(int argc, char **argv)
@@ -694,7 +690,7 @@ int main(int argc, char **argv)
 
 ### `_GNU_SOURCE`
 
-`macro` | [beacon5.c:1](../../beacon5.c#L1)
+`macro` | [legacy/beacon5.c:1](../../legacy/beacon5.c#L1)
 
 ```c
 #define _GNU_SOURCE
@@ -706,7 +702,7 @@ int main(int argc, char **argv)
 
 ### `MAX_PEERS`
 
-`macro` | [beacon5.c:36](../../beacon5.c#L36)
+`macro` | [legacy/beacon5.c:36](../../legacy/beacon5.c#L36)
 
 ```c
 #define MAX_PEERS
@@ -718,7 +714,7 @@ int main(int argc, char **argv)
 
 ### `DISCOVERY_PORT`
 
-`macro` | [beacon5.c:37](../../beacon5.c#L37)
+`macro` | [legacy/beacon5.c:37](../../legacy/beacon5.c#L37)
 
 ```c
 #define DISCOVERY_PORT
@@ -730,7 +726,7 @@ int main(int argc, char **argv)
 
 ### `DISCOVERY_INTERVAL`
 
-`macro` | [beacon5.c:38](../../beacon5.c#L38)
+`macro` | [legacy/beacon5.c:38](../../legacy/beacon5.c#L38)
 
 ```c
 #define DISCOVERY_INTERVAL
@@ -742,7 +738,7 @@ int main(int argc, char **argv)
 
 ### `MAX_TTL`
 
-`macro` | [beacon5.c:39](../../beacon5.c#L39)
+`macro` | [legacy/beacon5.c:39](../../legacy/beacon5.c#L39)
 
 ```c
 #define MAX_TTL
@@ -754,7 +750,7 @@ int main(int argc, char **argv)
 
 ### `MESH_MSG_SIZE`
 
-`macro` | [beacon5.c:40](../../beacon5.c#L40)
+`macro` | [legacy/beacon5.c:40](../../legacy/beacon5.c#L40)
 
 ```c
 #define MESH_MSG_SIZE
@@ -766,7 +762,7 @@ int main(int argc, char **argv)
 
 ### `C2_URL`
 
-`macro` | [beacon5.c:42](../../beacon5.c#L42)
+`macro` | [legacy/beacon5.c:42](../../legacy/beacon5.c#L42)
 
 ```c
 #define C2_URL
@@ -778,7 +774,7 @@ int main(int argc, char **argv)
 
 ### `CLIENT_ID`
 
-`macro` | [beacon5.c:43](../../beacon5.c#L43)
+`macro` | [legacy/beacon5.c:43](../../legacy/beacon5.c#L43)
 
 ```c
 #define CLIENT_ID
@@ -790,7 +786,7 @@ int main(int argc, char **argv)
 
 ### `MALEABLE`
 
-`macro` | [beacon5.c:44](../../beacon5.c#L44)
+`macro` | [legacy/beacon5.c:44](../../legacy/beacon5.c#L44)
 
 ```c
 #define MALEABLE
@@ -802,7 +798,7 @@ int main(int argc, char **argv)
 
 ### `USER_AGENTS_COUNT`
 
-`macro` | [beacon5.c:45](../../beacon5.c#L45)
+`macro` | [legacy/beacon5.c:45](../../legacy/beacon5.c#L45)
 
 ```c
 #define USER_AGENTS_COUNT

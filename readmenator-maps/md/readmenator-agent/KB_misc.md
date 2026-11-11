@@ -1,5 +1,15 @@
 # Subsystem: misc
 
+## beacons/v1/beacon.c
+- Layer: utility
+- Language: c
+- Symbols:
+  - `report_result` (function, line 24) `static void report_result(const bsb_config_t *cfg, const char *command, const char *output)`
+  - `execute_command` (function, line 104) `static char *execute_command(const bsb_config_t *cfg, const char *command)`
+  - `main` (function, line 167) `int main(void)`
+  - `_GNU_SOURCE` (macro, line 13) `#define _GNU_SOURCE`
+- Depends on: `include/beacon_common.h`
+
 ## beacons/v2/beacon.c
 - Layer: utility
 - Language: c

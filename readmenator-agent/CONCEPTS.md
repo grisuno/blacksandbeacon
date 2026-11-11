@@ -3,55 +3,55 @@
 Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
 
 - `mutants` | files=74 | mentions=75 | `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`, `mutants/src/certificate_pinning___tofu.c`, `mutants/src/command_execution_via_execve.c`, `mutants/src/containerized_build_+_sbom.c`
-- `contract` | files=65 | mentions=72 | `contract_agent.py`, `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`, `mutants/src/certificate_pinning___tofu.c`, `mutants/src/command_execution_via_execve.c`
+- `contract` | files=65 | mentions=73 | `contract_agent.py`, `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`, `mutants/src/certificate_pinning___tofu.c`, `mutants/src/command_execution_via_execve.c`
 - `generated` | files=61 | mentions=63 | `include/config_autogen.c`, `include/config_py.py`, `include/config_py_autogen.py`, `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`
 - `implementation` | files=60 | mentions=64 | `config/generate_parsers.py`, `contract_agent.py`, `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`, `mutants/src/certificate_pinning___tofu.c`
 - `auto` | files=59 | mentions=59 | `include/config_autogen.c`, `include/config_py_autogen.py`, `mutants/src/async_i_o_for_beacon.c`, `mutants/src/beacon_common.c_extraction.c`, `mutants/src/beacon_heartbeat___health_endpoint.c`, `mutants/src/bof_api_versioning.c`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/src/bof_streaming_(large_outputs).c`, `mutants/src/c2_rest_api.c`, `mutants/src/certificate_pinning___tofu.c`
-- `beacon` | files=53 | mentions=305 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v1/gopher_beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `bof/cat/cat.c`
-- `bof` | files=51 | mentions=208 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof.c`, `bof/cat/bof.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`
+- `beacon` | files=53 | mentions=311 | `beacon.h`, `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`
+- `bof` | files=52 | mentions=214 | `bof.c`, `bof/cat/bof.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/is_sudo/bof.c`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/bof.c`, `bof/userenum/userenum.c`
 - `process` | files=50 | mentions=50 | `c2/server.py`, `cJSON.c`, `contract_agent.py`, `include/async_i_o_for_beacon.h`, `include/beacon_common.h`, `include/beacon_heartbeat___health_endpoint.h`, `include/bof_api_versioning.h`, `include/bof_path_traversal_hardening.h`, `include/c2_rest_api.h`, `include/cJSON.c`
 - `include` | files=49 | mentions=102 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `bof/suid_enum/bof.c`, `config/generate_parsers.py`, `include/aes.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/async_i_o_for_beacon.h`, `include/beacon.h`
-- `config` | files=33 | mentions=248 | `c2/server.py`, `config/generate_parsers.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_autogen.c`, `include/config_autogen.h`, `include/config_py.py`, `include/config_py_autogen.py`
+- `config` | files=32 | mentions=248 | `c2/server.py`, `config/generate_parsers.py`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_autogen.c`, `include/config_autogen.h`, `include/config_py.py`, `include/config_py_autogen.py`, `include/unified_config_schema.h`
 - `placeholder` | files=31 | mentions=31 | `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_async_i_o_for_beacon_c.c`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint_c.c`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_api_versioning_c.c`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_path_traversal_hardening_c.c`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`
-- `not` | files=29 | mentions=82 | `aes.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/aes.c`, `include/cJSON.c`, `include/config_autogen.c`, `include/config_py_autogen.py`, `mutants/tests/test_beacon_build.py`, `mutants/tests/test_bof_compile.py`
-- `output` | files=27 | mentions=148 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`
+- `not` | files=29 | mentions=83 | `aes.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `include/aes.c`, `include/cJSON.c`, `include/config_autogen.c`, `include/config_py_autogen.py`, `mutants/tests/test_beacon_build.py`, `mutants/tests/test_bof_compile.py`
+- `output` | files=28 | mentions=152 | `beacon.h`, `bof/cat/cat.c`, `bof/include/beacon_api.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`, `include/beacon.h`, `include/beacon_common.c`
 - `bdd` | files=27 | mentions=44 | `contract_agent.py`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_common.c_extraction.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning.py`, `mutants/tests/test_certificate_pinning___tofu.py`
-- `api` | files=26 | mentions=64 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/include/beacon_api.h`, `bof/suid_enum/bof.c`, `gopher_beacon.c`, `include/beacon.h`
+- `api` | files=26 | mentions=64 | `beacon.h`, `bof/include/beacon_api.h`, `bof/suid_enum/bof.c`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/bof_api_versioning.h`, `include/c2_rest_api.h`, `legacy/beacon3.c`, `legacy/beacon5.c`
+- `run` | files=25 | mentions=60 | `contract_agent.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config_autogen.c`, `include/config_py_autogen.py`, `install.sh`, `legacy/beacon3.c`, `legacy/beacon5.c`, `legacy/beacon6.c`, `legacy/beacon_p2p.c`
 - `style` | files=25 | mentions=32 | `c2/server.py`, `include/beacon_common.h`, `include/config.c`, `include/config_autogen.c`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_common.c_extraction.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`
-- `run` | files=24 | mentions=58 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `contract_agent.py`, `gopher_beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config_autogen.c`
-- `aes` | files=23 | mentions=125 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `include/aes.c`
+- `aes` | files=23 | mentions=125 | `aes.c`, `aes.h`, `c2/server.py`, `include/aes.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.h`, `include/config.c`, `include/config.h`
+- `get` | files=23 | mentions=70 | `aes.c`, `bof/is_sudo/is_sudo.c`, `c2/server.py`, `cJSON.c`, `cJSON.h`, `include/aes.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/cJSON.h`
 - `derived` | files=23 | mentions=34 | `include/config_py.py`, `include/config_py_autogen.py`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_common.c_extraction.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`
-- `get` | files=22 | mentions=70 | `aes.c`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/is_sudo/is_sudo.c`, `c2/server.py`, `cJSON.c`, `cJSON.h`
-- `decrypt` | files=22 | mentions=45 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
-- `encrypt` | files=22 | mentions=39 | `aes.c`, `aes.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`
+- `key` | files=22 | mentions=153 | `aes.c`, `aes.h`, `include/aes.c`, `include/aes.h`, `include/config.c`, `include/config.h`, `include/config_py.py`, `include/config_py_autogen.py`, `include/hkdf_key_derivation.h`, `mutants/src/hkdf_key_derivation.c`
+- `decrypt` | files=22 | mentions=45 | `aes.c`, `aes.h`, `c2/server.py`, `gopher_c2.py`, `include/aes.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.h`, `legacy/beacon3.c`
+- `encrypt` | files=22 | mentions=39 | `aes.c`, `aes.h`, `c2/server.py`, `gopher_c2.py`, `include/aes.c`, `include/aes.h`, `include/aes_cfb.c`, `include/aes_cfb.h`, `include/beacon_common.h`, `legacy/beacon3.c`
 - `must` | files=22 | mentions=34 | `c2/server.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `mutants/tests/test_bof_compile.py`, `mutants/tests/test_c2_http_e2e.py`, `mutants/tests/test_c2_server.py`, `mutants/tests/test_certificate_pinning.py`, `mutants/tests/test_config.py`, `mutants/tests/test_crypto.py`
-- `key` | files=21 | mentions=148 | `aes.c`, `aes.h`, `include/aes.c`, `include/aes.h`, `include/config.c`, `include/config.h`, `include/config_py.py`, `include/config_py_autogen.py`, `include/hkdf_key_derivation.h`, `mutants/src/hkdf_key_derivation.c`
+- `command` | files=21 | mentions=62 | `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `c2/server.py`, `contract_agent.py`, `gopher_c2.py`, `include/beacon_common.c`, `include/command_execution_via_execve.h`, `legacy/beacon_p2p.c`, `mutants/src/command_execution_via_execve.c`
 - `error` | files=21 | mentions=46 | `beacon.h`, `bof/include/beacon_api.h`, `cJSON.c`, `cJSON.h`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/cJSON.h`, `include/config.c`
 - `fail` | files=21 | mentions=30 | `cJSON.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`
 - `fails` | files=21 | mentions=29 | `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`
-- `return` | files=20 | mentions=127 | `beacon6.c`, `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `contract_agent.py`, `include/beacon_common.c`, `include/cJSON.c`, `include/config.c`, `include/config_autogen.c`, `mutants/tests/test_beacon_build.py`
-- `command` | files=20 | mentions=61 | `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `c2/server.py`, `contract_agent.py`, `gopher_c2.py`, `include/beacon_common.c`, `include/command_execution_via_execve.h`, `mutants/src/command_execution_via_execve.c`
+- `return` | files=20 | mentions=127 | `bof/include/syscalls.h`, `c2/server.py`, `cJSON.c`, `contract_agent.py`, `include/beacon_common.c`, `include/cJSON.c`, `include/config.c`, `include/config_autogen.c`, `legacy/beacon6.c`, `mutants/tests/test_beacon_build.py`
 - `path` | files=19 | mentions=82 | `bof/suid_enum/bof.c`, `c2/server.py`, `include/bof_path_traversal_hardening.h`, `include/config.h`, `include/config_autogen.h`, `mutants/src/bof_path_traversal_hardening.c`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_path_traversal_hardening_c.c`, `mutants/tests/test_c2_http_e2e.py`, `mutants/tests/test_c2_server.py`
-- `size` | files=19 | mentions=73 | `aes.h`, `beacon5.c`, `beacons/v2/beacon.c`, `bof/cat/cat.c`, `bof/include/syscalls.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`
+- `size` | files=19 | mentions=71 | `aes.h`, `beacons/v2/beacon.c`, `bof/cat/cat.c`, `bof/include/syscalls.h`, `bof/is_sudo/is_sudo.c`, `bof/suid_enum/bof.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`, `include/aes.h`
 - `build` | files=19 | mentions=61 | `cJSON.c`, `contract_agent.py`, `include/cJSON.c`, `include/containerized_build_+_sbom.h`, `install.sh`, `mutants/src/containerized_build_+_sbom.c`, `mutants/tests/test_beacon_build.py`, `mutants/tests/test_bof_compile.py`, `mutants/tests/test_config.py`, `mutants/tests/test_containerized_build_+_sbom.py`
+- `returns` | files=19 | mentions=58 | `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_autogen.h`, `include/config_py.py`, `include/config_py_autogen.py`
 - `value` | files=19 | mentions=47 | `aes.c`, `bof/suid_enum/bof.c`, `cJSON.c`, `cJSON.h`, `include/aes.c`, `include/cJSON.c`, `include/cJSON.h`, `include/config.c`, `include/config_autogen.c`, `include/config_py.py`
-- `client` | files=19 | mentions=41 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `c2/server.py`, `gopher_beacon.c`, `gopher_c2.py`, `include/beacon_common.c`, `include/beacon_common.h`
+- `client` | files=19 | mentions=41 | `c2/server.py`, `gopher_c2.py`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.h`, `include/tls_client_certificate_authentication.h`, `legacy/beacon3.c`, `legacy/beacon5.c`, `legacy/beacon6.c`, `legacy/beacon_p2p.c`
+- `until` | files=19 | mentions=20 | `c2/server.py`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`
 - `specification` | files=19 | mentions=19 | `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_common.c_extraction.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_containerized_build_+_sbom.py`
-- `null` | files=18 | mentions=81 | `bof/cat/cat.c`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`, `cJSON.h`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`
-- `returns` | files=18 | mentions=56 | `beacon6.c`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_autogen.h`, `include/config_py.py`
-- `until` | files=18 | mentions=18 | `c2/server.py`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`
+- `null` | files=18 | mentions=80 | `bof/cat/cat.c`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `cJSON.c`, `cJSON.h`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`
 - `bsb` | files=17 | mentions=165 | `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `c2/server.py`, `include/aes_cfb.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config.h`, `include/config_autogen.c`, `include/config_autogen.h`
-- `server` | files=17 | mentions=83 | `beacon_p2p.c`, `c2/server.py`, `include/beacon_common.h`, `include/config_autogen.c`, `include/config_autogen.h`, `include/config_py.py`, `mutants/tests/test_c2_http_e2e.py`, `mutants/tests/test_c2_server.py`, `mutants/tests/test_certificate_pinning.py`, `mutants/tests/test_crypto.py`
-- `int` | files=17 | mentions=63 | `beacon.h`, `beacon6.c`, `beacon_p2p.c`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `cJSON.h`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.h`
-- `printf` | files=17 | mentions=26 | `beacon.h`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/gopher_beacon.c`, `bof/cat/cat.c`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`
+- `server` | files=17 | mentions=84 | `c2/server.py`, `include/beacon_common.h`, `include/config_autogen.c`, `include/config_autogen.h`, `include/config_py.py`, `legacy/beacon_p2p.c`, `mutants/tests/test_c2_http_e2e.py`, `mutants/tests/test_c2_server.py`, `mutants/tests/test_certificate_pinning.py`, `mutants/tests/test_crypto.py`
+- `int` | files=17 | mentions=64 | `beacon.h`, `bof/include/beacon_api.h`, `bof/include/syscalls.h`, `cJSON.h`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.h`, `include/config.c`, `include/config.h`
+- `bytes` | files=17 | mentions=63 | `aes.c`, `cJSON.c`, `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/config.c`, `include/config.h`, `include/config_autogen.c`
+- `printf` | files=17 | mentions=26 | `beacon.h`, `bof/cat/cat.c`, `bof/is_sudo/is_sudo.c`, `bof/userenum/userenum.c`, `bof/whoami/whoami.c`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `issudo.c`, `legacy/beacon3.c`
 - `complete` | files=17 | mentions=18 | `c2/server.py`, `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`
 - `json` | files=16 | mentions=213 | `c2/server.py`, `cJSON.c`, `cJSON.h`, `config/generate_parsers.py`, `include/cJSON.c`, `include/cJSON.h`, `include/config.c`, `include/config_autogen.c`, `include/config_py.py`, `include/config_py_autogen.py`
-- `bytes` | files=16 | mentions=62 | `aes.c`, `cJSON.c`, `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/config.c`, `include/config.h`, `include/config_autogen.c`
-- `length` | files=16 | mentions=56 | `beacon.h`, `beacon_p2p.c`, `bof/include/beacon_api.h`, `bof/suid_enum/bof.c`, `cJSON.c`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `mutants/tests/test_certificate_pinning.py`
-- `source` | files=16 | mentions=19 | `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `beacons/v1/beacon.c`, `beacons/v1/gopher_beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `gopher_beacon.c`, `include/beacon_common.c`
+- `length` | files=16 | mentions=56 | `beacon.h`, `bof/include/beacon_api.h`, `bof/suid_enum/bof.c`, `cJSON.c`, `include/beacon.h`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `legacy/beacon_p2p.c`, `mutants/tests/test_certificate_pinning.py`
+- `source` | files=16 | mentions=19 | `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/config.c`, `include/config_autogen.c`, `legacy/beacon3.c`, `legacy/beacon5.c`, `legacy/beacon6.c`
 - `initially` | files=16 | mentions=16 | `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`, `mutants/tests/test_iv_generation_with_entropy_verification.py`
 - `suite` | files=16 | mentions=16 | `mutants/tests/test_async_i_o_for_beacon.py`, `mutants/tests/test_beacon_heartbeat___health_endpoint.py`, `mutants/tests/test_bof_api_versioning.py`, `mutants/tests/test_bof_path_traversal_hardening.py`, `mutants/tests/test_bof_streaming_(large_outputs).py`, `mutants/tests/test_c2_rest_api.py`, `mutants/tests/test_certificate_pinning___tofu.py`, `mutants/tests/test_command_execution_via_execve.py`, `mutants/tests/test_hkdf_key_derivation.py`, `mutants/tests/test_iv_generation_with_entropy_verification.py`
-- `char` | files=15 | mentions=84 | `bof/include/syscalls.h`, `bof/suid_enum/bof.c`, `cJSON.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/config.c`, `include/config.h`, `include/config_autogen.c`, `include/config_autogen.h`
+- `char` | files=15 | mentions=82 | `bof/include/syscalls.h`, `bof/suid_enum/bof.c`, `cJSON.c`, `include/beacon_common.c`, `include/beacon_common.h`, `include/cJSON.c`, `include/config.c`, `include/config.h`, `include/config_autogen.c`, `include/config_autogen.h`
 
 ## Verb Edges
 
@@ -59,62 +59,62 @@ Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges 
 - `generated` --depends_on--> `include` (strength 0.93)
 - `auto` --depends_on--> `include` (strength 0.91)
 - `implementation` --depends_on--> `include` (strength 0.91)
-- `contract` --depends_on--> `process` (strength 0.77)
+- `contract` --depends_on--> `process` (strength 0.79)
 - `process` --depends_on--> `include` (strength 0.77)
 - `implementation` --depends_on--> `process` (strength 0.74)
 - `generated` --depends_on--> `process` (strength 0.72)
 - `auto` --depends_on--> `process` (strength 0.70)
-- `bof` --depends_on--> `int` (strength 0.60)
 - `mutants` --depends_on--> `include` (strength 0.60)
-- `beacon` --depends_on--> `error` (strength 0.56)
-- `bof` --depends_on--> `include` (strength 0.56)
-- `bof` --depends_on--> `error` (strength 0.53)
+- `bof` --depends_on--> `include` (strength 0.58)
 - `beacon` --depends_on--> `include` (strength 0.51)
-- `bof` --depends_on--> `bsb` (strength 0.47)
-- `beacon` --depends_on--> `int` (strength 0.44)
+- `bof` --depends_on--> `bsb` (strength 0.51)
+- `mutants` --depends_on--> `process` (strength 0.47)
+- `beacon` --depends_on--> `bsb` (strength 0.44)
 - `config` --depends_on--> `bsb` (strength 0.44)
-- `config` --depends_on--> `include` (strength 0.44)
 - `config` --depends_on--> `returns` (strength 0.44)
-- `mutants` --depends_on--> `process` (strength 0.44)
-- `beacon` --depends_on--> `bsb` (strength 0.42)
-- `bof` --depends_on--> `beacon` (strength 0.42)
-- `source` --depends_on--> `error` (strength 0.42)
-- `source` --depends_on--> `int` (strength 0.42)
-- `beacon` --depends_on--> `returns` (strength 0.40)
-- `get` --depends_on--> `error` (strength 0.40)
-- `output` --depends_on--> `error` (strength 0.40)
-- `output` --depends_on--> `int` (strength 0.40)
-- `aes` --depends_on--> `error` (strength 0.37)
-- `beacon` --depends_on--> `aes` (strength 0.37)
-- `beacon` --depends_on--> `config` (strength 0.37)
+- `beacon` --depends_on--> `returns` (strength 0.42)
+- `beacon` --depends_on--> `config` (strength 0.40)
+- `bof` --depends_on--> `returns` (strength 0.40)
+- `bytes` --depends_on--> `include` (strength 0.40)
+- `must` --depends_on--> `bsb` (strength 0.40)
+- `must` --depends_on--> `config` (strength 0.40)
+- `must` --depends_on--> `returns` (strength 0.40)
+- `not` --depends_on--> `bsb` (strength 0.40)
+- `not` --depends_on--> `config` (strength 0.40)
+- `not` --depends_on--> `returns` (strength 0.40)
 - `beacon` --consumes--> `error` (strength 0.37)
 - `beacon` --consumes--> `int` (strength 0.37)
-- `beacon` --depends_on--> `json` (strength 0.37)
-- `bytes` --depends_on--> `include` (strength 0.37)
-- `config` --depends_on--> `error` (strength 0.37)
-- `encrypt` --depends_on--> `aes` (strength 0.37)
+- `beacon` --depends_on--> `server` (strength 0.37)
+- `bof` --depends_on--> `int` (strength 0.37)
+- `config` --depends_on--> `include` (strength 0.37)
 - `include` --depends_on--> `bsb` (strength 0.37)
-- `must` --depends_on--> `bsb` (strength 0.37)
-- `must` --depends_on--> `config` (strength 0.37)
-- `must` --depends_on--> `returns` (strength 0.37)
-- `not` --depends_on--> `bsb` (strength 0.37)
-- `not` --depends_on--> `config` (strength 0.37)
-- `not` --depends_on--> `returns` (strength 0.37)
+- `not` --depends_on--> `json` (strength 0.37)
+- `not` --depends_on--> `server` (strength 0.37)
 - `source` --consumes--> `error` (strength 0.37)
 - `source` --consumes--> `int` (strength 0.37)
-- `api` --depends_on--> `int` (strength 0.35)
-- `beacon` --depends_on--> `decrypt` (strength 0.35)
-- `beacon` --depends_on--> `encrypt` (strength 0.35)
+- `bof` --depends_on--> `beacon` (strength 0.35)
+- `contract` --depends_on--> `beacon` (strength 0.35)
+- `get` --consumes--> `error` (strength 0.35)
+- `get` --consumes--> `int` (strength 0.35)
+- `must` --depends_on--> `beacon` (strength 0.35)
+- `must` --depends_on--> `json` (strength 0.35)
+- `must` --depends_on--> `server` (strength 0.35)
+- `not` --depends_on--> `beacon` (strength 0.35)
+- `output` --consumes--> `error` (strength 0.35)
+- `output` --consumes--> `int` (strength 0.35)
+- `server` --depends_on--> `bsb` (strength 0.35)
+- `server` --depends_on--> `config` (strength 0.35)
+- `server` --depends_on--> `returns` (strength 0.35)
 
 ## Dialectic
 
-- Thesis: `aes` centralizes 23 files; Antithesis: `bytes` pulls 16 files with 9 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
 - Thesis: `aes` centralizes 23 files; Antithesis: `client` pulls 19 files with 11 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.73); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `get` pulls 22 files with 12 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `key` pulls 21 files with 12 shared (Jaccard 0.38); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `returns` pulls 18 files with 10 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `aes` centralizes 23 files; Antithesis: `run` pulls 24 files with 11 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
-- Thesis: `api` centralizes 26 files; Antithesis: `bof` pulls 51 files with 19 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?
-- Thesis: `api` centralizes 26 files; Antithesis: `output` pulls 27 files with 14 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `aes` centralizes 23 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.73); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `aes` centralizes 23 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `aes` centralizes 23 files; Antithesis: `get` pulls 23 files with 12 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `aes` centralizes 23 files; Antithesis: `key` pulls 22 files with 12 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `aes` centralizes 23 files; Antithesis: `returns` pulls 19 files with 10 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `api` centralizes 26 files; Antithesis: `bof` pulls 52 files with 19 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `api` centralizes 26 files; Antithesis: `output` pulls 28 files with 14 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `api` centralizes 26 files; Antithesis: `printf` pulls 17 files with 12 shared (Jaccard 0.39); Synthesis: should they merge, split by layer, or keep `bridges` explicit?
+- Thesis: `auto` centralizes 59 files; Antithesis: `contract` pulls 65 files with 57 shared (Jaccard 0.85); Synthesis: should they merge, split by layer, or keep `bridges` explicit?

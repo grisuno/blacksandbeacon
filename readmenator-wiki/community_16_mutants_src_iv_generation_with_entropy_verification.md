@@ -28,7 +28,7 @@ This community groups 3 file(s) rooted at `mutants/src` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 16 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 16 (mutants/src: iv_generation_with_entropy_verification).
+- [INFERRED] shares_context community 0 <-> 16 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 16 (mutants/src: iv_generation_with_entropy_verification).
 
 ## Risks
 

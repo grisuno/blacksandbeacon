@@ -3,150 +3,152 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
-| `cJSON_GetErrorPtr` | function | `include/cJSON.h:161` | `* a pointer to the error so will match cJSON_GetErrorPtr(). */ CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char...` |
-| `cJSON_Hooks` | struct | `include/cJSON.h:123` | `` |
-| `cJSON_Invalid` | macro | `include/cJSON.h:84` | `#define cJSON_Invalid` |
-| `cJSON_IsReference` | macro | `include/cJSON.h:94` | `#define cJSON_IsReference` |
-| `cJSON_NULL` | macro | `include/cJSON.h:87` | `#define cJSON_NULL` |
-| `cJSON_Number` | macro | `include/cJSON.h:88` | `#define cJSON_Number` |
-| `cJSON_Object` | macro | `include/cJSON.h:91` | `#define cJSON_Object` |
-| `cJSON_Parse` | function | `include/cJSON.h:152` | `* cJSON_Parse (with cJSON_Delete) and cJSON_Print (with stdlib free, cJSON_Hooks.free_fn, or * cJSON_free as...` |
-| `cJSON_Raw` | macro | `include/cJSON.h:92` | `#define cJSON_Raw` |
-| `cJSON_SetBoolValue` | macro | `include/cJSON.h:324` | `#define cJSON_SetBoolValue(object, boolValue)` |
-| `cJSON_SetIntValue` | macro | `include/cJSON.h:312` | `#define cJSON_SetIntValue(object, number)` |
-| `cJSON_SetNumberValue` | macro | `include/cJSON.h:316` | `#define cJSON_SetNumberValue(object, number)` |
-| `cJSON_String` | macro | `include/cJSON.h:89` | `#define cJSON_String` |
-| `cJSON_StringIsConst` | macro | `include/cJSON.h:95` | `#define cJSON_StringIsConst` |
-| `cJSON_True` | macro | `include/cJSON.h:86` | `#define cJSON_True` |
-| `cJSON__h` | macro | `include/cJSON.h:24` | `#define cJSON__h` |
-| `cJSON_bool` | type_alias | `include/cJSON.h:130` | `typedef int cJSON_bool;` |
-| `next` | variable | `include/cJSON.h:27` | `extern "C" { #endif #if !defined(__WINDOWS__) && \ (defined(WIN32) \|\| defined(WIN64) \|\| defined(_MSC_VER) \|\|...` |
-| `sensitive` | function | `include/cJSON.h:286` | `* sensitive (1) or case insensitive (0) */ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON...` |
-| `that` | function | `include/cJSON.h:247` | `* that (item->type & cJSON_StringIsConst) is zero before writing to `item->string` */ CJSON_PUBLIC(cJSON_bool)...` |
-| `CERTIFICATE_PINNING___TOFU_H` | macro | `include/certificate_pinning___tofu.h:2` | `#define CERTIFICATE_PINNING___TOFU_H` |
-| `certificate_pinning___tofu_process` | function | `include/certificate_pinning___tofu.h:4` | `bool certificate_pinning___tofu_process(void);` |
-| `COMMAND_EXECUTION_VIA_EXECVE_H` | macro | `include/command_execution_via_execve.h:2` | `#define COMMAND_EXECUTION_VIA_EXECVE_H` |
-| `command_execution_via_execve_process` | function | `include/command_execution_via_execve.h:4` | `bool command_execution_via_execve_process(void);` |
-| `HKDF_INFO_ENC` | macro | `include/config.c:289` | `#define HKDF_INFO_ENC` |
-| `HKDF_INFO_HMAC` | macro | `include/config.c:290` | `#define HKDF_INFO_HMAC` |
-| `HKDF_SALT` | macro | `include/config.c:288` | `#define HKDF_SALT` |
-| `_POSIX_C_SOURCE` | macro | `include/config.c:13` | `#define _POSIX_C_SOURCE` |
-| `binary_dir` | function | `include/config.c:798` | `static const char *binary_dir(char *out, size_t outsz)` |
-| `bsb_config_load` | function | `include/config.c:655` | `int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen)` |
-| `bsb_config_load_default` | function | `include/config.c:820` | `int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen)` |
-| `bsb_config_sleep_seconds` | function | `include/config.c:853` | `int bsb_config_sleep_seconds(const bsb_config_t *cfg)` |
-| `derive_keys_from_master` | function | `include/config.c:345` | `static void derive_keys_from_master(bsb_config_t *cfg)` |
-| `expect` | function | `include/config.c:156` | `static int expect(const char **pp, const char *end, char c)` |
-| `find_matching_brace` | function | `include/config.c:167` | `static const char *find_matching_brace(const char *p, const char *end)` |
-| `hex_to_bytes` | function | `include/config.c:269` | `static int hex_to_bytes(const char *hex, uint8_t *out, size_t outlen)` |
-| `hkdf_expand` | function | `include/config.c:305` | `static void hkdf_expand(const uint8_t *prk, size_t prk_len, const uint8_t *info, size_t info_len,...` |
-| `hkdf_extract` | function | `include/config.c:299` | `static void hkdf_extract(const uint8_t *salt, size_t salt_len, const uint8_t *ikm, size_t ikm_len...` |
-| `hkdf_sha256` | function | `include/config.c:337` | `static void hkdf_sha256(const uint8_t *ikm, size_t ikm_len, const uint8_t *salt, size_t salt_len,...` |
-| `hmac_sha256` | function | `include/config.c:292` | `static void hmac_sha256(const uint8_t *key, size_t key_len, const uint8_t *data, size_t data_len,...` |
-| `parse_backoff` | function | `include/config.c:620` | `static void parse_backoff(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_bof` | function | `include/config.c:586` | `static void parse_bof(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_c2` | function | `include/config.c:375` | `static void parse_c2(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_crypto` | function | `include/config.c:419` | `static void parse_crypto(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_network` | function | `include/config.c:518` | `static void parse_network(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_timing` | function | `include/config.c:474` | `static void parse_timing(const char *p, const char *end, bsb_config_t *cfg)` |
-| `read_bool` | function | `include/config.c:137` | `static int read_bool(const char **pp, const char *end, int *out)` |
-| `read_int` | function | `include/config.c:113` | `static int read_int(const char **pp, const char *end, int *out)` |
-| `read_string` | function | `include/config.c:66` | `static int read_string(const char **pp, const char *end, char *out, size_t outsz)` |
-| `skip_value` | function | `include/config.c:203` | `static const char *skip_value(const char *p, const char *end)` |
-| `skip_ws` | function | `include/config.c:56` | `static const char *skip_ws(const char *p, const char *end)` |
-| `slurp` | function | `include/config.c:24` | `static char *slurp(const char *path, size_t *out_len)` |
-| `BSB_AES_KEY_BYTES` | macro | `include/config.h:25` | `#define BSB_AES_KEY_BYTES` |
-| `BSB_AES_KEY_HEX_LEN` | macro | `include/config.h:24` | `#define BSB_AES_KEY_HEX_LEN` |
-| `BSB_CONFIG_H` | macro | `include/config.h:14` | `#define BSB_CONFIG_H` |
-| `BSB_CONFIG_PATH_DEFAULT` | macro | `include/config.h:19` | `#define BSB_CONFIG_PATH_DEFAULT` |
-| `BSB_CONFIG_PATH_ENV` | macro | `include/config.h:20` | `#define BSB_CONFIG_PATH_ENV` |
-| `BSB_MAX_CLIENT_ID` | macro | `include/config.h:23` | `#define BSB_MAX_CLIENT_ID` |
-| `BSB_MAX_URI` | macro | `include/config.h:22` | `#define BSB_MAX_URI` |
-| `BSB_MAX_URL` | macro | `include/config.h:21` | `#define BSB_MAX_URL` |
-| `BSB_MAX_USER_AGENTS` | macro | `include/config.h:26` | `#define BSB_MAX_USER_AGENTS` |
-| `BSB_REPORT_URI_DEFAULT` | macro | `include/config.h:28` | `#define BSB_REPORT_URI_DEFAULT` |
-| `BSB_USER_AGENT_LEN` | macro | `include/config.h:27` | `#define BSB_USER_AGENT_LEN` |
-| `bsb_backoff_config_t` | struct | `include/config.h:70` | `` |
-| `bsb_bof_t` | struct | `include/config.h:64` | `` |
-| `bsb_c2_t` | struct | `include/config.h:30` | `` |
-| `bsb_config_load` | function | `include/config.h:89` | `int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen);` |
-| `bsb_config_load_default` | function | `include/config.h:92` | `int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen);` |
-| `bsb_config_sleep_seconds` | function | `include/config.h:95` | `int bsb_config_sleep_seconds(const bsb_config_t *cfg);` |
-| `bsb_config_t` | struct | `include/config.h:76` | `` |
-| `bsb_crypto_t` | struct | `include/config.h:38` | `` |
-| `bsb_network_t` | struct | `include/config.h:56` | `` |
-| `bsb_timing_t` | struct | `include/config.h:48` | `` |
-| `_POSIX_C_SOURCE` | macro | `include/config_autogen.c:5` | `#define _POSIX_C_SOURCE` |
-| `bsb_config_load` | function | `include/config_autogen.c:375` | `int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen)` |
-| `expect` | function | `include/config_autogen.c:93` | `static int expect(const char **pp, const char *end, char c)` |
-| `find_matching_brace` | function | `include/config_autogen.c:101` | `static const char *find_matching_brace(const char *p, const char *end)` |
-| `hex_to_bytes` | function | `include/config_autogen.c:165` | `static int hex_to_bytes(const char *hex, uint8_t *out, size_t outlen)` |
-| `parse_backoff` | function | `include/config_autogen.c:325` | `static void parse_backoff(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_bof` | function | `include/config_autogen.c:300` | `static void parse_bof(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_c2` | function | `include/config_autogen.c:177` | `static void parse_c2(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_crypto` | function | `include/config_autogen.c:206` | `static void parse_crypto(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_network` | function | `include/config_autogen.c:260` | `static void parse_network(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_server` | function | `include/config_autogen.c:350` | `static void parse_server(const char *p, const char *end, bsb_config_t *cfg)` |
-| `parse_timing` | function | `include/config_autogen.c:227` | `static void parse_timing(const char *p, const char *end, bsb_config_t *cfg)` |
-| `read_bool` | function | `include/config_autogen.c:85` | `static int read_bool(const char **pp, const char *end, int *out)` |
-| `read_int` | function | `include/config_autogen.c:68` | `static int read_int(const char **pp, const char *end, int *out)` |
-| `read_string` | function | `include/config_autogen.c:40` | `static int read_string(const char **pp, const char *end, char *out, size_t outsz)` |
-| `skip_value` | function | `include/config_autogen.c:123` | `static const char *skip_value(const char *p, const char *end)` |
-| `skip_ws` | function | `include/config_autogen.c:34` | `static const char *skip_ws(const char *p, const char *end)` |
-| `slurp` | function | `include/config_autogen.c:16` | `static char *slurp(const char *path, size_t *out_len)` |
-| `BSB_CONFIG_AUTOGEN_H` | macro | `include/config_autogen.h:6` | `#define BSB_CONFIG_AUTOGEN_H` |
-| `bsb_backoff_t` | struct | `include/config_autogen.h:47` | `` |
-| `bsb_bof_t` | struct | `include/config_autogen.h:42` | `` |
-| `bsb_c2_t` | struct | `include/config_autogen.h:11` | `` |
-| `bsb_config_load` | function | `include/config_autogen.h:69` | `int bsb_config_load(const char *path, bsb_config_t *cfg, char *err, size_t errlen);` |
-| `bsb_config_load_default` | function | `include/config_autogen.h:72` | `int bsb_config_load_default(bsb_config_t *cfg, char *err, size_t errlen);` |
-| `bsb_config_sleep_seconds` | function | `include/config_autogen.h:75` | `int bsb_config_sleep_seconds(const bsb_config_t *cfg);` |
-| `bsb_config_t` | struct | `include/config_autogen.h:57` | `` |
-| `bsb_crypto_t` | struct | `include/config_autogen.h:21` | `` |
-| `bsb_network_t` | struct | `include/config_autogen.h:35` | `` |
-| `bsb_server_t` | struct | `include/config_autogen.h:52` | `` |
-| `bsb_timing_t` | struct | `include/config_autogen.h:28` | `` |
-| `_deep_merge` | function | `include/config_py.py:84` | `def _deep_merge(base, overlay)` |
-| `_derive_keys` | function | `include/config_py.py:65` | `def _derive_keys(master_key_bytes)` |
-| `load_config` | function | `include/config_py.py:94` | `def load_config(path)` |
-| `_deep_merge` | function | `include/config_py_autogen.py:80` | `def _deep_merge(base, overlay)` |
-| `_derive_keys` | function | `include/config_py_autogen.py:59` | `def _derive_keys(master_key_bytes)` |
-| `load_config` | function | `include/config_py_autogen.py:89` | `def load_config(path)` |
-| `CONTAINERIZED_BUILD_` | macro | `include/containerized_build_+_sbom.h:2` | `#define CONTAINERIZED_BUILD_` |
-| `HKDF_KEY_DERIVATION_H` | macro | `include/hkdf_key_derivation.h:2` | `#define HKDF_KEY_DERIVATION_H` |
-| `hkdf_key_derivation_process` | function | `include/hkdf_key_derivation.h:4` | `bool hkdf_key_derivation_process(void);` |
-| `IV_GENERATION_WITH_ENTROPY_VERIFICATION_H` | macro | `include/iv_generation_with_entropy_verification.h:2` | `#define IV_GENERATION_WITH_ENTROPY_VERIFICATION_H` |
-| `iv_generation_with_entropy_verification_process` | function | `include/iv_generation_with_entropy_verification.h:4` | `bool iv_generation_with_entropy_verification_process(void);` |
-| `MUTATION_TESTING_INTEGRATION_H` | macro | `include/mutation_testing_integration.h:2` | `#define MUTATION_TESTING_INTEGRATION_H` |
-| `mutation_testing_integration_process` | function | `include/mutation_testing_integration.h:4` | `bool mutation_testing_integration_process(void);` |
-| `PRE` | macro | `include/pre-commit_+_ci_hardening.h:2` | `#define PRE` |
-| `REPLAY_PROTECTION_H` | macro | `include/replay_protection.h:2` | `#define REPLAY_PROTECTION_H` |
-| `replay_protection_process` | function | `include/replay_protection.h:4` | `bool replay_protection_process(void);` |
-| `SOCKS5___HTTP_PROXY_SUPPORT_H` | macro | `include/socks5___http_proxy_support.h:2` | `#define SOCKS5___HTTP_PROXY_SUPPORT_H` |
-| `socks5___http_proxy_support_process` | function | `include/socks5___http_proxy_support.h:4` | `bool socks5___http_proxy_support_process(void);` |
-| `STRUCTURED_JSONL_LOGGING_H` | macro | `include/structured_jsonl_logging.h:2` | `#define STRUCTURED_JSONL_LOGGING_H` |
-| `structured_jsonl_logging_process` | function | `include/structured_jsonl_logging.h:4` | `bool structured_jsonl_logging_process(void);` |
-| `TLS_CLIENT_CERTIFICATE_AUTHENTICATION_H` | macro | `include/tls_client_certificate_authentication.h:2` | `#define TLS_CLIENT_CERTIFICATE_AUTHENTICATION_H` |
-| `tls_client_certificate_authentication_process` | function | `include/tls_client_certificate_authentication.h:4` | `bool tls_client_certificate_authentication_process(void);` |
-| `UNIFIED_CONFIG_SCHEMA_H` | macro | `include/unified_config_schema.h:2` | `#define UNIFIED_CONFIG_SCHEMA_H` |
-| `unified_config_schema_process` | function | `include/unified_config_schema.h:4` | `bool unified_config_schema_process(void);` |
-| `AT_FDCWD` | macro | `issudo.c:19` | `#define AT_FDCWD` |
-| `BeaconOutput` | function | `issudo.c:11` | `extern void BeaconOutput(int, const char *, int);` |
-| `BeaconPrintf` | function | `issudo.c:10` | `extern void BeaconPrintf(int, const char *, ...);` |
-| `CALLBACK_OUTPUT` | macro | `issudo.c:3` | `#define CALLBACK_OUTPUT` |
-| `NULL` | macro | `issudo.c:2` | `#define NULL` |
-| `SYS_close` | macro | `issudo.c:16` | `#define SYS_close` |
-| `SYS_getpwuid_r` | macro | `issudo.c:18` | `#define SYS_getpwuid_r` |
-| `SYS_getuid` | macro | `issudo.c:17` | `#define SYS_getuid` |
-| `SYS_openat` | macro | `issudo.c:14` | `#define SYS_openat` |
-| `SYS_read` | macro | `issudo.c:15` | `#define SYS_read` |
-| `get_username_from_uid` | function | `issudo.c:51` | `static int get_username_from_uid(long uid, char *buf, int buf_size)` |
-| `go` | function | `issudo.c:121` | `void go(char *args, int alen)` |
-| `size_t` | type_alias | `issudo.c:6` | `typedef unsigned long size_t;` |
-| `ssize_t` | type_alias | `issudo.c:7` | `typedef long ssize_t;` |
-| `strcmp` | function | `issudo.c:40` | `static int strcmp(const char *s1, const char *s2)` |
-| `syscall1` | function | `issudo.c:32` | `static inline long syscall1(long n, long a1)` |
-| `syscall3` | function | `issudo.c:22` | `static inline long syscall3(long n, long a1, long a2, long a3)` |
+| `mesh_listener_thread` | function | `legacy/beacon5.c:1447` | `void *mesh_listener_thread(void *arg)` |
+| `mesh_mark_seen` | function | `legacy/beacon5.c:1231` | `void mesh_mark_seen(const char *msg_id)` |
+| `mesh_msg_t` | struct | `legacy/beacon5.c:77` | `` |
+| `mesh_propagate` | function | `legacy/beacon5.c:1324` | `void mesh_propagate(const char *command)` |
+| `mesh_send_message` | function | `legacy/beacon5.c:1667` | `void mesh_send_message(int type, const char *target, const char *payload)` |
+| `mesh_send_to_peer` | function | `legacy/beacon5.c:1300` | `int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)` |
+| `page_align` | function | `legacy/beacon5.c:619` | `static size_t page_align(size_t size)` |
+| `peer_t` | struct | `legacy/beacon5.c:69` | `` |
+| `run_bof_and_capture` | function | `legacy/beacon5.c:1184` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
+| `BeaconOutput` | function | `legacy/beacon6.c:283` | `void BeaconOutput(int type, const char *data, int len)` |
+| `BeaconPrintf` | function | `legacy/beacon6.c:266` | `void BeaconPrintf(int type, const char *fmt, ...)` |
+| `C2_URL` | macro | `legacy/beacon6.c:34` | `#define C2_URL` |
+| `CLIENT_ID` | macro | `legacy/beacon6.c:35` | `#define CLIENT_ID` |
+| `MALEABLE` | macro | `legacy/beacon6.c:36` | `#define MALEABLE` |
+| `MemoryStruct` | struct | `legacy/beacon6.c:53` | `` |
+| `RunELF` | function | `legacy/beacon6.c:654` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
+| `SymbolResolver` | struct | `legacy/beacon6.c:70` | `` |
+| `Trampoline` | struct | `legacy/beacon6.c:61` | `` |
+| `TrampolineCache` | struct | `legacy/beacon6.c:77` | `` |
+| `USER_AGENTS_COUNT` | macro | `legacy/beacon6.c:37` | `#define USER_AGENTS_COUNT` |
+| `WriteMemoryCallback` | function | `legacy/beacon6.c:394` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
+| `_GNU_SOURCE` | macro | `legacy/beacon6.c:1` | `#define _GNU_SOURCE` |
+| `__attribute__` | function | `legacy/beacon6.c:146` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
+| `aes256_cfb_decrypt` | function | `legacy/beacon6.c:584` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `aes256_cfb_encrypt` | function | `legacy/beacon6.c:550` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `base64_decode` | function | `legacy/beacon6.c:524` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `legacy/beacon6.c:506` | `char *base64_encode(const unsigned char *input, int len)` |
+| `cleanup_trampolines` | function | `legacy/beacon6.c:338` | `static void cleanup_trampolines(void)` |
+| `create_trampoline` | function | `legacy/beacon6.c:297` | `static void *create_trampoline(void *target)` |
+| `delay_ms` | function | `legacy/beacon6.c:197` | `static void delay_ms(int ms)` |
+| `download_bof` | function | `legacy/beacon6.c:1188` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
+| `exec_cmd` | function | `legacy/beacon6.c:620` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `get_local_ips` | function | `legacy/beacon6.c:1153` | `char *get_local_ips()` |
+| `get_nth_prime_limited` | function | `legacy/beacon6.c:224` | `static unsigned int get_nth_prime_limited(unsigned int n)` |
+| `get_or_create_trampoline` | function | `legacy/beacon6.c:356` | `static void *get_or_create_trampoline(void *target)` |
+| `https_request` | function | `legacy/beacon6.c:412` | `char *https_request(const char *url, const char *method, const char *post_data)` |
+| `is_prime` | function | `legacy/beacon6.c:204` | `static unsigned int is_prime(unsigned int x)` |
+| `main` | function | `legacy/beacon6.c:1257` | `int main()` |
+| `page_align` | function | `legacy/beacon6.c:646` | `static size_t page_align(size_t size)` |
+| `portable_rand_19k_29k` | function | `legacy/beacon6.c:253` | `static unsigned int portable_rand_19k_29k(void)` |
+| `run_bof_and_capture` | function | `legacy/beacon6.c:1211` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
+| `BROADCAST_INTERVAL` | macro | `legacy/beacon_p2p.c:46` | `#define BROADCAST_INTERVAL` |
+| `BeaconDataExtract` | function | `legacy/beacon_p2p.c:131` | `char *BeaconDataExtract(datap *parser, int *size)` |
+| `BeaconDataInt` | function | `legacy/beacon_p2p.c:110` | `int BeaconDataInt(datap *parser)` |
+| `BeaconDataLength` | function | `legacy/beacon_p2p.c:126` | `int BeaconDataLength(datap *parser)` |
+| `BeaconDataParse` | function | `legacy/beacon_p2p.c:93` | `void BeaconDataParse(datap *parser, char *buffer, int size)` |
+| `BeaconDataPtr` | function | `legacy/beacon_p2p.c:100` | `char *BeaconDataPtr(datap *parser, int size)` |
+| `BeaconDataShort` | function | `legacy/beacon_p2p.c:118` | `short BeaconDataShort(datap *parser)` |
+| `BeaconOutput` | function | `legacy/beacon_p2p.c:159` | `void BeaconOutput(int type, const char *data, int len)` |
+| `BeaconPrintf` | function | `legacy/beacon_p2p.c:142` | `void BeaconPrintf(int type, const char *fmt, ...)` |
+| `C2_URL` | macro | `legacy/beacon_p2p.c:37` | `#define C2_URL` |
+| `CLIENT_ID` | macro | `legacy/beacon_p2p.c:38` | `#define CLIENT_ID` |
+| `MALEABLE` | macro | `legacy/beacon_p2p.c:39` | `#define MALEABLE` |
+| `MAX_PEERS` | macro | `legacy/beacon_p2p.c:47` | `#define MAX_PEERS` |
+| `MemoryStruct` | struct | `legacy/beacon_p2p.c:676` | `` |
+| `PEER_DISCOVERY_PORT` | macro | `legacy/beacon_p2p.c:42` | `#define PEER_DISCOVERY_PORT` |
+| `PEER_MAGIC` | macro | `legacy/beacon_p2p.c:44` | `#define PEER_MAGIC` |
+| `PEER_TCP_PORT` | macro | `legacy/beacon_p2p.c:43` | `#define PEER_TCP_PORT` |
+| `PEER_VERSION` | macro | `legacy/beacon_p2p.c:45` | `#define PEER_VERSION` |
+| `RunELF` | function | `legacy/beacon_p2p.c:358` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
+| `SymbolResolver` | struct | `legacy/beacon_p2p.c:182` | `` |
+| `Trampoline` | struct | `legacy/beacon_p2p.c:175` | `` |
+| `TrampolineCache` | struct | `legacy/beacon_p2p.c:192` | `` |
+| `USER_AGENTS_COUNT` | macro | `legacy/beacon_p2p.c:40` | `#define USER_AGENTS_COUNT` |
+| `WriteMemoryCallback` | function | `legacy/beacon_p2p.c:683` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
+| `_GNU_SOURCE` | macro | `legacy/beacon_p2p.c:1` | `#define _GNU_SOURCE` |
+| `__attribute__` | function | `legacy/beacon_p2p.c:250` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
+| `add_peer` | function | `legacy/beacon_p2p.c:965` | `void add_peer(struct in_addr ip, int port, const char *id)` |
+| `aes256_cfb_decrypt` | function | `legacy/beacon_p2p.c:832` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `aes256_cfb_encrypt` | function | `legacy/beacon_p2p.c:802` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `base64_decode` | function | `legacy/beacon_p2p.c:780` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `legacy/beacon_p2p.c:763` | `char *base64_encode(const unsigned char *input, int len)` |
+| `cleanup_trampolines` | function | `legacy/beacon_p2p.c:309` | `static void cleanup_trampolines(void)` |
+| `create_trampoline` | function | `legacy/beacon_p2p.c:278` | `static void *create_trampoline(void *target)` |
+| `download_bof` | function | `legacy/beacon_p2p.c:925` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
+| `exec_cmd` | function | `legacy/beacon_p2p.c:866` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `execute_generic_command` | function | `legacy/beacon_p2p.c:1231` | `char *execute_generic_command(const char *cmd, int *out_len)` |
+| `get_local_ips` | function | `legacy/beacon_p2p.c:891` | `char *get_local_ips()` |
+| `get_or_create_trampoline` | function | `legacy/beacon_p2p.c:323` | `static void *get_or_create_trampoline(void *target)` |
+| `handle_peer_connection` | function | `legacy/beacon_p2p.c:1032` | `void *handle_peer_connection(void *arg)` |
+| `https_request` | function | `legacy/beacon_p2p.c:707` | `char *https_request(const char *url, const char *method, const char *post_data)` |
+| `main` | function | `legacy/beacon_p2p.c:1276` | `int main()` |
+| `p2p_header_t` | struct | `legacy/beacon_p2p.c:73` | `` |
+| `page_align` | function | `legacy/beacon_p2p.c:350` | `static size_t page_align(size_t size)` |
+| `peer_discovery_thread` | function | `legacy/beacon_p2p.c:992` | `void *peer_discovery_thread(void *arg)` |
+| `peer_server_thread` | function | `legacy/beacon_p2p.c:1130` | `void *peer_server_thread(void *arg)` |
+| `peer_t` | struct | `legacy/beacon_p2p.c:59` | `` |
+| `run_bof_and_capture` | function | `legacy/beacon_p2p.c:939` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
+| `send_to_c2_or_peer` | function | `legacy/beacon_p2p.c:1197` | `char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)` |
+| `send_to_peer` | function | `legacy/beacon_p2p.c:1153` | `char *send_to_peer(peer_t *peer, const char *data, int *out_len)` |
+| `BeaconOutput` | function | `legacy/gopher_beacon.c:210` | `void BeaconOutput(int type, const char *data, int len)` |
+| `BeaconPrintf` | function | `legacy/gopher_beacon.c:193` | `void BeaconPrintf(int type, const char *fmt, ...)` |
+| `C2` | macro | `legacy/gopher_beacon.c:30` | `#define C2` |
+| `CLIENT_ID` | macro | `legacy/gopher_beacon.c:31` | `#define CLIENT_ID` |
+| `MALEABLE` | macro | `legacy/gopher_beacon.c:32` | `#define MALEABLE` |
+| `MemoryStruct` | struct | `legacy/gopher_beacon.c:49` | `` |
+| `RunELF` | function | `legacy/gopher_beacon.c:581` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
+| `SymbolResolver` | struct | `legacy/gopher_beacon.c:66` | `` |
+| `Trampoline` | struct | `legacy/gopher_beacon.c:57` | `` |
+| `TrampolineCache` | struct | `legacy/gopher_beacon.c:73` | `` |
+| `USER_AGENTS_COUNT` | macro | `legacy/gopher_beacon.c:33` | `#define USER_AGENTS_COUNT` |
+| `WriteMemoryCallback` | function | `legacy/gopher_beacon.c:321` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
+| `_GNU_SOURCE` | macro | `legacy/gopher_beacon.c:1` | `#define _GNU_SOURCE` |
+| `__attribute__` | function | `legacy/gopher_beacon.c:142` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
+| `aes256_cfb_decrypt` | function | `legacy/gopher_beacon.c:500` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `aes256_cfb_encrypt` | function | `legacy/gopher_beacon.c:466` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `base64_decode` | function | `legacy/gopher_beacon.c:440` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `legacy/gopher_beacon.c:422` | `char *base64_encode(const unsigned char *input, int len)` |
+| `cleanup_trampolines` | function | `legacy/gopher_beacon.c:265` | `static void cleanup_trampolines(void)` |
+| `create_trampoline` | function | `legacy/gopher_beacon.c:224` | `static void *create_trampoline(void *target)` |
+| `download_bof` | function | `legacy/gopher_beacon.c:1115` | `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` |
+| `exec_cmd` | function | `legacy/gopher_beacon.c:536` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `get_local_ips` | function | `legacy/gopher_beacon.c:1080` | `char *get_local_ips()` |
+| `get_or_create_trampoline` | function | `legacy/gopher_beacon.c:283` | `static void *get_or_create_trampoline(void *target)` |
+| `gopher_request` | function | `legacy/gopher_beacon.c:339` | `char *gopher_request(const char *host, int port, const char *selector, const char *method,       ...` |
+| `main` | function | `legacy/gopher_beacon.c:1193` | `int main()` |
+| `page_align` | function | `legacy/gopher_beacon.c:573` | `static size_t page_align(size_t size)` |
+| `run_bof_and_capture` | function | `legacy/gopher_beacon.c:1147` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
+| `BeaconOutput` | function | `legacy/v1_gopher_beacon.c:210` | `void BeaconOutput(int type, const char *data, int len)` |
+| `BeaconPrintf` | function | `legacy/v1_gopher_beacon.c:193` | `void BeaconPrintf(int type, const char *fmt, ...)` |
+| `C2` | macro | `legacy/v1_gopher_beacon.c:30` | `#define C2` |
+| `CLIENT_ID` | macro | `legacy/v1_gopher_beacon.c:31` | `#define CLIENT_ID` |
+| `MALEABLE` | macro | `legacy/v1_gopher_beacon.c:32` | `#define MALEABLE` |
+| `MemoryStruct` | struct | `legacy/v1_gopher_beacon.c:49` | `` |
+| `RunELF` | function | `legacy/v1_gopher_beacon.c:581` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
+| `SymbolResolver` | struct | `legacy/v1_gopher_beacon.c:66` | `` |
+| `Trampoline` | struct | `legacy/v1_gopher_beacon.c:57` | `` |
+| `TrampolineCache` | struct | `legacy/v1_gopher_beacon.c:73` | `` |
+| `USER_AGENTS_COUNT` | macro | `legacy/v1_gopher_beacon.c:33` | `#define USER_AGENTS_COUNT` |
+| `WriteMemoryCallback` | function | `legacy/v1_gopher_beacon.c:321` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
+| `_GNU_SOURCE` | macro | `legacy/v1_gopher_beacon.c:1` | `#define _GNU_SOURCE` |
+| `__attribute__` | function | `legacy/v1_gopher_beacon.c:142` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
+| `aes256_cfb_decrypt` | function | `legacy/v1_gopher_beacon.c:500` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `aes256_cfb_encrypt` | function | `legacy/v1_gopher_beacon.c:466` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `base64_decode` | function | `legacy/v1_gopher_beacon.c:440` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `legacy/v1_gopher_beacon.c:422` | `char *base64_encode(const unsigned char *input, int len)` |
+| `cleanup_trampolines` | function | `legacy/v1_gopher_beacon.c:265` | `static void cleanup_trampolines(void)` |
+| `create_trampoline` | function | `legacy/v1_gopher_beacon.c:224` | `static void *create_trampoline(void *target)` |
+| `download_bof` | function | `legacy/v1_gopher_beacon.c:1115` | `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` |
+| `exec_cmd` | function | `legacy/v1_gopher_beacon.c:536` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `get_local_ips` | function | `legacy/v1_gopher_beacon.c:1080` | `char *get_local_ips()` |
+| `get_or_create_trampoline` | function | `legacy/v1_gopher_beacon.c:283` | `static void *get_or_create_trampoline(void *target)` |
+| `gopher_request` | function | `legacy/v1_gopher_beacon.c:339` | `char *gopher_request(const char *host, int port, const char *selector, const char *method,       ...` |
+| `main` | function | `legacy/v1_gopher_beacon.c:1193` | `int main()` |
+| `page_align` | function | `legacy/v1_gopher_beacon.c:573` | `static size_t page_align(size_t size)` |
+| `run_bof_and_capture` | function | `legacy/v1_gopher_beacon.c:1147` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
 | `async_i_o_for_beacon_process` | function | `mutants/src/async_i_o_for_beacon.c:6` | `bool async_i_o_for_beacon_process(void)` |
 | `beacon_heartbeat___health_endpoint_process` | function | `mutants/src/beacon_heartbeat___health_endpoint.c:6` | `bool beacon_heartbeat___health_endpoint_process(void)` |
 | `bof_api_versioning_process` | function | `mutants/src/bof_api_versioning.c:6` | `bool bof_api_versioning_process(void)` |
@@ -369,14 +371,14 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `test_url_encoded_traversal_rejected` | method | `tests/test_bof_path_traversal.py:101` | `def test_url_encoded_traversal_rejected(self)` |
 | `TestC2BeaconBOFIntegration` | class | `tests/test_c2_beacon_bof_integration.py:34` | `class TestC2BeaconBOFIntegration` |
 | `_free_port` | method | `tests/test_c2_beacon_bof_integration.py:76` | `def _free_port(self)` |
-| `_run_server` | method | `tests/test_c2_beacon_bof_integration.py:275` | `def _run_server(self, cfg, state)` |
+| `_run_server` | method | `tests/test_c2_beacon_bof_integration.py:283` | `def _run_server(self, cfg, state)` |
 | `_wait_for_bof_result` | method | `tests/test_c2_beacon_bof_integration.py:98` | `def _wait_for_bof_result(self, state, client_id, timeout)` |
 | `_wait_for_server_ready` | method | `tests/test_c2_beacon_bof_integration.py:84` | `def _wait_for_server_ready(self, host, port, timeout)` |
-| `_wait_for_server_ready` | method | `tests/test_c2_beacon_bof_integration.py:278` | `def _wait_for_server_ready(self, host, port, timeout)` |
+| `_wait_for_server_ready` | method | `tests/test_c2_beacon_bof_integration.py:286` | `def _wait_for_server_ready(self, host, port, timeout)` |
 | `setup_method` | method | `tests/test_c2_beacon_bof_integration.py:37` | `def setup_method(self)` |
 | `teardown_method` | method | `tests/test_c2_beacon_bof_integration.py:71` | `def teardown_method(self)` |
 | `test_beacon_executes_whoami_bof` | method | `tests/test_c2_beacon_bof_integration.py:118` | `def test_beacon_executes_whoami_bof(self)` |
-| `test_c2_beacon_bof_integration` | function | `tests/test_c2_beacon_bof_integration.py:292` | `def test_c2_beacon_bof_integration()` |
+| `test_c2_beacon_bof_integration` | function | `tests/test_c2_beacon_bof_integration.py:300` | `def test_c2_beacon_bof_integration()` |
 | `_free_port` | function | `tests/test_c2_http_e2e.py:45` | `def _free_port()` |
 | `_recv_response` | function | `tests/test_c2_http_e2e.py:53` | `def _recv_response(sock, timeout)` |
 | `encode` | function | `tests/test_c2_http_e2e.py:288` | `def encode(s)` |
@@ -397,22 +399,30 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `test_roundtrip_empty` | function | `tests/test_c2_server.py:131` | `def test_roundtrip_empty()` |
 | `test_roundtrip_text` | function | `tests/test_c2_server.py:138` | `def test_roundtrip_text()` |
 | `test_unknown_selector` | function | `tests/test_c2_server.py:115` | `def test_unknown_selector()` |
+| `Handler` | class | `tests/test_certificate_pinning.py:155` | `class Handler(BaseHTTPRequestHandler)` |
 | `TestCertificatePinningCConfig` | class | `tests/test_certificate_pinning.py:86` | `class TestCertificatePinningCConfig` |
 | `TestCertificatePinningConfig` | class | `tests/test_certificate_pinning.py:23` | `class TestCertificatePinningConfig` |
 | `TestCertificatePinningIntegration` | class | `tests/test_certificate_pinning.py:96` | `class TestCertificatePinningIntegration` |
-| `TestCertificatePinningMutationResistance` | class | `tests/test_certificate_pinning.py:126` | `class TestCertificatePinningMutationResistance` |
-| `test_beacon_rejects_mismatched_certificate` | method | `tests/test_certificate_pinning.py:109` | `def test_beacon_rejects_mismatched_certificate(self)` |
-| `test_beacon_verifies_pinned_certificate` | method | `tests/test_certificate_pinning.py:99` | `def test_beacon_verifies_pinned_certificate(self)` |
+| `TestCertificatePinningMutationResistance` | class | `tests/test_certificate_pinning.py:321` | `class TestCertificatePinningMutationResistance` |
+| `_free_port` | method | `tests/test_certificate_pinning.py:106` | `def _free_port(self)` |
+| `_gen_cert_and_pin` | method | `tests/test_certificate_pinning.py:114` | `def _gen_cert_and_pin(self)` |
+| `_run` | function | `tests/test_certificate_pinning.py:171` | `def _run()` |
+| `_run_beacon_with_bof_tls` | method | `tests/test_certificate_pinning.py:181` | `def _run_beacon_with_bof_tls(self, cert_pem, key_pem, pin_hex)` |
+| `_start_tls_server` | method | `tests/test_certificate_pinning.py:149` | `def _start_tls_server(self, port, cert_pem, key_pem, body)` |
+| `do_GET` | method | `tests/test_certificate_pinning.py:156` | `def do_GET(self)` |
+| `log_message` | method | `tests/test_certificate_pinning.py:162` | `def log_message(self)` |
+| `test_beacon_rejects_mismatched_certificate` | method | `tests/test_certificate_pinning.py:293` | `def test_beacon_rejects_mismatched_certificate(self)` |
+| `test_beacon_verifies_pinned_certificate` | method | `tests/test_certificate_pinning.py:282` | `def test_beacon_verifies_pinned_certificate(self)` |
 | `test_c_config_parses_fingerprint_field` | method | `tests/test_certificate_pinning.py:89` | `def test_c_config_parses_fingerprint_field(self)` |
 | `test_config_defaults_to_empty_fingerprint` | method | `tests/test_certificate_pinning.py:73` | `def test_config_defaults_to_empty_fingerprint(self)` |
 | `test_config_loads_empty_fingerprint` | method | `tests/test_certificate_pinning.py:26` | `def test_config_loads_empty_fingerprint(self)` |
 | `test_config_loads_valid_fingerprint` | method | `tests/test_certificate_pinning.py:38` | `def test_config_loads_valid_fingerprint(self)` |
 | `test_config_rejects_invalid_fingerprint_length` | method | `tests/test_certificate_pinning.py:51` | `def test_config_rejects_invalid_fingerprint_length(self)` |
 | `test_config_rejects_non_hex_fingerprint` | method | `tests/test_certificate_pinning.py:62` | `def test_config_rejects_non_hex_fingerprint(self)` |
-| `test_fingerprint_empty_check_not_mutated_to_always_true` | method | `tests/test_certificate_pinning.py:129` | `def test_fingerprint_empty_check_not_mutated_to_always_true(self)` |
-| `test_fingerprint_hex_validation_not_mutated` | method | `tests/test_certificate_pinning.py:139` | `def test_fingerprint_hex_validation_not_mutated(self)` |
-| `test_pin_option_set_only_when_fingerprint_present` | method | `tests/test_certificate_pinning.py:151` | `def test_pin_option_set_only_when_fingerprint_present(self)` |
-| `test_tofu_first_connection_stores_fingerprint` | method | `tests/test_certificate_pinning.py:117` | `def test_tofu_first_connection_stores_fingerprint(self)` |
+| `test_fingerprint_empty_check_not_mutated_to_always_true` | method | `tests/test_certificate_pinning.py:324` | `def test_fingerprint_empty_check_not_mutated_to_always_true(self)` |
+| `test_fingerprint_hex_validation_not_mutated` | method | `tests/test_certificate_pinning.py:334` | `def test_fingerprint_hex_validation_not_mutated(self)` |
+| `test_pin_option_set_only_when_fingerprint_present` | method | `tests/test_certificate_pinning.py:346` | `def test_pin_option_set_only_when_fingerprint_present(self)` |
+| `test_tofu_first_connection_stores_fingerprint` | method | `tests/test_certificate_pinning.py:307` | `def test_tofu_first_connection_stores_fingerprint(self)` |
 | `main` | function | `tests/test_certificate_pinning_c.c:90` | `int main(void)` |
 | `test_cert_fingerprint_defaults_to_empty` | function | `tests/test_certificate_pinning_c.c:19` | `static void test_cert_fingerprint_defaults_to_empty(void **state)` |
 | `test_cert_fingerprint_invalid_length_fails` | function | `tests/test_certificate_pinning_c.c:55` | `static void test_cert_fingerprint_invalid_length_fails(void **state)` |
@@ -486,15 +496,5 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `test_staged_beacon_runs_from_any_cwd` | function | `tests/test_install_deploy.py:75` | `def test_staged_beacon_runs_from_any_cwd()` |
 | `test_staged_bofs_are_present` | function | `tests/test_install_deploy.py:90` | `def test_staged_bofs_are_present()` |
 | `test_staged_files_have_correct_modes` | function | `tests/test_install_deploy.py:67` | `def test_staged_files_have_correct_modes()` |
-| `TestIVGenerationCBehavior` | class | `tests/test_iv_generation.py:101` | `class TestIVGenerationCBehavior` |
-| `TestIVGenerationConfig` | class | `tests/test_iv_generation.py:26` | `class TestIVGenerationConfig` |
-| `TestIVGenerationPython` | class | `tests/test_iv_generation.py:42` | `class TestIVGenerationPython` |
-| `TestIVMutationResistance` | class | `tests/test_iv_generation.py:128` | `class TestIVMutationResistance` |
-| `test_config_defaults_include_iv_settings` | method | `tests/test_iv_generation.py:29` | `def test_config_defaults_include_iv_settings(self)` |
-| `test_decrypt_data_handles_iv_correctly` | method | `tests/test_iv_generation.py:73` | `def test_decrypt_data_handles_iv_correctly(self)` |
-| `test_encrypt_data_iv_is_16_bytes` | method | `tests/test_iv_generation.py:58` | `def test_encrypt_data_iv_is_16_bytes(self)` |
-| `test_encrypt_data_uses_os_urandom_for_iv` | method | `tests/test_iv_generation.py:45` | `def test_encrypt_data_uses_os_urandom_for_iv(self)` |
-| `test_encrypt_decrypt_roundtrip_with_different_ivs` | method | `tests/test_iv_generation.py:85` | `def test_encrypt_decrypt_roundtrip_with_different_ivs(self)` |
-| `test_fail_closed_on_entropy_failure` | method | `tests/test_iv_generation.py:121` | `def test_fail_closed_on_entropy_failure(self)` |
 
 Next: [SYMBOLS_p4.md](SYMBOLS_p4.md)

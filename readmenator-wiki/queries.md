@@ -12,11 +12,11 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: What does server.py depend on, and what depends on it? (9 connections)
+### Q: What does server.py depend on, and what depends on it? (10 connections)
 
 - Status: unanswered
 
-### Q: How are the 20 files in 'root' related to each other?
+### Q: How are the 20 files in 'legacy' related to each other?
 
 - Status: unanswered
 

@@ -1,5 +1,4 @@
-# Subsystem: root (page 1 of 2)
-Pages: [KB_root.md](KB_root.md), [KB_root_p2.md](KB_root_p2.md)
+# Subsystem: root
 
 ## aes.c
 - Doc: tiny-AES-c (https://github.com/kokke/tiny-AES-c)
@@ -77,7 +76,7 @@ Pages: [KB_root.md](KB_root.md), [KB_root_p2.md](KB_root_p2.md)
   - `AES_keyExpSize` (macro, line 27) `#define AES_keyExpSize`
   - `AES_KEYLEN` (macro, line 29) `#define AES_KEYLEN`
   - `AES_keyExpSize` (macro, line 30) `#define AES_keyExpSize`
-- Imported by: `aes.c`, `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `gopher_beacon.c`
+- Imported by: `aes.c`
 
 ## app.py
 - Doc: Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación...
@@ -102,207 +101,7 @@ Pages: [KB_root.md](KB_root.md), [KB_root_p2.md](KB_root_p2.md)
   - `CALLBACK_OUTPUT` (macro, line 9) `#define CALLBACK_OUTPUT`
   - `CALLBACK_ERROR` (macro, line 10) `#define CALLBACK_ERROR`
   - `CALLBACK_OUTPUT_OEM` (macro, line 11) `#define CALLBACK_OUTPUT_OEM`
-- Imported by: `beacon3.c`, `beacon5.c`, `beacon6.c`, `beacon_p2p.c`, `bof.c`, `gopher_beacon.c`
-
-## beacon3.c
-- Doc: MemoryStruct: === ESTRUCTURAS ===
-- Layer: utility
-- Language: c
-- Symbols:
-  - `MemoryStruct` (struct, line 52)
-  - `Trampoline` (struct, line 60)
-  - `SymbolResolver` (struct, line 69)
-  - `TrampolineCache` (struct, line 76)
-  - `__attribute__` (function, line 145) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
-            ...`
-  - `BeaconPrintf` (function, line 196) `void BeaconPrintf(int type, const char *fmt, ...)`
-  - `BeaconOutput` (function, line 213) `void BeaconOutput(int type, const char *data, int len)`
-  - `create_trampoline` (function, line 227) `static void *create_trampoline(void *target)`
-  - `cleanup_trampolines` (function, line 268) `static void cleanup_trampolines(void)`
-  - `get_or_create_trampoline` (function, line 286) `static void *get_or_create_trampoline(void *target)`
-  - `WriteMemoryCallback` (function, line 324) `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
-  - `https_request` (function, line 342) `char *https_request(const char *url, const char *method, const char *post_data)`
-  - `base64_encode` (function, line 436) `char *base64_encode(const unsigned char *input, int len)`
-  - `base64_decode` (function, line 454) `unsigned char *base64_decode(const char *input, int *len)`
-  - `aes256_cfb_encrypt` (function, line 480) `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `aes256_cfb_decrypt` (function, line 514) `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `exec_cmd` (function, line 550) `char *exec_cmd(const char *cmd, int *out_len)`
-  - `page_align` (function, line 576) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 584) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-  - `get_local_ips` (function, line 1083) `char *get_local_ips()`
-  - `download_bof` (function, line 1118) `unsigned char *download_bof(const char *url, size_t *out_size)`
-  - `run_bof_and_capture` (function, line 1141) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...`
-  - `main` (function, line 1187) `int main()`
-  - `_GNU_SOURCE` (macro, line 1) `#define _GNU_SOURCE`
-  - `C2_URL` (macro, line 33) `#define C2_URL`
-  - `CLIENT_ID` (macro, line 34) `#define CLIENT_ID`
-  - `MALEABLE` (macro, line 35) `#define MALEABLE`
-  - `USER_AGENTS_COUNT` (macro, line 36) `#define USER_AGENTS_COUNT`
-- Depends on: `aes.h`, `beacon.h`, `cJSON.h`
-
-## beacon5.c
-- Doc: MemoryStruct: === ESTRUCTURAS ===
-- Layer: utility
-- Language: c
-- Symbols:
-  - `MemoryStruct` (struct, line 61)
-  - `peer_t` (struct, line 69)
-  - `mesh_msg_t` (struct, line 77)
-  - `Trampoline` (struct, line 102)
-  - `SymbolResolver` (struct, line 111)
-  - `TrampolineCache` (struct, line 118)
-  - `__attribute__` (function, line 188) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
-            ...`
-  - `BeaconPrintf` (function, line 239) `void BeaconPrintf(int type, const char *fmt, ...)`
-  - `BeaconOutput` (function, line 256) `void BeaconOutput(int type, const char *data, int len)`
-  - `create_trampoline` (function, line 270) `static void *create_trampoline(void *target)`
-  - `cleanup_trampolines` (function, line 311) `static void cleanup_trampolines(void)`
-  - `get_or_create_trampoline` (function, line 329) `static void *get_or_create_trampoline(void *target)`
-  - `WriteMemoryCallback` (function, line 367) `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
-  - `https_request` (function, line 385) `char *https_request(const char *url, const char *method, const char *post_data)`
-  - `base64_encode` (function, line 479) `char *base64_encode(const unsigned char *input, int len)`
-  - `base64_decode` (function, line 497) `unsigned char *base64_decode(const char *input, int *len)`
-  - `aes256_cfb_encrypt` (function, line 523) `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `aes256_cfb_decrypt` (function, line 557) `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `exec_cmd` (function, line 593) `char *exec_cmd(const char *cmd, int *out_len)`
-  - `page_align` (function, line 619) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 627) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-  - `get_local_ips` (function, line 1126) `char *get_local_ips()`
-  - `download_bof` (function, line 1161) `unsigned char *download_bof(const char *url, size_t *out_size)`
-  - `run_bof_and_capture` (function, line 1184) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...`
-  - `mesh_mark_seen` (function, line 1231) `void mesh_mark_seen(const char *msg_id)`
-  - `mesh_is_seen` (function, line 1240) `int mesh_is_seen(const char *msg_id)`
-  - `mesh_add_peer` (function, line 1255) `void mesh_add_peer(const char *ip, int port)`
-  - `mesh_cleanup_peers` (function, line 1283) `void mesh_cleanup_peers()`
-  - `mesh_send_to_peer` (function, line 1300) `int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)`
-  - `mesh_propagate` (function, line 1324) `void mesh_propagate(const char *command)`
-  - `mesh_discovery_thread` (function, line 1356) `void *mesh_discovery_thread(void *arg)`
-  - `mesh_listener_thread` (function, line 1447) `void *mesh_listener_thread(void *arg)`
-  - `mesh_send_message` (function, line 1667) `void mesh_send_message(int type, const char *target, const char *payload)`
-  - `main` (function, line 1702) `int main(int argc, char **argv)`
-  - `_GNU_SOURCE` (macro, line 1) `#define _GNU_SOURCE`
-  - `MAX_PEERS` (macro, line 36) `#define MAX_PEERS`
-  - `DISCOVERY_PORT` (macro, line 37) `#define DISCOVERY_PORT`
-  - `DISCOVERY_INTERVAL` (macro, line 38) `#define DISCOVERY_INTERVAL`
-  - `MAX_TTL` (macro, line 39) `#define MAX_TTL`
-  - `MESH_MSG_SIZE` (macro, line 40) `#define MESH_MSG_SIZE`
-  - `C2_URL` (macro, line 42) `#define C2_URL`
-  - `CLIENT_ID` (macro, line 43) `#define CLIENT_ID`
-  - `MALEABLE` (macro, line 44) `#define MALEABLE`
-  - `USER_AGENTS_COUNT` (macro, line 45) `#define USER_AGENTS_COUNT`
-- Depends on: `aes.h`, `beacon.h`, `cJSON.h`
-
-## beacon6.c
-- Doc: MemoryStruct: === ESTRUCTURAS ===
-- Layer: utility
-- Language: c
-- Symbols:
-  - `MemoryStruct` (struct, line 53)
-  - `Trampoline` (struct, line 61)
-  - `SymbolResolver` (struct, line 70)
-  - `TrampolineCache` (struct, line 77)
-  - `__attribute__` (function, line 146) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
-            ...`
-  - `delay_ms` (function, line 197) `static void delay_ms(int ms)`
-  - `is_prime` (function, line 204) `static unsigned int is_prime(unsigned int x)`
-  - `get_nth_prime_limited` (function, line 224) `static unsigned int get_nth_prime_limited(unsigned int n)`
-  - `portable_rand_19k_29k` (function, line 253) `static unsigned int portable_rand_19k_29k(void)`
-  - `BeaconPrintf` (function, line 266) `void BeaconPrintf(int type, const char *fmt, ...)`
-  - `BeaconOutput` (function, line 283) `void BeaconOutput(int type, const char *data, int len)`
-  - `create_trampoline` (function, line 297) `static void *create_trampoline(void *target)`
-  - `cleanup_trampolines` (function, line 338) `static void cleanup_trampolines(void)`
-  - `get_or_create_trampoline` (function, line 356) `static void *get_or_create_trampoline(void *target)`
-  - `WriteMemoryCallback` (function, line 394) `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
-  - `https_request` (function, line 412) `char *https_request(const char *url, const char *method, const char *post_data)`
-  - `base64_encode` (function, line 506) `char *base64_encode(const unsigned char *input, int len)`
-  - `base64_decode` (function, line 524) `unsigned char *base64_decode(const char *input, int *len)`
-  - `aes256_cfb_encrypt` (function, line 550) `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `aes256_cfb_decrypt` (function, line 584) `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `exec_cmd` (function, line 620) `char *exec_cmd(const char *cmd, int *out_len)`
-  - `page_align` (function, line 646) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 654) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-  - `get_local_ips` (function, line 1153) `char *get_local_ips()`
-  - `download_bof` (function, line 1188) `unsigned char *download_bof(const char *url, size_t *out_size)`
-  - `run_bof_and_capture` (function, line 1211) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...`
-  - `main` (function, line 1257) `int main()`
-  - `_GNU_SOURCE` (macro, line 1) `#define _GNU_SOURCE`
-  - `C2_URL` (macro, line 34) `#define C2_URL`
-  - `CLIENT_ID` (macro, line 35) `#define CLIENT_ID`
-  - `MALEABLE` (macro, line 36) `#define MALEABLE`
-  - `USER_AGENTS_COUNT` (macro, line 37) `#define USER_AGENTS_COUNT`
-- Depends on: `aes.h`, `beacon.h`, `cJSON.h`
-
-## beacon_p2p.c
-- Layer: utility
-- Language: c
-- Symbols:
-  - `MemoryStruct` (struct, line 676)
-  - `peer_t` (struct, line 59)
-  - `p2p_header_t` (struct, line 73)
-  - `Trampoline` (struct, line 175)
-  - `SymbolResolver` (struct, line 182)
-  - `TrampolineCache` (struct, line 192)
-  - `BeaconDataParse` (function, line 93) `void BeaconDataParse(datap *parser, char *buffer, int size)`
-  - `BeaconDataPtr` (function, line 100) `char *BeaconDataPtr(datap *parser, int size)`
-  - `BeaconDataInt` (function, line 110) `int BeaconDataInt(datap *parser)`
-  - `BeaconDataShort` (function, line 118) `short BeaconDataShort(datap *parser)`
-  - `BeaconDataLength` (function, line 126) `int BeaconDataLength(datap *parser)`
-  - `BeaconDataExtract` (function, line 131) `char *BeaconDataExtract(datap *parser, int *size)`
-  - `BeaconPrintf` (function, line 142) `void BeaconPrintf(int type, const char *fmt, ...)`
-  - `BeaconOutput` (function, line 159) `void BeaconOutput(int type, const char *data, int len)`
-  - `__attribute__` (function, line 250) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
-            ...`
-  - `create_trampoline` (function, line 278) `static void *create_trampoline(void *target)`
-  - `cleanup_trampolines` (function, line 309) `static void cleanup_trampolines(void)`
-  - `get_or_create_trampoline` (function, line 323) `static void *get_or_create_trampoline(void *target)`
-  - `page_align` (function, line 350) `static size_t page_align(size_t size)`
-  - `RunELF` (function, line 358) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-  - `WriteMemoryCallback` (function, line 683) `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
-  - `https_request` (function, line 707) `char *https_request(const char *url, const char *method, const char *post_data)`
-  - `base64_encode` (function, line 763) `char *base64_encode(const unsigned char *input, int len)`
-  - `base64_decode` (function, line 780) `unsigned char *base64_decode(const char *input, int *len)`
-  - `aes256_cfb_encrypt` (function, line 802) `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `aes256_cfb_decrypt` (function, line 832) `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-  - `exec_cmd` (function, line 866) `char *exec_cmd(const char *cmd, int *out_len)`
-  - `get_local_ips` (function, line 891) `char *get_local_ips()`
-  - `download_bof` (function, line 925) `unsigned char *download_bof(const char *url, size_t *out_size)`
-  - `run_bof_and_capture` (function, line 939) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...`
-  - `add_peer` (function, line 965) `void add_peer(struct in_addr ip, int port, const char *id)`
-  - `peer_discovery_thread` (function, line 992) `void *peer_discovery_thread(void *arg)`
-  - `handle_peer_connection` (function, line 1032) `void *handle_peer_connection(void *arg)`
-  - `peer_server_thread` (function, line 1130) `void *peer_server_thread(void *arg)`
-  - `send_to_peer` (function, line 1153) `char *send_to_peer(peer_t *peer, const char *data, int *out_len)`
-  - `send_to_c2_or_peer` (function, line 1197) `char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)`
-  - `execute_generic_command` (function, line 1231) `char *execute_generic_command(const char *cmd, int *out_len)`
-  - `main` (function, line 1276) `int main()`
-  - `_GNU_SOURCE` (macro, line 1) `#define _GNU_SOURCE`
-  - `C2_URL` (macro, line 37) `#define C2_URL`
-  - `CLIENT_ID` (macro, line 38) `#define CLIENT_ID`
-  - `MALEABLE` (macro, line 39) `#define MALEABLE`
-  - `USER_AGENTS_COUNT` (macro, line 40) `#define USER_AGENTS_COUNT`
-  - `PEER_DISCOVERY_PORT` (macro, line 42) `#define PEER_DISCOVERY_PORT`
-  - `PEER_TCP_PORT` (macro, line 43) `#define PEER_TCP_PORT`
-  - `PEER_MAGIC` (macro, line 44) `#define PEER_MAGIC`
-  - `PEER_VERSION` (macro, line 45) `#define PEER_VERSION`
-  - `BROADCAST_INTERVAL` (macro, line 46) `#define BROADCAST_INTERVAL`
-  - `MAX_PEERS` (macro, line 47) `#define MAX_PEERS`
-- Depends on: `aes.h`, `beacon.h`, `cJSON.h`
+- Imported by: `bof.c`
 
 ## bof.c
 - Layer: utility
@@ -462,5 +261,114 @@ cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bo...`
   - `cjson_min` (macro, line 1256) `#define cjson_min(a, b)`
 - Depends on: `cJSON.h`
 
+## cJSON.h
+- Doc: cJSON: #define cJSON_Invalid (0) #define cJSON_False (1 << 0) #define cJSON_True (1 << 1)...
+- Layer: utility
+- Language: h
+- Symbols:
+  - `cJSON` (struct, line 98)
+  - `cJSON_Hooks` (struct, line 123)
+  - `cJSON_bool` (type_alias, line 130) `typedef int cJSON_bool;`
+  - `cJSON_Parse` (function, line 152) `* cJSON_Parse (with cJSON_Delete) and cJSON_Print (with stdlib free, cJSON_Hooks.free_fn, or * cJSON_free as...`
+  - `cJSON_GetErrorPtr` (function, line 161) `* a pointer to the error so will match cJSON_GetErrorPtr(). */ CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char...`
+  - `that` (function, line 247) `* that (item->type & cJSON_StringIsConst) is zero before writing to `item->string` */ CJSON_PUBLIC(cJSON_bool)...`
+  - `sensitive` (function, line 286) `* sensitive (1) or case insensitive (0) */ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON...`
+  - `next` (variable, line 27) `extern "C" { #endif #if !defined(__WINDOWS__) && \ (defined(WIN32) || defined(WIN64) || defined(_MSC_VER) ||...`
+  - `cJSON__h` (macro, line 24) `#define cJSON__h`
+  - `__WINDOWS__` (macro, line 33) `#define __WINDOWS__`
+  - `CJSON_CDECL` (macro, line 49) `#define CJSON_CDECL`
+  - `CJSON_STDCALL` (macro, line 50) `#define CJSON_STDCALL`
+  - `CJSON_EXPORT_SYMBOLS` (macro, line 54) `#define CJSON_EXPORT_SYMBOLS`
+  - `CJSON_PUBLIC` (macro, line 58) `#define CJSON_PUBLIC(type)`
+  - `CJSON_PUBLIC` (macro, line 60) `#define CJSON_PUBLIC(type)`
+  - `CJSON_PUBLIC` (macro, line 62) `#define CJSON_PUBLIC(type)`
+  - `CJSON_CDECL` (macro, line 65) `#define CJSON_CDECL`
+  - `CJSON_STDCALL` (macro, line 66) `#define CJSON_STDCALL`
+  - `CJSON_PUBLIC` (macro, line 70) `#define CJSON_PUBLIC(type)`
+  - `CJSON_PUBLIC` (macro, line 72) `#define CJSON_PUBLIC(type)`
+  - `CJSON_VERSION_MAJOR` (macro, line 77) `#define CJSON_VERSION_MAJOR`
+  - `CJSON_VERSION_MINOR` (macro, line 78) `#define CJSON_VERSION_MINOR`
+  - `CJSON_VERSION_PATCH` (macro, line 79) `#define CJSON_VERSION_PATCH`
+  - `cJSON_Invalid` (macro, line 84) `#define cJSON_Invalid`
+  - `cJSON_False` (macro, line 85) `#define cJSON_False`
+  - `cJSON_True` (macro, line 86) `#define cJSON_True`
+  - `cJSON_NULL` (macro, line 87) `#define cJSON_NULL`
+  - `cJSON_Number` (macro, line 88) `#define cJSON_Number`
+  - `cJSON_String` (macro, line 89) `#define cJSON_String`
+  - `cJSON_Array` (macro, line 90) `#define cJSON_Array`
+  - `cJSON_Object` (macro, line 91) `#define cJSON_Object`
+  - `cJSON_Raw` (macro, line 92) `#define cJSON_Raw`
+  - `cJSON_IsReference` (macro, line 94) `#define cJSON_IsReference`
+  - `cJSON_StringIsConst` (macro, line 95) `#define cJSON_StringIsConst`
+  - `CJSON_NESTING_LIMIT` (macro, line 136) `#define CJSON_NESTING_LIMIT`
+  - `CJSON_CIRCULAR_LIMIT` (macro, line 142) `#define CJSON_CIRCULAR_LIMIT`
+  - `cJSON_SetIntValue` (macro, line 312) `#define cJSON_SetIntValue(object, number)`
+  - `cJSON_SetNumberValue` (macro, line 316) `#define cJSON_SetNumberValue(object, number)`
+  - `cJSON_SetBoolValue` (macro, line 324) `#define cJSON_SetBoolValue(object, boolValue)`
+  - `cJSON_ArrayForEach` (macro, line 331) `#define cJSON_ArrayForEach(element, array)`
+- Imported by: `cJSON.c`
 
-Next: [KB_root_p2.md](KB_root_p2.md)
+## contract_agent.py
+- Doc: Contract Driven Agent - SDD/TDD/BDD workflow for Black Sand Beacon v2.
+- Layer: utility
+- Language: py
+- Symbols:
+  - `run_cmd` (function, line 23) `def run_cmd(cmd, cwd)`
+  - `ensure_dir` (function, line 29) `def ensure_dir(path)`
+  - `git` (function, line 33) `def git()`
+  - `make_target` (function, line 37) `def make_target(target)`
+  - `extract_contracts` (function, line 41) `def extract_contracts(claude_content)`
+  - `write_spec` (function, line 62) `def write_spec(contract_name, body)`
+  - `write_python_test` (function, line 96) `def write_python_test(contract_name, body)`
+  - `write_c_test` (function, line 141) `def write_c_test(contract_name, body)`
+  - `write_implementation_stub` (function, line 179) `def write_implementation_stub(contract_name)`
+  - `run_python_tests` (function, line 213) `def run_python_tests()`
+  - `run_c_tests` (function, line 223) `def run_c_tests()`
+  - `run_mutation_testing` (function, line 233) `def run_mutation_testing()`
+  - `run_asan` (function, line 256) `def run_asan()`
+  - `run_qa` (function, line 266) `def run_qa()`
+  - `git_commit_and_branch` (function, line 275) `def git_commit_and_branch(contract_name)`
+  - `process_contract` (function, line 289) `def process_contract(contract_name, body)`
+  - `main` (function, line 316) `def main()`
+
+## gopher_c2.py
+- Layer: utility
+- Language: py
+- Symbols:
+  - `encrypt_data` (function, line 30) `def encrypt_data(data)`
+  - `decrypt_data` (function, line 40) `def decrypt_data(b64_data)`
+  - `handle_client` (function, line 49) `def handle_client(conn, addr)`
+  - `main` (function, line 143) `def main()`
+  - `command_injector` (function, line 152) `def command_injector()`
+
+## install.sh
+- Doc: Install build deps and build everything.
+- Layer: utility
+- Language: sh
+
+## issudo.c
+- Doc: — LazyOwn RedTeam BOF (Linux/x64)  Tipos
+- Layer: utility
+- Language: c
+- Symbols:
+  - `size_t` (type_alias, line 6) `typedef unsigned long size_t;`
+  - `ssize_t` (type_alias, line 7) `typedef long ssize_t;`
+  - `syscall3` (function, line 22) `static inline long syscall3(long n, long a1, long a2, long a3)`
+  - `syscall1` (function, line 32) `static inline long syscall1(long n, long a1)`
+  - `strcmp` (function, line 40) `static int strcmp(const char *s1, const char *s2)`
+  - `get_username_from_uid` (function, line 51) `static int get_username_from_uid(long uid, char *buf, int buf_size)`
+  - `go` (function, line 121) `void go(char *args, int alen)`
+  - `BeaconPrintf` (function, line 10) `extern void BeaconPrintf(int, const char *, ...);`
+  - `BeaconOutput` (function, line 11) `extern void BeaconOutput(int, const char *, int);`
+  - `NULL` (macro, line 2) `#define NULL`
+  - `CALLBACK_OUTPUT` (macro, line 3) `#define CALLBACK_OUTPUT`
+  - `SYS_openat` (macro, line 14) `#define SYS_openat`
+  - `SYS_read` (macro, line 15) `#define SYS_read`
+  - `SYS_close` (macro, line 16) `#define SYS_close`
+  - `SYS_getuid` (macro, line 17) `#define SYS_getuid`
+  - `SYS_getpwuid_r` (macro, line 18) `#define SYS_getpwuid_r`
+  - `AT_FDCWD` (macro, line 19) `#define AT_FDCWD`
+
+## mutmut_config.py
+- Layer: infrastructure
+- Language: py

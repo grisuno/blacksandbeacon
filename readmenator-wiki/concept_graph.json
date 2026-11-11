@@ -150,7 +150,7 @@
         "tests/test_iv_generation.py",
         "tests/test_replay_protection.py"
       ],
-      "mentions": 72,
+      "mentions": 73,
       "confidence": "EXTRACTED"
     },
     {
@@ -358,12 +358,7 @@
       "name": "beacon",
       "files": [
         "beacon.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
         "beacons/v1/beacon.c",
-        "beacons/v1/gopher_beacon.c",
         "beacons/v2/beacon.c",
         "beacons/v3/beacon.c",
         "bof/cat/cat.c",
@@ -375,7 +370,6 @@
         "c2/server.py",
         "config/generate_parsers.py",
         "contract_agent.py",
-        "gopher_beacon.c",
         "include/async_i_o_for_beacon.h",
         "include/beacon.h",
         "include/beacon_common.c",
@@ -384,6 +378,12 @@
         "include/beacon_heartbeat___health_endpoint.h",
         "include/config_py.py",
         "issudo.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/src/async_i_o_for_beacon.c",
         "mutants/src/beacon_common.c_extraction.c",
         "mutants/src/beacon_heartbeat___health_endpoint.c",
@@ -411,17 +411,12 @@
         "tests/test_iv_generation_c.c",
         "tests/test_replay_protection.py"
       ],
-      "mentions": 305,
+      "mentions": 311,
       "confidence": "EXTRACTED"
     },
     {
       "name": "bof",
       "files": [
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "bof.c",
         "bof/cat/bof.c",
         "bof/cat/cat.c",
@@ -435,7 +430,6 @@
         "bof/whoami/bof.c",
         "bof/whoami/whoami.c",
         "c2/server.py",
-        "gopher_beacon.c",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/bof_api_versioning.h",
@@ -446,6 +440,12 @@
         "include/config_autogen.c",
         "include/config_autogen.h",
         "issudo.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/src/bof_api_versioning.c",
         "mutants/src/bof_path_traversal_hardening.c",
         "mutants/src/bof_streaming_(large_outputs).c",
@@ -467,9 +467,10 @@
         "tests/test_bof_path_traversal.py",
         "tests/test_c2_beacon_bof_integration.py",
         "tests/test_c2_server.py",
+        "tests/test_certificate_pinning.py",
         "tests/test_install_deploy.py"
       ],
-      "mentions": 208,
+      "mentions": 214,
       "confidence": "EXTRACTED"
     },
     {
@@ -590,7 +591,6 @@
       "files": [
         "c2/server.py",
         "config/generate_parsers.py",
-        "include/beacon_common.c",
         "include/beacon_common.h",
         "include/config.c",
         "include/config.h",
@@ -696,18 +696,13 @@
         "tests/test_iv_generation_c.c",
         "tests/test_replay_protection.py"
       ],
-      "mentions": 82,
+      "mentions": 83,
       "confidence": "EXTRACTED"
     },
     {
       "name": "output",
       "files": [
         "beacon.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "bof/cat/cat.c",
         "bof/include/beacon_api.h",
         "bof/is_sudo/is_sudo.c",
@@ -715,22 +710,28 @@
         "bof/userenum/userenum.c",
         "bof/whoami/whoami.c",
         "cJSON.c",
-        "gopher_beacon.c",
         "include/beacon.h",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/cJSON.c",
         "issudo.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_bof_compile.py",
         "mutants/tests/test_config.py",
         "mutants/tests/test_install_deploy.py",
         "tests/test_bof_compile.py",
         "tests/test_c2_beacon_bof_integration.py",
+        "tests/test_certificate_pinning.py",
         "tests/test_config.py",
         "tests/test_execve_command.py",
         "tests/test_install_deploy.py"
       ],
-      "mentions": 148,
+      "mentions": 152,
       "confidence": "EXTRACTED"
     },
     {
@@ -771,19 +772,19 @@
       "name": "api",
       "files": [
         "beacon.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "bof/include/beacon_api.h",
         "bof/suid_enum/bof.c",
-        "gopher_beacon.c",
         "include/beacon.h",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/bof_api_versioning.h",
         "include/c2_rest_api.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/src/bof_api_versioning.c",
         "mutants/src/c2_rest_api.c",
         "mutants/tests/test_beacon_build.py",
@@ -798,6 +799,38 @@
         "tests/test_bof_compile.py"
       ],
       "mentions": 64,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "run",
+      "files": [
+        "contract_agent.py",
+        "include/beacon_common.c",
+        "include/beacon_common.h",
+        "include/config_autogen.c",
+        "include/config_py_autogen.py",
+        "install.sh",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
+        "mutants/tests/test_beacon_build.py",
+        "mutants/tests/test_c2_http_e2e.py",
+        "mutants/tests/test_config.py",
+        "mutants/tests/test_crypto.py",
+        "mutants/tests/test_install_deploy.py",
+        "scripts/mutation_test_c.py",
+        "tests/test_beacon_build.py",
+        "tests/test_c2_beacon_bof_integration.py",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_config.py",
+        "tests/test_crypto.py",
+        "tests/test_install_deploy.py"
+      ],
+      "mentions": 60,
       "confidence": "EXTRACTED"
     },
     {
@@ -833,48 +866,11 @@
       "confidence": "EXTRACTED"
     },
     {
-      "name": "run",
-      "files": [
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
-        "contract_agent.py",
-        "gopher_beacon.c",
-        "include/beacon_common.c",
-        "include/beacon_common.h",
-        "include/config_autogen.c",
-        "include/config_py_autogen.py",
-        "install.sh",
-        "mutants/tests/test_beacon_build.py",
-        "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_config.py",
-        "mutants/tests/test_crypto.py",
-        "mutants/tests/test_install_deploy.py",
-        "scripts/mutation_test_c.py",
-        "tests/test_beacon_build.py",
-        "tests/test_c2_beacon_bof_integration.py",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_config.py",
-        "tests/test_crypto.py",
-        "tests/test_install_deploy.py"
-      ],
-      "mentions": 58,
-      "confidence": "EXTRACTED"
-    },
-    {
       "name": "aes",
       "files": [
         "aes.c",
         "aes.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "c2/server.py",
-        "gopher_beacon.c",
         "include/aes.c",
         "include/aes.h",
         "include/aes_cfb.c",
@@ -882,6 +878,12 @@
         "include/beacon_common.h",
         "include/config.c",
         "include/config.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_crypto.py",
         "tests/test_c2_http_e2e.py",
@@ -891,6 +893,36 @@
         "tests/test_iv_generation.py"
       ],
       "mentions": 125,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "get",
+      "files": [
+        "aes.c",
+        "bof/is_sudo/is_sudo.c",
+        "c2/server.py",
+        "cJSON.c",
+        "cJSON.h",
+        "include/aes.c",
+        "include/beacon_common.c",
+        "include/beacon_common.h",
+        "include/cJSON.c",
+        "include/cJSON.h",
+        "issudo.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
+        "mutants/tests/test_c2_http_e2e.py",
+        "mutants/tests/test_c2_server.py",
+        "tests/test_c2_beacon_bof_integration.py",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_c2_server.py",
+        "tests/test_certificate_pinning.py"
+      ],
+      "mentions": 70,
       "confidence": "EXTRACTED"
     },
     {
@@ -924,32 +956,32 @@
       "confidence": "EXTRACTED"
     },
     {
-      "name": "get",
+      "name": "key",
       "files": [
         "aes.c",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
-        "bof/is_sudo/is_sudo.c",
-        "c2/server.py",
-        "cJSON.c",
-        "cJSON.h",
-        "gopher_beacon.c",
+        "aes.h",
         "include/aes.c",
-        "include/beacon_common.c",
-        "include/beacon_common.h",
-        "include/cJSON.c",
-        "include/cJSON.h",
-        "issudo.c",
+        "include/aes.h",
+        "include/config.c",
+        "include/config.h",
+        "include/config_py.py",
+        "include/config_py_autogen.py",
+        "include/hkdf_key_derivation.h",
+        "mutants/src/hkdf_key_derivation.c",
         "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_c2_server.py",
-        "tests/test_c2_beacon_bof_integration.py",
+        "mutants/tests/test_config.py",
+        "mutants/tests/test_crypto.py",
+        "mutants/tests/test_hkdf_key_derivation.py",
+        "mutants/tests/test_hkdf_key_derivation_c.c",
+        "src/hkdf_key_derivation.c",
         "tests/test_c2_http_e2e.py",
-        "tests/test_c2_server.py"
+        "tests/test_certificate_pinning.py",
+        "tests/test_config.py",
+        "tests/test_crypto.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_hkdf_key_derivation_c.c"
       ],
-      "mentions": 70,
+      "mentions": 153,
       "confidence": "EXTRACTED"
     },
     {
@@ -957,19 +989,19 @@
       "files": [
         "aes.c",
         "aes.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "c2/server.py",
-        "gopher_beacon.c",
         "gopher_c2.py",
         "include/aes.c",
         "include/aes.h",
         "include/aes_cfb.c",
         "include/aes_cfb.h",
         "include/beacon_common.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_c2_server.py",
         "mutants/tests/test_crypto.py",
@@ -986,19 +1018,19 @@
       "files": [
         "aes.c",
         "aes.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "c2/server.py",
-        "gopher_beacon.c",
         "gopher_c2.py",
         "include/aes.c",
         "include/aes.h",
         "include/aes_cfb.c",
         "include/aes_cfb.h",
         "include/beacon_common.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_c2_server.py",
         "tests/test_c2_http_e2e.py",
@@ -1040,31 +1072,31 @@
       "confidence": "EXTRACTED"
     },
     {
-      "name": "key",
+      "name": "command",
       "files": [
-        "aes.c",
-        "aes.h",
-        "include/aes.c",
-        "include/aes.h",
-        "include/config.c",
-        "include/config.h",
-        "include/config_py.py",
-        "include/config_py_autogen.py",
-        "include/hkdf_key_derivation.h",
-        "mutants/src/hkdf_key_derivation.c",
+        "beacons/v1/beacon.c",
+        "beacons/v2/beacon.c",
+        "beacons/v3/beacon.c",
+        "c2/server.py",
+        "contract_agent.py",
+        "gopher_c2.py",
+        "include/beacon_common.c",
+        "include/command_execution_via_execve.h",
+        "legacy/beacon_p2p.c",
+        "mutants/src/command_execution_via_execve.c",
         "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_config.py",
-        "mutants/tests/test_crypto.py",
-        "mutants/tests/test_hkdf_key_derivation.py",
-        "mutants/tests/test_hkdf_key_derivation_c.c",
-        "src/hkdf_key_derivation.c",
+        "mutants/tests/test_c2_server.py",
+        "mutants/tests/test_command_execution_via_execve.py",
+        "mutants/tests/test_command_execution_via_execve_c.c",
+        "src/command_execution_via_execve.c",
+        "tests/test_c2_beacon_bof_integration.py",
         "tests/test_c2_http_e2e.py",
-        "tests/test_config.py",
-        "tests/test_crypto.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_hkdf_key_derivation_c.c"
+        "tests/test_c2_server.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_execve_command.py",
+        "tests/test_replay_protection.py"
       ],
-      "mentions": 148,
+      "mentions": 62,
       "confidence": "EXTRACTED"
     },
     {
@@ -1154,7 +1186,6 @@
     {
       "name": "return",
       "files": [
-        "beacon6.c",
         "bof/include/syscalls.h",
         "c2/server.py",
         "cJSON.c",
@@ -1163,6 +1194,7 @@
         "include/cJSON.c",
         "include/config.c",
         "include/config_autogen.c",
+        "legacy/beacon6.c",
         "mutants/tests/test_beacon_build.py",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_config.py",
@@ -1176,33 +1208,6 @@
         "tests/test_iv_generation_c.c"
       ],
       "mentions": 127,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "command",
-      "files": [
-        "beacon_p2p.c",
-        "beacons/v1/beacon.c",
-        "beacons/v2/beacon.c",
-        "beacons/v3/beacon.c",
-        "c2/server.py",
-        "contract_agent.py",
-        "gopher_c2.py",
-        "include/beacon_common.c",
-        "include/command_execution_via_execve.h",
-        "mutants/src/command_execution_via_execve.c",
-        "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_c2_server.py",
-        "mutants/tests/test_command_execution_via_execve.py",
-        "mutants/tests/test_command_execution_via_execve_c.c",
-        "src/command_execution_via_execve.c",
-        "tests/test_c2_beacon_bof_integration.py",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_c2_server.py",
-        "tests/test_execve_command.py",
-        "tests/test_replay_protection.py"
-      ],
-      "mentions": 61,
       "confidence": "EXTRACTED"
     },
     {
@@ -1235,7 +1240,6 @@
       "name": "size",
       "files": [
         "aes.h",
-        "beacon5.c",
         "beacons/v2/beacon.c",
         "bof/cat/cat.c",
         "bof/include/syscalls.h",
@@ -1252,9 +1256,10 @@
         "include/config.h",
         "include/config_autogen.c",
         "include/config_autogen.h",
-        "issudo.c"
+        "issudo.c",
+        "legacy/beacon5.c"
       ],
-      "mentions": 73,
+      "mentions": 71,
       "confidence": "EXTRACTED"
     },
     {
@@ -1281,6 +1286,32 @@
         "tests/test_install_deploy.py"
       ],
       "mentions": 61,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "returns",
+      "files": [
+        "bof/include/syscalls.h",
+        "c2/server.py",
+        "include/aes_cfb.c",
+        "include/beacon_common.c",
+        "include/beacon_common.h",
+        "include/config.c",
+        "include/config.h",
+        "include/config_autogen.h",
+        "include/config_py.py",
+        "include/config_py_autogen.py",
+        "legacy/beacon6.c",
+        "mutants/tests/test_c2_http_e2e.py",
+        "scripts/mutation_test_c.py",
+        "tests/test_c2_beacon_bof_integration.py",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_iv_generation.py",
+        "tests/test_iv_generation_c.c"
+      ],
+      "mentions": 58,
       "confidence": "EXTRACTED"
     },
     {
@@ -1312,18 +1343,18 @@
     {
       "name": "client",
       "files": [
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "c2/server.py",
-        "gopher_beacon.c",
         "gopher_c2.py",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/config.h",
         "include/tls_client_certificate_authentication.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/src/tls_client_certificate_authentication.c",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_tls_client_certificate_authentication.py",
@@ -1333,6 +1364,32 @@
         "tests/test_replay_protection.py"
       ],
       "mentions": 41,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "until",
+      "files": [
+        "c2/server.py",
+        "mutants/tests/test_async_i_o_for_beacon.py",
+        "mutants/tests/test_beacon_heartbeat___health_endpoint.py",
+        "mutants/tests/test_bof_api_versioning.py",
+        "mutants/tests/test_bof_path_traversal_hardening.py",
+        "mutants/tests/test_bof_streaming_(large_outputs).py",
+        "mutants/tests/test_c2_rest_api.py",
+        "mutants/tests/test_certificate_pinning___tofu.py",
+        "mutants/tests/test_command_execution_via_execve.py",
+        "mutants/tests/test_hkdf_key_derivation.py",
+        "mutants/tests/test_iv_generation_with_entropy_verification.py",
+        "mutants/tests/test_mutation_testing_integration.py",
+        "mutants/tests/test_replay_protection.py",
+        "mutants/tests/test_socks5___http_proxy_support.py",
+        "mutants/tests/test_structured_jsonl_logging.py",
+        "mutants/tests/test_tls_client_certificate_authentication.py",
+        "mutants/tests/test_unified_config_schema.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_iv_generation.py"
+      ],
+      "mentions": 20,
       "confidence": "EXTRACTED"
     },
     {
@@ -1383,57 +1440,7 @@
         "tests/test_hkdf_key_derivation_c.c",
         "tests/test_iv_generation_c.c"
       ],
-      "mentions": 81,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "returns",
-      "files": [
-        "beacon6.c",
-        "bof/include/syscalls.h",
-        "c2/server.py",
-        "include/aes_cfb.c",
-        "include/beacon_common.c",
-        "include/beacon_common.h",
-        "include/config.c",
-        "include/config.h",
-        "include/config_autogen.h",
-        "include/config_py.py",
-        "include/config_py_autogen.py",
-        "mutants/tests/test_c2_http_e2e.py",
-        "scripts/mutation_test_c.py",
-        "tests/test_c2_beacon_bof_integration.py",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_iv_generation.py",
-        "tests/test_iv_generation_c.c"
-      ],
-      "mentions": 56,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "until",
-      "files": [
-        "c2/server.py",
-        "mutants/tests/test_async_i_o_for_beacon.py",
-        "mutants/tests/test_beacon_heartbeat___health_endpoint.py",
-        "mutants/tests/test_bof_api_versioning.py",
-        "mutants/tests/test_bof_path_traversal_hardening.py",
-        "mutants/tests/test_bof_streaming_(large_outputs).py",
-        "mutants/tests/test_c2_rest_api.py",
-        "mutants/tests/test_certificate_pinning___tofu.py",
-        "mutants/tests/test_command_execution_via_execve.py",
-        "mutants/tests/test_hkdf_key_derivation.py",
-        "mutants/tests/test_iv_generation_with_entropy_verification.py",
-        "mutants/tests/test_mutation_testing_integration.py",
-        "mutants/tests/test_replay_protection.py",
-        "mutants/tests/test_socks5___http_proxy_support.py",
-        "mutants/tests/test_structured_jsonl_logging.py",
-        "mutants/tests/test_tls_client_certificate_authentication.py",
-        "mutants/tests/test_unified_config_schema.py",
-        "tests/test_iv_generation.py"
-      ],
-      "mentions": 18,
+      "mentions": 80,
       "confidence": "EXTRACTED"
     },
     {
@@ -1463,12 +1470,12 @@
     {
       "name": "server",
       "files": [
-        "beacon_p2p.c",
         "c2/server.py",
         "include/beacon_common.h",
         "include/config_autogen.c",
         "include/config_autogen.h",
         "include/config_py.py",
+        "legacy/beacon_p2p.c",
         "mutants/tests/test_c2_http_e2e.py",
         "mutants/tests/test_c2_server.py",
         "mutants/tests/test_certificate_pinning.py",
@@ -1481,15 +1488,13 @@
         "tests/test_crypto.py",
         "tests/test_replay_protection.py"
       ],
-      "mentions": 83,
+      "mentions": 84,
       "confidence": "EXTRACTED"
     },
     {
       "name": "int",
       "files": [
         "beacon.h",
-        "beacon6.c",
-        "beacon_p2p.c",
         "bof/include/beacon_api.h",
         "bof/include/syscalls.h",
         "cJSON.h",
@@ -1501,8 +1506,34 @@
         "include/config.h",
         "include/config_autogen.c",
         "include/config_autogen.h",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
         "tests/test_certificate_pinning_c.c",
         "tests/test_hkdf_key_derivation_c.c",
+        "tests/test_iv_generation_c.c"
+      ],
+      "mentions": 64,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "bytes",
+      "files": [
+        "aes.c",
+        "cJSON.c",
+        "include/aes.c",
+        "include/aes_cfb.c",
+        "include/beacon_common.c",
+        "include/beacon_common.h",
+        "include/cJSON.c",
+        "include/config.c",
+        "include/config.h",
+        "include/config_autogen.c",
+        "mutants/tests/crypto_harness.c",
+        "tests/crypto_harness.c",
+        "tests/test_certificate_pinning.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_hkdf_key_derivation_c.c",
+        "tests/test_iv_generation.py",
         "tests/test_iv_generation_c.c"
       ],
       "mentions": 63,
@@ -1512,20 +1543,20 @@
       "name": "printf",
       "files": [
         "beacon.h",
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
-        "beacons/v1/gopher_beacon.c",
         "bof/cat/cat.c",
         "bof/is_sudo/is_sudo.c",
         "bof/userenum/userenum.c",
         "bof/whoami/whoami.c",
-        "gopher_beacon.c",
         "include/beacon.h",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "issudo.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_bof_compile.py",
         "tests/test_bof_compile.py"
       ],
@@ -1580,33 +1611,9 @@
       "confidence": "EXTRACTED"
     },
     {
-      "name": "bytes",
-      "files": [
-        "aes.c",
-        "cJSON.c",
-        "include/aes.c",
-        "include/aes_cfb.c",
-        "include/beacon_common.c",
-        "include/beacon_common.h",
-        "include/cJSON.c",
-        "include/config.c",
-        "include/config.h",
-        "include/config_autogen.c",
-        "mutants/tests/crypto_harness.c",
-        "tests/crypto_harness.c",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_hkdf_key_derivation_c.c",
-        "tests/test_iv_generation.py",
-        "tests/test_iv_generation_c.c"
-      ],
-      "mentions": 62,
-      "confidence": "EXTRACTED"
-    },
-    {
       "name": "length",
       "files": [
         "beacon.h",
-        "beacon_p2p.c",
         "bof/include/beacon_api.h",
         "bof/suid_enum/bof.c",
         "cJSON.c",
@@ -1614,6 +1621,7 @@
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/cJSON.c",
+        "legacy/beacon_p2p.c",
         "mutants/tests/test_certificate_pinning.py",
         "tests/test_certificate_pinning.py",
         "tests/test_certificate_pinning_c.c",
@@ -1628,19 +1636,19 @@
     {
       "name": "source",
       "files": [
-        "beacon3.c",
-        "beacon5.c",
-        "beacon6.c",
-        "beacon_p2p.c",
         "beacons/v1/beacon.c",
-        "beacons/v1/gopher_beacon.c",
         "beacons/v2/beacon.c",
         "beacons/v3/beacon.c",
-        "gopher_beacon.c",
         "include/beacon_common.c",
         "include/beacon_common.h",
         "include/config.c",
         "include/config_autogen.c",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
         "mutants/tests/test_config.py",
         "scripts/mutation_test_c.py",
         "tests/test_config.py"
@@ -1713,7 +1721,7 @@
         "tests/test_hkdf_key_derivation_c.c",
         "tests/test_iv_generation_c.c"
       ],
-      "mentions": 84,
+      "mentions": 82,
       "confidence": "EXTRACTED"
     }
   ],
@@ -1798,7 +1806,7 @@
       "source": "contract",
       "target": "process",
       "verb": "depends_on",
-      "strength": 0.77,
+      "strength": 0.79,
       "confidence": "INFERRED",
       "evidence": [
         "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
@@ -1890,25 +1898,6 @@
       ]
     },
     {
-      "source": "bof",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.6,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "bof.c->beacon.h",
-        "bof/cat/bof.c->bof/include/beacon_api.h"
-      ]
-    },
-    {
       "source": "mutants",
       "target": "include",
       "verb": "depends_on",
@@ -1928,29 +1917,10 @@
       ]
     },
     {
-      "source": "beacon",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.56,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h"
-      ]
-    },
-    {
       "source": "bof",
       "target": "include",
       "verb": "depends_on",
-      "strength": 0.56,
+      "strength": 0.58,
       "confidence": "INFERRED",
       "evidence": [
         "bof/cat/bof.c->bof/include/beacon_api.h",
@@ -1963,25 +1933,6 @@
         "bof/userenum/bof.c->bof/include/syscalls.h",
         "bof/whoami/bof.c->bof/include/beacon_api.h",
         "bof/whoami/bof.c->bof/include/syscalls.h"
-      ]
-    },
-    {
-      "source": "bof",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.53,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "bof.c->beacon.h",
-        "bof/cat/bof.c->bof/include/beacon_api.h"
       ]
     },
     {
@@ -2007,7 +1958,7 @@
       "source": "bof",
       "target": "bsb",
       "verb": "depends_on",
-      "strength": 0.47,
+      "strength": 0.51,
       "confidence": "INFERRED",
       "evidence": [
         "bof/cat/bof.c->bof/include/beacon_api.h",
@@ -2023,86 +1974,10 @@
       ]
     },
     {
-      "source": "beacon",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.44,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "config",
-      "target": "bsb",
-      "verb": "depends_on",
-      "strength": 0.44,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/config_harness.c->include/config.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/config_harness.c->include/config.h",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "config",
-      "target": "include",
-      "verb": "depends_on",
-      "strength": 0.44,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.c->include/cJSON.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/src/unified_config_schema.c->include/unified_config_schema.h",
-        "mutants/tests/config_harness.c->include/config.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "config",
-      "target": "returns",
-      "verb": "depends_on",
-      "strength": 0.44,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/config_harness.c->include/config.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/config_harness.c->include/config.h",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py"
-      ]
-    },
-    {
       "source": "mutants",
       "target": "process",
       "verb": "depends_on",
-      "strength": 0.44,
+      "strength": 0.47,
       "confidence": "INFERRED",
       "evidence": [
         "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
@@ -2121,7 +1996,7 @@
       "source": "beacon",
       "target": "bsb",
       "verb": "depends_on",
-      "strength": 0.42,
+      "strength": 0.44,
       "confidence": "INFERRED",
       "evidence": [
         "beacons/v1/beacon.c->include/beacon_common.h",
@@ -2137,67 +2012,48 @@
       ]
     },
     {
-      "source": "bof",
-      "target": "beacon",
+      "source": "config",
+      "target": "bsb",
       "verb": "depends_on",
-      "strength": 0.42,
+      "strength": 0.44,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon5.c->beacon.h",
-        "beacon6.c->beacon.h",
-        "beacon_p2p.c->beacon.h",
-        "bof.c->beacon.h",
-        "bof/cat/bof.c->bof/include/beacon_api.h",
-        "bof/is_sudo/bof.c->bof/include/beacon_api.h",
-        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "bof/userenum/bof.c->bof/include/beacon_api.h",
-        "bof/whoami/bof.c->bof/include/beacon_api.h"
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/config_harness.c->include/config.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/config_harness.c->include/config.h",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
       ]
     },
     {
-      "source": "source",
-      "target": "error",
+      "source": "config",
+      "target": "returns",
       "verb": "depends_on",
-      "strength": 0.42,
+      "strength": 0.44,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "source",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.42,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h"
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/config_harness.c->include/config.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/config_harness.c->include/config.h",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
       ]
     },
     {
       "source": "beacon",
       "target": "returns",
       "verb": "depends_on",
-      "strength": 0.4,
+      "strength": 0.42,
       "confidence": "INFERRED",
       "evidence": [
         "beacons/v1/beacon.c->include/beacon_common.h",
@@ -2213,105 +2069,10 @@
       ]
     },
     {
-      "source": "get",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "cJSON.c->cJSON.h"
-      ]
-    },
-    {
-      "source": "output",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "cJSON.c->cJSON.h"
-      ]
-    },
-    {
-      "source": "output",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.4,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "bof/suid_enum/bof.c->bof/include/syscalls.h"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
       "source": "beacon",
       "target": "config",
       "verb": "depends_on",
-      "strength": 0.37,
+      "strength": 0.4,
       "confidence": "INFERRED",
       "evidence": [
         "beacons/v1/beacon.c->include/beacon_common.h",
@@ -2327,67 +2088,29 @@
       ]
     },
     {
-      "source": "beacon",
-      "target": "error",
-      "verb": "consumes",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "int",
-      "verb": "consumes",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "json",
+      "source": "bof",
+      "target": "returns",
       "verb": "depends_on",
-      "strength": 0.37,
+      "strength": 0.4,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->cJSON.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->cJSON.h",
+        "bof/cat/bof.c->bof/include/syscalls.h",
+        "bof/is_sudo/bof.c->bof/include/syscalls.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "bof/userenum/bof.c->bof/include/syscalls.h",
+        "bof/whoami/bof.c->bof/include/syscalls.h",
         "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->cJSON.h",
-        "include/beacon_common.c->include/cJSON.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h"
       ]
     },
     {
       "source": "bytes",
       "target": "include",
       "verb": "depends_on",
-      "strength": 0.37,
+      "strength": 0.4,
       "confidence": "INFERRED",
       "evidence": [
         "include/aes.c->include/aes.h",
@@ -2403,41 +2126,212 @@
       ]
     },
     {
-      "source": "config",
+      "source": "must",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "must",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "must",
+      "target": "returns",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "not",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "not",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "not",
+      "target": "returns",
+      "verb": "depends_on",
+      "strength": 0.4,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "beacon",
       "target": "error",
+      "verb": "consumes",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "server",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "bof",
+      "target": "int",
+      "verb": "depends_on",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof.c->beacon.h",
+        "bof/cat/bof.c->bof/include/beacon_api.h",
+        "bof/cat/bof.c->bof/include/syscalls.h",
+        "bof/is_sudo/bof.c->bof/include/beacon_api.h",
+        "bof/is_sudo/bof.c->bof/include/syscalls.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "bof/userenum/bof.c->bof/include/beacon_api.h",
+        "bof/userenum/bof.c->bof/include/syscalls.h",
+        "bof/whoami/bof.c->bof/include/beacon_api.h"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "include",
       "verb": "depends_on",
       "strength": 0.37,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.c->include/cJSON.h",
         "include/beacon_common.h->include/config.h",
         "include/config.c->include/config.h",
         "include/config_autogen.c->include/config_autogen.h",
+        "mutants/src/unified_config_schema.c->include/unified_config_schema.h",
         "mutants/tests/config_harness.c->include/config.h",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "src/unified_config_schema.c->include/unified_config_schema.h",
         "tests/config_harness.c->include/config.h",
         "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "encrypt",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/aes_cfb.c->include/aes_cfb.h",
-        "include/beacon_common.h->include/config.h"
       ]
     },
     {
@@ -2460,456 +2354,228 @@
       ]
     },
     {
-      "source": "must",
-      "target": "bsb",
+      "source": "not",
+      "target": "json",
       "verb": "depends_on",
       "strength": 0.37,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
+        "cJSON.c->cJSON.h",
+        "include/cJSON.c->include/cJSON.h",
         "mutants/tests/test_c2_server.py->c2/server.py",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_bof_path_traversal.py->c2/server.py",
         "tests/test_c2_http_e2e.py->c2/server.py",
         "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "must",
-      "target": "config",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "must",
-      "target": "returns",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
         "tests/test_certificate_pinning.py->include/config_py.py"
       ]
     },
     {
       "source": "not",
-      "target": "bsb",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "not",
-      "target": "config",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "not",
-      "target": "returns",
-      "verb": "depends_on",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "source",
-      "target": "error",
-      "verb": "consumes",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "source",
-      "target": "int",
-      "verb": "consumes",
-      "strength": 0.37,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "api",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "bof/suid_enum/bof.c->bof/include/syscalls.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "decrypt",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "encrypt",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "get",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->cJSON.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
-        "gopher_beacon.c->cJSON.h",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.c->include/cJSON.h"
-      ]
-    },
-    {
-      "source": "beacon",
       "target": "server",
       "verb": "depends_on",
-      "strength": 0.35,
+      "strength": 0.37,
       "confidence": "INFERRED",
       "evidence": [
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
         "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
         "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py"
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "source",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "source",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.37,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->cJSON.h",
+        "beacons/v2/beacon.c->cJSON.h",
+        "beacons/v3/beacon.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h"
       ]
     },
     {
       "source": "bof",
-      "target": "returns",
+      "target": "beacon",
       "verb": "depends_on",
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
-        "bof/cat/bof.c->bof/include/syscalls.h",
-        "bof/is_sudo/bof.c->bof/include/syscalls.h",
-        "bof/suid_enum/bof.c->bof/include/syscalls.h",
-        "bof/userenum/bof.c->bof/include/syscalls.h",
-        "bof/whoami/bof.c->bof/include/syscalls.h",
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h"
-      ]
-    },
-    {
-      "source": "bof",
-      "target": "size",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "bof/cat/bof.c->bof/include/syscalls.h",
-        "bof/is_sudo/bof.c->bof/include/syscalls.h",
-        "bof/suid_enum/bof.c->bof/include/syscalls.h",
-        "bof/userenum/bof.c->bof/include/syscalls.h",
-        "bof/whoami/bof.c->bof/include/syscalls.h",
-        "gopher_beacon.c->aes.h"
-      ]
-    },
-    {
-      "source": "client",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "decrypt",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/aes_cfb.c->include/aes_cfb.h",
-        "include/beacon_common.h->include/config.h"
-      ]
-    },
-    {
-      "source": "encrypt",
-      "target": "decrypt",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/aes_cfb.c->include/aes_cfb.h",
-        "mutants/tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "get",
-      "target": "error",
-      "verb": "consumes",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
-      ]
-    },
-    {
-      "source": "get",
-      "target": "int",
-      "verb": "consumes",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
-      ]
-    },
-    {
-      "source": "get",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "cJSON.c->cJSON.h",
-        "gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "length",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.35,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
+        "bof.c->beacon.h",
+        "bof/cat/bof.c->bof/include/beacon_api.h",
+        "bof/is_sudo/bof.c->bof/include/beacon_api.h",
         "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "cJSON.c->cJSON.h",
+        "bof/userenum/bof.c->bof/include/beacon_api.h",
+        "bof/whoami/bof.c->bof/include/beacon_api.h",
+        "c2/server.py->include/config_py.py",
         "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.c->include/cJSON.h",
-        "include/beacon_common.h->include/config.h",
-        "include/cJSON.c->include/cJSON.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_bof_path_traversal.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "contract",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
+        "mutants/src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
+        "mutants/src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
+        "src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
+        "src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
         "tests/test_certificate_pinning.py->include/config_py.py"
       ]
     },
     {
-      "source": "not",
+      "source": "get",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "include/cJSON.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h"
+      ]
+    },
+    {
+      "source": "get",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "include/cJSON.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h"
+      ]
+    },
+    {
+      "source": "must",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "must",
       "target": "json",
       "verb": "depends_on",
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
-        "cJSON.c->cJSON.h",
-        "include/cJSON.c->include/cJSON.h",
+        "include/beacon_common.c->include/cJSON.h",
         "mutants/tests/test_c2_server.py->c2/server.py",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_bof_path_traversal.py->c2/server.py",
         "tests/test_c2_http_e2e.py->c2/server.py",
         "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
         "tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_crypto.py->c2/server.py"
       ]
     },
     {
-      "source": "not",
+      "source": "must",
       "target": "server",
       "verb": "depends_on",
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
-        "include/config_autogen.c->include/config_autogen.h",
+        "include/beacon_common.c->include/beacon_common.h",
         "mutants/tests/test_c2_server.py->c2/server.py",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_bof_path_traversal.py->c2/server.py",
         "tests/test_c2_http_e2e.py->c2/server.py",
         "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_crypto.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "not",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
         "tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_crypto.py->c2/server.py",
         "tests/test_hkdf_key_derivation.py->include/config_py.py"
@@ -2922,16 +2588,16 @@
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "include/cJSON.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h"
       ]
     },
     {
@@ -2941,92 +2607,111 @@
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->cJSON.h",
+        "include/cJSON.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h"
       ]
     },
     {
-      "source": "run",
-      "target": "error",
+      "source": "server",
+      "target": "bsb",
       "verb": "depends_on",
       "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "gopher_beacon.c->beacon.h",
-        "gopher_beacon.c->cJSON.h"
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.h->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
       ]
     },
     {
-      "source": "aes",
-      "target": "key",
+      "source": "server",
+      "target": "config",
       "verb": "depends_on",
-      "strength": 0.33,
+      "strength": 0.35,
       "confidence": "INFERRED",
       "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
         "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/beacon_common.h->include/config.h"
+        "include/beacon_common.h->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
       ]
     },
     {
-      "source": "api",
+      "source": "server",
+      "target": "returns",
+      "verb": "depends_on",
+      "strength": 0.35,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.h->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "beacon",
       "target": "error",
       "verb": "depends_on",
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
         "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "gopher_beacon.c->beacon.h"
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
       ]
     },
     {
-      "source": "bof",
-      "target": "api",
+      "source": "beacon",
+      "target": "process",
       "verb": "depends_on",
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon5.c->beacon.h",
-        "beacon6.c->beacon.h",
-        "beacon_p2p.c->beacon.h",
-        "bof.c->beacon.h",
-        "bof/cat/bof.c->bof/include/beacon_api.h",
-        "bof/is_sudo/bof.c->bof/include/beacon_api.h",
-        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
-        "bof/userenum/bof.c->bof/include/beacon_api.h",
-        "bof/whoami/bof.c->bof/include/beacon_api.h"
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
+        "mutants/src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
+        "src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
+        "src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py"
       ]
     },
     {
@@ -3036,16 +2721,35 @@
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "bof.c->beacon.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "bof",
+      "target": "error",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof.c->beacon.h",
+        "bof/cat/bof.c->bof/include/beacon_api.h",
+        "bof/is_sudo/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/userenum/bof.c->bof/include/beacon_api.h",
+        "bof/whoami/bof.c->bof/include/beacon_api.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h"
       ]
     },
     {
@@ -3055,16 +2759,54 @@
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "bof.c->beacon.h",
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "bytes",
+      "target": "aes",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "aes.c->aes.h",
+        "include/aes.c->include/aes.h",
+        "include/aes_cfb.c->include/aes.h",
+        "include/aes_cfb.c->include/aes_cfb.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "mutants/tests/crypto_harness.c->include/aes_cfb.h",
+        "tests/crypto_harness.c->include/aes_cfb.h"
+      ]
+    },
+    {
+      "source": "bytes",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/aes_cfb.c->include/aes_cfb.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/crypto_harness.c->include/aes_cfb.h",
+        "tests/crypto_harness.c->include/aes_cfb.h",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py"
       ]
     },
     {
@@ -3087,155 +2829,117 @@
       ]
     },
     {
+      "source": "command",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "returns",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "server",
+      "verb": "depends_on",
+      "strength": 0.33,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
       "source": "config",
-      "target": "key",
+      "target": "error",
       "verb": "depends_on",
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/aes.h",
         "include/beacon_common.h->include/config.h",
         "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
         "mutants/tests/config_harness.c->include/config.h",
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
         "tests/config_harness.c->include/config.h",
         "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
         "tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_certificate_pinning_c.c->include/config.h"
-      ]
-    },
-    {
-      "source": "contract",
-      "target": "beacon",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
-        "mutants/src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
-        "mutants/src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
-        "src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
-        "src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "decrypt",
-      "target": "encrypt",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/aes_cfb.c->include/aes_cfb.h",
-        "mutants/tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "encrypt",
-      "target": "beacon",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon5.c->beacon.h",
-        "beacon6.c->beacon.h",
-        "beacon_p2p.c->beacon.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->beacon.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_crypto.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "encrypt",
-      "target": "error",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->beacon.h"
-      ]
-    },
-    {
-      "source": "encrypt",
-      "target": "json",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->cJSON.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->cJSON.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_crypto.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "get",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h"
-      ]
-    },
-    {
-      "source": "get",
-      "target": "json",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->cJSON.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->cJSON.h",
-        "c2/server.py->include/config_py.py",
-        "cJSON.c->cJSON.h",
-        "gopher_beacon.c->cJSON.h",
-        "include/beacon_common.c->include/cJSON.h",
-        "include/cJSON.c->include/cJSON.h",
-        "mutants/tests/test_c2_server.py->c2/server.py"
       ]
     },
     {
@@ -3296,174 +3000,22 @@
       ]
     },
     {
-      "source": "must",
-      "target": "beacon",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "must",
-      "target": "json",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/cJSON.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "must",
-      "target": "server",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.c->include/beacon_common.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "not",
-      "target": "beacon",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py",
-        "tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_crypto.py->c2/server.py",
-        "tests/test_hkdf_key_derivation.py->include/config_py.py",
-        "tests/test_iv_generation.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "run",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "gopher_beacon.c->beacon.h",
-        "gopher_beacon.c->cJSON.h"
-      ]
-    },
-    {
-      "source": "server",
+      "source": "returns",
       "target": "bsb",
       "verb": "depends_on",
       "strength": 0.33,
       "confidence": "INFERRED",
       "evidence": [
         "c2/server.py->include/config_py.py",
+        "include/aes_cfb.c->include/aes_cfb.h",
+        "include/beacon_common.c->include/beacon_common.h",
         "include/beacon_common.h->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
+        "include/config.c->include/config.h",
         "tests/test_c2_beacon_bof_integration.py->c2/server.py",
         "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
         "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "server",
-      "target": "config",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.h->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "server",
-      "target": "returns",
-      "verb": "depends_on",
-      "strength": 0.33,
-      "confidence": "INFERRED",
-      "evidence": [
-        "c2/server.py->include/config_py.py",
-        "include/beacon_common.h->include/config.h",
-        "include/config_autogen.c->include/config_autogen.h",
-        "mutants/tests/test_c2_server.py->c2/server.py",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_bof_path_traversal.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
-        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
-        "tests/test_c2_http_e2e.py->c2/server.py",
-        "tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "aes",
-      "target": "int",
-      "verb": "depends_on",
-      "strength": 0.3,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "gopher_beacon.c->beacon.h",
-        "gopher_beacon.c->cJSON.h"
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py"
       ]
     },
     {
@@ -3473,16 +3025,16 @@
       "strength": 0.3,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
       ]
     },
     {
@@ -3492,40 +3044,21 @@
       "strength": 0.3,
       "confidence": "INFERRED",
       "evidence": [
-        "beacon3.c->beacon.h",
-        "beacon3.c->cJSON.h",
-        "beacon5.c->beacon.h",
-        "beacon5.c->cJSON.h",
-        "beacon6.c->beacon.h",
-        "beacon6.c->cJSON.h",
-        "beacon_p2p.c->beacon.h",
-        "beacon_p2p.c->cJSON.h",
-        "beacons/v1/gopher_beacon.c->beacon.h",
-        "beacons/v1/gopher_beacon.c->cJSON.h"
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
       ]
     },
     {
       "source": "beacon",
-      "target": "key",
-      "verb": "depends_on",
-      "strength": 0.3,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "c2/server.py->include/config_py.py",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.h->include/config.h",
-        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
-        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "process",
+      "target": "bof",
       "verb": "depends_on",
       "strength": 0.3,
       "confidence": "INFERRED",
@@ -3533,70 +3066,13 @@
         "beacons/v1/beacon.c->include/beacon_common.h",
         "beacons/v2/beacon.c->include/beacon_common.h",
         "beacons/v3/beacon.c->include/beacon_common.h",
-        "include/beacon_common.c->include/beacon_common.h",
-        "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
-        "mutants/src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
-        "src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
-        "src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
-        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
-        "tests/test_c2_http_e2e.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "beacon",
-      "target": "size",
-      "verb": "depends_on",
-      "strength": 0.3,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "beacons/v1/beacon.c->include/beacon_common.h",
-        "beacons/v2/beacon.c->include/beacon_common.h",
-        "beacons/v3/beacon.c->include/beacon_common.h",
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
         "bof/suid_enum/bof.c->bof/include/syscalls.h",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h"
-      ]
-    },
-    {
-      "source": "bof",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.3,
-      "confidence": "INFERRED",
-      "evidence": [
-        "beacon3.c->aes.h",
-        "beacon5.c->aes.h",
-        "beacon6.c->aes.h",
-        "beacon_p2p.c->aes.h",
-        "gopher_beacon.c->aes.h",
-        "include/beacon_common.c->include/aes.h",
         "include/beacon_common.c->include/beacon_common.h",
         "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "mutants/tests/test_c2_server.py->c2/server.py"
-      ]
-    },
-    {
-      "source": "bytes",
-      "target": "aes",
-      "verb": "depends_on",
-      "strength": 0.3,
-      "confidence": "INFERRED",
-      "evidence": [
-        "aes.c->aes.h",
-        "include/aes.c->include/aes.h",
-        "include/aes_cfb.c->include/aes.h",
-        "include/aes_cfb.c->include/aes_cfb.h",
-        "include/beacon_common.c->include/aes.h",
-        "include/beacon_common.c->include/beacon_common.h",
-        "include/beacon_common.h->include/config.h",
-        "include/config.c->include/config.h",
-        "mutants/tests/crypto_harness.c->include/aes_cfb.h",
-        "tests/crypto_harness.c->include/aes_cfb.h"
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py"
       ]
     },
     {
@@ -3617,18 +3093,550 @@
         "mutants/tests/test_certificate_pinning.py->include/config_py.py",
         "tests/test_certificate_pinning.py->include/config_py.py"
       ]
+    },
+    {
+      "source": "client",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "client",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "key",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "mutants/tests/config_harness.c->include/config.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/config_harness.c->include/config.h",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning_c.c->include/config.h",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "server",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py",
+        "tests/test_iv_generation.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "include",
+      "target": "bof",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning_c.c->include/config.h",
+        "tests/test_crypto.py->c2/server.py",
+        "tests/test_hkdf_key_derivation_c.c->include/config.h"
+      ]
+    },
+    {
+      "source": "include",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning_c.c->include/config.h",
+        "tests/test_crypto.py->c2/server.py",
+        "tests/test_hkdf_key_derivation_c.c->include/config.h",
+        "tests/test_iv_generation.py->c2/server.py",
+        "tests/test_iv_generation.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "length",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning_c.c->include/config.h",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation_c.c->include/config.h"
+      ]
+    },
+    {
+      "source": "length",
+      "target": "error",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h",
+        "include/cJSON.c->include/cJSON.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning_c.c->include/config.h",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "mutants",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
+        "mutants/src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
+        "mutants/src/beacon_heartbeat___health_endpoint.c->include/beacon_heartbeat___health_endpoint.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py",
+        "tests/test_iv_generation.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "printf",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "printf",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "returns",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "returns",
+      "target": "include",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/aes_cfb.c->include/aes.h",
+        "include/aes_cfb.c->include/aes_cfb.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "run",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "include/beacon_common.c->cJSON.h",
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h"
+      ]
+    },
+    {
+      "source": "server",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "server",
+      "target": "json",
+      "verb": "depends_on",
+      "strength": 0.3,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "aes",
+      "target": "error",
+      "verb": "consumes",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h",
+        "legacy/gopher_beacon.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "aes",
+      "target": "int",
+      "verb": "consumes",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "legacy/beacon3.c->beacon.h",
+        "legacy/beacon3.c->cJSON.h",
+        "legacy/beacon5.c->beacon.h",
+        "legacy/beacon5.c->cJSON.h",
+        "legacy/beacon6.c->beacon.h",
+        "legacy/beacon6.c->cJSON.h",
+        "legacy/beacon_p2p.c->beacon.h",
+        "legacy/beacon_p2p.c->cJSON.h",
+        "legacy/gopher_beacon.c->beacon.h",
+        "legacy/gopher_beacon.c->cJSON.h"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "aes",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_iv_generation.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "beacon",
+      "target": "json",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/cJSON.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_iv_generation.py->c2/server.py",
+        "tests/test_iv_generation.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "bof",
+      "target": "config",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "bytes",
+      "target": "error",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h",
+        "include/cJSON.c->include/cJSON.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation_c.c->include/config.h"
+      ]
+    },
+    {
+      "source": "char",
+      "target": "bsb",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.h->include/config.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_certificate_pinning_c.c->include/config.h"
+      ]
+    },
+    {
+      "source": "char",
+      "target": "int",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "bof/suid_enum/bof.c->bof/include/beacon_api.h",
+        "bof/suid_enum/bof.c->bof/include/syscalls.h",
+        "cJSON.c->cJSON.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "include/beacon_common.h->include/config.h",
+        "include/cJSON.c->include/cJSON.h",
+        "include/config.c->include/config.h",
+        "include/config_autogen.c->include/config_autogen.h",
+        "tests/test_certificate_pinning_c.c->include/config.h"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "include",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "c2/server.py->include/config_py.py",
+        "include/beacon_common.c->include/aes.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "include/beacon_common.c->include/cJSON.h",
+        "mutants/src/command_execution_via_execve.c->include/command_execution_via_execve.h",
+        "src/command_execution_via_execve.c->include/command_execution_via_execve.h",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py"
+      ]
+    },
+    {
+      "source": "command",
+      "target": "process",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "beacons/v1/beacon.c->include/beacon_common.h",
+        "beacons/v2/beacon.c->include/beacon_common.h",
+        "beacons/v3/beacon.c->include/beacon_common.h",
+        "include/beacon_common.c->include/beacon_common.h",
+        "mutants/src/command_execution_via_execve.c->include/command_execution_via_execve.h",
+        "mutants/tests/test_c2_server.py->c2/server.py",
+        "src/command_execution_via_execve.c->include/command_execution_via_execve.h",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_http_e2e.py->c2/server.py",
+        "tests/test_c2_server.py->c2/server.py"
+      ]
+    },
+    {
+      "source": "config",
+      "target": "beacon",
+      "verb": "depends_on",
+      "strength": 0.28,
+      "confidence": "INFERRED",
+      "evidence": [
+        "c2/server.py->include/config_py.py",
+        "mutants/tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_bof_path_traversal.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->c2/server.py",
+        "tests/test_c2_beacon_bof_integration.py->include/config_py.py",
+        "tests/test_certificate_pinning.py->c2/server.py",
+        "tests/test_certificate_pinning.py->include/config_py.py",
+        "tests/test_hkdf_key_derivation.py->include/config_py.py",
+        "tests/test_iv_generation.py->c2/server.py",
+        "tests/test_iv_generation.py->include/config_py.py"
+      ]
     }
   ],
   "dialectic": [
-    "Thesis: `aes` centralizes 23 files; Antithesis: `bytes` pulls 16 files with 9 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
     "Thesis: `aes` centralizes 23 files; Antithesis: `client` pulls 19 files with 11 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.73); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `get` pulls 22 files with 12 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `key` pulls 21 files with 12 shared (Jaccard 0.38); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `returns` pulls 18 files with 10 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `run` pulls 24 files with 11 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `api` centralizes 26 files; Antithesis: `bof` pulls 51 files with 19 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `api` centralizes 26 files; Antithesis: `output` pulls 27 files with 14 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
+    "Thesis: `aes` centralizes 23 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.73); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 23 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 23 files; Antithesis: `get` pulls 23 files with 12 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 23 files; Antithesis: `key` pulls 22 files with 12 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 23 files; Antithesis: `returns` pulls 19 files with 10 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `api` centralizes 26 files; Antithesis: `bof` pulls 52 files with 19 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `api` centralizes 26 files; Antithesis: `output` pulls 28 files with 14 shared (Jaccard 0.35); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `api` centralizes 26 files; Antithesis: `printf` pulls 17 files with 12 shared (Jaccard 0.39); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `auto` centralizes 59 files; Antithesis: `contract` pulls 65 files with 57 shared (Jaccard 0.85); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
   ]
 }

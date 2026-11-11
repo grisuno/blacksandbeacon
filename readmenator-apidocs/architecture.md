@@ -12,7 +12,7 @@ flowchart TB
     classDef entry fill:#0e7490,stroke:#22d3ee,color:#ecfeff,stroke-width:2px;
     subgraph lane_0["Tier 1 - entry / orchestration"]
         direction LR
-        n_c0["root<br/>19 files, 730 symbols<br/>Core / utility"]:::default
+        n_c0["legacy<br/>19 files, 732 symbols<br/>Core / utility"]:::default
         n_d_include["include<br/>2 files, 16 symbols<br/>Infrastructure"]:::default
         n_d_config["config<br/>1 files, 7 symbols<br/>Infrastructure"]:::default
         n_d_bof["bof<br/>4 files, 56 symbols<br/>Core / utility"]:::default
@@ -115,9 +115,9 @@ sequenceDiagram
     p_include_cJSON_c->>p_include_cJSON_h: cJSON_GetErrorPtr()
 ```
 
-### `beacon3.main`
+### `beacon.main`
 
-`beacon3.c:1187`, score 11: `main` in a compiled-language file; entry-style name `main`.
+`beacons/v1/beacon.c:167`, score 11: `main` in a compiled-language file; entry-style name `main`.
 
 Call tree:
 
@@ -126,56 +126,56 @@ flowchart LR
     classDef default fill:#111827,stroke:#38bdf8,color:#e5e7eb;
     classDef entry fill:#0e7490,stroke:#22d3ee,color:#ecfeff,stroke-width:2px;
     classDef external fill:#1a1530,stroke:#a78bfa,color:#ede9fe;
-    n_beacon3_c__main["beacon3.main<br/>=== MAIN ===<br/>beacon3.c:1187"]:::entry
-    n_beacon3_c__https_request["beacon3.https_request<br/>=== HTTPS REQUEST ===<br/>beacon3.c:342"]:::default
-    n_beacon3_c__base64_decode["beacon3.base64_decode<br/>beacon3.c:454"]:::default
-    n_beacon3_c__aes256_cfb_decrypt["beacon3.aes256_cfb_decrypt<br/>beacon3.c:514"]:::default
-    n_aes_h__AES_init_ctx["aes.AES_init_ctx<br/>aes.h:41"]:::external
-    n_aes_h__AES_ECB_encrypt["aes.AES_ECB_encrypt<br/>if defined(ECB) && (ECB == 1)<br/>aes.h:48"]:::external
-    n_beacon3_c__download_bof["beacon3.download_bof<br/>=== DOWNLOAD BOF ===<br/>beacon3.c:1118"]:::default
-    n_beacon3_c__run_bof_and_capture["beacon3.run_bof_and_capture<br/>=== RUN BOF AND CAPTURE ===<br/>beacon3.c:1141"]:::default
-    n_beacon3_c__RunELF["beacon3.RunELF<br/>beacon3.c:584"]:::default
-    n_beacon3_c__page_align["beacon3.page_align<br/>=== Función auxiliar: alinear al tamaño de pá...<br/>beacon3.c:576"]:::default
-    n_beacon3_c__get_or_create_trampoline["beacon3.get_or_create_trampoline<br/>beacon3.c:286"]:::default
-    n_beacon3_c__create_trampoline["beacon3.create_trampoline<br/>=== CRATE TRAPOLINE ===<br/>beacon3.c:227"]:::default
-    n_beacon3_c__cleanup_trampolines["beacon3.cleanup_trampolines<br/>=== CLEAN TRAMPOLINE ===<br/>beacon3.c:268"]:::default
-    n_beacon3_c__exec_cmd["beacon3.exec_cmd<br/>=== EXEC CMD ===<br/>beacon3.c:550"]:::default
-    n_beacon3_c__get_local_ips["beacon3.get_local_ips<br/>=== GET LOCAL IPs ===<br/>beacon3.c:1083"]:::default
-    n_beacon3_c__aes256_cfb_encrypt["beacon3.aes256_cfb_encrypt<br/>=== AES CFB ===<br/>beacon3.c:480"]:::default
-    n_beacon3_c__base64_encode["beacon3.base64_encode<br/>=== BASE64 ===<br/>beacon3.c:436"]:::default
-    n_beacon3_c__main -.->|"recursion"| n_beacon3_c__main
-    n_beacon3_c__main -->|"1"| n_beacon3_c__https_request
-    n_beacon3_c__https_request -.->|"recursion"| n_beacon3_c__https_request
-    n_beacon3_c__main -->|"2"| n_beacon3_c__base64_decode
-    n_beacon3_c__base64_decode -.->|"recursion"| n_beacon3_c__base64_decode
-    n_beacon3_c__main -->|"3"| n_beacon3_c__aes256_cfb_decrypt
-    n_beacon3_c__aes256_cfb_decrypt -.->|"recursion"| n_beacon3_c__aes256_cfb_decrypt
-    n_beacon3_c__aes256_cfb_decrypt -->|"1"| n_aes_h__AES_init_ctx
-    n_aes_h__AES_init_ctx -.->|"recursion"| n_aes_h__AES_init_ctx
-    n_beacon3_c__aes256_cfb_decrypt -->|"2"| n_aes_h__AES_ECB_encrypt
-    n_aes_h__AES_ECB_encrypt -.->|"recursion"| n_aes_h__AES_ECB_encrypt
-    n_beacon3_c__main -->|"4"| n_beacon3_c__download_bof
-    n_beacon3_c__download_bof -.->|"recursion"| n_beacon3_c__download_bof
-    n_beacon3_c__download_bof -.-> n_beacon3_c__https_request
-    n_beacon3_c__main -->|"5"| n_beacon3_c__run_bof_and_capture
-    n_beacon3_c__run_bof_and_capture -.->|"recursion"| n_beacon3_c__run_bof_and_capture
-    n_beacon3_c__run_bof_and_capture -->|"1"| n_beacon3_c__RunELF
-    n_beacon3_c__RunELF -.->|"recursion"| n_beacon3_c__RunELF
-    n_beacon3_c__RunELF -->|"1"| n_beacon3_c__page_align
-    n_beacon3_c__RunELF -->|"2"| n_beacon3_c__get_or_create_trampoline
-    n_beacon3_c__get_or_create_trampoline -->|"1"| n_beacon3_c__create_trampoline
-    n_beacon3_c__RunELF -->|"3"| n_beacon3_c__cleanup_trampolines
-    n_beacon3_c__main -->|"6"| n_beacon3_c__exec_cmd
-    n_beacon3_c__exec_cmd -.->|"recursion"| n_beacon3_c__exec_cmd
-    n_beacon3_c__main -->|"7"| n_beacon3_c__get_local_ips
-    n_beacon3_c__get_local_ips -.->|"recursion"| n_beacon3_c__get_local_ips
-    n_beacon3_c__main -->|"8"| n_beacon3_c__aes256_cfb_encrypt
-    n_beacon3_c__aes256_cfb_encrypt -.->|"recursion"| n_beacon3_c__aes256_cfb_encrypt
-    n_beacon3_c__aes256_cfb_encrypt -.-> n_aes_h__AES_init_ctx
-    n_beacon3_c__aes256_cfb_encrypt -.-> n_aes_h__AES_ECB_encrypt
-    n_beacon3_c__main -->|"9"| n_beacon3_c__base64_encode
-    n_beacon3_c__base64_encode -.->|"recursion"| n_beacon3_c__base64_encode
-    linkStyle 0,2,4,6,8,10,12,15,17,23,25,27,31 stroke:#f87171,stroke-width:2px;
+    n_beacons_v1_beacon_c__main["beacon.main<br/>beacon.c:167"]:::entry
+    n_include_beacon_common_h__bsb_output_init["beacon_common.bsb_output_init<br/>Initialize the output buffer.<br/>beacon_common.h:96"]:::external
+    n_include_beacon_common_h__bsb_backoff_init["beacon_common.bsb_backoff_init<br/>beacon_common.h:189"]:::external
+    n_include_beacon_common_h__https_request["beacon_common.https_request<br/>HTTP client: performs GET or POST request.<br/>beacon_common.h:119"]:::external
+    n_include_beacon_common_h__bsb_backoff_next["beacon_common.bsb_backoff_next<br/>beacon_common.h:190"]:::external
+    n_include_beacon_common_h__base64_decode["beacon_common.base64_decode<br/>beacon_common.h:124"]:::external
+    n_include_beacon_common_h__aes256_cfb_decrypt["beacon_common.aes256_cfb_decrypt<br/>beacon_common.h:136"]:::external
+    n_include_beacon_common_h__bsb_backoff_reset["beacon_common.bsb_backoff_reset<br/>beacon_common.h:191"]:::external
+    n_beacons_v1_beacon_c__execute_command["beacon.execute_command<br/>beacon.c:104"]:::default
+    n_include_beacon_common_h__download_bof["beacon_common.download_bof<br/>Download a BOF from the C2 server.<br/>beacon_common.h:169"]:::external
+    n_include_beacon_common_h__run_bof_and_capture["beacon_common.run_bof_and_capture<br/>Execute a BOF and capture its output.<br/>beacon_common.h:173"]:::external
+    n_beacons_v1_beacon_c__report_result["beacon.report_result<br/>beacon.c:24"]:::default
+    n_include_beacon_common_h__get_local_ips["beacon_common.get_local_ips<br/>Get local IP addresses as a comma-separated s...<br/>beacon_common.h:178"]:::external
+    n_include_beacon_common_h__bsb_generate_secure_iv["beacon_common.bsb_generate_secure_iv<br/>Secure IV generation: tries RAND_bytes, falls...<br/>beacon_common.h:131"]:::external
+    n_include_beacon_common_h__aes256_cfb_encrypt_replay["beacon_common.aes256_cfb_encrypt_replay<br/>Replay-protected encryption: prepends counter...<br/>beacon_common.h:142"]:::external
+    n_include_beacon_common_h__base64_encode["beacon_common.base64_encode<br/>HTTP client: performs GET or POST request.<br/>beacon_common.h:123"]:::external
+    n_include_beacon_common_h__bsb_output_cleanup["beacon_common.bsb_output_cleanup<br/>Initialize the output buffer.<br/>beacon_common.h:99"]:::external
+    n_beacons_v1_beacon_c__main -.->|"recursion"| n_beacons_v1_beacon_c__main
+    n_beacons_v1_beacon_c__main -->|"1"| n_include_beacon_common_h__bsb_output_init
+    n_include_beacon_common_h__bsb_output_init -.->|"recursion"| n_include_beacon_common_h__bsb_output_init
+    n_beacons_v1_beacon_c__main -->|"2"| n_include_beacon_common_h__bsb_backoff_init
+    n_include_beacon_common_h__bsb_backoff_init -.->|"recursion"| n_include_beacon_common_h__bsb_backoff_init
+    n_beacons_v1_beacon_c__main -->|"3"| n_include_beacon_common_h__https_request
+    n_include_beacon_common_h__https_request -.->|"recursion"| n_include_beacon_common_h__https_request
+    n_beacons_v1_beacon_c__main -->|"4"| n_include_beacon_common_h__bsb_backoff_next
+    n_include_beacon_common_h__bsb_backoff_next -.->|"recursion"| n_include_beacon_common_h__bsb_backoff_next
+    n_beacons_v1_beacon_c__main -->|"5"| n_include_beacon_common_h__base64_decode
+    n_include_beacon_common_h__base64_decode -.->|"recursion"| n_include_beacon_common_h__base64_decode
+    n_beacons_v1_beacon_c__main -->|"6"| n_include_beacon_common_h__aes256_cfb_decrypt
+    n_include_beacon_common_h__aes256_cfb_decrypt -.->|"recursion"| n_include_beacon_common_h__aes256_cfb_decrypt
+    n_beacons_v1_beacon_c__main -->|"7"| n_include_beacon_common_h__bsb_backoff_reset
+    n_include_beacon_common_h__bsb_backoff_reset -.->|"recursion"| n_include_beacon_common_h__bsb_backoff_reset
+    n_beacons_v1_beacon_c__main -->|"8"| n_beacons_v1_beacon_c__execute_command
+    n_beacons_v1_beacon_c__execute_command -->|"1"| n_include_beacon_common_h__download_bof
+    n_include_beacon_common_h__download_bof -.->|"recursion"| n_include_beacon_common_h__download_bof
+    n_beacons_v1_beacon_c__execute_command -->|"2"| n_include_beacon_common_h__run_bof_and_capture
+    n_include_beacon_common_h__run_bof_and_capture -.->|"recursion"| n_include_beacon_common_h__run_bof_and_capture
+    n_beacons_v1_beacon_c__main -->|"9"| n_beacons_v1_beacon_c__report_result
+    n_beacons_v1_beacon_c__report_result -->|"1"| n_include_beacon_common_h__get_local_ips
+    n_include_beacon_common_h__get_local_ips -.->|"recursion"| n_include_beacon_common_h__get_local_ips
+    n_beacons_v1_beacon_c__report_result -->|"2"| n_include_beacon_common_h__bsb_generate_secure_iv
+    n_include_beacon_common_h__bsb_generate_secure_iv -.->|"recursion"| n_include_beacon_common_h__bsb_generate_secure_iv
+    n_beacons_v1_beacon_c__report_result -->|"3"| n_include_beacon_common_h__aes256_cfb_encrypt_replay
+    n_include_beacon_common_h__aes256_cfb_encrypt_replay -.->|"recursion"| n_include_beacon_common_h__aes256_cfb_encrypt_replay
+    n_beacons_v1_beacon_c__report_result -->|"4"| n_include_beacon_common_h__base64_encode
+    n_include_beacon_common_h__base64_encode -.->|"recursion"| n_include_beacon_common_h__base64_encode
+    n_beacons_v1_beacon_c__report_result -.-> n_include_beacon_common_h__https_request
+    n_beacons_v1_beacon_c__main -->|"10"| n_include_beacon_common_h__bsb_output_cleanup
+    n_include_beacon_common_h__bsb_output_cleanup -.->|"recursion"| n_include_beacon_common_h__bsb_output_cleanup
+    linkStyle 0,2,4,6,8,10,12,14,17,19,22,24,26,28,31 stroke:#f87171,stroke-width:2px;
 ```
 
 Cross-file sequence:
@@ -183,10 +183,22 @@ Cross-file sequence:
 ```mermaid
 sequenceDiagram
     autonumber
-    participant p_beacon3_c as beacon3.c
-    participant p_aes_h as aes.h
-    p_beacon3_c->>p_aes_h: AES_init_ctx()
-    p_beacon3_c->>p_aes_h: AES_ECB_encrypt()
+    participant p_beacons_v1_beacon_c as beacon.c
+    participant p_include_beacon_common_h as beacon_common.h
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_output_init()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_backoff_init()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: https_request()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_backoff_next()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: base64_decode()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: aes256_cfb_decrypt()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_backoff_reset()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: download_bof()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: run_bof_and_capture()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: get_local_ips()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_generate_secure_iv()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: aes256_cfb_encrypt_replay()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: base64_encode()
+    p_beacons_v1_beacon_c->>p_include_beacon_common_h: bsb_output_cleanup()
 ```
 
 ---

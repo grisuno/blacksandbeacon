@@ -94,33 +94,228 @@ class TestCertificatePinningCConfig:
 
 
 class TestCertificatePinningIntegration:
-    """Integration tests for certificate pinning with C2 server."""
+    """Integration tests for certificate pinning with a live TLS endpoint.
+
+    The beacon downloads the BOF from an HTTPS URL given in the
+    `bof:` command, so pinning is exercised against a local TLS server
+    (self-signed cert, verify_tls=false) while the C2 stays plain HTTP.
+    """
+
+    TIMEOUT = 40
+
+    def _free_port(self):
+        import socket
+        s = socket.socket()
+        s.bind(("127.0.0.1", 0))
+        port = s.getsockname()[1]
+        s.close()
+        return port
+
+    def _gen_cert_and_pin(self):
+        """Self-signed cert + hex pin of the subject public key (curl pins SPKI)."""
+        from cryptography import x509
+        from cryptography.x509.oid import NameOID
+        from cryptography.hazmat.primitives import hashes, serialization
+        from cryptography.hazmat.primitives.asymmetric import rsa
+        from datetime import datetime, timedelta, timezone
+        import base64
+        import hashlib
+
+        key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+        name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, u"bsb-pin-test")])
+        cert = (
+            x509.CertificateBuilder()
+            .subject_name(name)
+            .issuer_name(name)
+            .public_key(key.public_key())
+            .serial_number(x509.random_serial_number())
+            .not_valid_before(datetime.now(timezone.utc))
+            .not_valid_after(datetime.now(timezone.utc) + timedelta(days=1))
+            .sign(key, hashes.SHA256())
+        )
+        spki = key.public_key().public_bytes(
+            serialization.Encoding.DER,
+            serialization.PublicFormat.SubjectPublicKeyInfo,
+        )
+        pin_hex = hashlib.sha256(spki).hexdigest()
+        cert_pem = cert.public_bytes(serialization.Encoding.PEM).decode()
+        key_pem = key.private_bytes(
+            serialization.Encoding.PEM,
+            serialization.PrivateFormat.TraditionalOpenSSL,
+            serialization.NoEncryption(),
+        ).decode()
+        return cert_pem, key_pem, pin_hex
+
+    def _start_tls_server(self, port, cert_pem, key_pem, body):
+        """Serve `body` (bytes) over HTTPS until the returned stop event is set."""
+        import ssl
+        import http.server
+        import threading
+
+        class Handler(http.server.BaseHTTPRequestHandler):
+            def do_GET(self):
+                self.send_response(200)
+                self.send_header("Content-Length", str(len(body)))
+                self.end_headers()
+                self.wfile.write(body)
+
+            def log_message(self, *args):
+                pass
+
+        ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ctx.load_cert_chain(cert_pem, key_pem)
+        srv = http.server.HTTPServer(("127.0.0.1", port), Handler)
+        srv.socket = ctx.wrap_socket(srv.socket, server_side=True)
+        stop = threading.Event()
+
+        def _run():
+            srv.timeout = 1
+            while not stop.is_set():
+                srv.handle_request()
+            srv.server_close()
+
+        t = threading.Thread(target=_run, daemon=True)
+        t.start()
+        return stop
+
+    def _run_beacon_with_bof_tls(self, cert_pem, key_pem, pin_hex):
+        """Drive the C2+beacon round-trip; beacon downloads the BOF over
+        TLS (served with cert_pem/key_pem) while pinning `pin_hex`.
+        Returns the BOF output column from the C2 log (or None)."""
+        import shutil
+        import subprocess
+        import threading
+        import time
+        import csv
+
+        temp_dir = Path(tempfile.mkdtemp(prefix="bsb_pin_"))
+        try:
+            log_dir = temp_dir / "logs"
+            upload_dir = temp_dir / "uploads"
+            log_dir.mkdir()
+            upload_dir.mkdir()
+
+            cert_path = temp_dir / "cert.pem"
+            key_path = temp_dir / "key.pem"
+            cert_path.write_text(cert_pem)
+            key_path.write_text(key_pem)
+
+            # TLS BOF endpoint serves base64(obj)+CRLF, same as handle_bof
+            bof_file = ROOT / "build" / "bof" / "whoami.x64.o"
+            if not bof_file.exists():
+                subprocess.run(["make", "bof-whoami"], cwd=ROOT,
+                               capture_output=True, text=True)
+            import base64
+            body = base64.b64encode(bof_file.read_bytes()) + b"\r\n"
+
+            tls_port = self._free_port()
+            stop = self._start_tls_server(tls_port, str(cert_path), str(key_path), body)
+
+            c2_port = self._free_port()
+            config = {
+                "c2": {
+                    "url": f"http://127.0.0.1:{c2_port}",
+                    "uri": "/api/poll/",
+                    "client_id": "pin_test",
+                    "report_uri": "/report/",
+                    "port": c2_port,
+                },
+                "crypto": {"master_key_hex": "b" * 64, "mode": "cfb"},
+                "timing": {
+                    "sleep_seconds": 1,
+                    "jitter_percent": 0,
+                    "curl_timeout_seconds": 5,
+                    "curl_connect_timeout_seconds": 2,
+                },
+                "network": {
+                    "user_agents": ["pin-test-agent"],
+                    "verify_tls": False,
+                    "cert_fingerprint_sha256": pin_hex,
+                },
+                "bof": {"download_chunk_size": 4096, "output_buffer_size": 65536},
+                "backoff": {"base_seconds": 1, "max_seconds": 5},
+            }
+            config_path = temp_dir / "config.json"
+            config_path.write_text(json.dumps(config))
+
+            from c2.server import C2State, serve, load_runtime_config
+            os.environ["BSB_CONFIG"] = str(config_path)
+            cfg = load_runtime_config()
+            cfg["log_dir"] = str(log_dir)
+            cfg["upload_dir"] = str(upload_dir)
+            state = C2State(cfg)
+            threading.Thread(target=serve, args=(cfg, state), daemon=True).start()
+
+            bof_url = f"bof:https://127.0.0.1:{tls_port}/whoami.x64.o"
+            with state.lock:
+                state.commands["pin_test"] = bof_url
+
+            beacon = ROOT / "build" / "beacon"
+            env = os.environ.copy()
+            env["BSB_CONFIG"] = str(config_path)
+            proc = subprocess.Popen([str(beacon)], cwd=str(temp_dir), env=env,
+                                    stdout=subprocess.DEVNULL,
+                                    stderr=subprocess.DEVNULL)
+            try:
+                deadline = time.time() + self.TIMEOUT
+                log_file = log_dir / "pin_test.log"
+                output = None
+                while time.time() < deadline:
+                    if log_file.exists():
+                        rows = list(csv.reader(log_file.read_text().strip().splitlines()))
+                        if len(rows) > 1 and len(rows[-1]) >= 11 and rows[-1][10].strip():
+                            output = rows[-1][10]
+                            break
+                    time.sleep(0.5)
+                return output
+            finally:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=3)
+                except subprocess.TimeoutExpired:
+                    proc.kill()
+                    proc.wait()
+                stop.set()
+        finally:
+            shutil.rmtree(temp_dir, ignore_errors=True)
 
     def test_beacon_verifies_pinned_certificate(self):
         """
-        Given a beacon with a pinned certificate fingerprint,
-        When it connects to C2 with matching cert,
-        Then the connection succeeds.
+        Given a beacon with a pinned certificate fingerprint (64 hex chars),
+        When it connects to a TLS endpoint presenting the matching key,
+        Then the pinned download succeeds and the BOF output reaches the C2.
         """
-        # This test requires a test server with a known certificate
-        # For now, we test that the config is passed correctly to libcurl
-        pytest.skip("Requires test server with TLS certificate")
+        cert_pem, key_pem, pin = self._gen_cert_and_pin()
+        output = self._run_beacon_with_bof_tls(cert_pem, key_pem, pin)
+        assert output is not None, "No BOF result received"
+        assert "[whoami] uid=" in output, f"BOF download failed with valid pin: {output!r}"
 
     def test_beacon_rejects_mismatched_certificate(self):
         """
-        Given a beacon with a pinned certificate fingerprint,
-        When it connects to C2 with different cert,
-        Then the connection fails (CURLE_SSL_PINNEDPUBKEYNOTMATCH).
+        Given a beacon pinned to one key,
+        When the TLS endpoint presents a different key,
+        Then the download fails closed (no BOF output).
         """
-        pytest.skip("Requires test server with TLS certificate")
+        cert_pem, key_pem, _ = self._gen_cert_and_pin()
+        # Pin to a synthetic key that can never match the server's cert
+        bad_pin = "0" * 63 + "1"
+        output = self._run_beacon_with_bof_tls(cert_pem, key_pem, bad_pin)
+        assert output is not None, "Beacon did not report the failed download"
+        assert "[whoami]" not in output, f"Pin bypass happened: {output!r}"
+        assert "Failed to download BOF" in output, f"Unexpected output: {output!r}"
 
     def test_tofu_first_connection_stores_fingerprint(self):
         """
         Given a beacon with no pinned fingerprint (TOFU mode),
         When it connects to C2 for the first time,
         Then it stores the fingerprint for future connections.
+
+        NOTE: TOFU persistence is NOT implemented yet (contract gap):
+        the beacon only pins what the config provides and never
+        persists a first-seen fingerprint. Kept skipped until the
+        beacon gains fingerprint persistence.
         """
-        pytest.skip("Requires persistent storage for TOFU")
+        pytest.skip("TOFU persistence not implemented (contract gap)")
 
 
 class TestCertificatePinningMutationResistance:

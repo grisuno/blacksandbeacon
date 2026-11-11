@@ -28,7 +28,7 @@ This community groups 3 file(s) rooted at `mutants/src` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 5 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 5 (mutants/src: async_i_o_for_beacon).
+- [INFERRED] shares_context community 0 <-> 5 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 5 (mutants/src: async_i_o_for_beacon).
 
 ## Risks
 

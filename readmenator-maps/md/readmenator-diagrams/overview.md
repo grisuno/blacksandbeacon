@@ -1,6 +1,6 @@
 ```mermaid
 graph LR
-    root["root"]
+    legacy["legacy"]
     c2["c2"]
     bof_include["bof/include"]
     include_aes["include: aes"]
@@ -25,10 +25,10 @@ graph LR
     mutants_src_tls_client_certificate_authentication["mutants/src: tls_client_certificate_authentication"]
     mutants_src_unified_config_schema["mutants/src: unified_config_schema"]
     include_config_autogen["include: config_autogen"]
-    root -- "depends on" --> include_aes
-    root -- "depends on" --> include_config
-    include_aes -- "calls into" --> root
-    click root href "./root.md" "Details"
+    legacy -- "depends on" --> include_aes
+    legacy -- "depends on" --> include_config
+    include_aes -- "calls into" --> legacy
+    click legacy href "./legacy.md" "Details"
     click c2 href "./c2.md" "Details"
     click include_aes href "./include_aes.md" "Details"
     click include_config href "./include_config.md" "Details"
@@ -36,11 +36,11 @@ graph LR
 
 ## Details
 
-Static architecture map of 175 files (c, h, py, sh) in 25 components: root, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.
+Static architecture map of 175 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.
 
-### root (1)
+### legacy (1)
 
-root groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
+legacy groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
 
 **Related Classes/Methods**:
 

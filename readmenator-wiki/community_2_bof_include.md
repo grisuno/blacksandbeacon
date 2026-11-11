@@ -58,7 +58,7 @@ This community groups 7 file(s) rooted at `bof/include` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).
+- [INFERRED] shares_context community 0 <-> 2 (strength 0.5): Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 2 (bof/include).
 
 ## Risks
 

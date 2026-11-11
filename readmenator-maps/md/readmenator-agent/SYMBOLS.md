@@ -80,191 +80,10 @@ Pages: [SYMBOLS.md](SYMBOLS.md), [SYMBOLS_p2.md](SYMBOLS_p2.md), [SYMBOLS_p3.md]
 | `CALLBACK_OUTPUT` | macro | `beacon.h:9` | `#define CALLBACK_OUTPUT` |
 | `CALLBACK_OUTPUT_OEM` | macro | `beacon.h:11` | `#define CALLBACK_OUTPUT_OEM` |
 | `datap` | struct | `beacon.h:14` | `` |
-| `BeaconOutput` | function | `beacon3.c:213` | `void BeaconOutput(int type, const char *data, int len)` |
-| `BeaconPrintf` | function | `beacon3.c:196` | `void BeaconPrintf(int type, const char *fmt, ...)` |
-| `C2_URL` | macro | `beacon3.c:33` | `#define C2_URL` |
-| `CLIENT_ID` | macro | `beacon3.c:34` | `#define CLIENT_ID` |
-| `MALEABLE` | macro | `beacon3.c:35` | `#define MALEABLE` |
-| `MemoryStruct` | struct | `beacon3.c:52` | `` |
-| `RunELF` | function | `beacon3.c:584` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
-| `SymbolResolver` | struct | `beacon3.c:69` | `` |
-| `Trampoline` | struct | `beacon3.c:60` | `` |
-| `TrampolineCache` | struct | `beacon3.c:76` | `` |
-| `USER_AGENTS_COUNT` | macro | `beacon3.c:36` | `#define USER_AGENTS_COUNT` |
-| `WriteMemoryCallback` | function | `beacon3.c:324` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
-| `_GNU_SOURCE` | macro | `beacon3.c:1` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `beacon3.c:145` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `aes256_cfb_decrypt` | function | `beacon3.c:514` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `beacon3.c:480` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `beacon3.c:454` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `beacon3.c:436` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `beacon3.c:268` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `beacon3.c:227` | `static void *create_trampoline(void *target)` |
-| `download_bof` | function | `beacon3.c:1118` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `beacon3.c:550` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `beacon3.c:1083` | `char *get_local_ips()` |
-| `get_or_create_trampoline` | function | `beacon3.c:286` | `static void *get_or_create_trampoline(void *target)` |
-| `https_request` | function | `beacon3.c:342` | `char *https_request(const char *url, const char *method, const char *post_data)` |
-| `main` | function | `beacon3.c:1187` | `int main()` |
-| `page_align` | function | `beacon3.c:576` | `static size_t page_align(size_t size)` |
-| `run_bof_and_capture` | function | `beacon3.c:1141` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
-| `BeaconOutput` | function | `beacon5.c:256` | `void BeaconOutput(int type, const char *data, int len)` |
-| `BeaconPrintf` | function | `beacon5.c:239` | `void BeaconPrintf(int type, const char *fmt, ...)` |
-| `C2_URL` | macro | `beacon5.c:42` | `#define C2_URL` |
-| `CLIENT_ID` | macro | `beacon5.c:43` | `#define CLIENT_ID` |
-| `DISCOVERY_INTERVAL` | macro | `beacon5.c:38` | `#define DISCOVERY_INTERVAL` |
-| `DISCOVERY_PORT` | macro | `beacon5.c:37` | `#define DISCOVERY_PORT` |
-| `MALEABLE` | macro | `beacon5.c:44` | `#define MALEABLE` |
-| `MAX_PEERS` | macro | `beacon5.c:36` | `#define MAX_PEERS` |
-| `MAX_TTL` | macro | `beacon5.c:39` | `#define MAX_TTL` |
-| `MESH_MSG_SIZE` | macro | `beacon5.c:40` | `#define MESH_MSG_SIZE` |
-| `MemoryStruct` | struct | `beacon5.c:61` | `` |
-| `RunELF` | function | `beacon5.c:627` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
-| `SymbolResolver` | struct | `beacon5.c:111` | `` |
-| `Trampoline` | struct | `beacon5.c:102` | `` |
-| `TrampolineCache` | struct | `beacon5.c:118` | `` |
-| `USER_AGENTS_COUNT` | macro | `beacon5.c:45` | `#define USER_AGENTS_COUNT` |
-| `WriteMemoryCallback` | function | `beacon5.c:367` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
-| `_GNU_SOURCE` | macro | `beacon5.c:1` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `beacon5.c:188` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `aes256_cfb_decrypt` | function | `beacon5.c:557` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `beacon5.c:523` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `beacon5.c:497` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `beacon5.c:479` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `beacon5.c:311` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `beacon5.c:270` | `static void *create_trampoline(void *target)` |
-| `download_bof` | function | `beacon5.c:1161` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `beacon5.c:593` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `beacon5.c:1126` | `char *get_local_ips()` |
-| `get_or_create_trampoline` | function | `beacon5.c:329` | `static void *get_or_create_trampoline(void *target)` |
-| `https_request` | function | `beacon5.c:385` | `char *https_request(const char *url, const char *method, const char *post_data)` |
-| `main` | function | `beacon5.c:1702` | `int main(int argc, char **argv)` |
-| `mesh_add_peer` | function | `beacon5.c:1255` | `void mesh_add_peer(const char *ip, int port)` |
-| `mesh_cleanup_peers` | function | `beacon5.c:1283` | `void mesh_cleanup_peers()` |
-| `mesh_discovery_thread` | function | `beacon5.c:1356` | `void *mesh_discovery_thread(void *arg)` |
-| `mesh_is_seen` | function | `beacon5.c:1240` | `int mesh_is_seen(const char *msg_id)` |
-| `mesh_listener_thread` | function | `beacon5.c:1447` | `void *mesh_listener_thread(void *arg)` |
-| `mesh_mark_seen` | function | `beacon5.c:1231` | `void mesh_mark_seen(const char *msg_id)` |
-| `mesh_msg_t` | struct | `beacon5.c:77` | `` |
-| `mesh_propagate` | function | `beacon5.c:1324` | `void mesh_propagate(const char *command)` |
-| `mesh_send_message` | function | `beacon5.c:1667` | `void mesh_send_message(int type, const char *target, const char *payload)` |
-| `mesh_send_to_peer` | function | `beacon5.c:1300` | `int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)` |
-| `page_align` | function | `beacon5.c:619` | `static size_t page_align(size_t size)` |
-| `peer_t` | struct | `beacon5.c:69` | `` |
-| `run_bof_and_capture` | function | `beacon5.c:1184` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
-| `BeaconOutput` | function | `beacon6.c:283` | `void BeaconOutput(int type, const char *data, int len)` |
-| `BeaconPrintf` | function | `beacon6.c:266` | `void BeaconPrintf(int type, const char *fmt, ...)` |
-| `C2_URL` | macro | `beacon6.c:34` | `#define C2_URL` |
-| `CLIENT_ID` | macro | `beacon6.c:35` | `#define CLIENT_ID` |
-| `MALEABLE` | macro | `beacon6.c:36` | `#define MALEABLE` |
-| `MemoryStruct` | struct | `beacon6.c:53` | `` |
-| `RunELF` | function | `beacon6.c:654` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
-| `SymbolResolver` | struct | `beacon6.c:70` | `` |
-| `Trampoline` | struct | `beacon6.c:61` | `` |
-| `TrampolineCache` | struct | `beacon6.c:77` | `` |
-| `USER_AGENTS_COUNT` | macro | `beacon6.c:37` | `#define USER_AGENTS_COUNT` |
-| `WriteMemoryCallback` | function | `beacon6.c:394` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
-| `_GNU_SOURCE` | macro | `beacon6.c:1` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `beacon6.c:146` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `aes256_cfb_decrypt` | function | `beacon6.c:584` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `beacon6.c:550` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `beacon6.c:524` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `beacon6.c:506` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `beacon6.c:338` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `beacon6.c:297` | `static void *create_trampoline(void *target)` |
-| `delay_ms` | function | `beacon6.c:197` | `static void delay_ms(int ms)` |
-| `download_bof` | function | `beacon6.c:1188` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `beacon6.c:620` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `beacon6.c:1153` | `char *get_local_ips()` |
-| `get_nth_prime_limited` | function | `beacon6.c:224` | `static unsigned int get_nth_prime_limited(unsigned int n)` |
-| `get_or_create_trampoline` | function | `beacon6.c:356` | `static void *get_or_create_trampoline(void *target)` |
-| `https_request` | function | `beacon6.c:412` | `char *https_request(const char *url, const char *method, const char *post_data)` |
-| `is_prime` | function | `beacon6.c:204` | `static unsigned int is_prime(unsigned int x)` |
-| `main` | function | `beacon6.c:1257` | `int main()` |
-| `page_align` | function | `beacon6.c:646` | `static size_t page_align(size_t size)` |
-| `portable_rand_19k_29k` | function | `beacon6.c:253` | `static unsigned int portable_rand_19k_29k(void)` |
-| `run_bof_and_capture` | function | `beacon6.c:1211` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
-| `BROADCAST_INTERVAL` | macro | `beacon_p2p.c:46` | `#define BROADCAST_INTERVAL` |
-| `BeaconDataExtract` | function | `beacon_p2p.c:131` | `char *BeaconDataExtract(datap *parser, int *size)` |
-| `BeaconDataInt` | function | `beacon_p2p.c:110` | `int BeaconDataInt(datap *parser)` |
-| `BeaconDataLength` | function | `beacon_p2p.c:126` | `int BeaconDataLength(datap *parser)` |
-| `BeaconDataParse` | function | `beacon_p2p.c:93` | `void BeaconDataParse(datap *parser, char *buffer, int size)` |
-| `BeaconDataPtr` | function | `beacon_p2p.c:100` | `char *BeaconDataPtr(datap *parser, int size)` |
-| `BeaconDataShort` | function | `beacon_p2p.c:118` | `short BeaconDataShort(datap *parser)` |
-| `BeaconOutput` | function | `beacon_p2p.c:159` | `void BeaconOutput(int type, const char *data, int len)` |
-| `BeaconPrintf` | function | `beacon_p2p.c:142` | `void BeaconPrintf(int type, const char *fmt, ...)` |
-| `C2_URL` | macro | `beacon_p2p.c:37` | `#define C2_URL` |
-| `CLIENT_ID` | macro | `beacon_p2p.c:38` | `#define CLIENT_ID` |
-| `MALEABLE` | macro | `beacon_p2p.c:39` | `#define MALEABLE` |
-| `MAX_PEERS` | macro | `beacon_p2p.c:47` | `#define MAX_PEERS` |
-| `MemoryStruct` | struct | `beacon_p2p.c:676` | `` |
-| `PEER_DISCOVERY_PORT` | macro | `beacon_p2p.c:42` | `#define PEER_DISCOVERY_PORT` |
-| `PEER_MAGIC` | macro | `beacon_p2p.c:44` | `#define PEER_MAGIC` |
-| `PEER_TCP_PORT` | macro | `beacon_p2p.c:43` | `#define PEER_TCP_PORT` |
-| `PEER_VERSION` | macro | `beacon_p2p.c:45` | `#define PEER_VERSION` |
-| `RunELF` | function | `beacon_p2p.c:358` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
-| `SymbolResolver` | struct | `beacon_p2p.c:182` | `` |
-| `Trampoline` | struct | `beacon_p2p.c:175` | `` |
-| `TrampolineCache` | struct | `beacon_p2p.c:192` | `` |
-| `USER_AGENTS_COUNT` | macro | `beacon_p2p.c:40` | `#define USER_AGENTS_COUNT` |
-| `WriteMemoryCallback` | function | `beacon_p2p.c:683` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
-| `_GNU_SOURCE` | macro | `beacon_p2p.c:1` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `beacon_p2p.c:250` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `add_peer` | function | `beacon_p2p.c:965` | `void add_peer(struct in_addr ip, int port, const char *id)` |
-| `aes256_cfb_decrypt` | function | `beacon_p2p.c:832` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `beacon_p2p.c:802` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `beacon_p2p.c:780` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `beacon_p2p.c:763` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `beacon_p2p.c:309` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `beacon_p2p.c:278` | `static void *create_trampoline(void *target)` |
-| `download_bof` | function | `beacon_p2p.c:925` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `beacon_p2p.c:866` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `execute_generic_command` | function | `beacon_p2p.c:1231` | `char *execute_generic_command(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `beacon_p2p.c:891` | `char *get_local_ips()` |
-| `get_or_create_trampoline` | function | `beacon_p2p.c:323` | `static void *get_or_create_trampoline(void *target)` |
-| `handle_peer_connection` | function | `beacon_p2p.c:1032` | `void *handle_peer_connection(void *arg)` |
-| `https_request` | function | `beacon_p2p.c:707` | `char *https_request(const char *url, const char *method, const char *post_data)` |
-| `main` | function | `beacon_p2p.c:1276` | `int main()` |
-| `p2p_header_t` | struct | `beacon_p2p.c:73` | `` |
-| `page_align` | function | `beacon_p2p.c:350` | `static size_t page_align(size_t size)` |
-| `peer_discovery_thread` | function | `beacon_p2p.c:992` | `void *peer_discovery_thread(void *arg)` |
-| `peer_server_thread` | function | `beacon_p2p.c:1130` | `void *peer_server_thread(void *arg)` |
-| `peer_t` | struct | `beacon_p2p.c:59` | `` |
-| `run_bof_and_capture` | function | `beacon_p2p.c:939` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
-| `send_to_c2_or_peer` | function | `beacon_p2p.c:1197` | `char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)` |
-| `send_to_peer` | function | `beacon_p2p.c:1153` | `char *send_to_peer(peer_t *peer, const char *data, int *out_len)` |
 | `_GNU_SOURCE` | macro | `beacons/v1/beacon.c:13` | `#define _GNU_SOURCE` |
 | `execute_command` | function | `beacons/v1/beacon.c:104` | `static char *execute_command(const bsb_config_t *cfg, const char *command)` |
 | `main` | function | `beacons/v1/beacon.c:167` | `int main(void)` |
 | `report_result` | function | `beacons/v1/beacon.c:24` | `static void report_result(const bsb_config_t *cfg, const char *command, const char *output)` |
-| `BeaconOutput` | function | `beacons/v1/gopher_beacon.c:210` | `void BeaconOutput(int type, const char *data, int len)` |
-| `BeaconPrintf` | function | `beacons/v1/gopher_beacon.c:193` | `void BeaconPrintf(int type, const char *fmt, ...)` |
-| `C2` | macro | `beacons/v1/gopher_beacon.c:30` | `#define C2` |
-| `CLIENT_ID` | macro | `beacons/v1/gopher_beacon.c:31` | `#define CLIENT_ID` |
-| `MALEABLE` | macro | `beacons/v1/gopher_beacon.c:32` | `#define MALEABLE` |
-| `MemoryStruct` | struct | `beacons/v1/gopher_beacon.c:49` | `` |
-| `RunELF` | function | `beacons/v1/gopher_beacon.c:581` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
-| `SymbolResolver` | struct | `beacons/v1/gopher_beacon.c:66` | `` |
-| `Trampoline` | struct | `beacons/v1/gopher_beacon.c:57` | `` |
-| `TrampolineCache` | struct | `beacons/v1/gopher_beacon.c:73` | `` |
-| `USER_AGENTS_COUNT` | macro | `beacons/v1/gopher_beacon.c:33` | `#define USER_AGENTS_COUNT` |
-| `WriteMemoryCallback` | function | `beacons/v1/gopher_beacon.c:321` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
-| `_GNU_SOURCE` | macro | `beacons/v1/gopher_beacon.c:1` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `beacons/v1/gopher_beacon.c:142` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `aes256_cfb_decrypt` | function | `beacons/v1/gopher_beacon.c:500` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `beacons/v1/gopher_beacon.c:466` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `beacons/v1/gopher_beacon.c:440` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `beacons/v1/gopher_beacon.c:422` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `beacons/v1/gopher_beacon.c:265` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `beacons/v1/gopher_beacon.c:224` | `static void *create_trampoline(void *target)` |
-| `download_bof` | function | `beacons/v1/gopher_beacon.c:1115` | `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` |
-| `exec_cmd` | function | `beacons/v1/gopher_beacon.c:536` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `beacons/v1/gopher_beacon.c:1080` | `char *get_local_ips()` |
-| `get_or_create_trampoline` | function | `beacons/v1/gopher_beacon.c:283` | `static void *get_or_create_trampoline(void *target)` |
-| `gopher_request` | function | `beacons/v1/gopher_beacon.c:339` | `char *gopher_request(const char *host, int port, const char *selector, const char *method,       ...` |
-| `main` | function | `beacons/v1/gopher_beacon.c:1193` | `int main()` |
-| `page_align` | function | `beacons/v1/gopher_beacon.c:573` | `static size_t page_align(size_t size)` |
-| `run_bof_and_capture` | function | `beacons/v1/gopher_beacon.c:1147` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
 | `DISCOVERY_INTERVAL` | macro | `beacons/v2/beacon.c:29` | `#define DISCOVERY_INTERVAL` |
 | `DISCOVERY_PORT` | macro | `beacons/v2/beacon.c:28` | `#define DISCOVERY_PORT` |
 | `MAX_PEERS` | macro | `beacons/v2/beacon.c:27` | `#define MAX_PEERS` |
@@ -496,5 +315,186 @@ Pages: [SYMBOLS.md](SYMBOLS.md), [SYMBOLS_p2.md](SYMBOLS_p2.md), [SYMBOLS_p3.md]
 | `CJSON_PUBLIC` | function | `cJSON.c:3097` | `CJSON_PUBLIC(cJSON_bool) cJSON_IsArray(const cJSON *const item)` |
 | `CJSON_PUBLIC` | function | `cJSON.c:3107` | `CJSON_PUBLIC(cJSON_bool) cJSON_IsObject(const cJSON *const item)` |
 | `CJSON_PUBLIC` | function | `cJSON.c:3117` | `CJSON_PUBLIC(cJSON_bool) cJSON_IsRaw(const cJSON *const item)` |
+| `CJSON_PUBLIC` | function | `cJSON.c:3127` | `CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON *const b, const cJSON_bo...` |
+| `CJSON_PUBLIC` | function | `cJSON.c:3251` | `CJSON_PUBLIC(void *) cJSON_malloc(size_t size)` |
+| `CJSON_PUBLIC` | function | `cJSON.c:3256` | `CJSON_PUBLIC(void) cJSON_free(void *object)` |
+| `NAN` | macro | `cJSON.c:83` | `#define NAN` |
+| `NAN` | macro | `cJSON.c:85` | `#define NAN` |
+| `_CRT_SECURE_NO_DEPRECATE` | macro | `cJSON.c:28` | `#define _CRT_SECURE_NO_DEPRECATE` |
+| `add_item_to_array` | function | `cJSON.c:2048` | `static cJSON_bool add_item_to_array(cJSON *array, cJSON *item)` |
+| `add_item_to_object` | function | `cJSON.c:2104` | `static cJSON_bool add_item_to_object(cJSON *const object, const char *const string,              ...` |
+| `buffer_at_offset` | macro | `cJSON.c:308` | `#define buffer_at_offset(buffer)` |
+| `buffer_skip_whitespace` | function | `cJSON.c:1101` | `static parse_buffer *buffer_skip_whitespace(parse_buffer *const buffer)` |
+| `cJSON_ArrayForEach` | function | `cJSON.c:3214` | `cJSON_ArrayForEach(a_element, a)` |
+| `cJSON_ArrayForEach` | function | `cJSON.c:3230` | `cJSON_ArrayForEach(b_element, b)` |
+| `cJSON_Duplicate_rec` | function | `cJSON.c:2832` | `cJSON *cJSON_Duplicate_rec(const cJSON *item, size_t depth, cJSON_bool recurse)` |
+| `cJSON_New_Item` | function | `cJSON.c:243` | `static cJSON *cJSON_New_Item(const internal_hooks *const hooks)` |
+| `cJSON_strdup` | function | `cJSON.c:190` | `static unsigned char *cJSON_strdup(const unsigned char *string, const internal_hooks *const hooks)` |
+| `can_access_at_index` | macro | `cJSON.c:304` | `#define can_access_at_index(buffer, index)` |
+| `can_read` | macro | `cJSON.c:302` | `#define can_read(buffer, size)` |
+| `cannot_access_at_index` | macro | `cJSON.c:306` | `#define cannot_access_at_index(buffer, index)` |
+| `case_insensitive_strcmp` | function | `cJSON.c:135` | `static int case_insensitive_strcmp(const unsigned char *string1, const unsigned char *string2)` |
+| `cast_away_const` | function | `cJSON.c:2095` | `static void *cast_away_const(const void *string)` |
+| `cjson_min` | macro | `cJSON.c:1256` | `#define cjson_min(a, b)` |
+| `compare_double` | function | `cJSON.c:596` | `static cJSON_bool compare_double(double a, double b)` |
+| `create_reference` | function | `cJSON.c:2027` | `static cJSON *create_reference(const cJSON *item, const internal_hooks *const hooks)` |
+| `ensure` | function | `cJSON.c:497` | `static unsigned char *ensure(printbuffer *const p, size_t needed)` |
+| `error` | struct | `cJSON.c:89` | `` |
+| `false` | macro | `cJSON.c:70` | `#define false` |
+| `get_array_item` | function | `cJSON.c:1937` | `static cJSON *get_array_item(const cJSON *array, size_t index)` |
+| `get_decimal_point` | function | `cJSON.c:282` | `static unsigned char get_decimal_point(void)` |
+| `get_object_item` | function | `cJSON.c:1966` | `static cJSON *get_object_item(const cJSON *const object, const char *const name,                 ...` |
+| `internal_free` | function | `cJSON.c:171` | `static void CJSON_CDECL internal_free(void *pointer)` |
+| `internal_free` | macro | `cJSON.c:181` | `#define internal_free` |
+| `internal_hooks` | struct | `cJSON.c:158` | `` |
+| `internal_malloc` | function | `cJSON.c:167` | `static void *CJSON_CDECL internal_malloc(size_t size)` |
+| `internal_malloc` | macro | `cJSON.c:180` | `#define internal_malloc` |
+| `internal_realloc` | function | `cJSON.c:175` | `static void *CJSON_CDECL internal_realloc(void *pointer, size_t size)` |
+| `internal_realloc` | macro | `cJSON.c:182` | `#define internal_realloc` |
+| `isinf` | macro | `cJSON.c:75` | `#define isinf(d)` |
+| `isnan` | macro | `cJSON.c:78` | `#define isnan(d)` |
+| `minify_string` | function | `cJSON.c:2951` | `static void minify_string(char **input, char **output)` |
+| `parse_array` | function | `cJSON.c:1524` | `static cJSON_bool parse_array(cJSON *const item, parse_buffer *const input_buffer)` |
+| `parse_buffer` | struct | `cJSON.c:292` | `` |
+| `parse_hex4` | function | `cJSON.c:673` | `static unsigned parse_hex4(const unsigned char *const input)` |
+| `parse_number` | function | `cJSON.c:311` | `static cJSON_bool parse_number(cJSON *const item, parse_buffer *const input_buffer)` |
+| `parse_object` | function | `cJSON.c:1683` | `static cJSON_bool parse_object(cJSON *const item, parse_buffer *const input_buffer)` |
+| `parse_string` | function | `cJSON.c:832` | `static cJSON_bool parse_string(cJSON *const item, parse_buffer *const input_buffer)` |
+| `parse_value` | function | `cJSON.c:1390` | `static cJSON_bool parse_value(cJSON *const item, parse_buffer *const input_buffer)` |
+| `print` | function | `cJSON.c:1258` | `static unsigned char *print(const cJSON *const item, cJSON_bool format,                          ...` |
+| `print_array` | function | `cJSON.c:1621` | `static cJSON_bool print_array(const cJSON *const item, printbuffer *const output_buffer)` |
+| `print_number` | function | `cJSON.c:603` | `static cJSON_bool print_number(const cJSON *const item, printbuffer *const output_buffer)` |
+| `print_object` | function | `cJSON.c:1801` | `static cJSON_bool print_object(const cJSON *const item, printbuffer *const output_buffer)` |
+| `print_string` | function | `cJSON.c:1087` | `static cJSON_bool print_string(const cJSON *const item, printbuffer *const p)` |
+| `print_string_ptr` | function | `cJSON.c:964` | `static cJSON_bool print_string_ptr(const unsigned char *const input,                             ...` |
+| `print_value` | function | `cJSON.c:1450` | `static cJSON_bool print_value(const cJSON *const item, printbuffer *const output_buffer)` |
+| `printbuffer` | struct | `cJSON.c:485` | `` |
+| `replace_item_in_object` | function | `cJSON.c:2461` | `static cJSON_bool replace_item_in_object(cJSON *object, const char *string, cJSON *replacement,  ...` |
+| `skip_multiline_comment` | function | `cJSON.c:2937` | `static void skip_multiline_comment(char **input)` |
+| `skip_oneline_comment` | function | `cJSON.c:2923` | `static void skip_oneline_comment(char **input)` |
+| `skip_utf8_bom` | function | `cJSON.c:1127` | `static parse_buffer *skip_utf8_bom(parse_buffer *const buffer)` |
+| `static_strlen` | macro | `cJSON.c:186` | `#define static_strlen(string_literal)` |
+| `suffix_object` | function | `cJSON.c:2020` | `static void suffix_object(cJSON *prev, cJSON *item)` |
+| `true` | macro | `cJSON.c:65` | `#define true` |
+| `update_offset` | function | `cJSON.c:583` | `static void update_offset(printbuffer *const buffer)` |
+| `utf16_literal_to_utf8` | function | `cJSON.c:710` | `static unsigned char utf16_literal_to_utf8(const unsigned char *const input_pointer,             ...` |
+| `CJSON_CDECL` | macro | `cJSON.h:49` | `#define CJSON_CDECL` |
+| `CJSON_CDECL` | macro | `cJSON.h:65` | `#define CJSON_CDECL` |
+| `CJSON_CIRCULAR_LIMIT` | macro | `cJSON.h:142` | `#define CJSON_CIRCULAR_LIMIT` |
+| `CJSON_EXPORT_SYMBOLS` | macro | `cJSON.h:54` | `#define CJSON_EXPORT_SYMBOLS` |
+| `CJSON_NESTING_LIMIT` | macro | `cJSON.h:136` | `#define CJSON_NESTING_LIMIT` |
+| `CJSON_PUBLIC` | macro | `cJSON.h:58` | `#define CJSON_PUBLIC(type)` |
+| `CJSON_PUBLIC` | macro | `cJSON.h:60` | `#define CJSON_PUBLIC(type)` |
+| `CJSON_PUBLIC` | macro | `cJSON.h:62` | `#define CJSON_PUBLIC(type)` |
+| `CJSON_PUBLIC` | macro | `cJSON.h:70` | `#define CJSON_PUBLIC(type)` |
+| `CJSON_PUBLIC` | macro | `cJSON.h:72` | `#define CJSON_PUBLIC(type)` |
+| `CJSON_STDCALL` | macro | `cJSON.h:50` | `#define CJSON_STDCALL` |
+| `CJSON_STDCALL` | macro | `cJSON.h:66` | `#define CJSON_STDCALL` |
+| `CJSON_VERSION_MAJOR` | macro | `cJSON.h:77` | `#define CJSON_VERSION_MAJOR` |
+| `CJSON_VERSION_MINOR` | macro | `cJSON.h:78` | `#define CJSON_VERSION_MINOR` |
+| `CJSON_VERSION_PATCH` | macro | `cJSON.h:79` | `#define CJSON_VERSION_PATCH` |
+| `__WINDOWS__` | macro | `cJSON.h:33` | `#define __WINDOWS__` |
+| `cJSON` | struct | `cJSON.h:98` | `` |
+| `cJSON_Array` | macro | `cJSON.h:90` | `#define cJSON_Array` |
+| `cJSON_ArrayForEach` | macro | `cJSON.h:331` | `#define cJSON_ArrayForEach(element, array)` |
+| `cJSON_False` | macro | `cJSON.h:85` | `#define cJSON_False` |
+| `cJSON_GetErrorPtr` | function | `cJSON.h:161` | `* a pointer to the error so will match cJSON_GetErrorPtr(). */ CJSON_PUBLIC(cJSON *) cJSON_ParseWithOpts(const char...` |
+| `cJSON_Hooks` | struct | `cJSON.h:123` | `` |
+| `cJSON_Invalid` | macro | `cJSON.h:84` | `#define cJSON_Invalid` |
+| `cJSON_IsReference` | macro | `cJSON.h:94` | `#define cJSON_IsReference` |
+| `cJSON_NULL` | macro | `cJSON.h:87` | `#define cJSON_NULL` |
+| `cJSON_Number` | macro | `cJSON.h:88` | `#define cJSON_Number` |
+| `cJSON_Object` | macro | `cJSON.h:91` | `#define cJSON_Object` |
+| `cJSON_Parse` | function | `cJSON.h:152` | `* cJSON_Parse (with cJSON_Delete) and cJSON_Print (with stdlib free, cJSON_Hooks.free_fn, or * cJSON_free as...` |
+| `cJSON_Raw` | macro | `cJSON.h:92` | `#define cJSON_Raw` |
+| `cJSON_SetBoolValue` | macro | `cJSON.h:324` | `#define cJSON_SetBoolValue(object, boolValue)` |
+| `cJSON_SetIntValue` | macro | `cJSON.h:312` | `#define cJSON_SetIntValue(object, number)` |
+| `cJSON_SetNumberValue` | macro | `cJSON.h:316` | `#define cJSON_SetNumberValue(object, number)` |
+| `cJSON_String` | macro | `cJSON.h:89` | `#define cJSON_String` |
+| `cJSON_StringIsConst` | macro | `cJSON.h:95` | `#define cJSON_StringIsConst` |
+| `cJSON_True` | macro | `cJSON.h:86` | `#define cJSON_True` |
+| `cJSON__h` | macro | `cJSON.h:24` | `#define cJSON__h` |
+| `cJSON_bool` | type_alias | `cJSON.h:130` | `typedef int cJSON_bool;` |
+| `next` | variable | `cJSON.h:27` | `extern "C" { #endif #if !defined(__WINDOWS__) && \ (defined(WIN32) \|\| defined(WIN64) \|\| defined(_MSC_VER) \|\|...` |
+| `sensitive` | function | `cJSON.h:286` | `* sensitive (1) or case insensitive (0) */ CJSON_PUBLIC(cJSON_bool) cJSON_Compare(const cJSON *const a, const cJSON...` |
+| `that` | function | `cJSON.h:247` | `* that (item->type & cJSON_StringIsConst) is zero before writing to `item->string` */ CJSON_PUBLIC(cJSON_bool)...` |
+| `c_field_name` | function | `config/generate_parsers.py:48` | `def c_field_name(json_name)` |
+| `c_type_from_schema` | function | `config/generate_parsers.py:30` | `def c_type_from_schema(prop, required)` |
+| `generate_c_parser` | function | `config/generate_parsers.py:136` | `def generate_c_parser(schema)` |
+| `generate_c_structs` | function | `config/generate_parsers.py:53` | `def generate_c_structs(schema)` |
+| `generate_python_loader` | function | `config/generate_parsers.py:465` | `def generate_python_loader(schema)` |
+| `load_schema` | function | `config/generate_parsers.py:25` | `def load_schema()` |
+| `main` | function | `config/generate_parsers.py:615` | `def main()` |
+| `ensure_dir` | function | `contract_agent.py:29` | `def ensure_dir(path)` |
+| `extract_contracts` | function | `contract_agent.py:41` | `def extract_contracts(claude_content)` |
+| `git` | function | `contract_agent.py:33` | `def git()` |
+| `git_commit_and_branch` | function | `contract_agent.py:275` | `def git_commit_and_branch(contract_name)` |
+| `main` | function | `contract_agent.py:316` | `def main()` |
+| `make_target` | function | `contract_agent.py:37` | `def make_target(target)` |
+| `process_contract` | function | `contract_agent.py:289` | `def process_contract(contract_name, body)` |
+| `run_asan` | function | `contract_agent.py:256` | `def run_asan()` |
+| `run_c_tests` | function | `contract_agent.py:223` | `def run_c_tests()` |
+| `run_cmd` | function | `contract_agent.py:23` | `def run_cmd(cmd, cwd)` |
+| `run_mutation_testing` | function | `contract_agent.py:233` | `def run_mutation_testing()` |
+| `run_python_tests` | function | `contract_agent.py:213` | `def run_python_tests()` |
+| `run_qa` | function | `contract_agent.py:266` | `def run_qa()` |
+| `write_c_test` | function | `contract_agent.py:141` | `def write_c_test(contract_name, body)` |
+| `write_implementation_stub` | function | `contract_agent.py:179` | `def write_implementation_stub(contract_name)` |
+| `write_python_test` | function | `contract_agent.py:96` | `def write_python_test(contract_name, body)` |
+| `write_spec` | function | `contract_agent.py:62` | `def write_spec(contract_name, body)` |
+| `command_injector` | function | `gopher_c2.py:152` | `def command_injector()` |
+| `decrypt_data` | function | `gopher_c2.py:40` | `def decrypt_data(b64_data)` |
+| `encrypt_data` | function | `gopher_c2.py:30` | `def encrypt_data(data)` |
+| `handle_client` | function | `gopher_c2.py:49` | `def handle_client(conn, addr)` |
+| `main` | function | `gopher_c2.py:143` | `def main()` |
+| `AES_CBC_decrypt_buffer` | function | `include/aes.c:552` | `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)` |
+| `AES_CBC_encrypt_buffer` | function | `include/aes.c:537` | `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)` |
+| `AES_CTR_xcrypt_buffer` | function | `include/aes.c:572` | `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)` |
+| `AES_ECB_decrypt` | function | `include/aes.c:518` | `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf)` |
+| `AES_ECB_encrypt` | function | `include/aes.c:512` | `void AES_ECB_encrypt(const struct AES_ctx *ctx, uint8_t *buf)` |
+| `AES_ctx_set_iv` | function | `include/aes.c:264` | `void AES_ctx_set_iv(struct AES_ctx *ctx, const uint8_t *iv)` |
+| `AES_init_ctx` | function | `include/aes.c:254` | `void AES_init_ctx(struct AES_ctx *ctx, const uint8_t *key)` |
+| `AES_init_ctx_iv` | function | `include/aes.c:259` | `void AES_init_ctx_iv(struct AES_ctx *ctx, const uint8_t *key, const uint8_t *iv)` |
+| `AddRoundKey` | function | `include/aes.c:272` | `static void AddRoundKey(uint8_t round, state_t *state, const uint8_t *RoundKey)` |
+| `BLOCKLEN` | macro | `include/aes.c:9` | `#define BLOCKLEN` |
+| `Cipher` | function | `include/aes.c:455` | `static void Cipher(state_t *state, const uint8_t *RoundKey)` |
+| `InvCipher` | function | `include/aes.c:482` | `static void InvCipher(state_t *state, const uint8_t *RoundKey)` |
+| `InvMixColumns` | function | `include/aes.c:389` | `static void InvMixColumns(state_t *state)` |
+| `InvShiftRows` | function | `include/aes.c:425` | `static void InvShiftRows(state_t *state)` |
+| `InvSubBytes` | function | `include/aes.c:413` | `static void InvSubBytes(state_t *state)` |
+| `KEYLEN_256` | macro | `include/aes.c:7` | `#define KEYLEN_256` |
+| `KeyExpansion` | function | `include/aes.c:181` | `static void KeyExpansion(uint8_t *RoundKey, const uint8_t *Key)` |
+| `MULTIPLY_AS_A_FUNCTION` | macro | `include/aes.c:101` | `#define MULTIPLY_AS_A_FUNCTION` |
+| `MixColumns` | function | `include/aes.c:335` | `static void MixColumns(state_t *state)` |
+| `Multiply` | function | `include/aes.c:363` | `static uint8_t Multiply(uint8_t x, uint8_t y)` |
+| `Multiply` | macro | `include/aes.c:371` | `#define Multiply(x, y)` |
+| `Nb` | macro | `include/aes.c:5` | `#define Nb` |
+| `Nb` | macro | `include/aes.c:84` | `#define Nb` |
+| `Nk` | macro | `include/aes.c:87` | `#define Nk` |
+| `Nk` | macro | `include/aes.c:90` | `#define Nk` |
+| `Nk` | macro | `include/aes.c:93` | `#define Nk` |
+| `Nr` | macro | `include/aes.c:88` | `#define Nr` |
+| `Nr` | macro | `include/aes.c:91` | `#define Nr` |
+| `Nr` | macro | `include/aes.c:94` | `#define Nr` |
+| `RKLENGTH` | macro | `include/aes.c:8` | `#define RKLENGTH` |
+| `ShiftRows` | function | `include/aes.c:301` | `static void ShiftRows(state_t *state)` |
+| `SubBytes` | function | `include/aes.c:286` | `static void SubBytes(state_t *state)` |
+| `XorWithIv` | function | `include/aes.c:528` | `static void XorWithIv(uint8_t *buf, const uint8_t *Iv)` |
+| `__attribute__` | function | `include/aes.c:11` | `static __attribute__((unused)) uint8_t getSBoxValue(uint8_t num)` |
+| `__attribute__` | function | `include/aes.c:35` | `static __attribute__((unused)) uint8_t getSBoxInvert(uint8_t num)` |
+| `__attribute__` | function | `include/aes.c:59` | `static __attribute__((unused)) uint8_t Td0(int x)` |
+| `__attribute__` | function | `include/aes.c:63` | `static __attribute__((unused)) uint8_t Td1(int x)` |
+| `__attribute__` | function | `include/aes.c:67` | `static __attribute__((unused)) uint8_t Td2(int x)` |
+| `__attribute__` | function | `include/aes.c:71` | `static __attribute__((unused)) uint8_t Td3(int x)` |
+| `__attribute__` | function | `include/aes.c:75` | `static __attribute__((unused)) uint8_t Td4(int x)` |
+| `getSBoxInvert` | macro | `include/aes.c:384` | `#define getSBoxInvert(num)` |
+| `getSBoxValue` | macro | `include/aes.c:177` | `#define getSBoxValue(num)` |
+| `xtime` | function | `include/aes.c:329` | `static uint8_t xtime(uint8_t x)` |
+| `AES256` | macro | `include/aes.h:18` | `#define AES256` |
+| `AES_BLOCKLEN` | macro | `include/aes.h:20` | `#define AES_BLOCKLEN` |
+| `AES_CBC_decrypt_buffer` | function | `include/aes.h:54` | `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_CBC_encrypt_buffer` | function | `include/aes.h:53` | `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_CTR_xcrypt_buffer` | function | `include/aes.h:58` | `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_ECB_decrypt` | function | `include/aes.h:49` | `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf);` |
 
 Next: [SYMBOLS_p2.md](SYMBOLS_p2.md)

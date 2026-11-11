@@ -28,7 +28,7 @@ This community groups 3 file(s) rooted at `mutants/src` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 7 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (root) and community 7 (mutants/src: beacon_heartbeat___health_endpoint).
+- [INFERRED] shares_context community 0 <-> 7 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (legacy) and community 7 (mutants/src: beacon_heartbeat___health_endpoint).
 
 ## Risks
 

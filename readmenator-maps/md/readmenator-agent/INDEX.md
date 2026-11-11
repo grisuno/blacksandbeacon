@@ -3,15 +3,10 @@
 | File | Purpose | Subsystem | Symbols | Used by |
 |------|---------|-----------|---------|---------|
 | `aes.c` | tiny-AES-c (https://github.com/kokke/tiny-AES-c) | root | 43 | 0 |
-| `aes.h` | #define the macros below to 1/0 to enable/disable the mode of operation. | root | 21 | 6 |
+| `aes.h` | #define the macros below to 1/0 to enable/disable the mode of operation. | root | 21 | 1 |
 | `app.py` | Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación... | root | 0 | 0 |
-| `beacon.h` | Tipos de callback  Estructura para parsing de datos (opcional, para comandos complejos) | root | 13 | 6 |
-| `beacon3.c` | MemoryStruct: === ESTRUCTURAS === | root | 28 | 0 |
-| `beacon5.c` | MemoryStruct: === ESTRUCTURAS === | root | 44 | 0 |
-| `beacon6.c` | MemoryStruct: === ESTRUCTURAS === | root | 32 | 0 |
-| `beacon_p2p.c` | - | root | 49 | 0 |
-| `beacons/v1/beacon.c` | - | v1 | 4 | 0 |
-| `beacons/v1/gopher_beacon.c` | MemoryStruct: === ESTRUCTURAS === | v1 | 28 | 0 |
+| `beacon.h` | Tipos de callback  Estructura para parsing de datos (opcional, para comandos complejos) | root | 13 | 1 |
+| `beacons/v1/beacon.c` | - | misc | 4 | 0 |
 | `beacons/v2/beacon.c` | - | misc | 11 | 0 |
 | `beacons/v3/beacon.c` | - | misc | 7 | 0 |
 | `bof.c` | - | root | 1 | 0 |
@@ -27,12 +22,11 @@
 | `bof/whoami/bof.c` | - | whoami | 1 | 0 |
 | `bof/whoami/whoami.c` | — LazyOwn RedTeam BOF (Linux/x64)  Tipos | whoami | 14 | 0 |
 | `c2/__init__.py` | - | c2 | 0 | 2 |
-| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 21 | 8 |
+| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 21 | 9 |
 | `cJSON.c` | case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using incompatible... | root | 125 | 0 |
-| `cJSON.h` | cJSON: #define cJSON_Invalid (0) #define cJSON_False (1 << 0) #define cJSON_True (1 << 1)... | root | 40 | 6 |
+| `cJSON.h` | cJSON: #define cJSON_Invalid (0) #define cJSON_False (1 << 0) #define cJSON_True (1 << 1)... | root | 40 | 1 |
 | `config/generate_parsers.py` | Config Parser Generator for Black Sand Beacon  Reads config/schema.json (JSON Schema Draft 7)... | misc | 7 | 0 |
 | `contract_agent.py` | Contract Driven Agent - SDD/TDD/BDD workflow for Black Sand Beacon v2. | root | 17 | 0 |
-| `gopher_beacon.c` | MemoryStruct: === ESTRUCTURAS === | root | 28 | 0 |
 | `gopher_c2.py` | - | root | 5 | 0 |
 | `include/aes.c` | tiny-AES-c (https://github.com/kokke/tiny-AES-c) | include | 43 | 0 |
 | `include/aes.h` | #define the macros below to 1/0 to enable/disable the mode of operation. | include | 21 | 3 |
@@ -40,7 +34,7 @@
 | `include/aes_cfb.h` | - | include | 3 | 3 |
 | `include/async_i_o_for_beacon.h` | - | include | 2 | 2 |
 | `include/beacon.h` | Tipos de callback  Estructura para parsing de datos (opcional, para comandos complejos) | include | 13 | 0 |
-| `include/beacon_common.c` | MemoryStruct: size_t new_cap = g_cache_capacity ? g_cache_capacity * 2 : 8; TrampolineCache *tmp... | include | 33 | 0 |
+| `include/beacon_common.c` | MemoryStruct: size_t new_cap = g_cache_capacity ? g_cache_capacity * 2 : 8; TrampolineCache *tmp... | include | 35 | 0 |
 | `include/beacon_common.c_extraction.h` | - | include | 1 | 2 |
 | `include/beacon_common.h` | http_response_t: -- HTTP response wrapper --- https_request now returns a proper struct instead... | include | 58 | 5 |
 | `include/beacon_heartbeat___health_endpoint.h` | - | include | 2 | 2 |
@@ -70,6 +64,12 @@
 | `include/unified_config_schema.h` | - | include | 2 | 2 |
 | `install.sh` | Install build deps and build everything. | root | 0 | 0 |
 | `issudo.c` | — LazyOwn RedTeam BOF (Linux/x64)  Tipos | root | 17 | 0 |
+| `legacy/beacon3.c` | MemoryStruct: === ESTRUCTURAS === | legacy | 28 | 0 |
+| `legacy/beacon5.c` | MemoryStruct: === ESTRUCTURAS === | legacy | 44 | 0 |
+| `legacy/beacon6.c` | MemoryStruct: === ESTRUCTURAS === | legacy | 32 | 0 |
+| `legacy/beacon_p2p.c` | - | legacy | 49 | 0 |
+| `legacy/gopher_beacon.c` | MemoryStruct: === ESTRUCTURAS === | legacy | 28 | 0 |
+| `legacy/v1_gopher_beacon.c` | MemoryStruct: === ESTRUCTURAS === | legacy | 28 | 0 |
 | `mutants/src/async_i_o_for_beacon.c` | Auto-generated implementation for contract: Async I/O for Beacon | - | 1 | 0 |
 | `mutants/src/beacon_common.c_extraction.c` | Auto-generated implementation for contract: beacon_common.c Extraction | - | 0 | 0 |
 | `mutants/src/beacon_heartbeat___health_endpoint.c` | Auto-generated implementation for contract: Beacon Heartbeat / Health Endpoint | - | 1 | 0 |
@@ -166,7 +166,7 @@
 | `tests/test_c2_beacon_bof_integration.py` | End-to-end integration test: C2 Server + Beacon + BOF execution. | tests | 10 | 0 |
 | `tests/test_c2_http_e2e.py` | End-to-end test: a real HTTP/1.1 client talks to a real TCP socket bound by server.serve(), and... | tests | 9 | 0 |
 | `tests/test_c2_server.py` | Unit tests for the C2 server dispatcher. | tests | 11 | 0 |
-| `tests/test_certificate_pinning.py` | Tests for Certificate Pinning / TOFU (Contract: Certificate Pinning / TOFU)  BDD Scenarios: 1. | tests | 16 | 0 |
+| `tests/test_certificate_pinning.py` | Tests for Certificate Pinning / TOFU (Contract: Certificate Pinning / TOFU)  BDD Scenarios: 1. | tests | 24 | 0 |
 | `tests/test_certificate_pinning_c.c` | test_cert_fingerprint_defaults_to_empty: #include <stdarg.h> #include <stddef.h> #include... | tests | 5 | 0 |
 | `tests/test_config.py` | Unit tests for the BSB JSON config loader. | tests | 9 | 0 |
 | `tests/test_crypto.py` | Roundtrip tests for AES-256-CFB. | tests | 9 | 0 |

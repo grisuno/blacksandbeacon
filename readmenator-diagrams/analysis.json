@@ -1,7 +1,7 @@
 {
  "metadata": {
-  "generated_at": "2026-11-11T00:59:32.793637+00:00",
-  "source_tree_hash": "2eb34f63da4e16c55b8f9134e65a9b9a20282de98c3135ddc081513a7bf7107c",
+  "generated_at": "2026-11-11T05:09:31.131094+00:00",
+  "source_tree_hash": "0462bcbc062dc1c4d7a57100f59e6a7a080fbed6b71eb378f0c0017e3cba51e0",
   "repo_name": "blacksandbeacon",
   "depth_level": 2,
   "depth_cap": 3,
@@ -13,7 +13,7 @@
   },
   "tree_spec": {}
  },
- "description": "Static architecture map of 175 files (c, h, py, sh) in 25 components: root, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
+ "description": "Static architecture map of 175 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
  "files": {
   "aes.c": {
    "language": "c",
@@ -31,29 +31,9 @@
    "language": "h",
    "symbols": 13
   },
-  "beacon3.c": {
-   "language": "c",
-   "symbols": 28
-  },
-  "beacon5.c": {
-   "language": "c",
-   "symbols": 44
-  },
-  "beacon6.c": {
-   "language": "c",
-   "symbols": 32
-  },
-  "beacon_p2p.c": {
-   "language": "c",
-   "symbols": 49
-  },
   "beacons/v1/beacon.c": {
    "language": "c",
    "symbols": 4
-  },
-  "beacons/v1/gopher_beacon.c": {
-   "language": "c",
-   "symbols": 28
   },
   "beacons/v2/beacon.c": {
    "language": "c",
@@ -135,10 +115,6 @@
    "language": "py",
    "symbols": 17
   },
-  "gopher_beacon.c": {
-   "language": "c",
-   "symbols": 28
-  },
   "gopher_c2.py": {
    "language": "py",
    "symbols": 5
@@ -169,7 +145,7 @@
   },
   "include/beacon_common.c": {
    "language": "c",
-   "symbols": 33
+   "symbols": 35
   },
   "include/beacon_common.c_extraction.h": {
    "language": "h",
@@ -286,6 +262,30 @@
   "issudo.c": {
    "language": "c",
    "symbols": 17
+  },
+  "legacy/beacon3.c": {
+   "language": "c",
+   "symbols": 28
+  },
+  "legacy/beacon5.c": {
+   "language": "c",
+   "symbols": 44
+  },
+  "legacy/beacon6.c": {
+   "language": "c",
+   "symbols": 32
+  },
+  "legacy/beacon_p2p.c": {
+   "language": "c",
+   "symbols": 49
+  },
+  "legacy/gopher_beacon.c": {
+   "language": "c",
+   "symbols": 28
+  },
+  "legacy/v1_gopher_beacon.c": {
+   "language": "c",
+   "symbols": 28
   },
   "mutants/src/async_i_o_for_beacon.c": {
    "language": "c",
@@ -673,7 +673,7 @@
   },
   "tests/test_certificate_pinning.py": {
    "language": "py",
-   "symbols": 16
+   "symbols": 24
   },
   "tests/test_certificate_pinning_c.c": {
    "language": "c",
@@ -1237,1230 +1237,6 @@
    "type": "FUNCTION",
    "content_hash": "c773dd36e85d4fbd"
   },
-  "beacon3.c|beacon3.c::_GNU_SOURCE": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 32,
-   "type": "FUNCTION",
-   "content_hash": "b52b059cdaa2a670"
-  },
-  "beacon3.c|beacon3.c::C2_URL": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::C2_URL",
-   "start_line": 33,
-   "end_line": 33,
-   "type": "FUNCTION",
-   "content_hash": "88446b6dc3aa0849"
-  },
-  "beacon3.c|beacon3.c::CLIENT_ID": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::CLIENT_ID",
-   "start_line": 34,
-   "end_line": 34,
-   "type": "FUNCTION",
-   "content_hash": "ff70d13ca63e552e"
-  },
-  "beacon3.c|beacon3.c::MALEABLE": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::MALEABLE",
-   "start_line": 35,
-   "end_line": 35,
-   "type": "FUNCTION",
-   "content_hash": "13ec2d82f23889ef"
-  },
-  "beacon3.c|beacon3.c::USER_AGENTS_COUNT": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::USER_AGENTS_COUNT",
-   "start_line": 36,
-   "end_line": 51,
-   "type": "FUNCTION",
-   "content_hash": "b6e57d5c8dd3e4db"
-  },
-  "beacon3.c|beacon3.c::MemoryStruct": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::MemoryStruct",
-   "start_line": 52,
-   "end_line": 59,
-   "type": "CLASS",
-   "content_hash": "03b075b7f8213dd0"
-  },
-  "beacon3.c|beacon3.c::Trampoline": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::Trampoline",
-   "start_line": 60,
-   "end_line": 68,
-   "type": "CLASS",
-   "content_hash": "4a19fc375820eb05"
-  },
-  "beacon3.c|beacon3.c::SymbolResolver": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::SymbolResolver",
-   "start_line": 69,
-   "end_line": 75,
-   "type": "CLASS",
-   "content_hash": "8a87786b428f40f9"
-  },
-  "beacon3.c|beacon3.c::TrampolineCache": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::TrampolineCache",
-   "start_line": 76,
-   "end_line": 144,
-   "type": "CLASS",
-   "content_hash": "351b6f2acb269b0d"
-  },
-  "beacon3.c|beacon3.c::__attribute__": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::__attribute__",
-   "start_line": 145,
-   "end_line": 195,
-   "type": "FUNCTION",
-   "content_hash": "f63f5a7b916c5ceb"
-  },
-  "beacon3.c|beacon3.c::BeaconPrintf": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::BeaconPrintf",
-   "start_line": 196,
-   "end_line": 212,
-   "type": "FUNCTION",
-   "content_hash": "a0db7f2d2237b262"
-  },
-  "beacon3.c|beacon3.c::BeaconOutput": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::BeaconOutput",
-   "start_line": 213,
-   "end_line": 226,
-   "type": "FUNCTION",
-   "content_hash": "219cc15e506a3f53"
-  },
-  "beacon3.c|beacon3.c::create_trampoline": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::create_trampoline",
-   "start_line": 227,
-   "end_line": 267,
-   "type": "FUNCTION",
-   "content_hash": "6b361e63582beab1"
-  },
-  "beacon3.c|beacon3.c::cleanup_trampolines": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::cleanup_trampolines",
-   "start_line": 268,
-   "end_line": 285,
-   "type": "FUNCTION",
-   "content_hash": "14de76868f0a5581"
-  },
-  "beacon3.c|beacon3.c::get_or_create_trampoline": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::get_or_create_trampoline",
-   "start_line": 286,
-   "end_line": 323,
-   "type": "FUNCTION",
-   "content_hash": "e56a37354382df24"
-  },
-  "beacon3.c|beacon3.c::WriteMemoryCallback": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::WriteMemoryCallback",
-   "start_line": 324,
-   "end_line": 341,
-   "type": "FUNCTION",
-   "content_hash": "b0d0945ce17c520a"
-  },
-  "beacon3.c|beacon3.c::https_request": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::https_request",
-   "start_line": 342,
-   "end_line": 435,
-   "type": "FUNCTION",
-   "content_hash": "2704ac1df1253a31"
-  },
-  "beacon3.c|beacon3.c::base64_encode": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::base64_encode",
-   "start_line": 436,
-   "end_line": 453,
-   "type": "FUNCTION",
-   "content_hash": "b4e253fc137ea43a"
-  },
-  "beacon3.c|beacon3.c::base64_decode": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::base64_decode",
-   "start_line": 454,
-   "end_line": 479,
-   "type": "FUNCTION",
-   "content_hash": "e8fb1e5bd5b55be2"
-  },
-  "beacon3.c|beacon3.c::aes256_cfb_encrypt": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::aes256_cfb_encrypt",
-   "start_line": 480,
-   "end_line": 513,
-   "type": "FUNCTION",
-   "content_hash": "7932ced91a520514"
-  },
-  "beacon3.c|beacon3.c::aes256_cfb_decrypt": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::aes256_cfb_decrypt",
-   "start_line": 514,
-   "end_line": 549,
-   "type": "FUNCTION",
-   "content_hash": "67fa38bdb4bd3bc2"
-  },
-  "beacon3.c|beacon3.c::exec_cmd": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::exec_cmd",
-   "start_line": 550,
-   "end_line": 575,
-   "type": "FUNCTION",
-   "content_hash": "e55aa464c4e8284e"
-  },
-  "beacon3.c|beacon3.c::page_align": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::page_align",
-   "start_line": 576,
-   "end_line": 583,
-   "type": "FUNCTION",
-   "content_hash": "437ad91b97bab029"
-  },
-  "beacon3.c|beacon3.c::RunELF": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::RunELF",
-   "start_line": 584,
-   "end_line": 1082,
-   "type": "FUNCTION",
-   "content_hash": "34328736b6b43504"
-  },
-  "beacon3.c|beacon3.c::get_local_ips": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::get_local_ips",
-   "start_line": 1083,
-   "end_line": 1117,
-   "type": "FUNCTION",
-   "content_hash": "37a819209626edaf"
-  },
-  "beacon3.c|beacon3.c::download_bof": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::download_bof",
-   "start_line": 1118,
-   "end_line": 1140,
-   "type": "FUNCTION",
-   "content_hash": "4163200f9847a5f0"
-  },
-  "beacon3.c|beacon3.c::run_bof_and_capture": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::run_bof_and_capture",
-   "start_line": 1141,
-   "end_line": 1186,
-   "type": "FUNCTION",
-   "content_hash": "85969701ae2d54ef"
-  },
-  "beacon3.c|beacon3.c::main": {
-   "file_path": "beacon3.c",
-   "qualified_name": "beacon3.c::main",
-   "start_line": 1187,
-   "end_line": 1419,
-   "type": "FUNCTION",
-   "content_hash": "c4a4b749d5f87198"
-  },
-  "beacon5.c|beacon5.c::_GNU_SOURCE": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 35,
-   "type": "FUNCTION",
-   "content_hash": "7ec4ad4eb043b541"
-  },
-  "beacon5.c|beacon5.c::MAX_PEERS": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::MAX_PEERS",
-   "start_line": 36,
-   "end_line": 36,
-   "type": "FUNCTION",
-   "content_hash": "88cb99ca932af403"
-  },
-  "beacon5.c|beacon5.c::DISCOVERY_PORT": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::DISCOVERY_PORT",
-   "start_line": 37,
-   "end_line": 37,
-   "type": "FUNCTION",
-   "content_hash": "54705b0994ecad8d"
-  },
-  "beacon5.c|beacon5.c::DISCOVERY_INTERVAL": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::DISCOVERY_INTERVAL",
-   "start_line": 38,
-   "end_line": 38,
-   "type": "FUNCTION",
-   "content_hash": "3d85d532820c5c89"
-  },
-  "beacon5.c|beacon5.c::MAX_TTL": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::MAX_TTL",
-   "start_line": 39,
-   "end_line": 39,
-   "type": "FUNCTION",
-   "content_hash": "eff268bfda0b0848"
-  },
-  "beacon5.c|beacon5.c::MESH_MSG_SIZE": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::MESH_MSG_SIZE",
-   "start_line": 40,
-   "end_line": 41,
-   "type": "FUNCTION",
-   "content_hash": "251f4d4a2f891c5a"
-  },
-  "beacon5.c|beacon5.c::C2_URL": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::C2_URL",
-   "start_line": 42,
-   "end_line": 42,
-   "type": "FUNCTION",
-   "content_hash": "157b1d4cdc77c040"
-  },
-  "beacon5.c|beacon5.c::CLIENT_ID": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::CLIENT_ID",
-   "start_line": 43,
-   "end_line": 43,
-   "type": "FUNCTION",
-   "content_hash": "aba8db7b3004e233"
-  },
-  "beacon5.c|beacon5.c::MALEABLE": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::MALEABLE",
-   "start_line": 44,
-   "end_line": 44,
-   "type": "FUNCTION",
-   "content_hash": "b8d6a94877ccd3a4"
-  },
-  "beacon5.c|beacon5.c::USER_AGENTS_COUNT": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::USER_AGENTS_COUNT",
-   "start_line": 45,
-   "end_line": 60,
-   "type": "FUNCTION",
-   "content_hash": "d79da6dbc95ca07d"
-  },
-  "beacon5.c|beacon5.c::MemoryStruct": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::MemoryStruct",
-   "start_line": 61,
-   "end_line": 68,
-   "type": "CLASS",
-   "content_hash": "61bfd74ab0ac4a2b"
-  },
-  "beacon5.c|beacon5.c::peer_t": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::peer_t",
-   "start_line": 69,
-   "end_line": 76,
-   "type": "CLASS",
-   "content_hash": "3d3d4c35fe83ce8c"
-  },
-  "beacon5.c|beacon5.c::mesh_msg_t": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_msg_t",
-   "start_line": 77,
-   "end_line": 101,
-   "type": "CLASS",
-   "content_hash": "463e216935736358"
-  },
-  "beacon5.c|beacon5.c::Trampoline": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::Trampoline",
-   "start_line": 102,
-   "end_line": 110,
-   "type": "CLASS",
-   "content_hash": "389d17660e74b772"
-  },
-  "beacon5.c|beacon5.c::SymbolResolver": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::SymbolResolver",
-   "start_line": 111,
-   "end_line": 117,
-   "type": "CLASS",
-   "content_hash": "da751f4a42615900"
-  },
-  "beacon5.c|beacon5.c::TrampolineCache": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::TrampolineCache",
-   "start_line": 118,
-   "end_line": 187,
-   "type": "CLASS",
-   "content_hash": "15dbb8c039b876bd"
-  },
-  "beacon5.c|beacon5.c::__attribute__": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::__attribute__",
-   "start_line": 188,
-   "end_line": 238,
-   "type": "FUNCTION",
-   "content_hash": "19534448b1ec531a"
-  },
-  "beacon5.c|beacon5.c::BeaconPrintf": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::BeaconPrintf",
-   "start_line": 239,
-   "end_line": 255,
-   "type": "FUNCTION",
-   "content_hash": "fb3f276894d1f5d9"
-  },
-  "beacon5.c|beacon5.c::BeaconOutput": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::BeaconOutput",
-   "start_line": 256,
-   "end_line": 269,
-   "type": "FUNCTION",
-   "content_hash": "67abc859ba491e71"
-  },
-  "beacon5.c|beacon5.c::create_trampoline": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::create_trampoline",
-   "start_line": 270,
-   "end_line": 310,
-   "type": "FUNCTION",
-   "content_hash": "8a829f8a42cb48fe"
-  },
-  "beacon5.c|beacon5.c::cleanup_trampolines": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::cleanup_trampolines",
-   "start_line": 311,
-   "end_line": 328,
-   "type": "FUNCTION",
-   "content_hash": "b1b240e9f247b679"
-  },
-  "beacon5.c|beacon5.c::get_or_create_trampoline": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::get_or_create_trampoline",
-   "start_line": 329,
-   "end_line": 366,
-   "type": "FUNCTION",
-   "content_hash": "7cd6e6f698586298"
-  },
-  "beacon5.c|beacon5.c::WriteMemoryCallback": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::WriteMemoryCallback",
-   "start_line": 367,
-   "end_line": 384,
-   "type": "FUNCTION",
-   "content_hash": "405aa2dcc969b73e"
-  },
-  "beacon5.c|beacon5.c::https_request": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::https_request",
-   "start_line": 385,
-   "end_line": 478,
-   "type": "FUNCTION",
-   "content_hash": "9e348bb96df5878f"
-  },
-  "beacon5.c|beacon5.c::base64_encode": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::base64_encode",
-   "start_line": 479,
-   "end_line": 496,
-   "type": "FUNCTION",
-   "content_hash": "4b032053e856847c"
-  },
-  "beacon5.c|beacon5.c::base64_decode": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::base64_decode",
-   "start_line": 497,
-   "end_line": 522,
-   "type": "FUNCTION",
-   "content_hash": "6568f7c98b058e1f"
-  },
-  "beacon5.c|beacon5.c::aes256_cfb_encrypt": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::aes256_cfb_encrypt",
-   "start_line": 523,
-   "end_line": 556,
-   "type": "FUNCTION",
-   "content_hash": "6cedb54bbbe300f2"
-  },
-  "beacon5.c|beacon5.c::aes256_cfb_decrypt": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::aes256_cfb_decrypt",
-   "start_line": 557,
-   "end_line": 592,
-   "type": "FUNCTION",
-   "content_hash": "bf70055b72cf87cb"
-  },
-  "beacon5.c|beacon5.c::exec_cmd": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::exec_cmd",
-   "start_line": 593,
-   "end_line": 618,
-   "type": "FUNCTION",
-   "content_hash": "1ad31318c230c0bc"
-  },
-  "beacon5.c|beacon5.c::page_align": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::page_align",
-   "start_line": 619,
-   "end_line": 626,
-   "type": "FUNCTION",
-   "content_hash": "f278521edba1a790"
-  },
-  "beacon5.c|beacon5.c::RunELF": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::RunELF",
-   "start_line": 627,
-   "end_line": 1125,
-   "type": "FUNCTION",
-   "content_hash": "dfa9ce6dc96c5223"
-  },
-  "beacon5.c|beacon5.c::get_local_ips": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::get_local_ips",
-   "start_line": 1126,
-   "end_line": 1160,
-   "type": "FUNCTION",
-   "content_hash": "e246b94add58e8e1"
-  },
-  "beacon5.c|beacon5.c::download_bof": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::download_bof",
-   "start_line": 1161,
-   "end_line": 1183,
-   "type": "FUNCTION",
-   "content_hash": "fa9a9e865d00e4e7"
-  },
-  "beacon5.c|beacon5.c::run_bof_and_capture": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::run_bof_and_capture",
-   "start_line": 1184,
-   "end_line": 1230,
-   "type": "FUNCTION",
-   "content_hash": "765a3be50836c3d5"
-  },
-  "beacon5.c|beacon5.c::mesh_mark_seen": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_mark_seen",
-   "start_line": 1231,
-   "end_line": 1239,
-   "type": "FUNCTION",
-   "content_hash": "24b620566535308f"
-  },
-  "beacon5.c|beacon5.c::mesh_is_seen": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_is_seen",
-   "start_line": 1240,
-   "end_line": 1254,
-   "type": "FUNCTION",
-   "content_hash": "76bd7a9438678558"
-  },
-  "beacon5.c|beacon5.c::mesh_add_peer": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_add_peer",
-   "start_line": 1255,
-   "end_line": 1282,
-   "type": "FUNCTION",
-   "content_hash": "29b9ddcfa94bde4e"
-  },
-  "beacon5.c|beacon5.c::mesh_cleanup_peers": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_cleanup_peers",
-   "start_line": 1283,
-   "end_line": 1299,
-   "type": "FUNCTION",
-   "content_hash": "0114d2f5f9ec9e83"
-  },
-  "beacon5.c|beacon5.c::mesh_send_to_peer": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_send_to_peer",
-   "start_line": 1300,
-   "end_line": 1323,
-   "type": "FUNCTION",
-   "content_hash": "bf7323be06c55d68"
-  },
-  "beacon5.c|beacon5.c::mesh_propagate": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_propagate",
-   "start_line": 1324,
-   "end_line": 1355,
-   "type": "FUNCTION",
-   "content_hash": "b8f6fffe9027d1d7"
-  },
-  "beacon5.c|beacon5.c::mesh_discovery_thread": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_discovery_thread",
-   "start_line": 1356,
-   "end_line": 1446,
-   "type": "FUNCTION",
-   "content_hash": "3b1312daa086db4c"
-  },
-  "beacon5.c|beacon5.c::mesh_listener_thread": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_listener_thread",
-   "start_line": 1447,
-   "end_line": 1666,
-   "type": "FUNCTION",
-   "content_hash": "b8bb8d1072dddda7"
-  },
-  "beacon5.c|beacon5.c::mesh_send_message": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::mesh_send_message",
-   "start_line": 1667,
-   "end_line": 1701,
-   "type": "FUNCTION",
-   "content_hash": "8c41310e764e86be"
-  },
-  "beacon5.c|beacon5.c::main": {
-   "file_path": "beacon5.c",
-   "qualified_name": "beacon5.c::main",
-   "start_line": 1702,
-   "end_line": 1973,
-   "type": "FUNCTION",
-   "content_hash": "47f3745e777b648f"
-  },
-  "beacon6.c|beacon6.c::_GNU_SOURCE": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 33,
-   "type": "FUNCTION",
-   "content_hash": "9c632bb80b26ead8"
-  },
-  "beacon6.c|beacon6.c::C2_URL": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::C2_URL",
-   "start_line": 34,
-   "end_line": 34,
-   "type": "FUNCTION",
-   "content_hash": "bebbf7816c9956df"
-  },
-  "beacon6.c|beacon6.c::CLIENT_ID": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::CLIENT_ID",
-   "start_line": 35,
-   "end_line": 35,
-   "type": "FUNCTION",
-   "content_hash": "454968a1e28841fa"
-  },
-  "beacon6.c|beacon6.c::MALEABLE": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::MALEABLE",
-   "start_line": 36,
-   "end_line": 36,
-   "type": "FUNCTION",
-   "content_hash": "71743fa5e5a4e462"
-  },
-  "beacon6.c|beacon6.c::USER_AGENTS_COUNT": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::USER_AGENTS_COUNT",
-   "start_line": 37,
-   "end_line": 52,
-   "type": "FUNCTION",
-   "content_hash": "cdc5dac72d232feb"
-  },
-  "beacon6.c|beacon6.c::MemoryStruct": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::MemoryStruct",
-   "start_line": 53,
-   "end_line": 60,
-   "type": "CLASS",
-   "content_hash": "f1e802478ec9b130"
-  },
-  "beacon6.c|beacon6.c::Trampoline": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::Trampoline",
-   "start_line": 61,
-   "end_line": 69,
-   "type": "CLASS",
-   "content_hash": "bc62dba112463581"
-  },
-  "beacon6.c|beacon6.c::SymbolResolver": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::SymbolResolver",
-   "start_line": 70,
-   "end_line": 76,
-   "type": "CLASS",
-   "content_hash": "416b2683911ef211"
-  },
-  "beacon6.c|beacon6.c::TrampolineCache": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::TrampolineCache",
-   "start_line": 77,
-   "end_line": 145,
-   "type": "CLASS",
-   "content_hash": "d006861720f4f7b4"
-  },
-  "beacon6.c|beacon6.c::__attribute__": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::__attribute__",
-   "start_line": 146,
-   "end_line": 196,
-   "type": "FUNCTION",
-   "content_hash": "5f607ca4efca4f15"
-  },
-  "beacon6.c|beacon6.c::delay_ms": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::delay_ms",
-   "start_line": 197,
-   "end_line": 203,
-   "type": "FUNCTION",
-   "content_hash": "dbef9885b0ea5b72"
-  },
-  "beacon6.c|beacon6.c::is_prime": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::is_prime",
-   "start_line": 204,
-   "end_line": 223,
-   "type": "FUNCTION",
-   "content_hash": "ec2fff80258461e9"
-  },
-  "beacon6.c|beacon6.c::get_nth_prime_limited": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::get_nth_prime_limited",
-   "start_line": 224,
-   "end_line": 252,
-   "type": "FUNCTION",
-   "content_hash": "dbeb5dc688cdf835"
-  },
-  "beacon6.c|beacon6.c::portable_rand_19k_29k": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::portable_rand_19k_29k",
-   "start_line": 253,
-   "end_line": 265,
-   "type": "FUNCTION",
-   "content_hash": "a612f0a1dfacffb5"
-  },
-  "beacon6.c|beacon6.c::BeaconPrintf": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::BeaconPrintf",
-   "start_line": 266,
-   "end_line": 282,
-   "type": "FUNCTION",
-   "content_hash": "d41a7954eab4f55b"
-  },
-  "beacon6.c|beacon6.c::BeaconOutput": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::BeaconOutput",
-   "start_line": 283,
-   "end_line": 296,
-   "type": "FUNCTION",
-   "content_hash": "914ca4fc793c90b5"
-  },
-  "beacon6.c|beacon6.c::create_trampoline": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::create_trampoline",
-   "start_line": 297,
-   "end_line": 337,
-   "type": "FUNCTION",
-   "content_hash": "9905752f70c8c52c"
-  },
-  "beacon6.c|beacon6.c::cleanup_trampolines": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::cleanup_trampolines",
-   "start_line": 338,
-   "end_line": 355,
-   "type": "FUNCTION",
-   "content_hash": "4360a8d44a88ebf8"
-  },
-  "beacon6.c|beacon6.c::get_or_create_trampoline": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::get_or_create_trampoline",
-   "start_line": 356,
-   "end_line": 393,
-   "type": "FUNCTION",
-   "content_hash": "8f63decba27efe16"
-  },
-  "beacon6.c|beacon6.c::WriteMemoryCallback": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::WriteMemoryCallback",
-   "start_line": 394,
-   "end_line": 411,
-   "type": "FUNCTION",
-   "content_hash": "578318998be04f50"
-  },
-  "beacon6.c|beacon6.c::https_request": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::https_request",
-   "start_line": 412,
-   "end_line": 505,
-   "type": "FUNCTION",
-   "content_hash": "aaaa9e6766ae8c2d"
-  },
-  "beacon6.c|beacon6.c::base64_encode": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::base64_encode",
-   "start_line": 506,
-   "end_line": 523,
-   "type": "FUNCTION",
-   "content_hash": "82fabd07084d3741"
-  },
-  "beacon6.c|beacon6.c::base64_decode": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::base64_decode",
-   "start_line": 524,
-   "end_line": 549,
-   "type": "FUNCTION",
-   "content_hash": "d78918b837c8c7e2"
-  },
-  "beacon6.c|beacon6.c::aes256_cfb_encrypt": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::aes256_cfb_encrypt",
-   "start_line": 550,
-   "end_line": 583,
-   "type": "FUNCTION",
-   "content_hash": "8c7f965df22cf3ee"
-  },
-  "beacon6.c|beacon6.c::aes256_cfb_decrypt": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::aes256_cfb_decrypt",
-   "start_line": 584,
-   "end_line": 619,
-   "type": "FUNCTION",
-   "content_hash": "a4033048cca54358"
-  },
-  "beacon6.c|beacon6.c::exec_cmd": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::exec_cmd",
-   "start_line": 620,
-   "end_line": 645,
-   "type": "FUNCTION",
-   "content_hash": "995048cc2abd6ce2"
-  },
-  "beacon6.c|beacon6.c::page_align": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::page_align",
-   "start_line": 646,
-   "end_line": 653,
-   "type": "FUNCTION",
-   "content_hash": "0029b6521e7e4f84"
-  },
-  "beacon6.c|beacon6.c::RunELF": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::RunELF",
-   "start_line": 654,
-   "end_line": 1152,
-   "type": "FUNCTION",
-   "content_hash": "e8a2ded7e90a47d1"
-  },
-  "beacon6.c|beacon6.c::get_local_ips": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::get_local_ips",
-   "start_line": 1153,
-   "end_line": 1187,
-   "type": "FUNCTION",
-   "content_hash": "c260573c759d8d42"
-  },
-  "beacon6.c|beacon6.c::download_bof": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::download_bof",
-   "start_line": 1188,
-   "end_line": 1210,
-   "type": "FUNCTION",
-   "content_hash": "712c958504768adc"
-  },
-  "beacon6.c|beacon6.c::run_bof_and_capture": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::run_bof_and_capture",
-   "start_line": 1211,
-   "end_line": 1256,
-   "type": "FUNCTION",
-   "content_hash": "c33e7fb6ba3216c5"
-  },
-  "beacon6.c|beacon6.c::main": {
-   "file_path": "beacon6.c",
-   "qualified_name": "beacon6.c::main",
-   "start_line": 1257,
-   "end_line": 1505,
-   "type": "FUNCTION",
-   "content_hash": "5d5f2cf549baf328"
-  },
-  "beacon_p2p.c|beacon_p2p.c::_GNU_SOURCE": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 36,
-   "type": "FUNCTION",
-   "content_hash": "43bea5bf9dd5d348"
-  },
-  "beacon_p2p.c|beacon_p2p.c::C2_URL": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::C2_URL",
-   "start_line": 37,
-   "end_line": 37,
-   "type": "FUNCTION",
-   "content_hash": "4cd782e8c9eca945"
-  },
-  "beacon_p2p.c|beacon_p2p.c::CLIENT_ID": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::CLIENT_ID",
-   "start_line": 38,
-   "end_line": 38,
-   "type": "FUNCTION",
-   "content_hash": "c54380472504d847"
-  },
-  "beacon_p2p.c|beacon_p2p.c::MALEABLE": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::MALEABLE",
-   "start_line": 39,
-   "end_line": 39,
-   "type": "FUNCTION",
-   "content_hash": "5b0736fecd9ed97f"
-  },
-  "beacon_p2p.c|beacon_p2p.c::USER_AGENTS_COUNT": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::USER_AGENTS_COUNT",
-   "start_line": 40,
-   "end_line": 41,
-   "type": "FUNCTION",
-   "content_hash": "1c95563b589e1c04"
-  },
-  "beacon_p2p.c|beacon_p2p.c::PEER_DISCOVERY_PORT": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::PEER_DISCOVERY_PORT",
-   "start_line": 42,
-   "end_line": 42,
-   "type": "FUNCTION",
-   "content_hash": "d798c72c938f4fed"
-  },
-  "beacon_p2p.c|beacon_p2p.c::PEER_TCP_PORT": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::PEER_TCP_PORT",
-   "start_line": 43,
-   "end_line": 43,
-   "type": "FUNCTION",
-   "content_hash": "29219fece504dbfa"
-  },
-  "beacon_p2p.c|beacon_p2p.c::PEER_MAGIC": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::PEER_MAGIC",
-   "start_line": 44,
-   "end_line": 44,
-   "type": "FUNCTION",
-   "content_hash": "2aadde1ab6a167a1"
-  },
-  "beacon_p2p.c|beacon_p2p.c::PEER_VERSION": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::PEER_VERSION",
-   "start_line": 45,
-   "end_line": 45,
-   "type": "FUNCTION",
-   "content_hash": "cafd4a30b9c719bc"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BROADCAST_INTERVAL": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BROADCAST_INTERVAL",
-   "start_line": 46,
-   "end_line": 46,
-   "type": "FUNCTION",
-   "content_hash": "57d4310e2dd34428"
-  },
-  "beacon_p2p.c|beacon_p2p.c::MAX_PEERS": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::MAX_PEERS",
-   "start_line": 47,
-   "end_line": 58,
-   "type": "FUNCTION",
-   "content_hash": "06dbe11affcb77c2"
-  },
-  "beacon_p2p.c|beacon_p2p.c::peer_t": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::peer_t",
-   "start_line": 59,
-   "end_line": 72,
-   "type": "CLASS",
-   "content_hash": "996a1fcacb3522d1"
-  },
-  "beacon_p2p.c|beacon_p2p.c::p2p_header_t": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::p2p_header_t",
-   "start_line": 73,
-   "end_line": 92,
-   "type": "CLASS",
-   "content_hash": "6a92e66bfbe8c15b"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataParse": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataParse",
-   "start_line": 93,
-   "end_line": 99,
-   "type": "FUNCTION",
-   "content_hash": "4b3be6f2e4df2787"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataPtr": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataPtr",
-   "start_line": 100,
-   "end_line": 109,
-   "type": "FUNCTION",
-   "content_hash": "ca56166ff2f7d8c5"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataInt": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataInt",
-   "start_line": 110,
-   "end_line": 117,
-   "type": "FUNCTION",
-   "content_hash": "569da5785a535143"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataShort": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataShort",
-   "start_line": 118,
-   "end_line": 125,
-   "type": "FUNCTION",
-   "content_hash": "5364c58e5047e262"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataLength": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataLength",
-   "start_line": 126,
-   "end_line": 130,
-   "type": "FUNCTION",
-   "content_hash": "37673ed93f8332bc"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconDataExtract": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconDataExtract",
-   "start_line": 131,
-   "end_line": 141,
-   "type": "FUNCTION",
-   "content_hash": "835788648fcc2f5a"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconPrintf": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconPrintf",
-   "start_line": 142,
-   "end_line": 158,
-   "type": "FUNCTION",
-   "content_hash": "796a9e4755935942"
-  },
-  "beacon_p2p.c|beacon_p2p.c::BeaconOutput": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::BeaconOutput",
-   "start_line": 159,
-   "end_line": 174,
-   "type": "FUNCTION",
-   "content_hash": "90197ea4ff3f6dbc"
-  },
-  "beacon_p2p.c|beacon_p2p.c::Trampoline": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::Trampoline",
-   "start_line": 175,
-   "end_line": 181,
-   "type": "CLASS",
-   "content_hash": "6952054ab6d6b827"
-  },
-  "beacon_p2p.c|beacon_p2p.c::SymbolResolver": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::SymbolResolver",
-   "start_line": 182,
-   "end_line": 191,
-   "type": "CLASS",
-   "content_hash": "fa2b049506533cf4"
-  },
-  "beacon_p2p.c|beacon_p2p.c::TrampolineCache": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::TrampolineCache",
-   "start_line": 192,
-   "end_line": 249,
-   "type": "CLASS",
-   "content_hash": "3ab5002df5997113"
-  },
-  "beacon_p2p.c|beacon_p2p.c::__attribute__": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::__attribute__",
-   "start_line": 250,
-   "end_line": 277,
-   "type": "FUNCTION",
-   "content_hash": "eaeae2fb76740f0c"
-  },
-  "beacon_p2p.c|beacon_p2p.c::create_trampoline": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::create_trampoline",
-   "start_line": 278,
-   "end_line": 308,
-   "type": "FUNCTION",
-   "content_hash": "75b35745b69f13eb"
-  },
-  "beacon_p2p.c|beacon_p2p.c::cleanup_trampolines": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::cleanup_trampolines",
-   "start_line": 309,
-   "end_line": 322,
-   "type": "FUNCTION",
-   "content_hash": "1b8548544392bd7b"
-  },
-  "beacon_p2p.c|beacon_p2p.c::get_or_create_trampoline": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::get_or_create_trampoline",
-   "start_line": 323,
-   "end_line": 349,
-   "type": "FUNCTION",
-   "content_hash": "35f12b215b379c45"
-  },
-  "beacon_p2p.c|beacon_p2p.c::page_align": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::page_align",
-   "start_line": 350,
-   "end_line": 357,
-   "type": "FUNCTION",
-   "content_hash": "748f79ad44dd308d"
-  },
-  "beacon_p2p.c|beacon_p2p.c::RunELF": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::RunELF",
-   "start_line": 358,
-   "end_line": 675,
-   "type": "FUNCTION",
-   "content_hash": "072416d7441c1345"
-  },
-  "beacon_p2p.c|beacon_p2p.c::MemoryStruct": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::MemoryStruct",
-   "start_line": 676,
-   "end_line": 682,
-   "type": "CLASS",
-   "content_hash": "30b041e870bcbbb1"
-  },
-  "beacon_p2p.c|beacon_p2p.c::WriteMemoryCallback": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::WriteMemoryCallback",
-   "start_line": 683,
-   "end_line": 706,
-   "type": "FUNCTION",
-   "content_hash": "e6499146166a25db"
-  },
-  "beacon_p2p.c|beacon_p2p.c::https_request": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::https_request",
-   "start_line": 707,
-   "end_line": 762,
-   "type": "FUNCTION",
-   "content_hash": "56945ef9e98b39a8"
-  },
-  "beacon_p2p.c|beacon_p2p.c::base64_encode": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::base64_encode",
-   "start_line": 763,
-   "end_line": 779,
-   "type": "FUNCTION",
-   "content_hash": "7cc4f75438e85029"
-  },
-  "beacon_p2p.c|beacon_p2p.c::base64_decode": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::base64_decode",
-   "start_line": 780,
-   "end_line": 801,
-   "type": "FUNCTION",
-   "content_hash": "a6e7aaa8b965d223"
-  },
-  "beacon_p2p.c|beacon_p2p.c::aes256_cfb_encrypt": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::aes256_cfb_encrypt",
-   "start_line": 802,
-   "end_line": 831,
-   "type": "FUNCTION",
-   "content_hash": "369c0fad0d7cedff"
-  },
-  "beacon_p2p.c|beacon_p2p.c::aes256_cfb_decrypt": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::aes256_cfb_decrypt",
-   "start_line": 832,
-   "end_line": 865,
-   "type": "FUNCTION",
-   "content_hash": "45eccd3a5ce13bb7"
-  },
-  "beacon_p2p.c|beacon_p2p.c::exec_cmd": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::exec_cmd",
-   "start_line": 866,
-   "end_line": 890,
-   "type": "FUNCTION",
-   "content_hash": "326ede421b4a3bd3"
-  },
-  "beacon_p2p.c|beacon_p2p.c::get_local_ips": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::get_local_ips",
-   "start_line": 891,
-   "end_line": 924,
-   "type": "FUNCTION",
-   "content_hash": "48e0557ebf5a3dd5"
-  },
-  "beacon_p2p.c|beacon_p2p.c::download_bof": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::download_bof",
-   "start_line": 925,
-   "end_line": 938,
-   "type": "FUNCTION",
-   "content_hash": "408cd57a7c46bfda"
-  },
-  "beacon_p2p.c|beacon_p2p.c::run_bof_and_capture": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::run_bof_and_capture",
-   "start_line": 939,
-   "end_line": 964,
-   "type": "FUNCTION",
-   "content_hash": "6725a1dc4b671843"
-  },
-  "beacon_p2p.c|beacon_p2p.c::add_peer": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::add_peer",
-   "start_line": 965,
-   "end_line": 991,
-   "type": "FUNCTION",
-   "content_hash": "eace3f7952361bf1"
-  },
-  "beacon_p2p.c|beacon_p2p.c::peer_discovery_thread": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::peer_discovery_thread",
-   "start_line": 992,
-   "end_line": 1031,
-   "type": "FUNCTION",
-   "content_hash": "3741b1b20ff81bc2"
-  },
-  "beacon_p2p.c|beacon_p2p.c::handle_peer_connection": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::handle_peer_connection",
-   "start_line": 1032,
-   "end_line": 1129,
-   "type": "FUNCTION",
-   "content_hash": "92283ce4f6bfc161"
-  },
-  "beacon_p2p.c|beacon_p2p.c::peer_server_thread": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::peer_server_thread",
-   "start_line": 1130,
-   "end_line": 1152,
-   "type": "FUNCTION",
-   "content_hash": "9a4ac5b7e2025f8d"
-  },
-  "beacon_p2p.c|beacon_p2p.c::send_to_peer": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::send_to_peer",
-   "start_line": 1153,
-   "end_line": 1196,
-   "type": "FUNCTION",
-   "content_hash": "9314f3bfb9f91e00"
-  },
-  "beacon_p2p.c|beacon_p2p.c::send_to_c2_or_peer": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::send_to_c2_or_peer",
-   "start_line": 1197,
-   "end_line": 1230,
-   "type": "FUNCTION",
-   "content_hash": "21504e2e872c8a33"
-  },
-  "beacon_p2p.c|beacon_p2p.c::execute_generic_command": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::execute_generic_command",
-   "start_line": 1231,
-   "end_line": 1275,
-   "type": "FUNCTION",
-   "content_hash": "fc0afd9a410e3039"
-  },
-  "beacon_p2p.c|beacon_p2p.c::main": {
-   "file_path": "beacon_p2p.c",
-   "qualified_name": "beacon_p2p.c::main",
-   "start_line": 1276,
-   "end_line": 1409,
-   "type": "FUNCTION",
-   "content_hash": "c23fa3f9b17a31cb"
-  },
   "beacons/v1/beacon.c|beacons/v1/beacon.c::_GNU_SOURCE": {
    "file_path": "beacons/v1/beacon.c",
    "qualified_name": "beacons/v1/beacon.c::_GNU_SOURCE",
@@ -2492,230 +1268,6 @@
    "end_line": 243,
    "type": "FUNCTION",
    "content_hash": "a5ba5eae0ede002a"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::_GNU_SOURCE": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 29,
-   "type": "FUNCTION",
-   "content_hash": "4efb56e3ce474d18"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::C2": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::C2",
-   "start_line": 30,
-   "end_line": 30,
-   "type": "FUNCTION",
-   "content_hash": "5c788e0e3d21995a"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::CLIENT_ID": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::CLIENT_ID",
-   "start_line": 31,
-   "end_line": 31,
-   "type": "FUNCTION",
-   "content_hash": "92e0fd466751153c"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::MALEABLE": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::MALEABLE",
-   "start_line": 32,
-   "end_line": 32,
-   "type": "FUNCTION",
-   "content_hash": "e6b8fb16ca1a9138"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::USER_AGENTS_COUNT": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::USER_AGENTS_COUNT",
-   "start_line": 33,
-   "end_line": 48,
-   "type": "FUNCTION",
-   "content_hash": "a29fc6c7c1e02946"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::MemoryStruct": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::MemoryStruct",
-   "start_line": 49,
-   "end_line": 56,
-   "type": "CLASS",
-   "content_hash": "04a2eac605132332"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::Trampoline": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::Trampoline",
-   "start_line": 57,
-   "end_line": 65,
-   "type": "CLASS",
-   "content_hash": "8443262baf767af4"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::SymbolResolver": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::SymbolResolver",
-   "start_line": 66,
-   "end_line": 72,
-   "type": "CLASS",
-   "content_hash": "7b995ffb80a89a3b"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::TrampolineCache": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::TrampolineCache",
-   "start_line": 73,
-   "end_line": 141,
-   "type": "CLASS",
-   "content_hash": "566bf527870f3084"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::__attribute__": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::__attribute__",
-   "start_line": 142,
-   "end_line": 192,
-   "type": "FUNCTION",
-   "content_hash": "c2cd6756e6fee519"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::BeaconPrintf": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::BeaconPrintf",
-   "start_line": 193,
-   "end_line": 209,
-   "type": "FUNCTION",
-   "content_hash": "1e081bf0afad0b44"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::BeaconOutput": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::BeaconOutput",
-   "start_line": 210,
-   "end_line": 223,
-   "type": "FUNCTION",
-   "content_hash": "218c4f5d4cd8f0fc"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::create_trampoline": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::create_trampoline",
-   "start_line": 224,
-   "end_line": 264,
-   "type": "FUNCTION",
-   "content_hash": "aaa463e40cc4804f"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::cleanup_trampolines": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::cleanup_trampolines",
-   "start_line": 265,
-   "end_line": 282,
-   "type": "FUNCTION",
-   "content_hash": "6fac49317103c9ea"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::get_or_create_trampoline": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::get_or_create_trampoline",
-   "start_line": 283,
-   "end_line": 320,
-   "type": "FUNCTION",
-   "content_hash": "ac8eb84220fc2125"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::WriteMemoryCallback": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::WriteMemoryCallback",
-   "start_line": 321,
-   "end_line": 338,
-   "type": "FUNCTION",
-   "content_hash": "2961c1bc4dcf49ed"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::gopher_request": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::gopher_request",
-   "start_line": 339,
-   "end_line": 421,
-   "type": "FUNCTION",
-   "content_hash": "86ab0278e82aefeb"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::base64_encode": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::base64_encode",
-   "start_line": 422,
-   "end_line": 439,
-   "type": "FUNCTION",
-   "content_hash": "b9087ab77cb4e4ed"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::base64_decode": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::base64_decode",
-   "start_line": 440,
-   "end_line": 465,
-   "type": "FUNCTION",
-   "content_hash": "16a7e38b993fcc7d"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::aes256_cfb_encrypt": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::aes256_cfb_encrypt",
-   "start_line": 466,
-   "end_line": 499,
-   "type": "FUNCTION",
-   "content_hash": "ba6332d52129d346"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::aes256_cfb_decrypt": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::aes256_cfb_decrypt",
-   "start_line": 500,
-   "end_line": 535,
-   "type": "FUNCTION",
-   "content_hash": "7f5e346e812b1019"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::exec_cmd": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::exec_cmd",
-   "start_line": 536,
-   "end_line": 572,
-   "type": "FUNCTION",
-   "content_hash": "fb30fa3adc8b6186"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::page_align": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::page_align",
-   "start_line": 573,
-   "end_line": 580,
-   "type": "FUNCTION",
-   "content_hash": "087a565a78caf0e8"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::RunELF": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::RunELF",
-   "start_line": 581,
-   "end_line": 1079,
-   "type": "FUNCTION",
-   "content_hash": "63551c42805caae2"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::get_local_ips": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::get_local_ips",
-   "start_line": 1080,
-   "end_line": 1114,
-   "type": "FUNCTION",
-   "content_hash": "15a99f3a5505962d"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::download_bof": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::download_bof",
-   "start_line": 1115,
-   "end_line": 1146,
-   "type": "FUNCTION",
-   "content_hash": "1d1f8631d4630a1a"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::run_bof_and_capture": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::run_bof_and_capture",
-   "start_line": 1147,
-   "end_line": 1192,
-   "type": "FUNCTION",
-   "content_hash": "e53b8926edea72a2"
-  },
-  "beacons/v1/gopher_beacon.c|beacons/v1/gopher_beacon.c::main": {
-   "file_path": "beacons/v1/gopher_beacon.c",
-   "qualified_name": "beacons/v1/gopher_beacon.c::main",
-   "start_line": 1193,
-   "end_line": 1413,
-   "type": "FUNCTION",
-   "content_hash": "7fde9d009325eb22"
   },
   "beacons/v2/beacon.c|beacons/v2/beacon.c::_GNU_SOURCE": {
    "file_path": "beacons/v2/beacon.c",
@@ -4981,230 +3533,6 @@
    "type": "FUNCTION",
    "content_hash": "6f61bdca8dc2d56b"
   },
-  "gopher_beacon.c|gopher_beacon.c::_GNU_SOURCE": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::_GNU_SOURCE",
-   "start_line": 1,
-   "end_line": 29,
-   "type": "FUNCTION",
-   "content_hash": "524edfc9026b1d80"
-  },
-  "gopher_beacon.c|gopher_beacon.c::C2": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::C2",
-   "start_line": 30,
-   "end_line": 30,
-   "type": "FUNCTION",
-   "content_hash": "ce97f48570e784a6"
-  },
-  "gopher_beacon.c|gopher_beacon.c::CLIENT_ID": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::CLIENT_ID",
-   "start_line": 31,
-   "end_line": 31,
-   "type": "FUNCTION",
-   "content_hash": "c35ef29496729ac4"
-  },
-  "gopher_beacon.c|gopher_beacon.c::MALEABLE": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::MALEABLE",
-   "start_line": 32,
-   "end_line": 32,
-   "type": "FUNCTION",
-   "content_hash": "9b20d12b3dedd586"
-  },
-  "gopher_beacon.c|gopher_beacon.c::USER_AGENTS_COUNT": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::USER_AGENTS_COUNT",
-   "start_line": 33,
-   "end_line": 48,
-   "type": "FUNCTION",
-   "content_hash": "6487a1f5d664f063"
-  },
-  "gopher_beacon.c|gopher_beacon.c::MemoryStruct": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::MemoryStruct",
-   "start_line": 49,
-   "end_line": 56,
-   "type": "CLASS",
-   "content_hash": "7b7a9a645b741af4"
-  },
-  "gopher_beacon.c|gopher_beacon.c::Trampoline": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::Trampoline",
-   "start_line": 57,
-   "end_line": 65,
-   "type": "CLASS",
-   "content_hash": "e9fe78e74fe8971f"
-  },
-  "gopher_beacon.c|gopher_beacon.c::SymbolResolver": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::SymbolResolver",
-   "start_line": 66,
-   "end_line": 72,
-   "type": "CLASS",
-   "content_hash": "014e22355953af1f"
-  },
-  "gopher_beacon.c|gopher_beacon.c::TrampolineCache": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::TrampolineCache",
-   "start_line": 73,
-   "end_line": 141,
-   "type": "CLASS",
-   "content_hash": "1a82837164b76ecd"
-  },
-  "gopher_beacon.c|gopher_beacon.c::__attribute__": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::__attribute__",
-   "start_line": 142,
-   "end_line": 192,
-   "type": "FUNCTION",
-   "content_hash": "a714dacdecddbf69"
-  },
-  "gopher_beacon.c|gopher_beacon.c::BeaconPrintf": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::BeaconPrintf",
-   "start_line": 193,
-   "end_line": 209,
-   "type": "FUNCTION",
-   "content_hash": "54b62d92590a5ae6"
-  },
-  "gopher_beacon.c|gopher_beacon.c::BeaconOutput": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::BeaconOutput",
-   "start_line": 210,
-   "end_line": 223,
-   "type": "FUNCTION",
-   "content_hash": "8807ce11af9c47c5"
-  },
-  "gopher_beacon.c|gopher_beacon.c::create_trampoline": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::create_trampoline",
-   "start_line": 224,
-   "end_line": 264,
-   "type": "FUNCTION",
-   "content_hash": "0ea0ddb4b304b68c"
-  },
-  "gopher_beacon.c|gopher_beacon.c::cleanup_trampolines": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::cleanup_trampolines",
-   "start_line": 265,
-   "end_line": 282,
-   "type": "FUNCTION",
-   "content_hash": "b4210845f0e5fb44"
-  },
-  "gopher_beacon.c|gopher_beacon.c::get_or_create_trampoline": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::get_or_create_trampoline",
-   "start_line": 283,
-   "end_line": 320,
-   "type": "FUNCTION",
-   "content_hash": "7d7f352bbb999a25"
-  },
-  "gopher_beacon.c|gopher_beacon.c::WriteMemoryCallback": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::WriteMemoryCallback",
-   "start_line": 321,
-   "end_line": 338,
-   "type": "FUNCTION",
-   "content_hash": "bebc65813d108419"
-  },
-  "gopher_beacon.c|gopher_beacon.c::gopher_request": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::gopher_request",
-   "start_line": 339,
-   "end_line": 421,
-   "type": "FUNCTION",
-   "content_hash": "62c552594974c30e"
-  },
-  "gopher_beacon.c|gopher_beacon.c::base64_encode": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::base64_encode",
-   "start_line": 422,
-   "end_line": 439,
-   "type": "FUNCTION",
-   "content_hash": "093023af2feb491c"
-  },
-  "gopher_beacon.c|gopher_beacon.c::base64_decode": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::base64_decode",
-   "start_line": 440,
-   "end_line": 465,
-   "type": "FUNCTION",
-   "content_hash": "a5ab1644993d1376"
-  },
-  "gopher_beacon.c|gopher_beacon.c::aes256_cfb_encrypt": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::aes256_cfb_encrypt",
-   "start_line": 466,
-   "end_line": 499,
-   "type": "FUNCTION",
-   "content_hash": "43e3ab02a8f78939"
-  },
-  "gopher_beacon.c|gopher_beacon.c::aes256_cfb_decrypt": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::aes256_cfb_decrypt",
-   "start_line": 500,
-   "end_line": 535,
-   "type": "FUNCTION",
-   "content_hash": "ed3c4475541af99f"
-  },
-  "gopher_beacon.c|gopher_beacon.c::exec_cmd": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::exec_cmd",
-   "start_line": 536,
-   "end_line": 572,
-   "type": "FUNCTION",
-   "content_hash": "c43d96691fd0ffcf"
-  },
-  "gopher_beacon.c|gopher_beacon.c::page_align": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::page_align",
-   "start_line": 573,
-   "end_line": 580,
-   "type": "FUNCTION",
-   "content_hash": "ce69479fdc788c13"
-  },
-  "gopher_beacon.c|gopher_beacon.c::RunELF": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::RunELF",
-   "start_line": 581,
-   "end_line": 1079,
-   "type": "FUNCTION",
-   "content_hash": "5d064bfd4699f9ea"
-  },
-  "gopher_beacon.c|gopher_beacon.c::get_local_ips": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::get_local_ips",
-   "start_line": 1080,
-   "end_line": 1114,
-   "type": "FUNCTION",
-   "content_hash": "e54903136f205ef4"
-  },
-  "gopher_beacon.c|gopher_beacon.c::download_bof": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::download_bof",
-   "start_line": 1115,
-   "end_line": 1146,
-   "type": "FUNCTION",
-   "content_hash": "8212ef64bbf9304b"
-  },
-  "gopher_beacon.c|gopher_beacon.c::run_bof_and_capture": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::run_bof_and_capture",
-   "start_line": 1147,
-   "end_line": 1192,
-   "type": "FUNCTION",
-   "content_hash": "c521bac5330286b7"
-  },
-  "gopher_beacon.c|gopher_beacon.c::main": {
-   "file_path": "gopher_beacon.c",
-   "qualified_name": "gopher_beacon.c::main",
-   "start_line": 1193,
-   "end_line": 1413,
-   "type": "FUNCTION",
-   "content_hash": "9c1eb0771e2e2dad"
-  },
   "gopher_c2.py|gopher_c2.py::encrypt_data": {
    "file_path": "gopher_c2.py",
    "qualified_name": "gopher_c2.py::encrypt_data",
@@ -5873,201 +4201,217 @@
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::create_trampoline",
    "start_line": 211,
-   "end_line": 242,
+   "end_line": 248,
    "type": "FUNCTION",
    "content_hash": "deb2f5d4d4159cbe"
   },
   "include/beacon_common.c|include/beacon_common.c::cleanup_trampolines": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::cleanup_trampolines",
-   "start_line": 243,
-   "end_line": 259,
+   "start_line": 249,
+   "end_line": 265,
    "type": "FUNCTION",
-   "content_hash": "c2b5c8b9eda80851"
+   "content_hash": "a05cd4a78dea1ad7"
   },
   "include/beacon_common.c|include/beacon_common.c::get_or_create_trampoline": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::get_or_create_trampoline",
-   "start_line": 260,
-   "end_line": 290,
+   "start_line": 266,
+   "end_line": 296,
    "type": "FUNCTION",
-   "content_hash": "9edb2a3296be01ec"
+   "content_hash": "1a7bd0772a46e1ed"
   },
   "include/beacon_common.c|include/beacon_common.c::MemoryStruct": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::MemoryStruct",
-   "start_line": 291,
-   "end_line": 296,
+   "start_line": 297,
+   "end_line": 302,
    "type": "CLASS",
-   "content_hash": "af37e296c29a62a8"
+   "content_hash": "a566201fb1f1d340"
   },
   "include/beacon_common.c|include/beacon_common.c::WriteMemoryCallback": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::WriteMemoryCallback",
-   "start_line": 297,
-   "end_line": 310,
+   "start_line": 303,
+   "end_line": 329,
    "type": "FUNCTION",
-   "content_hash": "4390acaba0a7cd6b"
+   "content_hash": "6350a435ff283762"
+  },
+  "include/beacon_common.c|include/beacon_common.c::bsb_curl_pin_format": {
+   "file_path": "include/beacon_common.c",
+   "qualified_name": "include/beacon_common.c::bsb_curl_pin_format",
+   "start_line": 330,
+   "end_line": 366,
+   "type": "FUNCTION",
+   "content_hash": "8b54bbbbb10b7ef5"
   },
   "include/beacon_common.c|include/beacon_common.c::https_request": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::https_request",
-   "start_line": 311,
-   "end_line": 380,
+   "start_line": 367,
+   "end_line": 442,
    "type": "FUNCTION",
-   "content_hash": "3a6493d7c6e91bd4"
+   "content_hash": "b11d270c56c4c4f8"
   },
   "include/beacon_common.c|include/beacon_common.c::base64_encode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::base64_encode",
-   "start_line": 381,
-   "end_line": 397,
+   "start_line": 443,
+   "end_line": 459,
    "type": "FUNCTION",
-   "content_hash": "f4d01541399b9c29"
+   "content_hash": "17fa5c9f7398f85a"
   },
   "include/beacon_common.c|include/beacon_common.c::base64_decode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::base64_decode",
-   "start_line": 398,
-   "end_line": 427,
+   "start_line": 460,
+   "end_line": 489,
    "type": "FUNCTION",
-   "content_hash": "cda4bb5f4aac8315"
+   "content_hash": "e248d9022fa7f78d"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_generate_secure_iv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_generate_secure_iv",
-   "start_line": 428,
-   "end_line": 452,
+   "start_line": 490,
+   "end_line": 514,
    "type": "FUNCTION",
-   "content_hash": "a0a2641514d73c67"
+   "content_hash": "8c8bbb44fb5336e6"
   },
   "include/beacon_common.c|include/beacon_common.c::_is_unreserved": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::_is_unreserved",
-   "start_line": 453,
-   "end_line": 458,
+   "start_line": 515,
+   "end_line": 520,
    "type": "FUNCTION",
-   "content_hash": "f69140ce2276426a"
+   "content_hash": "21e84509f2150965"
   },
   "include/beacon_common.c|include/beacon_common.c::url_encode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::url_encode",
-   "start_line": 459,
-   "end_line": 490,
+   "start_line": 521,
+   "end_line": 552,
    "type": "FUNCTION",
-   "content_hash": "7bd03361adf38f3a"
+   "content_hash": "8bf2bc3e5566a0fe"
   },
   "include/beacon_common.c|include/beacon_common.c::parse_cmd_to_argv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::parse_cmd_to_argv",
-   "start_line": 491,
-   "end_line": 566,
+   "start_line": 553,
+   "end_line": 628,
    "type": "FUNCTION",
-   "content_hash": "93a1ff381d4da427"
+   "content_hash": "debd20dc5ce59687"
   },
   "include/beacon_common.c|include/beacon_common.c::free_argv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::free_argv",
-   "start_line": 567,
-   "end_line": 577,
+   "start_line": 629,
+   "end_line": 639,
    "type": "FUNCTION",
-   "content_hash": "e9c25484a78dfd75"
+   "content_hash": "00d3eb699761c140"
   },
   "include/beacon_common.c|include/beacon_common.c::exec_cmd": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::exec_cmd",
-   "start_line": 578,
-   "end_line": 718,
+   "start_line": 640,
+   "end_line": 780,
    "type": "FUNCTION",
-   "content_hash": "701f1638be660e92"
+   "content_hash": "26806887dd8c0e31"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_init": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_init",
-   "start_line": 719,
-   "end_line": 725,
+   "start_line": 781,
+   "end_line": 787,
    "type": "FUNCTION",
-   "content_hash": "ea0d86c69fced006"
+   "content_hash": "fa0c66d86709cf93"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_next": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_next",
-   "start_line": 726,
-   "end_line": 736,
+   "start_line": 788,
+   "end_line": 798,
    "type": "FUNCTION",
-   "content_hash": "871371aad8ccc7a2"
+   "content_hash": "ca8826718f17c5a9"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_reset": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_reset",
-   "start_line": 737,
-   "end_line": 742,
+   "start_line": 799,
+   "end_line": 804,
    "type": "FUNCTION",
-   "content_hash": "9dfb211965c7f477"
+   "content_hash": "73d5f28886c19df4"
   },
   "include/beacon_common.c|include/beacon_common.c::get_local_ips": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::get_local_ips",
-   "start_line": 743,
-   "end_line": 777,
+   "start_line": 805,
+   "end_line": 839,
    "type": "FUNCTION",
-   "content_hash": "5b968014f1ecf3fb"
+   "content_hash": "57855bd96cf57a9d"
   },
   "include/beacon_common.c|include/beacon_common.c::download_bof": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::download_bof",
-   "start_line": 778,
-   "end_line": 791,
+   "start_line": 840,
+   "end_line": 871,
    "type": "FUNCTION",
-   "content_hash": "a452b4c273efe906"
+   "content_hash": "2d9729515c44afc6"
   },
   "include/beacon_common.c|include/beacon_common.c::init_function_pointers": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::init_function_pointers",
-   "start_line": 792,
-   "end_line": 841,
+   "start_line": 872,
+   "end_line": 921,
    "type": "FUNCTION",
-   "content_hash": "e0bf816ae1547419"
+   "content_hash": "32e5a437e787e58c"
   },
   "include/beacon_common.c|include/beacon_common.c::page_align": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::page_align",
-   "start_line": 842,
-   "end_line": 849,
+   "start_line": 922,
+   "end_line": 929,
    "type": "FUNCTION",
-   "content_hash": "118f2d021309b977"
+   "content_hash": "47fa038b8fca8743"
   },
   "include/beacon_common.c|include/beacon_common.c::bof_crash_exit": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bof_crash_exit",
-   "start_line": 850,
-   "end_line": 854,
+   "start_line": 930,
+   "end_line": 934,
    "type": "FUNCTION",
-   "content_hash": "0d2786149a4b8c3c"
+   "content_hash": "702ee171774eb8c9"
   },
   "include/beacon_common.c|include/beacon_common.c::__attribute__": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::__attribute__",
-   "start_line": 855,
-   "end_line": 871,
+   "start_line": 935,
+   "end_line": 940,
    "type": "FUNCTION",
-   "content_hash": "fed3585280720a2b"
+   "content_hash": "6e887a55fb2217d9"
+  },
+  "include/beacon_common.c|include/beacon_common.c::fault": {
+   "file_path": "include/beacon_common.c",
+   "qualified_name": "include/beacon_common.c::fault",
+   "start_line": 941,
+   "end_line": 960,
+   "type": "FUNCTION",
+   "content_hash": "8fb0d616a26b5e21"
   },
   "include/beacon_common.c|include/beacon_common.c::RunELF": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::RunELF",
-   "start_line": 872,
-   "end_line": 1173,
+   "start_line": 961,
+   "end_line": 1262,
    "type": "FUNCTION",
-   "content_hash": "34dc9f570ee6e130"
+   "content_hash": "fbea1ee32629c281"
   },
   "include/beacon_common.c|include/beacon_common.c::run_bof_and_capture": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::run_bof_and_capture",
-   "start_line": 1174,
-   "end_line": 1195,
+   "start_line": 1263,
+   "end_line": 1284,
    "type": "FUNCTION",
-   "content_hash": "e05b9682be16e742"
+   "content_hash": "afeee1f6f31193e5"
   },
   "include/beacon_common.c_extraction.h|include/beacon_common.c_extraction.h::BEACON_COMMON": {
    "file_path": "include/beacon_common.c_extraction.h",
@@ -8333,6 +6677,1678 @@
    "type": "FUNCTION",
    "content_hash": "6b344ee4493ec7af"
   },
+  "legacy/beacon3.c|legacy/beacon3.c::_GNU_SOURCE": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 32,
+   "type": "FUNCTION",
+   "content_hash": "9516f238c023f7b3"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::C2_URL": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::C2_URL",
+   "start_line": 33,
+   "end_line": 33,
+   "type": "FUNCTION",
+   "content_hash": "33c07e19d93de2a7"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::CLIENT_ID": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::CLIENT_ID",
+   "start_line": 34,
+   "end_line": 34,
+   "type": "FUNCTION",
+   "content_hash": "f41cb6ed52607fc0"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::MALEABLE": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::MALEABLE",
+   "start_line": 35,
+   "end_line": 35,
+   "type": "FUNCTION",
+   "content_hash": "8e777dd6dba1eba9"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::USER_AGENTS_COUNT",
+   "start_line": 36,
+   "end_line": 51,
+   "type": "FUNCTION",
+   "content_hash": "7b4d359593033f08"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::MemoryStruct": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::MemoryStruct",
+   "start_line": 52,
+   "end_line": 59,
+   "type": "CLASS",
+   "content_hash": "21891485e869ce82"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::Trampoline": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::Trampoline",
+   "start_line": 60,
+   "end_line": 68,
+   "type": "CLASS",
+   "content_hash": "8d567b8bb8a8deeb"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::SymbolResolver": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::SymbolResolver",
+   "start_line": 69,
+   "end_line": 75,
+   "type": "CLASS",
+   "content_hash": "f6c3c3d6a985b6de"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::TrampolineCache": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::TrampolineCache",
+   "start_line": 76,
+   "end_line": 144,
+   "type": "CLASS",
+   "content_hash": "f420078be27506fe"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::__attribute__": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::__attribute__",
+   "start_line": 145,
+   "end_line": 195,
+   "type": "FUNCTION",
+   "content_hash": "c0cab9dd1859c806"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::BeaconPrintf": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::BeaconPrintf",
+   "start_line": 196,
+   "end_line": 212,
+   "type": "FUNCTION",
+   "content_hash": "7fc183acd8112c7b"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::BeaconOutput": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::BeaconOutput",
+   "start_line": 213,
+   "end_line": 226,
+   "type": "FUNCTION",
+   "content_hash": "058d2a4df2e81ac8"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::create_trampoline": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::create_trampoline",
+   "start_line": 227,
+   "end_line": 267,
+   "type": "FUNCTION",
+   "content_hash": "ca3634f016e733f1"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::cleanup_trampolines": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::cleanup_trampolines",
+   "start_line": 268,
+   "end_line": 285,
+   "type": "FUNCTION",
+   "content_hash": "d08eca81b6908302"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::get_or_create_trampoline": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::get_or_create_trampoline",
+   "start_line": 286,
+   "end_line": 323,
+   "type": "FUNCTION",
+   "content_hash": "fc0ed29a3d1e67e2"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::WriteMemoryCallback": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::WriteMemoryCallback",
+   "start_line": 324,
+   "end_line": 341,
+   "type": "FUNCTION",
+   "content_hash": "af8c5d807d82ec78"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::https_request": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::https_request",
+   "start_line": 342,
+   "end_line": 435,
+   "type": "FUNCTION",
+   "content_hash": "bbcbfb5e5db18feb"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::base64_encode": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::base64_encode",
+   "start_line": 436,
+   "end_line": 453,
+   "type": "FUNCTION",
+   "content_hash": "cd7e8732c30a4d78"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::base64_decode": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::base64_decode",
+   "start_line": 454,
+   "end_line": 479,
+   "type": "FUNCTION",
+   "content_hash": "929e367726f02930"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::aes256_cfb_encrypt",
+   "start_line": 480,
+   "end_line": 513,
+   "type": "FUNCTION",
+   "content_hash": "bd93ce60aafca8ef"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::aes256_cfb_decrypt",
+   "start_line": 514,
+   "end_line": 549,
+   "type": "FUNCTION",
+   "content_hash": "a729dbc283428ab8"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::exec_cmd": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::exec_cmd",
+   "start_line": 550,
+   "end_line": 575,
+   "type": "FUNCTION",
+   "content_hash": "155947476c5d3f89"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::page_align": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::page_align",
+   "start_line": 576,
+   "end_line": 583,
+   "type": "FUNCTION",
+   "content_hash": "6af1cfe1aa5b56e6"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::RunELF": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::RunELF",
+   "start_line": 584,
+   "end_line": 1082,
+   "type": "FUNCTION",
+   "content_hash": "e180d6b944d24d9e"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::get_local_ips": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::get_local_ips",
+   "start_line": 1083,
+   "end_line": 1117,
+   "type": "FUNCTION",
+   "content_hash": "9d35c783b2aac183"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::download_bof": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::download_bof",
+   "start_line": 1118,
+   "end_line": 1140,
+   "type": "FUNCTION",
+   "content_hash": "7ea50202650cc5f9"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::run_bof_and_capture": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::run_bof_and_capture",
+   "start_line": 1141,
+   "end_line": 1186,
+   "type": "FUNCTION",
+   "content_hash": "b44f700681516b3d"
+  },
+  "legacy/beacon3.c|legacy/beacon3.c::main": {
+   "file_path": "legacy/beacon3.c",
+   "qualified_name": "legacy/beacon3.c::main",
+   "start_line": 1187,
+   "end_line": 1419,
+   "type": "FUNCTION",
+   "content_hash": "55168bea477ce807"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::_GNU_SOURCE": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 35,
+   "type": "FUNCTION",
+   "content_hash": "4d9939c9de408fe5"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::MAX_PEERS": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::MAX_PEERS",
+   "start_line": 36,
+   "end_line": 36,
+   "type": "FUNCTION",
+   "content_hash": "05b29a1a8393526f"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::DISCOVERY_PORT": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::DISCOVERY_PORT",
+   "start_line": 37,
+   "end_line": 37,
+   "type": "FUNCTION",
+   "content_hash": "0d62d05509a59b78"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::DISCOVERY_INTERVAL": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::DISCOVERY_INTERVAL",
+   "start_line": 38,
+   "end_line": 38,
+   "type": "FUNCTION",
+   "content_hash": "a042c3b60d08eb76"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::MAX_TTL": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::MAX_TTL",
+   "start_line": 39,
+   "end_line": 39,
+   "type": "FUNCTION",
+   "content_hash": "c0898a3c4d58faf1"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::MESH_MSG_SIZE": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::MESH_MSG_SIZE",
+   "start_line": 40,
+   "end_line": 41,
+   "type": "FUNCTION",
+   "content_hash": "2a28b0a046b63d4c"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::C2_URL": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::C2_URL",
+   "start_line": 42,
+   "end_line": 42,
+   "type": "FUNCTION",
+   "content_hash": "4c8c3696629c01f4"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::CLIENT_ID": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::CLIENT_ID",
+   "start_line": 43,
+   "end_line": 43,
+   "type": "FUNCTION",
+   "content_hash": "499c2fcc9929973c"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::MALEABLE": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::MALEABLE",
+   "start_line": 44,
+   "end_line": 44,
+   "type": "FUNCTION",
+   "content_hash": "fc1248401f15c908"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::USER_AGENTS_COUNT",
+   "start_line": 45,
+   "end_line": 60,
+   "type": "FUNCTION",
+   "content_hash": "bbf06d4a56c53935"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::MemoryStruct": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::MemoryStruct",
+   "start_line": 61,
+   "end_line": 68,
+   "type": "CLASS",
+   "content_hash": "e0e75ea088d168d8"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::peer_t": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::peer_t",
+   "start_line": 69,
+   "end_line": 76,
+   "type": "CLASS",
+   "content_hash": "81a815c587b133b5"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_msg_t": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_msg_t",
+   "start_line": 77,
+   "end_line": 101,
+   "type": "CLASS",
+   "content_hash": "57cda90a9fe53892"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::Trampoline": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::Trampoline",
+   "start_line": 102,
+   "end_line": 110,
+   "type": "CLASS",
+   "content_hash": "2bc69443f8021d63"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::SymbolResolver": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::SymbolResolver",
+   "start_line": 111,
+   "end_line": 117,
+   "type": "CLASS",
+   "content_hash": "a3d16396fb73a01b"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::TrampolineCache": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::TrampolineCache",
+   "start_line": 118,
+   "end_line": 187,
+   "type": "CLASS",
+   "content_hash": "2f17691c2f406f45"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::__attribute__": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::__attribute__",
+   "start_line": 188,
+   "end_line": 238,
+   "type": "FUNCTION",
+   "content_hash": "f832df646050d103"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::BeaconPrintf": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::BeaconPrintf",
+   "start_line": 239,
+   "end_line": 255,
+   "type": "FUNCTION",
+   "content_hash": "b581d29bd3279d22"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::BeaconOutput": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::BeaconOutput",
+   "start_line": 256,
+   "end_line": 269,
+   "type": "FUNCTION",
+   "content_hash": "1a3c2cd189269516"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::create_trampoline": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::create_trampoline",
+   "start_line": 270,
+   "end_line": 310,
+   "type": "FUNCTION",
+   "content_hash": "bdfbe6ddb580a669"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::cleanup_trampolines": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::cleanup_trampolines",
+   "start_line": 311,
+   "end_line": 328,
+   "type": "FUNCTION",
+   "content_hash": "909b5d321240bc5c"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::get_or_create_trampoline": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::get_or_create_trampoline",
+   "start_line": 329,
+   "end_line": 366,
+   "type": "FUNCTION",
+   "content_hash": "e5ab040cd21f5284"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::WriteMemoryCallback": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::WriteMemoryCallback",
+   "start_line": 367,
+   "end_line": 384,
+   "type": "FUNCTION",
+   "content_hash": "c67b940b9d31f072"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::https_request": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::https_request",
+   "start_line": 385,
+   "end_line": 478,
+   "type": "FUNCTION",
+   "content_hash": "f10d961637e5ea65"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::base64_encode": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::base64_encode",
+   "start_line": 479,
+   "end_line": 496,
+   "type": "FUNCTION",
+   "content_hash": "84163f1af01fe7ca"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::base64_decode": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::base64_decode",
+   "start_line": 497,
+   "end_line": 522,
+   "type": "FUNCTION",
+   "content_hash": "68481f36b65fc533"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::aes256_cfb_encrypt",
+   "start_line": 523,
+   "end_line": 556,
+   "type": "FUNCTION",
+   "content_hash": "dfebcf1cc94097a8"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::aes256_cfb_decrypt",
+   "start_line": 557,
+   "end_line": 592,
+   "type": "FUNCTION",
+   "content_hash": "7a27665ce754f128"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::exec_cmd": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::exec_cmd",
+   "start_line": 593,
+   "end_line": 618,
+   "type": "FUNCTION",
+   "content_hash": "76fda54fc44625c5"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::page_align": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::page_align",
+   "start_line": 619,
+   "end_line": 626,
+   "type": "FUNCTION",
+   "content_hash": "ef91b6d2b0ebe07b"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::RunELF": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::RunELF",
+   "start_line": 627,
+   "end_line": 1125,
+   "type": "FUNCTION",
+   "content_hash": "65df7d40a42da826"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::get_local_ips": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::get_local_ips",
+   "start_line": 1126,
+   "end_line": 1160,
+   "type": "FUNCTION",
+   "content_hash": "2123b07db6229cb2"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::download_bof": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::download_bof",
+   "start_line": 1161,
+   "end_line": 1183,
+   "type": "FUNCTION",
+   "content_hash": "6e08215f5b581e42"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::run_bof_and_capture": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::run_bof_and_capture",
+   "start_line": 1184,
+   "end_line": 1230,
+   "type": "FUNCTION",
+   "content_hash": "cbb343c35d522faf"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_mark_seen": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_mark_seen",
+   "start_line": 1231,
+   "end_line": 1239,
+   "type": "FUNCTION",
+   "content_hash": "d6212449d4c38d9b"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_is_seen": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_is_seen",
+   "start_line": 1240,
+   "end_line": 1254,
+   "type": "FUNCTION",
+   "content_hash": "41062907f1142d13"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_add_peer": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_add_peer",
+   "start_line": 1255,
+   "end_line": 1282,
+   "type": "FUNCTION",
+   "content_hash": "3f84dd0d1ed1a043"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_cleanup_peers": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_cleanup_peers",
+   "start_line": 1283,
+   "end_line": 1299,
+   "type": "FUNCTION",
+   "content_hash": "0dc45d23d7efaf1b"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_send_to_peer": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_send_to_peer",
+   "start_line": 1300,
+   "end_line": 1323,
+   "type": "FUNCTION",
+   "content_hash": "78480695fcc2c859"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_propagate": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_propagate",
+   "start_line": 1324,
+   "end_line": 1355,
+   "type": "FUNCTION",
+   "content_hash": "7daace87045e09ee"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_discovery_thread": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_discovery_thread",
+   "start_line": 1356,
+   "end_line": 1446,
+   "type": "FUNCTION",
+   "content_hash": "5e9646961f613d4a"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_listener_thread": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_listener_thread",
+   "start_line": 1447,
+   "end_line": 1666,
+   "type": "FUNCTION",
+   "content_hash": "6b4c291cc94404be"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::mesh_send_message": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::mesh_send_message",
+   "start_line": 1667,
+   "end_line": 1701,
+   "type": "FUNCTION",
+   "content_hash": "f55a7eb4512684a4"
+  },
+  "legacy/beacon5.c|legacy/beacon5.c::main": {
+   "file_path": "legacy/beacon5.c",
+   "qualified_name": "legacy/beacon5.c::main",
+   "start_line": 1702,
+   "end_line": 1973,
+   "type": "FUNCTION",
+   "content_hash": "06d48a0e32dbce45"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::_GNU_SOURCE": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 33,
+   "type": "FUNCTION",
+   "content_hash": "98dcb7d7a0c96383"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::C2_URL": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::C2_URL",
+   "start_line": 34,
+   "end_line": 34,
+   "type": "FUNCTION",
+   "content_hash": "6bf45b34da3e4a73"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::CLIENT_ID": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::CLIENT_ID",
+   "start_line": 35,
+   "end_line": 35,
+   "type": "FUNCTION",
+   "content_hash": "cfa311b85302de11"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::MALEABLE": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::MALEABLE",
+   "start_line": 36,
+   "end_line": 36,
+   "type": "FUNCTION",
+   "content_hash": "5f1ddce07a8bda52"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::USER_AGENTS_COUNT",
+   "start_line": 37,
+   "end_line": 52,
+   "type": "FUNCTION",
+   "content_hash": "c93f4031a4d21b73"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::MemoryStruct": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::MemoryStruct",
+   "start_line": 53,
+   "end_line": 60,
+   "type": "CLASS",
+   "content_hash": "f93eeed50e83d638"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::Trampoline": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::Trampoline",
+   "start_line": 61,
+   "end_line": 69,
+   "type": "CLASS",
+   "content_hash": "3bfe2d333a029004"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::SymbolResolver": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::SymbolResolver",
+   "start_line": 70,
+   "end_line": 76,
+   "type": "CLASS",
+   "content_hash": "4d1ed9e5e9ab3a88"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::TrampolineCache": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::TrampolineCache",
+   "start_line": 77,
+   "end_line": 145,
+   "type": "CLASS",
+   "content_hash": "b48b07576251f23d"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::__attribute__": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::__attribute__",
+   "start_line": 146,
+   "end_line": 196,
+   "type": "FUNCTION",
+   "content_hash": "5c762109cfe69bc7"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::delay_ms": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::delay_ms",
+   "start_line": 197,
+   "end_line": 203,
+   "type": "FUNCTION",
+   "content_hash": "0930a3db04855a89"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::is_prime": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::is_prime",
+   "start_line": 204,
+   "end_line": 223,
+   "type": "FUNCTION",
+   "content_hash": "80dcba0b0406beb7"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::get_nth_prime_limited": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::get_nth_prime_limited",
+   "start_line": 224,
+   "end_line": 252,
+   "type": "FUNCTION",
+   "content_hash": "e0f38f9ca84fdb53"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::portable_rand_19k_29k": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::portable_rand_19k_29k",
+   "start_line": 253,
+   "end_line": 265,
+   "type": "FUNCTION",
+   "content_hash": "de3b539a82519168"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::BeaconPrintf": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::BeaconPrintf",
+   "start_line": 266,
+   "end_line": 282,
+   "type": "FUNCTION",
+   "content_hash": "2e177b36718064a6"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::BeaconOutput": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::BeaconOutput",
+   "start_line": 283,
+   "end_line": 296,
+   "type": "FUNCTION",
+   "content_hash": "1fc62dc12ad5c335"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::create_trampoline": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::create_trampoline",
+   "start_line": 297,
+   "end_line": 337,
+   "type": "FUNCTION",
+   "content_hash": "796025da991d2326"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::cleanup_trampolines": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::cleanup_trampolines",
+   "start_line": 338,
+   "end_line": 355,
+   "type": "FUNCTION",
+   "content_hash": "d7fe9c5ef2b208dc"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::get_or_create_trampoline": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::get_or_create_trampoline",
+   "start_line": 356,
+   "end_line": 393,
+   "type": "FUNCTION",
+   "content_hash": "4bf6ca9467ac030b"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::WriteMemoryCallback": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::WriteMemoryCallback",
+   "start_line": 394,
+   "end_line": 411,
+   "type": "FUNCTION",
+   "content_hash": "6698553ba3e3ccdb"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::https_request": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::https_request",
+   "start_line": 412,
+   "end_line": 505,
+   "type": "FUNCTION",
+   "content_hash": "195619fe54b32b1a"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::base64_encode": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::base64_encode",
+   "start_line": 506,
+   "end_line": 523,
+   "type": "FUNCTION",
+   "content_hash": "526da69c87964e5f"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::base64_decode": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::base64_decode",
+   "start_line": 524,
+   "end_line": 549,
+   "type": "FUNCTION",
+   "content_hash": "302fa56c6406ad91"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::aes256_cfb_encrypt",
+   "start_line": 550,
+   "end_line": 583,
+   "type": "FUNCTION",
+   "content_hash": "15e1e39be1662c30"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::aes256_cfb_decrypt",
+   "start_line": 584,
+   "end_line": 619,
+   "type": "FUNCTION",
+   "content_hash": "b73177c8f4265a35"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::exec_cmd": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::exec_cmd",
+   "start_line": 620,
+   "end_line": 645,
+   "type": "FUNCTION",
+   "content_hash": "15d1215527de254b"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::page_align": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::page_align",
+   "start_line": 646,
+   "end_line": 653,
+   "type": "FUNCTION",
+   "content_hash": "dd38406e567a22af"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::RunELF": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::RunELF",
+   "start_line": 654,
+   "end_line": 1152,
+   "type": "FUNCTION",
+   "content_hash": "5f5f9ccf000ffaf0"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::get_local_ips": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::get_local_ips",
+   "start_line": 1153,
+   "end_line": 1187,
+   "type": "FUNCTION",
+   "content_hash": "2e7516ba479830f1"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::download_bof": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::download_bof",
+   "start_line": 1188,
+   "end_line": 1210,
+   "type": "FUNCTION",
+   "content_hash": "3db91b9f52536e59"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::run_bof_and_capture": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::run_bof_and_capture",
+   "start_line": 1211,
+   "end_line": 1256,
+   "type": "FUNCTION",
+   "content_hash": "4e44b6b5ed6e06f0"
+  },
+  "legacy/beacon6.c|legacy/beacon6.c::main": {
+   "file_path": "legacy/beacon6.c",
+   "qualified_name": "legacy/beacon6.c::main",
+   "start_line": 1257,
+   "end_line": 1505,
+   "type": "FUNCTION",
+   "content_hash": "ea2755148446fc9f"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::_GNU_SOURCE": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 36,
+   "type": "FUNCTION",
+   "content_hash": "d082fc3ffaf19f44"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::C2_URL": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::C2_URL",
+   "start_line": 37,
+   "end_line": 37,
+   "type": "FUNCTION",
+   "content_hash": "4b7e9cd5749a67cb"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::CLIENT_ID": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::CLIENT_ID",
+   "start_line": 38,
+   "end_line": 38,
+   "type": "FUNCTION",
+   "content_hash": "99a19af265ca8d4c"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::MALEABLE": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::MALEABLE",
+   "start_line": 39,
+   "end_line": 39,
+   "type": "FUNCTION",
+   "content_hash": "3cb2972cdd45432c"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::USER_AGENTS_COUNT",
+   "start_line": 40,
+   "end_line": 41,
+   "type": "FUNCTION",
+   "content_hash": "6577908091b02652"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::PEER_DISCOVERY_PORT": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::PEER_DISCOVERY_PORT",
+   "start_line": 42,
+   "end_line": 42,
+   "type": "FUNCTION",
+   "content_hash": "c432b211982df696"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::PEER_TCP_PORT": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::PEER_TCP_PORT",
+   "start_line": 43,
+   "end_line": 43,
+   "type": "FUNCTION",
+   "content_hash": "0e399be7bf9774b5"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::PEER_MAGIC": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::PEER_MAGIC",
+   "start_line": 44,
+   "end_line": 44,
+   "type": "FUNCTION",
+   "content_hash": "9c79b80955a987cf"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::PEER_VERSION": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::PEER_VERSION",
+   "start_line": 45,
+   "end_line": 45,
+   "type": "FUNCTION",
+   "content_hash": "9d4b56cea97dbec5"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BROADCAST_INTERVAL": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BROADCAST_INTERVAL",
+   "start_line": 46,
+   "end_line": 46,
+   "type": "FUNCTION",
+   "content_hash": "a4ba15c8ec56285c"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::MAX_PEERS": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::MAX_PEERS",
+   "start_line": 47,
+   "end_line": 58,
+   "type": "FUNCTION",
+   "content_hash": "4d9db1f85372f974"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::peer_t": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::peer_t",
+   "start_line": 59,
+   "end_line": 72,
+   "type": "CLASS",
+   "content_hash": "22f98b2bc8e11308"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::p2p_header_t": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::p2p_header_t",
+   "start_line": 73,
+   "end_line": 92,
+   "type": "CLASS",
+   "content_hash": "38f79be632f8919b"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataParse": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataParse",
+   "start_line": 93,
+   "end_line": 99,
+   "type": "FUNCTION",
+   "content_hash": "34ff181b48872a8b"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataPtr": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataPtr",
+   "start_line": 100,
+   "end_line": 109,
+   "type": "FUNCTION",
+   "content_hash": "2ed93abd9c3f2beb"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataInt": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataInt",
+   "start_line": 110,
+   "end_line": 117,
+   "type": "FUNCTION",
+   "content_hash": "56458026c614f2b3"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataShort": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataShort",
+   "start_line": 118,
+   "end_line": 125,
+   "type": "FUNCTION",
+   "content_hash": "24b141fac8a97513"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataLength": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataLength",
+   "start_line": 126,
+   "end_line": 130,
+   "type": "FUNCTION",
+   "content_hash": "eee2139ef0c2b170"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconDataExtract": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconDataExtract",
+   "start_line": 131,
+   "end_line": 141,
+   "type": "FUNCTION",
+   "content_hash": "5c779a6e26ff6f37"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconPrintf": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconPrintf",
+   "start_line": 142,
+   "end_line": 158,
+   "type": "FUNCTION",
+   "content_hash": "fe60a9e0dba2d974"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::BeaconOutput": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::BeaconOutput",
+   "start_line": 159,
+   "end_line": 174,
+   "type": "FUNCTION",
+   "content_hash": "586fccbaa58e56c8"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::Trampoline": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::Trampoline",
+   "start_line": 175,
+   "end_line": 181,
+   "type": "CLASS",
+   "content_hash": "0a0ad32f2b88eb18"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::SymbolResolver": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::SymbolResolver",
+   "start_line": 182,
+   "end_line": 191,
+   "type": "CLASS",
+   "content_hash": "a36f0288b135da1b"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::TrampolineCache": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::TrampolineCache",
+   "start_line": 192,
+   "end_line": 249,
+   "type": "CLASS",
+   "content_hash": "221a24126183bcaa"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::__attribute__": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::__attribute__",
+   "start_line": 250,
+   "end_line": 277,
+   "type": "FUNCTION",
+   "content_hash": "e995537983947b9d"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::create_trampoline": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::create_trampoline",
+   "start_line": 278,
+   "end_line": 308,
+   "type": "FUNCTION",
+   "content_hash": "42ef4fd0e3523004"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::cleanup_trampolines": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::cleanup_trampolines",
+   "start_line": 309,
+   "end_line": 322,
+   "type": "FUNCTION",
+   "content_hash": "14b626c49d72543b"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::get_or_create_trampoline": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::get_or_create_trampoline",
+   "start_line": 323,
+   "end_line": 349,
+   "type": "FUNCTION",
+   "content_hash": "71d662ae85e144f1"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::page_align": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::page_align",
+   "start_line": 350,
+   "end_line": 357,
+   "type": "FUNCTION",
+   "content_hash": "accf87d5a710f524"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::RunELF": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::RunELF",
+   "start_line": 358,
+   "end_line": 675,
+   "type": "FUNCTION",
+   "content_hash": "e7bc6c359661bb98"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::MemoryStruct": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::MemoryStruct",
+   "start_line": 676,
+   "end_line": 682,
+   "type": "CLASS",
+   "content_hash": "a5ac743705b81a9c"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::WriteMemoryCallback": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::WriteMemoryCallback",
+   "start_line": 683,
+   "end_line": 706,
+   "type": "FUNCTION",
+   "content_hash": "5da6e95db54e0941"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::https_request": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::https_request",
+   "start_line": 707,
+   "end_line": 762,
+   "type": "FUNCTION",
+   "content_hash": "459a32f5b089dac3"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::base64_encode": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::base64_encode",
+   "start_line": 763,
+   "end_line": 779,
+   "type": "FUNCTION",
+   "content_hash": "335525c5f8f3e37d"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::base64_decode": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::base64_decode",
+   "start_line": 780,
+   "end_line": 801,
+   "type": "FUNCTION",
+   "content_hash": "7ddf454f1afbd399"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::aes256_cfb_encrypt",
+   "start_line": 802,
+   "end_line": 831,
+   "type": "FUNCTION",
+   "content_hash": "459f6efd5f65e4f0"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::aes256_cfb_decrypt",
+   "start_line": 832,
+   "end_line": 865,
+   "type": "FUNCTION",
+   "content_hash": "68316b2b1d0c74f1"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::exec_cmd": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::exec_cmd",
+   "start_line": 866,
+   "end_line": 890,
+   "type": "FUNCTION",
+   "content_hash": "f1f53b4af9a1b9bb"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::get_local_ips": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::get_local_ips",
+   "start_line": 891,
+   "end_line": 924,
+   "type": "FUNCTION",
+   "content_hash": "f3032afd6ce7abc6"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::download_bof": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::download_bof",
+   "start_line": 925,
+   "end_line": 938,
+   "type": "FUNCTION",
+   "content_hash": "3a2b2b97ce9018df"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::run_bof_and_capture": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::run_bof_and_capture",
+   "start_line": 939,
+   "end_line": 964,
+   "type": "FUNCTION",
+   "content_hash": "2b344008b47116e3"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::add_peer": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::add_peer",
+   "start_line": 965,
+   "end_line": 991,
+   "type": "FUNCTION",
+   "content_hash": "ddeae70beb011009"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::peer_discovery_thread": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::peer_discovery_thread",
+   "start_line": 992,
+   "end_line": 1031,
+   "type": "FUNCTION",
+   "content_hash": "85020d5fed3df77f"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::handle_peer_connection": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::handle_peer_connection",
+   "start_line": 1032,
+   "end_line": 1129,
+   "type": "FUNCTION",
+   "content_hash": "47fa32cd0b0cd794"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::peer_server_thread": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::peer_server_thread",
+   "start_line": 1130,
+   "end_line": 1152,
+   "type": "FUNCTION",
+   "content_hash": "9926bb2cb6281645"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::send_to_peer": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::send_to_peer",
+   "start_line": 1153,
+   "end_line": 1196,
+   "type": "FUNCTION",
+   "content_hash": "9d9e77aca7f507bc"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::send_to_c2_or_peer": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::send_to_c2_or_peer",
+   "start_line": 1197,
+   "end_line": 1230,
+   "type": "FUNCTION",
+   "content_hash": "60651b107ec0de55"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::execute_generic_command": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::execute_generic_command",
+   "start_line": 1231,
+   "end_line": 1275,
+   "type": "FUNCTION",
+   "content_hash": "66429944bc90ace5"
+  },
+  "legacy/beacon_p2p.c|legacy/beacon_p2p.c::main": {
+   "file_path": "legacy/beacon_p2p.c",
+   "qualified_name": "legacy/beacon_p2p.c::main",
+   "start_line": 1276,
+   "end_line": 1409,
+   "type": "FUNCTION",
+   "content_hash": "c98a920afc563b4e"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::_GNU_SOURCE": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 29,
+   "type": "FUNCTION",
+   "content_hash": "622ae0e43182d213"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::C2": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::C2",
+   "start_line": 30,
+   "end_line": 30,
+   "type": "FUNCTION",
+   "content_hash": "6d824eab82d91833"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::CLIENT_ID": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::CLIENT_ID",
+   "start_line": 31,
+   "end_line": 31,
+   "type": "FUNCTION",
+   "content_hash": "802636d72e189fc8"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::MALEABLE": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::MALEABLE",
+   "start_line": 32,
+   "end_line": 32,
+   "type": "FUNCTION",
+   "content_hash": "3dc6b067d86ac18d"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::USER_AGENTS_COUNT",
+   "start_line": 33,
+   "end_line": 48,
+   "type": "FUNCTION",
+   "content_hash": "103f283167a3f7a5"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::MemoryStruct": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::MemoryStruct",
+   "start_line": 49,
+   "end_line": 56,
+   "type": "CLASS",
+   "content_hash": "5514fe71964ad4cc"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::Trampoline": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::Trampoline",
+   "start_line": 57,
+   "end_line": 65,
+   "type": "CLASS",
+   "content_hash": "6529747178f968c2"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::SymbolResolver": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::SymbolResolver",
+   "start_line": 66,
+   "end_line": 72,
+   "type": "CLASS",
+   "content_hash": "9fd1ddb1b30dbd5d"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::TrampolineCache": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::TrampolineCache",
+   "start_line": 73,
+   "end_line": 141,
+   "type": "CLASS",
+   "content_hash": "d57d1f2a0c73a2b1"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::__attribute__": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::__attribute__",
+   "start_line": 142,
+   "end_line": 192,
+   "type": "FUNCTION",
+   "content_hash": "45ac503ea8785a3a"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::BeaconPrintf": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::BeaconPrintf",
+   "start_line": 193,
+   "end_line": 209,
+   "type": "FUNCTION",
+   "content_hash": "6a6cf67f5e7173e0"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::BeaconOutput": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::BeaconOutput",
+   "start_line": 210,
+   "end_line": 223,
+   "type": "FUNCTION",
+   "content_hash": "f703cebd0706221d"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::create_trampoline": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::create_trampoline",
+   "start_line": 224,
+   "end_line": 264,
+   "type": "FUNCTION",
+   "content_hash": "76e3b3e359bab22a"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::cleanup_trampolines": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::cleanup_trampolines",
+   "start_line": 265,
+   "end_line": 282,
+   "type": "FUNCTION",
+   "content_hash": "64cffe3a8b64e264"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::get_or_create_trampoline": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::get_or_create_trampoline",
+   "start_line": 283,
+   "end_line": 320,
+   "type": "FUNCTION",
+   "content_hash": "0129817ccbf5e862"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::WriteMemoryCallback": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::WriteMemoryCallback",
+   "start_line": 321,
+   "end_line": 338,
+   "type": "FUNCTION",
+   "content_hash": "78908d49ddfa513c"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::gopher_request": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::gopher_request",
+   "start_line": 339,
+   "end_line": 421,
+   "type": "FUNCTION",
+   "content_hash": "01d9f7de4db7d307"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::base64_encode": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::base64_encode",
+   "start_line": 422,
+   "end_line": 439,
+   "type": "FUNCTION",
+   "content_hash": "11852c7ae813c9b3"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::base64_decode": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::base64_decode",
+   "start_line": 440,
+   "end_line": 465,
+   "type": "FUNCTION",
+   "content_hash": "c198dd269cbbc275"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::aes256_cfb_encrypt",
+   "start_line": 466,
+   "end_line": 499,
+   "type": "FUNCTION",
+   "content_hash": "e26aaf9173a99754"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::aes256_cfb_decrypt",
+   "start_line": 500,
+   "end_line": 535,
+   "type": "FUNCTION",
+   "content_hash": "08ddfd01184479f3"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::exec_cmd": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::exec_cmd",
+   "start_line": 536,
+   "end_line": 572,
+   "type": "FUNCTION",
+   "content_hash": "369a156c3f4bf10f"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::page_align": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::page_align",
+   "start_line": 573,
+   "end_line": 580,
+   "type": "FUNCTION",
+   "content_hash": "f673bb791dbefc9a"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::RunELF": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::RunELF",
+   "start_line": 581,
+   "end_line": 1079,
+   "type": "FUNCTION",
+   "content_hash": "f6c0ef6774a4ef6e"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::get_local_ips": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::get_local_ips",
+   "start_line": 1080,
+   "end_line": 1114,
+   "type": "FUNCTION",
+   "content_hash": "301cee512dd4c816"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::download_bof": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::download_bof",
+   "start_line": 1115,
+   "end_line": 1146,
+   "type": "FUNCTION",
+   "content_hash": "2a866bd54c841a1b"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::run_bof_and_capture": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::run_bof_and_capture",
+   "start_line": 1147,
+   "end_line": 1192,
+   "type": "FUNCTION",
+   "content_hash": "f19217973e3bc28e"
+  },
+  "legacy/gopher_beacon.c|legacy/gopher_beacon.c::main": {
+   "file_path": "legacy/gopher_beacon.c",
+   "qualified_name": "legacy/gopher_beacon.c::main",
+   "start_line": 1193,
+   "end_line": 1413,
+   "type": "FUNCTION",
+   "content_hash": "e5010d9a18e5884e"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::_GNU_SOURCE": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::_GNU_SOURCE",
+   "start_line": 1,
+   "end_line": 29,
+   "type": "FUNCTION",
+   "content_hash": "3213a87c5bc35992"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::C2": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::C2",
+   "start_line": 30,
+   "end_line": 30,
+   "type": "FUNCTION",
+   "content_hash": "d02c0541f29649e6"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::CLIENT_ID": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::CLIENT_ID",
+   "start_line": 31,
+   "end_line": 31,
+   "type": "FUNCTION",
+   "content_hash": "f1a6db7b6856ef91"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::MALEABLE": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::MALEABLE",
+   "start_line": 32,
+   "end_line": 32,
+   "type": "FUNCTION",
+   "content_hash": "e46557a1d2cbb2e2"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::USER_AGENTS_COUNT": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::USER_AGENTS_COUNT",
+   "start_line": 33,
+   "end_line": 48,
+   "type": "FUNCTION",
+   "content_hash": "13a04596c1fb0599"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::MemoryStruct": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::MemoryStruct",
+   "start_line": 49,
+   "end_line": 56,
+   "type": "CLASS",
+   "content_hash": "eb2c73fbb76ac0b3"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::Trampoline": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::Trampoline",
+   "start_line": 57,
+   "end_line": 65,
+   "type": "CLASS",
+   "content_hash": "7528586188796180"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::SymbolResolver": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::SymbolResolver",
+   "start_line": 66,
+   "end_line": 72,
+   "type": "CLASS",
+   "content_hash": "4e7ad4f0c959ab7c"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::TrampolineCache": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::TrampolineCache",
+   "start_line": 73,
+   "end_line": 141,
+   "type": "CLASS",
+   "content_hash": "031ce3e9e2c6dd61"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::__attribute__": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::__attribute__",
+   "start_line": 142,
+   "end_line": 192,
+   "type": "FUNCTION",
+   "content_hash": "3953fe69ada60fe2"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::BeaconPrintf": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::BeaconPrintf",
+   "start_line": 193,
+   "end_line": 209,
+   "type": "FUNCTION",
+   "content_hash": "f79a6a92e43b5c73"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::BeaconOutput": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::BeaconOutput",
+   "start_line": 210,
+   "end_line": 223,
+   "type": "FUNCTION",
+   "content_hash": "a84f322ed3875ba6"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::create_trampoline": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::create_trampoline",
+   "start_line": 224,
+   "end_line": 264,
+   "type": "FUNCTION",
+   "content_hash": "bda2f6a1380a069b"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::cleanup_trampolines": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::cleanup_trampolines",
+   "start_line": 265,
+   "end_line": 282,
+   "type": "FUNCTION",
+   "content_hash": "fb8811c6ee92b571"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::get_or_create_trampoline": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::get_or_create_trampoline",
+   "start_line": 283,
+   "end_line": 320,
+   "type": "FUNCTION",
+   "content_hash": "014cb7fb3600bc35"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::WriteMemoryCallback": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::WriteMemoryCallback",
+   "start_line": 321,
+   "end_line": 338,
+   "type": "FUNCTION",
+   "content_hash": "862e942f56740670"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::gopher_request": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::gopher_request",
+   "start_line": 339,
+   "end_line": 421,
+   "type": "FUNCTION",
+   "content_hash": "9b6d16213fca4734"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::base64_encode": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::base64_encode",
+   "start_line": 422,
+   "end_line": 439,
+   "type": "FUNCTION",
+   "content_hash": "55dc2bf38aac84d8"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::base64_decode": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::base64_decode",
+   "start_line": 440,
+   "end_line": 465,
+   "type": "FUNCTION",
+   "content_hash": "78d2b3287b258482"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::aes256_cfb_encrypt": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::aes256_cfb_encrypt",
+   "start_line": 466,
+   "end_line": 499,
+   "type": "FUNCTION",
+   "content_hash": "0441717b174ed634"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::aes256_cfb_decrypt": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::aes256_cfb_decrypt",
+   "start_line": 500,
+   "end_line": 535,
+   "type": "FUNCTION",
+   "content_hash": "917611136e169f92"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::exec_cmd": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::exec_cmd",
+   "start_line": 536,
+   "end_line": 572,
+   "type": "FUNCTION",
+   "content_hash": "62e80d26949b7404"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::page_align": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::page_align",
+   "start_line": 573,
+   "end_line": 580,
+   "type": "FUNCTION",
+   "content_hash": "b5cfd612e022a182"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::RunELF": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::RunELF",
+   "start_line": 581,
+   "end_line": 1079,
+   "type": "FUNCTION",
+   "content_hash": "bb4b4fb26cdbcb67"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::get_local_ips": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::get_local_ips",
+   "start_line": 1080,
+   "end_line": 1114,
+   "type": "FUNCTION",
+   "content_hash": "957d3fcc38955417"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::download_bof": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::download_bof",
+   "start_line": 1115,
+   "end_line": 1146,
+   "type": "FUNCTION",
+   "content_hash": "bbf13620e7743ed1"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::run_bof_and_capture": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::run_bof_and_capture",
+   "start_line": 1147,
+   "end_line": 1192,
+   "type": "FUNCTION",
+   "content_hash": "b250d7bb306560c5"
+  },
+  "legacy/v1_gopher_beacon.c|legacy/v1_gopher_beacon.c::main": {
+   "file_path": "legacy/v1_gopher_beacon.c",
+   "qualified_name": "legacy/v1_gopher_beacon.c::main",
+   "start_line": 1193,
+   "end_line": 1413,
+   "type": "FUNCTION",
+   "content_hash": "5718da72a98613c1"
+  },
   "mutants/src/async_i_o_for_beacon.c|mutants/src/async_i_o_for_beacon.c::async_i_o_for_beacon_process": {
    "file_path": "mutants/src/async_i_o_for_beacon.c",
    "qualified_name": "mutants/src/async_i_o_for_beacon.c::async_i_o_for_beacon_process",
@@ -10128,10 +10144,10 @@
   "tests/test_c2_beacon_bof_integration.py|tests/test_c2_beacon_bof_integration.py::_wait_for_server_ready": {
    "file_path": "tests/test_c2_beacon_bof_integration.py",
    "qualified_name": "tests/test_c2_beacon_bof_integration.py::_wait_for_server_ready",
-   "start_line": 278,
-   "end_line": 291,
+   "start_line": 286,
+   "end_line": 299,
    "type": "FUNCTION",
-   "content_hash": "b9b21e626b0cf313"
+   "content_hash": "1befb58ad67a4dc4"
   },
   "tests/test_c2_beacon_bof_integration.py|tests/test_c2_beacon_bof_integration.py::_wait_for_bof_result": {
    "file_path": "tests/test_c2_beacon_bof_integration.py",
@@ -10145,25 +10161,25 @@
    "file_path": "tests/test_c2_beacon_bof_integration.py",
    "qualified_name": "tests/test_c2_beacon_bof_integration.py::test_beacon_executes_whoami_bof",
    "start_line": 118,
-   "end_line": 274,
+   "end_line": 282,
    "type": "FUNCTION",
    "content_hash": "f04cb508e8adbf6d"
   },
   "tests/test_c2_beacon_bof_integration.py|tests/test_c2_beacon_bof_integration.py::_run_server": {
    "file_path": "tests/test_c2_beacon_bof_integration.py",
    "qualified_name": "tests/test_c2_beacon_bof_integration.py::_run_server",
-   "start_line": 275,
-   "end_line": 277,
+   "start_line": 283,
+   "end_line": 285,
    "type": "FUNCTION",
-   "content_hash": "608ac1dd1b871510"
+   "content_hash": "9f1f6bdf0b027575"
   },
   "tests/test_c2_beacon_bof_integration.py|tests/test_c2_beacon_bof_integration.py::test_c2_beacon_bof_integration": {
    "file_path": "tests/test_c2_beacon_bof_integration.py",
    "qualified_name": "tests/test_c2_beacon_bof_integration.py::test_c2_beacon_bof_integration",
-   "start_line": 292,
-   "end_line": 299,
+   "start_line": 300,
+   "end_line": 311,
    "type": "FUNCTION",
-   "content_hash": "d663950ea466c6ec"
+   "content_hash": "d62bb85050e5bace"
   },
   "tests/test_c2_http_e2e.py|tests/test_c2_http_e2e.py::_free_port": {
    "file_path": "tests/test_c2_http_e2e.py",
@@ -10393,65 +10409,129 @@
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::TestCertificatePinningIntegration",
    "start_line": 96,
-   "end_line": 98,
+   "end_line": 105,
    "type": "CLASS",
    "content_hash": "81bc852c6278568e"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::_free_port": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::_free_port",
+   "start_line": 106,
+   "end_line": 113,
+   "type": "FUNCTION",
+   "content_hash": "6d8cc1d0773ca802"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::_gen_cert_and_pin": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::_gen_cert_and_pin",
+   "start_line": 114,
+   "end_line": 148,
+   "type": "FUNCTION",
+   "content_hash": "28372967d2ee6787"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::_start_tls_server": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::_start_tls_server",
+   "start_line": 149,
+   "end_line": 154,
+   "type": "FUNCTION",
+   "content_hash": "bc1df88b29e775f7"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::Handler": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::Handler",
+   "start_line": 155,
+   "end_line": 155,
+   "type": "CLASS",
+   "content_hash": "fafda2b48b96f7ef"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::do_GET": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::do_GET",
+   "start_line": 156,
+   "end_line": 161,
+   "type": "FUNCTION",
+   "content_hash": "cb6215cdf20aa09a"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::log_message": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::log_message",
+   "start_line": 162,
+   "end_line": 170,
+   "type": "FUNCTION",
+   "content_hash": "744f89a712931578"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::_run": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::_run",
+   "start_line": 171,
+   "end_line": 180,
+   "type": "FUNCTION",
+   "content_hash": "899f79682e3e612f"
+  },
+  "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::_run_beacon_with_bof_tls": {
+   "file_path": "tests/test_certificate_pinning.py",
+   "qualified_name": "tests/test_certificate_pinning.py::_run_beacon_with_bof_tls",
+   "start_line": 181,
+   "end_line": 281,
+   "type": "FUNCTION",
+   "content_hash": "adee88009e6bdd84"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_beacon_verifies_pinned_certificate": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_beacon_verifies_pinned_certificate",
-   "start_line": 99,
-   "end_line": 108,
+   "start_line": 282,
+   "end_line": 292,
    "type": "FUNCTION",
-   "content_hash": "e43af718075a4c2e"
+   "content_hash": "99335e134718c10e"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_beacon_rejects_mismatched_certificate": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_beacon_rejects_mismatched_certificate",
-   "start_line": 109,
-   "end_line": 116,
+   "start_line": 293,
+   "end_line": 306,
    "type": "FUNCTION",
-   "content_hash": "62d6b83bb385daf3"
+   "content_hash": "d16e43d58ea8a4a0"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_tofu_first_connection_stores_fingerprint": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_tofu_first_connection_stores_fingerprint",
-   "start_line": 117,
-   "end_line": 125,
+   "start_line": 307,
+   "end_line": 320,
    "type": "FUNCTION",
-   "content_hash": "0a8099773dc3ffb2"
+   "content_hash": "5dcdd911a675d4cb"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::TestCertificatePinningMutationResistance": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::TestCertificatePinningMutationResistance",
-   "start_line": 126,
-   "end_line": 128,
+   "start_line": 321,
+   "end_line": 323,
    "type": "CLASS",
-   "content_hash": "2ff4cd0d80369d83"
+   "content_hash": "9c099b3463298d78"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_fingerprint_empty_check_not_mutated_to_always_true": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_fingerprint_empty_check_not_mutated_to_always_true",
-   "start_line": 129,
-   "end_line": 138,
+   "start_line": 324,
+   "end_line": 333,
    "type": "FUNCTION",
-   "content_hash": "c7f0c3cd3f849bcc"
+   "content_hash": "20ac39f86954ee48"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_fingerprint_hex_validation_not_mutated": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_fingerprint_hex_validation_not_mutated",
-   "start_line": 139,
-   "end_line": 150,
+   "start_line": 334,
+   "end_line": 345,
    "type": "FUNCTION",
-   "content_hash": "fde7bddef69c0ae6"
+   "content_hash": "7fc1940306e6f60c"
   },
   "tests/test_certificate_pinning.py|tests/test_certificate_pinning.py::test_pin_option_set_only_when_fingerprint_present": {
    "file_path": "tests/test_certificate_pinning.py",
    "qualified_name": "tests/test_certificate_pinning.py::test_pin_option_set_only_when_fingerprint_present",
-   "start_line": 151,
-   "end_line": 162,
+   "start_line": 346,
+   "end_line": 357,
    "type": "FUNCTION",
-   "content_hash": "59fe1818648d4e00"
+   "content_hash": "f29dfbdc9240c5c2"
   },
   "tests/test_certificate_pinning_c.c|tests/test_certificate_pinning_c.c::test_cert_fingerprint_defaults_to_empty": {
    "file_path": "tests/test_certificate_pinning_c.c",
@@ -11440,8 +11520,8 @@
  },
  "components": [
   {
-   "name": "root",
-   "description": "root groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
+   "name": "legacy",
+   "description": "legacy groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BUFFER_DEFAULT, BSB_OUTPUT_TRUNCATION_MARKER, http_response_t. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
    "key_entities": [
     {
      "qualified_name": "include/beacon_common.h::BEACON_COMMON_H",
@@ -11587,218 +11667,12 @@
      ]
     },
     {
-     "file_path": "beacon3.c",
-     "methods": [
-      "beacon3.c::_GNU_SOURCE",
-      "beacon3.c::C2_URL",
-      "beacon3.c::CLIENT_ID",
-      "beacon3.c::MALEABLE",
-      "beacon3.c::USER_AGENTS_COUNT",
-      "beacon3.c::MemoryStruct",
-      "beacon3.c::Trampoline",
-      "beacon3.c::SymbolResolver",
-      "beacon3.c::TrampolineCache",
-      "beacon3.c::__attribute__",
-      "beacon3.c::BeaconPrintf",
-      "beacon3.c::BeaconOutput",
-      "beacon3.c::create_trampoline",
-      "beacon3.c::cleanup_trampolines",
-      "beacon3.c::get_or_create_trampoline",
-      "beacon3.c::WriteMemoryCallback",
-      "beacon3.c::https_request",
-      "beacon3.c::base64_encode",
-      "beacon3.c::base64_decode",
-      "beacon3.c::aes256_cfb_encrypt",
-      "beacon3.c::aes256_cfb_decrypt",
-      "beacon3.c::exec_cmd",
-      "beacon3.c::page_align",
-      "beacon3.c::RunELF",
-      "beacon3.c::get_local_ips",
-      "beacon3.c::download_bof",
-      "beacon3.c::run_bof_and_capture",
-      "beacon3.c::main"
-     ]
-    },
-    {
-     "file_path": "beacon5.c",
-     "methods": [
-      "beacon5.c::_GNU_SOURCE",
-      "beacon5.c::MAX_PEERS",
-      "beacon5.c::DISCOVERY_PORT",
-      "beacon5.c::DISCOVERY_INTERVAL",
-      "beacon5.c::MAX_TTL",
-      "beacon5.c::MESH_MSG_SIZE",
-      "beacon5.c::C2_URL",
-      "beacon5.c::CLIENT_ID",
-      "beacon5.c::MALEABLE",
-      "beacon5.c::USER_AGENTS_COUNT",
-      "beacon5.c::MemoryStruct",
-      "beacon5.c::peer_t",
-      "beacon5.c::mesh_msg_t",
-      "beacon5.c::Trampoline",
-      "beacon5.c::SymbolResolver",
-      "beacon5.c::TrampolineCache",
-      "beacon5.c::__attribute__",
-      "beacon5.c::BeaconPrintf",
-      "beacon5.c::BeaconOutput",
-      "beacon5.c::create_trampoline",
-      "beacon5.c::cleanup_trampolines",
-      "beacon5.c::get_or_create_trampoline",
-      "beacon5.c::WriteMemoryCallback",
-      "beacon5.c::https_request",
-      "beacon5.c::base64_encode",
-      "beacon5.c::base64_decode",
-      "beacon5.c::aes256_cfb_encrypt",
-      "beacon5.c::aes256_cfb_decrypt",
-      "beacon5.c::exec_cmd",
-      "beacon5.c::page_align",
-      "beacon5.c::RunELF",
-      "beacon5.c::get_local_ips",
-      "beacon5.c::download_bof",
-      "beacon5.c::run_bof_and_capture",
-      "beacon5.c::mesh_mark_seen",
-      "beacon5.c::mesh_is_seen",
-      "beacon5.c::mesh_add_peer",
-      "beacon5.c::mesh_cleanup_peers",
-      "beacon5.c::mesh_send_to_peer",
-      "beacon5.c::mesh_propagate",
-      "beacon5.c::mesh_discovery_thread",
-      "beacon5.c::mesh_listener_thread",
-      "beacon5.c::mesh_send_message",
-      "beacon5.c::main"
-     ]
-    },
-    {
-     "file_path": "beacon6.c",
-     "methods": [
-      "beacon6.c::_GNU_SOURCE",
-      "beacon6.c::C2_URL",
-      "beacon6.c::CLIENT_ID",
-      "beacon6.c::MALEABLE",
-      "beacon6.c::USER_AGENTS_COUNT",
-      "beacon6.c::MemoryStruct",
-      "beacon6.c::Trampoline",
-      "beacon6.c::SymbolResolver",
-      "beacon6.c::TrampolineCache",
-      "beacon6.c::__attribute__",
-      "beacon6.c::delay_ms",
-      "beacon6.c::is_prime",
-      "beacon6.c::get_nth_prime_limited",
-      "beacon6.c::portable_rand_19k_29k",
-      "beacon6.c::BeaconPrintf",
-      "beacon6.c::BeaconOutput",
-      "beacon6.c::create_trampoline",
-      "beacon6.c::cleanup_trampolines",
-      "beacon6.c::get_or_create_trampoline",
-      "beacon6.c::WriteMemoryCallback",
-      "beacon6.c::https_request",
-      "beacon6.c::base64_encode",
-      "beacon6.c::base64_decode",
-      "beacon6.c::aes256_cfb_encrypt",
-      "beacon6.c::aes256_cfb_decrypt",
-      "beacon6.c::exec_cmd",
-      "beacon6.c::page_align",
-      "beacon6.c::RunELF",
-      "beacon6.c::get_local_ips",
-      "beacon6.c::download_bof",
-      "beacon6.c::run_bof_and_capture",
-      "beacon6.c::main"
-     ]
-    },
-    {
-     "file_path": "beacon_p2p.c",
-     "methods": [
-      "beacon_p2p.c::_GNU_SOURCE",
-      "beacon_p2p.c::C2_URL",
-      "beacon_p2p.c::CLIENT_ID",
-      "beacon_p2p.c::MALEABLE",
-      "beacon_p2p.c::USER_AGENTS_COUNT",
-      "beacon_p2p.c::PEER_DISCOVERY_PORT",
-      "beacon_p2p.c::PEER_TCP_PORT",
-      "beacon_p2p.c::PEER_MAGIC",
-      "beacon_p2p.c::PEER_VERSION",
-      "beacon_p2p.c::BROADCAST_INTERVAL",
-      "beacon_p2p.c::MAX_PEERS",
-      "beacon_p2p.c::peer_t",
-      "beacon_p2p.c::p2p_header_t",
-      "beacon_p2p.c::BeaconDataParse",
-      "beacon_p2p.c::BeaconDataPtr",
-      "beacon_p2p.c::BeaconDataInt",
-      "beacon_p2p.c::BeaconDataShort",
-      "beacon_p2p.c::BeaconDataLength",
-      "beacon_p2p.c::BeaconDataExtract",
-      "beacon_p2p.c::BeaconPrintf",
-      "beacon_p2p.c::BeaconOutput",
-      "beacon_p2p.c::Trampoline",
-      "beacon_p2p.c::SymbolResolver",
-      "beacon_p2p.c::TrampolineCache",
-      "beacon_p2p.c::__attribute__",
-      "beacon_p2p.c::create_trampoline",
-      "beacon_p2p.c::cleanup_trampolines",
-      "beacon_p2p.c::get_or_create_trampoline",
-      "beacon_p2p.c::page_align",
-      "beacon_p2p.c::RunELF",
-      "beacon_p2p.c::MemoryStruct",
-      "beacon_p2p.c::WriteMemoryCallback",
-      "beacon_p2p.c::https_request",
-      "beacon_p2p.c::base64_encode",
-      "beacon_p2p.c::base64_decode",
-      "beacon_p2p.c::aes256_cfb_encrypt",
-      "beacon_p2p.c::aes256_cfb_decrypt",
-      "beacon_p2p.c::exec_cmd",
-      "beacon_p2p.c::get_local_ips",
-      "beacon_p2p.c::download_bof",
-      "beacon_p2p.c::run_bof_and_capture",
-      "beacon_p2p.c::add_peer",
-      "beacon_p2p.c::peer_discovery_thread",
-      "beacon_p2p.c::handle_peer_connection",
-      "beacon_p2p.c::peer_server_thread",
-      "beacon_p2p.c::send_to_peer",
-      "beacon_p2p.c::send_to_c2_or_peer",
-      "beacon_p2p.c::execute_generic_command",
-      "beacon_p2p.c::main"
-     ]
-    },
-    {
      "file_path": "beacons/v1/beacon.c",
      "methods": [
       "beacons/v1/beacon.c::_GNU_SOURCE",
       "beacons/v1/beacon.c::report_result",
       "beacons/v1/beacon.c::execute_command",
       "beacons/v1/beacon.c::main"
-     ]
-    },
-    {
-     "file_path": "beacons/v1/gopher_beacon.c",
-     "methods": [
-      "beacons/v1/gopher_beacon.c::_GNU_SOURCE",
-      "beacons/v1/gopher_beacon.c::C2",
-      "beacons/v1/gopher_beacon.c::CLIENT_ID",
-      "beacons/v1/gopher_beacon.c::MALEABLE",
-      "beacons/v1/gopher_beacon.c::USER_AGENTS_COUNT",
-      "beacons/v1/gopher_beacon.c::MemoryStruct",
-      "beacons/v1/gopher_beacon.c::Trampoline",
-      "beacons/v1/gopher_beacon.c::SymbolResolver",
-      "beacons/v1/gopher_beacon.c::TrampolineCache",
-      "beacons/v1/gopher_beacon.c::__attribute__",
-      "beacons/v1/gopher_beacon.c::BeaconPrintf",
-      "beacons/v1/gopher_beacon.c::BeaconOutput",
-      "beacons/v1/gopher_beacon.c::create_trampoline",
-      "beacons/v1/gopher_beacon.c::cleanup_trampolines",
-      "beacons/v1/gopher_beacon.c::get_or_create_trampoline",
-      "beacons/v1/gopher_beacon.c::WriteMemoryCallback",
-      "beacons/v1/gopher_beacon.c::gopher_request",
-      "beacons/v1/gopher_beacon.c::base64_encode",
-      "beacons/v1/gopher_beacon.c::base64_decode",
-      "beacons/v1/gopher_beacon.c::aes256_cfb_encrypt",
-      "beacons/v1/gopher_beacon.c::aes256_cfb_decrypt",
-      "beacons/v1/gopher_beacon.c::exec_cmd",
-      "beacons/v1/gopher_beacon.c::page_align",
-      "beacons/v1/gopher_beacon.c::RunELF",
-      "beacons/v1/gopher_beacon.c::get_local_ips",
-      "beacons/v1/gopher_beacon.c::download_bof",
-      "beacons/v1/gopher_beacon.c::run_bof_and_capture",
-      "beacons/v1/gopher_beacon.c::main"
      ]
     },
     {
@@ -12011,39 +11885,6 @@
      ]
     },
     {
-     "file_path": "gopher_beacon.c",
-     "methods": [
-      "gopher_beacon.c::_GNU_SOURCE",
-      "gopher_beacon.c::C2",
-      "gopher_beacon.c::CLIENT_ID",
-      "gopher_beacon.c::MALEABLE",
-      "gopher_beacon.c::USER_AGENTS_COUNT",
-      "gopher_beacon.c::MemoryStruct",
-      "gopher_beacon.c::Trampoline",
-      "gopher_beacon.c::SymbolResolver",
-      "gopher_beacon.c::TrampolineCache",
-      "gopher_beacon.c::__attribute__",
-      "gopher_beacon.c::BeaconPrintf",
-      "gopher_beacon.c::BeaconOutput",
-      "gopher_beacon.c::create_trampoline",
-      "gopher_beacon.c::cleanup_trampolines",
-      "gopher_beacon.c::get_or_create_trampoline",
-      "gopher_beacon.c::WriteMemoryCallback",
-      "gopher_beacon.c::gopher_request",
-      "gopher_beacon.c::base64_encode",
-      "gopher_beacon.c::base64_decode",
-      "gopher_beacon.c::aes256_cfb_encrypt",
-      "gopher_beacon.c::aes256_cfb_decrypt",
-      "gopher_beacon.c::exec_cmd",
-      "gopher_beacon.c::page_align",
-      "gopher_beacon.c::RunELF",
-      "gopher_beacon.c::get_local_ips",
-      "gopher_beacon.c::download_bof",
-      "gopher_beacon.c::run_bof_and_capture",
-      "gopher_beacon.c::main"
-     ]
-    },
-    {
      "file_path": "include/beacon_common.c",
      "methods": [
       "include/beacon_common.c::_GNU_SOURCE",
@@ -12059,6 +11900,7 @@
       "include/beacon_common.c::get_or_create_trampoline",
       "include/beacon_common.c::MemoryStruct",
       "include/beacon_common.c::WriteMemoryCallback",
+      "include/beacon_common.c::bsb_curl_pin_format",
       "include/beacon_common.c::https_request",
       "include/beacon_common.c::base64_encode",
       "include/beacon_common.c::base64_decode",
@@ -12077,6 +11919,7 @@
       "include/beacon_common.c::page_align",
       "include/beacon_common.c::bof_crash_exit",
       "include/beacon_common.c::__attribute__",
+      "include/beacon_common.c::fault",
       "include/beacon_common.c::RunELF",
       "include/beacon_common.c::run_bof_and_capture"
      ]
@@ -12320,6 +12163,245 @@
      ]
     },
     {
+     "file_path": "legacy/beacon3.c",
+     "methods": [
+      "legacy/beacon3.c::_GNU_SOURCE",
+      "legacy/beacon3.c::C2_URL",
+      "legacy/beacon3.c::CLIENT_ID",
+      "legacy/beacon3.c::MALEABLE",
+      "legacy/beacon3.c::USER_AGENTS_COUNT",
+      "legacy/beacon3.c::MemoryStruct",
+      "legacy/beacon3.c::Trampoline",
+      "legacy/beacon3.c::SymbolResolver",
+      "legacy/beacon3.c::TrampolineCache",
+      "legacy/beacon3.c::__attribute__",
+      "legacy/beacon3.c::BeaconPrintf",
+      "legacy/beacon3.c::BeaconOutput",
+      "legacy/beacon3.c::create_trampoline",
+      "legacy/beacon3.c::cleanup_trampolines",
+      "legacy/beacon3.c::get_or_create_trampoline",
+      "legacy/beacon3.c::WriteMemoryCallback",
+      "legacy/beacon3.c::https_request",
+      "legacy/beacon3.c::base64_encode",
+      "legacy/beacon3.c::base64_decode",
+      "legacy/beacon3.c::aes256_cfb_encrypt",
+      "legacy/beacon3.c::aes256_cfb_decrypt",
+      "legacy/beacon3.c::exec_cmd",
+      "legacy/beacon3.c::page_align",
+      "legacy/beacon3.c::RunELF",
+      "legacy/beacon3.c::get_local_ips",
+      "legacy/beacon3.c::download_bof",
+      "legacy/beacon3.c::run_bof_and_capture",
+      "legacy/beacon3.c::main"
+     ]
+    },
+    {
+     "file_path": "legacy/beacon5.c",
+     "methods": [
+      "legacy/beacon5.c::_GNU_SOURCE",
+      "legacy/beacon5.c::MAX_PEERS",
+      "legacy/beacon5.c::DISCOVERY_PORT",
+      "legacy/beacon5.c::DISCOVERY_INTERVAL",
+      "legacy/beacon5.c::MAX_TTL",
+      "legacy/beacon5.c::MESH_MSG_SIZE",
+      "legacy/beacon5.c::C2_URL",
+      "legacy/beacon5.c::CLIENT_ID",
+      "legacy/beacon5.c::MALEABLE",
+      "legacy/beacon5.c::USER_AGENTS_COUNT",
+      "legacy/beacon5.c::MemoryStruct",
+      "legacy/beacon5.c::peer_t",
+      "legacy/beacon5.c::mesh_msg_t",
+      "legacy/beacon5.c::Trampoline",
+      "legacy/beacon5.c::SymbolResolver",
+      "legacy/beacon5.c::TrampolineCache",
+      "legacy/beacon5.c::__attribute__",
+      "legacy/beacon5.c::BeaconPrintf",
+      "legacy/beacon5.c::BeaconOutput",
+      "legacy/beacon5.c::create_trampoline",
+      "legacy/beacon5.c::cleanup_trampolines",
+      "legacy/beacon5.c::get_or_create_trampoline",
+      "legacy/beacon5.c::WriteMemoryCallback",
+      "legacy/beacon5.c::https_request",
+      "legacy/beacon5.c::base64_encode",
+      "legacy/beacon5.c::base64_decode",
+      "legacy/beacon5.c::aes256_cfb_encrypt",
+      "legacy/beacon5.c::aes256_cfb_decrypt",
+      "legacy/beacon5.c::exec_cmd",
+      "legacy/beacon5.c::page_align",
+      "legacy/beacon5.c::RunELF",
+      "legacy/beacon5.c::get_local_ips",
+      "legacy/beacon5.c::download_bof",
+      "legacy/beacon5.c::run_bof_and_capture",
+      "legacy/beacon5.c::mesh_mark_seen",
+      "legacy/beacon5.c::mesh_is_seen",
+      "legacy/beacon5.c::mesh_add_peer",
+      "legacy/beacon5.c::mesh_cleanup_peers",
+      "legacy/beacon5.c::mesh_send_to_peer",
+      "legacy/beacon5.c::mesh_propagate",
+      "legacy/beacon5.c::mesh_discovery_thread",
+      "legacy/beacon5.c::mesh_listener_thread",
+      "legacy/beacon5.c::mesh_send_message",
+      "legacy/beacon5.c::main"
+     ]
+    },
+    {
+     "file_path": "legacy/beacon6.c",
+     "methods": [
+      "legacy/beacon6.c::_GNU_SOURCE",
+      "legacy/beacon6.c::C2_URL",
+      "legacy/beacon6.c::CLIENT_ID",
+      "legacy/beacon6.c::MALEABLE",
+      "legacy/beacon6.c::USER_AGENTS_COUNT",
+      "legacy/beacon6.c::MemoryStruct",
+      "legacy/beacon6.c::Trampoline",
+      "legacy/beacon6.c::SymbolResolver",
+      "legacy/beacon6.c::TrampolineCache",
+      "legacy/beacon6.c::__attribute__",
+      "legacy/beacon6.c::delay_ms",
+      "legacy/beacon6.c::is_prime",
+      "legacy/beacon6.c::get_nth_prime_limited",
+      "legacy/beacon6.c::portable_rand_19k_29k",
+      "legacy/beacon6.c::BeaconPrintf",
+      "legacy/beacon6.c::BeaconOutput",
+      "legacy/beacon6.c::create_trampoline",
+      "legacy/beacon6.c::cleanup_trampolines",
+      "legacy/beacon6.c::get_or_create_trampoline",
+      "legacy/beacon6.c::WriteMemoryCallback",
+      "legacy/beacon6.c::https_request",
+      "legacy/beacon6.c::base64_encode",
+      "legacy/beacon6.c::base64_decode",
+      "legacy/beacon6.c::aes256_cfb_encrypt",
+      "legacy/beacon6.c::aes256_cfb_decrypt",
+      "legacy/beacon6.c::exec_cmd",
+      "legacy/beacon6.c::page_align",
+      "legacy/beacon6.c::RunELF",
+      "legacy/beacon6.c::get_local_ips",
+      "legacy/beacon6.c::download_bof",
+      "legacy/beacon6.c::run_bof_and_capture",
+      "legacy/beacon6.c::main"
+     ]
+    },
+    {
+     "file_path": "legacy/beacon_p2p.c",
+     "methods": [
+      "legacy/beacon_p2p.c::_GNU_SOURCE",
+      "legacy/beacon_p2p.c::C2_URL",
+      "legacy/beacon_p2p.c::CLIENT_ID",
+      "legacy/beacon_p2p.c::MALEABLE",
+      "legacy/beacon_p2p.c::USER_AGENTS_COUNT",
+      "legacy/beacon_p2p.c::PEER_DISCOVERY_PORT",
+      "legacy/beacon_p2p.c::PEER_TCP_PORT",
+      "legacy/beacon_p2p.c::PEER_MAGIC",
+      "legacy/beacon_p2p.c::PEER_VERSION",
+      "legacy/beacon_p2p.c::BROADCAST_INTERVAL",
+      "legacy/beacon_p2p.c::MAX_PEERS",
+      "legacy/beacon_p2p.c::peer_t",
+      "legacy/beacon_p2p.c::p2p_header_t",
+      "legacy/beacon_p2p.c::BeaconDataParse",
+      "legacy/beacon_p2p.c::BeaconDataPtr",
+      "legacy/beacon_p2p.c::BeaconDataInt",
+      "legacy/beacon_p2p.c::BeaconDataShort",
+      "legacy/beacon_p2p.c::BeaconDataLength",
+      "legacy/beacon_p2p.c::BeaconDataExtract",
+      "legacy/beacon_p2p.c::BeaconPrintf",
+      "legacy/beacon_p2p.c::BeaconOutput",
+      "legacy/beacon_p2p.c::Trampoline",
+      "legacy/beacon_p2p.c::SymbolResolver",
+      "legacy/beacon_p2p.c::TrampolineCache",
+      "legacy/beacon_p2p.c::__attribute__",
+      "legacy/beacon_p2p.c::create_trampoline",
+      "legacy/beacon_p2p.c::cleanup_trampolines",
+      "legacy/beacon_p2p.c::get_or_create_trampoline",
+      "legacy/beacon_p2p.c::page_align",
+      "legacy/beacon_p2p.c::RunELF",
+      "legacy/beacon_p2p.c::MemoryStruct",
+      "legacy/beacon_p2p.c::WriteMemoryCallback",
+      "legacy/beacon_p2p.c::https_request",
+      "legacy/beacon_p2p.c::base64_encode",
+      "legacy/beacon_p2p.c::base64_decode",
+      "legacy/beacon_p2p.c::aes256_cfb_encrypt",
+      "legacy/beacon_p2p.c::aes256_cfb_decrypt",
+      "legacy/beacon_p2p.c::exec_cmd",
+      "legacy/beacon_p2p.c::get_local_ips",
+      "legacy/beacon_p2p.c::download_bof",
+      "legacy/beacon_p2p.c::run_bof_and_capture",
+      "legacy/beacon_p2p.c::add_peer",
+      "legacy/beacon_p2p.c::peer_discovery_thread",
+      "legacy/beacon_p2p.c::handle_peer_connection",
+      "legacy/beacon_p2p.c::peer_server_thread",
+      "legacy/beacon_p2p.c::send_to_peer",
+      "legacy/beacon_p2p.c::send_to_c2_or_peer",
+      "legacy/beacon_p2p.c::execute_generic_command",
+      "legacy/beacon_p2p.c::main"
+     ]
+    },
+    {
+     "file_path": "legacy/gopher_beacon.c",
+     "methods": [
+      "legacy/gopher_beacon.c::_GNU_SOURCE",
+      "legacy/gopher_beacon.c::C2",
+      "legacy/gopher_beacon.c::CLIENT_ID",
+      "legacy/gopher_beacon.c::MALEABLE",
+      "legacy/gopher_beacon.c::USER_AGENTS_COUNT",
+      "legacy/gopher_beacon.c::MemoryStruct",
+      "legacy/gopher_beacon.c::Trampoline",
+      "legacy/gopher_beacon.c::SymbolResolver",
+      "legacy/gopher_beacon.c::TrampolineCache",
+      "legacy/gopher_beacon.c::__attribute__",
+      "legacy/gopher_beacon.c::BeaconPrintf",
+      "legacy/gopher_beacon.c::BeaconOutput",
+      "legacy/gopher_beacon.c::create_trampoline",
+      "legacy/gopher_beacon.c::cleanup_trampolines",
+      "legacy/gopher_beacon.c::get_or_create_trampoline",
+      "legacy/gopher_beacon.c::WriteMemoryCallback",
+      "legacy/gopher_beacon.c::gopher_request",
+      "legacy/gopher_beacon.c::base64_encode",
+      "legacy/gopher_beacon.c::base64_decode",
+      "legacy/gopher_beacon.c::aes256_cfb_encrypt",
+      "legacy/gopher_beacon.c::aes256_cfb_decrypt",
+      "legacy/gopher_beacon.c::exec_cmd",
+      "legacy/gopher_beacon.c::page_align",
+      "legacy/gopher_beacon.c::RunELF",
+      "legacy/gopher_beacon.c::get_local_ips",
+      "legacy/gopher_beacon.c::download_bof",
+      "legacy/gopher_beacon.c::run_bof_and_capture",
+      "legacy/gopher_beacon.c::main"
+     ]
+    },
+    {
+     "file_path": "legacy/v1_gopher_beacon.c",
+     "methods": [
+      "legacy/v1_gopher_beacon.c::_GNU_SOURCE",
+      "legacy/v1_gopher_beacon.c::C2",
+      "legacy/v1_gopher_beacon.c::CLIENT_ID",
+      "legacy/v1_gopher_beacon.c::MALEABLE",
+      "legacy/v1_gopher_beacon.c::USER_AGENTS_COUNT",
+      "legacy/v1_gopher_beacon.c::MemoryStruct",
+      "legacy/v1_gopher_beacon.c::Trampoline",
+      "legacy/v1_gopher_beacon.c::SymbolResolver",
+      "legacy/v1_gopher_beacon.c::TrampolineCache",
+      "legacy/v1_gopher_beacon.c::__attribute__",
+      "legacy/v1_gopher_beacon.c::BeaconPrintf",
+      "legacy/v1_gopher_beacon.c::BeaconOutput",
+      "legacy/v1_gopher_beacon.c::create_trampoline",
+      "legacy/v1_gopher_beacon.c::cleanup_trampolines",
+      "legacy/v1_gopher_beacon.c::get_or_create_trampoline",
+      "legacy/v1_gopher_beacon.c::WriteMemoryCallback",
+      "legacy/v1_gopher_beacon.c::gopher_request",
+      "legacy/v1_gopher_beacon.c::base64_encode",
+      "legacy/v1_gopher_beacon.c::base64_decode",
+      "legacy/v1_gopher_beacon.c::aes256_cfb_encrypt",
+      "legacy/v1_gopher_beacon.c::aes256_cfb_decrypt",
+      "legacy/v1_gopher_beacon.c::exec_cmd",
+      "legacy/v1_gopher_beacon.c::page_align",
+      "legacy/v1_gopher_beacon.c::RunELF",
+      "legacy/v1_gopher_beacon.c::get_local_ips",
+      "legacy/v1_gopher_beacon.c::download_bof",
+      "legacy/v1_gopher_beacon.c::run_bof_and_capture",
+      "legacy/v1_gopher_beacon.c::main"
+     ]
+    },
+    {
      "file_path": "tests/test_iv_generation_c.c",
      "methods": [
       "tests/test_iv_generation_c.c::test_generate_secure_iv_success",
@@ -12337,7 +12419,7 @@
    "components": [
     {
      "name": "beacons",
-     "description": "beacons groups 4 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE. MemoryStruct: === ESTRUCTURAS ===",
+     "description": "beacons groups 3 files (c) around _GNU_SOURCE, report_result, execute_command, main, _GNU_SOURCE.",
      "key_entities": [
       {
        "qualified_name": "beacons/v1/beacon.c::_GNU_SOURCE",
@@ -12364,28 +12446,28 @@
        "reference_end_line": 243
       },
       {
-       "qualified_name": "beacons/v1/gopher_beacon.c::_GNU_SOURCE",
-       "reference_file": "beacons/v1/gopher_beacon.c",
-       "reference_start_line": 1,
+       "qualified_name": "beacons/v2/beacon.c::_GNU_SOURCE",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 12,
+       "reference_end_line": 26
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::MAX_PEERS",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 27,
+       "reference_end_line": 27
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_PORT",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 28,
+       "reference_end_line": 28
+      },
+      {
+       "qualified_name": "beacons/v2/beacon.c::DISCOVERY_INTERVAL",
+       "reference_file": "beacons/v2/beacon.c",
+       "reference_start_line": 29,
        "reference_end_line": 29
-      },
-      {
-       "qualified_name": "beacons/v1/gopher_beacon.c::C2",
-       "reference_file": "beacons/v1/gopher_beacon.c",
-       "reference_start_line": 30,
-       "reference_end_line": 30
-      },
-      {
-       "qualified_name": "beacons/v1/gopher_beacon.c::CLIENT_ID",
-       "reference_file": "beacons/v1/gopher_beacon.c",
-       "reference_start_line": 31,
-       "reference_end_line": 31
-      },
-      {
-       "qualified_name": "beacons/v1/gopher_beacon.c::MALEABLE",
-       "reference_file": "beacons/v1/gopher_beacon.c",
-       "reference_start_line": 32,
-       "reference_end_line": 32
       }
      ],
      "source_cluster_ids": [],
@@ -12397,39 +12479,6 @@
         "beacons/v1/beacon.c::report_result",
         "beacons/v1/beacon.c::execute_command",
         "beacons/v1/beacon.c::main"
-       ]
-      },
-      {
-       "file_path": "beacons/v1/gopher_beacon.c",
-       "methods": [
-        "beacons/v1/gopher_beacon.c::_GNU_SOURCE",
-        "beacons/v1/gopher_beacon.c::C2",
-        "beacons/v1/gopher_beacon.c::CLIENT_ID",
-        "beacons/v1/gopher_beacon.c::MALEABLE",
-        "beacons/v1/gopher_beacon.c::USER_AGENTS_COUNT",
-        "beacons/v1/gopher_beacon.c::MemoryStruct",
-        "beacons/v1/gopher_beacon.c::Trampoline",
-        "beacons/v1/gopher_beacon.c::SymbolResolver",
-        "beacons/v1/gopher_beacon.c::TrampolineCache",
-        "beacons/v1/gopher_beacon.c::__attribute__",
-        "beacons/v1/gopher_beacon.c::BeaconPrintf",
-        "beacons/v1/gopher_beacon.c::BeaconOutput",
-        "beacons/v1/gopher_beacon.c::create_trampoline",
-        "beacons/v1/gopher_beacon.c::cleanup_trampolines",
-        "beacons/v1/gopher_beacon.c::get_or_create_trampoline",
-        "beacons/v1/gopher_beacon.c::WriteMemoryCallback",
-        "beacons/v1/gopher_beacon.c::gopher_request",
-        "beacons/v1/gopher_beacon.c::base64_encode",
-        "beacons/v1/gopher_beacon.c::base64_decode",
-        "beacons/v1/gopher_beacon.c::aes256_cfb_encrypt",
-        "beacons/v1/gopher_beacon.c::aes256_cfb_decrypt",
-        "beacons/v1/gopher_beacon.c::exec_cmd",
-        "beacons/v1/gopher_beacon.c::page_align",
-        "beacons/v1/gopher_beacon.c::RunELF",
-        "beacons/v1/gopher_beacon.c::get_local_ips",
-        "beacons/v1/gopher_beacon.c::download_bof",
-        "beacons/v1/gopher_beacon.c::run_bof_and_capture",
-        "beacons/v1/gopher_beacon.c::main"
        ]
       },
       {
@@ -12466,7 +12515,7 @@
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 50,
+     "symbol_count": 22,
      "top_symbols": [
       {
        "n": "_GNU_SOURCE",
@@ -12481,7 +12530,7 @@
        "k": "function"
       }
      ],
-     "top_symbols_more": 37
+     "top_symbols_more": 11
     },
     {
      "name": "include",
@@ -12554,6 +12603,7 @@
         "include/beacon_common.c::get_or_create_trampoline",
         "include/beacon_common.c::MemoryStruct",
         "include/beacon_common.c::WriteMemoryCallback",
+        "include/beacon_common.c::bsb_curl_pin_format",
         "include/beacon_common.c::https_request",
         "include/beacon_common.c::base64_encode",
         "include/beacon_common.c::base64_decode",
@@ -12572,6 +12622,7 @@
         "include/beacon_common.c::page_align",
         "include/beacon_common.c::bof_crash_exit",
         "include/beacon_common.c::__attribute__",
+        "include/beacon_common.c::fault",
         "include/beacon_common.c::RunELF",
         "include/beacon_common.c::run_bof_and_capture"
        ]
@@ -12820,7 +12871,7 @@
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 256,
+     "symbol_count": 258,
      "top_symbols": [
       {
        "n": "BEACON_COMMON_H",
@@ -12835,11 +12886,328 @@
        "k": "macro"
       }
      ],
-     "top_symbols_more": 155
+     "top_symbols_more": 157
+    },
+    {
+     "name": "legacy",
+     "description": "legacy groups 6 files (c) around _GNU_SOURCE, C2_URL, CLIENT_ID, MALEABLE, USER_AGENTS_COUNT. MemoryStruct: === ESTRUCTURAS ===",
+     "key_entities": [
+      {
+       "qualified_name": "legacy/beacon3.c::_GNU_SOURCE",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 1,
+       "reference_end_line": 32
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::C2_URL",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 33,
+       "reference_end_line": 33
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::CLIENT_ID",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 34,
+       "reference_end_line": 34
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::MALEABLE",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 35,
+       "reference_end_line": 35
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::USER_AGENTS_COUNT",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 36,
+       "reference_end_line": 51
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::MemoryStruct",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 52,
+       "reference_end_line": 59
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::Trampoline",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 60,
+       "reference_end_line": 68
+      },
+      {
+       "qualified_name": "legacy/beacon3.c::SymbolResolver",
+       "reference_file": "legacy/beacon3.c",
+       "reference_start_line": 69,
+       "reference_end_line": 75
+      }
+     ],
+     "source_cluster_ids": [],
+     "file_methods": [
+      {
+       "file_path": "legacy/beacon3.c",
+       "methods": [
+        "legacy/beacon3.c::_GNU_SOURCE",
+        "legacy/beacon3.c::C2_URL",
+        "legacy/beacon3.c::CLIENT_ID",
+        "legacy/beacon3.c::MALEABLE",
+        "legacy/beacon3.c::USER_AGENTS_COUNT",
+        "legacy/beacon3.c::MemoryStruct",
+        "legacy/beacon3.c::Trampoline",
+        "legacy/beacon3.c::SymbolResolver",
+        "legacy/beacon3.c::TrampolineCache",
+        "legacy/beacon3.c::__attribute__",
+        "legacy/beacon3.c::BeaconPrintf",
+        "legacy/beacon3.c::BeaconOutput",
+        "legacy/beacon3.c::create_trampoline",
+        "legacy/beacon3.c::cleanup_trampolines",
+        "legacy/beacon3.c::get_or_create_trampoline",
+        "legacy/beacon3.c::WriteMemoryCallback",
+        "legacy/beacon3.c::https_request",
+        "legacy/beacon3.c::base64_encode",
+        "legacy/beacon3.c::base64_decode",
+        "legacy/beacon3.c::aes256_cfb_encrypt",
+        "legacy/beacon3.c::aes256_cfb_decrypt",
+        "legacy/beacon3.c::exec_cmd",
+        "legacy/beacon3.c::page_align",
+        "legacy/beacon3.c::RunELF",
+        "legacy/beacon3.c::get_local_ips",
+        "legacy/beacon3.c::download_bof",
+        "legacy/beacon3.c::run_bof_and_capture",
+        "legacy/beacon3.c::main"
+       ]
+      },
+      {
+       "file_path": "legacy/beacon5.c",
+       "methods": [
+        "legacy/beacon5.c::_GNU_SOURCE",
+        "legacy/beacon5.c::MAX_PEERS",
+        "legacy/beacon5.c::DISCOVERY_PORT",
+        "legacy/beacon5.c::DISCOVERY_INTERVAL",
+        "legacy/beacon5.c::MAX_TTL",
+        "legacy/beacon5.c::MESH_MSG_SIZE",
+        "legacy/beacon5.c::C2_URL",
+        "legacy/beacon5.c::CLIENT_ID",
+        "legacy/beacon5.c::MALEABLE",
+        "legacy/beacon5.c::USER_AGENTS_COUNT",
+        "legacy/beacon5.c::MemoryStruct",
+        "legacy/beacon5.c::peer_t",
+        "legacy/beacon5.c::mesh_msg_t",
+        "legacy/beacon5.c::Trampoline",
+        "legacy/beacon5.c::SymbolResolver",
+        "legacy/beacon5.c::TrampolineCache",
+        "legacy/beacon5.c::__attribute__",
+        "legacy/beacon5.c::BeaconPrintf",
+        "legacy/beacon5.c::BeaconOutput",
+        "legacy/beacon5.c::create_trampoline",
+        "legacy/beacon5.c::cleanup_trampolines",
+        "legacy/beacon5.c::get_or_create_trampoline",
+        "legacy/beacon5.c::WriteMemoryCallback",
+        "legacy/beacon5.c::https_request",
+        "legacy/beacon5.c::base64_encode",
+        "legacy/beacon5.c::base64_decode",
+        "legacy/beacon5.c::aes256_cfb_encrypt",
+        "legacy/beacon5.c::aes256_cfb_decrypt",
+        "legacy/beacon5.c::exec_cmd",
+        "legacy/beacon5.c::page_align",
+        "legacy/beacon5.c::RunELF",
+        "legacy/beacon5.c::get_local_ips",
+        "legacy/beacon5.c::download_bof",
+        "legacy/beacon5.c::run_bof_and_capture",
+        "legacy/beacon5.c::mesh_mark_seen",
+        "legacy/beacon5.c::mesh_is_seen",
+        "legacy/beacon5.c::mesh_add_peer",
+        "legacy/beacon5.c::mesh_cleanup_peers",
+        "legacy/beacon5.c::mesh_send_to_peer",
+        "legacy/beacon5.c::mesh_propagate",
+        "legacy/beacon5.c::mesh_discovery_thread",
+        "legacy/beacon5.c::mesh_listener_thread",
+        "legacy/beacon5.c::mesh_send_message",
+        "legacy/beacon5.c::main"
+       ]
+      },
+      {
+       "file_path": "legacy/beacon6.c",
+       "methods": [
+        "legacy/beacon6.c::_GNU_SOURCE",
+        "legacy/beacon6.c::C2_URL",
+        "legacy/beacon6.c::CLIENT_ID",
+        "legacy/beacon6.c::MALEABLE",
+        "legacy/beacon6.c::USER_AGENTS_COUNT",
+        "legacy/beacon6.c::MemoryStruct",
+        "legacy/beacon6.c::Trampoline",
+        "legacy/beacon6.c::SymbolResolver",
+        "legacy/beacon6.c::TrampolineCache",
+        "legacy/beacon6.c::__attribute__",
+        "legacy/beacon6.c::delay_ms",
+        "legacy/beacon6.c::is_prime",
+        "legacy/beacon6.c::get_nth_prime_limited",
+        "legacy/beacon6.c::portable_rand_19k_29k",
+        "legacy/beacon6.c::BeaconPrintf",
+        "legacy/beacon6.c::BeaconOutput",
+        "legacy/beacon6.c::create_trampoline",
+        "legacy/beacon6.c::cleanup_trampolines",
+        "legacy/beacon6.c::get_or_create_trampoline",
+        "legacy/beacon6.c::WriteMemoryCallback",
+        "legacy/beacon6.c::https_request",
+        "legacy/beacon6.c::base64_encode",
+        "legacy/beacon6.c::base64_decode",
+        "legacy/beacon6.c::aes256_cfb_encrypt",
+        "legacy/beacon6.c::aes256_cfb_decrypt",
+        "legacy/beacon6.c::exec_cmd",
+        "legacy/beacon6.c::page_align",
+        "legacy/beacon6.c::RunELF",
+        "legacy/beacon6.c::get_local_ips",
+        "legacy/beacon6.c::download_bof",
+        "legacy/beacon6.c::run_bof_and_capture",
+        "legacy/beacon6.c::main"
+       ]
+      },
+      {
+       "file_path": "legacy/beacon_p2p.c",
+       "methods": [
+        "legacy/beacon_p2p.c::_GNU_SOURCE",
+        "legacy/beacon_p2p.c::C2_URL",
+        "legacy/beacon_p2p.c::CLIENT_ID",
+        "legacy/beacon_p2p.c::MALEABLE",
+        "legacy/beacon_p2p.c::USER_AGENTS_COUNT",
+        "legacy/beacon_p2p.c::PEER_DISCOVERY_PORT",
+        "legacy/beacon_p2p.c::PEER_TCP_PORT",
+        "legacy/beacon_p2p.c::PEER_MAGIC",
+        "legacy/beacon_p2p.c::PEER_VERSION",
+        "legacy/beacon_p2p.c::BROADCAST_INTERVAL",
+        "legacy/beacon_p2p.c::MAX_PEERS",
+        "legacy/beacon_p2p.c::peer_t",
+        "legacy/beacon_p2p.c::p2p_header_t",
+        "legacy/beacon_p2p.c::BeaconDataParse",
+        "legacy/beacon_p2p.c::BeaconDataPtr",
+        "legacy/beacon_p2p.c::BeaconDataInt",
+        "legacy/beacon_p2p.c::BeaconDataShort",
+        "legacy/beacon_p2p.c::BeaconDataLength",
+        "legacy/beacon_p2p.c::BeaconDataExtract",
+        "legacy/beacon_p2p.c::BeaconPrintf",
+        "legacy/beacon_p2p.c::BeaconOutput",
+        "legacy/beacon_p2p.c::Trampoline",
+        "legacy/beacon_p2p.c::SymbolResolver",
+        "legacy/beacon_p2p.c::TrampolineCache",
+        "legacy/beacon_p2p.c::__attribute__",
+        "legacy/beacon_p2p.c::create_trampoline",
+        "legacy/beacon_p2p.c::cleanup_trampolines",
+        "legacy/beacon_p2p.c::get_or_create_trampoline",
+        "legacy/beacon_p2p.c::page_align",
+        "legacy/beacon_p2p.c::RunELF",
+        "legacy/beacon_p2p.c::MemoryStruct",
+        "legacy/beacon_p2p.c::WriteMemoryCallback",
+        "legacy/beacon_p2p.c::https_request",
+        "legacy/beacon_p2p.c::base64_encode",
+        "legacy/beacon_p2p.c::base64_decode",
+        "legacy/beacon_p2p.c::aes256_cfb_encrypt",
+        "legacy/beacon_p2p.c::aes256_cfb_decrypt",
+        "legacy/beacon_p2p.c::exec_cmd",
+        "legacy/beacon_p2p.c::get_local_ips",
+        "legacy/beacon_p2p.c::download_bof",
+        "legacy/beacon_p2p.c::run_bof_and_capture",
+        "legacy/beacon_p2p.c::add_peer",
+        "legacy/beacon_p2p.c::peer_discovery_thread",
+        "legacy/beacon_p2p.c::handle_peer_connection",
+        "legacy/beacon_p2p.c::peer_server_thread",
+        "legacy/beacon_p2p.c::send_to_peer",
+        "legacy/beacon_p2p.c::send_to_c2_or_peer",
+        "legacy/beacon_p2p.c::execute_generic_command",
+        "legacy/beacon_p2p.c::main"
+       ]
+      },
+      {
+       "file_path": "legacy/gopher_beacon.c",
+       "methods": [
+        "legacy/gopher_beacon.c::_GNU_SOURCE",
+        "legacy/gopher_beacon.c::C2",
+        "legacy/gopher_beacon.c::CLIENT_ID",
+        "legacy/gopher_beacon.c::MALEABLE",
+        "legacy/gopher_beacon.c::USER_AGENTS_COUNT",
+        "legacy/gopher_beacon.c::MemoryStruct",
+        "legacy/gopher_beacon.c::Trampoline",
+        "legacy/gopher_beacon.c::SymbolResolver",
+        "legacy/gopher_beacon.c::TrampolineCache",
+        "legacy/gopher_beacon.c::__attribute__",
+        "legacy/gopher_beacon.c::BeaconPrintf",
+        "legacy/gopher_beacon.c::BeaconOutput",
+        "legacy/gopher_beacon.c::create_trampoline",
+        "legacy/gopher_beacon.c::cleanup_trampolines",
+        "legacy/gopher_beacon.c::get_or_create_trampoline",
+        "legacy/gopher_beacon.c::WriteMemoryCallback",
+        "legacy/gopher_beacon.c::gopher_request",
+        "legacy/gopher_beacon.c::base64_encode",
+        "legacy/gopher_beacon.c::base64_decode",
+        "legacy/gopher_beacon.c::aes256_cfb_encrypt",
+        "legacy/gopher_beacon.c::aes256_cfb_decrypt",
+        "legacy/gopher_beacon.c::exec_cmd",
+        "legacy/gopher_beacon.c::page_align",
+        "legacy/gopher_beacon.c::RunELF",
+        "legacy/gopher_beacon.c::get_local_ips",
+        "legacy/gopher_beacon.c::download_bof",
+        "legacy/gopher_beacon.c::run_bof_and_capture",
+        "legacy/gopher_beacon.c::main"
+       ]
+      },
+      {
+       "file_path": "legacy/v1_gopher_beacon.c",
+       "methods": [
+        "legacy/v1_gopher_beacon.c::_GNU_SOURCE",
+        "legacy/v1_gopher_beacon.c::C2",
+        "legacy/v1_gopher_beacon.c::CLIENT_ID",
+        "legacy/v1_gopher_beacon.c::MALEABLE",
+        "legacy/v1_gopher_beacon.c::USER_AGENTS_COUNT",
+        "legacy/v1_gopher_beacon.c::MemoryStruct",
+        "legacy/v1_gopher_beacon.c::Trampoline",
+        "legacy/v1_gopher_beacon.c::SymbolResolver",
+        "legacy/v1_gopher_beacon.c::TrampolineCache",
+        "legacy/v1_gopher_beacon.c::__attribute__",
+        "legacy/v1_gopher_beacon.c::BeaconPrintf",
+        "legacy/v1_gopher_beacon.c::BeaconOutput",
+        "legacy/v1_gopher_beacon.c::create_trampoline",
+        "legacy/v1_gopher_beacon.c::cleanup_trampolines",
+        "legacy/v1_gopher_beacon.c::get_or_create_trampoline",
+        "legacy/v1_gopher_beacon.c::WriteMemoryCallback",
+        "legacy/v1_gopher_beacon.c::gopher_request",
+        "legacy/v1_gopher_beacon.c::base64_encode",
+        "legacy/v1_gopher_beacon.c::base64_decode",
+        "legacy/v1_gopher_beacon.c::aes256_cfb_encrypt",
+        "legacy/v1_gopher_beacon.c::aes256_cfb_decrypt",
+        "legacy/v1_gopher_beacon.c::exec_cmd",
+        "legacy/v1_gopher_beacon.c::page_align",
+        "legacy/v1_gopher_beacon.c::RunELF",
+        "legacy/v1_gopher_beacon.c::get_local_ips",
+        "legacy/v1_gopher_beacon.c::download_bof",
+        "legacy/v1_gopher_beacon.c::run_bof_and_capture",
+        "legacy/v1_gopher_beacon.c::main"
+       ]
+      }
+     ],
+     "component_id": "1.3",
+     "can_expand": false,
+     "components": [],
+     "components_relations": [],
+     "layer": "utility",
+     "symbol_count": 209,
+     "top_symbols": [
+      {
+       "n": "_GNU_SOURCE",
+       "k": "macro"
+      },
+      {
+       "n": "C2_URL",
+       "k": "macro"
+      },
+      {
+       "n": "CLIENT_ID",
+       "k": "macro"
+      }
+     ],
+     "top_symbols_more": 66
     },
     {
      "name": "root",
-     "description": "root groups 11 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
+     "description": "root groups 6 files (c, h) around _AES_H_, CBC, ECB, CTR, AES256. tiny-AES-c (https://github.com/kokke/tiny-AES-c)",
      "key_entities": [
       {
        "qualified_name": "aes.h::_AES_H_",
@@ -12982,179 +13350,6 @@
         "beacon.h::BeaconDataExtract",
         "beacon.h::BeaconPrintf",
         "beacon.h::BeaconOutput"
-       ]
-      },
-      {
-       "file_path": "beacon3.c",
-       "methods": [
-        "beacon3.c::_GNU_SOURCE",
-        "beacon3.c::C2_URL",
-        "beacon3.c::CLIENT_ID",
-        "beacon3.c::MALEABLE",
-        "beacon3.c::USER_AGENTS_COUNT",
-        "beacon3.c::MemoryStruct",
-        "beacon3.c::Trampoline",
-        "beacon3.c::SymbolResolver",
-        "beacon3.c::TrampolineCache",
-        "beacon3.c::__attribute__",
-        "beacon3.c::BeaconPrintf",
-        "beacon3.c::BeaconOutput",
-        "beacon3.c::create_trampoline",
-        "beacon3.c::cleanup_trampolines",
-        "beacon3.c::get_or_create_trampoline",
-        "beacon3.c::WriteMemoryCallback",
-        "beacon3.c::https_request",
-        "beacon3.c::base64_encode",
-        "beacon3.c::base64_decode",
-        "beacon3.c::aes256_cfb_encrypt",
-        "beacon3.c::aes256_cfb_decrypt",
-        "beacon3.c::exec_cmd",
-        "beacon3.c::page_align",
-        "beacon3.c::RunELF",
-        "beacon3.c::get_local_ips",
-        "beacon3.c::download_bof",
-        "beacon3.c::run_bof_and_capture",
-        "beacon3.c::main"
-       ]
-      },
-      {
-       "file_path": "beacon5.c",
-       "methods": [
-        "beacon5.c::_GNU_SOURCE",
-        "beacon5.c::MAX_PEERS",
-        "beacon5.c::DISCOVERY_PORT",
-        "beacon5.c::DISCOVERY_INTERVAL",
-        "beacon5.c::MAX_TTL",
-        "beacon5.c::MESH_MSG_SIZE",
-        "beacon5.c::C2_URL",
-        "beacon5.c::CLIENT_ID",
-        "beacon5.c::MALEABLE",
-        "beacon5.c::USER_AGENTS_COUNT",
-        "beacon5.c::MemoryStruct",
-        "beacon5.c::peer_t",
-        "beacon5.c::mesh_msg_t",
-        "beacon5.c::Trampoline",
-        "beacon5.c::SymbolResolver",
-        "beacon5.c::TrampolineCache",
-        "beacon5.c::__attribute__",
-        "beacon5.c::BeaconPrintf",
-        "beacon5.c::BeaconOutput",
-        "beacon5.c::create_trampoline",
-        "beacon5.c::cleanup_trampolines",
-        "beacon5.c::get_or_create_trampoline",
-        "beacon5.c::WriteMemoryCallback",
-        "beacon5.c::https_request",
-        "beacon5.c::base64_encode",
-        "beacon5.c::base64_decode",
-        "beacon5.c::aes256_cfb_encrypt",
-        "beacon5.c::aes256_cfb_decrypt",
-        "beacon5.c::exec_cmd",
-        "beacon5.c::page_align",
-        "beacon5.c::RunELF",
-        "beacon5.c::get_local_ips",
-        "beacon5.c::download_bof",
-        "beacon5.c::run_bof_and_capture",
-        "beacon5.c::mesh_mark_seen",
-        "beacon5.c::mesh_is_seen",
-        "beacon5.c::mesh_add_peer",
-        "beacon5.c::mesh_cleanup_peers",
-        "beacon5.c::mesh_send_to_peer",
-        "beacon5.c::mesh_propagate",
-        "beacon5.c::mesh_discovery_thread",
-        "beacon5.c::mesh_listener_thread",
-        "beacon5.c::mesh_send_message",
-        "beacon5.c::main"
-       ]
-      },
-      {
-       "file_path": "beacon6.c",
-       "methods": [
-        "beacon6.c::_GNU_SOURCE",
-        "beacon6.c::C2_URL",
-        "beacon6.c::CLIENT_ID",
-        "beacon6.c::MALEABLE",
-        "beacon6.c::USER_AGENTS_COUNT",
-        "beacon6.c::MemoryStruct",
-        "beacon6.c::Trampoline",
-        "beacon6.c::SymbolResolver",
-        "beacon6.c::TrampolineCache",
-        "beacon6.c::__attribute__",
-        "beacon6.c::delay_ms",
-        "beacon6.c::is_prime",
-        "beacon6.c::get_nth_prime_limited",
-        "beacon6.c::portable_rand_19k_29k",
-        "beacon6.c::BeaconPrintf",
-        "beacon6.c::BeaconOutput",
-        "beacon6.c::create_trampoline",
-        "beacon6.c::cleanup_trampolines",
-        "beacon6.c::get_or_create_trampoline",
-        "beacon6.c::WriteMemoryCallback",
-        "beacon6.c::https_request",
-        "beacon6.c::base64_encode",
-        "beacon6.c::base64_decode",
-        "beacon6.c::aes256_cfb_encrypt",
-        "beacon6.c::aes256_cfb_decrypt",
-        "beacon6.c::exec_cmd",
-        "beacon6.c::page_align",
-        "beacon6.c::RunELF",
-        "beacon6.c::get_local_ips",
-        "beacon6.c::download_bof",
-        "beacon6.c::run_bof_and_capture",
-        "beacon6.c::main"
-       ]
-      },
-      {
-       "file_path": "beacon_p2p.c",
-       "methods": [
-        "beacon_p2p.c::_GNU_SOURCE",
-        "beacon_p2p.c::C2_URL",
-        "beacon_p2p.c::CLIENT_ID",
-        "beacon_p2p.c::MALEABLE",
-        "beacon_p2p.c::USER_AGENTS_COUNT",
-        "beacon_p2p.c::PEER_DISCOVERY_PORT",
-        "beacon_p2p.c::PEER_TCP_PORT",
-        "beacon_p2p.c::PEER_MAGIC",
-        "beacon_p2p.c::PEER_VERSION",
-        "beacon_p2p.c::BROADCAST_INTERVAL",
-        "beacon_p2p.c::MAX_PEERS",
-        "beacon_p2p.c::peer_t",
-        "beacon_p2p.c::p2p_header_t",
-        "beacon_p2p.c::BeaconDataParse",
-        "beacon_p2p.c::BeaconDataPtr",
-        "beacon_p2p.c::BeaconDataInt",
-        "beacon_p2p.c::BeaconDataShort",
-        "beacon_p2p.c::BeaconDataLength",
-        "beacon_p2p.c::BeaconDataExtract",
-        "beacon_p2p.c::BeaconPrintf",
-        "beacon_p2p.c::BeaconOutput",
-        "beacon_p2p.c::Trampoline",
-        "beacon_p2p.c::SymbolResolver",
-        "beacon_p2p.c::TrampolineCache",
-        "beacon_p2p.c::__attribute__",
-        "beacon_p2p.c::create_trampoline",
-        "beacon_p2p.c::cleanup_trampolines",
-        "beacon_p2p.c::get_or_create_trampoline",
-        "beacon_p2p.c::page_align",
-        "beacon_p2p.c::RunELF",
-        "beacon_p2p.c::MemoryStruct",
-        "beacon_p2p.c::WriteMemoryCallback",
-        "beacon_p2p.c::https_request",
-        "beacon_p2p.c::base64_encode",
-        "beacon_p2p.c::base64_decode",
-        "beacon_p2p.c::aes256_cfb_encrypt",
-        "beacon_p2p.c::aes256_cfb_decrypt",
-        "beacon_p2p.c::exec_cmd",
-        "beacon_p2p.c::get_local_ips",
-        "beacon_p2p.c::download_bof",
-        "beacon_p2p.c::run_bof_and_capture",
-        "beacon_p2p.c::add_peer",
-        "beacon_p2p.c::peer_discovery_thread",
-        "beacon_p2p.c::handle_peer_connection",
-        "beacon_p2p.c::peer_server_thread",
-        "beacon_p2p.c::send_to_peer",
-        "beacon_p2p.c::send_to_c2_or_peer",
-        "beacon_p2p.c::execute_generic_command",
-        "beacon_p2p.c::main"
        ]
       },
       {
@@ -13337,47 +13532,14 @@
         "cJSON.h::cJSON_SetBoolValue",
         "cJSON.h::cJSON_ArrayForEach"
        ]
-      },
-      {
-       "file_path": "gopher_beacon.c",
-       "methods": [
-        "gopher_beacon.c::_GNU_SOURCE",
-        "gopher_beacon.c::C2",
-        "gopher_beacon.c::CLIENT_ID",
-        "gopher_beacon.c::MALEABLE",
-        "gopher_beacon.c::USER_AGENTS_COUNT",
-        "gopher_beacon.c::MemoryStruct",
-        "gopher_beacon.c::Trampoline",
-        "gopher_beacon.c::SymbolResolver",
-        "gopher_beacon.c::TrampolineCache",
-        "gopher_beacon.c::__attribute__",
-        "gopher_beacon.c::BeaconPrintf",
-        "gopher_beacon.c::BeaconOutput",
-        "gopher_beacon.c::create_trampoline",
-        "gopher_beacon.c::cleanup_trampolines",
-        "gopher_beacon.c::get_or_create_trampoline",
-        "gopher_beacon.c::WriteMemoryCallback",
-        "gopher_beacon.c::gopher_request",
-        "gopher_beacon.c::base64_encode",
-        "gopher_beacon.c::base64_decode",
-        "gopher_beacon.c::aes256_cfb_encrypt",
-        "gopher_beacon.c::aes256_cfb_decrypt",
-        "gopher_beacon.c::exec_cmd",
-        "gopher_beacon.c::page_align",
-        "gopher_beacon.c::RunELF",
-        "gopher_beacon.c::get_local_ips",
-        "gopher_beacon.c::download_bof",
-        "gopher_beacon.c::run_bof_and_capture",
-        "gopher_beacon.c::main"
-       ]
       }
      ],
-     "component_id": "1.3",
+     "component_id": "1.4",
      "can_expand": false,
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 424,
+     "symbol_count": 243,
      "top_symbols": [
       {
        "n": "_AES_H_",
@@ -13392,7 +13554,7 @@
        "k": "macro"
       }
      ],
-     "top_symbols_more": 203
+     "top_symbols_more": 143
     },
     {
      "name": "tests",
@@ -13456,7 +13618,7 @@
        ]
       }
      ],
-     "component_id": "1.4",
+     "component_id": "1.5",
      "can_expand": false,
      "components": [],
      "components_relations": [],
@@ -14134,16 +14296,16 @@
      ]
     },
     {
-     "relation": "depends on",
+     "relation": "calls into",
      "src_name": "beacons",
-     "dst_name": "root",
-     "evidence": "6 imports, 2 calls across the boundary",
-     "import_count": 6,
+     "dst_name": "legacy",
+     "evidence": "0 imports, 2 calls across the boundary",
+     "import_count": 0,
      "call_count": 2,
      "key_edges": [
       {
        "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::_GNU_SOURCE",
-       "target": "beacon6.c|beacon6.c::is_prime",
+       "target": "legacy/beacon6.c|legacy/beacon6.c::is_prime",
        "call_sites": [
         {
          "line": 26,
@@ -14154,7 +14316,7 @@
       },
       {
        "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::compute_primes",
-       "target": "beacon6.c|beacon6.c::is_prime",
+       "target": "legacy/beacon6.c|legacy/beacon6.c::is_prime",
        "call_sites": [
         {
          "line": 48,
@@ -14170,7 +14332,7 @@
      "all_edges": [
       {
        "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::_GNU_SOURCE",
-       "target": "beacon6.c|beacon6.c::is_prime",
+       "target": "legacy/beacon6.c|legacy/beacon6.c::is_prime",
        "call_sites": [
         {
          "line": 26,
@@ -14181,7 +14343,7 @@
       },
       {
        "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::compute_primes",
-       "target": "beacon6.c|beacon6.c::is_prime",
+       "target": "legacy/beacon6.c|legacy/beacon6.c::is_prime",
        "call_sites": [
         {
          "line": 48,
@@ -14194,6 +14356,19 @@
     },
     {
      "relation": "depends on",
+     "src_name": "beacons",
+     "dst_name": "root",
+     "evidence": "3 imports, 0 calls across the boundary",
+     "import_count": 3,
+     "call_count": 0,
+     "key_edges": [],
+     "src_id": "1.1",
+     "dst_id": "1.4",
+     "is_static": true,
+     "all_edges": []
+    },
+    {
+     "relation": "depends on",
      "src_name": "include",
      "dst_name": "root",
      "evidence": "3 imports, 0 calls across the boundary",
@@ -14201,7 +14376,20 @@
      "call_count": 0,
      "key_edges": [],
      "src_id": "1.2",
-     "dst_id": "1.3",
+     "dst_id": "1.4",
+     "is_static": true,
+     "all_edges": []
+    },
+    {
+     "relation": "depends on",
+     "src_name": "legacy",
+     "dst_name": "root",
+     "evidence": "18 imports, 0 calls across the boundary",
+     "import_count": 18,
+     "call_count": 0,
+     "key_edges": [],
+     "src_id": "1.3",
+     "dst_id": "1.4",
      "is_static": true,
      "all_edges": []
     },
@@ -14213,14 +14401,14 @@
      "import_count": 1,
      "call_count": 0,
      "key_edges": [],
-     "src_id": "1.4",
+     "src_id": "1.5",
      "dst_id": "1.2",
      "is_static": true,
      "all_edges": []
     }
    ],
    "layer": "utility",
-   "symbol_count": 737,
+   "symbol_count": 739,
    "top_symbols": [
     {
      "n": "BEACON_COMMON_H",
@@ -14235,8 +14423,8 @@
      "k": "macro"
     }
    ],
-   "top_symbols_more": 260,
-   "hub": true
+   "top_symbols_more": 262,
+   "hub": false
   },
   {
    "name": "c2",
@@ -14462,6 +14650,14 @@
       "tests/test_certificate_pinning.py::TestCertificatePinningCConfig",
       "tests/test_certificate_pinning.py::test_c_config_parses_fingerprint_field",
       "tests/test_certificate_pinning.py::TestCertificatePinningIntegration",
+      "tests/test_certificate_pinning.py::_free_port",
+      "tests/test_certificate_pinning.py::_gen_cert_and_pin",
+      "tests/test_certificate_pinning.py::_start_tls_server",
+      "tests/test_certificate_pinning.py::Handler",
+      "tests/test_certificate_pinning.py::do_GET",
+      "tests/test_certificate_pinning.py::log_message",
+      "tests/test_certificate_pinning.py::_run",
+      "tests/test_certificate_pinning.py::_run_beacon_with_bof_tls",
       "tests/test_certificate_pinning.py::test_beacon_verifies_pinned_certificate",
       "tests/test_certificate_pinning.py::test_beacon_rejects_mismatched_certificate",
       "tests/test_certificate_pinning.py::test_tofu_first_connection_stores_fingerprint",
@@ -14996,6 +15192,14 @@
         "tests/test_certificate_pinning.py::TestCertificatePinningCConfig",
         "tests/test_certificate_pinning.py::test_c_config_parses_fingerprint_field",
         "tests/test_certificate_pinning.py::TestCertificatePinningIntegration",
+        "tests/test_certificate_pinning.py::_free_port",
+        "tests/test_certificate_pinning.py::_gen_cert_and_pin",
+        "tests/test_certificate_pinning.py::_start_tls_server",
+        "tests/test_certificate_pinning.py::Handler",
+        "tests/test_certificate_pinning.py::do_GET",
+        "tests/test_certificate_pinning.py::log_message",
+        "tests/test_certificate_pinning.py::_run",
+        "tests/test_certificate_pinning.py::_run_beacon_with_bof_tls",
         "tests/test_certificate_pinning.py::test_beacon_verifies_pinned_certificate",
         "tests/test_certificate_pinning.py::test_beacon_rejects_mismatched_certificate",
         "tests/test_certificate_pinning.py::test_tofu_first_connection_stores_fingerprint",
@@ -15104,7 +15308,7 @@
      "components": [],
      "components_relations": [],
      "layer": "testing",
-     "symbol_count": 137,
+     "symbol_count": 145,
      "top_symbols": [
       {
        "n": "TestBOFPathTraversalConfig",
@@ -15119,7 +15323,7 @@
        "k": "class"
       }
      ],
-     "top_symbols_more": 130
+     "top_symbols_more": 137
     }
    ],
    "components_relations": [
@@ -15612,9 +15816,9 @@
      "relation": "calls into",
      "src_name": "tests",
      "dst_name": "c2",
-     "evidence": "8 imports, 65 calls across the boundary",
-     "import_count": 8,
-     "call_count": 65,
+     "evidence": "10 imports, 69 calls across the boundary",
+     "import_count": 10,
+     "call_count": 69,
      "key_edges": [
       {
        "source": "tests/test_bof_path_traversal.py|tests/test_bof_path_traversal.py::test_upload_dir_config_exists",
@@ -15978,7 +16182,7 @@
        "target": "c2/server.py|c2/server.py::load_runtime_config",
        "call_sites": [
         {
-         "line": 185,
+         "line": 186,
          "column": 13
         }
        ],
@@ -15989,7 +16193,7 @@
        "target": "c2/server.py|c2/server.py::C2State",
        "call_sites": [
         {
-         "line": 191,
+         "line": 196,
          "column": 10
         }
        ],
@@ -16000,7 +16204,7 @@
        "target": "c2/server.py|c2/server.py::serve",
        "call_sites": [
         {
-         "line": 276,
+         "line": 284,
          "column": 2
         }
        ],
@@ -16274,7 +16478,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 179,
+         "line": 180,
          "column": 13
         }
        ],
@@ -16367,7 +16571,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 179,
+         "line": 180,
          "column": 13
         }
        ],
@@ -16553,7 +16757,7 @@
     }
    ],
    "layer": "testing",
-   "symbol_count": 197,
+   "symbol_count": 205,
    "top_symbols": [
     {
      "n": "_derive_keys",
@@ -16568,8 +16772,8 @@
      "k": "function"
     }
    ],
-   "top_symbols_more": 153,
-   "hub": false
+   "top_symbols_more": 160,
+   "hub": true
   },
   {
    "name": "bof/include",
@@ -19510,7 +19714,7 @@
  "components_relations": [
   {
    "relation": "depends on",
-   "src_name": "root",
+   "src_name": "legacy",
    "dst_name": "include: aes",
    "evidence": "1 imports, 0 calls across the boundary",
    "import_count": 1,
@@ -19523,7 +19727,7 @@
   },
   {
    "relation": "depends on",
-   "src_name": "root",
+   "src_name": "legacy",
    "dst_name": "include: config",
    "evidence": "1 imports, 0 calls across the boundary",
    "import_count": 1,
@@ -19537,7 +19741,7 @@
   {
    "relation": "calls into",
    "src_name": "include: aes",
-   "dst_name": "root",
+   "dst_name": "legacy",
    "evidence": "2 imports, 5 calls across the boundary",
    "import_count": 2,
    "call_count": 5,

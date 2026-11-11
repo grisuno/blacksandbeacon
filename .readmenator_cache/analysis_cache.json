@@ -11,7 +11,7 @@
       ],
       [
         "c2/server.py",
-        20.1
+        22.1
       ],
       [
         "include/beacon_common.h",
@@ -45,28 +45,28 @@
     "communities": [
       {
         "id": 0,
-        "label": "root",
+        "label": "legacy",
         "file_ids": [
-          "beacon.h",
-          "cJSON.h",
           "beacons/v1/beacon.c",
-          "beacon_p2p.c",
-          "beacon6.c",
+          "beacon.h",
+          "legacy/beacon_p2p.c",
           "cJSON.c",
-          "beacons/v1/gopher_beacon.c",
           "tests/test_iv_generation_c.c",
-          "beacon5.c",
-          "bof.c",
-          "aes.h",
-          "beacon3.c",
           "beacons/v3/beacon.c",
-          "gopher_beacon.c",
-          "aes.c",
-          "include/cJSON.c",
           "beacons/v2/beacon.c",
-          "include/beacon_common.h",
+          "aes.c",
+          "legacy/beacon6.c",
+          "include/beacon_common.c",
+          "legacy/gopher_beacon.c",
           "include/cJSON.h",
-          "include/beacon_common.c"
+          "include/beacon_common.h",
+          "legacy/beacon3.c",
+          "legacy/beacon5.c",
+          "aes.h",
+          "legacy/v1_gopher_beacon.c",
+          "include/cJSON.c",
+          "bof.c",
+          "cJSON.h"
         ],
         "cohesion": 0.8947368421052632,
         "size": 20
@@ -75,21 +75,21 @@
         "id": 1,
         "label": "c2",
         "file_ids": [
-          "c2/__init__.py",
-          "c2/server.py",
-          "tests/test_bof_path_traversal.py",
           "tests/test_hkdf_key_derivation.py",
-          "mutants/tests/test_c2_server.py",
+          "mutants/tests/test_c2_http_e2e.py",
+          "tests/test_bof_path_traversal.py",
           "tests/test_c2_http_e2e.py",
           "tests/test_crypto.py",
-          "tests/test_c2_beacon_bof_integration.py",
+          "mutants/tests/test_c2_server.py",
+          "mutants/tests/test_certificate_pinning.py",
+          "c2/server.py",
+          "include/config_py.py",
+          "c2/__init__.py",
           "tests/test_iv_generation.py",
           "tests/test_c2_server.py",
-          "mutants/tests/test_c2_http_e2e.py",
-          "include/config_py.py",
           "tests/test_certificate_pinning.py",
-          "tests/test_replay_protection.py",
-          "mutants/tests/test_certificate_pinning.py"
+          "tests/test_c2_beacon_bof_integration.py",
+          "tests/test_replay_protection.py"
         ],
         "cohesion": 1.0,
         "size": 15
@@ -98,13 +98,13 @@
         "id": 2,
         "label": "bof/include",
         "file_ids": [
-          "bof/cat/bof.c",
-          "bof/is_sudo/bof.c",
           "bof/whoami/bof.c",
-          "bof/include/beacon_api.h",
           "bof/include/syscalls.h",
+          "bof/cat/bof.c",
           "bof/userenum/bof.c",
-          "bof/suid_enum/bof.c"
+          "bof/is_sudo/bof.c",
+          "bof/suid_enum/bof.c",
+          "bof/include/beacon_api.h"
         ],
         "cohesion": 1.0,
         "size": 7
@@ -113,12 +113,12 @@
         "id": 3,
         "label": "include: aes",
         "file_ids": [
-          "include/aes_cfb.c",
           "include/aes.c",
+          "include/aes_cfb.c",
           "mutants/tests/crypto_harness.c",
-          "tests/crypto_harness.c",
+          "include/aes.h",
           "include/aes_cfb.h",
-          "include/aes.h"
+          "tests/crypto_harness.c"
         ],
         "cohesion": 0.625,
         "size": 6
@@ -127,12 +127,12 @@
         "id": 4,
         "label": "include: config",
         "file_ids": [
-          "tests/config_harness.c",
-          "tests/test_certificate_pinning_c.c",
-          "tests/test_hkdf_key_derivation_c.c",
-          "include/config.c",
+          "mutants/tests/config_harness.c",
           "include/config.h",
-          "mutants/tests/config_harness.c"
+          "tests/test_hkdf_key_derivation_c.c",
+          "tests/test_certificate_pinning_c.c",
+          "include/config.c",
+          "tests/config_harness.c"
         ],
         "cohesion": 0.8333333333333334,
         "size": 6
@@ -141,9 +141,9 @@
         "id": 5,
         "label": "mutants/src: async_i_o_for_beacon",
         "file_ids": [
+          "src/async_i_o_for_beacon.c",
           "mutants/src/async_i_o_for_beacon.c",
-          "include/async_i_o_for_beacon.h",
-          "src/async_i_o_for_beacon.c"
+          "include/async_i_o_for_beacon.h"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -152,8 +152,8 @@
         "id": 6,
         "label": "mutants/src: beacon_common.c_extraction",
         "file_ids": [
-          "mutants/src/beacon_common.c_extraction.c",
           "src/beacon_common.c_extraction.c",
+          "mutants/src/beacon_common.c_extraction.c",
           "include/beacon_common.c_extraction.h"
         ],
         "cohesion": 1.0,
@@ -174,9 +174,9 @@
         "id": 8,
         "label": "mutants/src: bof_api_versioning",
         "file_ids": [
-          "mutants/src/bof_api_versioning.c",
           "src/bof_api_versioning.c",
-          "include/bof_api_versioning.h"
+          "include/bof_api_versioning.h",
+          "mutants/src/bof_api_versioning.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -186,8 +186,8 @@
         "label": "mutants/src: bof_path_traversal_hardening",
         "file_ids": [
           "src/bof_path_traversal_hardening.c",
-          "include/bof_path_traversal_hardening.h",
-          "mutants/src/bof_path_traversal_hardening.c"
+          "mutants/src/bof_path_traversal_hardening.c",
+          "include/bof_path_traversal_hardening.h"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -207,8 +207,8 @@
         "id": 11,
         "label": "mutants/src: c2_rest_api",
         "file_ids": [
-          "src/c2_rest_api.c",
           "include/c2_rest_api.h",
+          "src/c2_rest_api.c",
           "mutants/src/c2_rest_api.c"
         ],
         "cohesion": 1.0,
@@ -218,9 +218,9 @@
         "id": 12,
         "label": "mutants/src: certificate_pinning___tofu",
         "file_ids": [
-          "src/certificate_pinning___tofu.c",
           "include/certificate_pinning___tofu.h",
-          "mutants/src/certificate_pinning___tofu.c"
+          "mutants/src/certificate_pinning___tofu.c",
+          "src/certificate_pinning___tofu.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -229,9 +229,9 @@
         "id": 13,
         "label": "mutants/src: command_execution_via_execve",
         "file_ids": [
+          "include/command_execution_via_execve.h",
           "mutants/src/command_execution_via_execve.c",
-          "src/command_execution_via_execve.c",
-          "include/command_execution_via_execve.h"
+          "src/command_execution_via_execve.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -240,9 +240,9 @@
         "id": 14,
         "label": "mutants/src: containerized_build_+_sbom",
         "file_ids": [
-          "mutants/src/containerized_build_+_sbom.c",
           "src/containerized_build_+_sbom.c",
-          "include/containerized_build_+_sbom.h"
+          "include/containerized_build_+_sbom.h",
+          "mutants/src/containerized_build_+_sbom.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -251,9 +251,9 @@
         "id": 15,
         "label": "mutants/src: hkdf_key_derivation",
         "file_ids": [
+          "src/hkdf_key_derivation.c",
           "include/hkdf_key_derivation.h",
-          "mutants/src/hkdf_key_derivation.c",
-          "src/hkdf_key_derivation.c"
+          "mutants/src/hkdf_key_derivation.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -262,9 +262,9 @@
         "id": 16,
         "label": "mutants/src: iv_generation_with_entropy_verification",
         "file_ids": [
-          "src/iv_generation_with_entropy_verification.c",
+          "include/iv_generation_with_entropy_verification.h",
           "mutants/src/iv_generation_with_entropy_verification.c",
-          "include/iv_generation_with_entropy_verification.h"
+          "src/iv_generation_with_entropy_verification.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -273,9 +273,9 @@
         "id": 17,
         "label": "mutants/src: mutation_testing_integration",
         "file_ids": [
-          "mutants/src/mutation_testing_integration.c",
           "include/mutation_testing_integration.h",
-          "src/mutation_testing_integration.c"
+          "src/mutation_testing_integration.c",
+          "mutants/src/mutation_testing_integration.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -284,9 +284,9 @@
         "id": 18,
         "label": "mutants/src: pre-commit_+_ci_hardening",
         "file_ids": [
-          "src/pre-commit_+_ci_hardening.c",
           "include/pre-commit_+_ci_hardening.h",
-          "mutants/src/pre-commit_+_ci_hardening.c"
+          "mutants/src/pre-commit_+_ci_hardening.c",
+          "src/pre-commit_+_ci_hardening.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -296,8 +296,8 @@
         "label": "mutants/src: replay_protection",
         "file_ids": [
           "include/replay_protection.h",
-          "mutants/src/replay_protection.c",
-          "src/replay_protection.c"
+          "src/replay_protection.c",
+          "mutants/src/replay_protection.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -307,8 +307,8 @@
         "label": "mutants/src: socks5___http_proxy_support",
         "file_ids": [
           "mutants/src/socks5___http_proxy_support.c",
-          "src/socks5___http_proxy_support.c",
-          "include/socks5___http_proxy_support.h"
+          "include/socks5___http_proxy_support.h",
+          "src/socks5___http_proxy_support.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -317,9 +317,9 @@
         "id": 21,
         "label": "mutants/src: structured_jsonl_logging",
         "file_ids": [
-          "include/structured_jsonl_logging.h",
           "src/structured_jsonl_logging.c",
-          "mutants/src/structured_jsonl_logging.c"
+          "mutants/src/structured_jsonl_logging.c",
+          "include/structured_jsonl_logging.h"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -328,8 +328,8 @@
         "id": 22,
         "label": "mutants/src: tls_client_certificate_authentication",
         "file_ids": [
-          "include/tls_client_certificate_authentication.h",
           "mutants/src/tls_client_certificate_authentication.c",
+          "include/tls_client_certificate_authentication.h",
           "src/tls_client_certificate_authentication.c"
         ],
         "cohesion": 1.0,
@@ -339,9 +339,9 @@
         "id": 23,
         "label": "mutants/src: unified_config_schema",
         "file_ids": [
-          "src/unified_config_schema.c",
+          "mutants/src/unified_config_schema.c",
           "include/unified_config_schema.h",
-          "mutants/src/unified_config_schema.c"
+          "src/unified_config_schema.c"
         ],
         "cohesion": 1.0,
         "size": 3
@@ -392,8 +392,8 @@
     "suggested_questions": [
       "What does cJSON.h depend on, and what depends on it? (12 connections)",
       "What does aes.h depend on, and what depends on it? (10 connections)",
-      "What does server.py depend on, and what depends on it? (9 connections)",
-      "How are the 20 files in 'root' related to each other?",
+      "What does server.py depend on, and what depends on it? (10 connections)",
+      "How are the 20 files in 'legacy' related to each other?",
       "Why are bof.c and config.c connected through 7 hops across 2 communities?"
     ]
   },
@@ -402,12 +402,7 @@
     "aes.h": "utility",
     "app.py": "utility",
     "beacon.h": "utility",
-    "beacon3.c": "utility",
-    "beacon5.c": "utility",
-    "beacon6.c": "utility",
-    "beacon_p2p.c": "utility",
     "beacons/v1/beacon.c": "utility",
-    "beacons/v1/gopher_beacon.c": "utility",
     "beacons/v2/beacon.c": "utility",
     "beacons/v3/beacon.c": "utility",
     "bof/cat/bof.c": "utility",
@@ -428,7 +423,6 @@
     "cJSON.h": "utility",
     "config/generate_parsers.py": "infrastructure",
     "contract_agent.py": "utility",
-    "gopher_beacon.c": "utility",
     "gopher_c2.py": "utility",
     "include/aes.c": "utility",
     "include/aes.h": "utility",
@@ -466,6 +460,12 @@
     "include/unified_config_schema.h": "infrastructure",
     "install.sh": "utility",
     "issudo.c": "utility",
+    "legacy/beacon3.c": "utility",
+    "legacy/beacon5.c": "utility",
+    "legacy/beacon6.c": "utility",
+    "legacy/beacon_p2p.c": "utility",
+    "legacy/gopher_beacon.c": "utility",
+    "legacy/v1_gopher_beacon.c": "utility",
     "mutants/src/async_i_o_for_beacon.c": "utility",
     "mutants/src/beacon_common.c_extraction.c": "utility",
     "mutants/src/beacon_heartbeat___health_endpoint.c": "presentation",

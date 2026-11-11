@@ -62,7 +62,7 @@ This community groups 6 file(s) rooted at `tests` with dominant language c (cohe
 
 ## Risks
 
-- No scoped security, taint, cycle, or layer risks.
+- [dataflow DEAD_STORE] `include/config.c:810` `binary_dir` `slash`: `slash` assigned at line 810 but never read afterwards.
 
 ## Open Questions
 

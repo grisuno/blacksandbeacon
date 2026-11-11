@@ -1,6 +1,6 @@
-# `beacon6.c`
+# `legacy/beacon3.c`
 
-> Source: [beacon6.c:1](../../beacon6.c#L1) | language `c` | coverage 60.9% | [API index](../index.md)
+> Source: [legacy/beacon3.c:1](../../legacy/beacon3.c#L1) | language `c` | coverage 60.9% | [API index](../index.md)
 
 ## Contents
 
@@ -29,34 +29,28 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
-    n_beacon6_c__download_bof(["download_bof"])
-    n_beacon6_c__https_request(["https_request"])
-    n_beacon6_c__run_bof_and_capture(["run_bof_and_capture"])
-    n_beacon6_c__RunELF(["RunELF"])
-    n_beacon6_c__main(["main"])
-    n_beacon6_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
-    n_beacon6_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
-    n_beacon6_c__base64_decode(["base64_decode"])
-    n_beacon6_c__base64_encode(["base64_encode"])
-    n_beacon6_c__exec_cmd(["exec_cmd"])
-    n_beacon6_c__get_local_ips(["get_local_ips"])
-    n_aes_h__AES_ECB_encrypt["aes.AES_ECB_encrypt"]
-    n_aes_h__AES_init_ctx["aes.AES_init_ctx"]
-    n_beacon6_c__download_bof --> n_beacon6_c__https_request
-    n_beacon6_c__run_bof_and_capture --> n_beacon6_c__RunELF
-    n_beacon6_c__main --> n_beacon6_c__aes256_cfb_decrypt
-    n_beacon6_c__main --> n_beacon6_c__aes256_cfb_encrypt
-    n_beacon6_c__main --> n_beacon6_c__base64_decode
-    n_beacon6_c__main --> n_beacon6_c__base64_encode
-    n_beacon6_c__main --> n_beacon6_c__download_bof
-    n_beacon6_c__main --> n_beacon6_c__exec_cmd
-    n_beacon6_c__main --> n_beacon6_c__get_local_ips
-    n_beacon6_c__main --> n_beacon6_c__https_request
-    n_beacon6_c__main --> n_beacon6_c__run_bof_and_capture
-    n_beacon6_c__aes256_cfb_encrypt -.-> n_aes_h__AES_ECB_encrypt
-    n_beacon6_c__aes256_cfb_encrypt -.-> n_aes_h__AES_init_ctx
-    n_beacon6_c__aes256_cfb_decrypt -.-> n_aes_h__AES_ECB_encrypt
-    n_beacon6_c__aes256_cfb_decrypt -.-> n_aes_h__AES_init_ctx
+    n_legacy_beacon3_c__download_bof(["download_bof"])
+    n_legacy_beacon3_c__https_request(["https_request"])
+    n_legacy_beacon3_c__run_bof_and_capture(["run_bof_and_capture"])
+    n_legacy_beacon3_c__RunELF(["RunELF"])
+    n_legacy_beacon3_c__main(["main"])
+    n_legacy_beacon3_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
+    n_legacy_beacon3_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
+    n_legacy_beacon3_c__base64_decode(["base64_decode"])
+    n_legacy_beacon3_c__base64_encode(["base64_encode"])
+    n_legacy_beacon3_c__exec_cmd(["exec_cmd"])
+    n_legacy_beacon3_c__get_local_ips(["get_local_ips"])
+    n_legacy_beacon3_c__download_bof --> n_legacy_beacon3_c__https_request
+    n_legacy_beacon3_c__run_bof_and_capture --> n_legacy_beacon3_c__RunELF
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__aes256_cfb_decrypt
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__aes256_cfb_encrypt
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__base64_decode
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__base64_encode
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__download_bof
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__exec_cmd
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__get_local_ips
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__https_request
+    n_legacy_beacon3_c__main --> n_legacy_beacon3_c__run_bof_and_capture
 ```
 
 ## Structs
@@ -65,7 +59,7 @@ flowchart LR
 
 ### `MemoryStruct`
 
-`struct` | [beacon6.c:53](../../beacon6.c#L53)
+`struct` | [legacy/beacon3.c:52](../../legacy/beacon3.c#L52)
 
 ```c
 struct MemoryStruct
@@ -79,7 +73,7 @@ struct MemoryStruct
 
 ### `Trampoline`
 
-`struct` | [beacon6.c:61](../../beacon6.c#L61)
+`struct` | [legacy/beacon3.c:60](../../legacy/beacon3.c#L60)
 
 ```c
 typedef struct
@@ -93,7 +87,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [beacon6.c:70](../../beacon6.c#L70)
+`struct` | [legacy/beacon3.c:69](../../legacy/beacon3.c#L69)
 
 ```c
 typedef struct
@@ -105,7 +99,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon6.c:77](../../beacon6.c#L77)
+`struct` | [legacy/beacon3.c:76](../../legacy/beacon3.c#L76)
 
 ```c
 typedef struct
@@ -121,7 +115,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [beacon6.c:266](../../beacon6.c#L266)
+`function` | [legacy/beacon3.c:196](../../legacy/beacon3.c#L196)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -143,7 +137,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [beacon6.c:283](../../beacon6.c#L283)
+`function` | [legacy/beacon3.c:213](../../legacy/beacon3.c#L213)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -167,7 +161,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `https_request`
 
-`function` | [beacon6.c:412](../../beacon6.c#L412)
+`function` | [legacy/beacon3.c:342](../../legacy/beacon3.c#L342)
 
 ```c
 char *https_request(const char *url, const char *method, const char *post_data)
@@ -193,7 +187,7 @@ char *https_request(const char *url, const char *method, const char *post_data)
 
 ### `base64_encode`
 
-`function` | [beacon6.c:506](../../beacon6.c#L506)
+`function` | [legacy/beacon3.c:436](../../legacy/beacon3.c#L436)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -218,7 +212,7 @@ char *base64_encode(const unsigned char *input, int len)
 
 ### `base64_decode`
 
-`function` | [beacon6.c:524](../../beacon6.c#L524)
+`function` | [legacy/beacon3.c:454](../../legacy/beacon3.c#L454)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -241,7 +235,7 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon6.c:550](../../beacon6.c#L550)
+`function` | [legacy/beacon3.c:480](../../legacy/beacon3.c#L480)
 
 ```c
 unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
@@ -261,8 +255,6 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main)
 
 ---
@@ -271,7 +263,7 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon6.c:584](../../beacon6.c#L584)
+`function` | [legacy/beacon3.c:514](../../legacy/beacon3.c#L514)
 
 ```c
 unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
@@ -289,8 +281,6 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main)
 
 ---
@@ -299,7 +289,7 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 ### `exec_cmd`
 
-`function` | [beacon6.c:620](../../beacon6.c#L620)
+`function` | [legacy/beacon3.c:550](../../legacy/beacon3.c#L550)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
@@ -324,7 +314,7 @@ char *exec_cmd(const char *cmd, int *out_len)
 
 ### `RunELF`
 
-`function` | [beacon6.c:654](../../beacon6.c#L654)
+`function` | [legacy/beacon3.c:584](../../legacy/beacon3.c#L584)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -356,7 +346,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [beacon6.c:1153](../../beacon6.c#L1153)
+`function` | [legacy/beacon3.c:1083](../../legacy/beacon3.c#L1083)
 
 ```c
 char *get_local_ips()
@@ -374,7 +364,7 @@ char *get_local_ips()
 
 ### `download_bof`
 
-`function` | [beacon6.c:1188](../../beacon6.c#L1188)
+`function` | [legacy/beacon3.c:1118](../../legacy/beacon3.c#L1118)
 
 ```c
 unsigned char *download_bof(const char *url, size_t *out_size)
@@ -401,7 +391,7 @@ unsigned char *download_bof(const char *url, size_t *out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [beacon6.c:1211](../../beacon6.c#L1211)
+`function` | [legacy/beacon3.c:1141](../../legacy/beacon3.c#L1141)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
@@ -431,7 +421,7 @@ char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args
 
 ### `main`
 
-`function` | [beacon6.c:1257](../../beacon6.c#L1257)
+`function` | [legacy/beacon3.c:1187](../../legacy/beacon3.c#L1187)
 
 ```c
 int main()
@@ -451,7 +441,7 @@ int main()
 
 ### `_GNU_SOURCE`
 
-`macro` | [beacon6.c:1](../../beacon6.c#L1)
+`macro` | [legacy/beacon3.c:1](../../legacy/beacon3.c#L1)
 
 ```c
 #define _GNU_SOURCE
@@ -463,7 +453,7 @@ int main()
 
 ### `C2_URL`
 
-`macro` | [beacon6.c:34](../../beacon6.c#L34)
+`macro` | [legacy/beacon3.c:33](../../legacy/beacon3.c#L33)
 
 ```c
 #define C2_URL
@@ -475,7 +465,7 @@ int main()
 
 ### `CLIENT_ID`
 
-`macro` | [beacon6.c:35](../../beacon6.c#L35)
+`macro` | [legacy/beacon3.c:34](../../legacy/beacon3.c#L34)
 
 ```c
 #define CLIENT_ID
@@ -487,7 +477,7 @@ int main()
 
 ### `MALEABLE`
 
-`macro` | [beacon6.c:36](../../beacon6.c#L36)
+`macro` | [legacy/beacon3.c:35](../../legacy/beacon3.c#L35)
 
 ```c
 #define MALEABLE
@@ -499,7 +489,7 @@ int main()
 
 ### `USER_AGENTS_COUNT`
 
-`macro` | [beacon6.c:37](../../beacon6.c#L37)
+`macro` | [legacy/beacon3.c:36](../../legacy/beacon3.c#L36)
 
 ```c
 #define USER_AGENTS_COUNT

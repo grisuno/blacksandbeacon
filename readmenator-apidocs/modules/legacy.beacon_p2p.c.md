@@ -1,6 +1,6 @@
-# `beacon_p2p.c`
+# `legacy/beacon_p2p.c`
 
-> Source: [beacon_p2p.c:1](../../beacon_p2p.c#L1) | language `c` | coverage 40.9% | [API index](../index.md)
+> Source: [legacy/beacon_p2p.c:1](../../legacy/beacon_p2p.c#L1) | language `c` | coverage 40.9% | [API index](../index.md)
 
 ## Contents
 
@@ -33,51 +33,51 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
-    n_beacon_p2p_c__BeaconDataInt(["BeaconDataInt"])
-    n_beacon_p2p_c__BeaconDataPtr(["BeaconDataPtr"])
-    n_beacon_p2p_c__BeaconDataShort(["BeaconDataShort"])
-    n_beacon_p2p_c__BeaconDataExtract(["BeaconDataExtract"])
-    n_beacon_p2p_c__download_bof(["download_bof"])
-    n_beacon_p2p_c__https_request(["https_request"])
-    n_beacon_p2p_c__run_bof_and_capture(["run_bof_and_capture"])
-    n_beacon_p2p_c__RunELF(["RunELF"])
-    n_beacon_p2p_c__peer_discovery_thread(["peer_discovery_thread"])
-    n_beacon_p2p_c__add_peer(["add_peer"])
-    n_beacon_p2p_c__handle_peer_connection(["handle_peer_connection"])
-    n_beacon_p2p_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
-    n_beacon_p2p_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
-    n_beacon_p2p_c__execute_generic_command(["execute_generic_command"])
-    n_beacon_p2p_c__send_to_peer(["send_to_peer"])
-    n_beacon_p2p_c__send_to_c2_or_peer(["send_to_c2_or_peer"])
-    n_beacon_p2p_c__exec_cmd(["exec_cmd"])
-    n_beacon_p2p_c__main(["main"])
-    n_beacon_p2p_c__base64_decode(["base64_decode"])
-    n_beacon_p2p_c__base64_encode(["base64_encode"])
-    n_beacon_p2p_c__get_local_ips(["get_local_ips"])
-    n_beacon_p2p_c__BeaconDataInt --> n_beacon_p2p_c__BeaconDataPtr
-    n_beacon_p2p_c__BeaconDataShort --> n_beacon_p2p_c__BeaconDataPtr
-    n_beacon_p2p_c__BeaconDataExtract --> n_beacon_p2p_c__BeaconDataInt
-    n_beacon_p2p_c__BeaconDataExtract --> n_beacon_p2p_c__BeaconDataPtr
-    n_beacon_p2p_c__download_bof --> n_beacon_p2p_c__https_request
-    n_beacon_p2p_c__run_bof_and_capture --> n_beacon_p2p_c__RunELF
-    n_beacon_p2p_c__peer_discovery_thread --> n_beacon_p2p_c__add_peer
-    n_beacon_p2p_c__handle_peer_connection --> n_beacon_p2p_c__aes256_cfb_decrypt
-    n_beacon_p2p_c__handle_peer_connection --> n_beacon_p2p_c__aes256_cfb_encrypt
-    n_beacon_p2p_c__handle_peer_connection --> n_beacon_p2p_c__execute_generic_command
-    n_beacon_p2p_c__handle_peer_connection --> n_beacon_p2p_c__https_request
-    n_beacon_p2p_c__send_to_peer --> n_beacon_p2p_c__aes256_cfb_decrypt
-    n_beacon_p2p_c__send_to_peer --> n_beacon_p2p_c__aes256_cfb_encrypt
-    n_beacon_p2p_c__send_to_c2_or_peer --> n_beacon_p2p_c__https_request
-    n_beacon_p2p_c__send_to_c2_or_peer --> n_beacon_p2p_c__send_to_peer
-    n_beacon_p2p_c__execute_generic_command --> n_beacon_p2p_c__download_bof
-    n_beacon_p2p_c__execute_generic_command --> n_beacon_p2p_c__exec_cmd
-    n_beacon_p2p_c__execute_generic_command --> n_beacon_p2p_c__run_bof_and_capture
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__aes256_cfb_decrypt
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__aes256_cfb_encrypt
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__base64_decode
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__base64_encode
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__execute_generic_command
-    n_beacon_p2p_c__main --> n_beacon_p2p_c__get_local_ips
+    n_legacy_beacon_p2p_c__BeaconDataInt(["BeaconDataInt"])
+    n_legacy_beacon_p2p_c__BeaconDataPtr(["BeaconDataPtr"])
+    n_legacy_beacon_p2p_c__BeaconDataShort(["BeaconDataShort"])
+    n_legacy_beacon_p2p_c__BeaconDataExtract(["BeaconDataExtract"])
+    n_legacy_beacon_p2p_c__download_bof(["download_bof"])
+    n_legacy_beacon_p2p_c__https_request(["https_request"])
+    n_legacy_beacon_p2p_c__run_bof_and_capture(["run_bof_and_capture"])
+    n_legacy_beacon_p2p_c__RunELF(["RunELF"])
+    n_legacy_beacon_p2p_c__peer_discovery_thread(["peer_discovery_thread"])
+    n_legacy_beacon_p2p_c__add_peer(["add_peer"])
+    n_legacy_beacon_p2p_c__handle_peer_connection(["handle_peer_connection"])
+    n_legacy_beacon_p2p_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
+    n_legacy_beacon_p2p_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
+    n_legacy_beacon_p2p_c__execute_generic_command(["execute_generic_command"])
+    n_legacy_beacon_p2p_c__send_to_peer(["send_to_peer"])
+    n_legacy_beacon_p2p_c__send_to_c2_or_peer(["send_to_c2_or_peer"])
+    n_legacy_beacon_p2p_c__exec_cmd(["exec_cmd"])
+    n_legacy_beacon_p2p_c__main(["main"])
+    n_legacy_beacon_p2p_c__base64_decode(["base64_decode"])
+    n_legacy_beacon_p2p_c__base64_encode(["base64_encode"])
+    n_legacy_beacon_p2p_c__get_local_ips(["get_local_ips"])
+    n_legacy_beacon_p2p_c__BeaconDataInt --> n_legacy_beacon_p2p_c__BeaconDataPtr
+    n_legacy_beacon_p2p_c__BeaconDataShort --> n_legacy_beacon_p2p_c__BeaconDataPtr
+    n_legacy_beacon_p2p_c__BeaconDataExtract --> n_legacy_beacon_p2p_c__BeaconDataInt
+    n_legacy_beacon_p2p_c__BeaconDataExtract --> n_legacy_beacon_p2p_c__BeaconDataPtr
+    n_legacy_beacon_p2p_c__download_bof --> n_legacy_beacon_p2p_c__https_request
+    n_legacy_beacon_p2p_c__run_bof_and_capture --> n_legacy_beacon_p2p_c__RunELF
+    n_legacy_beacon_p2p_c__peer_discovery_thread --> n_legacy_beacon_p2p_c__add_peer
+    n_legacy_beacon_p2p_c__handle_peer_connection --> n_legacy_beacon_p2p_c__aes256_cfb_decrypt
+    n_legacy_beacon_p2p_c__handle_peer_connection --> n_legacy_beacon_p2p_c__aes256_cfb_encrypt
+    n_legacy_beacon_p2p_c__handle_peer_connection --> n_legacy_beacon_p2p_c__execute_generic_command
+    n_legacy_beacon_p2p_c__handle_peer_connection --> n_legacy_beacon_p2p_c__https_request
+    n_legacy_beacon_p2p_c__send_to_peer --> n_legacy_beacon_p2p_c__aes256_cfb_decrypt
+    n_legacy_beacon_p2p_c__send_to_peer --> n_legacy_beacon_p2p_c__aes256_cfb_encrypt
+    n_legacy_beacon_p2p_c__send_to_c2_or_peer --> n_legacy_beacon_p2p_c__https_request
+    n_legacy_beacon_p2p_c__send_to_c2_or_peer --> n_legacy_beacon_p2p_c__send_to_peer
+    n_legacy_beacon_p2p_c__execute_generic_command --> n_legacy_beacon_p2p_c__download_bof
+    n_legacy_beacon_p2p_c__execute_generic_command --> n_legacy_beacon_p2p_c__exec_cmd
+    n_legacy_beacon_p2p_c__execute_generic_command --> n_legacy_beacon_p2p_c__run_bof_and_capture
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__aes256_cfb_decrypt
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__aes256_cfb_encrypt
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__base64_decode
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__base64_encode
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__execute_generic_command
+    n_legacy_beacon_p2p_c__main --> n_legacy_beacon_p2p_c__get_local_ips
 ```
 
 ## Structs
@@ -86,7 +86,7 @@ flowchart LR
 
 ### `peer_t`
 
-`struct` | [beacon_p2p.c:59](../../beacon_p2p.c#L59)
+`struct` | [legacy/beacon_p2p.c:59](../../legacy/beacon_p2p.c#L59)
 
 ```c
 typedef struct
@@ -100,7 +100,7 @@ ESTRUCTURAS P2P
 
 ### `p2p_header_t`
 
-`struct` | [beacon_p2p.c:73](../../beacon_p2p.c#L73)
+`struct` | [legacy/beacon_p2p.c:73](../../legacy/beacon_p2p.c#L73)
 
 ```c
 typedef struct
@@ -112,7 +112,7 @@ typedef struct
 
 ### `Trampoline`
 
-`struct` | [beacon_p2p.c:175](../../beacon_p2p.c#L175)
+`struct` | [legacy/beacon_p2p.c:175](../../legacy/beacon_p2p.c#L175)
 
 ```c
 typedef struct
@@ -126,7 +126,7 @@ TRAMPOLINES Y RELOCACIÓN (RunELF) - SIN CAMBIOS
 
 ### `SymbolResolver`
 
-`struct` | [beacon_p2p.c:182](../../beacon_p2p.c#L182)
+`struct` | [legacy/beacon_p2p.c:182](../../legacy/beacon_p2p.c#L182)
 
 ```c
 typedef struct
@@ -138,7 +138,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [beacon_p2p.c:192](../../beacon_p2p.c#L192)
+`struct` | [legacy/beacon_p2p.c:192](../../legacy/beacon_p2p.c#L192)
 
 ```c
 typedef struct
@@ -150,7 +150,7 @@ typedef struct
 
 ### `MemoryStruct`
 
-`struct` | [beacon_p2p.c:676](../../beacon_p2p.c#L676)
+`struct` | [legacy/beacon_p2p.c:676](../../legacy/beacon_p2p.c#L676)
 
 ```c
 struct MemoryStruct
@@ -166,7 +166,7 @@ FUNCIONES DE COMUNICACIÓN (HTTPS + BASE64 + AES)
 
 ### `BeaconDataParse`
 
-`function` | [beacon_p2p.c:93](../../beacon_p2p.c#L93)
+`function` | [legacy/beacon_p2p.c:93](../../legacy/beacon_p2p.c#L93)
 
 ```c
 void BeaconDataParse(datap *parser, char *buffer, int size)
@@ -188,7 +188,7 @@ FUNCIONES DE LA API DE BEACON (para BOFs)
 
 ### `BeaconDataPtr`
 
-`function` | [beacon_p2p.c:100](../../beacon_p2p.c#L100)
+`function` | [legacy/beacon_p2p.c:100](../../legacy/beacon_p2p.c#L100)
 
 ```c
 char *BeaconDataPtr(datap *parser, int size)
@@ -211,7 +211,7 @@ char *BeaconDataPtr(datap *parser, int size)
 
 ### `BeaconDataInt`
 
-`function` | [beacon_p2p.c:110](../../beacon_p2p.c#L110)
+`function` | [legacy/beacon_p2p.c:110](../../legacy/beacon_p2p.c#L110)
 
 ```c
 int BeaconDataInt(datap *parser)
@@ -235,7 +235,7 @@ int BeaconDataInt(datap *parser)
 
 ### `BeaconDataShort`
 
-`function` | [beacon_p2p.c:118](../../beacon_p2p.c#L118)
+`function` | [legacy/beacon_p2p.c:118](../../legacy/beacon_p2p.c#L118)
 
 ```c
 short BeaconDataShort(datap *parser)
@@ -257,7 +257,7 @@ short BeaconDataShort(datap *parser)
 
 ### `BeaconDataLength`
 
-`function` | [beacon_p2p.c:126](../../beacon_p2p.c#L126)
+`function` | [legacy/beacon_p2p.c:126](../../legacy/beacon_p2p.c#L126)
 
 ```c
 int BeaconDataLength(datap *parser)
@@ -277,7 +277,7 @@ int BeaconDataLength(datap *parser)
 
 ### `BeaconDataExtract`
 
-`function` | [beacon_p2p.c:131](../../beacon_p2p.c#L131)
+`function` | [legacy/beacon_p2p.c:131](../../legacy/beacon_p2p.c#L131)
 
 ```c
 char *BeaconDataExtract(datap *parser, int *size)
@@ -300,7 +300,7 @@ char *BeaconDataExtract(datap *parser, int *size)
 
 ### `BeaconPrintf`
 
-`function` | [beacon_p2p.c:142](../../beacon_p2p.c#L142)
+`function` | [legacy/beacon_p2p.c:142](../../legacy/beacon_p2p.c#L142)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -324,7 +324,7 @@ Beacon API: printf-style output capture (called by BOFs).
 
 ### `BeaconOutput`
 
-`function` | [beacon_p2p.c:159](../../beacon_p2p.c#L159)
+`function` | [legacy/beacon_p2p.c:159](../../legacy/beacon_p2p.c#L159)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -348,7 +348,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `RunELF`
 
-`function` | [beacon_p2p.c:358](../../beacon_p2p.c#L358)
+`function` | [legacy/beacon_p2p.c:358](../../legacy/beacon_p2p.c#L358)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -380,7 +380,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `https_request`
 
-`function` | [beacon_p2p.c:707](../../beacon_p2p.c#L707)
+`function` | [legacy/beacon_p2p.c:707](../../legacy/beacon_p2p.c#L707)
 
 ```c
 char *https_request(const char *url, const char *method, const char *post_data)
@@ -410,7 +410,7 @@ Returns a struct with the response body, length, and status code. On error, data
 
 ### `base64_encode`
 
-`function` | [beacon_p2p.c:763](../../beacon_p2p.c#L763)
+`function` | [legacy/beacon_p2p.c:763](../../legacy/beacon_p2p.c#L763)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -437,7 +437,7 @@ Base64 encode/decode (OpenSSL BIO-based)
 
 ### `base64_decode`
 
-`function` | [beacon_p2p.c:780](../../beacon_p2p.c#L780)
+`function` | [legacy/beacon_p2p.c:780](../../legacy/beacon_p2p.c#L780)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -460,7 +460,7 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [beacon_p2p.c:802](../../beacon_p2p.c#L802)
+`function` | [legacy/beacon_p2p.c:802](../../legacy/beacon_p2p.c#L802)
 
 ```c
 unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
@@ -482,8 +482,6 @@ AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency)
 
 > **Inherited:** Documentation from [`aes256_cfb_encrypt`](#aes256_cfb_encrypt) (include/beacon_common.h:134).
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`handle_peer_connection`](#handle_peer_connection), [`main`](#main), [`send_to_peer`](#send_to_peer)
 
 ---
@@ -492,7 +490,7 @@ AES-256-CFB encrypt/decrypt (standalone, no OpenSSL dependency)
 
 ### `aes256_cfb_decrypt`
 
-`function` | [beacon_p2p.c:832](../../beacon_p2p.c#L832)
+`function` | [legacy/beacon_p2p.c:832](../../legacy/beacon_p2p.c#L832)
 
 ```c
 unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
@@ -510,8 +508,6 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`handle_peer_connection`](#handle_peer_connection), [`main`](#main), [`send_to_peer`](#send_to_peer)
 
 ---
@@ -520,7 +516,7 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 ### `exec_cmd`
 
-`function` | [beacon_p2p.c:866](../../beacon_p2p.c#L866)
+`function` | [legacy/beacon_p2p.c:866](../../legacy/beacon_p2p.c#L866)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
@@ -545,7 +541,7 @@ UTILIDADES: ejecutar comandos shell, obtener IPs, etc.
 
 ### `get_local_ips`
 
-`function` | [beacon_p2p.c:891](../../beacon_p2p.c#L891)
+`function` | [legacy/beacon_p2p.c:891](../../legacy/beacon_p2p.c#L891)
 
 ```c
 char *get_local_ips()
@@ -567,7 +563,7 @@ Returns malloc'd buffer (caller frees). Falls back to "127.0.0.1".
 
 ### `download_bof`
 
-`function` | [beacon_p2p.c:925](../../beacon_p2p.c#L925)
+`function` | [legacy/beacon_p2p.c:925](../../legacy/beacon_p2p.c#L925)
 
 ```c
 unsigned char *download_bof(const char *url, size_t *out_size)
@@ -598,7 +594,7 @@ Returns malloc'd buffer (caller frees). On error, sets *out_size to 0 and return
 
 ### `run_bof_and_capture`
 
-`function` | [beacon_p2p.c:939](../../beacon_p2p.c#L939)
+`function` | [legacy/beacon_p2p.c:939](../../legacy/beacon_p2p.c#L939)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
@@ -632,7 +628,7 @@ Returns malloc'd string (caller frees). On error or empty output, returns strdup
 
 ### `add_peer`
 
-`function` | [beacon_p2p.c:965](../../beacon_p2p.c#L965)
+`function` | [legacy/beacon_p2p.c:965](../../legacy/beacon_p2p.c#L965)
 
 ```c
 void add_peer(struct in_addr ip, int port, const char *id)
@@ -656,7 +652,7 @@ FUNCIONES P2P
 
 ### `peer_discovery_thread`
 
-`function` | [beacon_p2p.c:992](../../beacon_p2p.c#L992)
+`function` | [legacy/beacon_p2p.c:992](../../legacy/beacon_p2p.c#L992)
 
 ```c
 void *peer_discovery_thread(void *arg)
@@ -678,7 +674,7 @@ void *peer_discovery_thread(void *arg)
 
 ### `handle_peer_connection`
 
-`function` | [beacon_p2p.c:1032](../../beacon_p2p.c#L1032)
+`function` | [legacy/beacon_p2p.c:1032](../../legacy/beacon_p2p.c#L1032)
 
 ```c
 void *handle_peer_connection(void *arg)
@@ -700,7 +696,7 @@ void *handle_peer_connection(void *arg)
 
 ### `peer_server_thread`
 
-`function` | [beacon_p2p.c:1130](../../beacon_p2p.c#L1130)
+`function` | [legacy/beacon_p2p.c:1130](../../legacy/beacon_p2p.c#L1130)
 
 ```c
 void *peer_server_thread(void *arg)
@@ -720,7 +716,7 @@ void *peer_server_thread(void *arg)
 
 ### `send_to_peer`
 
-`function` | [beacon_p2p.c:1153](../../beacon_p2p.c#L1153)
+`function` | [legacy/beacon_p2p.c:1153](../../legacy/beacon_p2p.c#L1153)
 
 ```c
 char *send_to_peer(peer_t *peer, const char *data, int *out_len)
@@ -746,7 +742,7 @@ char *send_to_peer(peer_t *peer, const char *data, int *out_len)
 
 ### `send_to_c2_or_peer`
 
-`function` | [beacon_p2p.c:1197](../../beacon_p2p.c#L1197)
+`function` | [legacy/beacon_p2p.c:1197](../../legacy/beacon_p2p.c#L1197)
 
 ```c
 char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)
@@ -773,7 +769,7 @@ char *send_to_c2_or_peer(const char *url, const char *method, const char *data, 
 
 ### `execute_generic_command`
 
-`function` | [beacon_p2p.c:1231](../../beacon_p2p.c#L1231)
+`function` | [legacy/beacon_p2p.c:1231](../../legacy/beacon_p2p.c#L1231)
 
 ```c
 char *execute_generic_command(const char *cmd, int *out_len)
@@ -800,7 +796,7 @@ EJECUTOR DE COMANDOS (unificado para shell y BOF)
 
 ### `main`
 
-`function` | [beacon_p2p.c:1276](../../beacon_p2p.c#L1276)
+`function` | [legacy/beacon_p2p.c:1276](../../legacy/beacon_p2p.c#L1276)
 
 ```c
 int main()
@@ -820,7 +816,7 @@ MAIN
 
 ### `_GNU_SOURCE`
 
-`macro` | [beacon_p2p.c:1](../../beacon_p2p.c#L1)
+`macro` | [legacy/beacon_p2p.c:1](../../legacy/beacon_p2p.c#L1)
 
 ```c
 #define _GNU_SOURCE
@@ -832,7 +828,7 @@ MAIN
 
 ### `C2_URL`
 
-`macro` | [beacon_p2p.c:37](../../beacon_p2p.c#L37)
+`macro` | [legacy/beacon_p2p.c:37](../../legacy/beacon_p2p.c#L37)
 
 ```c
 #define C2_URL
@@ -846,7 +842,7 @@ CONSTANTES
 
 ### `CLIENT_ID`
 
-`macro` | [beacon_p2p.c:38](../../beacon_p2p.c#L38)
+`macro` | [legacy/beacon_p2p.c:38](../../legacy/beacon_p2p.c#L38)
 
 ```c
 #define CLIENT_ID
@@ -858,7 +854,7 @@ CONSTANTES
 
 ### `MALEABLE`
 
-`macro` | [beacon_p2p.c:39](../../beacon_p2p.c#L39)
+`macro` | [legacy/beacon_p2p.c:39](../../legacy/beacon_p2p.c#L39)
 
 ```c
 #define MALEABLE
@@ -870,7 +866,7 @@ CONSTANTES
 
 ### `USER_AGENTS_COUNT`
 
-`macro` | [beacon_p2p.c:40](../../beacon_p2p.c#L40)
+`macro` | [legacy/beacon_p2p.c:40](../../legacy/beacon_p2p.c#L40)
 
 ```c
 #define USER_AGENTS_COUNT
@@ -882,7 +878,7 @@ CONSTANTES
 
 ### `PEER_DISCOVERY_PORT`
 
-`macro` | [beacon_p2p.c:42](../../beacon_p2p.c#L42)
+`macro` | [legacy/beacon_p2p.c:42](../../legacy/beacon_p2p.c#L42)
 
 ```c
 #define PEER_DISCOVERY_PORT
@@ -894,7 +890,7 @@ CONSTANTES
 
 ### `PEER_TCP_PORT`
 
-`macro` | [beacon_p2p.c:43](../../beacon_p2p.c#L43)
+`macro` | [legacy/beacon_p2p.c:43](../../legacy/beacon_p2p.c#L43)
 
 ```c
 #define PEER_TCP_PORT
@@ -906,7 +902,7 @@ CONSTANTES
 
 ### `PEER_MAGIC`
 
-`macro` | [beacon_p2p.c:44](../../beacon_p2p.c#L44)
+`macro` | [legacy/beacon_p2p.c:44](../../legacy/beacon_p2p.c#L44)
 
 ```c
 #define PEER_MAGIC
@@ -918,7 +914,7 @@ CONSTANTES
 
 ### `PEER_VERSION`
 
-`macro` | [beacon_p2p.c:45](../../beacon_p2p.c#L45)
+`macro` | [legacy/beacon_p2p.c:45](../../legacy/beacon_p2p.c#L45)
 
 ```c
 #define PEER_VERSION
@@ -930,7 +926,7 @@ CONSTANTES
 
 ### `BROADCAST_INTERVAL`
 
-`macro` | [beacon_p2p.c:46](../../beacon_p2p.c#L46)
+`macro` | [legacy/beacon_p2p.c:46](../../legacy/beacon_p2p.c#L46)
 
 ```c
 #define BROADCAST_INTERVAL
@@ -942,7 +938,7 @@ CONSTANTES
 
 ### `MAX_PEERS`
 
-`macro` | [beacon_p2p.c:47](../../beacon_p2p.c#L47)
+`macro` | [legacy/beacon_p2p.c:47](../../legacy/beacon_p2p.c#L47)
 
 ```c
 #define MAX_PEERS

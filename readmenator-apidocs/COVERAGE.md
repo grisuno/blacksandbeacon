@@ -1,6 +1,6 @@
 # Documentation Coverage
 
-Overall: **36.0%** (350 of 973 public modules, types, and callables). Data members are excluded from the ratio.
+Overall: **35.9%** (350 of 974 public modules, types, and callables). Data members are excluded from the ratio.
 
 [Back to index](index.md)
 
@@ -10,7 +10,7 @@ Overall: **36.0%** (350 of 973 public modules, types, and callables). Data membe
 |---|---|---|---|
 | class | 1 | 1 | 100.0% |
 | constructor | 0 | 1 | 0.0% |
-| function | 192 | 486 | 39.5% |
+| function | 192 | 487 | 39.4% |
 | macro | 69 | 298 | 23.2% |
 | module | 50 | 104 | 48.1% |
 | struct | 33 | 71 | 46.5% |
@@ -61,8 +61,8 @@ Overall: **36.0%** (350 of 973 public modules, types, and callables). Data membe
 | [`beacons/v1/beacon.c`](modules/beacons.v1.beacon.c.md) | 1 | 3 | 33.3% |
 | [`include/aes.c`](modules/include.aes.c.md) | 8 | 24 | 33.3% |
 | [`include/aes_cfb.h`](modules/include.aes_cfb.h.md) | 1 | 3 | 33.3% |
-| [`beacon5.c`](modules/beacon5.c.md) | 15 | 39 | 38.5% |
-| [`beacon_p2p.c`](modules/beacon_p2p.c.md) | 18 | 44 | 40.9% |
+| [`legacy/beacon5.c`](modules/legacy.beacon5.c.md) | 15 | 39 | 38.5% |
+| [`legacy/beacon_p2p.c`](modules/legacy.beacon_p2p.c.md) | 18 | 44 | 40.9% |
 | [`bof/suid_enum/bof.c`](modules/bof.suid_enum.bof.c.md) | 4 | 9 | 44.4% |
 | [`beacon.h`](modules/beacon.h.md) | 6 | 13 | 46.2% |
 | [`include/beacon.h`](modules/include.beacon.h.md) | 6 | 13 | 46.2% |
@@ -101,17 +101,17 @@ Overall: **36.0%** (350 of 973 public modules, types, and callables). Data membe
 | [`bof/is_sudo/is_sudo.c`](modules/bof.is_sudo.is_sudo.c.md) | 8 | 14 | 57.1% |
 | [`issudo.c`](modules/issudo.c.md) | 8 | 14 | 57.1% |
 | [`include/aes_cfb.c`](modules/include.aes_cfb.c.md) | 3 | 5 | 60.0% |
-| [`beacon3.c`](modules/beacon3.c.md) | 14 | 23 | 60.9% |
-| [`beacon6.c`](modules/beacon6.c.md) | 14 | 23 | 60.9% |
-| [`beacons/v1/gopher_beacon.c`](modules/beacons.v1.gopher_beacon.c.md) | 14 | 23 | 60.9% |
-| [`gopher_beacon.c`](modules/gopher_beacon.c.md) | 14 | 23 | 60.9% |
+| [`legacy/beacon3.c`](modules/legacy.beacon3.c.md) | 14 | 23 | 60.9% |
+| [`legacy/beacon6.c`](modules/legacy.beacon6.c.md) | 14 | 23 | 60.9% |
+| [`legacy/gopher_beacon.c`](modules/legacy.gopher_beacon.c.md) | 14 | 23 | 60.9% |
+| [`legacy/v1_gopher_beacon.c`](modules/legacy.v1_gopher_beacon.c.md) | 14 | 23 | 60.9% |
 | [`bof/whoami/whoami.c`](modules/bof.whoami.whoami.c.md) | 8 | 13 | 61.5% |
 | [`bof/cat/cat.c`](modules/bof.cat.cat.c.md) | 8 | 12 | 66.7% |
 | [`bof/userenum/userenum.c`](modules/bof.userenum.userenum.c.md) | 8 | 12 | 66.7% |
 | [`include/config_autogen.c`](modules/include.config_autogen.c.md) | 2 | 3 | 66.7% |
 | [`include/beacon_common.h`](modules/include.beacon_common.h.md) | 23 | 34 | 67.6% |
+| [`include/beacon_common.c`](modules/include.beacon_common.c.md) | 19 | 26 | 73.1% |
 | [`config.generate_parsers`](modules/config.generate_parsers.py.md) | 6 | 8 | 75.0% |
-| [`include/beacon_common.c`](modules/include.beacon_common.c.md) | 19 | 25 | 76.0% |
 | [`contract_agent`](modules/contract_agent.py.md) | 14 | 18 | 77.8% |
 | [`c2.server`](modules/c2.server.py.md) | 17 | 18 | 94.4% |
 | [`app`](modules/app.py.md) | 1 | 1 | 100.0% |
@@ -129,7 +129,7 @@ Overall: **36.0%** (350 of 973 public modules, types, and callables). Data membe
 
 DOC001 undocumented public item, DOC002 parameter not documented, DOC003 documented parameter missing from the signature (stale doc), DOC004 return value not documented, DOC005 raised exception not documented.
 
-DOC001: 622
+DOC001: 623
 
 - DOC001 `aes.c:5` macro Nb is not documented
 - DOC001 `aes.c:7` macro KEYLEN_256 is not documented
@@ -170,85 +170,8 @@ DOC001: 622
 - DOC001 `beacon.h:25` function BeaconDataShort is not documented
 - DOC001 `beacon.h:26` function BeaconDataLength is not documented
 - DOC001 `beacon.h:27` function BeaconDataExtract is not documented
-- DOC001 `beacon3.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `beacon3.c:1` module beacon3.c is not documented
-- DOC001 `beacon3.c:33` macro C2_URL is not documented
-- DOC001 `beacon3.c:34` macro CLIENT_ID is not documented
-- DOC001 `beacon3.c:35` macro MALEABLE is not documented
-- DOC001 `beacon3.c:36` macro USER_AGENTS_COUNT is not documented
-- DOC001 `beacon3.c:69` struct SymbolResolver is not documented
-- DOC001 `beacon3.c:454` function base64_decode is not documented
-- DOC001 `beacon3.c:514` function aes256_cfb_decrypt is not documented
-- DOC001 `beacon5.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `beacon5.c:1` module beacon5.c is not documented
-- DOC001 `beacon5.c:36` macro MAX_PEERS is not documented
-- DOC001 `beacon5.c:37` macro DISCOVERY_PORT is not documented
-- DOC001 `beacon5.c:38` macro DISCOVERY_INTERVAL is not documented
-- DOC001 `beacon5.c:39` macro MAX_TTL is not documented
-- DOC001 `beacon5.c:40` macro MESH_MSG_SIZE is not documented
-- DOC001 `beacon5.c:42` macro C2_URL is not documented
-- DOC001 `beacon5.c:43` macro CLIENT_ID is not documented
-- DOC001 `beacon5.c:44` macro MALEABLE is not documented
-- DOC001 `beacon5.c:45` macro USER_AGENTS_COUNT is not documented
-- DOC001 `beacon5.c:77` struct mesh_msg_t is not documented
-- DOC001 `beacon5.c:111` struct SymbolResolver is not documented
-- DOC001 `beacon5.c:497` function base64_decode is not documented
-- DOC001 `beacon5.c:557` function aes256_cfb_decrypt is not documented
-- DOC001 `beacon5.c:1231` function mesh_mark_seen is not documented
-- DOC001 `beacon5.c:1240` function mesh_is_seen is not documented
-- DOC001 `beacon5.c:1255` function mesh_add_peer is not documented
-- DOC001 `beacon5.c:1283` function mesh_cleanup_peers is not documented
-- DOC001 `beacon5.c:1300` function mesh_send_to_peer is not documented
-- DOC001 `beacon5.c:1324` function mesh_propagate is not documented
-- DOC001 `beacon5.c:1356` function mesh_discovery_thread is not documented
-- DOC001 `beacon5.c:1447` function mesh_listener_thread is not documented
-- DOC001 `beacon5.c:1667` function mesh_send_message is not documented
-- DOC001 `beacon6.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `beacon6.c:1` module beacon6.c is not documented
-- DOC001 `beacon6.c:34` macro C2_URL is not documented
-- DOC001 `beacon6.c:35` macro CLIENT_ID is not documented
-- DOC001 `beacon6.c:36` macro MALEABLE is not documented
-- DOC001 `beacon6.c:37` macro USER_AGENTS_COUNT is not documented
-- DOC001 `beacon6.c:70` struct SymbolResolver is not documented
-- DOC001 `beacon6.c:524` function base64_decode is not documented
-- DOC001 `beacon6.c:584` function aes256_cfb_decrypt is not documented
-- DOC001 `beacon_p2p.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `beacon_p2p.c:1` module beacon_p2p.c is not documented
-- DOC001 `beacon_p2p.c:38` macro CLIENT_ID is not documented
-- DOC001 `beacon_p2p.c:39` macro MALEABLE is not documented
-- DOC001 `beacon_p2p.c:40` macro USER_AGENTS_COUNT is not documented
-- DOC001 `beacon_p2p.c:42` macro PEER_DISCOVERY_PORT is not documented
-- DOC001 `beacon_p2p.c:43` macro PEER_TCP_PORT is not documented
-- DOC001 `beacon_p2p.c:44` macro PEER_MAGIC is not documented
-- DOC001 `beacon_p2p.c:45` macro PEER_VERSION is not documented
-- DOC001 `beacon_p2p.c:46` macro BROADCAST_INTERVAL is not documented
-- DOC001 `beacon_p2p.c:47` macro MAX_PEERS is not documented
-- DOC001 `beacon_p2p.c:73` struct p2p_header_t is not documented
-- DOC001 `beacon_p2p.c:100` function BeaconDataPtr is not documented
-- DOC001 `beacon_p2p.c:110` function BeaconDataInt is not documented
-- DOC001 `beacon_p2p.c:118` function BeaconDataShort is not documented
-- DOC001 `beacon_p2p.c:126` function BeaconDataLength is not documented
-- DOC001 `beacon_p2p.c:131` function BeaconDataExtract is not documented
-- DOC001 `beacon_p2p.c:182` struct SymbolResolver is not documented
-- DOC001 `beacon_p2p.c:192` struct TrampolineCache is not documented
-- DOC001 `beacon_p2p.c:780` function base64_decode is not documented
-- DOC001 `beacon_p2p.c:832` function aes256_cfb_decrypt is not documented
-- DOC001 `beacon_p2p.c:992` function peer_discovery_thread is not documented
-- DOC001 `beacon_p2p.c:1032` function handle_peer_connection is not documented
-- DOC001 `beacon_p2p.c:1130` function peer_server_thread is not documented
-- DOC001 `beacon_p2p.c:1153` function send_to_peer is not documented
-- DOC001 `beacon_p2p.c:1197` function send_to_c2_or_peer is not documented
 - DOC001 `beacons/v1/beacon.c:1` module beacons/v1/beacon.c is not documented
 - DOC001 `beacons/v1/beacon.c:167` function main is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:1` module beacons/v1/gopher_beacon.c is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:30` macro C2 is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:31` macro CLIENT_ID is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:32` macro MALEABLE is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:33` macro USER_AGENTS_COUNT is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:66` struct SymbolResolver is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:440` function base64_decode is not documented
-- DOC001 `beacons/v1/gopher_beacon.c:500` function aes256_cfb_decrypt is not documented
 - DOC001 `beacons/v2/beacon.c:1` module beacons/v2/beacon.c is not documented
 - DOC001 `beacons/v2/beacon.c:27` macro MAX_PEERS is not documented
 - DOC001 `beacons/v2/beacon.c:28` macro DISCOVERY_PORT is not documented
@@ -459,15 +382,6 @@ DOC001: 622
 - DOC001 `contract_agent.py:33` function git is not documented
 - DOC001 `contract_agent.py:37` function make_target is not documented
 - DOC001 `contract_agent.py:316` function main is not documented
-- DOC001 `gopher_beacon.c:1` macro _GNU_SOURCE is not documented
-- DOC001 `gopher_beacon.c:1` module gopher_beacon.c is not documented
-- DOC001 `gopher_beacon.c:30` macro C2 is not documented
-- DOC001 `gopher_beacon.c:31` macro CLIENT_ID is not documented
-- DOC001 `gopher_beacon.c:32` macro MALEABLE is not documented
-- DOC001 `gopher_beacon.c:33` macro USER_AGENTS_COUNT is not documented
-- DOC001 `gopher_beacon.c:66` struct SymbolResolver is not documented
-- DOC001 `gopher_beacon.c:440` function base64_decode is not documented
-- DOC001 `gopher_beacon.c:500` function aes256_cfb_decrypt is not documented
 - DOC001 `gopher_c2.py:1` module gopher_c2.py is not documented
 - DOC001 `gopher_c2.py:30` function encrypt_data is not documented
 - DOC001 `gopher_c2.py:40` function decrypt_data is not documented
@@ -519,11 +433,12 @@ DOC001: 622
 - DOC001 `include/beacon.h:26` function BeaconDataLength is not documented
 - DOC001 `include/beacon.h:27` function BeaconDataExtract is not documented
 - DOC001 `include/beacon_common.c:1` module include/beacon_common.c is not documented
-- DOC001 `include/beacon_common.c:243` function cleanup_trampolines is not documented
-- DOC001 `include/beacon_common.c:260` function get_or_create_trampoline is not documented
-- DOC001 `include/beacon_common.c:398` function base64_decode is not documented
-- DOC001 `include/beacon_common.c:726` function bsb_backoff_next is not documented
-- DOC001 `include/beacon_common.c:737` function bsb_backoff_reset is not documented
+- DOC001 `include/beacon_common.c:249` function cleanup_trampolines is not documented
+- DOC001 `include/beacon_common.c:266` function get_or_create_trampoline is not documented
+- DOC001 `include/beacon_common.c:460` function base64_decode is not documented
+- DOC001 `include/beacon_common.c:788` function bsb_backoff_next is not documented
+- DOC001 `include/beacon_common.c:799` function bsb_backoff_reset is not documented
+- DOC001 `include/beacon_common.c:941` function fault is not documented
 - DOC001 `include/beacon_common.c_extraction.h:1` module include/beacon_common.c_extraction.h is not documented
 - DOC001 `include/beacon_common.c_extraction.h:2` macro BEACON_COMMON is not documented
 - DOC001 `include/beacon_common.h:1` module include/beacon_common.h is not documented
@@ -631,4 +546,89 @@ DOC001: 622
 - DOC001 `include/cJSON.c:3127` function CJSON_PUBLIC is not documented
 - DOC001 `include/cJSON.c:3251` function CJSON_PUBLIC is not documented
 - DOC001 `include/cJSON.c:3256` function CJSON_PUBLIC is not documented
-- ... 122 more in `api/warnings.jsonl`
+- DOC001 `include/cJSON.h:1` module include/cJSON.h is not documented
+- DOC001 `include/cJSON.h:24` macro cJSON__h is not documented
+- DOC001 `include/cJSON.h:33` macro __WINDOWS__ is not documented
+- DOC001 `include/cJSON.h:50` macro CJSON_STDCALL is not documented
+- DOC001 `include/cJSON.h:54` macro CJSON_EXPORT_SYMBOLS is not documented
+- DOC001 `include/cJSON.h:58` macro CJSON_PUBLIC is not documented
+- DOC001 `include/cJSON.h:60` macro CJSON_PUBLIC is not documented
+- DOC001 `include/cJSON.h:62` macro CJSON_PUBLIC is not documented
+- DOC001 `include/cJSON.h:66` macro CJSON_STDCALL is not documented
+- DOC001 `include/cJSON.h:70` macro CJSON_PUBLIC is not documented
+- DOC001 `include/cJSON.h:72` macro CJSON_PUBLIC is not documented
+- DOC001 `include/cJSON.h:78` macro CJSON_VERSION_MINOR is not documented
+- DOC001 `include/cJSON.h:79` macro CJSON_VERSION_PATCH is not documented
+- DOC001 `include/cJSON.h:85` macro cJSON_False is not documented
+- DOC001 `include/cJSON.h:86` macro cJSON_True is not documented
+- DOC001 `include/cJSON.h:87` macro cJSON_NULL is not documented
+- DOC001 `include/cJSON.h:88` macro cJSON_Number is not documented
+- DOC001 `include/cJSON.h:89` macro cJSON_String is not documented
+- DOC001 `include/cJSON.h:90` macro cJSON_Array is not documented
+- DOC001 `include/cJSON.h:91` macro cJSON_Object is not documented
+- DOC001 `include/cJSON.h:92` macro cJSON_Raw is not documented
+- DOC001 `include/cJSON.h:94` macro cJSON_IsReference is not documented
+- DOC001 `include/cJSON.h:95` macro cJSON_StringIsConst is not documented
+- DOC001 `include/cJSON.h:123` struct cJSON_Hooks is not documented
+- DOC001 `include/cJSON.h:130` type_alias cJSON_bool is not documented
+- DOC001 `include/cJSON.h:136` macro CJSON_NESTING_LIMIT is not documented
+- DOC001 `include/cJSON.h:142` macro CJSON_CIRCULAR_LIMIT is not documented
+- DOC001 `include/cJSON.h:152` function cJSON_Parse is not documented
+- DOC001 `include/cJSON.h:161` function cJSON_GetErrorPtr is not documented
+- DOC001 `include/cJSON.h:247` function that is not documented
+- DOC001 `include/cJSON.h:286` function sensitive is not documented
+- DOC001 `include/cJSON.h:316` macro cJSON_SetNumberValue is not documented
+- DOC001 `include/certificate_pinning___tofu.h:1` module include/certificate_pinning___tofu.h is not documented
+- DOC001 `include/certificate_pinning___tofu.h:4` function certificate_pinning___tofu_process is not documented
+- DOC001 `include/command_execution_via_execve.h:1` module include/command_execution_via_execve.h is not documented
+- DOC001 `include/command_execution_via_execve.h:4` function command_execution_via_execve_process is not documented
+- DOC001 `include/config.c:1` module include/config.c is not documented
+- DOC001 `include/config.c:288` macro HKDF_SALT is not documented
+- DOC001 `include/config.c:289` macro HKDF_INFO_ENC is not documented
+- DOC001 `include/config.c:290` macro HKDF_INFO_HMAC is not documented
+- DOC001 `include/config.h:1` module include/config.h is not documented
+- DOC001 `include/config.h:19` macro BSB_CONFIG_PATH_DEFAULT is not documented
+- DOC001 `include/config.h:20` macro BSB_CONFIG_PATH_ENV is not documented
+- DOC001 `include/config.h:21` macro BSB_MAX_URL is not documented
+- DOC001 `include/config.h:22` macro BSB_MAX_URI is not documented
+- DOC001 `include/config.h:23` macro BSB_MAX_CLIENT_ID is not documented
+- DOC001 `include/config.h:24` macro BSB_AES_KEY_HEX_LEN is not documented
+- DOC001 `include/config.h:26` macro BSB_MAX_USER_AGENTS is not documented
+- DOC001 `include/config.h:27` macro BSB_USER_AGENT_LEN is not documented
+- DOC001 `include/config.h:28` macro BSB_REPORT_URI_DEFAULT is not documented
+- DOC001 `include/config.h:30` struct bsb_c2_t is not documented
+- DOC001 `include/config.h:38` struct bsb_crypto_t is not documented
+- DOC001 `include/config.h:48` struct bsb_timing_t is not documented
+- DOC001 `include/config.h:56` struct bsb_network_t is not documented
+- DOC001 `include/config.h:64` struct bsb_bof_t is not documented
+- DOC001 `include/config.h:70` struct bsb_backoff_config_t is not documented
+- DOC001 `include/config.h:76` struct bsb_config_t is not documented
+- DOC001 `include/config_autogen.c:1` module include/config_autogen.c is not documented
+- DOC001 `include/config_autogen.h:1` module include/config_autogen.h is not documented
+- DOC001 `include/config_autogen.h:11` struct bsb_c2_t is not documented
+- DOC001 `include/config_autogen.h:21` struct bsb_crypto_t is not documented
+- DOC001 `include/config_autogen.h:28` struct bsb_timing_t is not documented
+- DOC001 `include/config_autogen.h:35` struct bsb_network_t is not documented
+- DOC001 `include/config_autogen.h:42` struct bsb_bof_t is not documented
+- DOC001 `include/config_autogen.h:47` struct bsb_backoff_t is not documented
+- DOC001 `include/config_autogen.h:52` struct bsb_server_t is not documented
+- DOC001 `include/config_autogen.h:57` struct bsb_config_t is not documented
+- DOC001 `include/containerized_build_+_sbom.h:1` module include/containerized_build_+_sbom.h is not documented
+- DOC001 `include/containerized_build_+_sbom.h:2` macro CONTAINERIZED_BUILD_ is not documented
+- DOC001 `include/hkdf_key_derivation.h:1` module include/hkdf_key_derivation.h is not documented
+- DOC001 `include/hkdf_key_derivation.h:4` function hkdf_key_derivation_process is not documented
+- DOC001 `include/iv_generation_with_entropy_verification.h:1` module include/iv_generation_with_entropy_verification.h is not documented
+- DOC001 `include/iv_generation_with_entropy_verification.h:4` function iv_generation_with_entropy_verification_process is not documented
+- DOC001 `include/pre-commit_+_ci_hardening.h:1` module include/pre-commit_+_ci_hardening.h is not documented
+- DOC001 `include/pre-commit_+_ci_hardening.h:2` macro PRE is not documented
+- DOC001 `include/replay_protection.h:1` module include/replay_protection.h is not documented
+- DOC001 `include/replay_protection.h:4` function replay_protection_process is not documented
+- DOC001 `include/socks5___http_proxy_support.h:1` module include/socks5___http_proxy_support.h is not documented
+- DOC001 `include/socks5___http_proxy_support.h:4` function socks5___http_proxy_support_process is not documented
+- DOC001 `include/structured_jsonl_logging.h:1` module include/structured_jsonl_logging.h is not documented
+- DOC001 `include/structured_jsonl_logging.h:4` function structured_jsonl_logging_process is not documented
+- DOC001 `include/tls_client_certificate_authentication.h:1` module include/tls_client_certificate_authentication.h is not documented
+- DOC001 `include/tls_client_certificate_authentication.h:4` function tls_client_certificate_authentication_process is not documented
+- DOC001 `include/unified_config_schema.h:1` module include/unified_config_schema.h is not documented
+- DOC001 `include/unified_config_schema.h:4` function unified_config_schema_process is not documented
+- ... 123 more in `api/warnings.jsonl`

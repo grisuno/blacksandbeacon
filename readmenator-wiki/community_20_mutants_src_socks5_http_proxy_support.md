@@ -28,7 +28,7 @@ This community groups 3 file(s) rooted at `mutants/src` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 20 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (root) and community 20 (mutants/src: socks5___http_proxy_support).
+- [INFERRED] shares_context community 0 <-> 20 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (legacy) and community 20 (mutants/src: socks5___http_proxy_support).
 
 ## Risks
 

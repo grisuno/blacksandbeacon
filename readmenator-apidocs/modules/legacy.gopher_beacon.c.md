@@ -1,6 +1,6 @@
-# `gopher_beacon.c`
+# `legacy/gopher_beacon.c`
 
-> Source: [gopher_beacon.c:1](../../gopher_beacon.c#L1) | language `c` | coverage 60.9% | [API index](../index.md)
+> Source: [legacy/gopher_beacon.c:1](../../legacy/gopher_beacon.c#L1) | language `c` | coverage 60.9% | [API index](../index.md)
 
 ## Contents
 
@@ -29,37 +29,31 @@ Solid arrows stay in this module, dashed arrows leave it.
 
 ```mermaid
 flowchart LR
-    n_gopher_beacon_c__download_bof(["download_bof"])
-    n_gopher_beacon_c__base64_decode(["base64_decode"])
-    n_gopher_beacon_c__gopher_request(["gopher_request"])
-    n_gopher_beacon_c__run_bof_and_capture(["run_bof_and_capture"])
-    n_gopher_beacon_c__RunELF(["RunELF"])
-    n_gopher_beacon_c__main(["main"])
-    n_gopher_beacon_c__C2(["C2"])
-    n_gopher_beacon_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
-    n_gopher_beacon_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
-    n_gopher_beacon_c__base64_encode(["base64_encode"])
-    n_gopher_beacon_c__exec_cmd(["exec_cmd"])
-    n_gopher_beacon_c__get_local_ips(["get_local_ips"])
-    n_aes_h__AES_ECB_encrypt["aes.AES_ECB_encrypt"]
-    n_aes_h__AES_init_ctx["aes.AES_init_ctx"]
-    n_gopher_beacon_c__download_bof --> n_gopher_beacon_c__base64_decode
-    n_gopher_beacon_c__download_bof --> n_gopher_beacon_c__gopher_request
-    n_gopher_beacon_c__run_bof_and_capture --> n_gopher_beacon_c__RunELF
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__C2
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__aes256_cfb_decrypt
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__aes256_cfb_encrypt
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__base64_decode
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__base64_encode
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__download_bof
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__exec_cmd
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__get_local_ips
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__gopher_request
-    n_gopher_beacon_c__main --> n_gopher_beacon_c__run_bof_and_capture
-    n_gopher_beacon_c__aes256_cfb_encrypt -.-> n_aes_h__AES_ECB_encrypt
-    n_gopher_beacon_c__aes256_cfb_encrypt -.-> n_aes_h__AES_init_ctx
-    n_gopher_beacon_c__aes256_cfb_decrypt -.-> n_aes_h__AES_ECB_encrypt
-    n_gopher_beacon_c__aes256_cfb_decrypt -.-> n_aes_h__AES_init_ctx
+    n_legacy_gopher_beacon_c__download_bof(["download_bof"])
+    n_legacy_gopher_beacon_c__base64_decode(["base64_decode"])
+    n_legacy_gopher_beacon_c__gopher_request(["gopher_request"])
+    n_legacy_gopher_beacon_c__run_bof_and_capture(["run_bof_and_capture"])
+    n_legacy_gopher_beacon_c__RunELF(["RunELF"])
+    n_legacy_gopher_beacon_c__main(["main"])
+    n_legacy_gopher_beacon_c__C2(["C2"])
+    n_legacy_gopher_beacon_c__aes256_cfb_decrypt(["aes256_cfb_decrypt"])
+    n_legacy_gopher_beacon_c__aes256_cfb_encrypt(["aes256_cfb_encrypt"])
+    n_legacy_gopher_beacon_c__base64_encode(["base64_encode"])
+    n_legacy_gopher_beacon_c__exec_cmd(["exec_cmd"])
+    n_legacy_gopher_beacon_c__get_local_ips(["get_local_ips"])
+    n_legacy_gopher_beacon_c__download_bof --> n_legacy_gopher_beacon_c__base64_decode
+    n_legacy_gopher_beacon_c__download_bof --> n_legacy_gopher_beacon_c__gopher_request
+    n_legacy_gopher_beacon_c__run_bof_and_capture --> n_legacy_gopher_beacon_c__RunELF
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__C2
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__aes256_cfb_decrypt
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__aes256_cfb_encrypt
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__base64_decode
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__base64_encode
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__download_bof
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__exec_cmd
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__get_local_ips
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__gopher_request
+    n_legacy_gopher_beacon_c__main --> n_legacy_gopher_beacon_c__run_bof_and_capture
 ```
 
 ## Structs
@@ -68,7 +62,7 @@ flowchart LR
 
 ### `MemoryStruct`
 
-`struct` | [gopher_beacon.c:49](../../gopher_beacon.c#L49)
+`struct` | [legacy/gopher_beacon.c:49](../../legacy/gopher_beacon.c#L49)
 
 ```c
 struct MemoryStruct
@@ -82,7 +76,7 @@ struct MemoryStruct
 
 ### `Trampoline`
 
-`struct` | [gopher_beacon.c:57](../../gopher_beacon.c#L57)
+`struct` | [legacy/gopher_beacon.c:57](../../legacy/gopher_beacon.c#L57)
 
 ```c
 typedef struct
@@ -96,7 +90,7 @@ typedef struct
 
 ### `SymbolResolver`
 
-`struct` | [gopher_beacon.c:66](../../gopher_beacon.c#L66)
+`struct` | [legacy/gopher_beacon.c:66](../../legacy/gopher_beacon.c#L66)
 
 ```c
 typedef struct
@@ -108,7 +102,7 @@ typedef struct
 
 ### `TrampolineCache`
 
-`struct` | [gopher_beacon.c:73](../../gopher_beacon.c#L73)
+`struct` | [legacy/gopher_beacon.c:73](../../legacy/gopher_beacon.c#L73)
 
 ```c
 typedef struct
@@ -124,7 +118,7 @@ typedef struct
 
 ### `BeaconPrintf`
 
-`function` | [gopher_beacon.c:193](../../gopher_beacon.c#L193)
+`function` | [legacy/gopher_beacon.c:193](../../legacy/gopher_beacon.c#L193)
 
 ```c
 void BeaconPrintf(int type, const char *fmt, ...)
@@ -146,7 +140,7 @@ void BeaconPrintf(int type, const char *fmt, ...)
 
 ### `BeaconOutput`
 
-`function` | [gopher_beacon.c:210](../../gopher_beacon.c#L210)
+`function` | [legacy/gopher_beacon.c:210](../../legacy/gopher_beacon.c#L210)
 
 ```c
 void BeaconOutput(int type, const char *data, int len)
@@ -170,7 +164,7 @@ Beacon API: raw output capture (called by BOFs).
 
 ### `gopher_request`
 
-`function` | [gopher_beacon.c:339](../../gopher_beacon.c#L339)
+`function` | [legacy/gopher_beacon.c:339](../../legacy/gopher_beacon.c#L339)
 
 ```c
 char *gopher_request(const char *host, int port, const char *selector, const char *method, const char *post_data)
@@ -198,7 +192,7 @@ char *gopher_request(const char *host, int port, const char *selector, const cha
 
 ### `base64_encode`
 
-`function` | [gopher_beacon.c:422](../../gopher_beacon.c#L422)
+`function` | [legacy/gopher_beacon.c:422](../../legacy/gopher_beacon.c#L422)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -223,7 +217,7 @@ char *base64_encode(const unsigned char *input, int len)
 
 ### `base64_decode`
 
-`function` | [gopher_beacon.c:440](../../gopher_beacon.c#L440)
+`function` | [legacy/gopher_beacon.c:440](../../legacy/gopher_beacon.c#L440)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -246,7 +240,7 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ### `aes256_cfb_encrypt`
 
-`function` | [gopher_beacon.c:466](../../gopher_beacon.c#L466)
+`function` | [legacy/gopher_beacon.c:466](../../legacy/gopher_beacon.c#L466)
 
 ```c
 unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext, size_t len, int *out_len)
@@ -266,8 +260,6 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main)
 
 ---
@@ -276,7 +268,7 @@ unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char 
 
 ### `aes256_cfb_decrypt`
 
-`function` | [gopher_beacon.c:500](../../gopher_beacon.c#L500)
+`function` | [legacy/gopher_beacon.c:500](../../legacy/gopher_beacon.c#L500)
 
 ```c
 unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *ciphertext, size_t len, int *out_len)
@@ -294,8 +286,6 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 **Returns:** `unsigned char *`
 
-*Calls:* [`AES_ECB_encrypt`](aes.h.md#aes_ecb_encrypt), [`AES_init_ctx`](aes.h.md#aes_init_ctx)
-
 *Called by:* [`main`](#main)
 
 ---
@@ -304,7 +294,7 @@ unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char 
 
 ### `exec_cmd`
 
-`function` | [gopher_beacon.c:536](../../gopher_beacon.c#L536)
+`function` | [legacy/gopher_beacon.c:536](../../legacy/gopher_beacon.c#L536)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
@@ -329,7 +319,7 @@ char *exec_cmd(const char *cmd, int *out_len)
 
 ### `RunELF`
 
-`function` | [gopher_beacon.c:581](../../gopher_beacon.c#L581)
+`function` | [legacy/gopher_beacon.c:581](../../legacy/gopher_beacon.c#L581)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -361,7 +351,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `get_local_ips`
 
-`function` | [gopher_beacon.c:1080](../../gopher_beacon.c#L1080)
+`function` | [legacy/gopher_beacon.c:1080](../../legacy/gopher_beacon.c#L1080)
 
 ```c
 char *get_local_ips()
@@ -379,7 +369,7 @@ char *get_local_ips()
 
 ### `download_bof`
 
-`function` | [gopher_beacon.c:1115](../../gopher_beacon.c#L1115)
+`function` | [legacy/gopher_beacon.c:1115](../../legacy/gopher_beacon.c#L1115)
 
 ```c
 unsigned char *download_bof(const char *bof_selector, size_t *out_size)
@@ -406,7 +396,7 @@ unsigned char *download_bof(const char *bof_selector, size_t *out_size)
 
 ### `run_bof_and_capture`
 
-`function` | [gopher_beacon.c:1147](../../gopher_beacon.c#L1147)
+`function` | [legacy/gopher_beacon.c:1147](../../legacy/gopher_beacon.c#L1147)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)
@@ -436,7 +426,7 @@ char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args
 
 ### `main`
 
-`function` | [gopher_beacon.c:1193](../../gopher_beacon.c#L1193)
+`function` | [legacy/gopher_beacon.c:1193](../../legacy/gopher_beacon.c#L1193)
 
 ```c
 int main()
@@ -456,7 +446,7 @@ int main()
 
 ### `_GNU_SOURCE`
 
-`macro` | [gopher_beacon.c:1](../../gopher_beacon.c#L1)
+`macro` | [legacy/gopher_beacon.c:1](../../legacy/gopher_beacon.c#L1)
 
 ```c
 #define _GNU_SOURCE
@@ -468,7 +458,7 @@ int main()
 
 ### `C2`
 
-`macro` | [gopher_beacon.c:30](../../gopher_beacon.c#L30)
+`macro` | [legacy/gopher_beacon.c:30](../../legacy/gopher_beacon.c#L30)
 
 ```c
 #define C2
@@ -482,7 +472,7 @@ int main()
 
 ### `CLIENT_ID`
 
-`macro` | [gopher_beacon.c:31](../../gopher_beacon.c#L31)
+`macro` | [legacy/gopher_beacon.c:31](../../legacy/gopher_beacon.c#L31)
 
 ```c
 #define CLIENT_ID
@@ -494,7 +484,7 @@ int main()
 
 ### `MALEABLE`
 
-`macro` | [gopher_beacon.c:32](../../gopher_beacon.c#L32)
+`macro` | [legacy/gopher_beacon.c:32](../../legacy/gopher_beacon.c#L32)
 
 ```c
 #define MALEABLE
@@ -506,7 +496,7 @@ int main()
 
 ### `USER_AGENTS_COUNT`
 
-`macro` | [gopher_beacon.c:33](../../gopher_beacon.c#L33)
+`macro` | [legacy/gopher_beacon.c:33](../../legacy/gopher_beacon.c#L33)
 
 ```c
 #define USER_AGENTS_COUNT

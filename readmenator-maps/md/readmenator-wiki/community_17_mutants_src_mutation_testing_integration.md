@@ -28,7 +28,7 @@ This community groups 3 file(s) rooted at `mutants/src` with dominant language c
 
 ## Connections
 
-- [INFERRED] shares_context community 0 <-> 17 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (root) and community 17 (mutants/src: mutation_testing_integration).
+- [INFERRED] shares_context community 0 <-> 17 (strength 0.5): Inferred shared context (language c) with no import path between community 0 (legacy) and community 17 (mutants/src: mutation_testing_integration).
 
 ## Risks
 

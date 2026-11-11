@@ -27,7 +27,7 @@
     "community_a": 0,
     "community_b": 2,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 2 (bof/include).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 2 (bof/include).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -35,7 +35,7 @@
     "community_a": 0,
     "community_b": 5,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 5 (mutants/src: async_i_o_for_beacon).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 5 (mutants/src: async_i_o_for_beacon).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -43,7 +43,7 @@
     "community_a": 0,
     "community_b": 6,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 6 (mutants/src: beacon_common.c_extraction).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 6 (mutants/src: beacon_common.c_extraction).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -51,7 +51,7 @@
     "community_a": 0,
     "community_b": 7,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 7 (mutants/src: beacon_heartbeat___health_endpoint).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 7 (mutants/src: beacon_heartbeat___health_endpoint).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -59,7 +59,7 @@
     "community_a": 0,
     "community_b": 8,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 8 (mutants/src: bof_api_versioning).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 8 (mutants/src: bof_api_versioning).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -67,7 +67,7 @@
     "community_a": 0,
     "community_b": 9,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 9 (mutants/src: bof_path_traversal_hardening).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 9 (mutants/src: bof_path_traversal_hardening).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -75,7 +75,7 @@
     "community_a": 0,
     "community_b": 10,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 10 (mutants/src: bof_streaming_(large_outputs)).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 10 (mutants/src: bof_streaming_(large_outputs)).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -83,7 +83,7 @@
     "community_a": 0,
     "community_b": 11,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 11 (mutants/src: c2_rest_api).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 11 (mutants/src: c2_rest_api).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -91,7 +91,7 @@
     "community_a": 0,
     "community_b": 12,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 12 (mutants/src: certificate_pinning___tofu).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 12 (mutants/src: certificate_pinning___tofu).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -99,7 +99,7 @@
     "community_a": 0,
     "community_b": 13,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 13 (mutants/src: command_execution_via_execve).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 13 (mutants/src: command_execution_via_execve).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -107,7 +107,7 @@
     "community_a": 0,
     "community_b": 14,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 14 (mutants/src: containerized_build_+_sbom).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 14 (mutants/src: containerized_build_+_sbom).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -115,7 +115,7 @@
     "community_a": 0,
     "community_b": 15,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 15 (mutants/src: hkdf_key_derivation).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 15 (mutants/src: hkdf_key_derivation).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -123,7 +123,7 @@
     "community_a": 0,
     "community_b": 16,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 16 (mutants/src: iv_generation_with_entropy_verification).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 16 (mutants/src: iv_generation_with_entropy_verification).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -131,7 +131,7 @@
     "community_a": 0,
     "community_b": 17,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 17 (mutants/src: mutation_testing_integration).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 17 (mutants/src: mutation_testing_integration).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -139,7 +139,7 @@
     "community_a": 0,
     "community_b": 18,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 18 (mutants/src: pre-commit_+_ci_hardening).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 18 (mutants/src: pre-commit_+_ci_hardening).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -147,7 +147,7 @@
     "community_a": 0,
     "community_b": 19,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (root) and community 19 (mutants/src: replay_protection).",
+    "explanation": "Inferred shared context (language c and layer utility) with no import path between community 0 (legacy) and community 19 (mutants/src: replay_protection).",
     "strength": 0.5,
     "confidence": "INFERRED"
   },
@@ -155,7 +155,7 @@
     "community_a": 0,
     "community_b": 20,
     "connection_type": "shares_context",
-    "explanation": "Inferred shared context (language c) with no import path between community 0 (root) and community 20 (mutants/src: socks5___http_proxy_support).",
+    "explanation": "Inferred shared context (language c) with no import path between community 0 (legacy) and community 20 (mutants/src: socks5___http_proxy_support).",
     "strength": 0.5,
     "confidence": "INFERRED"
   }

@@ -1,183 +1,6 @@
 # API (page 2 of 3)
 Previous: [API.md](API.md)
 
-## gopher_beacon.c
-Depends on: `aes.h`, `beacon.h`, `cJSON.h`
-- `BeaconPrintf` (function) `gopher_beacon.c:193` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
-- `BeaconOutput` (function) `gopher_beacon.c:210` `void BeaconOutput(int type, const char *data, int len)`
-- `create_trampoline` (function) `gopher_beacon.c:224` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
-- `cleanup_trampolines` (function) `gopher_beacon.c:265` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
-- `get_or_create_trampoline` (function) `gopher_beacon.c:283` `static void *get_or_create_trampoline(void *target)`
-- `WriteMemoryCallback` (function) `gopher_beacon.c:321` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
-- `gopher_request` (function) `gopher_beacon.c:339` `char *gopher_request(const char *host, int port, const char *selector, const char *method,
-      ...` -- === GOPHER REQUEST () ===
-- `base64_encode` (function) `gopher_beacon.c:422` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
-- `base64_decode` (function) `gopher_beacon.c:440` `unsigned char *base64_decode(const char *input, int *len)`
-- `aes256_cfb_encrypt` (function) `gopher_beacon.c:466` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...` -- === AES CFB ===
-- `aes256_cfb_decrypt` (function) `gopher_beacon.c:500` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-- `exec_cmd` (function) `gopher_beacon.c:536` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
-- `page_align` (function) `gopher_beacon.c:573` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
-- `RunELF` (function) `gopher_beacon.c:581` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-- `get_local_ips` (function) `gopher_beacon.c:1080` `char *get_local_ips()` -- === GET LOCAL IPs ===
-- `download_bof` (function) `gopher_beacon.c:1115` `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` -- === DOWNLOAD BOF ===
-- `run_bof_and_capture` (function) `gopher_beacon.c:1147` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...` -- === RUN BOF AND CAPTURE ===
-- `main` (function) `gopher_beacon.c:1193` `int main()` -- === MAIN ===
-
-## gopher_c2.py
-- `encrypt_data` (function) `gopher_c2.py:30` `def encrypt_data(data)`
-- `decrypt_data` (function) `gopher_c2.py:40` `def decrypt_data(b64_data)`
-- `handle_client` (function) `gopher_c2.py:49` `def handle_client(conn, addr)`
-- `main` (function) `gopher_c2.py:143` `def main()`
-- `command_injector` (function) `gopher_c2.py:152` `def command_injector()`
-
-## include/aes.c
-Depends on: `include/aes.h`
-- `KeyExpansion` (function) `include/aes.c:181` `static void KeyExpansion(uint8_t *RoundKey, const uint8_t *Key)` -- This function produces Nb(Nr+1) round keys.
-- `AES_init_ctx` (function) `include/aes.c:254` `void AES_init_ctx(struct AES_ctx *ctx, const uint8_t *key)`
-- `AES_init_ctx_iv` (function) `include/aes.c:259` `void AES_init_ctx_iv(struct AES_ctx *ctx, const uint8_t *key, const uint8_t *iv)` -- if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
-- `AES_ctx_set_iv` (function) `include/aes.c:264` `void AES_ctx_set_iv(struct AES_ctx *ctx, const uint8_t *iv)`
-- `AddRoundKey` (function) `include/aes.c:272` `static void AddRoundKey(uint8_t round, state_t *state, const uint8_t *RoundKey)` -- This function adds the round key to state.
-- `SubBytes` (function) `include/aes.c:286` `static void SubBytes(state_t *state)` -- The SubBytes Function Substitutes the values in the state matrix with values in an S-box.
-- `ShiftRows` (function) `include/aes.c:301` `static void ShiftRows(state_t *state)` -- The ShiftRows() function shifts the rows in the state to the left.
-- `xtime` (function) `include/aes.c:329` `static uint8_t xtime(uint8_t x)`
-- `MixColumns` (function) `include/aes.c:335` `static void MixColumns(state_t *state)` -- MixColumns function mixes the columns of the state matrix
-- `Multiply` (function) `include/aes.c:363` `static uint8_t Multiply(uint8_t x, uint8_t y)` -- Multiply is used to multiply numbers in the field GF(2^8) Note: The last call to xtime() is unneeded, but often ends...
-- `InvMixColumns` (function) `include/aes.c:389` `static void InvMixColumns(state_t *state)` -- MixColumns function mixes the columns of the state matrix.
-- `InvSubBytes` (function) `include/aes.c:413` `static void InvSubBytes(state_t *state)` -- The SubBytes Function Substitutes the values in the state matrix with values in an S-box.
-- `InvShiftRows` (function) `include/aes.c:425` `static void InvShiftRows(state_t *state)`
-- `Cipher` (function) `include/aes.c:455` `static void Cipher(state_t *state, const uint8_t *RoundKey)` -- Cipher is the main function that encrypts the PlainText.
-- `InvCipher` (function) `include/aes.c:482` `static void InvCipher(state_t *state, const uint8_t *RoundKey)` -- if (defined(CBC) && CBC == 1) || (defined(ECB) && ECB == 1)
-- `AES_ECB_encrypt` (function) `include/aes.c:512` `void AES_ECB_encrypt(const struct AES_ctx *ctx, uint8_t *buf)`
-- `AES_ECB_decrypt` (function) `include/aes.c:518` `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf)`
-- `XorWithIv` (function) `include/aes.c:528` `static void XorWithIv(uint8_t *buf, const uint8_t *Iv)`
-- `AES_CBC_encrypt_buffer` (function) `include/aes.c:537` `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)`
-- `AES_CBC_decrypt_buffer` (function) `include/aes.c:552` `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)`
-- `AES_CTR_xcrypt_buffer` (function) `include/aes.c:572` `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length)` -- Symmetrical operation: same function for encrypting as for decrypting.
-
-## include/aes.h
-Imported by: `include/aes.c`, `include/aes_cfb.c`, `include/beacon_common.c`
-- `AES_init_ctx` (function) `include/aes.h:41` `void AES_init_ctx(struct AES_ctx *ctx, const uint8_t *key);`
-- `AES_init_ctx_iv` (function) `include/aes.h:43` `void AES_init_ctx_iv(struct AES_ctx *ctx, const uint8_t *key, const uint8_t *iv);` -- if (defined(CBC) && (CBC == 1)) || (defined(CTR) && (CTR == 1))
-- `AES_ctx_set_iv` (function) `include/aes.h:44` `void AES_ctx_set_iv(struct AES_ctx *ctx, const uint8_t *iv);`
-- `AES_ECB_encrypt` (function) `include/aes.h:48` `void AES_ECB_encrypt(const struct AES_ctx *ctx, uint8_t *buf);` -- if defined(ECB) && (ECB == 1)
-- `AES_ECB_decrypt` (function) `include/aes.h:49` `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf);`
-- `AES_CBC_encrypt_buffer` (function) `include/aes.h:53` `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` -- if defined(CBC) && (CBC == 1)
-- `AES_CBC_decrypt_buffer` (function) `include/aes.h:54` `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);`
-- `AES_CTR_xcrypt_buffer` (function) `include/aes.h:58` `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` -- if defined(CTR) && (CTR == 1)
-
-## include/aes_cfb.c
-Depends on: `include/aes.h`, `include/aes_cfb.h`
-- `aes256_cfb_encrypt` (function) `include/aes_cfb.c:21` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-- `aes256_cfb_decrypt` (function) `include/aes_cfb.c:55` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
-            ...`
-- `aes256_cfb_encrypt_replay` (function) `include/aes_cfb.c:94` `unsigned char *aes256_cfb_encrypt_replay(const unsigned char *key, const unsigned char *iv,
-     ...` -- Encrypt with replay protection: prepends counter (8 bytes LE) and timestamp (8 bytes LE) * to plaintext before...
-- `aes256_cfb_decrypt_replay` (function) `include/aes_cfb.c:126` `unsigned char *aes256_cfb_decrypt_replay(const unsigned char *key, const unsigned char *iv,
-     ...` -- Decrypt with replay protection: decrypts ciphertext, extracts counter and timestamp.
-
-## include/aes_cfb.h
-Imported by: `include/aes_cfb.c`, `mutants/tests/crypto_harness.c`, `tests/crypto_harness.c`
-- `aes256_cfb_encrypt` (function) `include/aes_cfb.h:9` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext...`
-- `aes256_cfb_decrypt` (function) `include/aes_cfb.h:11` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char...`
-
-## include/async_i_o_for_beacon.h
-Imported by: `mutants/src/async_i_o_for_beacon.c`, `src/async_i_o_for_beacon.c`
-- `async_i_o_for_beacon_process` (function) `include/async_i_o_for_beacon.h:4` `bool async_i_o_for_beacon_process(void);`
-
-## include/beacon.h
-- `BeaconDataParse` (function) `include/beacon.h:22` `void BeaconDataParse(datap *parser, char *buffer, int size);` -- === API para BOFs ===
-- `BeaconDataPtr` (function) `include/beacon.h:23` `char *BeaconDataPtr(datap *parser, int size);`
-- `BeaconDataInt` (function) `include/beacon.h:24` `int BeaconDataInt(datap *parser);`
-- `BeaconDataShort` (function) `include/beacon.h:25` `short BeaconDataShort(datap *parser);`
-- `BeaconDataLength` (function) `include/beacon.h:26` `int BeaconDataLength(datap *parser);`
-- `BeaconDataExtract` (function) `include/beacon.h:27` `char *BeaconDataExtract(datap *parser, int *size);`
-- `BeaconPrintf` (function) `include/beacon.h:28` `void BeaconPrintf(int type, const char *fmt, ...);`
-- `BeaconOutput` (function) `include/beacon.h:29` `void BeaconOutput(int type, const char *data, int len);`
-
-## include/beacon_common.c
-Depends on: `include/aes.h`, `include/beacon_common.h`, `include/cJSON.h`
-- `bsb_output_init` (function) `include/beacon_common.c:109` `int bsb_output_init(size_t capacity)` -- {"BeaconPrintf", &g_BeaconPrintf_ptr}, {"BeaconOutput", &g_BeaconOutput_ptr}, {"socket", &g_socket_ptr}, {"connect"...
-- `bsb_output_cleanup` (function) `include/beacon_common.c:135` `void bsb_output_cleanup(void)`
-- `bsb_output_reset` (function) `include/beacon_common.c:149` `void bsb_output_reset(void)`
-- `BeaconPrintf` (function) `include/beacon_common.c:159` `void BeaconPrintf(int type, const char *fmt, ...)` -- g_beacon_output = NULL; g_out_meta = NULL; } void bsb_output_reset(void) { if (g_beacon_output && g_out_meta) {...
-- `BeaconOutput` (function) `include/beacon_common.c:175` `void BeaconOutput(int type, const char *data, int len)`
-- `mmap_near` (function) `include/beacon_common.c:193` `static void *mmap_near(void *near_hint, size_t len, int prot)` -- mmap a code page near `near_hint` so PC32 relocations stay within the * +-2GB displacement range; falls back to an...
-- `create_trampoline` (function) `include/beacon_common.c:211` `void *create_trampoline(void *target, void *near_hint)`
-- `cleanup_trampolines` (function) `include/beacon_common.c:243` `void cleanup_trampolines(void)`
-- `get_or_create_trampoline` (function) `include/beacon_common.c:260` `void *get_or_create_trampoline(void *target, void *near_hint)`
-- `WriteMemoryCallback` (function) `include/beacon_common.c:297` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
-- `https_request` (function) `include/beacon_common.c:311` `http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,
-     ...`
-- `base64_encode` (function) `include/beacon_common.c:381` `char *base64_encode(const unsigned char *input, int len)` -- curl_easy_cleanup(curl); return resp; } long http_code = 0; curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE...
-- `base64_decode` (function) `include/beacon_common.c:398` `unsigned char *base64_decode(const char *input, int *len)`
-- `bsb_generate_secure_iv` (function) `include/beacon_common.c:428` `int bsb_generate_secure_iv(unsigned char *iv_out)` -- Generates a cryptographically secure 16-byte IV.
-- `url_encode` (function) `include/beacon_common.c:459` `char *url_encode(const char *in, size_t in_len, size_t *out_len)`
-- `parse_cmd_to_argv` (function) `include/beacon_common.c:491` `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)` -- Parse command string into argv array.
-- `free_argv` (function) `include/beacon_common.c:567` `static void free_argv(char **argv)`
-- `exec_cmd` (function) `include/beacon_common.c:578` `char *exec_cmd(const char *cmd, int *out_len)` -- Execute command via execve (no shell) and capture stdout+stderr.
-- `bsb_backoff_init` (function) `include/beacon_common.c:719` `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)` -- if (total == 0) { free(buffer); out_len = 0; return strdup(""); } buffer[total] = '\0'; out_len = (int)total; return...
-- `bsb_backoff_next` (function) `include/beacon_common.c:726` `int bsb_backoff_next(bsb_backoff_t *bo)`
-- `bsb_backoff_reset` (function) `include/beacon_common.c:737` `void bsb_backoff_reset(bsb_backoff_t *bo)`
-- `get_local_ips` (function) `include/beacon_common.c:743` `char *get_local_ips(void)` -- bo->current_seconds *= 2; if (bo->current_seconds > bo->max_seconds) { bo->current_seconds = bo->max_seconds; }...
-- `download_bof` (function) `include/beacon_common.c:778` `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)` -- if (addr->sin_family == AF_INET && strcmp(ifr[i].ifr_name, "lo") != 0) { char ip[INET_ADDRSTRLEN]...
-- `init_function_pointers` (function) `include/beacon_common.c:792` `static void init_function_pointers(void)` -- unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size) { http_response_t resp =...
-- `page_align` (function) `include/beacon_common.c:842` `static size_t page_align(size_t size)`
-- `bof_crash_exit` (function) `include/beacon_common.c:850` `static void bof_crash_exit(int sig)`
-- `RunELF` (function) `include/beacon_common.c:872` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
-           unsig...`
-- `run_bof_and_capture` (function) `include/beacon_common.c:1174` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
-   ...`
-
-## include/beacon_common.h
-Depends on: `include/config.h`
-Imported by: `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`, `include/beacon_common.c`, `tests/test_iv_generation_c.c`
-- `bsb_output_init` (function) `include/beacon_common.h:96` `int bsb_output_init(size_t capacity);` -- Initialize the output buffer.
-- `bsb_output_cleanup` (function) `include/beacon_common.h:99` `void bsb_output_cleanup(void);` -- Initialize the output buffer.
-- `bsb_output_reset` (function) `include/beacon_common.h:102` `void bsb_output_reset(void);` -- Initialize the output buffer.
-- `BeaconPrintf` (function) `include/beacon_common.h:105` `void BeaconPrintf(int type, const char *fmt, ...);` -- Initialize the output buffer.
-- `BeaconOutput` (function) `include/beacon_common.h:108` `void BeaconOutput(int type, const char *data, int len);` -- Initialize the output buffer.
-- `create_trampoline` (function) `include/beacon_common.h:111` `void *create_trampoline(void *target, void *near_hint);` -- /* Free the output buffer.
-- `cleanup_trampolines` (function) `include/beacon_common.h:112` `void cleanup_trampolines(void);`
-- `get_or_create_trampoline` (function) `include/beacon_common.h:113` `void *get_or_create_trampoline(void *target, void *near_hint);`
-- `https_request` (function) `include/beacon_common.h:119` `http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method, const char *post_data);` -- HTTP client: performs GET or POST request.
-- `base64_encode` (function) `include/beacon_common.h:123` `char *base64_encode(const unsigned char *input, int len);` -- HTTP client: performs GET or POST request.
-- `base64_decode` (function) `include/beacon_common.h:124` `unsigned char *base64_decode(const char *input, int *len);`
-- `url_encode` (function) `include/beacon_common.h:127` `char *url_encode(const char *in, size_t in_len, size_t *out_len);` -- HTTP client: performs GET or POST request.
-- `bsb_generate_secure_iv` (function) `include/beacon_common.h:131` `int bsb_generate_secure_iv(unsigned char *iv_out);` -- Secure IV generation: tries RAND_bytes, falls back to getrandom(2). * Returns 1 on success, 0 on failure (fail-closed).
-- `aes256_cfb_encrypt` (function) `include/beacon_common.h:134` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv, const unsigned char *plaintext...` -- Secure IV generation: tries RAND_bytes, falls back to getrandom(2). * Returns 1 on success, 0 on failure...
-- `aes256_cfb_decrypt` (function) `include/beacon_common.h:136` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv, const unsigned char...`
-- `aes256_cfb_encrypt_replay` (function) `include/beacon_common.h:142` `unsigned char *aes256_cfb_encrypt_replay(const unsigned char *key, const unsigned char *iv, const unsigned char...` -- Replay-protected encryption: prepends counter (8 bytes LE) and timestamp (8 bytes LE) to plaintext before AES-CFB...
-- `aes256_cfb_decrypt_replay` (function) `include/beacon_common.h:150` `unsigned char *aes256_cfb_decrypt_replay(const unsigned char *key, const unsigned char *iv, const unsigned char...` -- Replay-protected decryption: decrypts ciphertext, extracts counter and timestamp.
-- `buffer` (function) `include/beacon_common.h:156` `* buffer (caller frees). On error, returns NULL. */ char *exec_cmd(const char *cmd, int *out_len);`
-- `RunELF` (function) `include/beacon_common.h:164` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int...` -- ELF BOF loader.
-- `download_bof` (function) `include/beacon_common.h:169` `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size);` -- Download a BOF from the C2 server.
-- `run_bof_and_capture` (function) `include/beacon_common.h:173` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len);` -- Execute a BOF and capture its output.
-- `get_local_ips` (function) `include/beacon_common.h:178` `char *get_local_ips(void);` -- Get local IP addresses as a comma-separated string.
-- `bsb_backoff_init` (function) `include/beacon_common.h:189` `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max);`
-- `bsb_backoff_next` (function) `include/beacon_common.h:190` `int bsb_backoff_next(bsb_backoff_t *bo);`
-- `bsb_backoff_reset` (function) `include/beacon_common.h:191` `void bsb_backoff_reset(bsb_backoff_t *bo);`
-
-## include/beacon_heartbeat___health_endpoint.h
-Imported by: `mutants/src/beacon_heartbeat___health_endpoint.c`, `src/beacon_heartbeat___health_endpoint.c`
-- `beacon_heartbeat___health_endpoint_process` (function) `include/beacon_heartbeat___health_endpoint.h:4` `bool beacon_heartbeat___health_endpoint_process(void);`
-
-## include/bof_api_versioning.h
-Imported by: `mutants/src/bof_api_versioning.c`, `src/bof_api_versioning.c`
-- `bof_api_versioning_process` (function) `include/bof_api_versioning.h:4` `bool bof_api_versioning_process(void);`
-
-## include/bof_path_traversal_hardening.h
-Imported by: `mutants/src/bof_path_traversal_hardening.c`, `src/bof_path_traversal_hardening.c`
-- `bof_path_traversal_hardening_process` (function) `include/bof_path_traversal_hardening.h:4` `bool bof_path_traversal_hardening_process(void);`
-
-## include/bof_streaming_(large_outputs).h
-Imported by: `mutants/src/bof_streaming_(large_outputs).c`, `src/bof_streaming_(large_outputs).c`
-- `bof_streaming_` (function) `include/bof_streaming_(large_outputs).h:4` `bool bof_streaming_(large_outputs)_process(void);`
-
 ## include/c2_rest_api.h
 Imported by: `mutants/src/c2_rest_api.c`, `src/c2_rest_api.c`
 - `c2_rest_api_process` (function) `include/c2_rest_api.h:4` `bool c2_rest_api_process(void);`
@@ -427,6 +250,178 @@ Imported by: `mutants/src/unified_config_schema.c`, `src/unified_config_schema.c
 - `get_username_from_uid` (function) `issudo.c:51` `static int get_username_from_uid(long uid, char *buf, int buf_size)` -- Obtener username desde /etc/passwd (sin libc)
 - `go` (function) `issudo.c:121` `void go(char *args, int alen)`
 
+## legacy/beacon3.c
+- `BeaconPrintf` (function) `legacy/beacon3.c:196` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
+- `BeaconOutput` (function) `legacy/beacon3.c:213` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/beacon3.c:227` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
+- `cleanup_trampolines` (function) `legacy/beacon3.c:268` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
+- `get_or_create_trampoline` (function) `legacy/beacon3.c:286` `static void *get_or_create_trampoline(void *target)`
+- `WriteMemoryCallback` (function) `legacy/beacon3.c:324` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
+- `https_request` (function) `legacy/beacon3.c:342` `char *https_request(const char *url, const char *method, const char *post_data)` -- === HTTPS REQUEST ===
+- `base64_encode` (function) `legacy/beacon3.c:436` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
+- `base64_decode` (function) `legacy/beacon3.c:454` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/beacon3.c:480` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...` -- === AES CFB ===
+- `aes256_cfb_decrypt` (function) `legacy/beacon3.c:514` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/beacon3.c:550` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
+- `page_align` (function) `legacy/beacon3.c:576` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
+- `RunELF` (function) `legacy/beacon3.c:584` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `get_local_ips` (function) `legacy/beacon3.c:1083` `char *get_local_ips()` -- === GET LOCAL IPs ===
+- `download_bof` (function) `legacy/beacon3.c:1118` `unsigned char *download_bof(const char *url, size_t *out_size)` -- === DOWNLOAD BOF ===
+- `run_bof_and_capture` (function) `legacy/beacon3.c:1141` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...` -- === RUN BOF AND CAPTURE ===
+- `main` (function) `legacy/beacon3.c:1187` `int main()` -- === MAIN ===
+
+## legacy/beacon5.c
+- `BeaconPrintf` (function) `legacy/beacon5.c:239` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
+- `BeaconOutput` (function) `legacy/beacon5.c:256` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/beacon5.c:270` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
+- `cleanup_trampolines` (function) `legacy/beacon5.c:311` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
+- `get_or_create_trampoline` (function) `legacy/beacon5.c:329` `static void *get_or_create_trampoline(void *target)`
+- `WriteMemoryCallback` (function) `legacy/beacon5.c:367` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
+- `https_request` (function) `legacy/beacon5.c:385` `char *https_request(const char *url, const char *method, const char *post_data)` -- === HTTPS REQUEST ===
+- `base64_encode` (function) `legacy/beacon5.c:479` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
+- `base64_decode` (function) `legacy/beacon5.c:497` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/beacon5.c:523` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...` -- === AES CFB ===
+- `aes256_cfb_decrypt` (function) `legacy/beacon5.c:557` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/beacon5.c:593` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
+- `page_align` (function) `legacy/beacon5.c:619` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
+- `RunELF` (function) `legacy/beacon5.c:627` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `get_local_ips` (function) `legacy/beacon5.c:1126` `char *get_local_ips()` -- === GET LOCAL IPs ===
+- `download_bof` (function) `legacy/beacon5.c:1161` `unsigned char *download_bof(const char *url, size_t *out_size)` -- === DOWNLOAD BOF ===
+- `run_bof_and_capture` (function) `legacy/beacon5.c:1184` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...` -- === RUN BOF AND CAPTURE ===
+- `mesh_mark_seen` (function) `legacy/beacon5.c:1231` `void mesh_mark_seen(const char *msg_id)`
+- `mesh_is_seen` (function) `legacy/beacon5.c:1240` `int mesh_is_seen(const char *msg_id)`
+- `mesh_add_peer` (function) `legacy/beacon5.c:1255` `void mesh_add_peer(const char *ip, int port)`
+- `mesh_cleanup_peers` (function) `legacy/beacon5.c:1283` `void mesh_cleanup_peers()`
+- `mesh_send_to_peer` (function) `legacy/beacon5.c:1300` `int mesh_send_to_peer(const char *ip, int port, const mesh_msg_t *msg)`
+- `mesh_propagate` (function) `legacy/beacon5.c:1324` `void mesh_propagate(const char *command)`
+- `mesh_discovery_thread` (function) `legacy/beacon5.c:1356` `void *mesh_discovery_thread(void *arg)`
+- `mesh_listener_thread` (function) `legacy/beacon5.c:1447` `void *mesh_listener_thread(void *arg)`
+- `mesh_send_message` (function) `legacy/beacon5.c:1667` `void mesh_send_message(int type, const char *target, const char *payload)`
+- `main` (function) `legacy/beacon5.c:1702` `int main(int argc, char **argv)` -- === MAIN ===
+
+## legacy/beacon6.c
+- `delay_ms` (function) `legacy/beacon6.c:197` `static void delay_ms(int ms)` -- sleep ofuscated using poll
+- `is_prime` (function) `legacy/beacon6.c:204` `static unsigned int is_prime(unsigned int x)` -- -- Lógica de números primos (sin cambios esenciales) ---
+- `get_nth_prime_limited` (function) `legacy/beacon6.c:224` `static unsigned int get_nth_prime_limited(unsigned int n)` -- if ((x & 1) == 0) return 0; /* even > 2 unsigned int d = 3; while (d * d <= x) { if (x % d == 0) return 0; d += 2; }...
+- `portable_rand_19k_29k` (function) `legacy/beacon6.c:253` `static unsigned int portable_rand_19k_29k(void)`
+- `BeaconPrintf` (function) `legacy/beacon6.c:266` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
+- `BeaconOutput` (function) `legacy/beacon6.c:283` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/beacon6.c:297` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
+- `cleanup_trampolines` (function) `legacy/beacon6.c:338` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
+- `get_or_create_trampoline` (function) `legacy/beacon6.c:356` `static void *get_or_create_trampoline(void *target)`
+- `WriteMemoryCallback` (function) `legacy/beacon6.c:394` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
+- `https_request` (function) `legacy/beacon6.c:412` `char *https_request(const char *url, const char *method, const char *post_data)` -- === HTTPS REQUEST ===
+- `base64_encode` (function) `legacy/beacon6.c:506` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
+- `base64_decode` (function) `legacy/beacon6.c:524` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/beacon6.c:550` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...` -- === AES CFB ===
+- `aes256_cfb_decrypt` (function) `legacy/beacon6.c:584` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/beacon6.c:620` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
+- `page_align` (function) `legacy/beacon6.c:646` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
+- `RunELF` (function) `legacy/beacon6.c:654` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `get_local_ips` (function) `legacy/beacon6.c:1153` `char *get_local_ips()` -- === GET LOCAL IPs ===
+- `download_bof` (function) `legacy/beacon6.c:1188` `unsigned char *download_bof(const char *url, size_t *out_size)` -- === DOWNLOAD BOF ===
+- `run_bof_and_capture` (function) `legacy/beacon6.c:1211` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...` -- === RUN BOF AND CAPTURE ===
+- `main` (function) `legacy/beacon6.c:1257` `int main()` -- === MAIN ===
+
+## legacy/beacon_p2p.c
+- `BeaconDataParse` (function) `legacy/beacon_p2p.c:93` `void BeaconDataParse(datap *parser, char *buffer, int size)`
+- `BeaconDataPtr` (function) `legacy/beacon_p2p.c:100` `char *BeaconDataPtr(datap *parser, int size)`
+- `BeaconDataInt` (function) `legacy/beacon_p2p.c:110` `int BeaconDataInt(datap *parser)`
+- `BeaconDataShort` (function) `legacy/beacon_p2p.c:118` `short BeaconDataShort(datap *parser)`
+- `BeaconDataLength` (function) `legacy/beacon_p2p.c:126` `int BeaconDataLength(datap *parser)`
+- `BeaconDataExtract` (function) `legacy/beacon_p2p.c:131` `char *BeaconDataExtract(datap *parser, int *size)`
+- `BeaconPrintf` (function) `legacy/beacon_p2p.c:142` `void BeaconPrintf(int type, const char *fmt, ...)`
+- `BeaconOutput` (function) `legacy/beacon_p2p.c:159` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/beacon_p2p.c:278` `static void *create_trampoline(void *target)`
+- `cleanup_trampolines` (function) `legacy/beacon_p2p.c:309` `static void cleanup_trampolines(void)`
+- `get_or_create_trampoline` (function) `legacy/beacon_p2p.c:323` `static void *get_or_create_trampoline(void *target)`
+- `page_align` (function) `legacy/beacon_p2p.c:350` `static size_t page_align(size_t size)`
+- `RunELF` (function) `legacy/beacon_p2p.c:358` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `WriteMemoryCallback` (function) `legacy/beacon_p2p.c:683` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)`
+- `https_request` (function) `legacy/beacon_p2p.c:707` `char *https_request(const char *url, const char *method, const char *post_data)`
+- `base64_encode` (function) `legacy/beacon_p2p.c:763` `char *base64_encode(const unsigned char *input, int len)`
+- `base64_decode` (function) `legacy/beacon_p2p.c:780` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/beacon_p2p.c:802` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `aes256_cfb_decrypt` (function) `legacy/beacon_p2p.c:832` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/beacon_p2p.c:866` `char *exec_cmd(const char *cmd, int *out_len)`
+- `get_local_ips` (function) `legacy/beacon_p2p.c:891` `char *get_local_ips()`
+- `download_bof` (function) `legacy/beacon_p2p.c:925` `unsigned char *download_bof(const char *url, size_t *out_size)`
+- `run_bof_and_capture` (function) `legacy/beacon_p2p.c:939` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...`
+- `add_peer` (function) `legacy/beacon_p2p.c:965` `void add_peer(struct in_addr ip, int port, const char *id)`
+- `peer_discovery_thread` (function) `legacy/beacon_p2p.c:992` `void *peer_discovery_thread(void *arg)`
+- `handle_peer_connection` (function) `legacy/beacon_p2p.c:1032` `void *handle_peer_connection(void *arg)`
+- `peer_server_thread` (function) `legacy/beacon_p2p.c:1130` `void *peer_server_thread(void *arg)`
+- `send_to_peer` (function) `legacy/beacon_p2p.c:1153` `char *send_to_peer(peer_t *peer, const char *data, int *out_len)`
+- `send_to_c2_or_peer` (function) `legacy/beacon_p2p.c:1197` `char *send_to_c2_or_peer(const char *url, const char *method, const char *data, int *out_len)`
+- `execute_generic_command` (function) `legacy/beacon_p2p.c:1231` `char *execute_generic_command(const char *cmd, int *out_len)`
+- `main` (function) `legacy/beacon_p2p.c:1276` `int main()`
+
+## legacy/gopher_beacon.c
+- `BeaconPrintf` (function) `legacy/gopher_beacon.c:193` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
+- `BeaconOutput` (function) `legacy/gopher_beacon.c:210` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/gopher_beacon.c:224` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
+- `cleanup_trampolines` (function) `legacy/gopher_beacon.c:265` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
+- `get_or_create_trampoline` (function) `legacy/gopher_beacon.c:283` `static void *get_or_create_trampoline(void *target)`
+- `WriteMemoryCallback` (function) `legacy/gopher_beacon.c:321` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
+- `gopher_request` (function) `legacy/gopher_beacon.c:339` `char *gopher_request(const char *host, int port, const char *selector, const char *method,
+      ...` -- === GOPHER REQUEST () ===
+- `base64_encode` (function) `legacy/gopher_beacon.c:422` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
+- `base64_decode` (function) `legacy/gopher_beacon.c:440` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/gopher_beacon.c:466` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...` -- === AES CFB ===
+- `aes256_cfb_decrypt` (function) `legacy/gopher_beacon.c:500` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/gopher_beacon.c:536` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
+- `page_align` (function) `legacy/gopher_beacon.c:573` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
+- `RunELF` (function) `legacy/gopher_beacon.c:581` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `get_local_ips` (function) `legacy/gopher_beacon.c:1080` `char *get_local_ips()` -- === GET LOCAL IPs ===
+- `download_bof` (function) `legacy/gopher_beacon.c:1115` `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` -- === DOWNLOAD BOF ===
+- `run_bof_and_capture` (function) `legacy/gopher_beacon.c:1147` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...` -- === RUN BOF AND CAPTURE ===
+- `main` (function) `legacy/gopher_beacon.c:1193` `int main()` -- === MAIN ===
+
+## legacy/v1_gopher_beacon.c
+- `BeaconPrintf` (function) `legacy/v1_gopher_beacon.c:193` `void BeaconPrintf(int type, const char *fmt, ...)` -- === BEACON API ===
+- `BeaconOutput` (function) `legacy/v1_gopher_beacon.c:210` `void BeaconOutput(int type, const char *data, int len)`
+- `create_trampoline` (function) `legacy/v1_gopher_beacon.c:224` `static void *create_trampoline(void *target)` -- === CRATE TRAPOLINE ===
+- `cleanup_trampolines` (function) `legacy/v1_gopher_beacon.c:265` `static void cleanup_trampolines(void)` -- === CLEAN TRAMPOLINE ===
+- `get_or_create_trampoline` (function) `legacy/v1_gopher_beacon.c:283` `static void *get_or_create_trampoline(void *target)`
+- `WriteMemoryCallback` (function) `legacy/v1_gopher_beacon.c:321` `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` -- === CURL WRITE CALLBACK ===
+- `gopher_request` (function) `legacy/v1_gopher_beacon.c:339` `char *gopher_request(const char *host, int port, const char *selector, const char *method,
+      ...` -- === GOPHER REQUEST () ===
+- `base64_encode` (function) `legacy/v1_gopher_beacon.c:422` `char *base64_encode(const unsigned char *input, int len)` -- === BASE64 ===
+- `base64_decode` (function) `legacy/v1_gopher_beacon.c:440` `unsigned char *base64_decode(const char *input, int *len)`
+- `aes256_cfb_encrypt` (function) `legacy/v1_gopher_beacon.c:466` `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,
+            ...` -- === AES CFB ===
+- `aes256_cfb_decrypt` (function) `legacy/v1_gopher_beacon.c:500` `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,
+            ...`
+- `exec_cmd` (function) `legacy/v1_gopher_beacon.c:536` `char *exec_cmd(const char *cmd, int *out_len)` -- === EXEC CMD ===
+- `page_align` (function) `legacy/v1_gopher_beacon.c:573` `static size_t page_align(size_t size)` -- === Función auxiliar: alinear al tamaño de página ===
+- `RunELF` (function) `legacy/v1_gopher_beacon.c:581` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+           unsig...`
+- `get_local_ips` (function) `legacy/v1_gopher_beacon.c:1080` `char *get_local_ips()` -- === GET LOCAL IPs ===
+- `download_bof` (function) `legacy/v1_gopher_beacon.c:1115` `unsigned char *download_bof(const char *bof_selector, size_t *out_size)` -- === DOWNLOAD BOF ===
+- `run_bof_and_capture` (function) `legacy/v1_gopher_beacon.c:1147` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+   ...` -- === RUN BOF AND CAPTURE ===
+- `main` (function) `legacy/v1_gopher_beacon.c:1193` `int main()` -- === MAIN ===
+
 ## mutants/src/async_i_o_for_beacon.c
 Depends on: `include/async_i_o_for_beacon.h`
 - `async_i_o_for_beacon_process` (function) `mutants/src/async_i_o_for_beacon.c:6` `bool async_i_o_for_beacon_process(void)`
@@ -494,6 +489,10 @@ Depends on: `include/config.h`
 ## src/async_i_o_for_beacon.c
 Depends on: `include/async_i_o_for_beacon.h`
 - `async_i_o_for_beacon_process` (function) `src/async_i_o_for_beacon.c:6` `bool async_i_o_for_beacon_process(void)`
+
+## src/beacon_heartbeat___health_endpoint.c
+Depends on: `include/beacon_heartbeat___health_endpoint.h`
+- `beacon_heartbeat___health_endpoint_process` (function) `src/beacon_heartbeat___health_endpoint.c:6` `bool beacon_heartbeat___health_endpoint_process(void)`
 
 
 Next: [API_p3.md](API_p3.md)

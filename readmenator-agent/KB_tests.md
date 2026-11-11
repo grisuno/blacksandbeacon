@@ -73,15 +73,15 @@
 - Language: py
 - Symbols:
   - `TestC2BeaconBOFIntegration` (class, line 34) `class TestC2BeaconBOFIntegration`
-  - `test_c2_beacon_bof_integration` (function, line 292) `def test_c2_beacon_bof_integration()`
+  - `test_c2_beacon_bof_integration` (function, line 300) `def test_c2_beacon_bof_integration()`
   - `setup_method` (method, line 37) `def setup_method(self)`
   - `teardown_method` (method, line 71) `def teardown_method(self)`
   - `_free_port` (method, line 76) `def _free_port(self)`
   - `_wait_for_server_ready` (method, line 84) `def _wait_for_server_ready(self, host, port, timeout)`
   - `_wait_for_bof_result` (method, line 98) `def _wait_for_bof_result(self, state, client_id, timeout)`
   - `test_beacon_executes_whoami_bof` (method, line 118) `def test_beacon_executes_whoami_bof(self)`
-  - `_run_server` (method, line 275) `def _run_server(self, cfg, state)`
-  - `_wait_for_server_ready` (method, line 278) `def _wait_for_server_ready(self, host, port, timeout)`
+  - `_run_server` (method, line 283) `def _run_server(self, cfg, state)`
+  - `_wait_for_server_ready` (method, line 286) `def _wait_for_server_ready(self, host, port, timeout)`
 - Depends on: `c2/server.py`, `include/config_py.py`
 
 ## tests/test_c2_http_e2e.py
@@ -126,20 +126,28 @@
   - `TestCertificatePinningConfig` (class, line 23) `class TestCertificatePinningConfig`
   - `TestCertificatePinningCConfig` (class, line 86) `class TestCertificatePinningCConfig`
   - `TestCertificatePinningIntegration` (class, line 96) `class TestCertificatePinningIntegration`
-  - `TestCertificatePinningMutationResistance` (class, line 126) `class TestCertificatePinningMutationResistance`
+  - `TestCertificatePinningMutationResistance` (class, line 321) `class TestCertificatePinningMutationResistance`
   - `test_config_loads_empty_fingerprint` (method, line 26) `def test_config_loads_empty_fingerprint(self)`
   - `test_config_loads_valid_fingerprint` (method, line 38) `def test_config_loads_valid_fingerprint(self)`
   - `test_config_rejects_invalid_fingerprint_length` (method, line 51) `def test_config_rejects_invalid_fingerprint_length(self)`
   - `test_config_rejects_non_hex_fingerprint` (method, line 62) `def test_config_rejects_non_hex_fingerprint(self)`
   - `test_config_defaults_to_empty_fingerprint` (method, line 73) `def test_config_defaults_to_empty_fingerprint(self)`
   - `test_c_config_parses_fingerprint_field` (method, line 89) `def test_c_config_parses_fingerprint_field(self)`
-  - `test_beacon_verifies_pinned_certificate` (method, line 99) `def test_beacon_verifies_pinned_certificate(self)`
-  - `test_beacon_rejects_mismatched_certificate` (method, line 109) `def test_beacon_rejects_mismatched_certificate(self)`
-  - `test_tofu_first_connection_stores_fingerprint` (method, line 117) `def test_tofu_first_connection_stores_fingerprint(self)`
-  - `test_fingerprint_empty_check_not_mutated_to_always_true` (method, line 129) `def test_fingerprint_empty_check_not_mutated_to_always_true(self)`
-  - `test_fingerprint_hex_validation_not_mutated` (method, line 139) `def test_fingerprint_hex_validation_not_mutated(self)`
-  - `test_pin_option_set_only_when_fingerprint_present` (method, line 151) `def test_pin_option_set_only_when_fingerprint_present(self)`
-- Depends on: `include/config_py.py`
+  - `_free_port` (method, line 106) `def _free_port(self)`
+  - `_gen_cert_and_pin` (method, line 114) `def _gen_cert_and_pin(self)`
+  - `_start_tls_server` (method, line 149) `def _start_tls_server(self, port, cert_pem, key_pem, body)`
+  - `_run_beacon_with_bof_tls` (method, line 181) `def _run_beacon_with_bof_tls(self, cert_pem, key_pem, pin_hex)`
+  - `test_beacon_verifies_pinned_certificate` (method, line 282) `def test_beacon_verifies_pinned_certificate(self)`
+  - `test_beacon_rejects_mismatched_certificate` (method, line 293) `def test_beacon_rejects_mismatched_certificate(self)`
+  - `test_tofu_first_connection_stores_fingerprint` (method, line 307) `def test_tofu_first_connection_stores_fingerprint(self)`
+  - `test_fingerprint_empty_check_not_mutated_to_always_true` (method, line 324) `def test_fingerprint_empty_check_not_mutated_to_always_true(self)`
+  - `test_fingerprint_hex_validation_not_mutated` (method, line 334) `def test_fingerprint_hex_validation_not_mutated(self)`
+  - `test_pin_option_set_only_when_fingerprint_present` (method, line 346) `def test_pin_option_set_only_when_fingerprint_present(self)`
+  - `Handler` (class, line 155) `class Handler(BaseHTTPRequestHandler)`
+  - `_run` (function, line 171) `def _run()`
+  - `do_GET` (method, line 156) `def do_GET(self)`
+  - `log_message` (method, line 162) `def log_message(self)`
+- Depends on: `c2/server.py`, `include/config_py.py`
 
 ## tests/test_certificate_pinning_c.c
 - Doc: test_cert_fingerprint_defaults_to_empty: #include <stdarg.h> #include <stddef.h> #include...

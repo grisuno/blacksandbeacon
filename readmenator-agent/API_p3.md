@@ -1,10 +1,6 @@
 # API (page 3 of 3)
 Previous: [API_p2.md](API_p2.md)
 
-## src/beacon_heartbeat___health_endpoint.c
-Depends on: `include/beacon_heartbeat___health_endpoint.h`
-- `beacon_heartbeat___health_endpoint_process` (function) `src/beacon_heartbeat___health_endpoint.c:6` `bool beacon_heartbeat___health_endpoint_process(void)`
-
 ## src/bof_api_versioning.c
 Depends on: `include/bof_api_versioning.h`
 - `bof_api_versioning_process` (function) `src/bof_api_versioning.c:6` `bool bof_api_versioning_process(void)`

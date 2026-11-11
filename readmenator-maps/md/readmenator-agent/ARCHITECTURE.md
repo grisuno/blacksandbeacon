@@ -3,18 +3,6 @@
 ## Internal Dependencies
 
 - `aes.c` -> `aes.h`
-- `beacon3.c` -> `aes.h`
-- `beacon3.c` -> `beacon.h`
-- `beacon3.c` -> `cJSON.h`
-- `beacon5.c` -> `aes.h`
-- `beacon5.c` -> `beacon.h`
-- `beacon5.c` -> `cJSON.h`
-- `beacon6.c` -> `aes.h`
-- `beacon6.c` -> `beacon.h`
-- `beacon6.c` -> `cJSON.h`
-- `beacon_p2p.c` -> `aes.h`
-- `beacon_p2p.c` -> `beacon.h`
-- `beacon_p2p.c` -> `cJSON.h`
 - `beacons/v1/beacon.c` -> `include/beacon_common.h`
 - `beacons/v2/beacon.c` -> `include/beacon_common.h`
 - `beacons/v3/beacon.c` -> `include/beacon_common.h`
@@ -31,9 +19,6 @@
 - `bof/whoami/bof.c` -> `bof/include/syscalls.h`
 - `c2/server.py` -> `include/config_py.py`
 - `cJSON.c` -> `cJSON.h`
-- `gopher_beacon.c` -> `aes.h`
-- `gopher_beacon.c` -> `beacon.h`
-- `gopher_beacon.c` -> `cJSON.h`
 - `include/aes.c` -> `include/aes.h`
 - `include/aes_cfb.c` -> `include/aes.h`
 - `include/aes_cfb.c` -> `include/aes_cfb.h`
@@ -95,6 +80,7 @@
 - `tests/test_c2_http_e2e.py` -> `c2/__init__.py`
 - `tests/test_c2_http_e2e.py` -> `c2/server.py`
 - `tests/test_c2_server.py` -> `c2/server.py`
+- `tests/test_certificate_pinning.py` -> `c2/server.py`
 - `tests/test_certificate_pinning.py` -> `include/config_py.py`
 - `tests/test_certificate_pinning_c.c` -> `include/config.h`
 - `tests/test_crypto.py` -> `c2/server.py`
@@ -112,12 +98,7 @@
 - `aes.h` -> stddef.h, stdint.h
 - `app.py` -> os
 - `beacon.h` -> stdarg.h, stdint.h
-- `beacon3.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
-- `beacon5.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/select.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
-- `beacon6.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, poll.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
-- `beacon_p2p.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
 - `beacons/v1/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
-- `beacons/v1/gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
 - `beacons/v2/beacon.c` -> arpa/inet.h, netinet/in.h, openssl/rand.h, pthread.h, pwd.h, stdio.h, stdlib.h, string.h, sys/socket.h, time.h, unistd.h
 - `beacons/v3/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
 - `bof/include/beacon_api.h` -> stdarg.h, stddef.h, stdint.h
@@ -127,7 +108,6 @@
 - `cJSON.h` -> stddef.h
 - `config/generate_parsers.py` -> json, pathlib, sys, typing
 - `contract_agent.py` -> os, pathlib, re, subprocess, sys, typing
-- `gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
 - `gopher_c2.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, json, logging, os, socket, threading
 - `include/aes.c` -> string.h
 - `include/aes.h` -> stddef.h, stdint.h
@@ -144,6 +124,12 @@
 - `include/config_autogen.h` -> stddef.h, stdint.h
 - `include/config_py.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, re
 - `include/config_py_autogen.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, pathlib, re, typing
+- `legacy/beacon3.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `legacy/beacon5.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/select.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `legacy/beacon6.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, poll.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `legacy/beacon_p2p.c` -> arpa/inet.h, curl/curl.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/bio.h, openssl/buffer.h, openssl/evp.h, openssl/rand.h, pthread.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `legacy/gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
+- `legacy/v1_gopher_beacon.c` -> arpa/inet.h, dlfcn.h, elf.h, errno.h, fcntl.h, net/if.h, netdb.h, netinet/in.h, openssl/buffer.h, openssl/rand.h, pwd.h, stdarg.h, stdint.h, stdio.h, stdlib.h, string.h, sys/ioctl.h, sys/mman.h, sys/socket.h, sys/types.h, sys/wait.h, time.h, unistd.h
 - `mutants/src/async_i_o_for_beacon.c` -> stdbool.h
 - `mutants/src/beacon_common.c_extraction.c` -> stdbool.h
 - `mutants/src/beacon_heartbeat___health_endpoint.c` -> stdbool.h
@@ -233,10 +219,10 @@
 - `tests/test_beacon_build.py` -> os, pathlib, subprocess, sys
 - `tests/test_bof_compile.py` -> pathlib, re, subprocess, sys
 - `tests/test_bof_path_traversal.py` -> base64, json, os, pathlib, pytest, sys, tempfile, unicodedata
-- `tests/test_c2_beacon_bof_integration.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, json, os, pathlib, pytest, select, shutil, socket, subprocess, sys, tempfile, threading, time
+- `tests/test_c2_beacon_bof_integration.py` -> cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.kdf.hkdf, csv, json, os, pathlib, select, shutil, socket, subprocess, sys, tempfile, threading, time
 - `tests/test_c2_http_e2e.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, json, os, pathlib, socket, sys, tempfile, threading, time
 - `tests/test_c2_server.py` -> base64, json, pathlib, sys, tempfile, time
-- `tests/test_certificate_pinning.py` -> json, os, pathlib, pytest, re, sys, tempfile
+- `tests/test_certificate_pinning.py` -> base64, cryptography, cryptography.hazmat.primitives, cryptography.hazmat.primitives.asymmetric, cryptography.x509.oid, csv, datetime, hashlib, json, os, pathlib, pytest, re, shutil, socket, ssl, subprocess, sys, tempfile, threading, time
 - `tests/test_certificate_pinning_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h, stdio.h, stdlib.h, string.h, unistd.h
 - `tests/test_config.py` -> json, os, pathlib, shutil, subprocess, sys, tempfile
 - `tests/test_crypto.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, pathlib, subprocess, sys, time

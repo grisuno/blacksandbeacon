@@ -3,6 +3,16 @@ Previous: [SYMBOLS_p3.md](SYMBOLS_p3.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `TestIVGenerationCBehavior` | class | `tests/test_iv_generation.py:101` | `class TestIVGenerationCBehavior` |
+| `TestIVGenerationConfig` | class | `tests/test_iv_generation.py:26` | `class TestIVGenerationConfig` |
+| `TestIVGenerationPython` | class | `tests/test_iv_generation.py:42` | `class TestIVGenerationPython` |
+| `TestIVMutationResistance` | class | `tests/test_iv_generation.py:128` | `class TestIVMutationResistance` |
+| `test_config_defaults_include_iv_settings` | method | `tests/test_iv_generation.py:29` | `def test_config_defaults_include_iv_settings(self)` |
+| `test_decrypt_data_handles_iv_correctly` | method | `tests/test_iv_generation.py:73` | `def test_decrypt_data_handles_iv_correctly(self)` |
+| `test_encrypt_data_iv_is_16_bytes` | method | `tests/test_iv_generation.py:58` | `def test_encrypt_data_iv_is_16_bytes(self)` |
+| `test_encrypt_data_uses_os_urandom_for_iv` | method | `tests/test_iv_generation.py:45` | `def test_encrypt_data_uses_os_urandom_for_iv(self)` |
+| `test_encrypt_decrypt_roundtrip_with_different_ivs` | method | `tests/test_iv_generation.py:85` | `def test_encrypt_decrypt_roundtrip_with_different_ivs(self)` |
+| `test_fail_closed_on_entropy_failure` | method | `tests/test_iv_generation.py:121` | `def test_fail_closed_on_entropy_failure(self)` |
 | `test_getrandom_fallback_path` | method | `tests/test_iv_generation.py:113` | `def test_getrandom_fallback_path(self)` |
 | `test_getrandom_flags_grnd_nonblock` | method | `tests/test_iv_generation.py:177` | `def test_getrandom_flags_grnd_nonblock(self)` |
 | `test_iv_length_is_16_bytes_not_mutated` | method | `tests/test_iv_generation.py:131` | `def test_iv_length_is_16_bytes_not_mutated(self)` |

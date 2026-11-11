@@ -4,7 +4,7 @@
 
 ## Definition
 
-This community groups 15 file(s) rooted at `tests` with dominant language py (cohesion 1.00). Central symbols: `C2State`, `TestBOFPathTraversalConfig`, `TestBOFPathTraversalMutationResistance`, `TestBOFPathTraversalServer`, `TestC2BeaconBOFIntegration`, `TestCertificatePinningCConfig`, `TestCertificatePinningConfig`, `TestCertificatePinningIntegration`. Core file: `tests/test_replay_protection.py` (28 symbols). Documented purpose: Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. Handles command queuing, result collection, and BOF distribut.
+This community groups 15 file(s) rooted at `tests` with dominant language py (cohesion 1.00). Central symbols: `C2State`, `Handler`, `TestBOFPathTraversalConfig`, `TestBOFPathTraversalMutationResistance`, `TestBOFPathTraversalServer`, `TestC2BeaconBOFIntegration`, `TestCertificatePinningCConfig`, `TestCertificatePinningConfig`. Core file: `tests/test_replay_protection.py` (28 symbols). Documented purpose: Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. Handles command queuing, result collection, and BOF distribut.
 
 ## Files
 
@@ -20,7 +20,7 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 | `tests/test_c2_beacon_bof_integration.py` | py | testing | 10 | yes |
 | `tests/test_c2_http_e2e.py` | py | testing | 9 | yes |
 | `tests/test_c2_server.py` | py | testing | 11 | yes |
-| `tests/test_certificate_pinning.py` | py | testing | 16 | yes |
+| `tests/test_certificate_pinning.py` | py | testing | 24 | yes |
 | `tests/test_crypto.py` | py | testing | 9 | yes |
 | `tests/test_hkdf_key_derivation.py` | py | testing | 19 | yes |
 | `tests/test_iv_generation.py` | py | testing | 17 | yes |
@@ -61,7 +61,7 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 
 ## Internal vs External Edges
 
-- Internal resolved imports (EXTRACTED): 18
+- Internal resolved imports (EXTRACTED): 20
 - Cross-boundary resolved imports (EXTRACTED): 0
 
 ## Connections
@@ -73,9 +73,9 @@ This community groups 15 file(s) rooted at `tests` with dominant language py (co
 - [taint high] `tests/test_c2_beacon_bof_integration.py` -> `tests/test_c2_beacon_bof_integration.py` via `subprocess` (0 hops)
 - [taint high] `tests/test_c2_beacon_bof_integration.py` -> `include/config_py.py` via `subprocess` (1 hops)
 - [taint high] `tests/test_c2_beacon_bof_integration.py` -> `c2/server.py` via `subprocess` (1 hops)
-- [taint high] `tests/test_crypto.py` -> `tests/test_crypto.py` via `subprocess` (0 hops)
-- [taint high] `tests/test_crypto.py` -> `c2/server.py` via `subprocess` (1 hops)
-- [taint high] `tests/test_crypto.py` -> `include/config_py.py` via `subprocess` (2 hops)
+- [taint high] `tests/test_certificate_pinning.py` -> `tests/test_certificate_pinning.py` via `subprocess` (0 hops)
+- [taint high] `tests/test_certificate_pinning.py` -> `include/config_py.py` via `subprocess` (1 hops)
+- [taint high] `tests/test_certificate_pinning.py` -> `c2/server.py` via `subprocess` (1 hops)
 - [dataflow UNCHECKED_ALLOC] `c2/server.py:597` `serve` `sock`: Result of allocator stored in `sock` is never checked against NULL.
 
 ## Open Questions

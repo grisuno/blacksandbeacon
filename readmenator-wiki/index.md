@@ -1,6 +1,6 @@
 # Second Brain
 
-*Last synthesized: 2026-11-10 | 175 files | 26 concept pages | offline, zero tokens*
+*Last synthesized: 2026-11-11 | 175 files | 26 concept pages | offline, zero tokens*
 
 > Raw sources -> readmenator wiki -> links (Karpathy LLM Wiki Pattern, deterministic).
 > Start here, then open one community page. Prefer grep over full reads.
@@ -9,7 +9,7 @@
 
 The codebase centres on `cJSON.h`, `aes.h`, `server.py`. Architecturally it is 4 layers, dominant utility (71 files) across 26 import-based communities. Recorded risk surface: 0 security findings and 0 dependency cycles.
 
-Surprising tissue lives between root, c2, bof/include: 2 extracted cross-community imports and 18 inferred bridges. Follow `connections.json` sorted by strength before refactoring.
+Surprising tissue lives between legacy, c2, bof/include: 2 extracted cross-community imports and 18 inferred bridges. Follow `connections.json` sorted by strength before refactoring.
 
 Open work clusters around documentation (57% file coverage), 0 security findings, 20 taint paths, and 5 suggested exploration questions in `queries.md`.
 
@@ -18,13 +18,13 @@ Open work clusters around documentation (57% file coverage), 0 security findings
 | Metric | Value |
 |--------|-------|
 | Files | 175 |
-| Symbols | 1521 |
-| Resolved imports | 104 |
+| Symbols | 1531 |
+| Resolved imports | 91 |
 | Languages | c, h, py, sh |
 | Communities | 26 |
 | Doc coverage | 57% (99/175 files) |
 | Security findings | 0 |
-| Estimated read cost | ~30522 tokens (chars/4, offline so $0) |
+| Estimated read cost | ~30747 tokens (chars/4, offline so $0) |
 
 ## Reading Order
 
@@ -39,7 +39,7 @@ readmenator query "<question>" --target blacksandbeacon
 
 ## Concept Wiki
 
-- [root (20 files, cohesion 0.89)](./community_0_root.md)
+- [legacy (20 files, cohesion 0.89)](./community_0_legacy.md)
 - [c2 (15 files, cohesion 1.00)](./community_1_c2.md)
 - [bof/include (7 files, cohesion 1.00)](./community_2_bof_include.md)
 - [include: aes (6 files, cohesion 0.62)](./community_3_include_aes.md)
@@ -72,7 +72,7 @@ readmenator query "<question>" --target blacksandbeacon
 |------|-------|
 | `cJSON.h` | 28.0 |
 | `aes.h` | 22.1 |
-| `c2/server.py` | 20.1 |
+| `c2/server.py` | 22.1 |
 | `include/beacon_common.h` | 17.8 |
 | `include/cJSON.c` | 16.5 |
 

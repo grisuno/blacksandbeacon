@@ -1,6 +1,6 @@
 # blacksandbeacon API Reference
 
-> Generated offline by readmenator: 104 modules, 1027 documented entities, documentation coverage 36.0% (350/973 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
+> Generated offline by readmenator: 104 modules, 1028 documented entities, documentation coverage 35.9% (350/974 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
 
 Navigate: [Interactive architecture and flows](flows.html) | [Architecture and flows (Mermaid)](architecture.md) | [Class hierarchy](classes.md) | [General index](genindex.md) | [Coverage and warnings](COVERAGE.md) | [`api/index.json`](api/index.json) | [HTML browser](index.html)
 
@@ -16,15 +16,10 @@ Languages: c (64), h (30), py (9), sh (1)
 | [`aes.h`](modules/aes.h.md) | #define the macros below to 1/0 to enable/disable the mode of operation. | 1 | 19 | 23.8% |
 | [`app`](modules/app.py.md) | app.py | 0 | 0 | 100.0% |
 | [`beacon.h`](modules/beacon.h.md) | beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos) | 1 | 11 | 46.2% |
-| [`beacon3.c`](modules/beacon3.c.md) |  | 4 | 18 | 60.9% |
-| [`beacon5.c`](modules/beacon5.c.md) |  | 6 | 32 | 38.5% |
-| [`beacon6.c`](modules/beacon6.c.md) |  | 4 | 18 | 60.9% |
-| [`beacon_p2p.c`](modules/beacon_p2p.c.md) |  | 6 | 37 | 40.9% |
 | [`bof.c`](modules/bof.c.md) | bof.c | 0 | 1 | 50.0% |
 | [`cJSON.c`](modules/cJSON.c.md) |  | 4 | 84 | 6.7% |
 | [`cJSON.h`](modules/cJSON.h.md) |  | 3 | 36 | 20.0% |
 | [`contract_agent`](modules/contract_agent.py.md) | Contract Driven Agent - SDD/TDD/BDD workflow for Black Sand Beacon v2. | 0 | 17 | 77.8% |
-| [`gopher_beacon.c`](modules/gopher_beacon.c.md) |  | 4 | 18 | 60.9% |
 | [`gopher_c2`](modules/gopher_c2.py.md) |  | 0 | 4 | 0.0% |
 | [`install.sh`](modules/install.sh.md) | install.sh - Install build deps and build everything. | 0 | 0 | 100.0% |
 | [`issudo.c`](modules/issudo.c.md) |  | 2 | 11 | 57.1% |
@@ -35,7 +30,6 @@ Languages: c (64), h (30), py (9), sh (1)
 | Module | Summary | Types | Callables | Coverage |
 |---|---|---|---|---|
 | [`beacons/v1/beacon.c`](modules/beacons.v1.beacon.c.md) |  | 0 | 2 | 33.3% |
-| [`beacons/v1/gopher_beacon.c`](modules/beacons.v1.gopher_beacon.c.md) |  | 4 | 18 | 60.9% |
 
 ### `beacons/v2`
 
@@ -113,7 +107,7 @@ Languages: c (64), h (30), py (9), sh (1)
 | [`include/aes_cfb.h`](modules/include.aes_cfb.h.md) |  | 0 | 2 | 33.3% |
 | [`include/async_i_o_for_beacon.h`](modules/include.async_i_o_for_beacon.h.md) |  | 0 | 1 | 0.0% |
 | [`include/beacon.h`](modules/include.beacon.h.md) | beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos) | 1 | 11 | 46.2% |
-| [`include/beacon_common.c`](modules/include.beacon_common.c.md) |  | 2 | 22 | 76.0% |
+| [`include/beacon_common.c`](modules/include.beacon_common.c.md) |  | 2 | 23 | 73.1% |
 | [`include/beacon_common.c_extraction.h`](modules/include.beacon_common.c_extraction.h.md) |  | 0 | 1 | 0.0% |
 | [`include/beacon_common.h`](modules/include.beacon_common.h.md) |  | 5 | 28 | 67.6% |
 | [`include/beacon_heartbeat___health_endpoint.h`](modules/include.beacon_heartbeat___health_endpoint.h.md) |  | 0 | 1 | 0.0% |
@@ -140,6 +134,17 @@ Languages: c (64), h (30), py (9), sh (1)
 | [`include/structured_jsonl_logging.h`](modules/include.structured_jsonl_logging.h.md) |  | 0 | 1 | 0.0% |
 | [`include/tls_client_certificate_authentication.h`](modules/include.tls_client_certificate_authentication.h.md) |  | 0 | 1 | 0.0% |
 | [`include/unified_config_schema.h`](modules/include.unified_config_schema.h.md) |  | 0 | 1 | 0.0% |
+
+### `legacy`
+
+| Module | Summary | Types | Callables | Coverage |
+|---|---|---|---|---|
+| [`legacy/beacon3.c`](modules/legacy.beacon3.c.md) |  | 4 | 18 | 60.9% |
+| [`legacy/beacon5.c`](modules/legacy.beacon5.c.md) |  | 6 | 32 | 38.5% |
+| [`legacy/beacon6.c`](modules/legacy.beacon6.c.md) |  | 4 | 18 | 60.9% |
+| [`legacy/beacon_p2p.c`](modules/legacy.beacon_p2p.c.md) |  | 6 | 37 | 40.9% |
+| [`legacy/gopher_beacon.c`](modules/legacy.gopher_beacon.c.md) |  | 4 | 18 | 60.9% |
+| [`legacy/v1_gopher_beacon.c`](modules/legacy.v1_gopher_beacon.c.md) |  | 4 | 18 | 60.9% |
 
 ### `mutants/src`
 
