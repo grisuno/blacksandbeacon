@@ -220,7 +220,10 @@ int main(void)
         if (!plaintext || strlen(plaintext) == 0)
         {
             free(plaintext);
-            sleep(bsb_backoff_next(&backoff));
+            /* Empty command queue is a healthy response: reset backoff
+             * and keep the normal jittered polling cadence. */
+            bsb_backoff_reset(&backoff);
+            sleep(bsb_config_sleep_seconds(&cfg));
             continue;
         }
 

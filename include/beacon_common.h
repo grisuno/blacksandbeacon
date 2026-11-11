@@ -63,8 +63,6 @@ typedef struct
 
 /* --- Global state (defined in beacon_common.c) --- */
 extern char *g_beacon_output;
-extern size_t g_output_len;
-extern size_t g_output_capacity;
 
 /* Function pointers exposed to BOFs */
 extern void *g_printf_ptr;
@@ -110,9 +108,9 @@ void BeaconPrintf(int type, const char *fmt, ...);
 void BeaconOutput(int type, const char *data, int len);
 
 /* Trampoline management */
-void *create_trampoline(void *target);
+void *create_trampoline(void *target, void *near_hint);
 void cleanup_trampolines(void);
-void *get_or_create_trampoline(void *target);
+void *get_or_create_trampoline(void *target, void *near_hint);
 
 /* HTTP client: performs GET or POST request. Returns a struct
  * with the response body, length, and status code. On error,
