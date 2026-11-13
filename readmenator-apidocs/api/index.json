@@ -3,7 +3,7 @@
  "format": "jsonl",
  "meta": {
   "modules": 106,
-  "entities": 1052,
+  "entities": 1053,
   "languages": {
    "c": 64,
    "h": 30,
@@ -12,9 +12,9 @@
   },
   "kinds": {
    "class": 1,
-   "constant": 37,
+   "constant": 39,
    "constructor": 1,
-   "function": 500,
+   "function": 499,
    "macro": 298,
    "module": 106,
    "struct": 71,
@@ -27,9 +27,9 @@
  },
  "coverage": {
   "overall": {
-   "documented": 363,
-   "total": 989,
-   "percent": 36.7
+   "documented": 362,
+   "total": 988,
+   "percent": 36.6
   },
   "by_kind": {
    "class": {
@@ -43,9 +43,9 @@
     "percent": 0.0
    },
    "function": {
-    "documented": 203,
-    "total": 500,
-    "percent": 40.6
+    "documented": 202,
+    "total": 499,
+    "percent": 40.5
    },
    "macro": {
     "documented": 69,
@@ -170,9 +170,9 @@
     "percent": 0.0
    },
    "c2/server.py": {
-    "documented": 27,
-    "total": 28,
-    "percent": 96.4
+    "documented": 26,
+    "total": 27,
+    "percent": 96.3
    },
    "c2/stage_oneliner.sh": {
     "documented": 1,
@@ -715,7 +715,7 @@
   {
    "uid": "c2/stage_payload.py",
    "path": "modules/c2.stage_payload.py.jsonl",
-   "entities": 5
+   "entities": 6
   },
   {
    "uid": "cJSON.c",

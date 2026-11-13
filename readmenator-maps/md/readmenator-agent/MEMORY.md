@@ -2,12 +2,12 @@
 
 > Cross-session context for agents. Sections 1-6 are regenerated from the source tree with zero LLM tokens: declared rules are quoted verbatim with `file:line`, measured baselines come from the scan. Section 7 is written by agents and humans and is preserved across rebuilds.
 
-Generated from 179 files at commit `ad6093f58ba9`. Read this first, then `readmenator-wiki/index.md`, then `readmenator . ask "<question>"` for anything specific.
+Generated from 179 files at commit `e9feea6269c6`. Read this first, then `readmenator-wiki/index.md`, then `readmenator . ask "<question>"` for anything specific.
 
 ## 1. Purpose and domain
 
 - What it is: A Linux C2 beacon with a native in-memory ELF BOF loader, written in (`README.md:3`)
-- Domain vocabulary (term, files): `mutants` (74), `generated` (63), `implementation` (60), `auto` (59), `beacon` (56), `bof` (52), `process` (50), `include` (49), `config` (36), `placeholder` (31), `not` (30), `bdd` (29), `output` (28), `run` (27), `key` (26)
+- Domain vocabulary (term, files): `mutants` (74), `generated` (63), `implementation` (60), `auto` (60), `beacon` (56), `bof` (52), `process` (50), `include` (49), `config` (36), `not` (31), `placeholder` (31), `bdd` (29), `output` (28), `run` (27), `api` (26)
 - Subsystem `legacy`: 20 files, core `cJSON.c`: case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using incompatible...
 - Subsystem `c2`: 17 files, core `c2/server.py`: Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents.
 - Subsystem `bof/include`: 7 files, core `bof/include/syscalls.h`: bsf_strlen: } static inline long syscall4(long n, long a1, long a2, long a3, long a4) { long...
@@ -60,7 +60,7 @@ Declared:
 
 Measured baseline:
 - c: 92 files, 844 symbols; docstrings on 28% of symbols; functions snake_case (62%); types PascalCase (60%); median file 27 lines, max 3260.
-- py: 54 files, 414 symbols; docstrings on 66% of symbols; functions snake_case (100%); types PascalCase (100%); median file 141 lines, max 1007.
+- py: 54 files, 417 symbols; docstrings on 66% of symbols; functions snake_case (100%); types PascalCase (100%); median file 141 lines, max 1144.
 - h: 31 files, 329 symbols; docstrings on 15% of symbols; functions snake_case (54%); types PascalCase (10%); median file 6 lines, max 344.
 - sh: 2 files, 0 symbols; median file 34 lines, max 34.
 - Tests: 69 files under mutants/tests, tests; follow the existing naming (e.g. `test_async_i_o_for_beacon.py`).
@@ -81,7 +81,7 @@ Measured baseline:
 ## 6. Risks to respect
 
 - God nodes (changes ripple widely): `cJSON.h`, `c2/server.py`, `aes.h`, `include/beacon_common.h`, `include/cJSON.c`
-- Hotspots (complex and central): `c2/server.py`, `legacy/beacon_p2p.c`, `legacy/beacon5.c`, `legacy/beacon6.c`, `include/beacon_common.c`
+- Hotspots (complex and central): `c2/server.py`, `legacy/beacon_p2p.c`, `legacy/beacon5.c`, `cJSON.c`, `include/cJSON.c`
 - Full blast radius: `readmenator-agent/GOTCHAS.md`; findings: `readmenator-agent/SECURITY.md`.
 
 ## 7. Session log (preserved across rebuilds)

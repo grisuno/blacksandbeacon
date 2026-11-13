@@ -56,18 +56,18 @@ legacy groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BU
 
 ### c2 (2)
 
-c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, load_runtime_config. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...
+c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, _ensure_stage_tls. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...
 
 **Related Classes/Methods**:
 
 - <a href="../include/config_py.py#L65-L83">include/config_py.py::_derive_keys</a>
 - <a href="../include/config_py.py#L84-L93">include/config_py.py::_deep_merge</a>
 - <a href="../include/config_py.py#L94-L146">include/config_py.py::load_config</a>
-- <a href="../c2/server.py#L73-L85">c2/server.py::_random_free_port</a>
-- <a href="../c2/server.py#L86-L209">c2/server.py::load_runtime_config</a>
-- <a href="../c2/server.py#L210-L214">c2/server.py::compute_hmac</a>
-- <a href="../c2/server.py#L215-L220">c2/server.py::verify_hmac</a>
-- <a href="../c2/server.py#L221-L243">c2/server.py::encrypt_data</a>
+- <a href="../c2/server.py#L74-L86">c2/server.py::_random_free_port</a>
+- <a href="../c2/server.py#L87-L159">c2/server.py::_ensure_stage_tls</a>
+- <a href="../c2/server.py#L160-L286">c2/server.py::load_runtime_config</a>
+- <a href="../c2/server.py#L287-L291">c2/server.py::compute_hmac</a>
+- <a href="../c2/server.py#L292-L297">c2/server.py::verify_hmac</a>
 
 ### bof/include (3)
 

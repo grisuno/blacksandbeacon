@@ -2,7 +2,7 @@
 
 [Back to index](index.md)
 
-[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w) | [X](#x)
+[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w)
 
 <a id="a"></a>
 
@@ -665,13 +665,14 @@
 - [`handle_report`](modules/c2.server.py.md#handle_report) function in `c2.server`
 - [`handle_request`](modules/c2.server.py.md#handle_request) function in `c2.server`
 - [`handle_stage`](modules/c2.server.py.md#handle_stage) function in `c2.server`
+- [`HKDF_INFO_ENC`](modules/c2.stage_payload.py.md#hkdf_info_enc) constant in `c2.stage_payload`
 - [`HKDF_INFO_ENC`](modules/include.config.c.md#hkdf_info_enc) macro in `include/config.c`
 - [`HKDF_INFO_ENC`](modules/include.config_py.py.md#hkdf_info_enc) constant in `include.config_py`
 - [`HKDF_INFO_ENC`](modules/include.config_py_autogen.py.md#hkdf_info_enc) constant in `include.config_py_autogen`
+- [`HKDF_INFO_HMAC`](modules/c2.stage_payload.py.md#hkdf_info_hmac) constant in `c2.stage_payload`
 - [`HKDF_INFO_HMAC`](modules/include.config.c.md#hkdf_info_hmac) macro in `include/config.c`
 - [`HKDF_INFO_HMAC`](modules/include.config_py.py.md#hkdf_info_hmac) constant in `include.config_py`
 - [`HKDF_INFO_HMAC`](modules/include.config_py_autogen.py.md#hkdf_info_hmac) constant in `include.config_py_autogen`
-- [`HKDF_INFOS`](modules/c2.stage_payload.py.md#hkdf_infos) constant in `c2.stage_payload`
 - [`hkdf_key_derivation_process`](modules/include.hkdf_key_derivation.h.md#hkdf_key_derivation_process) function in `include/hkdf_key_derivation.h`
 - [`hkdf_key_derivation_process`](modules/mutants.src.hkdf_key_derivation.c.md#hkdf_key_derivation_process) function in `mutants/src/hkdf_key_derivation.c`
 - [`hkdf_key_derivation_process`](modules/src.hkdf_key_derivation.c.md#hkdf_key_derivation_process) function in `src/hkdf_key_derivation.c`
@@ -914,14 +915,15 @@
 - [`ssize_t`](modules/bof.userenum.userenum.c.md#ssize_t) type_alias in `bof/userenum/userenum.c`
 - [`ssize_t`](modules/bof.whoami.whoami.c.md#ssize_t) type_alias in `bof/whoami/whoami.c`
 - [`ssize_t`](modules/issudo.c.md#ssize_t) type_alias in `issudo.c`
+- [`STAGE_BEACON_PATH`](modules/c2.server.py.md#stage_beacon_path) constant in `c2.server`
 - [`STAGE_BEACON_PREFIX`](modules/c2.server.py.md#stage_beacon_prefix) constant in `c2.server`
+- [`STAGE_CONFIG_PATH`](modules/c2.server.py.md#stage_config_path) constant in `c2.server`
 - [`STAGE_CONFIG_PREFIX`](modules/c2.server.py.md#stage_config_prefix) constant in `c2.server`
 - [`stage_decode`](modules/c2.server.py.md#stage_decode) function in `c2.server`
 - [`stage_encode`](modules/c2.server.py.md#stage_encode) function in `c2.server`
-- [`STAGE_HKDF_INFOS`](modules/c2.server.py.md#stage_hkdf_infos) constant in `c2.server`
+- [`STAGE_HKDF_INFO_ENC`](modules/c2.server.py.md#stage_hkdf_info_enc) constant in `c2.server`
+- [`STAGE_HKDF_INFO_HMAC`](modules/c2.server.py.md#stage_hkdf_info_hmac) constant in `c2.server`
 - [`STAGE_HKDF_SALT`](modules/c2.server.py.md#stage_hkdf_salt) constant in `c2.server`
-- [`STAGE_KEY_COUNT`](modules/c2.server.py.md#stage_key_count) constant in `c2.server`
-- [`STAGE_KEY_LEN`](modules/c2.server.py.md#stage_key_len) constant in `c2.server`
 - [`stage_keys`](modules/c2.server.py.md#stage_keys) function in `c2.server`
 - [`STAGE_PAYLOAD_PATH`](modules/c2.server.py.md#stage_payload_path) constant in `c2.server`
 - [`stage_token_ok`](modules/c2.server.py.md#stage_token_ok) function in `c2.server`
@@ -1053,9 +1055,3 @@
 - [`write_implementation_stub`](modules/contract_agent.py.md#write_implementation_stub) function in `contract_agent`
 - [`write_python_test`](modules/contract_agent.py.md#write_python_test) function in `contract_agent`
 - [`write_spec`](modules/contract_agent.py.md#write_spec) function in `contract_agent`
-
-<a id="x"></a>
-
-## X
-
-- [`xor_layer`](modules/c2.server.py.md#xor_layer) function in `c2.server`

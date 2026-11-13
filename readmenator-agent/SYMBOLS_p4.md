@@ -3,6 +3,7 @@ Previous: [SYMBOLS_p3.md](SYMBOLS_p3.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `main` | function | `tests/test_hkdf_key_derivation_c.c:212` | `int main(void)` |
 | `test_aes_key_hex_backward_compat` | function | `tests/test_hkdf_key_derivation_c.c:55` | `static void test_aes_key_hex_backward_compat(void **state)` |
 | `test_crypto_struct_has_new_fields` | function | `tests/test_hkdf_key_derivation_c.c:200` | `static void test_crypto_struct_has_new_fields(void **state)` |
 | `test_deterministic_derivation` | function | `tests/test_hkdf_key_derivation_c.c:165` | `static void test_deterministic_derivation(void **state)` |
@@ -82,33 +83,35 @@ Previous: [SYMBOLS_p3.md](SYMBOLS_p3.md)
 | `test_random_url_points_at_generated_port` | method | `tests/test_runtime_random.py:62` | `def test_random_url_points_at_generated_port(self, monkeypatch, tmp_path)` |
 | `test_served_config_matches_runtime` | method | `tests/test_runtime_random.py:100` | `def test_served_config_matches_runtime(self, monkeypatch, tmp_path)` |
 | `test_two_runs_differ` | method | `tests/test_runtime_random.py:66` | `def test_two_runs_differ(self, monkeypatch, tmp_path)` |
-| `TestStageBeacon` | class | `tests/test_stage.py:120` | `class TestStageBeacon` |
-| `TestStageCodec` | class | `tests/test_stage.py:66` | `class TestStageCodec` |
-| `TestStageConfig` | class | `tests/test_stage.py:144` | `class TestStageConfig` |
-| `TestStageOneliner` | class | `tests/test_stage.py:197` | `class TestStageOneliner` |
-| `TestStageRouting` | class | `tests/test_stage.py:165` | `class TestStageRouting` |
-| `TestStageTLSEndToEnd` | class | `tests/test_stage.py:228` | `class TestStageTLSEndToEnd` |
-| `TestStageToken` | class | `tests/test_stage.py:102` | `class TestStageToken` |
-| `_self_signed_cert` | function | `tests/test_stage.py:210` | `def _self_signed_cert(td)` |
-| `make_state` | function | `tests/test_stage.py:54` | `def make_state(tmpdir, token, beacon)` |
-| `test_beacon_file_missing` | method | `tests/test_stage.py:129` | `def test_beacon_file_missing(self, tmp_path)` |
-| `test_beacon_not_elf` | method | `tests/test_stage.py:133` | `def test_beacon_not_elf(self, tmp_path)` |
-| `test_beacon_path_none` | method | `tests/test_stage.py:139` | `def test_beacon_path_none(self, tmp_path)` |
-| `test_beacon_roundtrip` | method | `tests/test_stage.py:121` | `def test_beacon_roundtrip(self, tmp_path)` |
-| `test_config_always_available` | method | `tests/test_stage.py:157` | `def test_config_always_available(self, tmp_path, monkeypatch)` |
-| `test_config_roundtrip` | method | `tests/test_stage.py:145` | `def test_config_roundtrip(self, tmp_path, monkeypatch)` |
-| `test_encode_decode_roundtrip` | method | `tests/test_stage.py:67` | `def test_encode_decode_roundtrip(self)` |
-| `test_http_get_beacon_routed` | method | `tests/test_stage.py:166` | `def test_http_get_beacon_routed(self, tmp_path)` |
-| `test_http_get_config_routed` | method | `tests/test_stage.py:175` | `def test_http_get_config_routed(self, tmp_path, monkeypatch)` |
-| `test_keys_derived_deterministically_from_token` | method | `tests/test_stage.py:78` | `def test_keys_derived_deterministically_from_token(self)` |
-| `test_legacy_selector_routed` | method | `tests/test_stage.py:189` | `def test_legacy_selector_routed(self, tmp_path)` |
-| `test_missing_token_forbidden` | method | `tests/test_stage.py:103` | `def test_missing_token_forbidden(self, tmp_path)` |
-| `test_no_key_material_on_wire` | method | `tests/test_stage.py:71` | `def test_no_key_material_on_wire(self)` |
-| `test_no_token_configured_fails_closed` | method | `tests/test_stage.py:111` | `def test_no_token_configured_fails_closed(self, tmp_path)` |
-| `test_oneliner_embeds_url_and_token` | method | `tests/test_stage.py:198` | `def test_oneliner_embeds_url_and_token(self, tmp_path)` |
-| `test_server_payload_hkdf_parity` | method | `tests/test_stage.py:84` | `def test_server_payload_hkdf_parity(self)` |
-| `test_tls_roundtrip` | method | `tests/test_stage.py:229` | `def test_tls_roundtrip(self, tmp_path, monkeypatch)` |
-| `test_unknown_kind_forbidden` | method | `tests/test_stage.py:115` | `def test_unknown_kind_forbidden(self, tmp_path)` |
-| `test_wrong_token_forbidden` | method | `tests/test_stage.py:107` | `def test_wrong_token_forbidden(self, tmp_path)` |
-| `test_wrong_token_routed_rejected` | method | `tests/test_stage.py:184` | `def test_wrong_token_routed_rejected(self, tmp_path)` |
+| `TestStageBeacon` | class | `tests/test_stage.py:137` | `class TestStageBeacon` |
+| `TestStageCodec` | class | `tests/test_stage.py:67` | `class TestStageCodec` |
+| `TestStageConfig` | class | `tests/test_stage.py:161` | `class TestStageConfig` |
+| `TestStageOneliner` | class | `tests/test_stage.py:219` | `class TestStageOneliner` |
+| `TestStageRouting` | class | `tests/test_stage.py:182` | `class TestStageRouting` |
+| `TestStageTLSEndToEnd` | class | `tests/test_stage.py:254` | `class TestStageTLSEndToEnd` |
+| `TestStageToken` | class | `tests/test_stage.py:119` | `class TestStageToken` |
+| `_self_signed_cert` | function | `tests/test_stage.py:236` | `def _self_signed_cert(td)` |
+| `make_state` | function | `tests/test_stage.py:55` | `def make_state(tmpdir, token, beacon)` |
+| `test_beacon_file_missing` | method | `tests/test_stage.py:146` | `def test_beacon_file_missing(self, tmp_path)` |
+| `test_beacon_not_elf` | method | `tests/test_stage.py:150` | `def test_beacon_not_elf(self, tmp_path)` |
+| `test_beacon_path_none` | method | `tests/test_stage.py:156` | `def test_beacon_path_none(self, tmp_path)` |
+| `test_beacon_roundtrip` | method | `tests/test_stage.py:138` | `def test_beacon_roundtrip(self, tmp_path)` |
+| `test_config_always_available` | method | `tests/test_stage.py:174` | `def test_config_always_available(self, tmp_path, monkeypatch)` |
+| `test_config_roundtrip` | method | `tests/test_stage.py:162` | `def test_config_roundtrip(self, tmp_path, monkeypatch)` |
+| `test_encode_decode_roundtrip` | method | `tests/test_stage.py:68` | `def test_encode_decode_roundtrip(self)` |
+| `test_http_get_beacon_routed` | method | `tests/test_stage.py:183` | `def test_http_get_beacon_routed(self, tmp_path)` |
+| `test_http_get_config_routed` | method | `tests/test_stage.py:192` | `def test_http_get_config_routed(self, tmp_path, monkeypatch)` |
+| `test_keys_derived_deterministically_from_token` | method | `tests/test_stage.py:88` | `def test_keys_derived_deterministically_from_token(self)` |
+| `test_legacy_selector_routed` | method | `tests/test_stage.py:211` | `def test_legacy_selector_routed(self, tmp_path)` |
+| `test_missing_auth_header_rejected` | method | `tests/test_stage.py:206` | `def test_missing_auth_header_rejected(self, tmp_path)` |
+| `test_missing_token_forbidden` | method | `tests/test_stage.py:120` | `def test_missing_token_forbidden(self, tmp_path)` |
+| `test_no_token_configured_fails_closed` | method | `tests/test_stage.py:128` | `def test_no_token_configured_fails_closed(self, tmp_path)` |
+| `test_oneliner_embeds_url_and_token` | method | `tests/test_stage.py:220` | `def test_oneliner_embeds_url_and_token(self, tmp_path)` |
+| `test_server_payload_crypto_parity` | method | `tests/test_stage.py:94` | `def test_server_payload_crypto_parity(self)` |
+| `test_tampered_payload_fails_auth` | method | `tests/test_stage.py:78` | `def test_tampered_payload_fails_auth(self)` |
+| `test_tls_roundtrip` | method | `tests/test_stage.py:255` | `def test_tls_roundtrip(self, tmp_path, monkeypatch)` |
+| `test_unknown_kind_forbidden` | method | `tests/test_stage.py:132` | `def test_unknown_kind_forbidden(self, tmp_path)` |
+| `test_wrong_token_fails_auth` | method | `tests/test_stage.py:72` | `def test_wrong_token_fails_auth(self)` |
+| `test_wrong_token_forbidden` | method | `tests/test_stage.py:124` | `def test_wrong_token_forbidden(self, tmp_path)` |
+| `test_wrong_token_routed_rejected` | method | `tests/test_stage.py:201` | `def test_wrong_token_routed_rejected(self, tmp_path)` |
 

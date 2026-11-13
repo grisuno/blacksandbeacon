@@ -19,9 +19,9 @@
   "bof/whoami/bof.c": "a6f16b6de4e8d855c3ed9b65b429f157331a4abe7f5eb5e1babb5d83aeb6e12c",
   "bof/whoami/whoami.c": "21911a34859c5058aa7ec9d200eb1984e9bcb78baa4774d2a1e6619ebf54bcbc",
   "c2/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "c2/server.py": "9ebb6dc05d98e9527488bd4d3fa8cf09ac9df410154607687d98507fba9cf879",
+  "c2/server.py": "f720532fb95b4ae8eade5493284ff8511e849f4b632c269d7426b2bf2af54cbd",
   "c2/stage_oneliner.sh": "1144607f88ec5419bf8185fd8d65e6f014d2aa01f8c6916a2f8248ced298914b",
-  "c2/stage_payload.py": "7a06b18ae57488ffad59993dcfe63b2a048f6fc334094a09da7a6b5eea890d0f",
+  "c2/stage_payload.py": "aa4b1f3d0003c94f9e6b2edadd95234ca03a4060b36d31a633883ea2b1a6ed43",
   "cJSON.c": "4ab951256e1ba0c473c9d9a69ad492a7a43d1faf6a49edc29639a4253f28f65b",
   "cJSON.h": "903dd1113304c1f1bbdc214832fb5d15013e7240f04d2a1186022e0d8fb7e1dc",
   "config/generate_parsers.py": "346c2424c3828202c24787bd6edf8f7a8ca09b39feb244e921473243ca0f7b05",
@@ -177,5 +177,5 @@
   "tests/test_iv_generation_c.c": "2555e9b2bf53ff6e0d47ce15d5ed5ee853a37cbfb4ccb91a700312c457ab45c8",
   "tests/test_replay_protection.py": "1856ee5e67c5e9cc6be75e6ce74e90cee4679dc9752d116603f572b81fd94a1c",
   "tests/test_runtime_random.py": "4c3e5cf9d9d665de9e4c565ed244c1cca1663145b54fdd3cce4719f5794e2de3",
-  "tests/test_stage.py": "3fb83501ab11c762831edde1fe4dda381931da63401df8074aa6dbcafacab100"
+  "tests/test_stage.py": "5ac3bf99549dcf17f521125cb5e709c35643faa8785cd916dd368044e8e26475"
 }

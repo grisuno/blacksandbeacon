@@ -223,7 +223,7 @@
         "tests/test_iv_generation.py",
         "tests/test_runtime_random.py"
       ],
-      "mentions": 74,
+      "mentions": 75,
       "confidence": "EXTRACTED"
     },
     {
@@ -296,6 +296,7 @@
     {
       "name": "auto",
       "files": [
+        "c2/server.py",
         "include/config_autogen.c",
         "include/config_py_autogen.py",
         "mutants/src/async_i_o_for_beacon.c",
@@ -356,7 +357,7 @@
         "src/tls_client_certificate_authentication.c",
         "src/unified_config_schema.c"
       ],
-      "mentions": 59,
+      "mentions": 61,
       "confidence": "EXTRACTED"
     },
     {
@@ -478,7 +479,7 @@
         "tests/test_certificate_pinning.py",
         "tests/test_install_deploy.py"
       ],
-      "mentions": 214,
+      "mentions": 217,
       "confidence": "EXTRACTED"
     },
     {
@@ -638,6 +639,44 @@
       "confidence": "EXTRACTED"
     },
     {
+      "name": "not",
+      "files": [
+        "aes.c",
+        "bof/include/syscalls.h",
+        "c2/server.py",
+        "c2/stage_payload.py",
+        "cJSON.c",
+        "include/aes.c",
+        "include/cJSON.c",
+        "include/config_autogen.c",
+        "include/config_py_autogen.py",
+        "mutants/tests/test_beacon_build.py",
+        "mutants/tests/test_bof_compile.py",
+        "mutants/tests/test_c2_http_e2e.py",
+        "mutants/tests/test_c2_server.py",
+        "mutants/tests/test_certificate_pinning.py",
+        "mutants/tests/test_config.py",
+        "mutants/tests/test_crypto.py",
+        "tests/test_beacon_build.py",
+        "tests/test_bof_compile.py",
+        "tests/test_bof_path_traversal.py",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_c2_server.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_config.py",
+        "tests/test_crypto.py",
+        "tests/test_execve_command.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_hkdf_key_derivation_c.c",
+        "tests/test_iv_generation.py",
+        "tests/test_iv_generation_c.c",
+        "tests/test_replay_protection.py",
+        "tests/test_stage.py"
+      ],
+      "mentions": 88,
+      "confidence": "EXTRACTED"
+    },
+    {
       "name": "placeholder",
       "files": [
         "mutants/tests/test_async_i_o_for_beacon.py",
@@ -673,43 +712,6 @@
         "mutants/tests/test_unified_config_schema_c.c"
       ],
       "mentions": 31,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "not",
-      "files": [
-        "aes.c",
-        "bof/include/syscalls.h",
-        "c2/server.py",
-        "cJSON.c",
-        "include/aes.c",
-        "include/cJSON.c",
-        "include/config_autogen.c",
-        "include/config_py_autogen.py",
-        "mutants/tests/test_beacon_build.py",
-        "mutants/tests/test_bof_compile.py",
-        "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_c2_server.py",
-        "mutants/tests/test_certificate_pinning.py",
-        "mutants/tests/test_config.py",
-        "mutants/tests/test_crypto.py",
-        "tests/test_beacon_build.py",
-        "tests/test_bof_compile.py",
-        "tests/test_bof_path_traversal.py",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_c2_server.py",
-        "tests/test_certificate_pinning.py",
-        "tests/test_config.py",
-        "tests/test_crypto.py",
-        "tests/test_execve_command.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_hkdf_key_derivation_c.c",
-        "tests/test_iv_generation.py",
-        "tests/test_iv_generation_c.c",
-        "tests/test_replay_protection.py",
-        "tests/test_stage.py"
-      ],
-      "mentions": 86,
       "confidence": "EXTRACTED"
     },
     {
@@ -814,40 +816,7 @@
         "tests/test_install_deploy.py",
         "tests/test_runtime_random.py"
       ],
-      "mentions": 64,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "key",
-      "files": [
-        "aes.c",
-        "aes.h",
-        "c2/server.py",
-        "c2/stage_payload.py",
-        "include/aes.c",
-        "include/aes.h",
-        "include/config.c",
-        "include/config.h",
-        "include/config_py.py",
-        "include/config_py_autogen.py",
-        "include/hkdf_key_derivation.h",
-        "mutants/src/hkdf_key_derivation.c",
-        "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_config.py",
-        "mutants/tests/test_crypto.py",
-        "mutants/tests/test_hkdf_key_derivation.py",
-        "mutants/tests/test_hkdf_key_derivation_c.c",
-        "src/hkdf_key_derivation.c",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_certificate_pinning.py",
-        "tests/test_config.py",
-        "tests/test_crypto.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_hkdf_key_derivation_c.c",
-        "tests/test_runtime_random.py",
-        "tests/test_stage.py"
-      ],
-      "mentions": 165,
+      "mentions": 63,
       "confidence": "EXTRACTED"
     },
     {
@@ -917,6 +886,38 @@
       "confidence": "EXTRACTED"
     },
     {
+      "name": "key",
+      "files": [
+        "aes.c",
+        "aes.h",
+        "c2/server.py",
+        "include/aes.c",
+        "include/aes.h",
+        "include/config.c",
+        "include/config.h",
+        "include/config_py.py",
+        "include/config_py_autogen.py",
+        "include/hkdf_key_derivation.h",
+        "mutants/src/hkdf_key_derivation.c",
+        "mutants/tests/test_c2_http_e2e.py",
+        "mutants/tests/test_config.py",
+        "mutants/tests/test_crypto.py",
+        "mutants/tests/test_hkdf_key_derivation.py",
+        "mutants/tests/test_hkdf_key_derivation_c.c",
+        "src/hkdf_key_derivation.c",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_certificate_pinning.py",
+        "tests/test_config.py",
+        "tests/test_crypto.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_hkdf_key_derivation_c.c",
+        "tests/test_runtime_random.py",
+        "tests/test_stage.py"
+      ],
+      "mentions": 163,
+      "confidence": "EXTRACTED"
+    },
+    {
       "name": "style",
       "files": [
         "c2/server.py",
@@ -946,6 +947,37 @@
         "tests/test_c2_http_e2e.py"
       ],
       "mentions": 32,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "aes",
+      "files": [
+        "aes.c",
+        "aes.h",
+        "c2/server.py",
+        "c2/stage_payload.py",
+        "include/aes.c",
+        "include/aes.h",
+        "include/aes_cfb.c",
+        "include/aes_cfb.h",
+        "include/beacon_common.h",
+        "include/config.c",
+        "include/config.h",
+        "legacy/beacon3.c",
+        "legacy/beacon5.c",
+        "legacy/beacon6.c",
+        "legacy/beacon_p2p.c",
+        "legacy/gopher_beacon.c",
+        "legacy/v1_gopher_beacon.c",
+        "mutants/tests/test_c2_http_e2e.py",
+        "mutants/tests/test_crypto.py",
+        "tests/test_c2_http_e2e.py",
+        "tests/test_crypto.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_hkdf_key_derivation_c.c",
+        "tests/test_iv_generation.py"
+      ],
+      "mentions": 127,
       "confidence": "EXTRACTED"
     },
     {
@@ -1011,36 +1043,6 @@
       "confidence": "EXTRACTED"
     },
     {
-      "name": "aes",
-      "files": [
-        "aes.c",
-        "aes.h",
-        "c2/server.py",
-        "include/aes.c",
-        "include/aes.h",
-        "include/aes_cfb.c",
-        "include/aes_cfb.h",
-        "include/beacon_common.h",
-        "include/config.c",
-        "include/config.h",
-        "legacy/beacon3.c",
-        "legacy/beacon5.c",
-        "legacy/beacon6.c",
-        "legacy/beacon_p2p.c",
-        "legacy/gopher_beacon.c",
-        "legacy/v1_gopher_beacon.c",
-        "mutants/tests/test_c2_http_e2e.py",
-        "mutants/tests/test_crypto.py",
-        "tests/test_c2_http_e2e.py",
-        "tests/test_crypto.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_hkdf_key_derivation_c.c",
-        "tests/test_iv_generation.py"
-      ],
-      "mentions": 125,
-      "confidence": "EXTRACTED"
-    },
-    {
       "name": "fail",
       "files": [
         "c2/server.py",
@@ -1096,7 +1098,7 @@
         "tests/test_crypto.py",
         "tests/test_iv_generation.py"
       ],
-      "mentions": 45,
+      "mentions": 47,
       "confidence": "EXTRACTED"
     },
     {
@@ -1125,7 +1127,7 @@
         "tests/test_iv_generation.py",
         "tests/test_replay_protection.py"
       ],
-      "mentions": 39,
+      "mentions": 40,
       "confidence": "EXTRACTED"
     },
     {
@@ -1154,7 +1156,7 @@
         "tests/test_iv_generation.py",
         "tests/test_stage.py"
       ],
-      "mentions": 30,
+      "mentions": 32,
       "confidence": "EXTRACTED"
     },
     {
@@ -1182,7 +1184,7 @@
         "tests/test_runtime_random.py",
         "tests/test_stage.py"
       ],
-      "mentions": 98,
+      "mentions": 97,
       "confidence": "EXTRACTED"
     },
     {
@@ -1210,7 +1212,7 @@
         "tests/test_install_deploy.py",
         "tests/test_stage.py"
       ],
-      "mentions": 66,
+      "mentions": 69,
       "confidence": "EXTRACTED"
     },
     {
@@ -1399,7 +1401,7 @@
         "tests/test_hkdf_key_derivation_c.c",
         "tests/test_iv_generation_c.c"
       ],
-      "mentions": 175,
+      "mentions": 176,
       "confidence": "EXTRACTED"
     },
     {
@@ -1477,7 +1479,7 @@
         "tests/test_iv_generation.py",
         "tests/test_iv_generation_c.c"
       ],
-      "mentions": 58,
+      "mentions": 59,
       "confidence": "EXTRACTED"
     },
     {
@@ -1604,7 +1606,7 @@
         "tests/test_runtime_random.py",
         "tests/test_stage.py"
       ],
-      "mentions": 131,
+      "mentions": 132,
       "confidence": "EXTRACTED"
     },
     {
@@ -1629,6 +1631,30 @@
         "tests/test_iv_generation_c.c"
       ],
       "mentions": 64,
+      "confidence": "EXTRACTED"
+    },
+    {
+      "name": "via",
+      "files": [
+        "bof/include/beacon_api.h",
+        "c2/server.py",
+        "c2/stage_payload.py",
+        "contract_agent.py",
+        "include/beacon_common.c",
+        "include/command_execution_via_execve.h",
+        "mutants/src/command_execution_via_execve.c",
+        "mutants/tests/test_command_execution_via_execve.py",
+        "mutants/tests/test_command_execution_via_execve_c.c",
+        "mutants/tests/test_config.py",
+        "mutants/tests/test_install_deploy.py",
+        "src/command_execution_via_execve.c",
+        "tests/test_c2_beacon_bof_integration.py",
+        "tests/test_config.py",
+        "tests/test_execve_command.py",
+        "tests/test_hkdf_key_derivation.py",
+        "tests/test_install_deploy.py"
+      ],
+      "mentions": 33,
       "confidence": "EXTRACTED"
     },
     {
@@ -1745,30 +1771,7 @@
         "tests/test_runtime_random.py",
         "tests/test_stage.py"
       ],
-      "mentions": 34,
-      "confidence": "EXTRACTED"
-    },
-    {
-      "name": "via",
-      "files": [
-        "bof/include/beacon_api.h",
-        "c2/stage_payload.py",
-        "contract_agent.py",
-        "include/beacon_common.c",
-        "include/command_execution_via_execve.h",
-        "mutants/src/command_execution_via_execve.c",
-        "mutants/tests/test_command_execution_via_execve.py",
-        "mutants/tests/test_command_execution_via_execve_c.c",
-        "mutants/tests/test_config.py",
-        "mutants/tests/test_install_deploy.py",
-        "src/command_execution_via_execve.c",
-        "tests/test_c2_beacon_bof_integration.py",
-        "tests/test_config.py",
-        "tests/test_execve_command.py",
-        "tests/test_hkdf_key_derivation.py",
-        "tests/test_install_deploy.py"
-      ],
-      "mentions": 32,
+      "mentions": 35,
       "confidence": "EXTRACTED"
     }
   ],
@@ -1815,9 +1818,10 @@
       "source": "auto",
       "target": "include",
       "verb": "depends_on",
-      "strength": 0.87,
+      "strength": 0.89,
       "confidence": "INFERRED",
       "evidence": [
+        "c2/server.py->include/config_py.py",
         "include/config_autogen.c->include/config_autogen.h",
         "mutants/src/async_i_o_for_beacon.c->include/async_i_o_for_beacon.h",
         "mutants/src/beacon_common.c_extraction.c->include/beacon_common.c_extraction.h",
@@ -1826,8 +1830,7 @@
         "mutants/src/bof_path_traversal_hardening.c->include/bof_path_traversal_hardening.h",
         "mutants/src/bof_streaming_(large_outputs).c->include/bof_streaming_(large_outputs).h",
         "mutants/src/c2_rest_api.c->include/c2_rest_api.h",
-        "mutants/src/certificate_pinning___tofu.c->include/certificate_pinning___tofu.h",
-        "mutants/src/command_execution_via_execve.c->include/command_execution_via_execve.h"
+        "mutants/src/certificate_pinning___tofu.c->include/certificate_pinning___tofu.h"
       ]
     },
     {
@@ -3675,15 +3678,15 @@
     }
   ],
   "dialectic": [
-    "Thesis: `aes` centralizes 23 files; Antithesis: `bytes` pulls 19 files with 10 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `client` pulls 20 files with 11 shared (Jaccard 0.34); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.73); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.67); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `get` pulls 24 files with 12 shared (Jaccard 0.34); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `key` pulls 26 files with 13 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `returns` pulls 19 files with 10 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `run` pulls 27 files with 12 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
-    "Thesis: `aes` centralizes 23 files; Antithesis: `url` pulls 16 files with 9 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `bytes` pulls 19 files with 10 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `depends_on` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `client` pulls 20 files with 11 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `decrypt` pulls 22 files with 19 shared (Jaccard 0.70); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `encrypt` pulls 22 files with 18 shared (Jaccard 0.64); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `get` pulls 24 files with 12 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `key` pulls 25 files with 13 shared (Jaccard 0.36); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `returns` pulls 19 files with 10 shared (Jaccard 0.30); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `run` pulls 27 files with 12 shared (Jaccard 0.31); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
+    "Thesis: `aes` centralizes 24 files; Antithesis: `url` pulls 16 files with 10 shared (Jaccard 0.33); Synthesis: should they merge, split by layer, or keep `bridges` explicit?",
     "Thesis: `api` centralizes 26 files; Antithesis: `bof` pulls 52 files with 19 shared (Jaccard 0.32); Synthesis: should they merge, split by layer, or keep `bridges` explicit?"
   ]
 }

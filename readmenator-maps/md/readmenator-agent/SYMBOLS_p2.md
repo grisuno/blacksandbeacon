@@ -3,6 +3,7 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `__attribute__` | function | `include/aes.c:35` | `static __attribute__((unused)) uint8_t getSBoxInvert(uint8_t num)` |
 | `__attribute__` | function | `include/aes.c:59` | `static __attribute__((unused)) uint8_t Td0(int x)` |
 | `__attribute__` | function | `include/aes.c:63` | `static __attribute__((unused)) uint8_t Td1(int x)` |
 | `__attribute__` | function | `include/aes.c:67` | `static __attribute__((unused)) uint8_t Td2(int x)` |
@@ -495,6 +496,5 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 | `WriteMemoryCallback` | function | `legacy/beacon5.c:367` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
 | `_GNU_SOURCE` | macro | `legacy/beacon5.c:1` | `#define _GNU_SOURCE` |
 | `__attribute__` | function | `legacy/beacon5.c:188` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `aes256_cfb_decrypt` | function | `legacy/beacon5.c:557` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
 
 Next: [SYMBOLS_p3.md](SYMBOLS_p3.md)

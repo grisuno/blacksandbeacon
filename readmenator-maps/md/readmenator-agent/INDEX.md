@@ -22,7 +22,7 @@
 | `bof/whoami/bof.c` | - | whoami | 1 | 0 |
 | `bof/whoami/whoami.c` | — LazyOwn RedTeam BOF (Linux/x64)  Tipos | whoami | 14 | 0 |
 | `c2/__init__.py` | - | c2 | 0 | 2 |
-| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 32 | 11 |
+| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 33 | 11 |
 | `c2/stage_oneliner.sh` | Black Sand Beacon diskless stager (Stage-0 one-liner). | c2 | 0 | 0 |
 | `c2/stage_payload.py` | Black Sand Beacon diskless stager. | c2 | 3 | 0 |
 | `cJSON.c` | case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using incompatible... | root | 125 | 0 |
@@ -180,4 +180,4 @@
 | `tests/test_iv_generation_c.c` | test_generate_secure_iv_success: #include <stdarg.h> #include <stddef.h> #include <setjmp.h>... | tests | 7 | 0 |
 | `tests/test_replay_protection.py` | Tests for Replay Protection (Contract: Replay Protection)  BDD Scenarios: 1. | tests | 28 | 0 |
 | `tests/test_runtime_random.py` | Tests for random per-run runtime values (Contract: random staging). | tests | 12 | 0 |
-| `tests/test_stage.py` | Tests for diskless staging endpoints (Contract: fileless staging). | tests | 29 | 0 |
+| `tests/test_stage.py` | Tests for diskless staging endpoints (Contract: fileless staging). | tests | 31 | 0 |

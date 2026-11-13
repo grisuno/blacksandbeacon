@@ -38,7 +38,7 @@ flowchart TB
         n_c12["mutants/src: certificate_pinning___tofu<br/>3 files, 4 symbols<br/>Core / utility"]:::default
         n_c11["mutants/src: c2_rest_api<br/>3 files, 4 symbols<br/>Presentation / entry"]:::default
         n_c10["mutants/src: bof_streaming_(large_outputs)<br/>3 files, 4 symbols<br/>Core / utility"]:::default
-        n_c1["c2<br/>3 files, 35 symbols<br/>Core / utility"]:::entry
+        n_c1["c2<br/>3 files, 36 symbols<br/>Core / utility"]:::entry
     end
     subgraph lane_1["Tier 2 - foundation"]
         direction LR

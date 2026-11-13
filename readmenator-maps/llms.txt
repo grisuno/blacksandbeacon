@@ -1,6 +1,6 @@
 # blacksandbeacon
 
-> Static analysis knowledge base for blacksandbeacon: 25 communities, 179 files, 969 imports, 4 languages, 1587 symbols.
+> Static analysis knowledge base for blacksandbeacon: 25 communities, 179 files, 976 imports, 4 languages, 1590 symbols.
 
 Generated offline by readmenator (zero LLM tokens). Start with the wiki index for the big picture, then the agent INDEX for file lookup.
 
@@ -29,7 +29,7 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 
 ## GraphRAG
 
-- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1898 | Relationships: 4295 | Communities: 26 | Themes: 24 | Text units: 1695
+- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1901 | Relationships: 4313 | Communities: 26 | Themes: 24 | Text units: 1698
 
 ## Agent Docs
 
@@ -53,7 +53,7 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [readmenator-agent/KB_tests.md](md/readmenator-agent/KB_tests.md): main (function, line 24) int main(void)
 - [readmenator-agent/KB_userenum.md](md/readmenator-agent/KB_userenum.md): userinmemberlist (function, line 67) static int userinmemberlist(const char username, const char members)
 - [readmenator-agent/KB_whoami.md](md/readmenator-agent/KB_whoami.md): go (function, line 19) void go(char args, int alen)
-- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 179 files at commit ad6093f58ba9. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 179 files at commit e9feea6269c6. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
 - [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
 - [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
 - [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)
@@ -70,7 +70,7 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [KNOWLEDGE_BASE.md](md/KNOWLEDGE_BASE.md): Start here: Statistics Dashboard for scope, God Nodes for blast radius, Architecture Reference for per-file API. Agents: prefer readmenator-agent/INDEX.md +...
 - [README.md](md/README.md): A Linux C2 beacon with a native in-memory ELF BOF loader, written in
 - [SECURITY.md](md/SECURITY.md): Black Sand Beacon is actively developed. Only the latest release receives security updates.
-- [readmenator-diagrams/c2.md](md/readmenator-diagrams/c2.md): c2 groups 17 files (py) around derivekeys, deepmerge, loadconfig, randomfreeport, loadruntimeconfig. Black Sand Beacon C2 Server Gopher-style command and...
+- [readmenator-diagrams/c2.md](md/readmenator-diagrams/c2.md): c2 groups 17 files (py) around derivekeys, deepmerge, loadconfig, randomfreeport, ensurestagetls. Black Sand Beacon C2 Server Gopher-style command and control...
 - [readmenator-diagrams/include_aes.md](md/readmenator-diagrams/include_aes.md): include: aes groups 6 files (c, h) around BSBAESCFBH, aes256cfbencrypt, aes256cfbdecrypt, AESH, CBC. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
 - [readmenator-diagrams/include_config.md](md/readmenator-diagrams/include_config.md): include: config groups 6 files (c, h) around BSBCONFIGH, BSBCONFIGPATHDEFAULT, BSBCONFIGPATHENV, BSBMAXURL, BSBMAXURI. slurp: declared in the schema.
 - [readmenator-diagrams/legacy.md](md/readmenator-diagrams/legacy.md): legacy groups 20 files (c, h) around BEACONCOMMONH, GNUSOURCE, BSBOUTPUTBUFFERDEFAULT, BSBOUTPUTTRUNCATIONMARKER, httpresponset. tiny-AES-c...

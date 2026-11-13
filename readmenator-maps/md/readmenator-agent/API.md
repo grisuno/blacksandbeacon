@@ -161,36 +161,35 @@ Depends on: `bof/include/beacon_api.h`, `bof/include/syscalls.h`
 ## c2/server.py
 Depends on: `include/config_py.py`
 Imported by: `mutants/tests/test_c2_server.py`, `tests/test_bof_path_traversal.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_c2_http_e2e.py`, `tests/test_c2_server.py`, `tests/test_certificate_pinning.py`, `tests/test_crypto.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`, `tests/test_runtime_random.py`, `tests/test_stage.py`
-- `load_runtime_config` (function) `c2/server.py:86` `def load_runtime_config()` -- Load configuration from JSON file or use defaults.
-- `compute_hmac` (function) `c2/server.py:210` `def compute_hmac(key, data)` -- Compute HMAC-SHA256 for message authentication.
-- `verify_hmac` (function) `c2/server.py:215` `def verify_hmac(key, data, signature)` -- Verify HMAC-SHA256 signature.
-- `encrypt_data` (function) `c2/server.py:221` `def encrypt_data(data, key, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and optional HMAC (legacy format without replay protection).
-- `encrypt_data_replay` (function) `c2/server.py:244` `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and replay protection (counter + timestamp).
-- `decrypt_data` (function) `c2/server.py:278` `def decrypt_data(b64_data, key, hmac_key, use_hmac)` -- Decrypt AES-256-CFB data with optional HMAC verification.
-- `decrypt_data_replay` (function) `c2/server.py:301` `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` -- Decrypt AES-256-CFB data with replay protection (counter + timestamp).
-- `hkdf_sha256` (function) `c2/server.py:398` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand.
-- `stage_keys` (function) `c2/server.py:410` `def stage_keys(token)` -- Derive the three staging XOR layers from the token.
-- `xor_layer` (function) `c2/server.py:416` `def xor_layer(data, key)` -- Apply one XOR layer with a repeating key.
-- `stage_encode` (function) `c2/server.py:422` `def stage_encode(payload, token)` -- Pack payload as base64 using token-derived XOR keys.
-- `stage_decode` (function) `c2/server.py:430` `def stage_decode(body, token)` -- Inverse of stage_encode (used by tests and the stager parity check).
-- `stage_token_ok` (function) `c2/server.py:441` `def stage_token_ok(state, token)` -- Constant-time token check; fail closed when no token configured.
-- `build_stage_config` (function) `c2/server.py:449` `def build_stage_config(state)` -- Build the beacon config JSON served by /stage/config.
-- `handle_stage` (function) `c2/server.py:481` `def handle_stage(state, kind, token)` -- Serve the beacon ELF or the config.json through the staging contract.
-- `build_stage_oneliner` (function) `c2/server.py:512` `def build_stage_oneliner(cfg)` -- Build the copy-paste stager one-liner for the current config.
-- `copy_to_clipboard` (function) `c2/server.py:529` `def copy_to_clipboard(text)` -- Copy text to the X11/Wayland clipboard; False if no tool exists.
-- `C2State.__init__` (method) `c2/server.py:555` `def __init__(self, cfg)`
-- `handle_get_command` (function) `c2/server.py:568` `def handle_get_command(state, selector)` -- Dispatch beacon's polling GET request.
-- `handle_report` (function) `c2/server.py:592` `def handle_report(state, b64_payload)` -- Process beacon result report.
-- `handle_bof` (function) `c2/server.py:682` `def handle_bof(state, name)` -- Serve BOF file from upload directory with path traversal protection.
-- `handle_request` (function) `c2/server.py:720` `def handle_request(state, selector)` -- Route request to appropriate handler.
-- `serve_client` (function) `c2/server.py:860` `def serve_client(state, conn, addr)` -- Handle individual client connection.
-- `serve` (function) `c2/server.py:890` `def serve(cfg, state)` -- Bind and accept loop.
-- `command_injector` (function) `c2/server.py:932` `def command_injector(state)` -- Interactive command injection REPL.
-- `main` (function) `c2/server.py:955` `def main()` -- Start C2 server.
+- `load_runtime_config` (function) `c2/server.py:160` `def load_runtime_config()` -- Load configuration from JSON file or use defaults.
+- `compute_hmac` (function) `c2/server.py:287` `def compute_hmac(key, data)` -- Compute HMAC-SHA256 for message authentication.
+- `verify_hmac` (function) `c2/server.py:292` `def verify_hmac(key, data, signature)` -- Verify HMAC-SHA256 signature.
+- `encrypt_data` (function) `c2/server.py:298` `def encrypt_data(data, key, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and optional HMAC (legacy format without replay protection).
+- `encrypt_data_replay` (function) `c2/server.py:321` `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and replay protection (counter + timestamp).
+- `decrypt_data` (function) `c2/server.py:355` `def decrypt_data(b64_data, key, hmac_key, use_hmac)` -- Decrypt AES-256-CFB data with optional HMAC verification.
+- `decrypt_data_replay` (function) `c2/server.py:378` `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` -- Decrypt AES-256-CFB data with replay protection (counter + timestamp).
+- `hkdf_sha256` (function) `c2/server.py:472` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand.
+- `stage_keys` (function) `c2/server.py:483` `def stage_keys(token)` -- Derive staging encryption and HMAC keys from token.
+- `stage_encode` (function) `c2/server.py:491` `def stage_encode(payload, token)` -- Encrypt payload with AES-256-CFB + HMAC-SHA256 using token-derived keys.
+- `stage_decode` (function) `c2/server.py:503` `def stage_decode(body, token)` -- Decrypt/verify staging payload.
+- `stage_token_ok` (function) `c2/server.py:523` `def stage_token_ok(state, token)` -- Constant-time token check; fail closed when no token configured.
+- `build_stage_config` (function) `c2/server.py:531` `def build_stage_config(state)` -- Build the beacon config JSON served by /stage/config.
+- `handle_stage` (function) `c2/server.py:563` `def handle_stage(state, kind, token)` -- Serve the beacon ELF or the config.json through the staging contract.
+- `build_stage_oneliner` (function) `c2/server.py:594` `def build_stage_oneliner(cfg)` -- Build the copy-paste stager one-liner for the current config.
+- `copy_to_clipboard` (function) `c2/server.py:611` `def copy_to_clipboard(text)` -- Copy text to the X11/Wayland clipboard; False if no tool exists.
+- `C2State.__init__` (method) `c2/server.py:637` `def __init__(self, cfg)`
+- `handle_get_command` (function) `c2/server.py:650` `def handle_get_command(state, selector)` -- Dispatch beacon's polling GET request.
+- `handle_report` (function) `c2/server.py:674` `def handle_report(state, b64_payload)` -- Process beacon result report.
+- `handle_bof` (function) `c2/server.py:764` `def handle_bof(state, name)` -- Serve BOF file with path traversal protection.
+- `handle_request` (function) `c2/server.py:811` `def handle_request(state, selector)` -- Route request to appropriate handler.
+- `serve_client` (function) `c2/server.py:963` `def serve_client(state, conn, addr)` -- Handle individual client connection.
+- `serve` (function) `c2/server.py:993` `def serve(cfg, state)` -- Bind and accept loop.
+- `command_injector` (function) `c2/server.py:1058` `def command_injector(state)` -- Interactive command injection REPL.
+- `main` (function) `c2/server.py:1081` `def main()` -- Start C2 server.
 
 ## c2/stage_payload.py
-- `hkdf_sha256` (function) `c2/stage_payload.py:37` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand (stdlib only, mirrors c2/server.py).
-- `main` (function) `c2/stage_payload.py:67` `def main()`
+- `hkdf_sha256` (function) `c2/stage_payload.py:41` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand (mirrors c2/server.py).
+- `main` (function) `c2/stage_payload.py:84` `def main()`
 
 ## cJSON.c
 Depends on: `cJSON.h`

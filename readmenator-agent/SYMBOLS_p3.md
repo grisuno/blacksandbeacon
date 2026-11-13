@@ -3,6 +3,7 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `aes256_cfb_decrypt` | function | `legacy/beacon5.c:557` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
 | `aes256_cfb_encrypt` | function | `legacy/beacon5.c:523` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
 | `base64_decode` | function | `legacy/beacon5.c:497` | `unsigned char *base64_decode(const char *input, int *len)` |
 | `base64_encode` | function | `legacy/beacon5.c:479` | `char *base64_encode(const unsigned char *input, int len)` |
@@ -495,6 +496,5 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `assert_memory_equal` | function | `tests/test_hkdf_key_derivation_c.c:207` | `assert_memory_equal(crypto.master_key, (uint8_t[BSB_AES_KEY_BYTES])` |
 | `assert_memory_equal` | function | `tests/test_hkdf_key_derivation_c.c:208` | `assert_memory_equal(crypto.encryption_key, (uint8_t[BSB_AES_KEY_BYTES])` |
 | `assert_memory_equal` | function | `tests/test_hkdf_key_derivation_c.c:209` | `assert_memory_equal(crypto.hmac_key, (uint8_t[BSB_AES_KEY_BYTES])` |
-| `main` | function | `tests/test_hkdf_key_derivation_c.c:212` | `int main(void)` |
 
 Next: [SYMBOLS_p4.md](SYMBOLS_p4.md)

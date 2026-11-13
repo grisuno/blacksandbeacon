@@ -106,8 +106,8 @@
 - `beacons/v3/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
 - `bof/include/beacon_api.h` -> stdarg.h, stddef.h, stdint.h
 - `bof/include/syscalls.h` -> stddef.h
-- `c2/server.py` -> base64, concurrent.futures, copy, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, hashlib, hmac, json, logging, os, pathlib, random, secrets, socket, ssl, subprocess, sys, threading, time, typing, urllib.parse
-- `c2/stage_payload.py` -> base64, hashlib, hmac, json, os, ssl, sys, urllib.error, urllib.request
+- `c2/server.py` -> base64, concurrent.futures, copy, cryptography, cryptography.hazmat.backends, cryptography.hazmat.primitives, cryptography.hazmat.primitives.asymmetric, cryptography.hazmat.primitives.ciphers, cryptography.x509.oid, csv, datetime, hashlib, hmac, json, logging, os, pathlib, random, secrets, socket, ssl, subprocess, sys, threading, time, typing, urllib.parse
+- `c2/stage_payload.py` -> base64, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, hashlib, hmac, json, os, ssl, sys, urllib.error, urllib.request
 - `cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
 - `cJSON.h` -> stddef.h
 - `config/generate_parsers.py` -> json, pathlib, sys, typing

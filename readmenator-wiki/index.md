@@ -18,13 +18,13 @@ Open work clusters around documentation (58% file coverage), 0 security findings
 | Metric | Value |
 |--------|-------|
 | Files | 179 |
-| Symbols | 1587 |
+| Symbols | 1590 |
 | Resolved imports | 97 |
 | Languages | c, h, py, sh |
 | Communities | 26 |
 | Doc coverage | 58% (103/179 files) |
 | Security findings | 0 |
-| Estimated read cost | ~32192 tokens (chars/4, offline so $0) |
+| Estimated read cost | ~32318 tokens (chars/4, offline so $0) |
 
 ## Reading Order
 
@@ -71,7 +71,7 @@ readmenator query "<question>" --target blacksandbeacon
 | File | Score |
 |------|-------|
 | `cJSON.h` | 28.0 |
-| `c2/server.py` | 27.2 |
+| `c2/server.py` | 27.3 |
 | `aes.h` | 22.1 |
 | `include/beacon_common.h` | 17.8 |
 | `include/cJSON.c` | 16.5 |

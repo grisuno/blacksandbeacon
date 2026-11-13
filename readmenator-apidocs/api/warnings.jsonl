@@ -128,7 +128,7 @@
 {"code":"DOC001","uid":"bof/whoami/whoami.c::SYS_getuid","file":"bof/whoami/whoami.c","line":17,"message":"macro SYS_getuid is not documented"}
 {"code":"DOC001","uid":"bof/whoami/whoami.c::go","file":"bof/whoami/whoami.c","line":38,"message":"function go is not documented"}
 {"code":"DOC001","uid":"c2/__init__.py","file":"c2/__init__.py","line":1,"message":"module c2/__init__.py is not documented"}
-{"code":"DOC001","uid":"c2/stage_payload.py::main","file":"c2/stage_payload.py","line":67,"message":"function main is not documented"}
+{"code":"DOC001","uid":"c2/stage_payload.py::main","file":"c2/stage_payload.py","line":84,"message":"function main is not documented"}
 {"code":"DOC001","uid":"cJSON.c","file":"cJSON.c","line":1,"message":"module cJSON.c is not documented"}
 {"code":"DOC001","uid":"cJSON.c::_CRT_SECURE_NO_DEPRECATE","file":"cJSON.c","line":28,"message":"macro _CRT_SECURE_NO_DEPRECATE is not documented"}
 {"code":"DOC001","uid":"cJSON.c::true","file":"cJSON.c","line":65,"message":"macro true is not documented"}

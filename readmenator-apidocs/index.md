@@ -1,6 +1,6 @@
 # blacksandbeacon API Reference
 
-> Generated offline by readmenator: 106 modules, 1052 documented entities, documentation coverage 36.7% (363/989 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
+> Generated offline by readmenator: 106 modules, 1053 documented entities, documentation coverage 36.6% (362/988 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
 
 Navigate: [Interactive architecture and flows](flows.html) | [Architecture and flows (Mermaid)](architecture.md) | [Class hierarchy](classes.md) | [General index](genindex.md) | [Coverage and warnings](COVERAGE.md) | [`api/index.json`](api/index.json) | [HTML browser](index.html)
 
@@ -89,7 +89,7 @@ Languages: c (64), h (30), py (10), sh (2)
 | Module | Summary | Types | Callables | Coverage |
 |---|---|---|---|---|
 | [`c2`](modules/c2.__init__.py.md) |  | 0 | 0 | 0.0% |
-| [`c2.server`](modules/c2.server.py.md) | Black Sand Beacon C2 Server | 1 | 26 | 96.4% |
+| [`c2.server`](modules/c2.server.py.md) | Black Sand Beacon C2 Server | 1 | 25 | 96.3% |
 | [`c2/stage_oneliner.sh`](modules/c2.stage_oneliner.sh.md) | Black Sand Beacon diskless stager (Stage-0 one-liner). | 0 | 0 | 100.0% |
 | [`c2.stage_payload`](modules/c2.stage_payload.py.md) | Black Sand Beacon diskless stager. | 0 | 2 | 66.7% |
 

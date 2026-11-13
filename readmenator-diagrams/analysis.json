@@ -1,7 +1,7 @@
 {
  "metadata": {
-  "generated_at": "2026-11-13T03:30:31.339061+00:00",
-  "source_tree_hash": "80c28da7507527cd67abe274919e08a7ce47782d9e225cdb4bf4d3b990171efe",
+  "generated_at": "2026-11-13T04:49:50.032494+00:00",
+  "source_tree_hash": "3c9e74cf87a4eeba3fa10f4b5cbfbf49c7553b1814e3781a70bae05826281865",
   "repo_name": "blacksandbeacon",
   "depth_level": 2,
   "depth_cap": 3,
@@ -97,7 +97,7 @@
   },
   "c2/server.py": {
    "language": "py",
-   "symbols": 32
+   "symbols": 33
   },
   "c2/stage_oneliner.sh": {
    "language": "sh",
@@ -729,7 +729,7 @@
   },
   "tests/test_stage.py": {
    "language": "py",
-   "symbols": 29
+   "symbols": 31
   }
  },
  "methods_index": {
@@ -2472,282 +2472,290 @@
   "c2/server.py|c2/server.py::_random_free_port": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_random_free_port",
-   "start_line": 73,
-   "end_line": 85,
+   "start_line": 74,
+   "end_line": 86,
    "type": "FUNCTION",
-   "content_hash": "4fa30ce3ca8ac007"
+   "content_hash": "a5027eba619bc63a"
+  },
+  "c2/server.py|c2/server.py::_ensure_stage_tls": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::_ensure_stage_tls",
+   "start_line": 87,
+   "end_line": 159,
+   "type": "FUNCTION",
+   "content_hash": "11777c6141af6a99"
   },
   "c2/server.py|c2/server.py::load_runtime_config": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::load_runtime_config",
-   "start_line": 86,
-   "end_line": 209,
+   "start_line": 160,
+   "end_line": 286,
    "type": "FUNCTION",
-   "content_hash": "c659d47f56ccd4df"
+   "content_hash": "86f37b9972f2c4e9"
   },
   "c2/server.py|c2/server.py::compute_hmac": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::compute_hmac",
-   "start_line": 210,
-   "end_line": 214,
+   "start_line": 287,
+   "end_line": 291,
    "type": "FUNCTION",
-   "content_hash": "5f0557f6d04cc4df"
+   "content_hash": "8c9bde41998b9820"
   },
   "c2/server.py|c2/server.py::verify_hmac": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::verify_hmac",
-   "start_line": 215,
-   "end_line": 220,
+   "start_line": 292,
+   "end_line": 297,
    "type": "FUNCTION",
-   "content_hash": "ff4422b7de1f66c0"
+   "content_hash": "1b51b3a83209b22f"
   },
   "c2/server.py|c2/server.py::encrypt_data": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::encrypt_data",
-   "start_line": 221,
-   "end_line": 243,
+   "start_line": 298,
+   "end_line": 320,
    "type": "FUNCTION",
-   "content_hash": "6bd277f318cfbe80"
+   "content_hash": "c20dd7ce4cff393e"
   },
   "c2/server.py|c2/server.py::encrypt_data_replay": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::encrypt_data_replay",
-   "start_line": 244,
-   "end_line": 277,
+   "start_line": 321,
+   "end_line": 354,
    "type": "FUNCTION",
-   "content_hash": "ded41b9ff3f10a01"
+   "content_hash": "0a637ce3aa495bf2"
   },
   "c2/server.py|c2/server.py::decrypt_data": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::decrypt_data",
-   "start_line": 278,
-   "end_line": 300,
+   "start_line": 355,
+   "end_line": 377,
    "type": "FUNCTION",
-   "content_hash": "d6e211a580ef1af2"
+   "content_hash": "1ebd678fb05e961f"
   },
   "c2/server.py|c2/server.py::decrypt_data_replay": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::decrypt_data_replay",
-   "start_line": 301,
-   "end_line": 397,
+   "start_line": 378,
+   "end_line": 471,
    "type": "FUNCTION",
-   "content_hash": "39c35d83efb80fef"
+   "content_hash": "625f468fb889e15a"
   },
   "c2/server.py|c2/server.py::hkdf_sha256": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::hkdf_sha256",
-   "start_line": 398,
-   "end_line": 409,
+   "start_line": 472,
+   "end_line": 482,
    "type": "FUNCTION",
-   "content_hash": "cdcd325397f189e9"
+   "content_hash": "4a293d9581113888"
   },
   "c2/server.py|c2/server.py::stage_keys": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::stage_keys",
-   "start_line": 410,
-   "end_line": 415,
+   "start_line": 483,
+   "end_line": 490,
    "type": "FUNCTION",
-   "content_hash": "b0e3fe9d2e6a07ca"
-  },
-  "c2/server.py|c2/server.py::xor_layer": {
-   "file_path": "c2/server.py",
-   "qualified_name": "c2/server.py::xor_layer",
-   "start_line": 416,
-   "end_line": 421,
-   "type": "FUNCTION",
-   "content_hash": "eb2aa384ac44302f"
+   "content_hash": "98c4e7cdec3530e4"
   },
   "c2/server.py|c2/server.py::stage_encode": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::stage_encode",
-   "start_line": 422,
-   "end_line": 429,
+   "start_line": 491,
+   "end_line": 502,
    "type": "FUNCTION",
-   "content_hash": "748c2d3102873655"
+   "content_hash": "7f4a84e5620adceb"
   },
   "c2/server.py|c2/server.py::stage_decode": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::stage_decode",
-   "start_line": 430,
-   "end_line": 440,
+   "start_line": 503,
+   "end_line": 522,
    "type": "FUNCTION",
-   "content_hash": "13c098b9f305ec6a"
+   "content_hash": "d3371d8644a9c0a6"
   },
   "c2/server.py|c2/server.py::stage_token_ok": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::stage_token_ok",
-   "start_line": 441,
-   "end_line": 448,
+   "start_line": 523,
+   "end_line": 530,
    "type": "FUNCTION",
-   "content_hash": "1365eec0b487b31d"
+   "content_hash": "8c614eee61f49fa2"
   },
   "c2/server.py|c2/server.py::build_stage_config": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::build_stage_config",
-   "start_line": 449,
-   "end_line": 480,
+   "start_line": 531,
+   "end_line": 562,
    "type": "FUNCTION",
-   "content_hash": "160908b1cea403bb"
+   "content_hash": "9e9dc2410e2cc046"
   },
   "c2/server.py|c2/server.py::handle_stage": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_stage",
-   "start_line": 481,
-   "end_line": 511,
+   "start_line": 563,
+   "end_line": 593,
    "type": "FUNCTION",
-   "content_hash": "85fa808e969dd43a"
+   "content_hash": "ac715f01a15bec53"
   },
   "c2/server.py|c2/server.py::build_stage_oneliner": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::build_stage_oneliner",
-   "start_line": 512,
-   "end_line": 528,
+   "start_line": 594,
+   "end_line": 610,
    "type": "FUNCTION",
-   "content_hash": "30c2d816dc7768d1"
+   "content_hash": "1d324aefb8225ca9"
   },
   "c2/server.py|c2/server.py::copy_to_clipboard": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::copy_to_clipboard",
-   "start_line": 529,
-   "end_line": 551,
+   "start_line": 611,
+   "end_line": 633,
    "type": "FUNCTION",
-   "content_hash": "afd61feda7a6d588"
+   "content_hash": "aa7c4f94b5ccc857"
   },
   "c2/server.py|c2/server.py::C2State": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::C2State",
-   "start_line": 552,
-   "end_line": 554,
+   "start_line": 634,
+   "end_line": 636,
    "type": "CLASS",
-   "content_hash": "f5b1001606c5d94b"
+   "content_hash": "324ad19d36d9edad"
   },
   "c2/server.py|c2/server.py::__init__": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::__init__",
-   "start_line": 555,
-   "end_line": 567,
+   "start_line": 637,
+   "end_line": 649,
    "type": "FUNCTION",
-   "content_hash": "11fff462e6807840"
+   "content_hash": "9474e6203a6db991"
   },
   "c2/server.py|c2/server.py::handle_get_command": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_get_command",
-   "start_line": 568,
-   "end_line": 591,
+   "start_line": 650,
+   "end_line": 673,
    "type": "FUNCTION",
-   "content_hash": "6d836237666148c9"
+   "content_hash": "ed37bbf9b6021b0a"
   },
   "c2/server.py|c2/server.py::handle_report": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_report",
-   "start_line": 592,
-   "end_line": 681,
+   "start_line": 674,
+   "end_line": 763,
    "type": "FUNCTION",
-   "content_hash": "5a7ea1f830cd7947"
+   "content_hash": "ef21dc35970495e7"
   },
   "c2/server.py|c2/server.py::handle_bof": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_bof",
-   "start_line": 682,
-   "end_line": 719,
+   "start_line": 764,
+   "end_line": 810,
    "type": "FUNCTION",
-   "content_hash": "73886c84d4f3e446"
+   "content_hash": "fe30a6bddd342b5b"
   },
   "c2/server.py|c2/server.py::handle_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_request",
-   "start_line": 720,
-   "end_line": 782,
+   "start_line": 811,
+   "end_line": 885,
    "type": "FUNCTION",
-   "content_hash": "9bcaa70b4587fef4"
+   "content_hash": "912a3c984b6f8d9d"
   },
   "c2/server.py|c2/server.py::_is_http_line": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_is_http_line",
-   "start_line": 783,
-   "end_line": 788,
+   "start_line": 886,
+   "end_line": 891,
    "type": "FUNCTION",
-   "content_hash": "2f4dfeffcdb99787"
+   "content_hash": "21b8e416d6b3fefc"
   },
   "c2/server.py|c2/server.py::_is_http_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_is_http_request",
-   "start_line": 789,
-   "end_line": 799,
+   "start_line": 892,
+   "end_line": 902,
    "type": "FUNCTION",
-   "content_hash": "99fe624d8f10da99"
+   "content_hash": "09432719d7cc8a4d"
   },
   "c2/server.py|c2/server.py::_read_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_read_request",
-   "start_line": 800,
-   "end_line": 847,
+   "start_line": 903,
+   "end_line": 950,
    "type": "FUNCTION",
-   "content_hash": "398bc64836c2c811"
+   "content_hash": "d811e9bc1d5ec3b2"
   },
   "c2/server.py|c2/server.py::_http_response": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_http_response",
-   "start_line": 848,
-   "end_line": 859,
+   "start_line": 951,
+   "end_line": 962,
    "type": "FUNCTION",
-   "content_hash": "d8813cbefea31d72"
+   "content_hash": "2268e7254dba4992"
   },
   "c2/server.py|c2/server.py::serve_client": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::serve_client",
-   "start_line": 860,
-   "end_line": 889,
+   "start_line": 963,
+   "end_line": 992,
    "type": "FUNCTION",
-   "content_hash": "7c58e4614f06110e"
+   "content_hash": "68bfcd885dd25962"
   },
   "c2/server.py|c2/server.py::serve": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::serve",
-   "start_line": 890,
-   "end_line": 931,
+   "start_line": 993,
+   "end_line": 1034,
    "type": "FUNCTION",
-   "content_hash": "754969fecbcf73c1"
+   "content_hash": "9270acf2594aa8aa"
+  },
+  "c2/server.py|c2/server.py::_sync_bofs_to_upload_dir": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::_sync_bofs_to_upload_dir",
+   "start_line": 1035,
+   "end_line": 1057,
+   "type": "FUNCTION",
+   "content_hash": "242d3663902d1c5e"
   },
   "c2/server.py|c2/server.py::command_injector": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::command_injector",
-   "start_line": 932,
-   "end_line": 954,
+   "start_line": 1058,
+   "end_line": 1080,
    "type": "FUNCTION",
-   "content_hash": "6ba4e1a6e79ef0b7"
+   "content_hash": "ee9c7ebb72e3914d"
   },
   "c2/server.py|c2/server.py::main": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::main",
-   "start_line": 955,
-   "end_line": 1007,
+   "start_line": 1081,
+   "end_line": 1144,
    "type": "FUNCTION",
-   "content_hash": "fb80992eb5336109"
+   "content_hash": "32a041ee65c8a458"
   },
   "c2/stage_payload.py|c2/stage_payload.py::hkdf_sha256": {
    "file_path": "c2/stage_payload.py",
    "qualified_name": "c2/stage_payload.py::hkdf_sha256",
-   "start_line": 37,
-   "end_line": 47,
+   "start_line": 41,
+   "end_line": 51,
    "type": "FUNCTION",
-   "content_hash": "46d0953b36044454"
+   "content_hash": "a4375d5d7cee0237"
   },
   "c2/stage_payload.py|c2/stage_payload.py::_fetch_and_decode": {
    "file_path": "c2/stage_payload.py",
    "qualified_name": "c2/stage_payload.py::_fetch_and_decode",
-   "start_line": 48,
-   "end_line": 66,
+   "start_line": 52,
+   "end_line": 83,
    "type": "FUNCTION",
-   "content_hash": "7389a3bf09aa2287"
+   "content_hash": "424e955f6e863978"
   },
   "c2/stage_payload.py|c2/stage_payload.py::main": {
    "file_path": "c2/stage_payload.py",
    "qualified_name": "c2/stage_payload.py::main",
-   "start_line": 67,
-   "end_line": 97,
+   "start_line": 84,
+   "end_line": 114,
    "type": "FUNCTION",
-   "content_hash": "1fa30eeecd0b58ba"
+   "content_hash": "b23e004d7e810410"
   },
   "cJSON.c|cJSON.c::_CRT_SECURE_NO_DEPRECATE": {
    "file_path": "cJSON.c",
@@ -11752,234 +11760,250 @@
   "tests/test_stage.py|tests/test_stage.py::make_state": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::make_state",
-   "start_line": 54,
-   "end_line": 65,
+   "start_line": 55,
+   "end_line": 66,
    "type": "FUNCTION",
-   "content_hash": "99a1392afec5ec9d"
+   "content_hash": "4d6a186624591356"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageCodec": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageCodec",
-   "start_line": 66,
-   "end_line": 66,
+   "start_line": 67,
+   "end_line": 67,
    "type": "CLASS",
-   "content_hash": "784e74f52ad46fc4"
+   "content_hash": "bb8e301a122c9406"
   },
   "tests/test_stage.py|tests/test_stage.py::test_encode_decode_roundtrip": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_encode_decode_roundtrip",
-   "start_line": 67,
-   "end_line": 70,
+   "start_line": 68,
+   "end_line": 71,
    "type": "FUNCTION",
-   "content_hash": "b6eb5e9a6ab53ebe"
+   "content_hash": "286176a8edcf0dc8"
   },
-  "tests/test_stage.py|tests/test_stage.py::test_no_key_material_on_wire": {
+  "tests/test_stage.py|tests/test_stage.py::test_wrong_token_fails_auth": {
    "file_path": "tests/test_stage.py",
-   "qualified_name": "tests/test_stage.py::test_no_key_material_on_wire",
-   "start_line": 71,
+   "qualified_name": "tests/test_stage.py::test_wrong_token_fails_auth",
+   "start_line": 72,
    "end_line": 77,
    "type": "FUNCTION",
-   "content_hash": "c1864582df9e96ce"
+   "content_hash": "7930e6c0d562c86d"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_tampered_payload_fails_auth": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_tampered_payload_fails_auth",
+   "start_line": 78,
+   "end_line": 87,
+   "type": "FUNCTION",
+   "content_hash": "a35b6b7a8d65970d"
   },
   "tests/test_stage.py|tests/test_stage.py::test_keys_derived_deterministically_from_token": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_keys_derived_deterministically_from_token",
-   "start_line": 78,
-   "end_line": 83,
+   "start_line": 88,
+   "end_line": 93,
    "type": "FUNCTION",
-   "content_hash": "b3b8d23aebebe275"
+   "content_hash": "4f1d26d29ee01789"
   },
-  "tests/test_stage.py|tests/test_stage.py::test_server_payload_hkdf_parity": {
+  "tests/test_stage.py|tests/test_stage.py::test_server_payload_crypto_parity": {
    "file_path": "tests/test_stage.py",
-   "qualified_name": "tests/test_stage.py::test_server_payload_hkdf_parity",
-   "start_line": 84,
-   "end_line": 101,
+   "qualified_name": "tests/test_stage.py::test_server_payload_crypto_parity",
+   "start_line": 94,
+   "end_line": 118,
    "type": "FUNCTION",
-   "content_hash": "974daf4c56207a62"
+   "content_hash": "b004d5b1abbd0af1"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageToken": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageToken",
-   "start_line": 102,
-   "end_line": 102,
+   "start_line": 119,
+   "end_line": 119,
    "type": "CLASS",
-   "content_hash": "469510d760970432"
+   "content_hash": "dcc1db4b029474de"
   },
   "tests/test_stage.py|tests/test_stage.py::test_missing_token_forbidden": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_missing_token_forbidden",
-   "start_line": 103,
-   "end_line": 106,
+   "start_line": 120,
+   "end_line": 123,
    "type": "FUNCTION",
-   "content_hash": "dbc1fa5b19f8b465"
+   "content_hash": "0795a2a53789aed6"
   },
   "tests/test_stage.py|tests/test_stage.py::test_wrong_token_forbidden": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_wrong_token_forbidden",
-   "start_line": 107,
-   "end_line": 110,
+   "start_line": 124,
+   "end_line": 127,
    "type": "FUNCTION",
-   "content_hash": "fab85c3ec5afd9b9"
+   "content_hash": "619eb5b95159b5c6"
   },
   "tests/test_stage.py|tests/test_stage.py::test_no_token_configured_fails_closed": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_no_token_configured_fails_closed",
-   "start_line": 111,
-   "end_line": 114,
+   "start_line": 128,
+   "end_line": 131,
    "type": "FUNCTION",
-   "content_hash": "ef16f8f3ff9f0cbd"
+   "content_hash": "aaa9ab13b46a2f6c"
   },
   "tests/test_stage.py|tests/test_stage.py::test_unknown_kind_forbidden": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_unknown_kind_forbidden",
-   "start_line": 115,
-   "end_line": 119,
+   "start_line": 132,
+   "end_line": 136,
    "type": "FUNCTION",
-   "content_hash": "7fd7c40ea862b61b"
+   "content_hash": "a697e04e3a1ca413"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageBeacon": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageBeacon",
-   "start_line": 120,
-   "end_line": 120,
+   "start_line": 137,
+   "end_line": 137,
    "type": "CLASS",
-   "content_hash": "4deb857d3d842f15"
+   "content_hash": "b8f1c49e3adc4b44"
   },
   "tests/test_stage.py|tests/test_stage.py::test_beacon_roundtrip": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_beacon_roundtrip",
-   "start_line": 121,
-   "end_line": 128,
+   "start_line": 138,
+   "end_line": 145,
    "type": "FUNCTION",
-   "content_hash": "c591dd51fc80f179"
+   "content_hash": "9437dfe1fb444676"
   },
   "tests/test_stage.py|tests/test_stage.py::test_beacon_file_missing": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_beacon_file_missing",
-   "start_line": 129,
-   "end_line": 132,
+   "start_line": 146,
+   "end_line": 149,
    "type": "FUNCTION",
-   "content_hash": "0b55a3cd5887dcc1"
+   "content_hash": "6198048b2216afff"
   },
   "tests/test_stage.py|tests/test_stage.py::test_beacon_not_elf": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_beacon_not_elf",
-   "start_line": 133,
-   "end_line": 138,
+   "start_line": 150,
+   "end_line": 155,
    "type": "FUNCTION",
-   "content_hash": "1814d5e42227b26f"
+   "content_hash": "cd53b9f940cb99f5"
   },
   "tests/test_stage.py|tests/test_stage.py::test_beacon_path_none": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_beacon_path_none",
-   "start_line": 139,
-   "end_line": 143,
+   "start_line": 156,
+   "end_line": 160,
    "type": "FUNCTION",
-   "content_hash": "60fcbc555b0137b6"
+   "content_hash": "79176c5e0a23d122"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageConfig": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageConfig",
-   "start_line": 144,
-   "end_line": 144,
+   "start_line": 161,
+   "end_line": 161,
    "type": "CLASS",
-   "content_hash": "856a8a0d74505ec4"
+   "content_hash": "243ae066a59f9956"
   },
   "tests/test_stage.py|tests/test_stage.py::test_config_roundtrip": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_config_roundtrip",
-   "start_line": 145,
-   "end_line": 156,
+   "start_line": 162,
+   "end_line": 173,
    "type": "FUNCTION",
-   "content_hash": "c2f9f7090ee4daff"
+   "content_hash": "62441e15c148af61"
   },
   "tests/test_stage.py|tests/test_stage.py::test_config_always_available": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_config_always_available",
-   "start_line": 157,
-   "end_line": 164,
+   "start_line": 174,
+   "end_line": 181,
    "type": "FUNCTION",
-   "content_hash": "1d07d053dc8a38f2"
+   "content_hash": "0791ef5a90df49f1"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageRouting": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageRouting",
-   "start_line": 165,
-   "end_line": 165,
+   "start_line": 182,
+   "end_line": 182,
    "type": "CLASS",
-   "content_hash": "a4b9cb08336f2e47"
+   "content_hash": "fe329fa0b278680b"
   },
   "tests/test_stage.py|tests/test_stage.py::test_http_get_beacon_routed": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_http_get_beacon_routed",
-   "start_line": 166,
-   "end_line": 174,
+   "start_line": 183,
+   "end_line": 191,
    "type": "FUNCTION",
-   "content_hash": "8f9f97bfe8e6001f"
+   "content_hash": "38b1ef5c9a19aad6"
   },
   "tests/test_stage.py|tests/test_stage.py::test_http_get_config_routed": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_http_get_config_routed",
-   "start_line": 175,
-   "end_line": 183,
+   "start_line": 192,
+   "end_line": 200,
    "type": "FUNCTION",
-   "content_hash": "6858aad808732b7e"
+   "content_hash": "50d60d4a16ac21c8"
   },
   "tests/test_stage.py|tests/test_stage.py::test_wrong_token_routed_rejected": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_wrong_token_routed_rejected",
-   "start_line": 184,
-   "end_line": 188,
+   "start_line": 201,
+   "end_line": 205,
    "type": "FUNCTION",
-   "content_hash": "bc8bfb20e10e8601"
+   "content_hash": "7676a8bee530d610"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_missing_auth_header_rejected": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_missing_auth_header_rejected",
+   "start_line": 206,
+   "end_line": 210,
+   "type": "FUNCTION",
+   "content_hash": "306bff53a7f120d4"
   },
   "tests/test_stage.py|tests/test_stage.py::test_legacy_selector_routed": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_legacy_selector_routed",
-   "start_line": 189,
-   "end_line": 196,
+   "start_line": 211,
+   "end_line": 218,
    "type": "FUNCTION",
-   "content_hash": "c84596d066682f01"
+   "content_hash": "5e7f9bff1ef19b7a"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageOneliner": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageOneliner",
-   "start_line": 197,
-   "end_line": 197,
+   "start_line": 219,
+   "end_line": 219,
    "type": "CLASS",
-   "content_hash": "25e2bb001c8eaef2"
+   "content_hash": "2b95bf6bf986fdc1"
   },
   "tests/test_stage.py|tests/test_stage.py::test_oneliner_embeds_url_and_token": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_oneliner_embeds_url_and_token",
-   "start_line": 198,
-   "end_line": 209,
+   "start_line": 220,
+   "end_line": 235,
    "type": "FUNCTION",
-   "content_hash": "c583eaf75fe0d4e9"
+   "content_hash": "7ee281235de84927"
   },
   "tests/test_stage.py|tests/test_stage.py::_self_signed_cert": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::_self_signed_cert",
-   "start_line": 210,
-   "end_line": 227,
+   "start_line": 236,
+   "end_line": 253,
    "type": "FUNCTION",
-   "content_hash": "b879fb34fc59acc2"
+   "content_hash": "4d406dae06d2c387"
   },
   "tests/test_stage.py|tests/test_stage.py::TestStageTLSEndToEnd": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::TestStageTLSEndToEnd",
-   "start_line": 228,
-   "end_line": 228,
+   "start_line": 254,
+   "end_line": 254,
    "type": "CLASS",
-   "content_hash": "3792bdb02db6660d"
+   "content_hash": "d0147491cf4cb9fb"
   },
   "tests/test_stage.py|tests/test_stage.py::test_tls_roundtrip": {
    "file_path": "tests/test_stage.py",
    "qualified_name": "tests/test_stage.py::test_tls_roundtrip",
-   "start_line": 229,
-   "end_line": 276,
+   "start_line": 255,
+   "end_line": 301,
    "type": "FUNCTION",
-   "content_hash": "34bd4825e19316d4"
+   "content_hash": "45abac5e56ab1be0"
   }
  },
  "components": [
@@ -15118,7 +15142,7 @@
   },
   {
    "name": "c2",
-   "description": "c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, load_runtime_config. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
+   "description": "c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, _ensure_stage_tls. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
    "key_entities": [
     {
      "qualified_name": "include/config_py.py::_derive_keys",
@@ -15141,32 +15165,32 @@
     {
      "qualified_name": "c2/server.py::_random_free_port",
      "reference_file": "c2/server.py",
-     "reference_start_line": 73,
-     "reference_end_line": 85
+     "reference_start_line": 74,
+     "reference_end_line": 86
+    },
+    {
+     "qualified_name": "c2/server.py::_ensure_stage_tls",
+     "reference_file": "c2/server.py",
+     "reference_start_line": 87,
+     "reference_end_line": 159
     },
     {
      "qualified_name": "c2/server.py::load_runtime_config",
      "reference_file": "c2/server.py",
-     "reference_start_line": 86,
-     "reference_end_line": 209
+     "reference_start_line": 160,
+     "reference_end_line": 286
     },
     {
      "qualified_name": "c2/server.py::compute_hmac",
      "reference_file": "c2/server.py",
-     "reference_start_line": 210,
-     "reference_end_line": 214
+     "reference_start_line": 287,
+     "reference_end_line": 291
     },
     {
      "qualified_name": "c2/server.py::verify_hmac",
      "reference_file": "c2/server.py",
-     "reference_start_line": 215,
-     "reference_end_line": 220
-    },
-    {
-     "qualified_name": "c2/server.py::encrypt_data",
-     "reference_file": "c2/server.py",
-     "reference_start_line": 221,
-     "reference_end_line": 243
+     "reference_start_line": 292,
+     "reference_end_line": 297
     }
    ],
    "source_cluster_ids": [],
@@ -15179,6 +15203,7 @@
      "file_path": "c2/server.py",
      "methods": [
       "c2/server.py::_random_free_port",
+      "c2/server.py::_ensure_stage_tls",
       "c2/server.py::load_runtime_config",
       "c2/server.py::compute_hmac",
       "c2/server.py::verify_hmac",
@@ -15188,7 +15213,6 @@
       "c2/server.py::decrypt_data_replay",
       "c2/server.py::hkdf_sha256",
       "c2/server.py::stage_keys",
-      "c2/server.py::xor_layer",
       "c2/server.py::stage_encode",
       "c2/server.py::stage_decode",
       "c2/server.py::stage_token_ok",
@@ -15208,6 +15232,7 @@
       "c2/server.py::_http_response",
       "c2/server.py::serve_client",
       "c2/server.py::serve",
+      "c2/server.py::_sync_bofs_to_upload_dir",
       "c2/server.py::command_injector",
       "c2/server.py::main"
      ]
@@ -15484,9 +15509,10 @@
       "tests/test_stage.py::make_state",
       "tests/test_stage.py::TestStageCodec",
       "tests/test_stage.py::test_encode_decode_roundtrip",
-      "tests/test_stage.py::test_no_key_material_on_wire",
+      "tests/test_stage.py::test_wrong_token_fails_auth",
+      "tests/test_stage.py::test_tampered_payload_fails_auth",
       "tests/test_stage.py::test_keys_derived_deterministically_from_token",
-      "tests/test_stage.py::test_server_payload_hkdf_parity",
+      "tests/test_stage.py::test_server_payload_crypto_parity",
       "tests/test_stage.py::TestStageToken",
       "tests/test_stage.py::test_missing_token_forbidden",
       "tests/test_stage.py::test_wrong_token_forbidden",
@@ -15504,6 +15530,7 @@
       "tests/test_stage.py::test_http_get_beacon_routed",
       "tests/test_stage.py::test_http_get_config_routed",
       "tests/test_stage.py::test_wrong_token_routed_rejected",
+      "tests/test_stage.py::test_missing_auth_header_rejected",
       "tests/test_stage.py::test_legacy_selector_routed",
       "tests/test_stage.py::TestStageOneliner",
       "tests/test_stage.py::test_oneliner_embeds_url_and_token",
@@ -15518,55 +15545,55 @@
    "components": [
     {
      "name": "c2",
-     "description": "c2 groups 2 files (py) around _random_free_port, load_runtime_config, compute_hmac, verify_hmac, encrypt_data. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
+     "description": "c2 groups 2 files (py) around _random_free_port, _ensure_stage_tls, load_runtime_config, compute_hmac, verify_hmac. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
      "key_entities": [
       {
        "qualified_name": "c2/server.py::_random_free_port",
        "reference_file": "c2/server.py",
-       "reference_start_line": 73,
-       "reference_end_line": 85
+       "reference_start_line": 74,
+       "reference_end_line": 86
+      },
+      {
+       "qualified_name": "c2/server.py::_ensure_stage_tls",
+       "reference_file": "c2/server.py",
+       "reference_start_line": 87,
+       "reference_end_line": 159
       },
       {
        "qualified_name": "c2/server.py::load_runtime_config",
        "reference_file": "c2/server.py",
-       "reference_start_line": 86,
-       "reference_end_line": 209
+       "reference_start_line": 160,
+       "reference_end_line": 286
       },
       {
        "qualified_name": "c2/server.py::compute_hmac",
        "reference_file": "c2/server.py",
-       "reference_start_line": 210,
-       "reference_end_line": 214
+       "reference_start_line": 287,
+       "reference_end_line": 291
       },
       {
        "qualified_name": "c2/server.py::verify_hmac",
        "reference_file": "c2/server.py",
-       "reference_start_line": 215,
-       "reference_end_line": 220
+       "reference_start_line": 292,
+       "reference_end_line": 297
       },
       {
        "qualified_name": "c2/server.py::encrypt_data",
        "reference_file": "c2/server.py",
-       "reference_start_line": 221,
-       "reference_end_line": 243
+       "reference_start_line": 298,
+       "reference_end_line": 320
       },
       {
        "qualified_name": "c2/server.py::encrypt_data_replay",
        "reference_file": "c2/server.py",
-       "reference_start_line": 244,
-       "reference_end_line": 277
+       "reference_start_line": 321,
+       "reference_end_line": 354
       },
       {
        "qualified_name": "c2/server.py::decrypt_data",
        "reference_file": "c2/server.py",
-       "reference_start_line": 278,
-       "reference_end_line": 300
-      },
-      {
-       "qualified_name": "c2/server.py::decrypt_data_replay",
-       "reference_file": "c2/server.py",
-       "reference_start_line": 301,
-       "reference_end_line": 397
+       "reference_start_line": 355,
+       "reference_end_line": 377
       }
      ],
      "source_cluster_ids": [],
@@ -15579,6 +15606,7 @@
        "file_path": "c2/server.py",
        "methods": [
         "c2/server.py::_random_free_port",
+        "c2/server.py::_ensure_stage_tls",
         "c2/server.py::load_runtime_config",
         "c2/server.py::compute_hmac",
         "c2/server.py::verify_hmac",
@@ -15588,7 +15616,6 @@
         "c2/server.py::decrypt_data_replay",
         "c2/server.py::hkdf_sha256",
         "c2/server.py::stage_keys",
-        "c2/server.py::xor_layer",
         "c2/server.py::stage_encode",
         "c2/server.py::stage_decode",
         "c2/server.py::stage_token_ok",
@@ -15608,6 +15635,7 @@
         "c2/server.py::_http_response",
         "c2/server.py::serve_client",
         "c2/server.py::serve",
+        "c2/server.py::_sync_bofs_to_upload_dir",
         "c2/server.py::command_injector",
         "c2/server.py::main"
        ]
@@ -15618,22 +15646,22 @@
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 32,
+     "symbol_count": 33,
      "top_symbols": [
       {
        "n": "_random_free_port",
        "k": "function"
       },
       {
-       "n": "load_runtime_config",
+       "n": "_ensure_stage_tls",
        "k": "function"
       },
       {
-       "n": "compute_hmac",
+       "n": "load_runtime_config",
        "k": "function"
       }
      ],
-     "top_symbols_more": 29
+     "top_symbols_more": 30
     },
     {
      "name": "include",
@@ -16088,9 +16116,10 @@
         "tests/test_stage.py::make_state",
         "tests/test_stage.py::TestStageCodec",
         "tests/test_stage.py::test_encode_decode_roundtrip",
-        "tests/test_stage.py::test_no_key_material_on_wire",
+        "tests/test_stage.py::test_wrong_token_fails_auth",
+        "tests/test_stage.py::test_tampered_payload_fails_auth",
         "tests/test_stage.py::test_keys_derived_deterministically_from_token",
-        "tests/test_stage.py::test_server_payload_hkdf_parity",
+        "tests/test_stage.py::test_server_payload_crypto_parity",
         "tests/test_stage.py::TestStageToken",
         "tests/test_stage.py::test_missing_token_forbidden",
         "tests/test_stage.py::test_wrong_token_forbidden",
@@ -16108,6 +16137,7 @@
         "tests/test_stage.py::test_http_get_beacon_routed",
         "tests/test_stage.py::test_http_get_config_routed",
         "tests/test_stage.py::test_wrong_token_routed_rejected",
+        "tests/test_stage.py::test_missing_auth_header_rejected",
         "tests/test_stage.py::test_legacy_selector_routed",
         "tests/test_stage.py::TestStageOneliner",
         "tests/test_stage.py::test_oneliner_embeds_url_and_token",
@@ -16122,7 +16152,7 @@
      "components": [],
      "components_relations": [],
      "layer": "testing",
-     "symbol_count": 186,
+     "symbol_count": 188,
      "top_symbols": [
       {
        "n": "TestBOFPathTraversalConfig",
@@ -16137,7 +16167,7 @@
        "k": "class"
       }
      ],
-     "top_symbols_more": 177
+     "top_symbols_more": 179
     }
    ],
    "components_relations": [
@@ -16154,7 +16184,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 110,
+         "line": 184,
          "column": 19
         }
        ],
@@ -16165,7 +16195,7 @@
        "target": "include/config_py.py|include/config_py.py::_derive_keys",
        "call_sites": [
         {
-         "line": 178,
+         "line": 252,
          "column": 26
         }
        ],
@@ -16176,7 +16206,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 461,
+         "line": 543,
          "column": 19
         }
        ],
@@ -16192,7 +16222,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 110,
+         "line": 184,
          "column": 19
         }
        ],
@@ -16203,7 +16233,7 @@
        "target": "include/config_py.py|include/config_py.py::_derive_keys",
        "call_sites": [
         {
-         "line": 178,
+         "line": 252,
          "column": 26
         }
        ],
@@ -16214,7 +16244,7 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 461,
+         "line": 543,
          "column": 19
         }
        ],
@@ -16674,9 +16704,9 @@
      "relation": "calls into",
      "src_name": "tests",
      "dst_name": "c2",
-     "evidence": "15 imports, 110 calls across the boundary",
+     "evidence": "15 imports, 114 calls across the boundary",
      "import_count": 15,
-     "call_count": 110,
+     "call_count": 114,
      "key_edges": [
       {
        "source": "tests/test_bof_path_traversal.py|tests/test_bof_path_traversal.py::test_upload_dir_config_exists",
@@ -17626,7 +17656,7 @@
     }
    ],
    "layer": "testing",
-   "symbol_count": 257,
+   "symbol_count": 260,
    "top_symbols": [
     {
      "n": "_derive_keys",
@@ -17641,7 +17671,7 @@
      "k": "function"
     }
    ],
-   "top_symbols_more": 211,
+   "top_symbols_more": 214,
    "hub": true
   },
   {

