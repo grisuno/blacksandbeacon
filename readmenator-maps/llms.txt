@@ -1,12 +1,12 @@
 # blacksandbeacon
 
-> Static analysis knowledge base for blacksandbeacon: 25 communities, 175 files, 930 imports, 4 languages, 1531 symbols.
+> Static analysis knowledge base for blacksandbeacon: 25 communities, 179 files, 969 imports, 4 languages, 1587 symbols.
 
 Generated offline by readmenator (zero LLM tokens). Start with the wiki index for the big picture, then the agent INDEX for file lookup.
 
 ## Wiki
 
-- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: blacksandbeacon | 2026-11-11 | offline, deterministic
+- [readmenator-wiki/REPORT.md](md/readmenator-wiki/REPORT.md): Project: blacksandbeacon | 2026-11-13 | offline, deterministic
 - [readmenator-wiki/community_0_legacy.md](md/readmenator-wiki/community_0_legacy.md): Community 0 | 20 files | cohesion 0.89
 - [readmenator-wiki/community_10_mutants_src_bof_streaming_large_outputs.md](md/readmenator-wiki/community_10_mutants_src_bof_streaming_large_outputs.md): Community 10 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_11_mutants_src_c2_rest_api.md](md/readmenator-wiki/community_11_mutants_src_c2_rest_api.md): Community 11 | 3 files | cohesion 1.00
@@ -18,26 +18,26 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [readmenator-wiki/community_17_mutants_src_mutation_testing_integration.md](md/readmenator-wiki/community_17_mutants_src_mutation_testing_integration.md): Community 17 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_18_mutants_src_pre_commit_ci_hardening.md](md/readmenator-wiki/community_18_mutants_src_pre_commit_ci_hardening.md): Community 18 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_19_mutants_src_replay_protection.md](md/readmenator-wiki/community_19_mutants_src_replay_protection.md): Community 19 | 3 files | cohesion 1.00
-- [readmenator-wiki/community_1_c2.md](md/readmenator-wiki/community_1_c2.md): Community 1 | 15 files | cohesion 1.00
+- [readmenator-wiki/community_1_c2.md](md/readmenator-wiki/community_1_c2.md): Community 1 | 17 files | cohesion 1.00
 - [readmenator-wiki/community_20_mutants_src_socks5_http_proxy_support.md](md/readmenator-wiki/community_20_mutants_src_socks5_http_proxy_support.md): Community 20 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_21_mutants_src_structured_jsonl_logging.md](md/readmenator-wiki/community_21_mutants_src_structured_jsonl_logging.md): Community 21 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_22_mutants_src_tls_client_certificate_authentication.md](md/readmenator-wiki/community_22_mutants_src_tls_client_certificate_authentication.md): Community 22 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_23_mutants_src_unified_config_schema.md](md/readmenator-wiki/community_23_mutants_src_unified_config_schema.md): Community 23 | 3 files | cohesion 1.00
 - [readmenator-wiki/community_24_include_config_autogen.md](md/readmenator-wiki/community_24_include_config_autogen.md): Community 24 | 2 files | cohesion 1.00
-- [readmenator-wiki/community_25_orphans.md](md/readmenator-wiki/community_25_orphans.md): Community 25 | 62 files | cohesion 0.00
+- [readmenator-wiki/community_25_orphans.md](md/readmenator-wiki/community_25_orphans.md): Community 25 | 64 files | cohesion 0.00
 - [readmenator-wiki/community_2_bof_include.md](md/readmenator-wiki/community_2_bof_include.md): Community 2 | 7 files | cohesion 1.00
 
 ## GraphRAG
 
-- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1832 | Relationships: 4081 | Communities: 26 | Themes: 24 | Text units: 1632
+- [readmenator-graphrag/REPORTS.md](md/readmenator-graphrag/REPORTS.md): Entities: 1898 | Relationships: 4295 | Communities: 26 | Themes: 24 | Text units: 1695
 
 ## Agent Docs
 
 - [readmenator-agent/INDEX.md](md/readmenator-agent/INDEX.md)
 - [readmenator-agent/GOTCHAS.md](md/readmenator-agent/GOTCHAS.md): These files have the most connections. Changes here have high blast radius.
 - [readmenator-agent/API.md](md/readmenator-agent/API.md): getSBoxValue (function) aes.c:11 static uint8t getSBoxValue(uint8t num)
-- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Imported by: mutants/src/c2restapi.c, src/c2restapi.c
-- [readmenator-agent/API_p3.md](md/readmenator-agent/API_p3.md): Depends on: include/bofapiversioning.h
+- [readmenator-agent/API_p2.md](md/readmenator-agent/API_p2.md): Imported by: mutants/src/bofapiversioning.c, src/bofapiversioning.c
+- [readmenator-agent/API_p3.md](md/readmenator-agent/API_p3.md): Depends on: include/config.h
 - [readmenator-agent/ARCHITECTURE.md](md/readmenator-agent/ARCHITECTURE.md): beacons/v1/beacon.c -> include/beaconcommon.h
 - [readmenator-agent/CONCEPTS.md](md/readmenator-agent/CONCEPTS.md): Nouns map atomically to file sets (EXTRACTED); verbs aggregate structural edges (INFERRED).
 - [readmenator-agent/KB_bof_include.md](md/readmenator-agent/KB_bof_include.md): Doc: datap: Argument parser.
@@ -53,28 +53,28 @@ Generated offline by readmenator (zero LLM tokens). Start with the wiki index fo
 - [readmenator-agent/KB_tests.md](md/readmenator-agent/KB_tests.md): main (function, line 24) int main(void)
 - [readmenator-agent/KB_userenum.md](md/readmenator-agent/KB_userenum.md): userinmemberlist (function, line 67) static int userinmemberlist(const char username, const char members)
 - [readmenator-agent/KB_whoami.md](md/readmenator-agent/KB_whoami.md): go (function, line 19) void go(char args, int alen)
-- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 175 files at commit a1d17f5775d6. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
+- [readmenator-agent/MEMORY.md](md/readmenator-agent/MEMORY.md): Generated from 179 files at commit ad6093f58ba9. Read this first, then readmenator-wiki/index.md, then readmenator . ask "<question>" for anything specific.
 - [readmenator-agent/SECURITY.md](md/readmenator-agent/SECURITY.md)
 - [readmenator-agent/SYMBOLS.md](md/readmenator-agent/SYMBOLS.md)
 - [readmenator-agent/SYMBOLS_p2.md](md/readmenator-agent/SYMBOLS_p2.md)
 - [readmenator-agent/SYMBOLS_p3.md](md/readmenator-agent/SYMBOLS_p3.md)
 - [readmenator-agent/SYMBOLS_p4.md](md/readmenator-agent/SYMBOLS_p4.md)
 - [readmenator-agent/recipes/add-function.md](md/readmenator-agent/recipes/add-function.md): Find the target file by purpose: grep -in '<topic>' readmenator-agent/INDEX.md
-- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: include/configpy.py (12 dependents)
+- [readmenator-agent/recipes/change-impact.md](md/readmenator-agent/recipes/change-impact.md): Riskiest file: include/configpy.py (14 dependents)
 - [readmenator-agent/recipes/fix-cycle.md](md/readmenator-agent/recipes/fix-cycle.md): Read cycles: grep -A5 'Dependency Cycles' readmenator-agent/GOTCHAS.md
 - [readmenator-agent/recipes/fix-security.md](md/readmenator-agent/recipes/fix-security.md): Read findings: grep -n '<file>' readmenator-agent/SECURITY.md
-- [readmenator-agent/recipes/reduce-complexity.md](md/readmenator-agent/recipes/reduce-complexity.md): Target hotspot: legacy/beacon5.c
+- [readmenator-agent/recipes/reduce-complexity.md](md/readmenator-agent/recipes/reduce-complexity.md): Target hotspot: c2/server.py
 
 ## Project Docs
 
 - [KNOWLEDGE_BASE.md](md/KNOWLEDGE_BASE.md): Start here: Statistics Dashboard for scope, God Nodes for blast radius, Architecture Reference for per-file API. Agents: prefer readmenator-agent/INDEX.md +...
 - [README.md](md/README.md): A Linux C2 beacon with a native in-memory ELF BOF loader, written in
 - [SECURITY.md](md/SECURITY.md): Black Sand Beacon is actively developed. Only the latest release receives security updates.
-- [readmenator-diagrams/c2.md](md/readmenator-diagrams/c2.md): c2 groups 15 files (py) around derivekeys, deepmerge, loadconfig, loadruntimeconfig, computehmac. Black Sand Beacon C2 Server Gopher-style command and control...
+- [readmenator-diagrams/c2.md](md/readmenator-diagrams/c2.md): c2 groups 17 files (py) around derivekeys, deepmerge, loadconfig, randomfreeport, loadruntimeconfig. Black Sand Beacon C2 Server Gopher-style command and...
 - [readmenator-diagrams/include_aes.md](md/readmenator-diagrams/include_aes.md): include: aes groups 6 files (c, h) around BSBAESCFBH, aes256cfbencrypt, aes256cfbdecrypt, AESH, CBC. tiny-AES-c (https://github.com/kokke/tiny-AES-c)
 - [readmenator-diagrams/include_config.md](md/readmenator-diagrams/include_config.md): include: config groups 6 files (c, h) around BSBCONFIGH, BSBCONFIGPATHDEFAULT, BSBCONFIGPATHENV, BSBMAXURL, BSBMAXURI. slurp: declared in the schema.
 - [readmenator-diagrams/legacy.md](md/readmenator-diagrams/legacy.md): legacy groups 20 files (c, h) around BEACONCOMMONH, GNUSOURCE, BSBOUTPUTBUFFERDEFAULT, BSBOUTPUTTRUNCATIONMARKER, httpresponset. tiny-AES-c...
-- [readmenator-diagrams/overview.md](md/readmenator-diagrams/overview.md): Static architecture map of 175 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: asyncioforbeacon...
+- [readmenator-diagrams/overview.md](md/readmenator-diagrams/overview.md): Static architecture map of 179 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: asyncioforbeacon...
 
 ## Optional
 

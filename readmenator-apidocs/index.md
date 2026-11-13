@@ -1,10 +1,10 @@
 # blacksandbeacon API Reference
 
-> Generated offline by readmenator: 104 modules, 1028 documented entities, documentation coverage 35.9% (350/974 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
+> Generated offline by readmenator: 106 modules, 1052 documented entities, documentation coverage 36.7% (363/989 public items). Deterministic, zero tokens: signatures from source, docs parsed from Google, NumPy, reST, Javadoc/JSDoc/Doxygen, C# XML, and Rustdoc comments.
 
 Navigate: [Interactive architecture and flows](flows.html) | [Architecture and flows (Mermaid)](architecture.md) | [Class hierarchy](classes.md) | [General index](genindex.md) | [Coverage and warnings](COVERAGE.md) | [`api/index.json`](api/index.json) | [HTML browser](index.html)
 
-Languages: c (64), h (30), py (9), sh (1)
+Languages: c (64), h (30), py (10), sh (2)
 
 ## Modules
 
@@ -89,7 +89,9 @@ Languages: c (64), h (30), py (9), sh (1)
 | Module | Summary | Types | Callables | Coverage |
 |---|---|---|---|---|
 | [`c2`](modules/c2.__init__.py.md) |  | 0 | 0 | 0.0% |
-| [`c2.server`](modules/c2.server.py.md) | Black Sand Beacon C2 Server | 1 | 16 | 94.4% |
+| [`c2.server`](modules/c2.server.py.md) | Black Sand Beacon C2 Server | 1 | 26 | 96.4% |
+| [`c2/stage_oneliner.sh`](modules/c2.stage_oneliner.sh.md) | Black Sand Beacon diskless stager (Stage-0 one-liner). | 0 | 0 | 100.0% |
+| [`c2.stage_payload`](modules/c2.stage_payload.py.md) | Black Sand Beacon diskless stager. | 0 | 2 | 66.7% |
 
 ### `config`
 
@@ -107,7 +109,7 @@ Languages: c (64), h (30), py (9), sh (1)
 | [`include/aes_cfb.h`](modules/include.aes_cfb.h.md) |  | 0 | 2 | 33.3% |
 | [`include/async_i_o_for_beacon.h`](modules/include.async_i_o_for_beacon.h.md) |  | 0 | 1 | 0.0% |
 | [`include/beacon.h`](modules/include.beacon.h.md) | beacon_api.h Tipos de callback Estructura para parsing de datos (opcional, para comandos complejos) | 1 | 11 | 46.2% |
-| [`include/beacon_common.c`](modules/include.beacon_common.c.md) |  | 2 | 23 | 73.1% |
+| [`include/beacon_common.c`](modules/include.beacon_common.c.md) |  | 2 | 24 | 70.4% |
 | [`include/beacon_common.c_extraction.h`](modules/include.beacon_common.c_extraction.h.md) |  | 0 | 1 | 0.0% |
 | [`include/beacon_common.h`](modules/include.beacon_common.h.md) |  | 5 | 28 | 67.6% |
 | [`include/beacon_heartbeat___health_endpoint.h`](modules/include.beacon_heartbeat___health_endpoint.h.md) |  | 0 | 1 | 0.0% |

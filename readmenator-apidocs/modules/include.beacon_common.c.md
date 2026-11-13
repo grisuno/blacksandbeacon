@@ -1,11 +1,11 @@
 # `include/beacon_common.c`
 
-> Source: [include/beacon_common.c:1](../../include/beacon_common.c#L1) | language `c` | coverage 73.1% | [API index](../index.md)
+> Source: [include/beacon_common.c:1](../../include/beacon_common.c#L1) | language `c` | coverage 70.4% | [API index](../index.md)
 
 ## Contents
 
 - **Structs:** [`bsb_output_meta_t`](#bsb_output_meta_t), [`MemoryStruct`](#memorystruct)
-- **Functions:** [`bsb_output_init`](#bsb_output_init), [`bsb_output_cleanup`](#bsb_output_cleanup), [`bsb_output_reset`](#bsb_output_reset), [`BeaconPrintf`](#beaconprintf), [`BeaconOutput`](#beaconoutput), [`create_trampoline`](#create_trampoline), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline), [`https_request`](#https_request), [`base64_encode`](#base64_encode), [`base64_decode`](#base64_decode), [`bsb_generate_secure_iv`](#bsb_generate_secure_iv), [`url_encode`](#url_encode), [`exec_cmd`](#exec_cmd), [`bsb_backoff_init`](#bsb_backoff_init), [`bsb_backoff_next`](#bsb_backoff_next), [`bsb_backoff_reset`](#bsb_backoff_reset), [`get_local_ips`](#get_local_ips), [`download_bof`](#download_bof), [`fault`](#fault), [`RunELF`](#runelf), [`run_bof_and_capture`](#run_bof_and_capture)
+- **Functions:** [`bsb_output_init`](#bsb_output_init), [`bsb_output_cleanup`](#bsb_output_cleanup), [`bsb_output_reset`](#bsb_output_reset), [`BeaconPrintf`](#beaconprintf), [`BeaconOutput`](#beaconoutput), [`create_trampoline`](#create_trampoline), [`cleanup_trampolines`](#cleanup_trampolines), [`get_or_create_trampoline`](#get_or_create_trampoline), [`https_request`](#https_request), [`rand`](#rand), [`base64_encode`](#base64_encode), [`base64_decode`](#base64_decode), [`bsb_generate_secure_iv`](#bsb_generate_secure_iv), [`url_encode`](#url_encode), [`exec_cmd`](#exec_cmd), [`bsb_backoff_init`](#bsb_backoff_init), [`bsb_backoff_next`](#bsb_backoff_next), [`bsb_backoff_reset`](#bsb_backoff_reset), [`get_local_ips`](#get_local_ips), [`download_bof`](#download_bof), [`fault`](#fault), [`RunELF`](#runelf), [`run_bof_and_capture`](#run_bof_and_capture)
 - **Macros:** [`_GNU_SOURCE`](#_gnu_source)
 
 ## Type Diagram
@@ -27,15 +27,17 @@ Solid arrows stay in this module, dashed arrows leave it.
 flowchart LR
     n_include_beacon_common_c__get_or_create_trampoline(["get_or_create_trampoline"])
     n_include_beacon_common_c__create_trampoline(["create_trampoline"])
+    n_include_beacon_common_c__https_request(["https_request"])
+    n_include_beacon_common_c__rand(["rand"])
     n_include_beacon_common_c__download_bof(["download_bof"])
     n_include_beacon_common_c__base64_decode(["base64_decode"])
-    n_include_beacon_common_c__https_request(["https_request"])
     n_include_beacon_common_c__RunELF(["RunELF"])
     n_include_beacon_common_c__BeaconOutput(["BeaconOutput"])
     n_include_beacon_common_c__bsb_output_reset(["bsb_output_reset"])
     n_include_beacon_common_c__cleanup_trampolines(["cleanup_trampolines"])
     n_include_beacon_common_c__run_bof_and_capture(["run_bof_and_capture"])
     n_include_beacon_common_c__get_or_create_trampoline --> n_include_beacon_common_c__create_trampoline
+    n_include_beacon_common_c__https_request --> n_include_beacon_common_c__rand
     n_include_beacon_common_c__download_bof --> n_include_beacon_common_c__base64_decode
     n_include_beacon_common_c__download_bof --> n_include_beacon_common_c__https_request
     n_include_beacon_common_c__RunELF --> n_include_beacon_common_c__BeaconOutput
@@ -277,7 +279,25 @@ Returns a struct with the response body, length, and status code. On error, data
 
 > **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:119).
 
+*Calls:* [`rand`](#rand)
+
 *Called by:* [`download_bof`](#download_bof)
+
+---
+
+<a id="rand"></a>
+
+### `rand`
+
+`function` | [include/beacon_common.c:378](../../include/beacon_common.c#L378)
+
+```c
+* rand() % 0 raise SIGFPE and kill the beacon. Fall back to a * neutral default instead. */ if (cfg->network.count > 0 && cfg->network.user_agents[0][0] != '\0') curl_easy_setopt(curl, CURLOPT_USERAGE
+```
+
+**Returns:** `*`
+
+*Called by:* [`https_request`](#https_request), [`bsb_config_sleep_seconds`](include.config.c.md#bsb_config_sleep_seconds), [`https_request`](legacy.beacon3.c.md#https_request), [`https_request`](legacy.beacon5.c.md#https_request), [`mesh_listener_thread`](legacy.beacon5.c.md#mesh_listener_thread), [`mesh_propagate`](legacy.beacon5.c.md#mesh_propagate), [`mesh_send_message`](legacy.beacon5.c.md#mesh_send_message), [`https_request`](legacy.beacon6.c.md#https_request), [`https_request`](legacy.beacon_p2p.c.md#https_request)
 
 ---
 
@@ -285,7 +305,7 @@ Returns a struct with the response body, length, and status code. On error, data
 
 ### `base64_encode`
 
-`function` | [include/beacon_common.c:443](../../include/beacon_common.c#L443)
+`function` | [include/beacon_common.c:451](../../include/beacon_common.c#L451)
 
 ```c
 char *base64_encode(const unsigned char *input, int len)
@@ -308,7 +328,7 @@ char *base64_encode(const unsigned char *input, int len)
 
 ### `base64_decode`
 
-`function` | [include/beacon_common.c:460](../../include/beacon_common.c#L460)
+`function` | [include/beacon_common.c:468](../../include/beacon_common.c#L468)
 
 ```c
 unsigned char *base64_decode(const char *input, int *len)
@@ -331,7 +351,7 @@ unsigned char *base64_decode(const char *input, int *len)
 
 ### `bsb_generate_secure_iv`
 
-`function` | [include/beacon_common.c:490](../../include/beacon_common.c#L490)
+`function` | [include/beacon_common.c:498](../../include/beacon_common.c#L498)
 
 ```c
 int bsb_generate_secure_iv(unsigned char *iv_out)
@@ -355,7 +375,7 @@ Tries OpenSSL RAND_bytes first, falls back to getrandom(2). Returns 1 on success
 
 ### `url_encode`
 
-`function` | [include/beacon_common.c:521](../../include/beacon_common.c#L521)
+`function` | [include/beacon_common.c:529](../../include/beacon_common.c#L529)
 
 ```c
 char *url_encode(const char *in, size_t in_len, size_t *out_len)
@@ -381,7 +401,7 @@ URL percent-encoding (RFC 3986 unreserved set)
 
 ### `exec_cmd`
 
-`function` | [include/beacon_common.c:640](../../include/beacon_common.c#L640)
+`function` | [include/beacon_common.c:648](../../include/beacon_common.c#L648)
 
 ```c
 char *exec_cmd(const char *cmd, int *out_len)
@@ -406,7 +426,7 @@ Returns malloc'd buffer with combined output (caller frees). On error, returns N
 
 ### `bsb_backoff_init`
 
-`function` | [include/beacon_common.c:781](../../include/beacon_common.c#L781)
+`function` | [include/beacon_common.c:789](../../include/beacon_common.c#L789)
 
 ```c
 void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)
@@ -428,7 +448,7 @@ void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)
 
 ### `bsb_backoff_next`
 
-`function` | [include/beacon_common.c:788](../../include/beacon_common.c#L788)
+`function` | [include/beacon_common.c:796](../../include/beacon_common.c#L796)
 
 ```c
 int bsb_backoff_next(bsb_backoff_t *bo)
@@ -448,7 +468,7 @@ int bsb_backoff_next(bsb_backoff_t *bo)
 
 ### `bsb_backoff_reset`
 
-`function` | [include/beacon_common.c:799](../../include/beacon_common.c#L799)
+`function` | [include/beacon_common.c:807](../../include/beacon_common.c#L807)
 
 ```c
 void bsb_backoff_reset(bsb_backoff_t *bo)
@@ -466,7 +486,7 @@ void bsb_backoff_reset(bsb_backoff_t *bo)
 
 ### `get_local_ips`
 
-`function` | [include/beacon_common.c:805](../../include/beacon_common.c#L805)
+`function` | [include/beacon_common.c:813](../../include/beacon_common.c#L813)
 
 ```c
 char *get_local_ips(void)
@@ -482,7 +502,7 @@ char *get_local_ips(void)
 
 ### `download_bof`
 
-`function` | [include/beacon_common.c:840](../../include/beacon_common.c#L840)
+`function` | [include/beacon_common.c:848](../../include/beacon_common.c#L848)
 
 ```c
 unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)
@@ -508,7 +528,7 @@ unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *ou
 
 ### `fault`
 
-`function` | [include/beacon_common.c:941](../../include/beacon_common.c#L941)
+`function` | [include/beacon_common.c:949](../../include/beacon_common.c#L949)
 
 ```c
 * fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack pointer, align, call, * then restore. Callee-saved registers are restored by the BOF
@@ -528,7 +548,7 @@ unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *ou
 
 ### `RunELF`
 
-`function` | [include/beacon_common.c:961](../../include/beacon_common.c#L961)
+`function` | [include/beacon_common.c:969](../../include/beacon_common.c#L969)
 
 ```c
 int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize, unsigned char *argumentdata, int argumentSize)
@@ -562,7 +582,7 @@ Loads a position-independent ELF object into memory, resolves symbols, applies r
 
 ### `run_bof_and_capture`
 
-`function` | [include/beacon_common.c:1263](../../include/beacon_common.c#L1263)
+`function` | [include/beacon_common.c:1271](../../include/beacon_common.c#L1271)
 
 ```c
 char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen, int *out_len)

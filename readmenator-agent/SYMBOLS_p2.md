@@ -3,6 +3,20 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `__attribute__` | function | `include/aes.c:59` | `static __attribute__((unused)) uint8_t Td0(int x)` |
+| `__attribute__` | function | `include/aes.c:63` | `static __attribute__((unused)) uint8_t Td1(int x)` |
+| `__attribute__` | function | `include/aes.c:67` | `static __attribute__((unused)) uint8_t Td2(int x)` |
+| `__attribute__` | function | `include/aes.c:71` | `static __attribute__((unused)) uint8_t Td3(int x)` |
+| `__attribute__` | function | `include/aes.c:75` | `static __attribute__((unused)) uint8_t Td4(int x)` |
+| `getSBoxInvert` | macro | `include/aes.c:384` | `#define getSBoxInvert(num)` |
+| `getSBoxValue` | macro | `include/aes.c:177` | `#define getSBoxValue(num)` |
+| `xtime` | function | `include/aes.c:329` | `static uint8_t xtime(uint8_t x)` |
+| `AES256` | macro | `include/aes.h:18` | `#define AES256` |
+| `AES_BLOCKLEN` | macro | `include/aes.h:20` | `#define AES_BLOCKLEN` |
+| `AES_CBC_decrypt_buffer` | function | `include/aes.h:54` | `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_CBC_encrypt_buffer` | function | `include/aes.h:53` | `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_CTR_xcrypt_buffer` | function | `include/aes.h:58` | `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
+| `AES_ECB_decrypt` | function | `include/aes.h:49` | `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf);` |
 | `AES_ECB_encrypt` | function | `include/aes.h:48` | `void AES_ECB_encrypt(const struct AES_ctx *ctx, uint8_t *buf);` |
 | `AES_KEYLEN` | macro | `include/aes.h:23` | `#define AES_KEYLEN` |
 | `AES_KEYLEN` | macro | `include/aes.h:26` | `#define AES_KEYLEN` |
@@ -43,38 +57,39 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 | `BeaconOutput` | function | `include/beacon_common.c:175` | `void BeaconOutput(int type, const char *data, int len)` |
 | `BeaconPrintf` | function | `include/beacon_common.c:159` | `void BeaconPrintf(int type, const char *fmt, ...)` |
 | `MemoryStruct` | struct | `include/beacon_common.c:297` | `` |
-| `RunELF` | function | `include/beacon_common.c:961` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
+| `RunELF` | function | `include/beacon_common.c:969` | `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,            unsig...` |
 | `WriteMemoryCallback` | function | `include/beacon_common.c:303` | `static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp)` |
 | `_GNU_SOURCE` | macro | `include/beacon_common.c:9` | `#define _GNU_SOURCE` |
-| `__attribute__` | function | `include/beacon_common.c:935` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
-| `_is_unreserved` | function | `include/beacon_common.c:515` | `static int _is_unreserved(unsigned char c)` |
-| `base64_decode` | function | `include/beacon_common.c:460` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `include/beacon_common.c:443` | `char *base64_encode(const unsigned char *input, int len)` |
-| `bof_crash_exit` | function | `include/beacon_common.c:930` | `static void bof_crash_exit(int sig)` |
-| `bsb_backoff_init` | function | `include/beacon_common.c:781` | `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)` |
-| `bsb_backoff_next` | function | `include/beacon_common.c:788` | `int bsb_backoff_next(bsb_backoff_t *bo)` |
-| `bsb_backoff_reset` | function | `include/beacon_common.c:799` | `void bsb_backoff_reset(bsb_backoff_t *bo)` |
+| `__attribute__` | function | `include/beacon_common.c:943` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
+| `_is_unreserved` | function | `include/beacon_common.c:523` | `static int _is_unreserved(unsigned char c)` |
+| `base64_decode` | function | `include/beacon_common.c:468` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `include/beacon_common.c:451` | `char *base64_encode(const unsigned char *input, int len)` |
+| `bof_crash_exit` | function | `include/beacon_common.c:938` | `static void bof_crash_exit(int sig)` |
+| `bsb_backoff_init` | function | `include/beacon_common.c:789` | `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)` |
+| `bsb_backoff_next` | function | `include/beacon_common.c:796` | `int bsb_backoff_next(bsb_backoff_t *bo)` |
+| `bsb_backoff_reset` | function | `include/beacon_common.c:807` | `void bsb_backoff_reset(bsb_backoff_t *bo)` |
 | `bsb_curl_pin_format` | function | `include/beacon_common.c:330` | `static void bsb_curl_pin_format(const char *in, char *out, size_t outsz)` |
-| `bsb_generate_secure_iv` | function | `include/beacon_common.c:490` | `int bsb_generate_secure_iv(unsigned char *iv_out)` |
+| `bsb_generate_secure_iv` | function | `include/beacon_common.c:498` | `int bsb_generate_secure_iv(unsigned char *iv_out)` |
 | `bsb_output_cleanup` | function | `include/beacon_common.c:135` | `void bsb_output_cleanup(void)` |
 | `bsb_output_init` | function | `include/beacon_common.c:109` | `int bsb_output_init(size_t capacity)` |
 | `bsb_output_meta_t` | struct | `include/beacon_common.c:43` | `` |
 | `bsb_output_reset` | function | `include/beacon_common.c:149` | `void bsb_output_reset(void)` |
 | `cleanup_trampolines` | function | `include/beacon_common.c:249` | `void cleanup_trampolines(void)` |
 | `create_trampoline` | function | `include/beacon_common.c:211` | `void *create_trampoline(void *target, void *near_hint)` |
-| `download_bof` | function | `include/beacon_common.c:840` | `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `include/beacon_common.c:640` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `fault` | function | `include/beacon_common.c:941` | `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...` |
-| `free_argv` | function | `include/beacon_common.c:629` | `static void free_argv(char **argv)` |
-| `get_local_ips` | function | `include/beacon_common.c:805` | `char *get_local_ips(void)` |
+| `download_bof` | function | `include/beacon_common.c:848` | `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)` |
+| `exec_cmd` | function | `include/beacon_common.c:648` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `fault` | function | `include/beacon_common.c:949` | `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...` |
+| `free_argv` | function | `include/beacon_common.c:637` | `static void free_argv(char **argv)` |
+| `get_local_ips` | function | `include/beacon_common.c:813` | `char *get_local_ips(void)` |
 | `get_or_create_trampoline` | function | `include/beacon_common.c:266` | `void *get_or_create_trampoline(void *target, void *near_hint)` |
 | `https_request` | function | `include/beacon_common.c:367` | `http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,      ...` |
-| `init_function_pointers` | function | `include/beacon_common.c:872` | `static void init_function_pointers(void)` |
+| `init_function_pointers` | function | `include/beacon_common.c:880` | `static void init_function_pointers(void)` |
 | `mmap_near` | function | `include/beacon_common.c:193` | `static void *mmap_near(void *near_hint, size_t len, int prot)` |
-| `page_align` | function | `include/beacon_common.c:922` | `static size_t page_align(size_t size)` |
-| `parse_cmd_to_argv` | function | `include/beacon_common.c:553` | `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)` |
-| `run_bof_and_capture` | function | `include/beacon_common.c:1263` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
-| `url_encode` | function | `include/beacon_common.c:521` | `char *url_encode(const char *in, size_t in_len, size_t *out_len)` |
+| `page_align` | function | `include/beacon_common.c:930` | `static size_t page_align(size_t size)` |
+| `parse_cmd_to_argv` | function | `include/beacon_common.c:561` | `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)` |
+| `rand` | function | `include/beacon_common.c:378` | `* rand() % 0 raise SIGFPE and kill the beacon. Fall back to a * neutral default instead. */ if (cfg->network.count >...` |
+| `run_bof_and_capture` | function | `include/beacon_common.c:1271` | `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,    ...` |
+| `url_encode` | function | `include/beacon_common.c:529` | `char *url_encode(const char *in, size_t in_len, size_t *out_len)` |
 | `BEACON_COMMON` | macro | `include/beacon_common.c_extraction.h:2` | `#define BEACON_COMMON` |
 | `BEACON_COMMON_H` | macro | `include/beacon_common.h:13` | `#define BEACON_COMMON_H` |
 | `BSB_OUTPUT_BUFFER_DEFAULT` | macro | `include/beacon_common.h:26` | `#define BSB_OUTPUT_BUFFER_DEFAULT` |
@@ -481,20 +496,5 @@ Previous: [SYMBOLS.md](SYMBOLS.md)
 | `_GNU_SOURCE` | macro | `legacy/beacon5.c:1` | `#define _GNU_SOURCE` |
 | `__attribute__` | function | `legacy/beacon5.c:188` | `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,             ...` |
 | `aes256_cfb_decrypt` | function | `legacy/beacon5.c:557` | `unsigned char *aes256_cfb_decrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `aes256_cfb_encrypt` | function | `legacy/beacon5.c:523` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
-| `base64_decode` | function | `legacy/beacon5.c:497` | `unsigned char *base64_decode(const char *input, int *len)` |
-| `base64_encode` | function | `legacy/beacon5.c:479` | `char *base64_encode(const unsigned char *input, int len)` |
-| `cleanup_trampolines` | function | `legacy/beacon5.c:311` | `static void cleanup_trampolines(void)` |
-| `create_trampoline` | function | `legacy/beacon5.c:270` | `static void *create_trampoline(void *target)` |
-| `download_bof` | function | `legacy/beacon5.c:1161` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
-| `exec_cmd` | function | `legacy/beacon5.c:593` | `char *exec_cmd(const char *cmd, int *out_len)` |
-| `get_local_ips` | function | `legacy/beacon5.c:1126` | `char *get_local_ips()` |
-| `get_or_create_trampoline` | function | `legacy/beacon5.c:329` | `static void *get_or_create_trampoline(void *target)` |
-| `https_request` | function | `legacy/beacon5.c:385` | `char *https_request(const char *url, const char *method, const char *post_data)` |
-| `main` | function | `legacy/beacon5.c:1702` | `int main(int argc, char **argv)` |
-| `mesh_add_peer` | function | `legacy/beacon5.c:1255` | `void mesh_add_peer(const char *ip, int port)` |
-| `mesh_cleanup_peers` | function | `legacy/beacon5.c:1283` | `void mesh_cleanup_peers()` |
-| `mesh_discovery_thread` | function | `legacy/beacon5.c:1356` | `void *mesh_discovery_thread(void *arg)` |
-| `mesh_is_seen` | function | `legacy/beacon5.c:1240` | `int mesh_is_seen(const char *msg_id)` |
 
 Next: [SYMBOLS_p3.md](SYMBOLS_p3.md)

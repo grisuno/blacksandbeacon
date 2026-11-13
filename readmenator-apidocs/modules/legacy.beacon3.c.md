@@ -40,6 +40,7 @@ flowchart LR
     n_legacy_beacon3_c__base64_encode(["base64_encode"])
     n_legacy_beacon3_c__exec_cmd(["exec_cmd"])
     n_legacy_beacon3_c__get_local_ips(["get_local_ips"])
+    n_include_beacon_common_c__rand["beacon_common.rand"]
     n_legacy_beacon3_c__download_bof --> n_legacy_beacon3_c__https_request
     n_legacy_beacon3_c__run_bof_and_capture --> n_legacy_beacon3_c__RunELF
     n_legacy_beacon3_c__main --> n_legacy_beacon3_c__aes256_cfb_decrypt
@@ -51,6 +52,7 @@ flowchart LR
     n_legacy_beacon3_c__main --> n_legacy_beacon3_c__get_local_ips
     n_legacy_beacon3_c__main --> n_legacy_beacon3_c__https_request
     n_legacy_beacon3_c__main --> n_legacy_beacon3_c__run_bof_and_capture
+    n_legacy_beacon3_c__https_request -.-> n_include_beacon_common_c__rand
 ```
 
 ## Structs
@@ -178,6 +180,8 @@ char *https_request(const char *url, const char *method, const char *post_data)
 | `post_data` | `char *` |  |  |
 
 **Returns:** `char *`
+
+*Calls:* [`rand`](include.beacon_common.c.md#rand)
 
 *Called by:* [`download_bof`](#download_bof), [`main`](#main)
 

@@ -91,6 +91,9 @@
 - `tests/test_iv_generation_c.c` -> `include/beacon_common.h`
 - `tests/test_replay_protection.py` -> `c2/server.py`
 - `tests/test_replay_protection.py` -> `include/config_py.py`
+- `tests/test_runtime_random.py` -> `c2/server.py`
+- `tests/test_runtime_random.py` -> `include/config_py.py`
+- `tests/test_stage.py` -> `c2/server.py`
 
 ## External Imports
 
@@ -103,7 +106,8 @@
 - `beacons/v3/beacon.c` -> openssl/rand.h, pwd.h, stdio.h, stdlib.h, string.h, time.h, unistd.h
 - `bof/include/beacon_api.h` -> stdarg.h, stddef.h, stdint.h
 - `bof/include/syscalls.h` -> stddef.h
-- `c2/server.py` -> base64, concurrent.futures, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, hashlib, hmac, json, logging, os, pathlib, socket, sys, threading, time, typing, urllib.parse
+- `c2/server.py` -> base64, concurrent.futures, copy, cryptography.hazmat.backends, cryptography.hazmat.primitives.ciphers, csv, hashlib, hmac, json, logging, os, pathlib, random, secrets, socket, ssl, subprocess, sys, threading, time, typing, urllib.parse
+- `c2/stage_payload.py` -> base64, hashlib, hmac, json, os, ssl, sys, urllib.error, urllib.request
 - `cJSON.c` -> ctype.h, float.h, limits.h, locale.h, math.h, stdio.h, stdlib.h, string.h
 - `cJSON.h` -> stddef.h
 - `config/generate_parsers.py` -> json, pathlib, sys, typing
@@ -233,3 +237,5 @@
 - `tests/test_iv_generation.py` -> base64, json, os, pathlib, pytest, sys, tempfile, unittest.mock
 - `tests/test_iv_generation_c.c` -> cmocka.h, setjmp.h, stdarg.h, stdbool.h, stddef.h, stdio.h, stdlib.h, string.h, unistd.h
 - `tests/test_replay_protection.py` -> json, os, pathlib, pytest, struct, sys, tempfile, time, unittest.mock
+- `tests/test_runtime_random.py` -> json, pathlib, pytest, sys
+- `tests/test_stage.py` -> base64, importlib.util, json, os, pathlib, pytest, shutil, socket, ssl, subprocess, sys, tempfile, threading, time, urllib.request

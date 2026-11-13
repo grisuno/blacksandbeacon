@@ -2,34 +2,34 @@
  "schema_version": 1,
  "format": "jsonl",
  "meta": {
-  "modules": 104,
-  "entities": 1028,
+  "modules": 106,
+  "entities": 1052,
   "languages": {
    "c": 64,
    "h": 30,
-   "py": 9,
-   "sh": 1
+   "py": 10,
+   "sh": 2
   },
   "kinds": {
    "class": 1,
-   "constant": 28,
+   "constant": 37,
    "constructor": 1,
-   "function": 487,
+   "function": 500,
    "macro": 298,
-   "module": 104,
+   "module": 106,
    "struct": 71,
    "type_alias": 12,
    "variable": 26
   },
   "truncated": false,
-  "skipped_files": 71,
+  "skipped_files": 73,
   "privacy_mode": false
  },
  "coverage": {
   "overall": {
-   "documented": 350,
-   "total": 974,
-   "percent": 35.9
+   "documented": 363,
+   "total": 989,
+   "percent": 36.7
   },
   "by_kind": {
    "class": {
@@ -43,9 +43,9 @@
     "percent": 0.0
    },
    "function": {
-    "documented": 192,
-    "total": 487,
-    "percent": 39.4
+    "documented": 203,
+    "total": 500,
+    "percent": 40.6
    },
    "macro": {
     "documented": 69,
@@ -53,9 +53,9 @@
     "percent": 23.2
    },
    "module": {
-    "documented": 50,
-    "total": 104,
-    "percent": 48.1
+    "documented": 52,
+    "total": 106,
+    "percent": 49.1
    },
    "struct": {
     "documented": 33,
@@ -170,9 +170,19 @@
     "percent": 0.0
    },
    "c2/server.py": {
-    "documented": 17,
-    "total": 18,
-    "percent": 94.4
+    "documented": 27,
+    "total": 28,
+    "percent": 96.4
+   },
+   "c2/stage_oneliner.sh": {
+    "documented": 1,
+    "total": 1,
+    "percent": 100.0
+   },
+   "c2/stage_payload.py": {
+    "documented": 2,
+    "total": 3,
+    "percent": 66.7
    },
    "cJSON.c": {
     "documented": 6,
@@ -231,8 +241,8 @@
    },
    "include/beacon_common.c": {
     "documented": 19,
-    "total": 26,
-    "percent": 73.1
+    "total": 27,
+    "percent": 70.4
    },
    "include/beacon_common.c_extraction.h": {
     "documented": 0,
@@ -695,7 +705,17 @@
   {
    "uid": "c2/server.py",
    "path": "modules/c2.server.py.jsonl",
-   "entities": 21
+   "entities": 38
+  },
+  {
+   "uid": "c2/stage_oneliner.sh",
+   "path": "modules/c2.stage_oneliner.sh.jsonl",
+   "entities": 1
+  },
+  {
+   "uid": "c2/stage_payload.py",
+   "path": "modules/c2.stage_payload.py.jsonl",
+   "entities": 5
   },
   {
    "uid": "cJSON.c",
@@ -755,7 +775,7 @@
   {
    "uid": "include/beacon_common.c",
    "path": "modules/include.beacon_common.c.jsonl",
-   "entities": 26
+   "entities": 27
   },
   {
    "uid": "include/beacon_common.c_extraction.h",
@@ -1115,7 +1135,7 @@
  ],
  "warnings": {
   "path": "warnings.jsonl",
-  "total": 623
+  "total": 625
  },
  "usage": [
   "grep -h '\"name\":\"<Name>\"' readmenator-apidocs/api/modules/*.jsonl",

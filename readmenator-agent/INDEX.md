@@ -22,7 +22,9 @@
 | `bof/whoami/bof.c` | - | whoami | 1 | 0 |
 | `bof/whoami/whoami.c` | — LazyOwn RedTeam BOF (Linux/x64)  Tipos | whoami | 14 | 0 |
 | `c2/__init__.py` | - | c2 | 0 | 2 |
-| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 21 | 9 |
+| `c2/server.py` | Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand Beacon agents. | c2 | 32 | 11 |
+| `c2/stage_oneliner.sh` | Black Sand Beacon diskless stager (Stage-0 one-liner). | c2 | 0 | 0 |
+| `c2/stage_payload.py` | Black Sand Beacon diskless stager. | c2 | 3 | 0 |
 | `cJSON.c` | case_insensitive_strcmp: /* This is a safeguard to prevent copy-pasters from using incompatible... | root | 125 | 0 |
 | `cJSON.h` | cJSON: #define cJSON_Invalid (0) #define cJSON_False (1 << 0) #define cJSON_True (1 << 1)... | root | 40 | 1 |
 | `config/generate_parsers.py` | Config Parser Generator for Black Sand Beacon  Reads config/schema.json (JSON Schema Draft 7)... | misc | 7 | 0 |
@@ -34,7 +36,7 @@
 | `include/aes_cfb.h` | - | include | 3 | 3 |
 | `include/async_i_o_for_beacon.h` | - | include | 2 | 2 |
 | `include/beacon.h` | Tipos de callback  Estructura para parsing de datos (opcional, para comandos complejos) | include | 13 | 0 |
-| `include/beacon_common.c` | MemoryStruct: size_t new_cap = g_cache_capacity ? g_cache_capacity * 2 : 8; TrampolineCache *tmp... | include | 35 | 0 |
+| `include/beacon_common.c` | MemoryStruct: size_t new_cap = g_cache_capacity ? g_cache_capacity * 2 : 8; TrampolineCache *tmp... | include | 36 | 0 |
 | `include/beacon_common.c_extraction.h` | - | include | 1 | 2 |
 | `include/beacon_common.h` | http_response_t: -- HTTP response wrapper --- https_request now returns a proper struct instead... | include | 58 | 5 |
 | `include/beacon_heartbeat___health_endpoint.h` | - | include | 2 | 2 |
@@ -50,7 +52,7 @@
 | `include/config.h` | bsb_config_load: Load config from path. | include | 21 | 6 |
 | `include/config_autogen.c` | slurp: Auto-generated C config parser from config/schema.json DO NOT EDIT MANUALLY - run... | include | 18 | 0 |
 | `include/config_autogen.h` | bsb_config_load: } bsb_server_t; typedef struct { bsb_c2_t c2; bsb_crypto_t crypto; bsb_timing_t... | include | 12 | 1 |
-| `include/config_py.py` | Python loader for BSB JSON config files. | include | 3 | 7 |
+| `include/config_py.py` | Python loader for BSB JSON config files. | include | 3 | 8 |
 | `include/config_py_autogen.py` | Auto-generated Python config loader from config/schema.json DO NOT EDIT MANUALLY - run... | include | 3 | 0 |
 | `include/containerized_build_+_sbom.h` | - | include | 1 | 2 |
 | `include/hkdf_key_derivation.h` | - | include | 2 | 2 |
@@ -177,3 +179,5 @@
 | `tests/test_iv_generation.py` | Tests for IV Generation with Entropy Verification (Contract: IV Generation with Entropy... | tests | 17 | 0 |
 | `tests/test_iv_generation_c.c` | test_generate_secure_iv_success: #include <stdarg.h> #include <stddef.h> #include <setjmp.h>... | tests | 7 | 0 |
 | `tests/test_replay_protection.py` | Tests for Replay Protection (Contract: Replay Protection)  BDD Scenarios: 1. | tests | 28 | 0 |
+| `tests/test_runtime_random.py` | Tests for random per-run runtime values (Contract: random staging). | tests | 12 | 0 |
+| `tests/test_stage.py` | Tests for diskless staging endpoints (Contract: fileless staging). | tests | 29 | 0 |

@@ -128,6 +128,7 @@
 {"code":"DOC001","uid":"bof/whoami/whoami.c::SYS_getuid","file":"bof/whoami/whoami.c","line":17,"message":"macro SYS_getuid is not documented"}
 {"code":"DOC001","uid":"bof/whoami/whoami.c::go","file":"bof/whoami/whoami.c","line":38,"message":"function go is not documented"}
 {"code":"DOC001","uid":"c2/__init__.py","file":"c2/__init__.py","line":1,"message":"module c2/__init__.py is not documented"}
+{"code":"DOC001","uid":"c2/stage_payload.py::main","file":"c2/stage_payload.py","line":67,"message":"function main is not documented"}
 {"code":"DOC001","uid":"cJSON.c","file":"cJSON.c","line":1,"message":"module cJSON.c is not documented"}
 {"code":"DOC001","uid":"cJSON.c::_CRT_SECURE_NO_DEPRECATE","file":"cJSON.c","line":28,"message":"macro _CRT_SECURE_NO_DEPRECATE is not documented"}
 {"code":"DOC001","uid":"cJSON.c::true","file":"cJSON.c","line":65,"message":"macro true is not documented"}
@@ -302,10 +303,11 @@
 {"code":"DOC001","uid":"include/beacon_common.c","file":"include/beacon_common.c","line":1,"message":"module include/beacon_common.c is not documented"}
 {"code":"DOC001","uid":"include/beacon_common.c::cleanup_trampolines","file":"include/beacon_common.c","line":249,"message":"function cleanup_trampolines is not documented"}
 {"code":"DOC001","uid":"include/beacon_common.c::get_or_create_trampoline","file":"include/beacon_common.c","line":266,"message":"function get_or_create_trampoline is not documented"}
-{"code":"DOC001","uid":"include/beacon_common.c::base64_decode","file":"include/beacon_common.c","line":460,"message":"function base64_decode is not documented"}
-{"code":"DOC001","uid":"include/beacon_common.c::bsb_backoff_next","file":"include/beacon_common.c","line":788,"message":"function bsb_backoff_next is not documented"}
-{"code":"DOC001","uid":"include/beacon_common.c::bsb_backoff_reset","file":"include/beacon_common.c","line":799,"message":"function bsb_backoff_reset is not documented"}
-{"code":"DOC001","uid":"include/beacon_common.c::fault","file":"include/beacon_common.c","line":941,"message":"function fault is not documented"}
+{"code":"DOC001","uid":"include/beacon_common.c::rand","file":"include/beacon_common.c","line":378,"message":"function rand is not documented"}
+{"code":"DOC001","uid":"include/beacon_common.c::base64_decode","file":"include/beacon_common.c","line":468,"message":"function base64_decode is not documented"}
+{"code":"DOC001","uid":"include/beacon_common.c::bsb_backoff_next","file":"include/beacon_common.c","line":796,"message":"function bsb_backoff_next is not documented"}
+{"code":"DOC001","uid":"include/beacon_common.c::bsb_backoff_reset","file":"include/beacon_common.c","line":807,"message":"function bsb_backoff_reset is not documented"}
+{"code":"DOC001","uid":"include/beacon_common.c::fault","file":"include/beacon_common.c","line":949,"message":"function fault is not documented"}
 {"code":"DOC001","uid":"include/beacon_common.c_extraction.h","file":"include/beacon_common.c_extraction.h","line":1,"message":"module include/beacon_common.c_extraction.h is not documented"}
 {"code":"DOC001","uid":"include/beacon_common.c_extraction.h::BEACON_COMMON","file":"include/beacon_common.c_extraction.h","line":2,"message":"macro BEACON_COMMON is not documented"}
 {"code":"DOC001","uid":"include/beacon_common.h","file":"include/beacon_common.h","line":1,"message":"module include/beacon_common.h is not documented"}

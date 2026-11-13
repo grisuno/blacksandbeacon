@@ -1,29 +1,29 @@
 {
   "tool": "readmenator",
   "schema_version": 2,
-  "generated_at": "2026-11-11T05:08:22Z",
+  "generated_at": "2026-11-13T03:29:19Z",
   "project_root": ".",
   "project_name": "blacksandbeacon",
-  "git_commit": "a1d17f5775d6c829c8d291ee966881ba8190e45d",
+  "git_commit": "ad6093f58ba94c83ced39faf1d217ef9770c4e40",
   "git_branch": "main",
-  "source_fingerprint": "0462bcbc062dc1c4d7a57100f59e6a7a080fbed6b71eb378f0c0017e3cba51e0",
+  "source_fingerprint": "80c28da7507527cd67abe274919e08a7ce47782d9e225cdb4bf4d3b990171efe",
   "freshness_check": "readmenator . fresh  # exit 0 = docs match sources, exit 1 = run: readmenator . --rebuild",
-  "files": 175,
-  "symbols": 1531,
-  "imports": 930,
-  "calls": 2728,
+  "files": 179,
+  "symbols": 1587,
+  "imports": 969,
+  "calls": 3075,
   "inherits": 2,
-  "resolved_imports": 91,
+  "resolved_imports": 97,
   "security_findings": 0,
   "languages": {
     "c": 92,
     "h": 31,
-    "py": 51,
-    "sh": 1
+    "py": 54,
+    "sh": 2
   },
   "subsystems": {
     "bof_include": 2,
-    "c2": 2,
+    "c2": 4,
     "cat": 2,
     "include": 34,
     "is_sudo": 2,
@@ -31,7 +31,7 @@
     "misc": 6,
     "root": 12,
     "src": 19,
-    "tests": 19,
+    "tests": 21,
     "userenum": 2,
     "whoami": 2
   },
@@ -56,38 +56,38 @@
   "documents": [
     {
       "path": "API.md",
-      "lines": 497,
-      "approx_tokens": 13356
+      "lines": 500,
+      "approx_tokens": 13631
     },
     {
       "path": "API_p2.md",
       "lines": 498,
-      "approx_tokens": 12874
+      "approx_tokens": 12928
     },
     {
       "path": "API_p3.md",
-      "lines": 59,
-      "approx_tokens": 745
+      "lines": 71,
+      "approx_tokens": 894
     },
     {
       "path": "ARCHITECTURE.md",
-      "lines": 235,
-      "approx_tokens": 4766
+      "lines": 241,
+      "approx_tokens": 4894
     },
     {
       "path": "CONCEPTS.md",
       "lines": 120,
-      "approx_tokens": 5319
+      "approx_tokens": 5185
     },
     {
       "path": "GOTCHAS.md",
       "lines": 57,
-      "approx_tokens": 879
+      "approx_tokens": 880
     },
     {
       "path": "INDEX.md",
-      "lines": 179,
-      "approx_tokens": 4751
+      "lines": 183,
+      "approx_tokens": 4853
     },
     {
       "path": "KB_bof_include.md",
@@ -96,8 +96,8 @@
     },
     {
       "path": "KB_c2.md",
-      "lines": 35,
-      "approx_tokens": 578
+      "lines": 60,
+      "approx_tokens": 908
     },
     {
       "path": "KB_cat.md",
@@ -106,13 +106,13 @@
     },
     {
       "path": "KB_include.md",
-      "lines": 499,
-      "approx_tokens": 9255
+      "lines": 500,
+      "approx_tokens": 9294
     },
     {
       "path": "KB_include_p2.md",
       "lines": 215,
-      "approx_tokens": 3238
+      "approx_tokens": 3246
     },
     {
       "path": "KB_is_sudo.md",
@@ -141,8 +141,8 @@
     },
     {
       "path": "KB_tests.md",
-      "lines": 342,
-      "approx_tokens": 6117
+      "lines": 397,
+      "approx_tokens": 7224
     },
     {
       "path": "KB_userenum.md",
@@ -156,8 +156,8 @@
     },
     {
       "path": "MEMORY.md",
-      "lines": 94,
-      "approx_tokens": 1640
+      "lines": 97,
+      "approx_tokens": 2028
     },
     {
       "path": "SECURITY.md",
@@ -167,22 +167,22 @@
     {
       "path": "SYMBOLS.md",
       "lines": 500,
-      "approx_tokens": 11950
+      "approx_tokens": 11895
     },
     {
       "path": "SYMBOLS_p2.md",
       "lines": 500,
-      "approx_tokens": 13852
+      "approx_tokens": 13843
     },
     {
       "path": "SYMBOLS_p3.md",
       "lines": 500,
-      "approx_tokens": 15064
+      "approx_tokens": 14984
     },
     {
       "path": "SYMBOLS_p4.md",
-      "lines": 58,
-      "approx_tokens": 1872
+      "lines": 114,
+      "approx_tokens": 3616
     },
     {
       "path": "recipes/add-function.md",
@@ -207,7 +207,7 @@
     {
       "path": "recipes/reduce-complexity.md",
       "lines": 9,
-      "approx_tokens": 75
+      "approx_tokens": 73
     }
   ],
   "regenerate": "readmenator . --rebuild"

@@ -37,5 +37,12 @@
   "backoff": {
     "base_seconds": 6,
     "max_seconds": 300
+  },
+  "server": {
+    "max_workers": 10,
+    "stage_token": "",
+    "stage_beacon_path": "build/beacon",
+    "tls_cert": "",
+    "tls_key": ""
   }
 }

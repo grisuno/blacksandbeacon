@@ -1,6 +1,6 @@
 # Documentation Coverage
 
-Overall: **35.9%** (350 of 974 public modules, types, and callables). Data members are excluded from the ratio.
+Overall: **36.7%** (363 of 989 public modules, types, and callables). Data members are excluded from the ratio.
 
 [Back to index](index.md)
 
@@ -10,9 +10,9 @@ Overall: **35.9%** (350 of 974 public modules, types, and callables). Data membe
 |---|---|---|---|
 | class | 1 | 1 | 100.0% |
 | constructor | 0 | 1 | 0.0% |
-| function | 192 | 487 | 39.4% |
+| function | 203 | 500 | 40.6% |
 | macro | 69 | 298 | 23.2% |
-| module | 50 | 104 | 48.1% |
+| module | 52 | 106 | 49.1% |
 | struct | 33 | 71 | 46.5% |
 | type_alias | 5 | 12 | 41.7% |
 
@@ -108,13 +108,15 @@ Overall: **35.9%** (350 of 974 public modules, types, and callables). Data membe
 | [`bof/whoami/whoami.c`](modules/bof.whoami.whoami.c.md) | 8 | 13 | 61.5% |
 | [`bof/cat/cat.c`](modules/bof.cat.cat.c.md) | 8 | 12 | 66.7% |
 | [`bof/userenum/userenum.c`](modules/bof.userenum.userenum.c.md) | 8 | 12 | 66.7% |
+| [`c2.stage_payload`](modules/c2.stage_payload.py.md) | 2 | 3 | 66.7% |
 | [`include/config_autogen.c`](modules/include.config_autogen.c.md) | 2 | 3 | 66.7% |
 | [`include/beacon_common.h`](modules/include.beacon_common.h.md) | 23 | 34 | 67.6% |
-| [`include/beacon_common.c`](modules/include.beacon_common.c.md) | 19 | 26 | 73.1% |
+| [`include/beacon_common.c`](modules/include.beacon_common.c.md) | 19 | 27 | 70.4% |
 | [`config.generate_parsers`](modules/config.generate_parsers.py.md) | 6 | 8 | 75.0% |
 | [`contract_agent`](modules/contract_agent.py.md) | 14 | 18 | 77.8% |
-| [`c2.server`](modules/c2.server.py.md) | 17 | 18 | 94.4% |
+| [`c2.server`](modules/c2.server.py.md) | 27 | 28 | 96.4% |
 | [`app`](modules/app.py.md) | 1 | 1 | 100.0% |
+| [`c2/stage_oneliner.sh`](modules/c2.stage_oneliner.sh.md) | 1 | 1 | 100.0% |
 | [`include.config_py`](modules/include.config_py.py.md) | 2 | 2 | 100.0% |
 | [`include.config_py_autogen`](modules/include.config_py_autogen.py.md) | 2 | 2 | 100.0% |
 | [`install.sh`](modules/install.sh.md) | 1 | 1 | 100.0% |
@@ -129,7 +131,7 @@ Overall: **35.9%** (350 of 974 public modules, types, and callables). Data membe
 
 DOC001 undocumented public item, DOC002 parameter not documented, DOC003 documented parameter missing from the signature (stale doc), DOC004 return value not documented, DOC005 raised exception not documented.
 
-DOC001: 623
+DOC001: 625
 
 - DOC001 `aes.c:5` macro Nb is not documented
 - DOC001 `aes.c:7` macro KEYLEN_256 is not documented
@@ -261,6 +263,7 @@ DOC001: 623
 - DOC001 `bof/whoami/whoami.c:17` macro SYS_getuid is not documented
 - DOC001 `bof/whoami/whoami.c:38` function go is not documented
 - DOC001 `c2/__init__.py:1` module c2/__init__.py is not documented
+- DOC001 `c2/stage_payload.py:67` function main is not documented
 - DOC001 `cJSON.c:1` module cJSON.c is not documented
 - DOC001 `cJSON.c:28` macro _CRT_SECURE_NO_DEPRECATE is not documented
 - DOC001 `cJSON.c:65` macro true is not documented
@@ -435,10 +438,11 @@ DOC001: 623
 - DOC001 `include/beacon_common.c:1` module include/beacon_common.c is not documented
 - DOC001 `include/beacon_common.c:249` function cleanup_trampolines is not documented
 - DOC001 `include/beacon_common.c:266` function get_or_create_trampoline is not documented
-- DOC001 `include/beacon_common.c:460` function base64_decode is not documented
-- DOC001 `include/beacon_common.c:788` function bsb_backoff_next is not documented
-- DOC001 `include/beacon_common.c:799` function bsb_backoff_reset is not documented
-- DOC001 `include/beacon_common.c:941` function fault is not documented
+- DOC001 `include/beacon_common.c:378` function rand is not documented
+- DOC001 `include/beacon_common.c:468` function base64_decode is not documented
+- DOC001 `include/beacon_common.c:796` function bsb_backoff_next is not documented
+- DOC001 `include/beacon_common.c:807` function bsb_backoff_reset is not documented
+- DOC001 `include/beacon_common.c:949` function fault is not documented
 - DOC001 `include/beacon_common.c_extraction.h:1` module include/beacon_common.c_extraction.h is not documented
 - DOC001 `include/beacon_common.c_extraction.h:2` macro BEACON_COMMON is not documented
 - DOC001 `include/beacon_common.h:1` module include/beacon_common.h is not documented
@@ -629,6 +633,4 @@ DOC001: 623
 - DOC001 `include/structured_jsonl_logging.h:4` function structured_jsonl_logging_process is not documented
 - DOC001 `include/tls_client_certificate_authentication.h:1` module include/tls_client_certificate_authentication.h is not documented
 - DOC001 `include/tls_client_certificate_authentication.h:4` function tls_client_certificate_authentication_process is not documented
-- DOC001 `include/unified_config_schema.h:1` module include/unified_config_schema.h is not documented
-- DOC001 `include/unified_config_schema.h:4` function unified_config_schema_process is not documented
-- ... 123 more in `api/warnings.jsonl`
+- ... 125 more in `api/warnings.jsonl`

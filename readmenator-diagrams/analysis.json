@@ -1,19 +1,19 @@
 {
  "metadata": {
-  "generated_at": "2026-11-11T05:09:31.131094+00:00",
-  "source_tree_hash": "0462bcbc062dc1c4d7a57100f59e6a7a080fbed6b71eb378f0c0017e3cba51e0",
+  "generated_at": "2026-11-13T03:30:31.339061+00:00",
+  "source_tree_hash": "80c28da7507527cd67abe274919e08a7ce47782d9e225cdb4bf4d3b990171efe",
   "repo_name": "blacksandbeacon",
   "depth_level": 2,
   "depth_cap": 3,
   "file_coverage_summary": {
-   "total_files": 175,
-   "analyzed": 175,
+   "total_files": 179,
+   "analyzed": 179,
    "not_analyzed": 0,
    "not_analyzed_by_reason": {}
   },
   "tree_spec": {}
  },
- "description": "Static architecture map of 175 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
+ "description": "Static architecture map of 179 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.",
  "files": {
   "aes.c": {
    "language": "c",
@@ -97,7 +97,15 @@
   },
   "c2/server.py": {
    "language": "py",
-   "symbols": 21
+   "symbols": 32
+  },
+  "c2/stage_oneliner.sh": {
+   "language": "sh",
+   "symbols": 0
+  },
+  "c2/stage_payload.py": {
+   "language": "py",
+   "symbols": 3
   },
   "cJSON.c": {
    "language": "c",
@@ -145,7 +153,7 @@
   },
   "include/beacon_common.c": {
    "language": "c",
-   "symbols": 35
+   "symbols": 36
   },
   "include/beacon_common.c_extraction.h": {
    "language": "h",
@@ -714,6 +722,14 @@
   "tests/test_replay_protection.py": {
    "language": "py",
    "symbols": 28
+  },
+  "tests/test_runtime_random.py": {
+   "language": "py",
+   "symbols": 12
+  },
+  "tests/test_stage.py": {
+   "language": "py",
+   "symbols": 29
   }
  },
  "methods_index": {
@@ -2453,173 +2469,285 @@
    "type": "FUNCTION",
    "content_hash": "32cb8f44570dd141"
   },
+  "c2/server.py|c2/server.py::_random_free_port": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::_random_free_port",
+   "start_line": 73,
+   "end_line": 85,
+   "type": "FUNCTION",
+   "content_hash": "4fa30ce3ca8ac007"
+  },
   "c2/server.py|c2/server.py::load_runtime_config": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::load_runtime_config",
-   "start_line": 62,
-   "end_line": 109,
+   "start_line": 86,
+   "end_line": 209,
    "type": "FUNCTION",
-   "content_hash": "596d6e36ad4fe004"
+   "content_hash": "c659d47f56ccd4df"
   },
   "c2/server.py|c2/server.py::compute_hmac": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::compute_hmac",
-   "start_line": 110,
-   "end_line": 114,
+   "start_line": 210,
+   "end_line": 214,
    "type": "FUNCTION",
-   "content_hash": "2d847c40c0697653"
+   "content_hash": "5f0557f6d04cc4df"
   },
   "c2/server.py|c2/server.py::verify_hmac": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::verify_hmac",
-   "start_line": 115,
-   "end_line": 120,
+   "start_line": 215,
+   "end_line": 220,
    "type": "FUNCTION",
-   "content_hash": "a600035a3257a16f"
+   "content_hash": "ff4422b7de1f66c0"
   },
   "c2/server.py|c2/server.py::encrypt_data": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::encrypt_data",
-   "start_line": 121,
-   "end_line": 143,
+   "start_line": 221,
+   "end_line": 243,
    "type": "FUNCTION",
-   "content_hash": "9ef85362802d144a"
+   "content_hash": "6bd277f318cfbe80"
   },
   "c2/server.py|c2/server.py::encrypt_data_replay": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::encrypt_data_replay",
-   "start_line": 144,
-   "end_line": 177,
+   "start_line": 244,
+   "end_line": 277,
    "type": "FUNCTION",
-   "content_hash": "61d346f20839bd44"
+   "content_hash": "ded41b9ff3f10a01"
   },
   "c2/server.py|c2/server.py::decrypt_data": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::decrypt_data",
-   "start_line": 178,
-   "end_line": 200,
+   "start_line": 278,
+   "end_line": 300,
    "type": "FUNCTION",
-   "content_hash": "a44567d70e515f51"
+   "content_hash": "d6e211a580ef1af2"
   },
   "c2/server.py|c2/server.py::decrypt_data_replay": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::decrypt_data_replay",
-   "start_line": 201,
-   "end_line": 270,
+   "start_line": 301,
+   "end_line": 397,
    "type": "FUNCTION",
-   "content_hash": "d6f9a2ef9cad3d2d"
+   "content_hash": "39c35d83efb80fef"
+  },
+  "c2/server.py|c2/server.py::hkdf_sha256": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::hkdf_sha256",
+   "start_line": 398,
+   "end_line": 409,
+   "type": "FUNCTION",
+   "content_hash": "cdcd325397f189e9"
+  },
+  "c2/server.py|c2/server.py::stage_keys": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::stage_keys",
+   "start_line": 410,
+   "end_line": 415,
+   "type": "FUNCTION",
+   "content_hash": "b0e3fe9d2e6a07ca"
+  },
+  "c2/server.py|c2/server.py::xor_layer": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::xor_layer",
+   "start_line": 416,
+   "end_line": 421,
+   "type": "FUNCTION",
+   "content_hash": "eb2aa384ac44302f"
+  },
+  "c2/server.py|c2/server.py::stage_encode": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::stage_encode",
+   "start_line": 422,
+   "end_line": 429,
+   "type": "FUNCTION",
+   "content_hash": "748c2d3102873655"
+  },
+  "c2/server.py|c2/server.py::stage_decode": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::stage_decode",
+   "start_line": 430,
+   "end_line": 440,
+   "type": "FUNCTION",
+   "content_hash": "13c098b9f305ec6a"
+  },
+  "c2/server.py|c2/server.py::stage_token_ok": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::stage_token_ok",
+   "start_line": 441,
+   "end_line": 448,
+   "type": "FUNCTION",
+   "content_hash": "1365eec0b487b31d"
+  },
+  "c2/server.py|c2/server.py::build_stage_config": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::build_stage_config",
+   "start_line": 449,
+   "end_line": 480,
+   "type": "FUNCTION",
+   "content_hash": "160908b1cea403bb"
+  },
+  "c2/server.py|c2/server.py::handle_stage": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::handle_stage",
+   "start_line": 481,
+   "end_line": 511,
+   "type": "FUNCTION",
+   "content_hash": "85fa808e969dd43a"
+  },
+  "c2/server.py|c2/server.py::build_stage_oneliner": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::build_stage_oneliner",
+   "start_line": 512,
+   "end_line": 528,
+   "type": "FUNCTION",
+   "content_hash": "30c2d816dc7768d1"
+  },
+  "c2/server.py|c2/server.py::copy_to_clipboard": {
+   "file_path": "c2/server.py",
+   "qualified_name": "c2/server.py::copy_to_clipboard",
+   "start_line": 529,
+   "end_line": 551,
+   "type": "FUNCTION",
+   "content_hash": "afd61feda7a6d588"
   },
   "c2/server.py|c2/server.py::C2State": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::C2State",
-   "start_line": 271,
-   "end_line": 273,
+   "start_line": 552,
+   "end_line": 554,
    "type": "CLASS",
-   "content_hash": "208cb1cb395ca6d9"
+   "content_hash": "f5b1001606c5d94b"
   },
   "c2/server.py|c2/server.py::__init__": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::__init__",
-   "start_line": 274,
-   "end_line": 286,
+   "start_line": 555,
+   "end_line": 567,
    "type": "FUNCTION",
-   "content_hash": "8e613069a910ea24"
+   "content_hash": "11fff462e6807840"
   },
   "c2/server.py|c2/server.py::handle_get_command": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_get_command",
-   "start_line": 287,
-   "end_line": 310,
+   "start_line": 568,
+   "end_line": 591,
    "type": "FUNCTION",
-   "content_hash": "7e661916fe1844d0"
+   "content_hash": "6d836237666148c9"
   },
   "c2/server.py|c2/server.py::handle_report": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_report",
-   "start_line": 311,
-   "end_line": 400,
+   "start_line": 592,
+   "end_line": 681,
    "type": "FUNCTION",
-   "content_hash": "4dbf7668a71898ab"
+   "content_hash": "5a7ea1f830cd7947"
   },
   "c2/server.py|c2/server.py::handle_bof": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_bof",
-   "start_line": 401,
-   "end_line": 438,
+   "start_line": 682,
+   "end_line": 719,
    "type": "FUNCTION",
-   "content_hash": "d613134f901667db"
+   "content_hash": "73886c84d4f3e446"
   },
   "c2/server.py|c2/server.py::handle_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::handle_request",
-   "start_line": 439,
-   "end_line": 489,
+   "start_line": 720,
+   "end_line": 782,
    "type": "FUNCTION",
-   "content_hash": "627f16dc5d13d107"
+   "content_hash": "9bcaa70b4587fef4"
   },
   "c2/server.py|c2/server.py::_is_http_line": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_is_http_line",
-   "start_line": 490,
-   "end_line": 495,
+   "start_line": 783,
+   "end_line": 788,
    "type": "FUNCTION",
-   "content_hash": "d51cfc3b5108ade0"
+   "content_hash": "2f4dfeffcdb99787"
   },
   "c2/server.py|c2/server.py::_is_http_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_is_http_request",
-   "start_line": 496,
-   "end_line": 506,
+   "start_line": 789,
+   "end_line": 799,
    "type": "FUNCTION",
-   "content_hash": "a805aeb8ec0c9b34"
+   "content_hash": "99fe624d8f10da99"
   },
   "c2/server.py|c2/server.py::_read_request": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_read_request",
-   "start_line": 507,
-   "end_line": 554,
+   "start_line": 800,
+   "end_line": 847,
    "type": "FUNCTION",
-   "content_hash": "002ff1a73b7a9b1a"
+   "content_hash": "398bc64836c2c811"
   },
   "c2/server.py|c2/server.py::_http_response": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::_http_response",
-   "start_line": 555,
-   "end_line": 566,
+   "start_line": 848,
+   "end_line": 859,
    "type": "FUNCTION",
-   "content_hash": "ec1eb3ba3a41821f"
+   "content_hash": "d8813cbefea31d72"
   },
   "c2/server.py|c2/server.py::serve_client": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::serve_client",
-   "start_line": 567,
-   "end_line": 594,
+   "start_line": 860,
+   "end_line": 889,
    "type": "FUNCTION",
-   "content_hash": "76ba18db725bcc4f"
+   "content_hash": "7c58e4614f06110e"
   },
   "c2/server.py|c2/server.py::serve": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::serve",
-   "start_line": 595,
-   "end_line": 618,
+   "start_line": 890,
+   "end_line": 931,
    "type": "FUNCTION",
-   "content_hash": "b80db6d6f618f36a"
+   "content_hash": "754969fecbcf73c1"
   },
   "c2/server.py|c2/server.py::command_injector": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::command_injector",
-   "start_line": 619,
-   "end_line": 641,
+   "start_line": 932,
+   "end_line": 954,
    "type": "FUNCTION",
-   "content_hash": "5d201ead2ae37e9a"
+   "content_hash": "6ba4e1a6e79ef0b7"
   },
   "c2/server.py|c2/server.py::main": {
    "file_path": "c2/server.py",
    "qualified_name": "c2/server.py::main",
-   "start_line": 642,
-   "end_line": 668,
+   "start_line": 955,
+   "end_line": 1007,
    "type": "FUNCTION",
-   "content_hash": "49ec55c002f20f20"
+   "content_hash": "fb80992eb5336109"
+  },
+  "c2/stage_payload.py|c2/stage_payload.py::hkdf_sha256": {
+   "file_path": "c2/stage_payload.py",
+   "qualified_name": "c2/stage_payload.py::hkdf_sha256",
+   "start_line": 37,
+   "end_line": 47,
+   "type": "FUNCTION",
+   "content_hash": "46d0953b36044454"
+  },
+  "c2/stage_payload.py|c2/stage_payload.py::_fetch_and_decode": {
+   "file_path": "c2/stage_payload.py",
+   "qualified_name": "c2/stage_payload.py::_fetch_and_decode",
+   "start_line": 48,
+   "end_line": 66,
+   "type": "FUNCTION",
+   "content_hash": "7389a3bf09aa2287"
+  },
+  "c2/stage_payload.py|c2/stage_payload.py::main": {
+   "file_path": "c2/stage_payload.py",
+   "qualified_name": "c2/stage_payload.py::main",
+   "start_line": 67,
+   "end_line": 97,
+   "type": "FUNCTION",
+   "content_hash": "1fa30eeecd0b58ba"
   },
   "cJSON.c|cJSON.c::_CRT_SECURE_NO_DEPRECATE": {
    "file_path": "cJSON.c",
@@ -4249,169 +4377,177 @@
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::https_request",
    "start_line": 367,
-   "end_line": 442,
+   "end_line": 377,
    "type": "FUNCTION",
    "content_hash": "b11d270c56c4c4f8"
+  },
+  "include/beacon_common.c|include/beacon_common.c::rand": {
+   "file_path": "include/beacon_common.c",
+   "qualified_name": "include/beacon_common.c::rand",
+   "start_line": 378,
+   "end_line": 450,
+   "type": "FUNCTION",
+   "content_hash": "1ff5ea2529a4aa6c"
   },
   "include/beacon_common.c|include/beacon_common.c::base64_encode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::base64_encode",
-   "start_line": 443,
-   "end_line": 459,
+   "start_line": 451,
+   "end_line": 467,
    "type": "FUNCTION",
-   "content_hash": "17fa5c9f7398f85a"
+   "content_hash": "dd39a2e96e5f63e7"
   },
   "include/beacon_common.c|include/beacon_common.c::base64_decode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::base64_decode",
-   "start_line": 460,
-   "end_line": 489,
+   "start_line": 468,
+   "end_line": 497,
    "type": "FUNCTION",
-   "content_hash": "e248d9022fa7f78d"
+   "content_hash": "f470d02bf1e8b6d2"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_generate_secure_iv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_generate_secure_iv",
-   "start_line": 490,
-   "end_line": 514,
+   "start_line": 498,
+   "end_line": 522,
    "type": "FUNCTION",
-   "content_hash": "8c8bbb44fb5336e6"
+   "content_hash": "ecbd1efcf822546c"
   },
   "include/beacon_common.c|include/beacon_common.c::_is_unreserved": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::_is_unreserved",
-   "start_line": 515,
-   "end_line": 520,
+   "start_line": 523,
+   "end_line": 528,
    "type": "FUNCTION",
-   "content_hash": "21e84509f2150965"
+   "content_hash": "8c664db4d084493e"
   },
   "include/beacon_common.c|include/beacon_common.c::url_encode": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::url_encode",
-   "start_line": 521,
-   "end_line": 552,
+   "start_line": 529,
+   "end_line": 560,
    "type": "FUNCTION",
-   "content_hash": "8bf2bc3e5566a0fe"
+   "content_hash": "026ae04f697bf5e5"
   },
   "include/beacon_common.c|include/beacon_common.c::parse_cmd_to_argv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::parse_cmd_to_argv",
-   "start_line": 553,
-   "end_line": 628,
+   "start_line": 561,
+   "end_line": 636,
    "type": "FUNCTION",
-   "content_hash": "debd20dc5ce59687"
+   "content_hash": "84c558709f800992"
   },
   "include/beacon_common.c|include/beacon_common.c::free_argv": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::free_argv",
-   "start_line": 629,
-   "end_line": 639,
+   "start_line": 637,
+   "end_line": 647,
    "type": "FUNCTION",
-   "content_hash": "00d3eb699761c140"
+   "content_hash": "9c178fe1f12215d2"
   },
   "include/beacon_common.c|include/beacon_common.c::exec_cmd": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::exec_cmd",
-   "start_line": 640,
-   "end_line": 780,
+   "start_line": 648,
+   "end_line": 788,
    "type": "FUNCTION",
-   "content_hash": "26806887dd8c0e31"
+   "content_hash": "7f36763d8f4d0f10"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_init": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_init",
-   "start_line": 781,
-   "end_line": 787,
+   "start_line": 789,
+   "end_line": 795,
    "type": "FUNCTION",
-   "content_hash": "fa0c66d86709cf93"
+   "content_hash": "de856a24df2d3b2a"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_next": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_next",
-   "start_line": 788,
-   "end_line": 798,
+   "start_line": 796,
+   "end_line": 806,
    "type": "FUNCTION",
-   "content_hash": "ca8826718f17c5a9"
+   "content_hash": "d12baf72aed44152"
   },
   "include/beacon_common.c|include/beacon_common.c::bsb_backoff_reset": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bsb_backoff_reset",
-   "start_line": 799,
-   "end_line": 804,
+   "start_line": 807,
+   "end_line": 812,
    "type": "FUNCTION",
-   "content_hash": "73d5f28886c19df4"
+   "content_hash": "976b1906bc2df7fd"
   },
   "include/beacon_common.c|include/beacon_common.c::get_local_ips": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::get_local_ips",
-   "start_line": 805,
-   "end_line": 839,
+   "start_line": 813,
+   "end_line": 847,
    "type": "FUNCTION",
-   "content_hash": "57855bd96cf57a9d"
+   "content_hash": "989c44afa487127b"
   },
   "include/beacon_common.c|include/beacon_common.c::download_bof": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::download_bof",
-   "start_line": 840,
-   "end_line": 871,
+   "start_line": 848,
+   "end_line": 879,
    "type": "FUNCTION",
-   "content_hash": "2d9729515c44afc6"
+   "content_hash": "f590003e4c345759"
   },
   "include/beacon_common.c|include/beacon_common.c::init_function_pointers": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::init_function_pointers",
-   "start_line": 872,
-   "end_line": 921,
+   "start_line": 880,
+   "end_line": 929,
    "type": "FUNCTION",
-   "content_hash": "32e5a437e787e58c"
+   "content_hash": "b82f97db5565e75a"
   },
   "include/beacon_common.c|include/beacon_common.c::page_align": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::page_align",
-   "start_line": 922,
-   "end_line": 929,
+   "start_line": 930,
+   "end_line": 937,
    "type": "FUNCTION",
-   "content_hash": "47fa038b8fca8743"
+   "content_hash": "15ebc3342ce1d662"
   },
   "include/beacon_common.c|include/beacon_common.c::bof_crash_exit": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::bof_crash_exit",
-   "start_line": 930,
-   "end_line": 934,
+   "start_line": 938,
+   "end_line": 942,
    "type": "FUNCTION",
-   "content_hash": "702ee171774eb8c9"
+   "content_hash": "83881ef5df038028"
   },
   "include/beacon_common.c|include/beacon_common.c::__attribute__": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::__attribute__",
-   "start_line": 935,
-   "end_line": 940,
+   "start_line": 943,
+   "end_line": 948,
    "type": "FUNCTION",
-   "content_hash": "6e887a55fb2217d9"
+   "content_hash": "4005d3d8d8c4549d"
   },
   "include/beacon_common.c|include/beacon_common.c::fault": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::fault",
-   "start_line": 941,
-   "end_line": 960,
+   "start_line": 949,
+   "end_line": 968,
    "type": "FUNCTION",
-   "content_hash": "8fb0d616a26b5e21"
+   "content_hash": "cfaa1627befe3307"
   },
   "include/beacon_common.c|include/beacon_common.c::RunELF": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::RunELF",
-   "start_line": 961,
-   "end_line": 1262,
+   "start_line": 969,
+   "end_line": 1270,
    "type": "FUNCTION",
-   "content_hash": "fbea1ee32629c281"
+   "content_hash": "cd483eed62afcfd1"
   },
   "include/beacon_common.c|include/beacon_common.c::run_bof_and_capture": {
    "file_path": "include/beacon_common.c",
    "qualified_name": "include/beacon_common.c::run_bof_and_capture",
-   "start_line": 1263,
-   "end_line": 1284,
+   "start_line": 1271,
+   "end_line": 1292,
    "type": "FUNCTION",
-   "content_hash": "afeee1f6f31193e5"
+   "content_hash": "c5cefc2194849051"
   },
   "include/beacon_common.c_extraction.h|include/beacon_common.c_extraction.h::BEACON_COMMON": {
    "file_path": "include/beacon_common.c_extraction.h",
@@ -11516,6 +11652,334 @@
    "end_line": 192,
    "type": "FUNCTION",
    "content_hash": "07067d06291558ea"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::lrc": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::lrc",
+   "start_line": 33,
+   "end_line": 43,
+   "type": "FUNCTION",
+   "content_hash": "56c823983787e8dd"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::TestRandomGeneration": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::TestRandomGeneration",
+   "start_line": 44,
+   "end_line": 44,
+   "type": "CLASS",
+   "content_hash": "14c11a79b955cbf5"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_all_generated_when_nothing_provided": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_all_generated_when_nothing_provided",
+   "start_line": 45,
+   "end_line": 53,
+   "type": "FUNCTION",
+   "content_hash": "60b5f2709fdcae5d"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_generated_key_parities": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_generated_key_parities",
+   "start_line": 54,
+   "end_line": 61,
+   "type": "FUNCTION",
+   "content_hash": "518626a12a51f484"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_random_url_points_at_generated_port": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_random_url_points_at_generated_port",
+   "start_line": 62,
+   "end_line": 65,
+   "type": "FUNCTION",
+   "content_hash": "7732e7f477e997d0"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_two_runs_differ": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_two_runs_differ",
+   "start_line": 66,
+   "end_line": 72,
+   "type": "FUNCTION",
+   "content_hash": "820e903c7d7dcf24"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_provided_values_preserved": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_provided_values_preserved",
+   "start_line": 73,
+   "end_line": 86,
+   "type": "FUNCTION",
+   "content_hash": "10204b85a1333cb0"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_env_wins": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_env_wins",
+   "start_line": 87,
+   "end_line": 91,
+   "type": "FUNCTION",
+   "content_hash": "f0dd35f6c67e9234"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_explicit_token_no_generation": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_explicit_token_no_generation",
+   "start_line": 92,
+   "end_line": 98,
+   "type": "FUNCTION",
+   "content_hash": "489b65d62da53a53"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::TestStageConfigCarriesRuntimeValues": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::TestStageConfigCarriesRuntimeValues",
+   "start_line": 99,
+   "end_line": 99,
+   "type": "CLASS",
+   "content_hash": "e6c28be4139cc141"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_served_config_matches_runtime": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_served_config_matches_runtime",
+   "start_line": 100,
+   "end_line": 111,
+   "type": "FUNCTION",
+   "content_hash": "309d755ae0c28f37"
+  },
+  "tests/test_runtime_random.py|tests/test_runtime_random.py::test_file_config_values_win_when_provided": {
+   "file_path": "tests/test_runtime_random.py",
+   "qualified_name": "tests/test_runtime_random.py::test_file_config_values_win_when_provided",
+   "start_line": 112,
+   "end_line": 122,
+   "type": "FUNCTION",
+   "content_hash": "9d29d59c83c463ba"
+  },
+  "tests/test_stage.py|tests/test_stage.py::make_state": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::make_state",
+   "start_line": 54,
+   "end_line": 65,
+   "type": "FUNCTION",
+   "content_hash": "99a1392afec5ec9d"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageCodec": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageCodec",
+   "start_line": 66,
+   "end_line": 66,
+   "type": "CLASS",
+   "content_hash": "784e74f52ad46fc4"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_encode_decode_roundtrip": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_encode_decode_roundtrip",
+   "start_line": 67,
+   "end_line": 70,
+   "type": "FUNCTION",
+   "content_hash": "b6eb5e9a6ab53ebe"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_no_key_material_on_wire": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_no_key_material_on_wire",
+   "start_line": 71,
+   "end_line": 77,
+   "type": "FUNCTION",
+   "content_hash": "c1864582df9e96ce"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_keys_derived_deterministically_from_token": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_keys_derived_deterministically_from_token",
+   "start_line": 78,
+   "end_line": 83,
+   "type": "FUNCTION",
+   "content_hash": "b3b8d23aebebe275"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_server_payload_hkdf_parity": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_server_payload_hkdf_parity",
+   "start_line": 84,
+   "end_line": 101,
+   "type": "FUNCTION",
+   "content_hash": "974daf4c56207a62"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageToken": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageToken",
+   "start_line": 102,
+   "end_line": 102,
+   "type": "CLASS",
+   "content_hash": "469510d760970432"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_missing_token_forbidden": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_missing_token_forbidden",
+   "start_line": 103,
+   "end_line": 106,
+   "type": "FUNCTION",
+   "content_hash": "dbc1fa5b19f8b465"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_wrong_token_forbidden": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_wrong_token_forbidden",
+   "start_line": 107,
+   "end_line": 110,
+   "type": "FUNCTION",
+   "content_hash": "fab85c3ec5afd9b9"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_no_token_configured_fails_closed": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_no_token_configured_fails_closed",
+   "start_line": 111,
+   "end_line": 114,
+   "type": "FUNCTION",
+   "content_hash": "ef16f8f3ff9f0cbd"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_unknown_kind_forbidden": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_unknown_kind_forbidden",
+   "start_line": 115,
+   "end_line": 119,
+   "type": "FUNCTION",
+   "content_hash": "7fd7c40ea862b61b"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageBeacon": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageBeacon",
+   "start_line": 120,
+   "end_line": 120,
+   "type": "CLASS",
+   "content_hash": "4deb857d3d842f15"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_beacon_roundtrip": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_beacon_roundtrip",
+   "start_line": 121,
+   "end_line": 128,
+   "type": "FUNCTION",
+   "content_hash": "c591dd51fc80f179"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_beacon_file_missing": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_beacon_file_missing",
+   "start_line": 129,
+   "end_line": 132,
+   "type": "FUNCTION",
+   "content_hash": "0b55a3cd5887dcc1"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_beacon_not_elf": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_beacon_not_elf",
+   "start_line": 133,
+   "end_line": 138,
+   "type": "FUNCTION",
+   "content_hash": "1814d5e42227b26f"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_beacon_path_none": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_beacon_path_none",
+   "start_line": 139,
+   "end_line": 143,
+   "type": "FUNCTION",
+   "content_hash": "60fcbc555b0137b6"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageConfig": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageConfig",
+   "start_line": 144,
+   "end_line": 144,
+   "type": "CLASS",
+   "content_hash": "856a8a0d74505ec4"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_config_roundtrip": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_config_roundtrip",
+   "start_line": 145,
+   "end_line": 156,
+   "type": "FUNCTION",
+   "content_hash": "c2f9f7090ee4daff"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_config_always_available": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_config_always_available",
+   "start_line": 157,
+   "end_line": 164,
+   "type": "FUNCTION",
+   "content_hash": "1d07d053dc8a38f2"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageRouting": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageRouting",
+   "start_line": 165,
+   "end_line": 165,
+   "type": "CLASS",
+   "content_hash": "a4b9cb08336f2e47"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_http_get_beacon_routed": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_http_get_beacon_routed",
+   "start_line": 166,
+   "end_line": 174,
+   "type": "FUNCTION",
+   "content_hash": "8f9f97bfe8e6001f"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_http_get_config_routed": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_http_get_config_routed",
+   "start_line": 175,
+   "end_line": 183,
+   "type": "FUNCTION",
+   "content_hash": "6858aad808732b7e"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_wrong_token_routed_rejected": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_wrong_token_routed_rejected",
+   "start_line": 184,
+   "end_line": 188,
+   "type": "FUNCTION",
+   "content_hash": "bc8bfb20e10e8601"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_legacy_selector_routed": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_legacy_selector_routed",
+   "start_line": 189,
+   "end_line": 196,
+   "type": "FUNCTION",
+   "content_hash": "c84596d066682f01"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageOneliner": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageOneliner",
+   "start_line": 197,
+   "end_line": 197,
+   "type": "CLASS",
+   "content_hash": "25e2bb001c8eaef2"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_oneliner_embeds_url_and_token": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_oneliner_embeds_url_and_token",
+   "start_line": 198,
+   "end_line": 209,
+   "type": "FUNCTION",
+   "content_hash": "c583eaf75fe0d4e9"
+  },
+  "tests/test_stage.py|tests/test_stage.py::_self_signed_cert": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::_self_signed_cert",
+   "start_line": 210,
+   "end_line": 227,
+   "type": "FUNCTION",
+   "content_hash": "b879fb34fc59acc2"
+  },
+  "tests/test_stage.py|tests/test_stage.py::TestStageTLSEndToEnd": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::TestStageTLSEndToEnd",
+   "start_line": 228,
+   "end_line": 228,
+   "type": "CLASS",
+   "content_hash": "3792bdb02db6660d"
+  },
+  "tests/test_stage.py|tests/test_stage.py::test_tls_roundtrip": {
+   "file_path": "tests/test_stage.py",
+   "qualified_name": "tests/test_stage.py::test_tls_roundtrip",
+   "start_line": 229,
+   "end_line": 276,
+   "type": "FUNCTION",
+   "content_hash": "34bd4825e19316d4"
   }
  },
  "components": [
@@ -11902,6 +12366,7 @@
       "include/beacon_common.c::WriteMemoryCallback",
       "include/beacon_common.c::bsb_curl_pin_format",
       "include/beacon_common.c::https_request",
+      "include/beacon_common.c::rand",
       "include/beacon_common.c::base64_encode",
       "include/beacon_common.c::base64_decode",
       "include/beacon_common.c::bsb_generate_secure_iv",
@@ -12605,6 +13070,7 @@
         "include/beacon_common.c::WriteMemoryCallback",
         "include/beacon_common.c::bsb_curl_pin_format",
         "include/beacon_common.c::https_request",
+        "include/beacon_common.c::rand",
         "include/beacon_common.c::base64_encode",
         "include/beacon_common.c::base64_decode",
         "include/beacon_common.c::bsb_generate_secure_iv",
@@ -12871,7 +13337,7 @@
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 258,
+     "symbol_count": 259,
      "top_symbols": [
       {
        "n": "BEACON_COMMON_H",
@@ -12886,7 +13352,7 @@
        "k": "macro"
       }
      ],
-     "top_symbols_more": 157
+     "top_symbols_more": 158
     },
     {
      "name": "legacy",
@@ -13646,9 +14112,9 @@
      "relation": "calls into",
      "src_name": "beacons",
      "dst_name": "include",
-     "evidence": "3 imports, 51 calls across the boundary",
+     "evidence": "3 imports, 52 calls across the boundary",
      "import_count": 3,
-     "call_count": 51,
+     "call_count": 52,
      "key_edges": [
       {
        "source": "beacons/v1/beacon.c|beacons/v1/beacon.c::report_result",
@@ -14118,6 +14584,17 @@
        "description": ""
       },
       {
+       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::evasive_sleep",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 57,
+         "column": 32
+        }
+       ],
+       "description": ""
+      },
+      {
        "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::report_result",
        "target": "include/beacon_common.h|include/beacon_common.h::get_local_ips",
        "call_sites": [
@@ -14281,17 +14758,6 @@
         }
        ],
        "description": ""
-      },
-      {
-       "source": "beacons/v3/beacon.c|beacons/v3/beacon.c::main",
-       "target": "include/beacon_common.h|include/beacon_common.h::bsb_backoff_reset",
-       "call_sites": [
-        {
-         "line": 270,
-         "column": 8
-        }
-       ],
-       "description": ""
       }
      ]
     },
@@ -14381,6 +14847,230 @@
      "all_edges": []
     },
     {
+     "relation": "calls into",
+     "src_name": "legacy",
+     "dst_name": "include",
+     "evidence": "0 imports, 11 calls across the boundary",
+     "import_count": 0,
+     "call_count": 11,
+     "key_edges": [
+      {
+       "source": "legacy/beacon3.c|legacy/beacon3.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 363,
+         "column": 58
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 406,
+         "column": 58
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_propagate",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1330,
+         "column": 28
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_propagate",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1344,
+         "column": 13
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_listener_thread",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1571,
+         "column": 55
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_listener_thread",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1652,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_send_message",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1674,
+         "column": 28
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_send_message",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1692,
+         "column": 13
+        }
+       ],
+       "description": ""
+      }
+     ],
+     "src_id": "1.3",
+     "dst_id": "1.2",
+     "is_static": true,
+     "all_edges": [
+      {
+       "source": "legacy/beacon3.c|legacy/beacon3.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 363,
+         "column": 58
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 406,
+         "column": 58
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_propagate",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1330,
+         "column": 28
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_propagate",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1344,
+         "column": 13
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_listener_thread",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1571,
+         "column": 55
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_listener_thread",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1652,
+         "column": 25
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_send_message",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1674,
+         "column": 28
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon5.c|legacy/beacon5.c::mesh_send_message",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 1692,
+         "column": 13
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon6.c|legacy/beacon6.c::portable_rand_19k_29k",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 262,
+         "column": 20
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon6.c|legacy/beacon6.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 433,
+         "column": 58
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "legacy/beacon_p2p.c|legacy/beacon_p2p.c::https_request",
+       "target": "include/beacon_common.c|include/beacon_common.c::rand",
+       "call_sites": [
+        {
+         "line": 714,
+         "column": 58
+        }
+       ],
+       "description": ""
+      }
+     ]
+    },
+    {
      "relation": "depends on",
      "src_name": "legacy",
      "dst_name": "root",
@@ -14408,7 +15098,7 @@
     }
    ],
    "layer": "utility",
-   "symbol_count": 739,
+   "symbol_count": 740,
    "top_symbols": [
     {
      "n": "BEACON_COMMON_H",
@@ -14423,12 +15113,12 @@
      "k": "macro"
     }
    ],
-   "top_symbols_more": 262,
+   "top_symbols_more": 263,
    "hub": false
   },
   {
    "name": "c2",
-   "description": "c2 groups 15 files (py) around _derive_keys, _deep_merge, load_config, load_runtime_config, compute_hmac. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
+   "description": "c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, load_runtime_config. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
    "key_entities": [
     {
      "qualified_name": "include/config_py.py::_derive_keys",
@@ -14449,34 +15139,34 @@
      "reference_end_line": 146
     },
     {
+     "qualified_name": "c2/server.py::_random_free_port",
+     "reference_file": "c2/server.py",
+     "reference_start_line": 73,
+     "reference_end_line": 85
+    },
+    {
      "qualified_name": "c2/server.py::load_runtime_config",
      "reference_file": "c2/server.py",
-     "reference_start_line": 62,
-     "reference_end_line": 109
+     "reference_start_line": 86,
+     "reference_end_line": 209
     },
     {
      "qualified_name": "c2/server.py::compute_hmac",
      "reference_file": "c2/server.py",
-     "reference_start_line": 110,
-     "reference_end_line": 114
+     "reference_start_line": 210,
+     "reference_end_line": 214
     },
     {
      "qualified_name": "c2/server.py::verify_hmac",
      "reference_file": "c2/server.py",
-     "reference_start_line": 115,
-     "reference_end_line": 120
+     "reference_start_line": 215,
+     "reference_end_line": 220
     },
     {
      "qualified_name": "c2/server.py::encrypt_data",
      "reference_file": "c2/server.py",
-     "reference_start_line": 121,
-     "reference_end_line": 143
-    },
-    {
-     "qualified_name": "c2/server.py::encrypt_data_replay",
-     "reference_file": "c2/server.py",
-     "reference_start_line": 144,
-     "reference_end_line": 177
+     "reference_start_line": 221,
+     "reference_end_line": 243
     }
    ],
    "source_cluster_ids": [],
@@ -14488,6 +15178,7 @@
     {
      "file_path": "c2/server.py",
      "methods": [
+      "c2/server.py::_random_free_port",
       "c2/server.py::load_runtime_config",
       "c2/server.py::compute_hmac",
       "c2/server.py::verify_hmac",
@@ -14495,6 +15186,16 @@
       "c2/server.py::encrypt_data_replay",
       "c2/server.py::decrypt_data",
       "c2/server.py::decrypt_data_replay",
+      "c2/server.py::hkdf_sha256",
+      "c2/server.py::stage_keys",
+      "c2/server.py::xor_layer",
+      "c2/server.py::stage_encode",
+      "c2/server.py::stage_decode",
+      "c2/server.py::stage_token_ok",
+      "c2/server.py::build_stage_config",
+      "c2/server.py::handle_stage",
+      "c2/server.py::build_stage_oneliner",
+      "c2/server.py::copy_to_clipboard",
       "c2/server.py::C2State",
       "c2/server.py::__init__",
       "c2/server.py::handle_get_command",
@@ -14759,6 +15460,57 @@
       "tests/test_replay_protection.py::test_counter_reset_on_new_session",
       "tests/test_replay_protection.py::test_hmac_covers_counter_and_timestamp"
      ]
+    },
+    {
+     "file_path": "tests/test_runtime_random.py",
+     "methods": [
+      "tests/test_runtime_random.py::lrc",
+      "tests/test_runtime_random.py::TestRandomGeneration",
+      "tests/test_runtime_random.py::test_all_generated_when_nothing_provided",
+      "tests/test_runtime_random.py::test_generated_key_parities",
+      "tests/test_runtime_random.py::test_random_url_points_at_generated_port",
+      "tests/test_runtime_random.py::test_two_runs_differ",
+      "tests/test_runtime_random.py::test_provided_values_preserved",
+      "tests/test_runtime_random.py::test_env_wins",
+      "tests/test_runtime_random.py::test_explicit_token_no_generation",
+      "tests/test_runtime_random.py::TestStageConfigCarriesRuntimeValues",
+      "tests/test_runtime_random.py::test_served_config_matches_runtime",
+      "tests/test_runtime_random.py::test_file_config_values_win_when_provided"
+     ]
+    },
+    {
+     "file_path": "tests/test_stage.py",
+     "methods": [
+      "tests/test_stage.py::make_state",
+      "tests/test_stage.py::TestStageCodec",
+      "tests/test_stage.py::test_encode_decode_roundtrip",
+      "tests/test_stage.py::test_no_key_material_on_wire",
+      "tests/test_stage.py::test_keys_derived_deterministically_from_token",
+      "tests/test_stage.py::test_server_payload_hkdf_parity",
+      "tests/test_stage.py::TestStageToken",
+      "tests/test_stage.py::test_missing_token_forbidden",
+      "tests/test_stage.py::test_wrong_token_forbidden",
+      "tests/test_stage.py::test_no_token_configured_fails_closed",
+      "tests/test_stage.py::test_unknown_kind_forbidden",
+      "tests/test_stage.py::TestStageBeacon",
+      "tests/test_stage.py::test_beacon_roundtrip",
+      "tests/test_stage.py::test_beacon_file_missing",
+      "tests/test_stage.py::test_beacon_not_elf",
+      "tests/test_stage.py::test_beacon_path_none",
+      "tests/test_stage.py::TestStageConfig",
+      "tests/test_stage.py::test_config_roundtrip",
+      "tests/test_stage.py::test_config_always_available",
+      "tests/test_stage.py::TestStageRouting",
+      "tests/test_stage.py::test_http_get_beacon_routed",
+      "tests/test_stage.py::test_http_get_config_routed",
+      "tests/test_stage.py::test_wrong_token_routed_rejected",
+      "tests/test_stage.py::test_legacy_selector_routed",
+      "tests/test_stage.py::TestStageOneliner",
+      "tests/test_stage.py::test_oneliner_embeds_url_and_token",
+      "tests/test_stage.py::_self_signed_cert",
+      "tests/test_stage.py::TestStageTLSEndToEnd",
+      "tests/test_stage.py::test_tls_roundtrip"
+     ]
     }
    ],
    "component_id": "2",
@@ -14766,55 +15518,55 @@
    "components": [
     {
      "name": "c2",
-     "description": "c2 groups 2 files (py) around load_runtime_config, compute_hmac, verify_hmac, encrypt_data, encrypt_data_replay. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
+     "description": "c2 groups 2 files (py) around _random_free_port, load_runtime_config, compute_hmac, verify_hmac, encrypt_data. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...",
      "key_entities": [
+      {
+       "qualified_name": "c2/server.py::_random_free_port",
+       "reference_file": "c2/server.py",
+       "reference_start_line": 73,
+       "reference_end_line": 85
+      },
       {
        "qualified_name": "c2/server.py::load_runtime_config",
        "reference_file": "c2/server.py",
-       "reference_start_line": 62,
-       "reference_end_line": 109
+       "reference_start_line": 86,
+       "reference_end_line": 209
       },
       {
        "qualified_name": "c2/server.py::compute_hmac",
        "reference_file": "c2/server.py",
-       "reference_start_line": 110,
-       "reference_end_line": 114
+       "reference_start_line": 210,
+       "reference_end_line": 214
       },
       {
        "qualified_name": "c2/server.py::verify_hmac",
        "reference_file": "c2/server.py",
-       "reference_start_line": 115,
-       "reference_end_line": 120
+       "reference_start_line": 215,
+       "reference_end_line": 220
       },
       {
        "qualified_name": "c2/server.py::encrypt_data",
        "reference_file": "c2/server.py",
-       "reference_start_line": 121,
-       "reference_end_line": 143
+       "reference_start_line": 221,
+       "reference_end_line": 243
       },
       {
        "qualified_name": "c2/server.py::encrypt_data_replay",
        "reference_file": "c2/server.py",
-       "reference_start_line": 144,
-       "reference_end_line": 177
+       "reference_start_line": 244,
+       "reference_end_line": 277
       },
       {
        "qualified_name": "c2/server.py::decrypt_data",
        "reference_file": "c2/server.py",
-       "reference_start_line": 178,
-       "reference_end_line": 200
+       "reference_start_line": 278,
+       "reference_end_line": 300
       },
       {
        "qualified_name": "c2/server.py::decrypt_data_replay",
        "reference_file": "c2/server.py",
-       "reference_start_line": 201,
-       "reference_end_line": 270
-      },
-      {
-       "qualified_name": "c2/server.py::C2State",
-       "reference_file": "c2/server.py",
-       "reference_start_line": 271,
-       "reference_end_line": 273
+       "reference_start_line": 301,
+       "reference_end_line": 397
       }
      ],
      "source_cluster_ids": [],
@@ -14826,6 +15578,7 @@
       {
        "file_path": "c2/server.py",
        "methods": [
+        "c2/server.py::_random_free_port",
         "c2/server.py::load_runtime_config",
         "c2/server.py::compute_hmac",
         "c2/server.py::verify_hmac",
@@ -14833,6 +15586,16 @@
         "c2/server.py::encrypt_data_replay",
         "c2/server.py::decrypt_data",
         "c2/server.py::decrypt_data_replay",
+        "c2/server.py::hkdf_sha256",
+        "c2/server.py::stage_keys",
+        "c2/server.py::xor_layer",
+        "c2/server.py::stage_encode",
+        "c2/server.py::stage_decode",
+        "c2/server.py::stage_token_ok",
+        "c2/server.py::build_stage_config",
+        "c2/server.py::handle_stage",
+        "c2/server.py::build_stage_oneliner",
+        "c2/server.py::copy_to_clipboard",
         "c2/server.py::C2State",
         "c2/server.py::__init__",
         "c2/server.py::handle_get_command",
@@ -14855,8 +15618,12 @@
      "components": [],
      "components_relations": [],
      "layer": "utility",
-     "symbol_count": 21,
+     "symbol_count": 32,
      "top_symbols": [
+      {
+       "n": "_random_free_port",
+       "k": "function"
+      },
       {
        "n": "load_runtime_config",
        "k": "function"
@@ -14864,13 +15631,9 @@
       {
        "n": "compute_hmac",
        "k": "function"
-      },
-      {
-       "n": "verify_hmac",
-       "k": "function"
       }
      ],
-     "top_symbols_more": 18
+     "top_symbols_more": 29
     },
     {
      "name": "include",
@@ -15059,7 +15822,7 @@
     },
     {
      "name": "tests",
-     "description": "tests groups 9 files (py) around TestBOFPathTraversalConfig, test_upload_dir_config_exists, TestBOFPathTraversalServer, test_normal_bof_name_served, test_path_traversal_parent_dir_rejected. Tests for BOF Path Traversal Hardening (Contract: BOF Path Traversal Hardening)  BDD...",
+     "description": "tests groups 11 files (py) around TestBOFPathTraversalConfig, test_upload_dir_config_exists, TestBOFPathTraversalServer, test_normal_bof_name_served, test_path_traversal_parent_dir_rejected. Tests for BOF Path Traversal Hardening (Contract: BOF Path Traversal Hardening)  BDD...",
      "key_entities": [
       {
        "qualified_name": "tests/test_bof_path_traversal.py::TestBOFPathTraversalConfig",
@@ -15301,6 +16064,57 @@
         "tests/test_replay_protection.py::test_counter_reset_on_new_session",
         "tests/test_replay_protection.py::test_hmac_covers_counter_and_timestamp"
        ]
+      },
+      {
+       "file_path": "tests/test_runtime_random.py",
+       "methods": [
+        "tests/test_runtime_random.py::lrc",
+        "tests/test_runtime_random.py::TestRandomGeneration",
+        "tests/test_runtime_random.py::test_all_generated_when_nothing_provided",
+        "tests/test_runtime_random.py::test_generated_key_parities",
+        "tests/test_runtime_random.py::test_random_url_points_at_generated_port",
+        "tests/test_runtime_random.py::test_two_runs_differ",
+        "tests/test_runtime_random.py::test_provided_values_preserved",
+        "tests/test_runtime_random.py::test_env_wins",
+        "tests/test_runtime_random.py::test_explicit_token_no_generation",
+        "tests/test_runtime_random.py::TestStageConfigCarriesRuntimeValues",
+        "tests/test_runtime_random.py::test_served_config_matches_runtime",
+        "tests/test_runtime_random.py::test_file_config_values_win_when_provided"
+       ]
+      },
+      {
+       "file_path": "tests/test_stage.py",
+       "methods": [
+        "tests/test_stage.py::make_state",
+        "tests/test_stage.py::TestStageCodec",
+        "tests/test_stage.py::test_encode_decode_roundtrip",
+        "tests/test_stage.py::test_no_key_material_on_wire",
+        "tests/test_stage.py::test_keys_derived_deterministically_from_token",
+        "tests/test_stage.py::test_server_payload_hkdf_parity",
+        "tests/test_stage.py::TestStageToken",
+        "tests/test_stage.py::test_missing_token_forbidden",
+        "tests/test_stage.py::test_wrong_token_forbidden",
+        "tests/test_stage.py::test_no_token_configured_fails_closed",
+        "tests/test_stage.py::test_unknown_kind_forbidden",
+        "tests/test_stage.py::TestStageBeacon",
+        "tests/test_stage.py::test_beacon_roundtrip",
+        "tests/test_stage.py::test_beacon_file_missing",
+        "tests/test_stage.py::test_beacon_not_elf",
+        "tests/test_stage.py::test_beacon_path_none",
+        "tests/test_stage.py::TestStageConfig",
+        "tests/test_stage.py::test_config_roundtrip",
+        "tests/test_stage.py::test_config_always_available",
+        "tests/test_stage.py::TestStageRouting",
+        "tests/test_stage.py::test_http_get_beacon_routed",
+        "tests/test_stage.py::test_http_get_config_routed",
+        "tests/test_stage.py::test_wrong_token_routed_rejected",
+        "tests/test_stage.py::test_legacy_selector_routed",
+        "tests/test_stage.py::TestStageOneliner",
+        "tests/test_stage.py::test_oneliner_embeds_url_and_token",
+        "tests/test_stage.py::_self_signed_cert",
+        "tests/test_stage.py::TestStageTLSEndToEnd",
+        "tests/test_stage.py::test_tls_roundtrip"
+       ]
       }
      ],
      "component_id": "2.4",
@@ -15308,7 +16122,7 @@
      "components": [],
      "components_relations": [],
      "layer": "testing",
-     "symbol_count": 145,
+     "symbol_count": 186,
      "top_symbols": [
       {
        "n": "TestBOFPathTraversalConfig",
@@ -15323,7 +16137,7 @@
        "k": "class"
       }
      ],
-     "top_symbols_more": 137
+     "top_symbols_more": 177
     }
    ],
    "components_relations": [
@@ -15331,16 +16145,38 @@
      "relation": "calls into",
      "src_name": "c2",
      "dst_name": "include",
-     "evidence": "1 imports, 1 calls across the boundary",
+     "evidence": "1 imports, 3 calls across the boundary",
      "import_count": 1,
-     "call_count": 1,
+     "call_count": 3,
      "key_edges": [
       {
        "source": "c2/server.py|c2/server.py::load_runtime_config",
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 69,
+         "line": 110,
+         "column": 19
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "c2/server.py|c2/server.py::load_runtime_config",
+       "target": "include/config_py.py|include/config_py.py::_derive_keys",
+       "call_sites": [
+        {
+         "line": 178,
+         "column": 26
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "c2/server.py|c2/server.py::build_stage_config",
+       "target": "include/config_py.py|include/config_py.py::load_config",
+       "call_sites": [
+        {
+         "line": 461,
          "column": 19
         }
        ],
@@ -15356,7 +16192,29 @@
        "target": "include/config_py.py|include/config_py.py::load_config",
        "call_sites": [
         {
-         "line": 69,
+         "line": 110,
+         "column": 19
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "c2/server.py|c2/server.py::load_runtime_config",
+       "target": "include/config_py.py|include/config_py.py::_derive_keys",
+       "call_sites": [
+        {
+         "line": 178,
+         "column": 26
+        }
+       ],
+       "description": ""
+      },
+      {
+       "source": "c2/server.py|c2/server.py::build_stage_config",
+       "target": "include/config_py.py|include/config_py.py::load_config",
+       "call_sites": [
+        {
+         "line": 461,
          "column": 19
         }
        ],
@@ -15816,9 +16674,9 @@
      "relation": "calls into",
      "src_name": "tests",
      "dst_name": "c2",
-     "evidence": "10 imports, 69 calls across the boundary",
-     "import_count": 10,
-     "call_count": 69,
+     "evidence": "15 imports, 110 calls across the boundary",
+     "import_count": 15,
+     "call_count": 110,
      "key_edges": [
       {
        "source": "tests/test_bof_path_traversal.py|tests/test_bof_path_traversal.py::test_upload_dir_config_exists",
@@ -16469,9 +17327,9 @@
      "relation": "calls into",
      "src_name": "tests",
      "dst_name": "include",
-     "evidence": "6 imports, 17 calls across the boundary",
-     "import_count": 6,
-     "call_count": 17,
+     "evidence": "7 imports, 18 calls across the boundary",
+     "import_count": 7,
+     "call_count": 18,
      "key_edges": [
       {
        "source": "tests/test_c2_beacon_bof_integration.py|tests/test_c2_beacon_bof_integration.py::test_beacon_executes_whoami_bof",
@@ -16752,12 +17610,23 @@
         }
        ],
        "description": ""
+      },
+      {
+       "source": "tests/test_runtime_random.py|tests/test_runtime_random.py::test_generated_key_parities",
+       "target": "include/config_py.py|include/config_py.py::_derive_keys",
+       "call_sites": [
+        {
+         "line": 57,
+         "column": 22
+        }
+       ],
+       "description": ""
       }
      ]
     }
    ],
    "layer": "testing",
-   "symbol_count": 205,
+   "symbol_count": 257,
    "top_symbols": [
     {
      "n": "_derive_keys",
@@ -16772,7 +17641,7 @@
      "k": "function"
     }
    ],
-   "top_symbols_more": 160,
+   "top_symbols_more": 211,
    "hub": true
   },
   {
@@ -19857,6 +20726,43 @@
       {
        "line": 75,
        "column": 39
+      }
+     ],
+     "description": ""
+    }
+   ]
+  },
+  {
+   "relation": "calls into",
+   "src_name": "include: config",
+   "dst_name": "legacy",
+   "evidence": "0 imports, 1 calls across the boundary",
+   "import_count": 0,
+   "call_count": 1,
+   "key_edges": [
+    {
+     "source": "include/config.c|include/config.c::bsb_config_sleep_seconds",
+     "target": "include/beacon_common.c|include/beacon_common.c::rand",
+     "call_sites": [
+      {
+       "line": 869,
+       "column": 17
+      }
+     ],
+     "description": ""
+    }
+   ],
+   "src_id": "5",
+   "dst_id": "1",
+   "is_static": true,
+   "all_edges": [
+    {
+     "source": "include/config.c|include/config.c::bsb_config_sleep_seconds",
+     "target": "include/beacon_common.c|include/beacon_common.c::rand",
+     "call_sites": [
+      {
+       "line": 869,
+       "column": 17
       }
      ],
      "description": ""

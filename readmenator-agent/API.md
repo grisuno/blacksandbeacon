@@ -160,23 +160,37 @@ Depends on: `bof/include/beacon_api.h`, `bof/include/syscalls.h`
 
 ## c2/server.py
 Depends on: `include/config_py.py`
-Imported by: `mutants/tests/test_c2_server.py`, `tests/test_bof_path_traversal.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_c2_http_e2e.py`, `tests/test_c2_server.py`, `tests/test_certificate_pinning.py`, `tests/test_crypto.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`
-- `load_runtime_config` (function) `c2/server.py:62` `def load_runtime_config()` -- Load configuration from JSON file or use defaults.
-- `compute_hmac` (function) `c2/server.py:110` `def compute_hmac(key, data)` -- Compute HMAC-SHA256 for message authentication.
-- `verify_hmac` (function) `c2/server.py:115` `def verify_hmac(key, data, signature)` -- Verify HMAC-SHA256 signature.
-- `encrypt_data` (function) `c2/server.py:121` `def encrypt_data(data, key, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and optional HMAC (legacy format without replay protection).
-- `encrypt_data_replay` (function) `c2/server.py:144` `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and replay protection (counter + timestamp).
-- `decrypt_data` (function) `c2/server.py:178` `def decrypt_data(b64_data, key, hmac_key, use_hmac)` -- Decrypt AES-256-CFB data with optional HMAC verification.
-- `decrypt_data_replay` (function) `c2/server.py:201` `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` -- Decrypt AES-256-CFB data with replay protection (counter + timestamp).
-- `C2State.__init__` (method) `c2/server.py:274` `def __init__(self, cfg)`
-- `handle_get_command` (function) `c2/server.py:287` `def handle_get_command(state, selector)` -- Dispatch beacon's polling GET request.
-- `handle_report` (function) `c2/server.py:311` `def handle_report(state, b64_payload)` -- Process beacon result report.
-- `handle_bof` (function) `c2/server.py:401` `def handle_bof(state, name)` -- Serve BOF file from upload directory with path traversal protection.
-- `handle_request` (function) `c2/server.py:439` `def handle_request(state, selector)` -- Route request to appropriate handler.
-- `serve_client` (function) `c2/server.py:567` `def serve_client(state, conn, addr)` -- Handle individual client connection.
-- `serve` (function) `c2/server.py:595` `def serve(cfg, state)` -- Bind and accept loop.
-- `command_injector` (function) `c2/server.py:619` `def command_injector(state)` -- Interactive command injection REPL.
-- `main` (function) `c2/server.py:642` `def main()` -- Start C2 server.
+Imported by: `mutants/tests/test_c2_server.py`, `tests/test_bof_path_traversal.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_c2_http_e2e.py`, `tests/test_c2_server.py`, `tests/test_certificate_pinning.py`, `tests/test_crypto.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`, `tests/test_runtime_random.py`, `tests/test_stage.py`
+- `load_runtime_config` (function) `c2/server.py:86` `def load_runtime_config()` -- Load configuration from JSON file or use defaults.
+- `compute_hmac` (function) `c2/server.py:210` `def compute_hmac(key, data)` -- Compute HMAC-SHA256 for message authentication.
+- `verify_hmac` (function) `c2/server.py:215` `def verify_hmac(key, data, signature)` -- Verify HMAC-SHA256 signature.
+- `encrypt_data` (function) `c2/server.py:221` `def encrypt_data(data, key, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and optional HMAC (legacy format without replay protection).
+- `encrypt_data_replay` (function) `c2/server.py:244` `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` -- Encrypt data with AES-256-CFB and replay protection (counter + timestamp).
+- `decrypt_data` (function) `c2/server.py:278` `def decrypt_data(b64_data, key, hmac_key, use_hmac)` -- Decrypt AES-256-CFB data with optional HMAC verification.
+- `decrypt_data_replay` (function) `c2/server.py:301` `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` -- Decrypt AES-256-CFB data with replay protection (counter + timestamp).
+- `hkdf_sha256` (function) `c2/server.py:398` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand.
+- `stage_keys` (function) `c2/server.py:410` `def stage_keys(token)` -- Derive the three staging XOR layers from the token.
+- `xor_layer` (function) `c2/server.py:416` `def xor_layer(data, key)` -- Apply one XOR layer with a repeating key.
+- `stage_encode` (function) `c2/server.py:422` `def stage_encode(payload, token)` -- Pack payload as base64 using token-derived XOR keys.
+- `stage_decode` (function) `c2/server.py:430` `def stage_decode(body, token)` -- Inverse of stage_encode (used by tests and the stager parity check).
+- `stage_token_ok` (function) `c2/server.py:441` `def stage_token_ok(state, token)` -- Constant-time token check; fail closed when no token configured.
+- `build_stage_config` (function) `c2/server.py:449` `def build_stage_config(state)` -- Build the beacon config JSON served by /stage/config.
+- `handle_stage` (function) `c2/server.py:481` `def handle_stage(state, kind, token)` -- Serve the beacon ELF or the config.json through the staging contract.
+- `build_stage_oneliner` (function) `c2/server.py:512` `def build_stage_oneliner(cfg)` -- Build the copy-paste stager one-liner for the current config.
+- `copy_to_clipboard` (function) `c2/server.py:529` `def copy_to_clipboard(text)` -- Copy text to the X11/Wayland clipboard; False if no tool exists.
+- `C2State.__init__` (method) `c2/server.py:555` `def __init__(self, cfg)`
+- `handle_get_command` (function) `c2/server.py:568` `def handle_get_command(state, selector)` -- Dispatch beacon's polling GET request.
+- `handle_report` (function) `c2/server.py:592` `def handle_report(state, b64_payload)` -- Process beacon result report.
+- `handle_bof` (function) `c2/server.py:682` `def handle_bof(state, name)` -- Serve BOF file from upload directory with path traversal protection.
+- `handle_request` (function) `c2/server.py:720` `def handle_request(state, selector)` -- Route request to appropriate handler.
+- `serve_client` (function) `c2/server.py:860` `def serve_client(state, conn, addr)` -- Handle individual client connection.
+- `serve` (function) `c2/server.py:890` `def serve(cfg, state)` -- Bind and accept loop.
+- `command_injector` (function) `c2/server.py:932` `def command_injector(state)` -- Interactive command injection REPL.
+- `main` (function) `c2/server.py:955` `def main()` -- Start C2 server.
+
+## c2/stage_payload.py
+- `hkdf_sha256` (function) `c2/stage_payload.py:37` `def hkdf_sha256(ikm, salt, info, length)` -- RFC 5869 HKDF extract+expand (stdlib only, mirrors c2/server.py).
+- `main` (function) `c2/stage_payload.py:67` `def main()`
 
 ## cJSON.c
 Depends on: `cJSON.h`
@@ -427,25 +441,26 @@ Depends on: `include/aes.h`, `include/beacon_common.h`, `include/cJSON.h`
 - `bsb_curl_pin_format` (function) `include/beacon_common.c:330` `static void bsb_curl_pin_format(const char *in, char *out, size_t outsz)`
 - `https_request` (function) `include/beacon_common.c:367` `http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,
      ...`
-- `base64_encode` (function) `include/beacon_common.c:443` `char *base64_encode(const unsigned char *input, int len)` -- curl_easy_cleanup(curl); return resp; } long http_code = 0; curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE...
-- `base64_decode` (function) `include/beacon_common.c:460` `unsigned char *base64_decode(const char *input, int *len)`
-- `bsb_generate_secure_iv` (function) `include/beacon_common.c:490` `int bsb_generate_secure_iv(unsigned char *iv_out)` -- Generates a cryptographically secure 16-byte IV.
-- `url_encode` (function) `include/beacon_common.c:521` `char *url_encode(const char *in, size_t in_len, size_t *out_len)`
-- `parse_cmd_to_argv` (function) `include/beacon_common.c:553` `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)` -- Parse command string into argv array.
-- `free_argv` (function) `include/beacon_common.c:629` `static void free_argv(char **argv)`
-- `exec_cmd` (function) `include/beacon_common.c:640` `char *exec_cmd(const char *cmd, int *out_len)` -- Execute command via execve (no shell) and capture stdout+stderr.
-- `bsb_backoff_init` (function) `include/beacon_common.c:781` `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)` -- if (total == 0) { free(buffer); out_len = 0; return strdup(""); } buffer[total] = '\0'; out_len = (int)total; return...
-- `bsb_backoff_next` (function) `include/beacon_common.c:788` `int bsb_backoff_next(bsb_backoff_t *bo)`
-- `bsb_backoff_reset` (function) `include/beacon_common.c:799` `void bsb_backoff_reset(bsb_backoff_t *bo)`
-- `get_local_ips` (function) `include/beacon_common.c:805` `char *get_local_ips(void)` -- bo->current_seconds *= 2; if (bo->current_seconds > bo->max_seconds) { bo->current_seconds = bo->max_seconds; }...
-- `download_bof` (function) `include/beacon_common.c:840` `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)` -- if (addr->sin_family == AF_INET && strcmp(ifr[i].ifr_name, "lo") != 0) { char ip[INET_ADDRSTRLEN]...
-- `init_function_pointers` (function) `include/beacon_common.c:872` `static void init_function_pointers(void)` -- int decoded_len = 0; unsigned char *decoded = base64_decode(resp.data, &decoded_len); free(resp.data); if (!decoded...
-- `page_align` (function) `include/beacon_common.c:922` `static size_t page_align(size_t size)`
-- `bof_crash_exit` (function) `include/beacon_common.c:930` `static void bof_crash_exit(int sig)`
-- `fault` (function) `include/beacon_common.c:941` `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...`
-- `RunELF` (function) `include/beacon_common.c:961` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+- `rand` (function) `include/beacon_common.c:378` `* rand() % 0 raise SIGFPE and kill the beacon. Fall back to a * neutral default instead. */ if (cfg->network.count >...`
+- `base64_encode` (function) `include/beacon_common.c:451` `char *base64_encode(const unsigned char *input, int len)` -- curl_easy_cleanup(curl); return resp; } long http_code = 0; curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE...
+- `base64_decode` (function) `include/beacon_common.c:468` `unsigned char *base64_decode(const char *input, int *len)`
+- `bsb_generate_secure_iv` (function) `include/beacon_common.c:498` `int bsb_generate_secure_iv(unsigned char *iv_out)` -- Generates a cryptographically secure 16-byte IV.
+- `url_encode` (function) `include/beacon_common.c:529` `char *url_encode(const char *in, size_t in_len, size_t *out_len)`
+- `parse_cmd_to_argv` (function) `include/beacon_common.c:561` `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)` -- Parse command string into argv array.
+- `free_argv` (function) `include/beacon_common.c:637` `static void free_argv(char **argv)`
+- `exec_cmd` (function) `include/beacon_common.c:648` `char *exec_cmd(const char *cmd, int *out_len)` -- Execute command via execve (no shell) and capture stdout+stderr.
+- `bsb_backoff_init` (function) `include/beacon_common.c:789` `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)` -- if (total == 0) { free(buffer); out_len = 0; return strdup(""); } buffer[total] = '\0'; out_len = (int)total; return...
+- `bsb_backoff_next` (function) `include/beacon_common.c:796` `int bsb_backoff_next(bsb_backoff_t *bo)`
+- `bsb_backoff_reset` (function) `include/beacon_common.c:807` `void bsb_backoff_reset(bsb_backoff_t *bo)`
+- `get_local_ips` (function) `include/beacon_common.c:813` `char *get_local_ips(void)` -- bo->current_seconds *= 2; if (bo->current_seconds > bo->max_seconds) { bo->current_seconds = bo->max_seconds; }...
+- `download_bof` (function) `include/beacon_common.c:848` `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)` -- if (addr->sin_family == AF_INET && strcmp(ifr[i].ifr_name, "lo") != 0) { char ip[INET_ADDRSTRLEN]...
+- `init_function_pointers` (function) `include/beacon_common.c:880` `static void init_function_pointers(void)` -- int decoded_len = 0; unsigned char *decoded = base64_decode(resp.data, &decoded_len); free(resp.data); if (!decoded...
+- `page_align` (function) `include/beacon_common.c:930` `static size_t page_align(size_t size)`
+- `bof_crash_exit` (function) `include/beacon_common.c:938` `static void bof_crash_exit(int sig)`
+- `fault` (function) `include/beacon_common.c:949` `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...`
+- `RunELF` (function) `include/beacon_common.c:969` `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
            unsig...`
-- `run_bof_and_capture` (function) `include/beacon_common.c:1263` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+- `run_bof_and_capture` (function) `include/beacon_common.c:1271` `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
    ...`
 
 ## include/beacon_common.h
@@ -480,18 +495,6 @@ Imported by: `beacons/v1/beacon.c`, `beacons/v2/beacon.c`, `beacons/v3/beacon.c`
 ## include/beacon_heartbeat___health_endpoint.h
 Imported by: `mutants/src/beacon_heartbeat___health_endpoint.c`, `src/beacon_heartbeat___health_endpoint.c`
 - `beacon_heartbeat___health_endpoint_process` (function) `include/beacon_heartbeat___health_endpoint.h:4` `bool beacon_heartbeat___health_endpoint_process(void);`
-
-## include/bof_api_versioning.h
-Imported by: `mutants/src/bof_api_versioning.c`, `src/bof_api_versioning.c`
-- `bof_api_versioning_process` (function) `include/bof_api_versioning.h:4` `bool bof_api_versioning_process(void);`
-
-## include/bof_path_traversal_hardening.h
-Imported by: `mutants/src/bof_path_traversal_hardening.c`, `src/bof_path_traversal_hardening.c`
-- `bof_path_traversal_hardening_process` (function) `include/bof_path_traversal_hardening.h:4` `bool bof_path_traversal_hardening_process(void);`
-
-## include/bof_streaming_(large_outputs).h
-Imported by: `mutants/src/bof_streaming_(large_outputs).c`, `src/bof_streaming_(large_outputs).c`
-- `bof_streaming_` (function) `include/bof_streaming_(large_outputs).h:4` `bool bof_streaming_(large_outputs)_process(void);`
 
 
 Next: [API_p2.md](API_p2.md)

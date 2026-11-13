@@ -1,6 +1,6 @@
 # Recipe: Change a File Safely
 
-Riskiest file: `include/config_py.py` (12 dependents)
+Riskiest file: `include/config_py.py` (14 dependents)
 
 1. Who depends on it: `grep -n -- '-> `<file>`' readmenator-agent/ARCHITECTURE*.md`
 2. Its public surface: `grep -n '`<file>:' readmenator-agent/API*.md`

@@ -8,11 +8,11 @@ Log each answered question here so the wiki compounds. Format: question, answer,
 
 - Status: unanswered
 
-### Q: What does aes.h depend on, and what depends on it? (10 connections)
+### Q: What does server.py depend on, and what depends on it? (12 connections)
 
 - Status: unanswered
 
-### Q: What does server.py depend on, and what depends on it? (10 connections)
+### Q: What does aes.h depend on, and what depends on it? (10 connections)
 
 - Status: unanswered
 

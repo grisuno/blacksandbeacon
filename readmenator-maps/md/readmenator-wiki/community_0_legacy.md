@@ -19,7 +19,7 @@ This community groups 20 file(s) rooted at `legacy` with dominant language c (co
 | `bof.c` | c | utility | 1 | yes |
 | `cJSON.c` | c | utility | 125 | no |
 | `cJSON.h` | h | utility | 40 | no |
-| `include/beacon_common.c` | c | utility | 35 | no |
+| `include/beacon_common.c` | c | utility | 36 | no |
 | `include/beacon_common.h` | h | utility | 58 | no |
 | `include/cJSON.c` | c | utility | 125 | no |
 | `include/cJSON.h` | h | utility | 40 | no |
@@ -92,13 +92,13 @@ This community groups 20 file(s) rooted at `legacy` with dominant language c (co
 - [dataflow UNCHECKED_ALLOC] `beacons/v3/beacon.c:149` `execute_command` `payload`: Result of allocator stored in `payload` is never checked against NULL.
 - [dataflow DEAD_STORE] `cJSON.c:1676` `print_array` `output_pointer`: `output_pointer` assigned at line 1676 but never read afterwards.
 - [dataflow DEAD_STORE] `cJSON.c:1908` `print_object` `output_pointer`: `output_pointer` assigned at line 1908 but never read afterwards.
-- [dataflow UNCHECKED_ALLOC] `include/beacon_common.c:453` `base64_encode` `buf`: Result of allocator stored in `buf` is never checked against NULL.
-- [dataflow UNCHECKED_ALLOC] `include/beacon_common.c:821` `get_local_ips` `result`: Result of allocator stored in `result` is never checked against NULL.
+- [dataflow DEAD_STORE] `include/beacon_common.c:375` `https_request` `chunk`: `chunk` assigned at line 375 but never read afterwards.
+- [dataflow UNCHECKED_ALLOC] `include/beacon_common.c:461` `base64_encode` `buf`: Result of allocator stored in `buf` is never checked against NULL.
+- [dataflow UNCHECKED_ALLOC] `include/beacon_common.c:829` `get_local_ips` `result`: Result of allocator stored in `result` is never checked against NULL.
 - [dataflow DEAD_STORE] `include/cJSON.c:1676` `print_array` `output_pointer`: `output_pointer` assigned at line 1676 but never read afterwards.
 - [dataflow DEAD_STORE] `include/cJSON.c:1908` `print_object` `output_pointer`: `output_pointer` assigned at line 1908 but never read afterwards.
 - [dataflow UNCHECKED_ALLOC] `legacy/beacon3.c:447` `base64_encode` `buf`: Result of allocator stored in `buf` is never checked against NULL.
 - [dataflow UNCHECKED_ALLOC] `legacy/beacon3.c:485` `aes256_cfb_encrypt` `ciphertext`: Result of allocator stored in `ciphertext` is never checked against NULL.
-- [dataflow UNCHECKED_ALLOC] `legacy/beacon3.c:519` `aes256_cfb_decrypt` `plaintext`: Result of allocator stored in `plaintext` is never checked against NULL.
 
 ## Open Questions
 

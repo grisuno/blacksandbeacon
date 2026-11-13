@@ -1,10 +1,10 @@
 # orphans
 
-*Community 25 | 62 files | cohesion 0.00*
+*Community 25 | 64 files | cohesion 0.00*
 
 ## Definition
 
-This community groups 62 file(s) rooted at `mutants/tests` with dominant language py (cohesion 0.00). Central symbols: `AT_FDCWD`, `BEACON_API_H`, `BeaconDataExtract`, `BeaconDataInt`, `BeaconDataLength`, `BeaconDataParse`, `BeaconDataPtr`, `BeaconDataShort`. Core file: `bof/is_sudo/is_sudo.c` (17 symbols). Documented purpose: Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación: xx/xx/xxxx Licencia: GPL v3  Descripción:.
+This community groups 64 file(s) rooted at `mutants/tests` with dominant language py (cohesion 0.00). Central symbols: `AT_FDCWD`, `BEACON_API_H`, `BeaconDataExtract`, `BeaconDataInt`, `BeaconDataLength`, `BeaconDataParse`, `BeaconDataPtr`, `BeaconDataShort`. Core file: `bof/is_sudo/is_sudo.c` (17 symbols). Documented purpose: Autor: Gris Iscomeback Correo electrónico: grisiscomeback[at]gmail[dot]com Fecha de creación: xx/xx/xxxx Licencia: GPL v3  Descripción:.
 
 ## Files
 
@@ -24,7 +24,6 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 | `app.py` | py | utility | 0 | yes |
 | `contract_agent.py` | py | utility | 17 | yes |
 | `gopher_c2.py` | py | utility | 5 | no |
-| `install.sh` | sh | utility | 0 | yes |
 
 ### `tests` (5 files)
 
@@ -33,7 +32,13 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 | `tests/test_beacon_build.py` | py | testing | 8 | yes |
 | `tests/test_bof_compile.py` | py | testing | 7 | yes |
 | `tests/test_config.py` | py | testing | 9 | yes |
-| `tests/test_execve_command.py` | py | testing | 12 | yes |
+
+### `c2` (2 files)
+
+| File | Language | Layer | Symbols | Doc |
+|------|----------|-------|---------|-----|
+| `c2/stage_oneliner.sh` | sh | utility | 0 | yes |
+| `c2/stage_payload.py` | py | utility | 3 | yes |
 
 ### `include` (2 files)
 
@@ -78,7 +83,7 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 |------|----------|-------|---------|-----|
 | `scripts/mutation_test_c.py` | py | testing | 6 | yes |
 
-*... and 42 more files in this community.*
+*... and 44 more files in this community.*
 
 
 ## Key Symbols
@@ -125,6 +130,7 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 
 ## Risks
 
+- [taint medium] `c2/stage_payload.py` -> `c2/stage_payload.py` via `urllib.request` (0 hops)
 - [taint high] `contract_agent.py` -> `contract_agent.py` via `subprocess` (0 hops)
 - [taint high] `mutants/tests/test_beacon_build.py` -> `mutants/tests/test_beacon_build.py` via `subprocess` (0 hops)
 - [taint high] `mutants/tests/test_bof_compile.py` -> `mutants/tests/test_bof_compile.py` via `subprocess` (0 hops)
@@ -134,13 +140,12 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 - [taint high] `scripts/mutation_test_c.py` -> `scripts/mutation_test_c.py` via `subprocess` (0 hops)
 - [taint high] `tests/test_beacon_build.py` -> `tests/test_beacon_build.py` via `subprocess` (0 hops)
 - [taint high] `tests/test_bof_compile.py` -> `tests/test_bof_compile.py` via `subprocess` (0 hops)
-- [taint high] `tests/test_config.py` -> `tests/test_config.py` via `subprocess` (0 hops)
 - [dataflow UNCHECKED_ALLOC] `gopher_c2.py:145` `main` `sock`: Result of allocator stored in `sock` is never checked against NULL.
 
 ## Open Questions
 
 - Why do 21 file(s) lack file-level docs (e.g. `gopher_c2.py`)? What purpose do they serve?
-- Is the dangerous import `subprocess` in `contract_agent.py` still required, or can it be isolated?
+- Is the dangerous import `urllib.request` in `c2/stage_payload.py` still required, or can it be isolated?
 - What would break if the most connected file in orphans changed?
 - Should orphans be split, given cohesion 0.00?
 
@@ -151,6 +156,8 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 - `bof/is_sudo/is_sudo.c`
 - `bof/userenum/userenum.c`
 - `bof/whoami/whoami.c`
+- `c2/stage_oneliner.sh`
+- `c2/stage_payload.py`
 - `config/generate_parsers.py`
 - `contract_agent.py`
 - `gopher_c2.py`
@@ -164,6 +171,4 @@ This community groups 62 file(s) rooted at `mutants/tests` with dominant languag
 - `mutants/tests/test_beacon_common.c_extraction.py`
 - `mutants/tests/test_beacon_common.c_extraction_c.c`
 - `mutants/tests/test_beacon_heartbeat___health_endpoint.py`
-- `mutants/tests/test_beacon_heartbeat___health_endpoint_c.c`
-- `mutants/tests/test_bof_api_versioning.py`
-- *... and 42 more*
+- *... and 44 more*

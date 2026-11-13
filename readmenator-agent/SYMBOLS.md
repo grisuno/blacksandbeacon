@@ -232,27 +232,41 @@ Pages: [SYMBOLS.md](SYMBOLS.md), [SYMBOLS_p2.md](SYMBOLS_p2.md), [SYMBOLS_p3.md]
 | `ssize_t` | type_alias | `bof/whoami/whoami.c:7` | `typedef long ssize_t;` |
 | `syscall1` | function | `bof/whoami/whoami.c:31` | `static inline long syscall1(long n, long a1)` |
 | `syscall3` | function | `bof/whoami/whoami.c:21` | `static inline long syscall3(long n, long a1, long a2, long a3)` |
-| `C2State` | class | `c2/server.py:271` | `class C2State` |
-| `__init__` | method | `c2/server.py:274` | `def __init__(self, cfg)` |
-| `_http_response` | function | `c2/server.py:555` | `def _http_response(body, status)` |
-| `_is_http_line` | function | `c2/server.py:490` | `def _is_http_line(line)` |
-| `_is_http_request` | function | `c2/server.py:496` | `def _is_http_request(raw)` |
-| `_read_request` | function | `c2/server.py:507` | `def _read_request(conn)` |
-| `command_injector` | function | `c2/server.py:619` | `def command_injector(state)` |
-| `compute_hmac` | function | `c2/server.py:110` | `def compute_hmac(key, data)` |
-| `decrypt_data` | function | `c2/server.py:178` | `def decrypt_data(b64_data, key, hmac_key, use_hmac)` |
-| `decrypt_data_replay` | function | `c2/server.py:201` | `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` |
-| `encrypt_data` | function | `c2/server.py:121` | `def encrypt_data(data, key, hmac_key, use_hmac)` |
-| `encrypt_data_replay` | function | `c2/server.py:144` | `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` |
-| `handle_bof` | function | `c2/server.py:401` | `def handle_bof(state, name)` |
-| `handle_get_command` | function | `c2/server.py:287` | `def handle_get_command(state, selector)` |
-| `handle_report` | function | `c2/server.py:311` | `def handle_report(state, b64_payload)` |
-| `handle_request` | function | `c2/server.py:439` | `def handle_request(state, selector)` |
-| `load_runtime_config` | function | `c2/server.py:62` | `def load_runtime_config()` |
-| `main` | function | `c2/server.py:642` | `def main()` |
-| `serve` | function | `c2/server.py:595` | `def serve(cfg, state)` |
-| `serve_client` | function | `c2/server.py:567` | `def serve_client(state, conn, addr)` |
-| `verify_hmac` | function | `c2/server.py:115` | `def verify_hmac(key, data, signature)` |
+| `C2State` | class | `c2/server.py:552` | `class C2State` |
+| `__init__` | method | `c2/server.py:555` | `def __init__(self, cfg)` |
+| `_http_response` | function | `c2/server.py:848` | `def _http_response(body, status)` |
+| `_is_http_line` | function | `c2/server.py:783` | `def _is_http_line(line)` |
+| `_is_http_request` | function | `c2/server.py:789` | `def _is_http_request(raw)` |
+| `_random_free_port` | function | `c2/server.py:73` | `def _random_free_port()` |
+| `_read_request` | function | `c2/server.py:800` | `def _read_request(conn)` |
+| `build_stage_config` | function | `c2/server.py:449` | `def build_stage_config(state)` |
+| `build_stage_oneliner` | function | `c2/server.py:512` | `def build_stage_oneliner(cfg)` |
+| `command_injector` | function | `c2/server.py:932` | `def command_injector(state)` |
+| `compute_hmac` | function | `c2/server.py:210` | `def compute_hmac(key, data)` |
+| `copy_to_clipboard` | function | `c2/server.py:529` | `def copy_to_clipboard(text)` |
+| `decrypt_data` | function | `c2/server.py:278` | `def decrypt_data(b64_data, key, hmac_key, use_hmac)` |
+| `decrypt_data_replay` | function | `c2/server.py:301` | `def decrypt_data_replay(b64_data, key, hmac_key, use_hmac, replay_window_seconds, last_seen_counter, client_id)` |
+| `encrypt_data` | function | `c2/server.py:221` | `def encrypt_data(data, key, hmac_key, use_hmac)` |
+| `encrypt_data_replay` | function | `c2/server.py:244` | `def encrypt_data_replay(data, key, counter, timestamp, hmac_key, use_hmac)` |
+| `handle_bof` | function | `c2/server.py:682` | `def handle_bof(state, name)` |
+| `handle_get_command` | function | `c2/server.py:568` | `def handle_get_command(state, selector)` |
+| `handle_report` | function | `c2/server.py:592` | `def handle_report(state, b64_payload)` |
+| `handle_request` | function | `c2/server.py:720` | `def handle_request(state, selector)` |
+| `handle_stage` | function | `c2/server.py:481` | `def handle_stage(state, kind, token)` |
+| `hkdf_sha256` | function | `c2/server.py:398` | `def hkdf_sha256(ikm, salt, info, length)` |
+| `load_runtime_config` | function | `c2/server.py:86` | `def load_runtime_config()` |
+| `main` | function | `c2/server.py:955` | `def main()` |
+| `serve` | function | `c2/server.py:890` | `def serve(cfg, state)` |
+| `serve_client` | function | `c2/server.py:860` | `def serve_client(state, conn, addr)` |
+| `stage_decode` | function | `c2/server.py:430` | `def stage_decode(body, token)` |
+| `stage_encode` | function | `c2/server.py:422` | `def stage_encode(payload, token)` |
+| `stage_keys` | function | `c2/server.py:410` | `def stage_keys(token)` |
+| `stage_token_ok` | function | `c2/server.py:441` | `def stage_token_ok(state, token)` |
+| `verify_hmac` | function | `c2/server.py:215` | `def verify_hmac(key, data, signature)` |
+| `xor_layer` | function | `c2/server.py:416` | `def xor_layer(data, key)` |
+| `_fetch_and_decode` | function | `c2/stage_payload.py:48` | `def _fetch_and_decode(url, token, path, tls_ctx)` |
+| `hkdf_sha256` | function | `c2/stage_payload.py:37` | `def hkdf_sha256(ikm, salt, info, length)` |
+| `main` | function | `c2/stage_payload.py:67` | `def main()` |
 | `CJSON_PUBLIC` | function | `cJSON.c:96` | `CJSON_PUBLIC(const char *) cJSON_GetErrorPtr(void)` |
 | `CJSON_PUBLIC` | function | `cJSON.c:101` | `CJSON_PUBLIC(char *) cJSON_GetStringValue(const cJSON *const item)` |
 | `CJSON_PUBLIC` | function | `cJSON.c:111` | `CJSON_PUBLIC(double) cJSON_GetNumberValue(const cJSON *const item)` |
@@ -482,19 +496,5 @@ Pages: [SYMBOLS.md](SYMBOLS.md), [SYMBOLS_p2.md](SYMBOLS_p2.md), [SYMBOLS_p3.md]
 | `XorWithIv` | function | `include/aes.c:528` | `static void XorWithIv(uint8_t *buf, const uint8_t *Iv)` |
 | `__attribute__` | function | `include/aes.c:11` | `static __attribute__((unused)) uint8_t getSBoxValue(uint8_t num)` |
 | `__attribute__` | function | `include/aes.c:35` | `static __attribute__((unused)) uint8_t getSBoxInvert(uint8_t num)` |
-| `__attribute__` | function | `include/aes.c:59` | `static __attribute__((unused)) uint8_t Td0(int x)` |
-| `__attribute__` | function | `include/aes.c:63` | `static __attribute__((unused)) uint8_t Td1(int x)` |
-| `__attribute__` | function | `include/aes.c:67` | `static __attribute__((unused)) uint8_t Td2(int x)` |
-| `__attribute__` | function | `include/aes.c:71` | `static __attribute__((unused)) uint8_t Td3(int x)` |
-| `__attribute__` | function | `include/aes.c:75` | `static __attribute__((unused)) uint8_t Td4(int x)` |
-| `getSBoxInvert` | macro | `include/aes.c:384` | `#define getSBoxInvert(num)` |
-| `getSBoxValue` | macro | `include/aes.c:177` | `#define getSBoxValue(num)` |
-| `xtime` | function | `include/aes.c:329` | `static uint8_t xtime(uint8_t x)` |
-| `AES256` | macro | `include/aes.h:18` | `#define AES256` |
-| `AES_BLOCKLEN` | macro | `include/aes.h:20` | `#define AES_BLOCKLEN` |
-| `AES_CBC_decrypt_buffer` | function | `include/aes.h:54` | `void AES_CBC_decrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
-| `AES_CBC_encrypt_buffer` | function | `include/aes.h:53` | `void AES_CBC_encrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
-| `AES_CTR_xcrypt_buffer` | function | `include/aes.h:58` | `void AES_CTR_xcrypt_buffer(struct AES_ctx *ctx, uint8_t *buf, size_t length);` |
-| `AES_ECB_decrypt` | function | `include/aes.h:49` | `void AES_ECB_decrypt(const struct AES_ctx *ctx, uint8_t *buf);` |
 
 Next: [SYMBOLS_p2.md](SYMBOLS_p2.md)

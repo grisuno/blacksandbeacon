@@ -3,6 +3,21 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 
 | Symbol | Kind | File:Line | Signature |
 |--------|------|-----------|-----------|
+| `aes256_cfb_encrypt` | function | `legacy/beacon5.c:523` | `unsigned char *aes256_cfb_encrypt(const unsigned char *key, const unsigned char *iv,             ...` |
+| `base64_decode` | function | `legacy/beacon5.c:497` | `unsigned char *base64_decode(const char *input, int *len)` |
+| `base64_encode` | function | `legacy/beacon5.c:479` | `char *base64_encode(const unsigned char *input, int len)` |
+| `cleanup_trampolines` | function | `legacy/beacon5.c:311` | `static void cleanup_trampolines(void)` |
+| `create_trampoline` | function | `legacy/beacon5.c:270` | `static void *create_trampoline(void *target)` |
+| `download_bof` | function | `legacy/beacon5.c:1161` | `unsigned char *download_bof(const char *url, size_t *out_size)` |
+| `exec_cmd` | function | `legacy/beacon5.c:593` | `char *exec_cmd(const char *cmd, int *out_len)` |
+| `get_local_ips` | function | `legacy/beacon5.c:1126` | `char *get_local_ips()` |
+| `get_or_create_trampoline` | function | `legacy/beacon5.c:329` | `static void *get_or_create_trampoline(void *target)` |
+| `https_request` | function | `legacy/beacon5.c:385` | `char *https_request(const char *url, const char *method, const char *post_data)` |
+| `main` | function | `legacy/beacon5.c:1702` | `int main(int argc, char **argv)` |
+| `mesh_add_peer` | function | `legacy/beacon5.c:1255` | `void mesh_add_peer(const char *ip, int port)` |
+| `mesh_cleanup_peers` | function | `legacy/beacon5.c:1283` | `void mesh_cleanup_peers()` |
+| `mesh_discovery_thread` | function | `legacy/beacon5.c:1356` | `void *mesh_discovery_thread(void *arg)` |
+| `mesh_is_seen` | function | `legacy/beacon5.c:1240` | `int mesh_is_seen(const char *msg_id)` |
 | `mesh_listener_thread` | function | `legacy/beacon5.c:1447` | `void *mesh_listener_thread(void *arg)` |
 | `mesh_mark_seen` | function | `legacy/beacon5.c:1231` | `void mesh_mark_seen(const char *msg_id)` |
 | `mesh_msg_t` | struct | `legacy/beacon5.c:77` | `` |
@@ -481,20 +496,5 @@ Previous: [SYMBOLS_p2.md](SYMBOLS_p2.md)
 | `assert_memory_equal` | function | `tests/test_hkdf_key_derivation_c.c:208` | `assert_memory_equal(crypto.encryption_key, (uint8_t[BSB_AES_KEY_BYTES])` |
 | `assert_memory_equal` | function | `tests/test_hkdf_key_derivation_c.c:209` | `assert_memory_equal(crypto.hmac_key, (uint8_t[BSB_AES_KEY_BYTES])` |
 | `main` | function | `tests/test_hkdf_key_derivation_c.c:212` | `int main(void)` |
-| `test_aes_key_hex_backward_compat` | function | `tests/test_hkdf_key_derivation_c.c:55` | `static void test_aes_key_hex_backward_compat(void **state)` |
-| `test_crypto_struct_has_new_fields` | function | `tests/test_hkdf_key_derivation_c.c:200` | `static void test_crypto_struct_has_new_fields(void **state)` |
-| `test_deterministic_derivation` | function | `tests/test_hkdf_key_derivation_c.c:165` | `static void test_deterministic_derivation(void **state)` |
-| `test_invalid_master_key_hex_length_fails` | function | `tests/test_hkdf_key_derivation_c.c:115` | `static void test_invalid_master_key_hex_length_fails(void **state)` |
-| `test_key_separation` | function | `tests/test_hkdf_key_derivation_c.c:139` | `static void test_key_separation(void **state)` |
-| `test_master_key_hex_loads_from_config` | function | `tests/test_hkdf_key_derivation_c.c:19` | `static void test_master_key_hex_loads_from_config(void **state)` |
-| `test_missing_both_keys_fails` | function | `tests/test_hkdf_key_derivation_c.c:90` | `static void test_missing_both_keys_fails(void **state)` |
-| `main` | function | `tests/test_install_deploy.py:129` | `def main()` |
-| `make_all` | function | `tests/test_install_deploy.py:23` | `def make_all()` |
-| `run_beacon` | function | `tests/test_install_deploy.py:29` | `def run_beacon(binary, cwd)` |
-| `test_build_beacon_lands_alongside_config` | function | `tests/test_install_deploy.py:56` | `def test_build_beacon_lands_alongside_config()` |
-| `test_clean_removes_everything` | function | `tests/test_install_deploy.py:103` | `def test_clean_removes_everything()` |
-| `test_staged_beacon_runs_from_any_cwd` | function | `tests/test_install_deploy.py:75` | `def test_staged_beacon_runs_from_any_cwd()` |
-| `test_staged_bofs_are_present` | function | `tests/test_install_deploy.py:90` | `def test_staged_bofs_are_present()` |
-| `test_staged_files_have_correct_modes` | function | `tests/test_install_deploy.py:67` | `def test_staged_files_have_correct_modes()` |
 
 Next: [SYMBOLS_p4.md](SYMBOLS_p4.md)

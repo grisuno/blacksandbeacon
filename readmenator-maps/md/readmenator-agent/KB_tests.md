@@ -340,3 +340,58 @@
   - `test_counter_reset_on_new_session` (method, line 179) `def test_counter_reset_on_new_session(self)`
   - `test_hmac_covers_counter_and_timestamp` (method, line 184) `def test_hmac_covers_counter_and_timestamp(self)`
 - Depends on: `c2/server.py`, `include/config_py.py`
+
+## tests/test_runtime_random.py
+- Doc: Tests for random per-run runtime values (Contract: random staging).
+- Layer: testing
+- Language: py
+- Symbols:
+  - `lrc` (function, line 33) `def lrc(monkeypatch, tmp_path, raw, env)`
+  - `TestRandomGeneration` (class, line 44) `class TestRandomGeneration`
+  - `TestStageConfigCarriesRuntimeValues` (class, line 99) `class TestStageConfigCarriesRuntimeValues`
+  - `test_all_generated_when_nothing_provided` (method, line 45) `def test_all_generated_when_nothing_provided(self, monkeypatch, tmp_path)`
+  - `test_generated_key_parities` (method, line 54) `def test_generated_key_parities(self, monkeypatch, tmp_path)`
+  - `test_random_url_points_at_generated_port` (method, line 62) `def test_random_url_points_at_generated_port(self, monkeypatch, tmp_path)`
+  - `test_two_runs_differ` (method, line 66) `def test_two_runs_differ(self, monkeypatch, tmp_path)`
+  - `test_provided_values_preserved` (method, line 73) `def test_provided_values_preserved(self, monkeypatch, tmp_path)`
+  - `test_env_wins` (method, line 87) `def test_env_wins(self, monkeypatch, tmp_path)`
+  - `test_explicit_token_no_generation` (method, line 92) `def test_explicit_token_no_generation(self, monkeypatch, tmp_path)`
+  - `test_served_config_matches_runtime` (method, line 100) `def test_served_config_matches_runtime(self, monkeypatch, tmp_path)`
+  - `test_file_config_values_win_when_provided` (method, line 112) `def test_file_config_values_win_when_provided(self, monkeypatch, tmp_path)`
+- Depends on: `c2/server.py`, `include/config_py.py`
+
+## tests/test_stage.py
+- Doc: Tests for diskless staging endpoints (Contract: fileless staging).
+- Layer: testing
+- Language: py
+- Symbols:
+  - `make_state` (function, line 54) `def make_state(tmpdir, token, beacon)`
+  - `TestStageCodec` (class, line 66) `class TestStageCodec`
+  - `TestStageToken` (class, line 102) `class TestStageToken`
+  - `TestStageBeacon` (class, line 120) `class TestStageBeacon`
+  - `TestStageConfig` (class, line 144) `class TestStageConfig`
+  - `TestStageRouting` (class, line 165) `class TestStageRouting`
+  - `TestStageOneliner` (class, line 197) `class TestStageOneliner`
+  - `_self_signed_cert` (function, line 210) `def _self_signed_cert(td)`
+  - `TestStageTLSEndToEnd` (class, line 228) `class TestStageTLSEndToEnd`
+  - `test_encode_decode_roundtrip` (method, line 67) `def test_encode_decode_roundtrip(self)`
+  - `test_no_key_material_on_wire` (method, line 71) `def test_no_key_material_on_wire(self)`
+  - `test_keys_derived_deterministically_from_token` (method, line 78) `def test_keys_derived_deterministically_from_token(self)`
+  - `test_server_payload_hkdf_parity` (method, line 84) `def test_server_payload_hkdf_parity(self)`
+  - `test_missing_token_forbidden` (method, line 103) `def test_missing_token_forbidden(self, tmp_path)`
+  - `test_wrong_token_forbidden` (method, line 107) `def test_wrong_token_forbidden(self, tmp_path)`
+  - `test_no_token_configured_fails_closed` (method, line 111) `def test_no_token_configured_fails_closed(self, tmp_path)`
+  - `test_unknown_kind_forbidden` (method, line 115) `def test_unknown_kind_forbidden(self, tmp_path)`
+  - `test_beacon_roundtrip` (method, line 121) `def test_beacon_roundtrip(self, tmp_path)`
+  - `test_beacon_file_missing` (method, line 129) `def test_beacon_file_missing(self, tmp_path)`
+  - `test_beacon_not_elf` (method, line 133) `def test_beacon_not_elf(self, tmp_path)`
+  - `test_beacon_path_none` (method, line 139) `def test_beacon_path_none(self, tmp_path)`
+  - `test_config_roundtrip` (method, line 145) `def test_config_roundtrip(self, tmp_path, monkeypatch)`
+  - `test_config_always_available` (method, line 157) `def test_config_always_available(self, tmp_path, monkeypatch)`
+  - `test_http_get_beacon_routed` (method, line 166) `def test_http_get_beacon_routed(self, tmp_path)`
+  - `test_http_get_config_routed` (method, line 175) `def test_http_get_config_routed(self, tmp_path, monkeypatch)`
+  - `test_wrong_token_routed_rejected` (method, line 184) `def test_wrong_token_routed_rejected(self, tmp_path)`
+  - `test_legacy_selector_routed` (method, line 189) `def test_legacy_selector_routed(self, tmp_path)`
+  - `test_oneliner_embeds_url_and_token` (method, line 198) `def test_oneliner_embeds_url_and_token(self, tmp_path)`
+  - `test_tls_roundtrip` (method, line 229) `def test_tls_roundtrip(self, tmp_path, monkeypatch)`
+- Depends on: `c2/server.py`

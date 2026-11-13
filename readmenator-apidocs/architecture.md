@@ -4,7 +4,7 @@
 
 ## Architecture Overview
 
-28 components stacked in 2 dependency tiers (weighted Eades-Lin-Smyth ordering: arrows point from dependent to dependency, top to bottom). Labels are import counts, thick arrows the top quartile; 0 transitively implied edges are omitted. Dashed red arrows are upward dependencies: the smallest set of imports that closes every cycle and breaks the layering. Cyan components hold entry points. Interactive version: `readmenator-apidocs/index.html#/flows`.
+29 components stacked in 2 dependency tiers (weighted Eades-Lin-Smyth ordering: arrows point from dependent to dependency, top to bottom). Labels are import counts, thick arrows the top quartile; 0 transitively implied edges are omitted. Dashed red arrows are upward dependencies: the smallest set of imports that closes every cycle and breaks the layering. Cyan components hold entry points. Interactive version: `readmenator-apidocs/index.html#/flows`.
 
 ```mermaid
 flowchart TB
@@ -12,9 +12,10 @@ flowchart TB
     classDef entry fill:#0e7490,stroke:#22d3ee,color:#ecfeff,stroke-width:2px;
     subgraph lane_0["Tier 1 - entry / orchestration"]
         direction LR
-        n_c0["legacy<br/>19 files, 732 symbols<br/>Core / utility"]:::default
+        n_c0["legacy<br/>19 files, 733 symbols<br/>Core / utility"]:::default
         n_d_include["include<br/>2 files, 16 symbols<br/>Infrastructure"]:::default
         n_d_config["config<br/>1 files, 7 symbols<br/>Infrastructure"]:::default
+        n_d_c2["c2<br/>2 files, 3 symbols<br/>Core / utility"]:::default
         n_d_bof["bof<br/>4 files, 56 symbols<br/>Core / utility"]:::default
         n_d__root_["(root)<br/>6 files, 39 symbols<br/>Core / utility"]:::entry
         n_c9["mutants/src: bof_path_traversal_hardening<br/>3 files, 4 symbols<br/>Core / utility"]:::default
@@ -37,7 +38,7 @@ flowchart TB
         n_c12["mutants/src: certificate_pinning___tofu<br/>3 files, 4 symbols<br/>Core / utility"]:::default
         n_c11["mutants/src: c2_rest_api<br/>3 files, 4 symbols<br/>Presentation / entry"]:::default
         n_c10["mutants/src: bof_streaming_(large_outputs)<br/>3 files, 4 symbols<br/>Core / utility"]:::default
-        n_c1["c2<br/>3 files, 24 symbols<br/>Core / utility"]:::entry
+        n_c1["c2<br/>3 files, 35 symbols<br/>Core / utility"]:::entry
     end
     subgraph lane_1["Tier 2 - foundation"]
         direction LR

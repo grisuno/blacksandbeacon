@@ -41,7 +41,7 @@ matching DEFAULTS' structure plus derived keys.
 
 - `ValueError`: (raised in the body, not documented)
 
-*Called by:* [`load_runtime_config`](c2.server.py.md#load_runtime_config)
+*Called by:* [`build_stage_config`](c2.server.py.md#build_stage_config), [`load_runtime_config`](c2.server.py.md#load_runtime_config)
 
 ---
 

@@ -1,6 +1,18 @@
 # API (page 2 of 3)
 Previous: [API.md](API.md)
 
+## include/bof_api_versioning.h
+Imported by: `mutants/src/bof_api_versioning.c`, `src/bof_api_versioning.c`
+- `bof_api_versioning_process` (function) `include/bof_api_versioning.h:4` `bool bof_api_versioning_process(void);`
+
+## include/bof_path_traversal_hardening.h
+Imported by: `mutants/src/bof_path_traversal_hardening.c`, `src/bof_path_traversal_hardening.c`
+- `bof_path_traversal_hardening_process` (function) `include/bof_path_traversal_hardening.h:4` `bool bof_path_traversal_hardening_process(void);`
+
+## include/bof_streaming_(large_outputs).h
+Imported by: `mutants/src/bof_streaming_(large_outputs).c`, `src/bof_streaming_(large_outputs).c`
+- `bof_streaming_` (function) `include/bof_streaming_(large_outputs).h:4` `bool bof_streaming_(large_outputs)_process(void);`
+
 ## include/c2_rest_api.h
 Imported by: `mutants/src/c2_rest_api.c`, `src/c2_rest_api.c`
 - `c2_rest_api_process` (function) `include/c2_rest_api.h:4` `bool c2_rest_api_process(void);`
@@ -207,7 +219,7 @@ Imported by: `include/config_autogen.c`
 - `bsb_config_sleep_seconds` (function) `include/config_autogen.h:75` `int bsb_config_sleep_seconds(const bsb_config_t *cfg);` -- bsb_network_t network; bsb_bof_t bof; bsb_backoff_t backoff; bsb_server_t server; char path[512]; } bsb_config_t; /*...
 
 ## include/config_py.py
-Imported by: `c2/server.py`, `mutants/tests/test_certificate_pinning.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_certificate_pinning.py`, `tests/test_hkdf_key_derivation.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`
+Imported by: `c2/server.py`, `mutants/tests/test_certificate_pinning.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_certificate_pinning.py`, `tests/test_hkdf_key_derivation.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`, `tests/test_runtime_random.py`
 - `load_config` (function) `include/config_py.py:94` `def load_config(path)` -- Load and validate a BSB config file.
 
 ## include/config_py_autogen.py
@@ -481,18 +493,6 @@ Depends on: `include/tls_client_certificate_authentication.h`
 ## mutants/src/unified_config_schema.c
 Depends on: `include/unified_config_schema.h`
 - `unified_config_schema_process` (function) `mutants/src/unified_config_schema.c:6` `bool unified_config_schema_process(void)`
-
-## mutants/tests/config_harness.c
-Depends on: `include/config.h`
-- `main` (function) `mutants/tests/config_harness.c:22` `int main(void)`
-
-## src/async_i_o_for_beacon.c
-Depends on: `include/async_i_o_for_beacon.h`
-- `async_i_o_for_beacon_process` (function) `src/async_i_o_for_beacon.c:6` `bool async_i_o_for_beacon_process(void)`
-
-## src/beacon_heartbeat___health_endpoint.c
-Depends on: `include/beacon_heartbeat___health_endpoint.h`
-- `beacon_heartbeat___health_endpoint_process` (function) `src/beacon_heartbeat___health_endpoint.c:6` `bool beacon_heartbeat___health_endpoint_process(void)`
 
 
 Next: [API_p3.md](API_p3.md)

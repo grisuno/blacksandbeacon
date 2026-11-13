@@ -124,7 +124,7 @@ Previous: [KB_include.md](KB_include.md)
   - `_derive_keys` (function, line 65) `def _derive_keys(master_key_bytes)`
   - `_deep_merge` (function, line 84) `def _deep_merge(base, overlay)`
   - `load_config` (function, line 94) `def load_config(path)`
-- Imported by: `c2/server.py`, `mutants/tests/test_certificate_pinning.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_certificate_pinning.py`, `tests/test_hkdf_key_derivation.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`
+- Imported by: `c2/server.py`, `mutants/tests/test_certificate_pinning.py`, `tests/test_c2_beacon_bof_integration.py`, `tests/test_certificate_pinning.py`, `tests/test_hkdf_key_derivation.py`, `tests/test_iv_generation.py`, `tests/test_replay_protection.py`, `tests/test_runtime_random.py`
 
 ## include/config_py_autogen.py
 - Doc: Auto-generated Python config loader from config/schema.json DO NOT EDIT MANUALLY - run...

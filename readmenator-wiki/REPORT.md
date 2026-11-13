@@ -1,6 +1,6 @@
 # Audit Report
 
-*Project: blacksandbeacon | 2026-11-11 | offline, deterministic*
+*Project: blacksandbeacon | 2026-11-13 | offline, deterministic*
 
 ## Confidence Trail
 
@@ -8,15 +8,15 @@ Every edge is tagged. Extracted means parsed from source; inferred means derived
 
 | Confidence | Count | Meaning |
 |------------|-------|---------|
-| EXTRACTED | 91 | Resolved import edges parsed from source |
-| EXTRACTED | 930 | Raw import statements (may include externals) |
+| EXTRACTED | 97 | Resolved import edges parsed from source |
+| EXTRACTED | 969 | Raw import statements (may include externals) |
 | INFERRED | 5 | Surprising cross-community bridges |
 | AMBIGUOUS | 0 | No uncertain edges are emitted by the static scanner |
 
 ## Coverage
 
-- Files: 175, communities: 26
-- File doc coverage: 99/175
+- Files: 179, communities: 26
+- File doc coverage: 103/179
 - Orphans (no docs at any level): 53
 - Layers detected: 4
 - Security findings: 0
@@ -31,7 +31,7 @@ Every edge is tagged. Extracted means parsed from source; inferred means derived
 
 ## Token Benchmark
 
-- Wiki index plus community pages estimate: ~30147 tokens (chars/4).
+- Wiki index plus community pages estimate: ~31592 tokens (chars/4).
 - Full re-read of every source file would cost strictly more on any non-trivial project; this wiki is the cheaper entry point.
 - Generation cost: $0, offline, no network calls.
 

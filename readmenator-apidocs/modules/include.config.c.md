@@ -15,7 +15,10 @@ Solid arrows stay in this module, dashed arrows leave it.
 flowchart LR
     n_include_config_c__bsb_config_load_default(["bsb_config_load_default"])
     n_include_config_c__bsb_config_load(["bsb_config_load"])
+    n_include_config_c__bsb_config_sleep_seconds(["bsb_config_sleep_seconds"])
+    n_include_beacon_common_c__rand["beacon_common.rand"]
     n_include_config_c__bsb_config_load_default --> n_include_config_c__bsb_config_load
+    n_include_config_c__bsb_config_sleep_seconds -.-> n_include_beacon_common_c__rand
 ```
 
 ## Functions
@@ -98,6 +101,8 @@ Returns seconds.
 **Returns:** `int`
 
 > **Inherited:** Documentation from [`bsb_config_sleep_seconds`](#bsb_config_sleep_seconds) (include/config.h:95).
+
+*Calls:* [`rand`](include.beacon_common.c.md#rand)
 
 ---
 

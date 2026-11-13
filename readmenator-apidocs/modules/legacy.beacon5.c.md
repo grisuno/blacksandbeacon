@@ -230,6 +230,8 @@ char *https_request(const char *url, const char *method, const char *post_data)
 
 **Returns:** `char *`
 
+*Calls:* [`rand`](include.beacon_common.c.md#rand)
+
 *Called by:* [`download_bof`](#download_bof), [`main`](#main), [`mesh_listener_thread`](#mesh_listener_thread)
 
 ---
@@ -585,7 +587,7 @@ void mesh_propagate(const char *command)
 |---|---|---|---|
 | `command` | `char *` |  |  |
 
-*Calls:* [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_to_peer`](#mesh_send_to_peer)
+*Calls:* [`rand`](include.beacon_common.c.md#rand), [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_to_peer`](#mesh_send_to_peer)
 
 *Called by:* [`main`](#main)
 
@@ -631,7 +633,7 @@ void *mesh_listener_thread(void *arg)
 
 **Returns:** `void *`
 
-*Calls:* [`aes256_cfb_decrypt`](#aes256_cfb_decrypt), [`base64_decode`](#base64_decode), [`download_bof`](#download_bof), [`exec_cmd`](#exec_cmd), [`https_request`](#https_request), [`mesh_is_seen`](#mesh_is_seen), [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_message`](#mesh_send_message), [`mesh_send_to_peer`](#mesh_send_to_peer), [`run_bof_and_capture`](#run_bof_and_capture)
+*Calls:* [`rand`](include.beacon_common.c.md#rand), [`aes256_cfb_decrypt`](#aes256_cfb_decrypt), [`base64_decode`](#base64_decode), [`download_bof`](#download_bof), [`exec_cmd`](#exec_cmd), [`https_request`](#https_request), [`mesh_is_seen`](#mesh_is_seen), [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_message`](#mesh_send_message), [`mesh_send_to_peer`](#mesh_send_to_peer), [`run_bof_and_capture`](#run_bof_and_capture)
 
 ---
 
@@ -653,7 +655,7 @@ void mesh_send_message(int type, const char *target, const char *payload)
 | `target` | `char *` |  |  |
 | `payload` | `char *` |  |  |
 
-*Calls:* [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_to_peer`](#mesh_send_to_peer)
+*Calls:* [`rand`](include.beacon_common.c.md#rand), [`mesh_mark_seen`](#mesh_mark_seen), [`mesh_send_to_peer`](#mesh_send_to_peer)
 
 *Called by:* [`mesh_listener_thread`](#mesh_listener_thread)
 

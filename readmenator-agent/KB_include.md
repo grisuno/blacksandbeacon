@@ -150,29 +150,30 @@ Pages: [KB_include.md](KB_include.md), [KB_include_p2.md](KB_include_p2.md)
   - `bsb_curl_pin_format` (function, line 330) `static void bsb_curl_pin_format(const char *in, char *out, size_t outsz)`
   - `https_request` (function, line 367) `http_response_t https_request(const bsb_config_t *cfg, const char *url, const char *method,
      ...`
-  - `base64_encode` (function, line 443) `char *base64_encode(const unsigned char *input, int len)`
-  - `base64_decode` (function, line 460) `unsigned char *base64_decode(const char *input, int *len)`
-  - `bsb_generate_secure_iv` (function, line 490) `int bsb_generate_secure_iv(unsigned char *iv_out)`
-  - `_is_unreserved` (function, line 515) `static int _is_unreserved(unsigned char c)`
-  - `url_encode` (function, line 521) `char *url_encode(const char *in, size_t in_len, size_t *out_len)`
-  - `parse_cmd_to_argv` (function, line 553) `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)`
-  - `free_argv` (function, line 629) `static void free_argv(char **argv)`
-  - `exec_cmd` (function, line 640) `char *exec_cmd(const char *cmd, int *out_len)`
-  - `bsb_backoff_init` (function, line 781) `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)`
-  - `bsb_backoff_next` (function, line 788) `int bsb_backoff_next(bsb_backoff_t *bo)`
-  - `bsb_backoff_reset` (function, line 799) `void bsb_backoff_reset(bsb_backoff_t *bo)`
-  - `get_local_ips` (function, line 805) `char *get_local_ips(void)`
-  - `download_bof` (function, line 840) `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)`
-  - `init_function_pointers` (function, line 872) `static void init_function_pointers(void)`
-  - `page_align` (function, line 922) `static size_t page_align(size_t size)`
-  - `bof_crash_exit` (function, line 930) `static void bof_crash_exit(int sig)`
-  - `__attribute__` (function, line 935) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
+  - `base64_encode` (function, line 451) `char *base64_encode(const unsigned char *input, int len)`
+  - `base64_decode` (function, line 468) `unsigned char *base64_decode(const char *input, int *len)`
+  - `bsb_generate_secure_iv` (function, line 498) `int bsb_generate_secure_iv(unsigned char *iv_out)`
+  - `_is_unreserved` (function, line 523) `static int _is_unreserved(unsigned char c)`
+  - `url_encode` (function, line 529) `char *url_encode(const char *in, size_t in_len, size_t *out_len)`
+  - `parse_cmd_to_argv` (function, line 561) `static char **parse_cmd_to_argv(const char *cmd, int *out_argc)`
+  - `free_argv` (function, line 637) `static void free_argv(char **argv)`
+  - `exec_cmd` (function, line 648) `char *exec_cmd(const char *cmd, int *out_len)`
+  - `bsb_backoff_init` (function, line 789) `void bsb_backoff_init(bsb_backoff_t *bo, int base, int max)`
+  - `bsb_backoff_next` (function, line 796) `int bsb_backoff_next(bsb_backoff_t *bo)`
+  - `bsb_backoff_reset` (function, line 807) `void bsb_backoff_reset(bsb_backoff_t *bo)`
+  - `get_local_ips` (function, line 813) `char *get_local_ips(void)`
+  - `download_bof` (function, line 848) `unsigned char *download_bof(const bsb_config_t *cfg, const char *url, size_t *out_size)`
+  - `init_function_pointers` (function, line 880) `static void init_function_pointers(void)`
+  - `page_align` (function, line 930) `static size_t page_align(size_t size)`
+  - `bof_crash_exit` (function, line 938) `static void bof_crash_exit(int sig)`
+  - `__attribute__` (function, line 943) `static void __attribute__((noinline)) call_bof_isolated(bof_func_t func, char *args,
             ...`
-  - `RunELF` (function, line 961) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
+  - `RunELF` (function, line 969) `int RunELF(const char *functionname, unsigned char *elf_data, uint32_t filesize,
            unsig...`
-  - `run_bof_and_capture` (function, line 1263) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
+  - `run_bof_and_capture` (function, line 1271) `char *run_bof_and_capture(unsigned char *elf_data, uint32_t filesize, char *args, int arglen,
    ...`
-  - `fault` (function, line 941) `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...`
+  - `rand` (function, line 378) `* rand() % 0 raise SIGFPE and kill the beacon. Fall back to a * neutral default instead. */ if (cfg->network.count >...`
+  - `fault` (function, line 949) `* fault (SIGSEGV inside BeaconPrintf). We save the original %rsp in * a scratch slot we own below the current stack...`
   - `_GNU_SOURCE` (macro, line 9) `#define _GNU_SOURCE`
 - Depends on: `include/aes.h`, `include/beacon_common.h`, `include/cJSON.h`
 

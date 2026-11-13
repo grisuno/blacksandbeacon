@@ -13,6 +13,7 @@ graph LR
     beacons -- "calls into" --> legacy
     beacons -- "depends on" --> root
     include -- "depends on" --> root
+    legacy -- "calls into" --> include
     legacy -- "depends on" --> root
     tests -- "depends on" --> include
 ```

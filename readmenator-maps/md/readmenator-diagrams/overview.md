@@ -28,6 +28,7 @@ graph LR
     legacy -- "depends on" --> include_aes
     legacy -- "depends on" --> include_config
     include_aes -- "calls into" --> legacy
+    include_config -- "calls into" --> legacy
     click legacy href "./legacy.md" "Details"
     click c2 href "./c2.md" "Details"
     click include_aes href "./include_aes.md" "Details"
@@ -36,7 +37,7 @@ graph LR
 
 ## Details
 
-Static architecture map of 175 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.
+Static architecture map of 179 files (c, h, py, sh) in 25 components: legacy, c2, bof/include, include: aes, include: config, mutants/src: async_i_o_for_beacon, mutants/src: beacon_common.c_extraction, mutants/src: beacon_heartbeat___health_endpoint. Structure is extracted statically without LLM calls; component prose may be enriched locally.
 
 ### legacy (1)
 
@@ -55,18 +56,18 @@ legacy groups 20 files (c, h) around BEACON_COMMON_H, _GNU_SOURCE, BSB_OUTPUT_BU
 
 ### c2 (2)
 
-c2 groups 15 files (py) around _derive_keys, _deep_merge, load_config, load_runtime_config, compute_hmac. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...
+c2 groups 17 files (py) around _derive_keys, _deep_merge, load_config, _random_free_port, load_runtime_config. Black Sand Beacon C2 Server  Gopher-style command and control server for Black Sand...
 
 **Related Classes/Methods**:
 
 - <a href="../include/config_py.py#L65-L83">include/config_py.py::_derive_keys</a>
 - <a href="../include/config_py.py#L84-L93">include/config_py.py::_deep_merge</a>
 - <a href="../include/config_py.py#L94-L146">include/config_py.py::load_config</a>
-- <a href="../c2/server.py#L62-L109">c2/server.py::load_runtime_config</a>
-- <a href="../c2/server.py#L110-L114">c2/server.py::compute_hmac</a>
-- <a href="../c2/server.py#L115-L120">c2/server.py::verify_hmac</a>
-- <a href="../c2/server.py#L121-L143">c2/server.py::encrypt_data</a>
-- <a href="../c2/server.py#L144-L177">c2/server.py::encrypt_data_replay</a>
+- <a href="../c2/server.py#L73-L85">c2/server.py::_random_free_port</a>
+- <a href="../c2/server.py#L86-L209">c2/server.py::load_runtime_config</a>
+- <a href="../c2/server.py#L210-L214">c2/server.py::compute_hmac</a>
+- <a href="../c2/server.py#L215-L220">c2/server.py::verify_hmac</a>
+- <a href="../c2/server.py#L221-L243">c2/server.py::encrypt_data</a>
 
 ### bof/include (3)
 
